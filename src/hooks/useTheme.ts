@@ -82,5 +82,3 @@ export const useTheme = () => {
 
   return { theme, resolvedTheme, setTheme, toggle } as const;
 };
-
-export default useTheme;

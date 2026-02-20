@@ -1,8 +1,8 @@
 import { SunIcon, MoonIcon } from '@heroicons/react/24/solid';
-import useTheme from '../../hooks/useTheme';
+import { useThemeContext } from '../../context/ThemeContext';
 
 export const ThemeToggle = (): React.JSX.Element => {
-  const { theme, resolvedTheme, toggle } = useTheme();
+  const { theme, resolvedTheme, toggle } = useThemeContext();
 
   const title =
     theme === 'system'
@@ -25,4 +25,3 @@ export const ThemeToggle = (): React.JSX.Element => {
   );
 };
 
-export default ThemeToggle;

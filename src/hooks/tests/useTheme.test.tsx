@@ -1,18 +1,13 @@
 import React from 'react';
 import { render, cleanup, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import useTheme from '../useTheme';
+import { useTheme } from '../';
 
 const STORAGE_KEY = 'my-portfolio.theme';
 
-/**
- * Mock tipado para window.matchMedia que implementa addEventListener/removeEventListener
- * y permite disparar cambios con trigger(matches).
- */
 function createMockMatchMedia(initialMatches: boolean) {
   let matches = initialMatches;
 
-  // Map para poder eliminar listeners correctamente si fuera necesario
   const listeners = new Map<EventListenerOrEventListenerObject, EventListener>();
 
   const mql: MediaQueryList = {
@@ -77,16 +72,13 @@ describe('useTheme hook', () => {
 
   afterEach(() => {
     cleanup();
-    // limpiar estado global
     localStorage.removeItem(STORAGE_KEY);
     document.documentElement.classList.remove('dark');
     delete document.documentElement.dataset.theme;
-    // restaurar matchMedia original
     window.matchMedia = originalMatchMedia;
   });
 
   it("toggle aplica la clase 'dark' y persiste en localStorage cuando la preferencia inicial es 'light'", async () => {
-    // forzamos preferencia explícita 'light' en localStorage
     localStorage.setItem(STORAGE_KEY, 'light');
 
     render(<TestComponent />);
@@ -104,25 +96,20 @@ describe('useTheme hook', () => {
   });
 
   it("cuando la preferencia es 'system' sigue matchMedia y responde a cambios", async () => {
-    // Eliminamos cualquier preferencia guardada para que el hook arranque en 'system'
     localStorage.removeItem(STORAGE_KEY);
 
-    // Mock de matchMedia: empieza en false (light)
     const { mql, trigger } = createMockMatchMedia(false);
     window.matchMedia = (() => mql) as unknown as (query: string) => MediaQueryList;
 
     render(<TestComponent />);
 
-    // theme inicial debe ser 'system'
     expect(screen.getByTestId('theme').textContent).toBe('system');
-    // resolvedTheme debe ser 'light' según el mock inicial
+
     expect(screen.getByTestId('resolved').textContent).toBe('light');
     expect(document.documentElement.classList.contains('dark')).toBe(false);
 
-    // Disparamos cambio del sistema: ahora matches = true => dark
     trigger(true);
 
-    // Esperamos que el DOM y el resolvedTheme se actualicen
     await waitFor(() => {
       expect(screen.getByTestId('resolved').textContent).toBe('dark');
       expect(document.documentElement.classList.contains('dark')).toBe(true);

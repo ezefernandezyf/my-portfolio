@@ -8,8 +8,12 @@ type Props = {
   children: React.ReactNode;
 };
 
-
-export const SocialButton = ({ to, ariaLabel, className = '', children }: Props): React.JSX.Element => {
+export const SocialButton = ({
+  to,
+  ariaLabel,
+  className = '',
+  children,
+}: Props): React.JSX.Element => {
   const isExternal = /^https?:\/\//.test(to) || to.startsWith('mailto:');
 
   const baseClass = `btn btn-ghost btn-sm ${className}`;
