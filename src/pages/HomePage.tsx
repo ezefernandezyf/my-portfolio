@@ -21,7 +21,7 @@ export const HomePage = (): React.JSX.Element => {
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <Link to="/about" className="btn btn-primary" aria-label="Ir a Acerca">
-              Acerca
+              Acerca de mí
             </Link>
 
             <Link to="/projects" className="btn btn-outline" aria-label="Ver Proyectos">

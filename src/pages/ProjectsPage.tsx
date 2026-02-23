@@ -17,7 +17,7 @@ export const ProjectsPage = (): React.JSX.Element => {
           Inicio
         </Link>
         <Link to="/about" className="btn btn-outline" aria-label="Ir a Acerca">
-          Acerca
+          Acerca de mí
         </Link>
         <Link to="/contact" className="btn btn-ghost" aria-label="Ir a Contacto">
           Contacto

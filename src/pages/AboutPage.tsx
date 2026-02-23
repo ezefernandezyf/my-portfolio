@@ -8,7 +8,7 @@ export const AboutPage = (): React.JSX.Element => {
       </h1>
       <p>
         Hola — soy Ezequiel, desarrollador front-end. Este es un placeholder para la
-        sección "Acerca". Aquí luego incluiré una breve biografía, skills relevantes, y enlaces a
+        sección "Acerca de mí". Aquí luego incluiré una breve biografía, skills relevantes, y enlaces a
         proyectos.
       </p>
 
