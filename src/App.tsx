@@ -1,9 +1,9 @@
-import { MainLayout } from './components/';
+import { AppRouter } from './routes/AppRouter';
 
 function App() {
   return (
     <>
-      <MainLayout />
+      <AppRouter />
     </>
   );
 }

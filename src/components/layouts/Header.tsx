@@ -57,15 +57,15 @@ export const Header = (): React.JSX.Element => {
         </div>
 
         <nav className="hidden md:flex items-center gap-6" aria-label="Principal">
-          <a href="#about" className="text-sm hover:text-primary" aria-label="Ir a Acerca de mí">
-            Acerca
-          </a>
-          <a href="#projects" className="text-sm hover:text-primary" aria-label="Ir a Proyectos">
+          <Link to="/about" className="text-sm hover:text-primary" aria-label="Ir a Acerca de mí">
+            Acerca de mí
+          </Link>
+          <Link to="/projects" className="text-sm hover:text-primary" aria-label="Ir a Proyectos">
             Proyectos
-          </a>
-          <a href="#contact" className="text-sm hover:text-primary" aria-label="Ir a Contacto">
+          </Link>
+          <Link to="/contact" className="text-sm hover:text-primary" aria-label="Ir a Contacto">
             Contacto
-          </a>
+          </Link>
         </nav>
 
         <div className="flex items-center gap-3">
@@ -139,35 +139,35 @@ export const Header = (): React.JSX.Element => {
           </div>
 
           <nav className="flex flex-col gap-2 text-base" aria-label="Navegación móvil">
-            <a
-              href="#about"
+            <Link
+              to="/about"
               onClick={onLinkClick}
               className="flex items-center gap-3 p-2 rounded-md hover:bg-base-200 transition-colors"
               aria-label="Ir a Acerca"
             >
               <HomeIcon className="h-5 w-5 text-muted" aria-hidden />
-              <span>Acerca</span>
-            </a>
+              <span>Acerca de mí</span>
+            </Link>
 
-            <a
-              href="#projects"
+            <Link
+              to="/home#projects"
               onClick={onLinkClick}
               className="flex items-center gap-3 p-2 rounded-md hover:bg-base-200 transition-colors"
               aria-label="Ir a Proyectos"
             >
               <FolderIcon className="h-5 w-5 text-muted" aria-hidden />
               <span>Proyectos</span>
-            </a>
+            </Link>
 
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               onClick={onLinkClick}
               className="flex items-center gap-3 p-2 rounded-md hover:bg-base-200 transition-colors"
               aria-label="Ir a Contacto"
             >
               <EnvelopeIcon className="h-5 w-5 text-muted" aria-hidden />
               <span>Contacto</span>
-            </a>
+            </Link>
           </nav>
 
           <div className="mt-auto flex flex-col gap-3 mb-4 text-base-content/80">
