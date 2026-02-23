@@ -24,4 +24,3 @@ export const ThemeToggle = (): React.JSX.Element => {
     </button>
   );
 };
-
