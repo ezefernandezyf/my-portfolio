@@ -8,8 +8,8 @@ export const ProjectsPage = (): React.JSX.Element => {
       </h1>
 
       <p>
-        Este es un placeholder para la página de Proyectos. Aquí listaré mis proyectos,
-        con descripciones, enlaces al código fuente y capturas o demos en vivo.
+        Este es un placeholder para la página de Proyectos. Aquí listaré mis proyectos, con
+        descripciones, enlaces al código fuente y capturas o demos en vivo.
       </p>
 
       <div className="mt-6 flex flex-wrap gap-3">
