@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, screen, waitFor } from '@testing-library/react';
+import { render, cleanup, screen, waitFor, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useTheme } from '../';
 
@@ -49,7 +49,6 @@ function createMockMatchMedia(initialMatches: boolean) {
   return { mql, trigger };
 }
 
-/** Componente de prueba que expone botones para interactuar con el hook */
 function TestComponent(): React.JSX.Element {
   const { theme, resolvedTheme, setTheme, toggle } = useTheme();
 
@@ -83,14 +82,14 @@ describe('useTheme hook', () => {
 
     render(<TestComponent />);
 
-    // Antes del toggle: no debe existir la clase dark
     expect(document.documentElement.classList.contains('dark')).toBe(false);
     expect(localStorage.getItem(STORAGE_KEY)).toBe('light');
 
     const toggleBtn = screen.getByTestId('toggle');
-    await userEvent.click(toggleBtn);
+    await act(async () => {
+      await userEvent.click(toggleBtn);
+    });
 
-    // Después del toggle: preferencia a 'dark' y clase aplicada
     expect(localStorage.getItem(STORAGE_KEY)).toBe('dark');
     expect(document.documentElement.classList.contains('dark')).toBe(true);
   });
@@ -99,7 +98,7 @@ describe('useTheme hook', () => {
     localStorage.removeItem(STORAGE_KEY);
 
     const { mql, trigger } = createMockMatchMedia(false);
-    window.matchMedia = (() => mql) as unknown as (query: string) => MediaQueryList;
+    window.matchMedia = (() => mql) as (query: string) => MediaQueryList;
 
     render(<TestComponent />);
 
@@ -108,7 +107,9 @@ describe('useTheme hook', () => {
     expect(screen.getByTestId('resolved').textContent).toBe('light');
     expect(document.documentElement.classList.contains('dark')).toBe(false);
 
-    trigger(true);
+    await act(async () => {
+      trigger(true);
+    });
 
     await waitFor(() => {
       expect(screen.getByTestId('resolved').textContent).toBe('dark');

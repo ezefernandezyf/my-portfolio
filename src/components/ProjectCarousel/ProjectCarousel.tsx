@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 
 type Props = {
@@ -21,8 +21,13 @@ export const ProjectCarousel = ({
   const timerRef = useRef<number | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  const next = () => setIndex((i) => (i + 1) % images.length);
-  const prev = () => setIndex((i) => (i - 1 + images.length) % images.length);
+  const next = useCallback(() => {
+    setIndex((i) => (i + 1) % images.length);
+  }, [images.length]);
+
+  const prev = useCallback(() => {
+    setIndex((i) => (i - 1 + images.length) % images.length);
+  }, [images.length]);
 
   useEffect(() => {
     if (!autoPlay || paused || images.length <= 1) return;
@@ -48,7 +53,7 @@ export const ProjectCarousel = ({
     };
     el.addEventListener('keydown', onKey);
     return () => el.removeEventListener('keydown', onKey);
-  }, [images.length]);
+  }, [next, prev]);
 
   return (
     <div
@@ -71,13 +76,15 @@ export const ProjectCarousel = ({
           }}
         >
           {images.map((src, i) => (
-            <div key={src} className="w-full shrink-0 max-h-90">
-              <img
-                src={src}
-                alt={`${alt} ${i + 1}`}
-                loading="lazy"
-                className="block w-full h-40 md:h-56 lg:h-64 object-cover"
-              />
+            <div key={src} className="w-full shrink-0">
+              <div className="w-full aspect-video bg-base-200">
+                <img
+                  src={src}
+                  alt={`${alt} ${i + 1}`}
+                  loading="lazy"
+                  className="block w-full h-full object-cover"
+                />
+              </div>
             </div>
           ))}
         </div>
@@ -116,4 +123,3 @@ export const ProjectCarousel = ({
     </div>
   );
 };
-
