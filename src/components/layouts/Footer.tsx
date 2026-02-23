@@ -12,16 +12,6 @@ export const Footer = (): React.JSX.Element => {
 
         <div className="flex items-center gap-4">
           <a
-            href="/CV.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm hover:text-primary"
-            aria-label="Descargar CV"
-          >
-            Descargar CV
-          </a>
-
-          <a
             href="/privacy"
             className="text-sm hover:text-primary"
             aria-label="Política de privacidad"
