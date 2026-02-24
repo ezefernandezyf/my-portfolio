@@ -1,35 +1,53 @@
-import { Link } from 'react-router-dom';
+import { useMemo, useState } from 'react';
+import { ProjectCard } from '../components';
+import { projects } from '../data/projects';
 
 export const ProjectsPage = (): React.JSX.Element => {
+  const [query, setQuery] = useState('');
+  const [visibleCount, setVisibleCount] = useState(9);
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return projects.filter((p) => {
+      const matchesQuery =
+        !q ||
+        p.name.toLowerCase().includes(q) ||
+        p.short.toLowerCase().includes(q) ||
+        (p.tech ?? []).some((t) => t.toLowerCase().includes(q));
+      return matchesQuery;
+    });
+  }, [query]);
+
   return (
-    <section id="projects" aria-labelledby="projects-title" className="prose max-w-none">
-      <h1 id="projects-title" className="text-2xl font-semibold">
-        Proyectos
-      </h1>
+    <main className="site-container py-12">
+      <header className="mb-6">
+        <h1 className="text-2xl font-semibold">Proyectos</h1>
+        <p className="text-sm text-muted">Algunos proyectos públicos, con repositorios y demos.</p>
+      </header>
 
-      <p>
-        Este es un placeholder para la página de Proyectos. Aquí listaré mis proyectos, con
-        descripciones, enlaces al código fuente y capturas o demos en vivo.
-      </p>
-
-      <div className="mt-6 flex flex-wrap gap-3">
-        <Link to="/home" className="btn btn-primary" aria-label="Ir al inicio">
-          Inicio
-        </Link>
-        <Link to="/about" className="btn btn-outline" aria-label="Ir a Acerca">
-          Acerca de mí
-        </Link>
-        <Link to="/contact" className="btn btn-ghost" aria-label="Ir a Contacto">
-          Contacto
-        </Link>
+      <div className="mb-6 flex items-center gap-4">
+        <input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Buscar proyectos..."
+          className="input input-sm flex-1"
+          aria-label="Buscar proyectos"
+        />
       </div>
 
-      <div className="mt-8">
-        <p className="text-sm text-muted">
-          Placeholder: aquí añadiré tarjetas de proyectos, filtros por tecnología y enlaces a
-          repositorios.
-        </p>
-      </div>
-    </section>
+      <section className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+        {filtered.slice(0, visibleCount).map((p) => (
+          <ProjectCard key={p.id} {...p} image={p.images?.[0]} />
+        ))}
+      </section>
+
+      {visibleCount < filtered.length && (
+        <div className="mt-6 text-center">
+          <button onClick={() => setVisibleCount((c) => c + 9)} className="btn btn-outline">
+            Ver más
+          </button>
+        </div>
+      )}
+    </main>
   );
 };

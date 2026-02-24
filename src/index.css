@@ -96,7 +96,6 @@ img {
   color: var(--color-muted);
 }
 
-/* Card baseline (puede usarse junto a clases daisyUI) */
 .card-base {
   background: var(--color-surface);
   border-radius: var(--radius-md);

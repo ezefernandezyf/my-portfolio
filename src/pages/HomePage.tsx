@@ -149,7 +149,7 @@ export const HomePage = (): React.JSX.Element => {
           <div className="p-4 rounded-lg border border-base-200 bg-base-100">
             <h5 className="font-semibold">Contacto</h5>
             <p className="text-sm text-muted mt-2">
-              ¿Querés trabajar juntos? Haceme llegar un mensaje.
+              ¿Te interesa mi perfil? Disponible para oportunidades.
             </p>
             <Link to="/contact" className="mt-3 inline-block text-sm hover:text-primary">
               Contactar
