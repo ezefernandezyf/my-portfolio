@@ -6,3 +6,4 @@ export * from './layouts/Footer';
 export * from './layouts/MainLayout';
 export * from './ProjectCarousel/ProjectCarousel';
 export * from './TechCategories/TechCategories';
+export * from './ProjectCard/ProjectCard';
