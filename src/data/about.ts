@@ -46,11 +46,7 @@ export const about = {
     {
       title: 'Analista en Sistemas - Da Vinci | Primera Escuela de Arte Multimedial',
       period: '2025 - presente',
-      bullets: [
-        'Desarrollo de SPAs con React y TypeScript.',
-        'Integración con APIs REST (TMDB), manejo de estado y cache.',
-        'Enfoque en performance, accesibilidad y testing automatizado.',
-      ],
+      bullets: [],
     },
   ],
   availability: 'Disponibilidad: inmediata, horario flexible.',
