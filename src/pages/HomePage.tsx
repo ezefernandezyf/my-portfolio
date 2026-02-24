@@ -42,7 +42,7 @@ export const HomePage = (): React.JSX.Element => {
           <div className="mt-6">
             <h3 className="text-sm font-semibold mb-2">Stack destacado</h3>
             <ul className="flex flex-wrap gap-2">
-              {['React', 'TypeScript', 'Vite', 'Tailwind', 'Testing'].map((t) => (
+              {['React', 'TypeScript', 'JavaScript', 'Vite', 'Testing'].map((t) => (
                 <li
                   key={t}
                   className="px-3 py-1 rounded-full bg-base-200 text-sm text-muted"
@@ -89,8 +89,8 @@ export const HomePage = (): React.JSX.Element => {
             <div className="p-4">
               <h4 className="font-semibold">CineLab</h4>
               <p className="text-sm text-muted mt-1">
-                SPA de catálogo de películas — búsqueda, filtros y detalle de títulos. UI enfocada
-                en rendimiento y UX.
+                Movie Search App — búsqueda, filtros, favoritos persistentes y recomendaciones
+                dinámicas (TMDB). Built with React, TypeScript & Vite.
               </p>
 
               <div className="mt-3 flex items-center gap-2 text-sm">

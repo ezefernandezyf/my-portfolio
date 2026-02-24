@@ -5,3 +5,4 @@ export * from './Icons/SocialIcons';
 export * from './layouts/Footer';
 export * from './layouts/MainLayout';
 export * from './ProjectCarousel/ProjectCarousel';
+export * from './TechCategories/TechCategories';
