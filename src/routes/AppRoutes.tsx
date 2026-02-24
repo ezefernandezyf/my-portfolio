@@ -1,6 +1,13 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { MainLayout } from '../components';
-import { AboutPage, ContactPage, HomePage, NotFoundPage, ProjectsPage } from '../pages';
+import {
+  AboutPage,
+  ContactPage,
+  HomePage,
+  NotFoundPage,
+  ProjectsPage,
+  CineLabCaseStudy,
+} from '../pages';
 
 export const AppRoutes = (): React.JSX.Element => {
   return (
@@ -10,6 +17,7 @@ export const AppRoutes = (): React.JSX.Element => {
         <Route path="home" element={<HomePage />} />
         <Route path="about" element={<AboutPage />} />
         <Route path="projects" element={<ProjectsPage />} />
+        <Route path="/projects/cinelab" element={<CineLabCaseStudy />} />
         <Route path="contact" element={<ContactPage />} />
         <Route path="not-found" element={<NotFoundPage />} />
         <Route path="*" element={<Navigate to="/not-found" replace />} />
