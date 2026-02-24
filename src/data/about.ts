@@ -46,9 +46,7 @@ export const about = {
     {
       title: 'Analista en Sistemas - Da Vinci | Primera Escuela de Arte Multimedial',
       period: '2025 - presente',
-      bullets: [
-        
-      ],
+      bullets: [],
     },
   ],
   availability: 'Disponibilidad: inmediata, horario flexible.',

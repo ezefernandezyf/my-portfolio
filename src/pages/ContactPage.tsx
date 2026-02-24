@@ -208,4 +208,3 @@ export const ContactPage = (): React.JSX.Element => {
     </main>
   );
 };
-
