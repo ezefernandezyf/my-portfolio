@@ -96,7 +96,7 @@ export const HomePage = (): React.JSX.Element => {
               <div className="mt-3 flex items-center gap-2 text-sm">
                 <Link
                   to="/projects#cinelab"
-                  className="hover:text-primary"
+                  className="hover:text-primary hover:underline"
                   aria-label="Ver case study CineLab"
                 >
                   Ver case study
@@ -106,7 +106,7 @@ export const HomePage = (): React.JSX.Element => {
                   href="https://github.com/ezefernandezyf/cinelab-react"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="ml-3 not-first-of-type:text-muted hover:text-primary"
+                  className="ml-3 not-first-of-type:text-muted hover:text-primary hover:underline"
                   aria-label="Repositorio de CineLab en GitHub"
                 >
                   Ver repo
