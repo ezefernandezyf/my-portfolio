@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import type { Theme } from '../hooks/';
+import type { Theme } from '../hooks/useTheme';
 
 export type ThemeContextValue = {
   theme: Theme;

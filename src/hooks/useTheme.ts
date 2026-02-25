@@ -8,12 +8,17 @@ function getSystemTheme(): 'dark' | 'light' {
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
+function isValidTheme(value: unknown): value is Theme {
+  return value === 'light' || value === 'dark' || value === 'system';
+}
+
 export const useTheme = () => {
   const [theme, setThemeState] = useState<Theme>(() => {
     try {
       if (typeof window === 'undefined') return 'system';
       const raw = localStorage.getItem(STORAGE_KEY);
-      return (raw as Theme) ?? 'system';
+      if (isValidTheme(raw)) return raw;
+      return 'system';
     } catch {
       return 'system';
     }
@@ -23,12 +28,10 @@ export const useTheme = () => {
     return getSystemTheme();
   });
 
-  // resolvedTheme se deriva de theme y systemPref; hace rerender cuando cambian.
   const resolvedTheme = useMemo<'light' | 'dark'>(() => {
     return theme === 'system' ? systemPref : (theme as 'light' | 'dark');
   }, [theme, systemPref]);
 
-  // Effect: aplica clases/dataset cuando cambia resolvedTheme o theme explícito.
   useEffect(() => {
     const root = typeof document !== 'undefined' ? document.documentElement : null;
     if (!root) return;
@@ -37,7 +40,6 @@ export const useTheme = () => {
     root.dataset.theme = theme === 'system' ? resolvedTheme : theme;
   }, [resolvedTheme, theme]);
 
-  // Effect: registrar listener del media query SOLO cuando la preferencia es 'system'
   useEffect(() => {
     if (theme !== 'system') return;
 
@@ -48,7 +50,6 @@ export const useTheme = () => {
 
     if (!mq) return;
 
-    // handler con firma EventListener que actualiza systemPref (setState OK desde handler)
     const handler: EventListener = (e) => {
       const ev = e as MediaQueryListEvent;
       const newResolved: 'dark' | 'light' = ev.matches ? 'dark' : 'light';
@@ -62,7 +63,6 @@ export const useTheme = () => {
       };
     }
 
-    // Si addEventListener no está disponible, no registramos (evitamos APIs obsoletas).
     return;
   }, [theme]);
 
