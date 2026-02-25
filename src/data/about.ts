@@ -4,7 +4,7 @@ export const about = {
   email: 'ezefernandezyf@gmail.com',
   github: 'https://github.com/ezefernandezyf',
   linkedIn: 'https://www.linkedin.com/in/ezequiel-fernandez-59a21a387/',
-  cv: '/CV.pdf',
+  cv: '/Ezequiel_Fernandez_CV.pdf',
   summary:
     'Soy Front-end Developer enfocado en construir interfaces limpias, accesibles y mantenibles. Trabajo principalmente con React, TypeScript y JavaScript, desarrollando SPAs que consumen APIs REST y priorizan rendimiento, buenas prácticas y experiencia de usuario. Me interesa escribir código claro, testeable y escalable, aplicando principios de arquitectura por features, manejo de estado eficiente y validación de datos.',
   categories: [

@@ -1,13 +1,17 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
-vi.mock('../../components', () => {
+
+vi.mock('../../components', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('../../components')>();
   return {
-    ProjectCarousel: (props: React.JSX.Element) => (
+    ...actual,
+    ProjectCarousel: (props: React.ComponentProps<'div'>) => (
       <div data-testid="carousel-mock" {...props}>
         Carousel Mock
       </div>
     ),
+    MetaTags: () => null,
   };
 });
 
@@ -32,7 +36,7 @@ describe('HomePage', () => {
 
     const cvLinks = screen.getAllByRole('link', { name: /descargar cv/i });
     expect(cvLinks.length).toBeGreaterThanOrEqual(1);
-    expect(cvLinks[0]).toHaveAttribute('href', '/CV.pdf');
+    expect(cvLinks[0]).toHaveAttribute('href', '/Ezequiel_Fernandez_CV.pdf');
 
     expect(screen.getByText(/stack destacado/i)).toBeInTheDocument();
     expect(screen.getAllByText(/react/i).length).toBeGreaterThanOrEqual(1);

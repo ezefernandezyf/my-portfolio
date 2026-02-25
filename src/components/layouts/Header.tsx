@@ -81,9 +81,15 @@ export const Header = (): React.JSX.Element => {
               <LinkedInIcon className="h-5 w-5 text-base-content/90" />
             </SocialButton>
 
-            <SocialButton to="/CV.pdf" ariaLabel="Descargar CV">
+            <a
+              href="/Ezequiel_Fernandez_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-ghost"
+              aria-label="Descargar CV (se abre en nueva pestaña)"
+            >
               <CvIcon className="h-5 w-5 text-base-content/90" />
-            </SocialButton>
+            </a>
           </div>
 
           <ThemeToggle />
@@ -150,7 +156,7 @@ export const Header = (): React.JSX.Element => {
             </Link>
 
             <Link
-              to="/home#projects"
+              to="/projects"
               onClick={onLinkClick}
               className="flex items-center gap-3 p-2 rounded-md hover:bg-base-200 transition-colors"
               aria-label="Ir a Proyectos"

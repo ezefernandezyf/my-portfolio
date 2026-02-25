@@ -7,3 +7,4 @@ export * from './layouts/MainLayout';
 export * from './ProjectCarousel/ProjectCarousel';
 export * from './TechCategories/TechCategories';
 export * from './ProjectCard/ProjectCard';
+export * from './MetaTags/MetaTags';
