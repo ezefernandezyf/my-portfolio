@@ -8,8 +8,10 @@ import {
   EnvelopeIcon,
 } from '@heroicons/react/24/outline';
 import { CvIcon, GithubIcon, LanguageSwitcher, LinkedInIcon, SocialButton, ThemeToggle } from '..';
+import { useTranslation } from 'react-i18next';
 
 export const Header = (): React.JSX.Element => {
+  const { t } = useTranslation('header');
   const [open, setOpen] = useState(false);
   const drawerRef = useRef<HTMLDivElement | null>(null);
   const toggle = () => setOpen((v) => !v);
@@ -45,50 +47,54 @@ export const Header = (): React.JSX.Element => {
     <header className="bg-base-100 sticky top-0 z-50 border-b border-base-200">
       <div className="site-container flex items-center justify-between h-16">
         <div className="flex items-center gap-3">
-          <Link to="/" className="flex items-center gap-3 no-underline" aria-label="Ir al inicio">
+          <Link
+            to="/"
+            className="flex items-center gap-3 no-underline"
+            aria-label={t('logo.ariaHome')}
+          >
             <div className="w-10 h-10 rounded-md bg-linear-to-br from-primary to-accent flex items-center justify-center text-white font-bold">
-              <span className="select-none">EZ</span>
+              <span className="select-none">{t('logo.abbr')}</span>
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-lg font-semibold">Ezequiel Fernández</h1>
-              <p className="text-xs text-muted">Front-end Developer</p>
+              <h1 className="text-lg font-semibold">{t('logo.name')}</h1>
+              <p className="text-xs text-muted">{t('logo.role')}</p>
             </div>
           </Link>
         </div>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm" aria-label="Principal">
+        <nav className="hidden md:flex items-center gap-6 text-sm" aria-label={t('nav.aria')}>
           <NavLink
             to="/about"
             className={({ isActive }) => `hover:text-primary ${isActive ? 'text-primary' : ''}`}
-            aria-label="Ir a Acerca de mí"
+            aria-label={t('mobile.about')}
           >
-            Acerca de mí
+            {t('nav.about')}
           </NavLink>
           <NavLink
             to="/projects"
             className={({ isActive }) => `hover:text-primary ${isActive ? 'text-primary' : ''}`}
-            aria-label="Ir a Proyectos"
+            aria-label={t('nav.projects')}
           >
-            Proyectos
+            {t('nav.projects')}
           </NavLink>
           <NavLink
             to="/contact"
             className={({ isActive }) => `hover:text-primary ${isActive ? 'text-primary' : ''}`}
-            aria-label="Ir a Contacto"
+            aria-label={t('nav.contact')}
           >
-            Contacto
+            {t('nav.contact')}
           </NavLink>
         </nav>
 
         <div className="flex items-center gap-3">
           <div className="hidden sm:flex items-center gap-2">
-            <SocialButton to="https://github.com/ezefernandezyf" ariaLabel="Abrir perfil de GitHub">
+            <SocialButton to="https://github.com/ezefernandezyf" ariaLabel={t('social.githubAria')}>
               <GithubIcon className="h-5 w-5 text-base-content/90" />
             </SocialButton>
 
             <SocialButton
               to="https://www.linkedin.com/in/ezequiel-fernandez-59a21a387/"
-              ariaLabel="Abrir perfil de LinkedIn"
+              ariaLabel={t('social.linkedInAria')}
             >
               <LinkedInIcon className="h-5 w-5 text-base-content/90" />
             </SocialButton>
@@ -98,7 +104,7 @@ export const Header = (): React.JSX.Element => {
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-ghost"
-              aria-label="Descargar CV (se abre en nueva pestaña)"
+              aria-label={t('social.downloadCvAria')}
             >
               <CvIcon className="h-5 w-5 text-base-content/90" />
             </a>
@@ -110,7 +116,7 @@ export const Header = (): React.JSX.Element => {
 
           <div className="md:hidden">
             <button
-              aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
+              aria-label={open ? t('mobile.closeMenu') : t('mobile.openMenu')}
               aria-expanded={open}
               aria-controls="mobile-drawer"
               onClick={toggle}
@@ -142,33 +148,37 @@ export const Header = (): React.JSX.Element => {
               to="/"
               onClick={onLinkClick}
               className="flex items-center gap-3 no-underline"
-              aria-label="Ir al inicio"
+              aria-label={t('mobile.backToHome')}
             >
               <div className="w-10 h-10 rounded-md bg-linear-to-br from-primary to-accent flex items-center justify-center text-white font-bold">
                 EZ
               </div>
               <div>
-                <h2 className="text-sm font-semibold">Ezequiel Fernández</h2>
-                <p className="text-xs text-muted">Front-end Developer</p>
+                <h2 className="text-sm font-semibold">{t('logo.name')}</h2>
+                <p className="text-xs text-muted">{t('logo.role')}</p>
               </div>
             </Link>
 
-            <button onClick={close} aria-label="Cerrar menú" className="btn btn-ghost btn-square">
+            <button
+              onClick={close}
+              aria-label={t('mobile.closeMenu')}
+              className="btn btn-ghost btn-square"
+            >
               <XMarkIcon className="h-5 w-5" aria-hidden />
             </button>
           </div>
 
-          <nav className="flex flex-col gap-2 text-base" aria-label="Navegación móvil">
+          <nav className="flex flex-col gap-2 text-base" aria-label={t('mobile.navLabel')}>
             <NavLink
               to="/about"
               onClick={onLinkClick}
               className={({ isActive }) =>
                 `flex items-center gap-3 p-2 rounded-md hover:bg-base-200 transition-colors ${isActive ? 'text-primary' : ''}`
               }
-              aria-label="Ir a Acerca"
+              aria-label={t('mobile.about')}
             >
               <HomeIcon className="h-5 w-5 text-muted" aria-hidden />
-              <span>Acerca de mí</span>
+              <span>{t('mobile.about')}</span>
             </NavLink>
 
             <NavLink
@@ -177,10 +187,10 @@ export const Header = (): React.JSX.Element => {
               className={({ isActive }) =>
                 `flex items-center gap-3 p-2 rounded-md hover:bg-base-200 transition-colors ${isActive ? 'text-primary' : ''}`
               }
-              aria-label="Ir a Proyectos"
+              aria-label={t('mobile.projects')}
             >
               <FolderIcon className="h-5 w-5 text-muted" aria-hidden />
-              <span>Proyectos</span>
+              <span>{t('mobile.projects')}</span>
             </NavLink>
 
             <NavLink
@@ -189,10 +199,10 @@ export const Header = (): React.JSX.Element => {
               className={({ isActive }) =>
                 `flex items-center gap-3 p-2 rounded-md hover:bg-base-200 transition-colors ${isActive ? 'text-primary' : ''}`
               }
-              aria-label="Ir a Contacto"
+              aria-label={t('mobile.contact')}
             >
               <EnvelopeIcon className="h-5 w-5 text-muted" aria-hidden />
-              <span>Contacto</span>
+              <span>{t('mobile.contact')}</span>
             </NavLink>
           </nav>
 
@@ -200,30 +210,30 @@ export const Header = (): React.JSX.Element => {
             <div className="flex items-center gap-2">
               <SocialButton
                 to="https://github.com/ezefernandezyf"
-                ariaLabel="Abrir perfil de GitHub"
+                ariaLabel={t('social.githubAria')}
               >
                 <div className="inline-flex items-center gap-3">
                   <GithubIcon className="h-5 w-5" />
-                  <span>GitHub</span>
+                  <span>{t('social.github')}</span>
                 </div>
               </SocialButton>
             </div>
             <div className="flex items-center gap-2">
               <SocialButton
                 to="https://www.linkedin.com/in/ezequiel-fernandez-59a21a387/"
-                ariaLabel="Abrir perfil de LinkedIn"
+                ariaLabel={t('social.linkedInAria')}
               >
                 <div className="inline-flex items-center gap-3">
                   <LinkedInIcon className="h-5 w-5" />
-                  <span>LinkedIn</span>
+                  <span>{t('social.linkedIn')}</span>
                 </div>
               </SocialButton>
             </div>
             <div className="flex items-center gap-2">
-              <SocialButton to="/CV.pdf" ariaLabel="Descargar CV">
+              <SocialButton to="/CV.pdf" ariaLabel={t('social.downloadCvAria')}>
                 <div className="inline-flex items-center gap-3">
                   <CvIcon className="h-5 w-5" />
-                  <span>Descargar CV</span>
+                  <span>{t('social.downloadCv')}</span>
                 </div>
               </SocialButton>
             </div>
