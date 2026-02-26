@@ -26,7 +26,7 @@ export const ProjectsPage = (): React.JSX.Element => {
         pathname="/projects"
         type="website"
       />
-      <main className="site-container py-12">
+      <main className="site-container pb-12 pt-8">
         <header className="mb-6">
           <h1 className="text-2xl font-semibold">Proyectos</h1>
           <p className="text-sm text-muted">

@@ -8,13 +8,8 @@ export const AboutPage = (): React.JSX.Element => {
 
   return (
     <>
-      <MetaTags
-        title="Acerca de mí"
-        description={summary}
-        pathname="/about"
-        type="website"
-      />
-      <main role="main" className="site-container py-12">
+      <MetaTags title="Acerca de mí" description={summary} pathname="/about" type="website" />
+      <main role="main" className="site-container pb-12 pt-8">
         <section className="grid gap-8 md:grid-cols-3 items-start">
           <aside className="md:col-span-1">
             <div className="p-4 rounded-lg bg-base-200">
@@ -118,7 +113,7 @@ export const AboutPage = (): React.JSX.Element => {
                       </div>
                       <div className="mt-2 text-xs flex flex-wrap gap-2 text-muted">
                         {p.tech.map((t) => (
-                          <span key={t} className="px-2 py-1 rounded bg-base-200 text-xs">
+                          <span key={t} className="px-2 py-1 rounded bg-base-200 text-xs border">
                             {t}
                           </span>
                         ))}

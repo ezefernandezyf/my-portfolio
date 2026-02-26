@@ -15,4 +15,3 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }): Reac
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 };
-

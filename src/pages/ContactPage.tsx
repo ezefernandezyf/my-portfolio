@@ -79,141 +79,141 @@ export const ContactPage = (): React.JSX.Element => {
 
   return (
     <>
-     <MetaTags
+      <MetaTags
         title="Contacto"
         description="Contactame si creés que mi perfil encaja en tu equipo. Estoy disponible para roles Front-end."
         pathname="/contact"
         type="article"
       />
-    <main className="site-container py-12">
-      <div className="mx-auto w-full px-4 sm:px-6 lg:px-8 max-w-3xl">
-        <header className="mb-6">
-          <h1 className="text-2xl font-semibold">Contacto</h1>
-          <p className="text-sm text-muted mt-2">
-            Estoy buscando mi primera oportunidad profesional como Frontend Developer. Si creés que
-            mi perfil puede encajar en tu equipo, podés contactarme por correo o rellenar el
-            formulario abajo.
-          </p>
-        </header>
+      <main className="site-container pb-12 pt-8">
+        <div className="mx-auto w-full px-4 sm:px-6 lg:px-8 max-w-3xl">
+          <header className="mb-6">
+            <h1 className="text-2xl font-semibold">Contacto</h1>
+            <p className="text-sm text-muted mt-2">
+              Estoy buscando mi primera oportunidad profesional como Frontend Developer. Si creés
+              que mi perfil puede encajar en tu equipo, podés contactarme por correo o rellenar el
+              formulario abajo.
+            </p>
+          </header>
 
-        <section>
-          <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-4">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium">
-                Nombre
-              </label>
-              <input
-                id="name"
-                {...register('name')}
-                className="input w-full"
-                placeholder="Tu nombre"
-                aria-invalid={!!errors.name}
-              />
-              {errors.name && (
-                <p role="alert" className="text-xs text-error mt-1">
-                  {errors.name.message}
+          <section>
+            <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-4">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium">
+                  Nombre
+                </label>
+                <input
+                  id="name"
+                  {...register('name')}
+                  className="input w-full"
+                  placeholder="Tu nombre"
+                  aria-invalid={!!errors.name}
+                />
+                {errors.name && (
+                  <p role="alert" className="text-xs text-error mt-1">
+                    {errors.name.message}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium">
+                  Email
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  {...register('email')}
+                  className="input w-full"
+                  placeholder="tu@ejemplo.com"
+                  aria-invalid={!!errors.email}
+                />
+                {errors.email && (
+                  <p role="alert" className="text-xs text-error mt-1">
+                    {errors.email.message}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="subject" className="block text-sm font-medium">
+                  Asunto
+                </label>
+                <input
+                  id="subject"
+                  {...register('subject')}
+                  className="input w-full"
+                  placeholder="Asunto del mensaje"
+                  aria-invalid={!!errors.subject}
+                />
+                {errors.subject && (
+                  <p role="alert" className="text-xs text-error mt-1">
+                    {errors.subject.message}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium">
+                  Mensaje
+                </label>
+                <textarea
+                  id="message"
+                  {...register('message')}
+                  rows={6}
+                  className="textarea w-full"
+                  placeholder="Contame más sobre la oportunidad..."
+                  aria-invalid={!!errors.message}
+                />
+                {errors.message && (
+                  <p role="alert" className="text-xs text-error mt-1">
+                    {errors.message.message}
+                  </p>
+                )}
+              </div>
+
+              <div className="flex items-start gap-2">
+                <input
+                  id="consent"
+                  type="checkbox"
+                  {...register('consent')}
+                  className="checkbox mt-1"
+                />
+                <label htmlFor="consent" className="text-sm text-muted">
+                  Acepto que mi mensaje sea enviado y almacenado temporalmente para responder.
+                </label>
+              </div>
+              {errors.consent && (
+                <p role="alert" className="text-xs text-error">
+                  {errors.consent.message}
                 </p>
               )}
-            </div>
 
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium">
-                Email
-              </label>
-              <input
-                id="email"
-                type="email"
-                {...register('email')}
-                className="input w-full"
-                placeholder="tu@ejemplo.com"
-                aria-invalid={!!errors.email}
-              />
-              {errors.email && (
-                <p role="alert" className="text-xs text-error mt-1">
-                  {errors.email.message}
+              <div>
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  disabled={isSubmitting || status === 'sending'}
+                  aria-busy={isSubmitting || status === 'sending'}
+                >
+                  {status === 'sending' ? 'Enviando...' : 'Enviar mensaje'}
+                </button>
+              </div>
+
+              {status === 'success' && (
+                <p role="status" className="text-sm text-success">
+                  Gracias — tu mensaje fue enviado.
                 </p>
               )}
-            </div>
-
-            <div>
-              <label htmlFor="subject" className="block text-sm font-medium">
-                Asunto
-              </label>
-              <input
-                id="subject"
-                {...register('subject')}
-                className="input w-full"
-                placeholder="Asunto del mensaje"
-                aria-invalid={!!errors.subject}
-              />
-              {errors.subject && (
-                <p role="alert" className="text-xs text-error mt-1">
-                  {errors.subject.message}
+              {status === 'error' && errorMessage && (
+                <p role="alert" className="text-sm text-error">
+                  Error: {errorMessage}
                 </p>
               )}
-            </div>
-
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium">
-                Mensaje
-              </label>
-              <textarea
-                id="message"
-                {...register('message')}
-                rows={6}
-                className="textarea w-full"
-                placeholder="Contame más sobre la oportunidad..."
-                aria-invalid={!!errors.message}
-              />
-              {errors.message && (
-                <p role="alert" className="text-xs text-error mt-1">
-                  {errors.message.message}
-                </p>
-              )}
-            </div>
-
-            <div className="flex items-start gap-2">
-              <input
-                id="consent"
-                type="checkbox"
-                {...register('consent')}
-                className="checkbox mt-1"
-              />
-              <label htmlFor="consent" className="text-sm text-muted">
-                Acepto que mi mensaje sea enviado y almacenado temporalmente para responder.
-              </label>
-            </div>
-            {errors.consent && (
-              <p role="alert" className="text-xs text-error">
-                {errors.consent.message}
-              </p>
-            )}
-
-            <div>
-              <button
-                type="submit"
-                className="btn btn-primary"
-                disabled={isSubmitting || status === 'sending'}
-                aria-busy={isSubmitting || status === 'sending'}
-              >
-                {status === 'sending' ? 'Enviando...' : 'Enviar mensaje'}
-              </button>
-            </div>
-
-            {status === 'success' && (
-              <p role="status" className="text-sm text-success">
-                Gracias — tu mensaje fue enviado.
-              </p>
-            )}
-            {status === 'error' && errorMessage && (
-              <p role="alert" className="text-sm text-error">
-                Error: {errorMessage}
-              </p>
-            )}
-          </form>
-        </section>
-      </div>
-    </main>
+            </form>
+          </section>
+        </div>
+      </main>
     </>
   );
 };

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 type Props = {
   title?: string;
   description?: string;
-  pathname?: string; 
+  pathname?: string;
   image?: string;
   type?: 'website' | 'article';
   noIndex?: boolean;
@@ -130,4 +130,3 @@ export const MetaTags = ({
 
   return null;
 };
-

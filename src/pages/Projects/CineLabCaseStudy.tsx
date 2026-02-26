@@ -33,7 +33,7 @@ export const CineLabCaseStudy = (): React.JSX.Element => {
         type="article"
       />
 
-      <main className="site-container py-12">
+      <main className="site-container pb-12 pt-8">
         <header className="mb-8">
           <h1 className="text-3xl font-bold mb-2">{project.name}</h1>
           <p className="text-sm text-muted max-w-3xl">{project.short}</p>

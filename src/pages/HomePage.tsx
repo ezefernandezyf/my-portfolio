@@ -10,10 +10,10 @@ export const HomePage = (): React.JSX.Element => {
         title="Inicio"
         description="Portfolio de Ezequiel Fernández — Front-end Developer. Proyectos en React y TypeScript, enfocado en accesibilidad y rendimiento."
         pathname="/"
-        image="/og-image.png" 
+        image="/og-image.png"
       />
 
-      <main role="main" className="site-container pb-12 pt-4">
+      <main role="main" className="site-container pb-12 pt-8">
         <section
           aria-labelledby="home-hero-title"
           className="grid gap-8 md:gap-12 md:grid-cols-2 items-center"

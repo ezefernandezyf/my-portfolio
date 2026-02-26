@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
-
 vi.mock('../../components', async (importOriginal) => {
   const actual = await importOriginal<typeof import('../../components')>();
   return {

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import {
   Bars3Icon,
   XMarkIcon,
@@ -56,16 +56,34 @@ export const Header = (): React.JSX.Element => {
           </Link>
         </div>
 
-        <nav className="hidden md:flex items-center gap-6" aria-label="Principal">
-          <Link to="/about" className="text-sm hover:text-primary" aria-label="Ir a Acerca de mí">
+        <nav className="hidden md:flex items-center gap-6 text-sm" aria-label="Principal">
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              `hover:text-primary ${isActive ? 'text-primary' : ''}`
+            }
+            aria-label="Ir a Acerca de mí"
+          >
             Acerca de mí
-          </Link>
-          <Link to="/projects" className="text-sm hover:text-primary" aria-label="Ir a Proyectos">
+          </NavLink>
+          <NavLink
+            to="/projects"
+            className={({ isActive }) =>
+              `hover:text-primary ${isActive ? 'text-primary' : ''}`
+            }
+            aria-label="Ir a Proyectos"
+          >
             Proyectos
-          </Link>
-          <Link to="/contact" className="text-sm hover:text-primary" aria-label="Ir a Contacto">
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              `hover:text-primary ${isActive ? 'text-primary' : ''}`
+            }
+            aria-label="Ir a Contacto"
+          >
             Contacto
-          </Link>
+          </NavLink>
         </nav>
 
         <div className="flex items-center gap-3">
@@ -145,35 +163,41 @@ export const Header = (): React.JSX.Element => {
           </div>
 
           <nav className="flex flex-col gap-2 text-base" aria-label="Navegación móvil">
-            <Link
+            <NavLink
               to="/about"
               onClick={onLinkClick}
-              className="flex items-center gap-3 p-2 rounded-md hover:bg-base-200 transition-colors"
+              className={({ isActive }) =>
+                `flex items-center gap-3 p-2 rounded-md hover:bg-base-200 transition-colors ${isActive ? 'text-primary' : ''}`
+              }
               aria-label="Ir a Acerca"
             >
               <HomeIcon className="h-5 w-5 text-muted" aria-hidden />
               <span>Acerca de mí</span>
-            </Link>
+            </NavLink>
 
-            <Link
+            <NavLink
               to="/projects"
               onClick={onLinkClick}
-              className="flex items-center gap-3 p-2 rounded-md hover:bg-base-200 transition-colors"
+              className={({ isActive }) =>
+                `flex items-center gap-3 p-2 rounded-md hover:bg-base-200 transition-colors ${isActive ? 'text-primary' : ''}`
+              }
               aria-label="Ir a Proyectos"
             >
               <FolderIcon className="h-5 w-5 text-muted" aria-hidden />
               <span>Proyectos</span>
-            </Link>
+            </NavLink>
 
-            <Link
+            <NavLink
               to="/contact"
               onClick={onLinkClick}
-              className="flex items-center gap-3 p-2 rounded-md hover:bg-base-200 transition-colors"
+              className={({ isActive }) =>
+                `flex items-center gap-3 p-2 rounded-md hover:bg-base-200 transition-colors ${isActive ? 'text-primary' : ''}`
+              }
               aria-label="Ir a Contacto"
             >
               <EnvelopeIcon className="h-5 w-5 text-muted" aria-hidden />
               <span>Contacto</span>
-            </Link>
+            </NavLink>
           </nav>
 
           <div className="mt-auto flex flex-col gap-3 mb-4 text-base-content/80">
