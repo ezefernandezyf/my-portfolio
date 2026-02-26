@@ -57,7 +57,7 @@ export const TechChip = ({ name, showIcon = true, size = 'sm' }: Props) => {
           <TechIcon name={name} size={size} />
         </span>
       )}
-      <span className="inline-block px-3 py-1 rounded-full bg-base-200 text-xs">{name}</span>
+      <span className="inline-block px-3 py-1 rounded-full bg-base-200 text-xs border">{name}</span>
     </span>
   );
 };

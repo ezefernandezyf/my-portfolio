@@ -4,13 +4,13 @@ export const about = {
   email: 'ezefernandezyf@gmail.com',
   github: 'https://github.com/ezefernandezyf',
   linkedIn: 'https://www.linkedin.com/in/ezequiel-fernandez-59a21a387/',
-  cv: '/CV.pdf',
+  cv: '/Ezequiel_Fernandez_CV.pdf',
   summary:
     'Soy Front-end Developer enfocado en construir interfaces limpias, accesibles y mantenibles. Trabajo principalmente con React, TypeScript y JavaScript, desarrollando SPAs que consumen APIs REST y priorizan rendimiento, buenas prácticas y experiencia de usuario. Me interesa escribir código claro, testeable y escalable, aplicando principios de arquitectura por features, manejo de estado eficiente y validación de datos.',
   categories: [
     {
       title: 'Frontend',
-      items: ['React', 'TypeScript', 'JavaScript', 'Vite', 'React Router', 'bun', 'HTML'],
+      items: ['React', 'TypeScript', 'JavaScript', 'Vite', 'React Router', 'HTML'],
     },
     {
       title: 'Estilos',
@@ -26,7 +26,22 @@ export const about = {
     },
     {
       title: 'Herramientas',
-      items: ['Git', 'GitHub', 'Prettier', 'ESLint', 'React Hook Form'],
+      items: ['Git', 'GitHub', 'Bun', 'NPM', 'Prettier', 'ESLint', 'React Hook Form'],
+    },
+  ],
+  abilities: [
+    {
+      title: 'Habilidades profesionales',
+      items: [
+        'Comunicación clara',
+        'Resolución de problemas',
+        'Pensamiento analítico',
+        'Arquitectura modular',
+        'Trabajo en equipo',
+        'Scrum / Kanban',
+        'Aprendizaje continuo',
+        'Autonomía',
+      ],
     },
   ],
   projects: [

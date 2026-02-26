@@ -1,0 +1,8 @@
+# robots.txt para https://ezefernandez.com
+User-agent: *
+Disallow:
+
+
+Sitemap: https://ezefernandez.com/sitemap.xml
+
+# Host: https://ezefernandez.com
