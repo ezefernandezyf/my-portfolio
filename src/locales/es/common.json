@@ -1,5 +1,9 @@
 {
   "meta": {
+    "contact": {
+      "title": "Contacto",
+      "description": "Contactame si creés que mi perfil encaja en tu equipo. Estoy disponible para roles Front-end."
+    },
     "home": {
       "title": "Inicio",
       "description": "Portfolio de Ezequiel Fernández — Front-end Developer. Proyectos en React y TypeScript, enfocado en accesibilidad y rendimiento."
@@ -34,6 +38,48 @@
         "desc": "Descargá mi CV en PDF.",
         "link_text": "Descargar CV"
       }
+    }
+  },
+  "contact": {
+    "title": "Contacto",
+    "intro": "Estoy buscando mi primera oportunidad profesional como Frontend Developer. Si creés que mi perfil puede encajar en tu equipo, podés contactarme por correo o rellenar el formulario abajo.",
+    "form": {
+      "name": {
+        "label": "Nombre",
+        "placeholder": "Tu nombre",
+        "validation_min": "El nombre debe tener al menos 2 caracteres"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "tu@ejemplo.com",
+        "validation": "Email inválido"
+      },
+      "subject": {
+        "label": "Asunto",
+        "placeholder": "Asunto del mensaje",
+        "validation_min": "Asunto demasiado corto"
+      },
+      "message": {
+        "label": "Mensaje",
+        "placeholder": "Contame más sobre la oportunidad...",
+        "validation_min": "Mensaje demasiado corto"
+      },
+      "consent": {
+        "label": "Acepto que mi mensaje sea enviado y almacenado temporalmente para responder.",
+        "validation": "Debes aceptar el consentimiento para enviar"
+      },
+      "submit": {
+        "sending": "Enviando...",
+        "default": "Enviar mensaje"
+      }
+    },
+    "status": {
+      "success": "Gracias — tu mensaje fue enviado.",
+      "error_prefix": "Error:"
+    },
+    "errors": {
+      "no_endpoint": "No está configurado el endpoint de envío. Revisa VITE_CONTACT_FORM_ENDPOINT.",
+      "send_failed": "Error al enviar"
     }
   }
 }

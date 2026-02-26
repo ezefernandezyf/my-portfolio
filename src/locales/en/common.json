@@ -3,6 +3,10 @@
     "home": {
       "title": "Home",
       "description": "Ezequiel Fernández — Front-end Developer portfolio. Projects in React and TypeScript focused on accessibility and performance."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Contact me if you think my profile fits your team. I am available for Front-end roles."
     }
   },
   "home": {
@@ -34,6 +38,48 @@
         "desc": "Download my Resume (PDF).",
         "link_text": "Download Resume"
       }
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "intro": "I am seeking my first professional opportunity as a Frontend Developer. If you think my profile could fit your team, you can contact me by email or fill out the form below.",
+    "form": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Your name",
+        "validation_min": "Name must have at least 2 characters"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "you@example.com",
+        "validation": "Invalid email"
+      },
+      "subject": {
+        "label": "Subject",
+        "placeholder": "Subject of the message",
+        "validation_min": "Subject too short"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Tell me more about the opportunity...",
+        "validation_min": "Message too short"
+      },
+      "consent": {
+        "label": "I accept that my message will be sent and stored temporarily to reply.",
+        "validation": "You must accept the consent to submit"
+      },
+      "submit": {
+        "sending": "Sending...",
+        "default": "Send message"
+      }
+    },
+    "status": {
+      "success": "Thanks — your message was sent.",
+      "error_prefix": "Error:"
+    },
+    "errors": {
+      "no_endpoint": "Contact endpoint is not configured. Check VITE_CONTACT_FORM_ENDPOINT.",
+      "send_failed": "Error sending"
     }
   }
 }
