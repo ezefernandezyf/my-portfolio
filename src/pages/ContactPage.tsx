@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { MetaTags } from '../components';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'El nombre debe tener al menos 2 caracteres'),
-  email: z.string().email('Email inválido'),
+  email: z.email('Email inválido'),
   subject: z.string().min(4, 'Asunto demasiado corto'),
   message: z.string().min(10, 'Mensaje demasiado corto'),
   consent: z
@@ -77,6 +78,13 @@ export const ContactPage = (): React.JSX.Element => {
   };
 
   return (
+    <>
+     <MetaTags
+        title="Contacto"
+        description="Contactame si creés que mi perfil encaja en tu equipo. Estoy disponible para roles Front-end."
+        pathname="/contact"
+        type="article"
+      />
     <main className="site-container py-12">
       <div className="mx-auto w-full px-4 sm:px-6 lg:px-8 max-w-3xl">
         <header className="mb-6">
@@ -206,5 +214,6 @@ export const ContactPage = (): React.JSX.Element => {
         </section>
       </div>
     </main>
+    </>
   );
 };
