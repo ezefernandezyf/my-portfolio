@@ -6,7 +6,7 @@ import { MetaTags } from '../components';
 import { useTranslation } from 'react-i18next';
 
 export const ContactPage = (): React.JSX.Element => {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation('contact');
 
   const contactSchema = z.object({
     name: z.string().min(2, t('contact.form.name.validation_min')),
@@ -17,7 +17,6 @@ export const ContactPage = (): React.JSX.Element => {
       .boolean()
       .refine((val) => val === true, { message: t('contact.form.consent.validation') }),
   });
-
   type ContactFormData = z.infer<typeof contactSchema>;
 
   const endpoint = import.meta.env.VITE_CONTACT_FORM_ENDPOINT as string | undefined;
