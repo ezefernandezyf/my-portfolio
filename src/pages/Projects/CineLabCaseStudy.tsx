@@ -1,42 +1,61 @@
 import { Link } from 'react-router-dom';
 import { MetaTags, ProjectCarousel } from '../../components';
 import { projects } from '../../data/projects';
+import { useTranslation } from 'react-i18next';
 
 export const CineLabCaseStudy = (): React.JSX.Element => {
+  const { t } = useTranslation('cinelabcasestudy');
+  const { t: tProjects } = useTranslation('projects');
   const project = projects.find((p) => p.id === 'cinelab');
 
   if (!project) {
     return (
       <main className="site-container py-12">
-        <p>Project not found</p>
+        <p>{t('notFound', { defaultValue: 'Project not found' })}</p>
       </main>
     );
   }
+
+  const projectName = tProjects(project.nameKey);
+  const projectShort = tProjects(project.shortKey);
+
   const stackSections = [
-    { title: 'Frontend', items: ['React', 'TypeScript', 'Vite'] },
-    { title: 'Estilos', items: ['Tailwind CSS'] },
-    { title: 'Data & APIs', items: ['TMDB API', 'Axios'] },
     {
-      title: 'Estado',
+      title: t('stack.sections.frontend', { defaultValue: 'Frontend' }),
+      items: ['React', 'TypeScript', 'Vite'],
+    },
+    { title: t('stack.sections.styles', { defaultValue: 'Estilos' }), items: ['Tailwind CSS'] },
+    {
+      title: t('stack.sections.data', { defaultValue: 'Data & APIs' }),
+      items: ['TMDB API', 'Axios'],
+    },
+    {
+      title: t('stack.sections.state', { defaultValue: 'Estado' }),
       items: ['Context API', 'Custom hooks (useApi, useFavorites, useLocalStorage)'],
     },
-    { title: 'Testing', items: ['Vitest', 'React Testing Library'] },
-    { title: 'Control de versiones', items: ['Git', 'GitHub'] },
+    {
+      title: t('stack.sections.testing', { defaultValue: 'Testing' }),
+      items: ['Vitest', 'React Testing Library'],
+    },
+    {
+      title: t('stack.sections.vcs', { defaultValue: 'Control de versiones' }),
+      items: ['Git', 'GitHub'],
+    },
   ];
 
   return (
     <>
       <MetaTags
-        title={project.name}
-        description={project.short}
+        title={projectName}
+        description={projectShort}
         pathname={`/projects/${project.id}`}
         type="article"
       />
 
       <main className="site-container pb-12 pt-8">
         <header className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">{project.name}</h1>
-          <p className="text-sm text-muted max-w-3xl">{project.short}</p>
+          <h1 className="text-3xl font-bold mb-2">{projectName}</h1>
+          <p className="text-sm text-muted max-w-3xl">{projectShort}</p>
 
           <div className="mt-4 flex flex-wrap items-center gap-3">
             {project.repo && (
@@ -45,9 +64,9 @@ export const CineLabCaseStudy = (): React.JSX.Element => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-outline"
-                aria-label={`Repositorio ${project.name}`}
+                aria-label={t('header.repoAria', { name: projectName })}
               >
-                Ver repo
+                {t('header.repoAria', { name: projectName })}
               </a>
             )}
             {project.demo && (
@@ -56,13 +75,13 @@ export const CineLabCaseStudy = (): React.JSX.Element => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-primary"
-                aria-label={`Demo ${project.name}`}
+                aria-label={t('header.demoAria', { name: projectName })}
               >
-                Ver demo
+                {t('header.demoAria', { name: projectName })}
               </a>
             )}
             <Link to="/projects" className="ml-2 text-sm hover:underline">
-              ← Volver a Proyectos
+              {t('header.backToProjects')}
             </Link>
           </div>
         </header>
@@ -72,18 +91,18 @@ export const CineLabCaseStudy = (): React.JSX.Element => {
             {project.images && project.images.length > 0 ? (
               <ProjectCarousel
                 images={project.images}
-                alt={`${project.name} preview`}
+                alt={t('carousel.alt', { name: projectName })}
                 interval={5000}
               />
             ) : (
               <div className="w-full aspect-video flex items-center justify-center text-muted">
-                No preview
+                {t('noPreview', { defaultValue: 'No preview' })}
               </div>
             )}
 
             <div className="p-4 prose max-w-none">
-              <h2 className="text-xl font-semibold">Resumen</h2>
-              <p>{project.short}</p>
+              <h2 className="text-xl font-semibold">{t('summary.heading')}</h2>
+              <p className="text-sm text-muted">{t('summary.text')}</p>
             </div>
           </div>
 
@@ -93,7 +112,7 @@ export const CineLabCaseStudy = (): React.JSX.Element => {
             data-testid="stack-aside"
           >
             <h3 id="stack-heading" className="font-semibold mb-2">
-              Stack & Tecnologías
+              {t('stack.heading')}
             </h3>
 
             <div className="space-y-3">
@@ -113,11 +132,11 @@ export const CineLabCaseStudy = (): React.JSX.Element => {
 
             <div className="mt-4 text-sm text-muted">
               <div>
-                <strong>Año:</strong> {project.year ?? '—'}
+                <strong>{t('labels.year')}</strong> {project.year ?? '—'}
               </div>
               {project.featured && (
                 <div className="mt-2">
-                  <span className="badge">Featured</span>
+                  <span className="badge">{t('labels.featured')}</span>
                 </div>
               )}
             </div>
@@ -126,54 +145,38 @@ export const CineLabCaseStudy = (): React.JSX.Element => {
 
         <section className="space-y-8">
           <article>
-            <h2 className="text-2xl font-semibold mb-3">¿Qué es CineLab?</h2>
-            <p className="text-sm text-muted">
-              CineLab es una aplicación diseñada para los amantes del cine. Permite buscar
-              películas, acceder a detalles (calificaciones, sinopsis), obtener recomendaciones y
-              gestionar favoritos de forma persistente. El proyecto fue un reto técnico y creativo,
-              enfocado en rendimiento, accesibilidad y experiencia de usuario.
-            </p>
+            <h2 className="text-2xl font-semibold mb-3">{t('whatIs.heading')}</h2>
+            <p className="text-sm text-muted">{t('whatIs.text')}</p>
           </article>
 
           <article>
-            <h3 className="text-xl font-semibold mb-2">Problema que resuelve</h3>
-            <p className="text-sm text-muted">
-              Muchas apps de búsqueda de películas presentan interfaces lentas o sin persistencia de
-              favoritos. El objetivo fue construir una SPA rápida, accesible y con manejo robusto de
-              estado, enfocada en buenas prácticas de arquitectura frontend.
-            </p>
+            <h3 className="text-xl font-semibold mb-2">{t('problem.heading')}</h3>
+            <p className="text-sm text-muted">{t('problem.text')}</p>
           </article>
 
           <article>
-            <h3 className="text-xl font-semibold mb-2">Tecnologías y herramientas</h3>
-            <p className="text-sm text-muted mb-2">
-              Stack elegido por velocidad y buenas prácticas: React + Vite, TypeScript, Tailwind
-              CSS. Para integraciones: TMDB API mediante Axios con interceptors y manejo de aborts.
-            </p>
+            <h3 className="text-xl font-semibold mb-2">{t('techTools.heading')}</h3>
+            <p className="text-sm text-muted mb-2">{t('techTools.text')}</p>
 
             <ul className="list-disc list-inside text-sm text-muted">
-              <li>React con Vite (HMR y build rápido).</li>
-              <li>TypeScript para tipado y mantenibilidad.</li>
-              <li>Tailwind CSS para estilos utilitarios y consistencia visual.</li>
-              <li>Axios + AbortController para fetching robusto.</li>
-              <li>Context API + custom hooks (useApi, useLocalStorage, useFavorites).</li>
+              {(t('techTools.list', { returnObjects: true }) as string[]).map(
+                (li: string, idx: number) => (
+                  <li key={idx}>{li}</li>
+                ),
+              )}
             </ul>
           </article>
 
           <article>
-            <h3 className="text-xl font-semibold mb-2">Arquitectura y decisiones</h3>
-            <p className="text-sm text-muted">
-              Se priorizó modularidad y separación de responsabilidades: servicios de API
-              desacoplados, hooks para lógica de fetching y utilidades para persistencia. El estado
-              global de favoritos se maneja con Context + reducer, evitando prop-drilling.
-            </p>
+            <h3 className="text-xl font-semibold mb-2">{t('architecture.heading')}</h3>
+            <p className="text-sm text-muted">{t('architecture.text')}</p>
           </article>
 
           <article>
-            <h3 className="text-xl font-semibold mb-2">Implementación destacada</h3>
+            <h3 className="text-xl font-semibold mb-2">{t('implementation.heading')}</h3>
 
             <div className="bg-base-100 border rounded-lg p-4">
-              <h4 className="font-medium">Hook useApi (simplificado)</h4>
+              <h4 className="font-medium">{t('implementation.hookTitle')}</h4>
               <pre className="overflow-auto text-xs bg-base-200 p-3 rounded">
                 {`export const useApi = (url: string) => {
   const [data, setData] = useState(null);
@@ -191,71 +194,52 @@ export const CineLabCaseStudy = (): React.JSX.Element => {
   return { data, loading };
 };`}
               </pre>
-              <p className="text-sm text-muted">
-                Este hook abstrae la lógica de fetching, cancelación y manejo de loading, evitando
-                duplicación y mejorando testabilidad.
-              </p>
+              <p className="text-sm text-muted">{t('implementation.hookDescription')}</p>
             </div>
           </article>
 
           <article>
-            <h3 className="text-xl font-semibold mb-2">Accesibilidad</h3>
-            <p className="text-sm text-muted">
-              Se aplicaron roles y atributos ARIA en componentes interactivos (modales/dialogs,
-              botones). La app es navegable por teclado y aplica pautas de contraste.
-            </p>
+            <h3 className="text-xl font-semibold mb-2">{t('accessibility.heading')}</h3>
+            <p className="text-sm text-muted">{t('accessibility.lead')}</p>
             <ul className="list-disc list-inside text-sm text-muted">
-              <li>
-                <strong>Navegación 100% keyboard:</strong> todos los controles son accesibles con
-                teclado.
-              </li>
-              <li>
-                <strong>Focus visible:</strong> estilos claros para foco en elementos interactivos.
-              </li>
-              <li>
-                <strong>aria-label en botones sin texto:</strong> icon-buttons como favoritos o
-                acciones tienen aria-label descriptivo.
-              </li>
-              <li>
-                <strong>aria-live:</strong> se utilizan regiones aria-live para notificar resultados
-                dinámicos (por ejemplo, cambios de slide en el carousel o notificaciones de
-                favoritos).
-              </li>
+              {(t('accessibility.list', { returnObjects: true }) as string[]).map(
+                (li: string, idx: number) => (
+                  <li key={idx}>{li}</li>
+                ),
+              )}
             </ul>
           </article>
 
           <article>
-            <h3 className="text-xl font-semibold mb-2">Performance y resultados</h3>
+            <h3 className="text-xl font-semibold mb-2">{t('performance.heading')}</h3>
             <ul className="list-disc list-inside text-sm text-muted">
-              <li>Lazy-loading de imágenes y previews optimizadas.</li>
-              <li>Skeleton loaders para listas asíncronas.</li>
-              <li>
-                Lighthouse: performance y accesibilidad 90+ (mejoras pendientes: SSR, caching más
-                agresivo).
-              </li>
+              {(t('performance.list', { returnObjects: true }) as string[]).map(
+                (li: string, idx: number) => (
+                  <li key={idx}>{li}</li>
+                ),
+              )}
             </ul>
           </article>
 
           <article>
-            <h3 className="text-xl font-semibold mb-2">Retos y aprendizajes</h3>
+            <h3 className="text-xl font-semibold mb-2">{t('challenges.heading')}</h3>
             <ol className="list-decimal list-inside text-sm text-muted">
-              <li>
-                Manejo de fetching con cancelación para evitar race conditions y memory leaks.
-              </li>
-              <li>Sincronización de favoritos con localStorage y su testing.</li>
-              <li>
-                Modularidad: hooks reutilizables y servicios desacoplados facilitaron refactors.
-              </li>
+              {(t('challenges.list', { returnObjects: true }) as string[]).map(
+                (li: string, idx: number) => (
+                  <li key={idx}>{li}</li>
+                ),
+              )}
             </ol>
           </article>
 
           <article>
-            <h3 className="text-xl font-semibold mb-2">Qué mejoraría</h3>
+            <h3 className="text-xl font-semibold mb-2">{t('improvements.heading')}</h3>
             <ul className="list-disc list-inside text-sm text-muted">
-              <li>Scroll infinito en listados en lugar de paginación manual.</li>
-              <li>Soporte i18n completo.</li>
-              <li>Considerar SSR con Next.js para SEO y performance inicial.</li>
-              <li>Explorar React Query para caching y sincronización automáticos.</li>
+              {(t('improvements.list', { returnObjects: true }) as string[]).map(
+                (li: string, idx: number) => (
+                  <li key={idx}>{li}</li>
+                ),
+              )}
             </ul>
           </article>
         </section>

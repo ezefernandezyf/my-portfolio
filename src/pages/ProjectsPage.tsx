@@ -1,46 +1,48 @@
 import { useMemo, useState } from 'react';
 import { MetaTags, ProjectCard } from '../components';
 import { projects } from '../data/projects';
+import { useTranslation } from 'react-i18next';
 
 export const ProjectsPage = (): React.JSX.Element => {
+  const { t } = useTranslation('projects');
   const [query, setQuery] = useState('');
   const [visibleCount, setVisibleCount] = useState(9);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return projects.filter((p) => {
+      const name = t(p.nameKey).toLowerCase();
+      const short = t(p.shortKey).toLowerCase();
       const matchesQuery =
         !q ||
-        p.name.toLowerCase().includes(q) ||
-        p.short.toLowerCase().includes(q) ||
-        (p.tech ?? []).some((t) => t.toLowerCase().includes(q));
+        name.includes(q) ||
+        short.includes(q) ||
+        (p.tech ?? []).some((tname) => tname.toLowerCase().includes(q));
       return matchesQuery;
     });
-  }, [query]);
+  }, [query, t]);
 
   return (
     <>
       <MetaTags
-        title="Proyectos"
-        description="Colección de proyectos públicos: repositorios, demos y case studies. Built with React, Vite & TypeScript."
+        title={t('meta.title')}
+        description={t('meta.description')}
         pathname="/projects"
         type="website"
       />
       <main className="site-container pb-12 pt-8">
         <header className="mb-6">
-          <h1 className="text-2xl font-semibold">Proyectos</h1>
-          <p className="text-sm text-muted">
-            Algunos proyectos públicos, con repositorios y demos.
-          </p>
+          <h1 className="text-2xl font-semibold">{t('header.title')}</h1>
+          <p className="text-sm text-muted">{t('header.subtitle')}</p>
         </header>
 
         <div className="mb-6 flex items-center gap-4">
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Buscar proyectos..."
+            placeholder={t('search.placeholder')}
             className="input input-sm flex-1"
-            aria-label="Buscar proyectos"
+            aria-label={t('search.ariaLabel')}
           />
         </div>
 
@@ -53,7 +55,7 @@ export const ProjectsPage = (): React.JSX.Element => {
         {visibleCount < filtered.length && (
           <div className="mt-6 text-center">
             <button onClick={() => setVisibleCount((c) => c + 9)} className="btn btn-outline">
-              Ver más
+              {t('button.loadMore')}
             </button>
           </div>
         )}

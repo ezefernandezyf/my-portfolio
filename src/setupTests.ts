@@ -1,50 +1,68 @@
 import '@testing-library/jest-dom';
 import { cleanup } from '@testing-library/react';
 import { afterEach, vi } from 'vitest';
+import type { ReactNode } from 'react';
+
+import esCommon from './locales/es/common.json';
+import enCommon from './locales/en/common.json';
+
+type JsonValue = string | number | boolean | JsonObject | JsonArray | null;
+interface JsonObject {
+  [key: string]: JsonValue;
+}
+type JsonArray = Array<JsonValue>;
+
+const resources: Record<'es' | 'en', JsonObject> = {
+  es: esCommon as JsonObject,
+  en: enCommon as JsonObject,
+};
+
+let currentLang: 'es' | 'en' = 'es';
+
+function getTranslation(key: string): string {
+  const parts = key.split('.');
+  let cur: JsonValue | undefined = resources[currentLang] ?? resources['es'];
+
+  for (const p of parts) {
+    if (cur && typeof cur === 'object' && !Array.isArray(cur) && p in (cur as JsonObject)) {
+      cur = (cur as JsonObject)[p];
+    } else {
+      cur = undefined;
+      break;
+    }
+  }
+
+  return typeof cur === 'string' ? cur : key;
+}
 
 afterEach(() => {
   cleanup();
   vi.clearAllMocks();
 });
 
-import esCommon from './locales/es/common.json';
-import enCommon from './locales/en/common.json';
-
-const resources: Record<string, any> = {
-  es: esCommon,
-  en: enCommon,
+export const changeTestLang = async (lng: 'es' | 'en') => {
+  currentLang = lng;
+  document.documentElement.lang = lng;
+  return Promise.resolve();
 };
 
-let currentLang = 'es';
-
-function getTranslation(key: string) {
-  const parts = key.split('.');
-  let cur: any = resources[currentLang] ?? resources['es'];
-  for (const p of parts) {
-    if (cur && typeof cur === 'object' && p in cur) {
-      cur = cur[p];
-    } else {
-      cur = undefined;
-      break;
-    }
-  }
-  return typeof cur === 'string' ? cur : key;
-}
-
 vi.mock('react-i18next', () => {
-  return {
-    useTranslation: () => ({
-      t: (key: string) => getTranslation(key),
-      i18n: {
-        language: currentLang,
-        changeLanguage: async (lng: string) => {
-          currentLang = lng;
-          document.documentElement.lang = lng;
-          return Promise.resolve();
-        },
+  const useTranslation = () => ({
+    t: (key: string) => getTranslation(key),
+    i18n: {
+      language: currentLang,
+      changeLanguage: async (lng: 'es' | 'en') => {
+        await changeTestLang(lng);
+        return Promise.resolve();
       },
-    }),
-    Trans: ({ children }: any) => children,
+    },
+  });
+
+  const Trans = ({ children }: { children: ReactNode }) => children;
+
+  return {
+    useTranslation,
+    Trans,
     initReactI18next: {},
-  };
+  } as unknown as Partial<typeof import('react-i18next')>;
 });
