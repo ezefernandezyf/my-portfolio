@@ -2,17 +2,38 @@
   "meta": {
     "home": {
       "title": "Inicio",
-      "description": "Portfolio de Ezequiel Fernández — Front-end Developer."
+      "description": "Portfolio de Ezequiel Fernández — Front-end Developer. Proyectos en React y TypeScript, enfocado en accesibilidad y rendimiento."
     }
   },
   "home": {
-    "hero_title": "Ezequiel Fernández",
-    "hero_sub": "Front-end Developer — interfaces limpias y accesibles."
-  },
-  "nav": {
-    "home": "Inicio",
-    "about": "Acerca",
-    "projects": "Proyectos",
-    "contact": "Contacto"
+    "greeting": "Hola — soy",
+    "hero_sub": "Front-end Developer — me especializo en interfaces limpias y accesibles usando React, Vite y TypeScript. Construyo experiencias enfocadas en rendimiento y buenas prácticas.",
+    "cta_about": "Acerca de mí",
+    "cta_projects": "Proyectos",
+    "cta_cv": "Descargar CV",
+    "stack_title": "Stack destacado",
+    "preview_short": "Movie Search App — búsqueda, filtros, favoritos persistentes y recomendaciones dinámicas (TMDB). Built with React, TypeScript & Vite.",
+    "preview_actions": {
+      "case_study": "Ver case study",
+      "repo": "Ver repo",
+      "demo": "Ver demo"
+    },
+    "section": {
+      "projects": {
+        "title": "Proyectos",
+        "desc": "Apps públicas con repositorios y case studies.",
+        "link_text": "Ver todos"
+      },
+      "contact": {
+        "title": "Contacto",
+        "desc": "¿Te interesa mi perfil? Disponible para oportunidades.",
+        "link_text": "Contactar"
+      },
+      "cv": {
+        "title": "CV",
+        "desc": "Descargá mi CV en PDF.",
+        "link_text": "Descargar CV"
+      }
+    }
   }
 }

@@ -2,17 +2,38 @@
   "meta": {
     "home": {
       "title": "Home",
-      "description": "Ezequiel Fernández — Front-end Developer portfolio."
+      "description": "Ezequiel Fernández — Front-end Developer portfolio. Projects in React and TypeScript focused on accessibility and performance."
     }
   },
   "home": {
-    "hero_title": "Ezequiel Fernández",
-    "hero_sub": "Front-end Developer — clean, accessible interfaces."
-  },
-  "nav": {
-    "home": "Home",
-    "about": "About",
-    "projects": "Projects",
-    "contact": "Contact"
+    "greeting": "Hi — I'm",
+    "hero_sub": "Front-end Developer — I specialize in clean and accessible interfaces using React, Vite, and TypeScript. I build experiences focused on performance and best practices.",
+    "cta_about": "About",
+    "cta_projects": "Projects",
+    "cta_cv": "Download Resume",
+    "stack_title": "Featured stack",
+    "preview_short": "Movie Search App — search, filters, persistent favorites and dynamic recommendations (TMDB). Built with React, TypeScript & Vite.",
+    "preview_actions": {
+      "case_study": "View case study",
+      "repo": "View repo",
+      "demo": "View demo"
+    },
+    "section": {
+      "projects": {
+        "title": "Projects",
+        "desc": "Public apps with repos and case studies.",
+        "link_text": "View all"
+      },
+      "contact": {
+        "title": "Contact",
+        "desc": "Interested in my profile? Available for opportunities.",
+        "link_text": "Contact"
+      },
+      "cv": {
+        "title": "Resume",
+        "desc": "Download my Resume (PDF).",
+        "link_text": "Download Resume"
+      }
+    }
   }
 }
