@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "home": {
+      "title": "Home",
+      "description": "Ezequiel Fernández — Front-end Developer portfolio."
+    }
+  },
+  "home": {
+    "hero_title": "Ezequiel Fernández",
+    "hero_sub": "Front-end Developer — clean, accessible interfaces."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact"
+  }
+}

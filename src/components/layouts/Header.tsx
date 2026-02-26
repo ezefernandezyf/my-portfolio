@@ -7,7 +7,7 @@ import {
   FolderIcon,
   EnvelopeIcon,
 } from '@heroicons/react/24/outline';
-import { CvIcon, GithubIcon, LinkedInIcon, SocialButton, ThemeToggle } from '..';
+import { CvIcon, GithubIcon, LanguageSwitcher, LinkedInIcon, SocialButton, ThemeToggle } from '..';
 
 export const Header = (): React.JSX.Element => {
   const [open, setOpen] = useState(false);
@@ -105,6 +105,8 @@ export const Header = (): React.JSX.Element => {
           </div>
 
           <ThemeToggle />
+
+          <LanguageSwitcher />
 
           <div className="md:hidden">
             <button

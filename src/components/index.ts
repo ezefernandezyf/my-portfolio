@@ -8,3 +8,4 @@ export * from './ProjectCarousel/ProjectCarousel';
 export * from './TechCategories/TechCategories';
 export * from './ProjectCard/ProjectCard';
 export * from './MetaTags/MetaTags';
+export * from './LanguageSwitcher/LanguageSwitcher';
