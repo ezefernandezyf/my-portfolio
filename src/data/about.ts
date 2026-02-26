@@ -10,7 +10,7 @@ export const about = {
   categories: [
     {
       title: 'Frontend',
-      items: ['React', 'TypeScript', 'JavaScript', 'Vite', 'React Router', 'bun', 'HTML'],
+      items: ['React', 'TypeScript', 'JavaScript', 'Vite', 'React Router', 'HTML'],
     },
     {
       title: 'Estilos',
@@ -26,7 +26,13 @@ export const about = {
     },
     {
       title: 'Herramientas',
-      items: ['Git', 'GitHub', 'Prettier', 'ESLint', 'React Hook Form'],
+      items: ['Git', 'GitHub','Bun', 'NPM', 'Prettier', 'ESLint', 'React Hook Form'],
+    },
+  ],
+    abilities: [
+    {
+      title: 'Habilidades profesionales',
+      items: ['Comunicación clara', 'Resolución de problemas',  'Pensamiento analítico', 'Arquitectura modular', 'Trabajo en equipo', 'Scrum / Kanban', 'Aprendizaje continuo', 'Autonomía'],
     },
   ],
   projects: [

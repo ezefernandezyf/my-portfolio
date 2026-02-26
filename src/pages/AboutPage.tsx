@@ -62,7 +62,7 @@ export const AboutPage = (): React.JSX.Element => {
               </div>
             </div>
 
-            <TechCategories categories={about.categories} />
+            <TechCategories categories={about.categories} abilities={about.abilities}/>
           </aside>
 
           <div className="md:col-span-2 space-y-6">
