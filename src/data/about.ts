@@ -26,13 +26,22 @@ export const about = {
     },
     {
       title: 'Herramientas',
-      items: ['Git', 'GitHub','Bun', 'NPM', 'Prettier', 'ESLint', 'React Hook Form'],
+      items: ['Git', 'GitHub', 'Bun', 'NPM', 'Prettier', 'ESLint', 'React Hook Form'],
     },
   ],
-    abilities: [
+  abilities: [
     {
       title: 'Habilidades profesionales',
-      items: ['Comunicación clara', 'Resolución de problemas',  'Pensamiento analítico', 'Arquitectura modular', 'Trabajo en equipo', 'Scrum / Kanban', 'Aprendizaje continuo', 'Autonomía'],
+      items: [
+        'Comunicación clara',
+        'Resolución de problemas',
+        'Pensamiento analítico',
+        'Arquitectura modular',
+        'Trabajo en equipo',
+        'Scrum / Kanban',
+        'Aprendizaje continuo',
+        'Autonomía',
+      ],
     },
   ],
   projects: [

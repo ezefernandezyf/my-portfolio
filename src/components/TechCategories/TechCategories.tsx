@@ -10,8 +10,6 @@ type Abilities = {
   items: readonly string[];
 };
 
-
-
 type Props = {
   categories: readonly Category[];
   abilities: readonly Abilities[];
@@ -45,14 +43,13 @@ export const TechCategories = ({ categories, abilities }: Props) => {
 
         <div className="grid grid-cols-1 gap-4">
           {abilities.map((abi) => (
-
-              <ul role="list" className="flex flex-wrap gap-2">
-                {abi.items.map((tech) => (
-                  <li key={tech}>
-                    <TechChip name={tech} showIcon={false} />
-                  </li>
-                ))}
-              </ul>     
+            <ul role="list" className="flex flex-wrap gap-2">
+              {abi.items.map((tech) => (
+                <li key={tech}>
+                  <TechChip name={tech} showIcon={false} />
+                </li>
+              ))}
+            </ul>
           ))}
         </div>
       </div>

@@ -59,27 +59,21 @@ export const Header = (): React.JSX.Element => {
         <nav className="hidden md:flex items-center gap-6 text-sm" aria-label="Principal">
           <NavLink
             to="/about"
-            className={({ isActive }) =>
-              `hover:text-primary ${isActive ? 'text-primary' : ''}`
-            }
+            className={({ isActive }) => `hover:text-primary ${isActive ? 'text-primary' : ''}`}
             aria-label="Ir a Acerca de mí"
           >
             Acerca de mí
           </NavLink>
           <NavLink
             to="/projects"
-            className={({ isActive }) =>
-              `hover:text-primary ${isActive ? 'text-primary' : ''}`
-            }
+            className={({ isActive }) => `hover:text-primary ${isActive ? 'text-primary' : ''}`}
             aria-label="Ir a Proyectos"
           >
             Proyectos
           </NavLink>
           <NavLink
             to="/contact"
-            className={({ isActive }) =>
-              `hover:text-primary ${isActive ? 'text-primary' : ''}`
-            }
+            className={({ isActive }) => `hover:text-primary ${isActive ? 'text-primary' : ''}`}
             aria-label="Ir a Contacto"
           >
             Contacto
