@@ -21,6 +21,11 @@ type Props = {
 export const TechCategories = ({ categories, abilities }: Props) => {
   const { t } = useTranslation('aboutpage');
 
+  const translatedAbilitiesRaw = t('abilities.items', { returnObjects: true }) as unknown;
+  const hasTranslatedAbilities =
+    Array.isArray(translatedAbilitiesRaw) && translatedAbilitiesRaw.length > 0;
+  const translatedAbilities = hasTranslatedAbilities ? (translatedAbilitiesRaw as string[]) : null;
+
   return (
     <>
       <div className="mt-6 p-4 rounded-lg bg-base-100 border border-base-200">
@@ -56,26 +61,39 @@ export const TechCategories = ({ categories, abilities }: Props) => {
         </h3>
 
         <div className="grid grid-cols-1 gap-4">
-          {abilities.map((abi, idx) => {
-            const listKey = abi.title ?? abi.titleKey ?? `abilities-${idx}`;
-            return (
-              <div key={listKey}>
-                {abi.title || abi.titleKey ? (
-                  <div className="text-xs font-medium text-muted mb-2">
-                    {abi.title ?? (abi.titleKey ? t(abi.titleKey) : '')}
-                  </div>
-                ) : null}
+         
+          {translatedAbilities ? (
+            <div key="abilities-translated">
+              <ul role="list" className="flex flex-wrap gap-2">
+                {translatedAbilities.map((ab) => (
+                  <li key={ab}>
+                    <TechChip name={ab} showIcon={false} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            abilities.map((abi, idx) => {
+              const listKey = abi.title ?? abi.titleKey ?? `abilities-${idx}`;
+              return (
+                <div key={listKey}>
+                  {abi.title || abi.titleKey ? (
+                    <div className="text-xs font-medium text-muted mb-2">
+                      {abi.title ?? (abi.titleKey ? t(abi.titleKey) : '')}
+                    </div>
+                  ) : null}
 
-                <ul role="list" className="flex flex-wrap gap-2">
-                  {abi.items.map((tech) => (
-                    <li key={tech}>
-                      <TechChip name={tech} showIcon={false} />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            );
-          })}
+                  <ul role="list" className="flex flex-wrap gap-2">
+                    {abi.items.map((tech) => (
+                      <li key={tech}>
+                        <TechChip name={tech} showIcon={false} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })
+          )}
         </div>
       </div>
     </>

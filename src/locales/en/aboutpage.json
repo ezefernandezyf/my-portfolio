@@ -44,7 +44,17 @@
     "tools": "Tools"
   },
   "abilities": {
-    "title": "Professional skills"
+    "title": "Professional skills",
+    "items": [
+      "Clear communication",
+      "Problem solving",
+      "Analytical thinking",
+      "Modular architecture",
+      "Teamwork",
+      "Scrum / Kanban",
+      "Continuous learning",
+      "Autonomy"
+    ]
   },
   "availability": "Availability: immediate, flexible schedule."
 }

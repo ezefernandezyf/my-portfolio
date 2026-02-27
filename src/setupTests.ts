@@ -28,7 +28,6 @@ interface JsonObject {
 }
 type JsonArray = Array<JsonValue>;
 
-// resources: mimic src/i18n.ts resources structure
 const resources: Record<'es' | 'en', Record<string, JsonObject>> = {
   es: {
     common: esCommon,
@@ -65,13 +64,11 @@ function interpolate(str: string, vars?: Record<string, unknown>): string {
 }
 
 function normalizeNsKey(key: string) {
-  // support "ns:key.sub" or "ns.key.sub" (transform to [ns, key.sub])
   if (key.includes(':')) {
     const [ns, rest] = key.split(':', 2);
     return { ns, key: rest };
   }
   if (key.includes('.') && key.split('.')[0] in (resources.es || {})) {
-    // when key starts with a known namespace like "projects.cinelab.name"
     const pos = key.indexOf('.');
     return { ns: key.slice(0, pos), key: key.slice(pos + 1) };
   }
@@ -94,15 +91,13 @@ function getFromNamespace(namespace: string, realKey: string): JsonValue | undef
 
 function resolveTranslation(
   rawKey: string,
-  opts?: { ns?: string | string[]; returnObjects?: boolean; [k: string]: any },
+  opts?: { ns?: string | string[]; returnObjects?: boolean; [k: string]: unknown },
   defaultNs = 'common',
 ): unknown {
-  // determine namespace
   const normalized = normalizeNsKey(rawKey);
   let namespace = normalized.ns ?? defaultNs;
-  let realKey = normalized.key;
+  const realKey = normalized.key;
 
-  // options override ns
   if (opts?.ns) {
     namespace = Array.isArray(opts.ns) ? opts.ns[0] : opts.ns;
   }
@@ -111,19 +106,15 @@ function resolveTranslation(
 
   if (value === undefined) return rawKey;
 
-  // if caller asked for returnObjects and the resource is array/object, return it
   if (opts?.returnObjects) {
     if (Array.isArray(value)) return value;
     if (value && typeof value === 'object') return value;
-    // if not object/array, fallback to string behavior
   }
 
   if (typeof value === 'string') {
-    // basic interpolation: prefer opts values for placeholders
     return interpolate(value, opts);
   }
 
-  // For non-string values, return as-is (caller can cast)
   return value;
 }
 
@@ -144,8 +135,8 @@ vi.mock('react-i18next', () => {
     return {
       t: (
         key: string,
-        opts?: { ns?: string | string[]; returnObjects?: boolean; [k: string]: any },
-      ) => resolveTranslation(key, opts, defaultNs) as any,
+        opts?: { ns?: string | string[]; returnObjects?: boolean; [k: string]: unknown },
+      ) => resolveTranslation(key, opts, defaultNs),
       i18n: {
         language: currentLang,
         changeLanguage: async (lng: 'es' | 'en') => {

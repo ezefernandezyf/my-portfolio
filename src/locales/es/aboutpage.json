@@ -44,7 +44,17 @@
     "tools": "Herramientas"
   },
   "abilities": {
-    "title": "Habilidades profesionales"
+    "title": "Habilidades profesionales",
+    "items": [
+      "Comunicación clara",
+      "Resolución de problemas",
+      "Pensamiento analítico",
+      "Arquitectura modular",
+      "Trabajo en equipo",
+      "Scrum / Kanban",
+      "Aprendizaje continuo",
+      "Autonomía"
+    ]
   },
   "availability": "Disponibilidad: inmediata, horario flexible."
 }

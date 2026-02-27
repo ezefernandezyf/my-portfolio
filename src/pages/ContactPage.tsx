@@ -9,14 +9,13 @@ export const ContactPage = (): React.JSX.Element => {
   const { t } = useTranslation('contact');
 
   const contactSchema = z.object({
-    name: z.string().min(2, t('contact.form.name.validation_min')),
-    email: z.email(t('contact.form.email.validation')),
-    subject: z.string().min(4, t('contact.form.subject.validation_min')),
-    message: z.string().min(10, t('contact.form.message.validation_min')),
-    consent: z
-      .boolean()
-      .refine((val) => val === true, { message: t('contact.form.consent.validation') }),
+    name: z.string().min(2, t('form.name.validation_min')),
+    email: z.string().email(t('form.email.validation')),
+    subject: z.string().min(4, t('form.subject.validation_min')),
+    message: z.string().min(10, t('form.message.validation_min')),
+    consent: z.boolean().refine((val) => val === true, { message: t('form.consent.validation') }),
   });
+
   type ContactFormData = z.infer<typeof contactSchema>;
 
   const endpoint = import.meta.env.VITE_CONTACT_FORM_ENDPOINT as string | undefined;
@@ -40,7 +39,7 @@ export const ContactPage = (): React.JSX.Element => {
     setErrorMessage(null);
 
     if (!endpoint) {
-      setErrorMessage(t('contact.errors.no_endpoint'));
+      setErrorMessage(t('errors.no_endpoint'));
       setStatus('error');
       return;
     }
@@ -72,7 +71,7 @@ export const ContactPage = (): React.JSX.Element => {
       reset();
     } catch (err) {
       console.error('Contact submit error:', err);
-      setErrorMessage(err instanceof Error ? err.message : t('contact.errors.send_failed'));
+      setErrorMessage(err instanceof Error ? err.message : t('errors.send_failed'));
       setStatus('error');
     }
   };
@@ -88,21 +87,21 @@ export const ContactPage = (): React.JSX.Element => {
       <main className="site-container pb-12 pt-8">
         <div className="mx-auto w-full px-4 sm:px-6 lg:px-8 max-w-3xl">
           <header className="mb-6">
-            <h1 className="text-2xl font-semibold">{t('contact.title')}</h1>
-            <p className="text-sm text-muted mt-2">{t('contact.intro')}</p>
+            <h1 className="text-2xl font-semibold">{t('title')}</h1>
+            <p className="text-sm text-muted mt-2">{t('intro')}</p>
           </header>
 
           <section>
             <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-4">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium">
-                  {t('contact.form.name.label')}
+                  {t('form.name.label')}
                 </label>
                 <input
                   id="name"
                   {...register('name')}
                   className="input w-full"
-                  placeholder={t('contact.form.name.placeholder')}
+                  placeholder={t('form.name.placeholder')}
                   aria-invalid={!!errors.name}
                 />
                 {errors.name && (
@@ -114,14 +113,14 @@ export const ContactPage = (): React.JSX.Element => {
 
               <div>
                 <label htmlFor="email" className="block text-sm font-medium">
-                  {t('contact.form.email.label')}
+                  {t('form.email.label')}
                 </label>
                 <input
                   id="email"
                   type="email"
                   {...register('email')}
                   className="input w-full"
-                  placeholder={t('contact.form.email.placeholder')}
+                  placeholder={t('form.email.placeholder')}
                   aria-invalid={!!errors.email}
                 />
                 {errors.email && (
@@ -133,13 +132,13 @@ export const ContactPage = (): React.JSX.Element => {
 
               <div>
                 <label htmlFor="subject" className="block text-sm font-medium">
-                  {t('contact.form.subject.label')}
+                  {t('form.subject.label')}
                 </label>
                 <input
                   id="subject"
                   {...register('subject')}
                   className="input w-full"
-                  placeholder={t('contact.form.subject.placeholder')}
+                  placeholder={t('form.subject.placeholder')}
                   aria-invalid={!!errors.subject}
                 />
                 {errors.subject && (
@@ -151,14 +150,14 @@ export const ContactPage = (): React.JSX.Element => {
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium">
-                  {t('contact.form.message.label')}
+                  {t('form.message.label')}
                 </label>
                 <textarea
                   id="message"
                   {...register('message')}
                   rows={6}
                   className="textarea w-full"
-                  placeholder={t('contact.form.message.placeholder')}
+                  placeholder={t('form.message.placeholder')}
                   aria-invalid={!!errors.message}
                 />
                 {errors.message && (
@@ -176,7 +175,7 @@ export const ContactPage = (): React.JSX.Element => {
                   className="checkbox mt-1"
                 />
                 <label htmlFor="consent" className="text-sm text-muted">
-                  {t('contact.form.consent.label')}
+                  {t('form.consent.label')}
                 </label>
               </div>
               {errors.consent && (
@@ -192,20 +191,18 @@ export const ContactPage = (): React.JSX.Element => {
                   disabled={isSubmitting || status === 'sending'}
                   aria-busy={isSubmitting || status === 'sending'}
                 >
-                  {status === 'sending'
-                    ? t('contact.form.submit.sending')
-                    : t('contact.form.submit.default')}
+                  {status === 'sending' ? t('form.submit.sending') : t('form.submit.default')}
                 </button>
               </div>
 
               {status === 'success' && (
                 <p role="status" className="text-sm text-success">
-                  {t('contact.status.success')}
+                  {t('status.success')}
                 </p>
               )}
               {status === 'error' && errorMessage && (
                 <p role="alert" className="text-sm text-error">
-                  {t('contact.status.error_prefix')} {errorMessage}
+                  {t('status.error_prefix')} {errorMessage}
                 </p>
               )}
             </form>

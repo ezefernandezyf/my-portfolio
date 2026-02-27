@@ -45,6 +45,8 @@ export const about = {
       ],
     },
   ],
+  
+  abilitiesKey: 'abilities.items',
 
   projects: [
     {
