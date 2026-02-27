@@ -19,7 +19,19 @@ type Props = {
 };
 
 export const TechCategories = ({ categories, abilities }: Props) => {
-  const { t } = useTranslation('aboutpage');
+  const namespace = 'aboutpage';
+  const { t } = useTranslation(namespace);
+
+  function normalizeKeyForNs(key?: string) {
+    if (!key) return '';
+
+    if (key.includes(':')) return key;
+    const parts = key.split('.');
+    if (parts.length > 1 && parts[0] === namespace) {
+      return parts.slice(1).join('.');
+    }
+    return key;
+  }
 
   const translatedAbilitiesRaw = t('abilities.items', { returnObjects: true }) as unknown;
   const hasTranslatedAbilities =
@@ -36,7 +48,8 @@ export const TechCategories = ({ categories, abilities }: Props) => {
         <div className="grid grid-cols-1 gap-4">
           {categories.map((cat, idx) => {
             const keyForItem = cat.title ?? cat.titleKey ?? `category-${idx}`;
-            const title = cat.title ?? (cat.titleKey ? t(cat.titleKey) : undefined);
+            const title =
+              cat.title ?? (cat.titleKey ? t(normalizeKeyForNs(cat.titleKey)) : undefined);
 
             return (
               <div key={keyForItem}>
@@ -61,7 +74,6 @@ export const TechCategories = ({ categories, abilities }: Props) => {
         </h3>
 
         <div className="grid grid-cols-1 gap-4">
-         
           {translatedAbilities ? (
             <div key="abilities-translated">
               <ul role="list" className="flex flex-wrap gap-2">
@@ -79,7 +91,7 @@ export const TechCategories = ({ categories, abilities }: Props) => {
                 <div key={listKey}>
                   {abi.title || abi.titleKey ? (
                     <div className="text-xs font-medium text-muted mb-2">
-                      {abi.title ?? (abi.titleKey ? t(abi.titleKey) : '')}
+                      {abi.title ?? (abi.titleKey ? t(normalizeKeyForNs(abi.titleKey)) : '')}
                     </div>
                   ) : null}
 
