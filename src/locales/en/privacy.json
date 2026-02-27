@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "title": "Privacy Policy",
+    "description": "Privacy policy for Ezequiel Fernández's portfolio. Info on collected data, use and rights."
+  },
+  "title": "Privacy Policy",
+  "intro": "Your privacy matters. This page explains what data I collect and how I use it.",
+  "lastUpdated": "Last updated: {{date}}",
+  "sections": {
+    "data": {
+      "heading": "Data collected",
+      "paragraph": "I only collect the data necessary when you contact me through the contact form (name, email, subject and message). I do not store sensitive information on this public site."
+    },
+    "use": {
+      "heading": "How I use your data",
+      "paragraph": "The data you send is used solely to respond to your inquiry. I do not process or share your data with third parties unless required to fulfill your request or by law."
+    },
+    "cookies": {
+      "heading": "Cookies & tracking",
+      "paragraph": "This site uses minimal cookies for analytics and theme/language preferences. I do not store personal data in cookies. You can disable cookies in your browser."
+    },
+    "external": {
+      "heading": "External links",
+      "paragraph": "The portfolio may include links to external services (e.g. repos or demos). I am not responsible for those sites' privacy practices; check their policies directly."
+    },
+    "rights": {
+      "heading": "Your rights",
+      "paragraph": "You may request access, correction, or deletion of your data by emailing me. I will respond as soon as possible."
+    },
+    "contact": {
+      "heading": "Contact",
+      "paragraph": "If you have privacy questions, contact me at"
+    }
+  },
+  "contact": {
+    "email": "ezefernandezyf@gmail.com"
+  },
+  "note": "You can also use the contact form",
+  "links": {
+    "contact": "Go to contact"
+  }
+}
