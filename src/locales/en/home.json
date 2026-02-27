@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "title": "Home",
+    "description": "Portfolio of Ezequiel Fernández — Front-end Developer. Projects in React and TypeScript, focused on accessibility and performance."
+  },
+  "hero": {
+    "greeting": "Hi — I'm",
+    "name": "Ezequiel Fernández",
+    "role": "Front-end Developer",
+    "summary": "Front-end Developer — I specialize in clean, accessible interfaces using React, Vite and TypeScript. I build experiences focused on performance and best practices.",
+    "cta": {
+      "about": "About me",
+      "projects": "Projects",
+      "downloadCV": "Download CV"
+    }
+  },
+  "stack": {
+    "heading": "Featured stack"
+  },
+  "featured": {
+    "title": "CineLab",
+    "short": "Movie Search App — search, filters, persistent favorites and dynamic recommendations (TMDB). Built with React, TypeScript & Vite.",
+    "caseStudyLinkAria": "View CineLab case study",
+    "repoAria": "CineLab repository on GitHub",
+    "demoAria": "Open CineLab demo in production (opens in new tab)",
+    "demoBtn": "View demo",
+    "repoBtn": "View repo",
+    "caseStudyBtn": "View case study"
+  },
+  "cards": {
+    "projects": {
+      "title": "Projects",
+      "text": "Public apps with repositories and case studies.",
+      "link": "See all"
+    },
+    "contact": {
+      "title": "Contact",
+      "text": "Interested in my profile? Available for opportunities.",
+      "link": "Contact"
+    },
+    "cv": {
+      "title": "CV",
+      "text": "Download my CV in PDF.",
+      "link": "Download CV"
+    }
+  }
+}

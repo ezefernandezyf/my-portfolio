@@ -1,0 +1,15 @@
+{
+  "ok": "ok",
+  "loading": "Cargando...",
+  "noPreview": "No preview",
+  "buttons": {
+    "loadMore": "Ver más",
+    "back": "Volver"
+  },
+  "search": {
+    "placeholder": "Buscar..."
+  },
+  "errors": {
+    "generic": "Ocurrió un error. Intentá de nuevo."
+  }
+}

@@ -94,7 +94,9 @@ describe('ContactPage', () => {
 
     await user.click(screen.getByRole('button', { name: /Enviar mensaje/i }));
 
-    const maybeError = await screen.findByText(/No está configurado el endpoint de envío|Error:/i);
+    const maybeError = await screen.findByText(
+      /No está configurado el endpoint de envío|Error al enviar:|Error:/i,
+    );
     expect(maybeError).toBeInTheDocument();
   });
 });

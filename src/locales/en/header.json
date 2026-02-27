@@ -1,0 +1,31 @@
+{
+  "logo": {
+    "abbr": "EZ",
+    "name": "Ezequiel Fernández",
+    "role": "Front-end Developer",
+    "ariaHome": "Go to home"
+  },
+  "nav": {
+    "about": "About me",
+    "projects": "Projects",
+    "contact": "Contact",
+    "aria": "Main"
+  },
+  "social": {
+    "githubAria": "Open GitHub profile",
+    "linkedInAria": "Open LinkedIn profile",
+    "downloadCvAria": "Download CV (opens in a new tab)",
+    "github": "GitHub",
+    "linkedIn": "LinkedIn",
+    "downloadCv": "Download CV"
+  },
+  "mobile": {
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "navLabel": "Mobile navigation",
+    "backToHome": "Go to home",
+    "about": "About me",
+    "projects": "Projects",
+    "contact": "Contact"
+  }
+}

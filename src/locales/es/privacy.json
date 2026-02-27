@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "title": "Política de privacidad",
+    "description": "Política de privacidad del portfolio de Ezequiel Fernández. Información sobre datos recopilados, uso y derechos."
+  },
+  "title": "Política de privacidad",
+  "intro": "Tu privacidad es importante. Esta página explica qué datos recopilo y cómo los uso.",
+  "lastUpdated": "Última actualización: {{date}}",
+  "sections": {
+    "data": {
+      "heading": "Datos que se recopilan",
+      "paragraph": "Solo recopilo los datos necesarios cuando te comunicas a través del formulario de contacto (nombre, email, asunto y mensaje). No almaceno información sensible en esta web pública."
+    },
+    "use": {
+      "heading": "Cómo uso los datos",
+      "paragraph": "Los datos que envías se usan exclusivamente para responder a tu consulta. No proceso ni comparto tus datos con terceros salvo que sea necesario para cumplir tu solicitud o por obligación legal."
+    },
+    "cookies": {
+      "heading": "Cookies y seguimiento",
+      "paragraph": "Esta web usa cookies mínimas para analítica y preferencias de tema/idioma. No almaceno datos personales en cookies. Podés desactivar cookies desde tu navegador."
+    },
+    "external": {
+      "heading": "Enlaces a servicios externos",
+      "paragraph": "El portfolio puede incluir enlaces a servicios externos (por ejemplo, repositorios o demos). No soy responsable por las políticas de privacidad de esos sitios; revisá sus políticas directamente."
+    },
+    "rights": {
+      "heading": "Tus derechos",
+      "paragraph": "Podés solicitar acceso, rectificación o eliminación de tus datos enviando un email. Respondo con la máxima brevedad posible."
+    },
+    "contact": {
+      "heading": "Contacto",
+      "paragraph": "Si tenés preguntas sobre privacidad, contactame a"
+    }
+  },
+  "contact": {
+    "email": "ezefernandezyf@gmail.com"
+  },
+  "note": "También podés usar el formulario de contacto",
+  "links": {
+    "contact": "Ir a contacto"
+  }
+}

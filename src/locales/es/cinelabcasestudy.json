@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "title": "{{name}}"
+  },
+  "header": {
+    "title": "{{name}}",
+    "short": "Movie Search App — búsqueda, filtros, favoritos persistentes y recomendaciones dinámicas (TMDB).",
+    "repoAria": "Repositorio {{name}}",
+    "demoAria": "Demo {{name}}",
+    "backToProjects": "← Volver a Proyectos"
+  },
+  "stack": {
+    "heading": "Stack & Tecnologías",
+    "sections": {
+      "frontend": "Frontend",
+      "styles": "Estilos",
+      "data": "Data & APIs",
+      "state": "Estado",
+      "testing": "Testing",
+      "vcs": "Control de versiones"
+    }
+  },
+  "summary": {
+    "heading": "Resumen",
+    "text": "CineLab es una aplicación diseñada para los amantes del cine. Permite buscar películas, acceder a detalles (calificaciones, sinopsis), obtener recomendaciones y gestionar favoritos de forma persistente. El proyecto fue un reto técnico y creativo, enfocado en rendimiento, accesibilidad y experiencia de usuario."
+  },
+  "problem": {
+    "heading": "Problema que resuelve",
+    "text": "Muchas apps de búsqueda de películas presentan interfaces lentas o sin persistencia de favoritos. El objetivo fue construir una SPA rápida, accesible y con manejo robusto de estado, enfocada en buenas prácticas de arquitectura frontend."
+  },
+  "techTools": {
+    "heading": "Tecnologías y herramientas",
+    "text": "Stack elegido por velocidad y buenas prácticas: React + Vite, TypeScript, Tailwind CSS. Para integraciones: TMDB API mediante Axios con interceptors y manejo de aborts.",
+    "list": [
+      "React con Vite (HMR y build rápido).",
+      "TypeScript para tipado y mantenibilidad.",
+      "Tailwind CSS para estilos utilitarios y consistencia visual.",
+      "Axios + AbortController para fetching robusto.",
+      "Context API + custom hooks (useApi, useLocalStorage, useFavorites)."
+    ]
+  },
+  "architecture": {
+    "heading": "Arquitectura y decisiones",
+    "text": "Se priorizó modularidad y separación de responsabilidades: servicios de API desacoplados, hooks para lógica de fetching y utilidades para persistencia. El estado global de favoritos se maneja con Context + reducer, evitando prop-drilling."
+  },
+  "implementation": {
+    "heading": "Implementación destacada",
+    "hookTitle": "Hook useApi (simplificado)",
+    "hookDescription": "Este hook abstrae la lógica de fetching, cancelación y manejo de loading, evitando duplicación y mejorando testabilidad."
+  },
+  "accessibility": {
+    "heading": "Accesibilidad",
+    "lead": "Se aplicaron roles y atributos ARIA en componentes interactivos (modales/dialogs, botones). La app es navegable por teclado y aplica pautas de contraste.",
+    "list": [
+      "Navegación 100% keyboard: todos los controles son accesibles con teclado.",
+      "Focus visible: estilos claros para foco en elementos interactivos.",
+      "aria-label en botones sin texto: icon-buttons como favoritos o acciones tienen aria-label descriptivo.",
+      "aria-live: se utilizan regiones aria-live para notificar resultados dinámicos (por ejemplo, cambios de slide en el carousel o notificaciones de favoritos)."
+    ]
+  },
+  "performance": {
+    "heading": "Performance y resultados",
+    "list": [
+      "Lazy-loading de imágenes y previews optimizadas.",
+      "Skeleton loaders para listas asíncronas.",
+      "Lighthouse: performance y accesibilidad 90+ (mejoras pendientes: SSR, caching más agresivo)."
+    ]
+  },
+  "challenges": {
+    "heading": "Retos y aprendizajes",
+    "list": [
+      "Manejo de fetching con cancelación para evitar race conditions y memory leaks.",
+      "Sincronización de favoritos con localStorage y su testing.",
+      "Modularidad: hooks reutilizables y servicios desacoplados facilitaron refactors."
+    ]
+  },
+  "improvements": {
+    "heading": "Qué mejoraría",
+    "list": [
+      "Scroll infinito en listados en lugar de paginación manual.",
+      "Soporte i18n completo.",
+      "Considerar SSR con Next.js para SEO y performance inicial.",
+      "Explorar React Query para caching y sincronización automáticos."
+    ]
+  },
+  "carousel": {
+    "alt": "{{name}} preview"
+  },
+  "labels": {
+    "year": "Año:",
+    "featured": "Featured"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "title": "{{name}}"
+  },
+  "header": {
+    "title": "{{name}}",
+    "short": "Movie Search App — search, filters, persistent favorites and dynamic recommendations (TMDB).",
+    "repoAria": "Repository {{name}}",
+    "demoAria": "Demo {{name}}",
+    "backToProjects": "← Back to Projects"
+  },
+  "stack": {
+    "heading": "Stack & Technologies",
+    "sections": {
+      "frontend": "Frontend",
+      "styles": "Styling",
+      "data": "Data & APIs",
+      "state": "State",
+      "testing": "Testing",
+      "vcs": "Version control"
+    }
+  },
+  "summary": {
+    "heading": "Summary",
+    "text": "CineLab is an app designed for movie lovers. It allows searching movies, accessing details (ratings, synopsis), getting recommendations and managing favorites persistently. The project was a technical and creative challenge, focused on performance, accessibility and user experience."
+  },
+  "problem": {
+    "heading": "Problem solved",
+    "text": "Many movie search apps have slow interfaces or lack persistence for favorites. The goal was to build a fast, accessible SPA with robust state handling, focused on frontend architecture best practices."
+  },
+  "techTools": {
+    "heading": "Technologies and tools",
+    "text": "Stack chosen for speed and good practices: React + Vite, TypeScript, Tailwind CSS. For integrations: TMDB API via Axios with interceptors and abort handling.",
+    "list": [
+      "React with Vite (HMR and fast build).",
+      "TypeScript for typing and maintainability.",
+      "Tailwind CSS for utility styles and visual consistency.",
+      "Axios + AbortController for robust fetching.",
+      "Context API + custom hooks (useApi, useLocalStorage, useFavorites)."
+    ]
+  },
+  "architecture": {
+    "heading": "Architecture and decisions",
+    "text": "Modularity and separation of concerns were prioritized: decoupled API services, hooks for fetching logic, and utilities for persistence. Global favorites state is handled with Context + reducer, avoiding prop-drilling."
+  },
+  "implementation": {
+    "heading": "Highlighted implementation",
+    "hookTitle": "Hook useApi (simplified)",
+    "hookDescription": "This hook abstracts fetching logic, cancellation and loading handling, avoiding duplication and improving testability."
+  },
+  "accessibility": {
+    "heading": "Accessibility",
+    "lead": "Roles and ARIA attributes were applied to interactive components (modals/dialogs, buttons). The app is keyboard navigable and meets contrast guidelines.",
+    "list": [
+      "100% keyboard navigation: all controls are keyboard accessible.",
+      "Focus visible: clear focus styles for interactive elements.",
+      "aria-label on icon-buttons without text: actions have descriptive aria-labels.",
+      "aria-live: live regions are used to report dynamic changes (e.g., carousel slide changes or favorites notifications)."
+    ]
+  },
+  "performance": {
+    "heading": "Performance and results",
+    "list": [
+      "Lazy-loading images and optimized previews.",
+      "Skeleton loaders for async lists.",
+      "Lighthouse: performance and accessibility 90+ (pending improvements: SSR, more aggressive caching)."
+    ]
+  },
+  "challenges": {
+    "heading": "Challenges and learnings",
+    "list": [
+      "Handling fetching with cancellation to avoid race conditions and memory leaks.",
+      "Synchronizing favorites with localStorage and its testing.",
+      "Modularity: reusable hooks and decoupled services made refactors easier."
+    ]
+  },
+  "improvements": {
+    "heading": "What I would improve",
+    "list": [
+      "Infinite scroll in listings instead of manual pagination.",
+      "Full i18n support.",
+      "Consider SSR with Next.js for SEO and initial performance.",
+      "Explore React Query for caching and automatic synchronization."
+    ]
+  },
+  "carousel": {
+    "alt": "{{name}} preview"
+  },
+  "labels": {
+    "year": "Year:",
+    "featured": "Featured"
+  }
+}

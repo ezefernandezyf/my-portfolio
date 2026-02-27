@@ -1,14 +1,16 @@
 import { Link } from 'react-router-dom';
 import { MetaTags } from '../components';
+import { useTranslation } from 'react-i18next';
 
 export const NotFoundPage = (): React.JSX.Element => {
   const currentYear = new Date().getFullYear();
+  const { t } = useTranslation('notfoundpage');
 
   return (
     <>
       <MetaTags
-        title="Página no encontrada"
-        description="Lo sentimos — no encontramos la página que buscas en el portfolio de Ezequiel Fernández."
+        title={t('meta.title')}
+        description={t('meta.description')}
         noIndex={true}
         pathname="/404"
         type="website"
@@ -38,25 +40,22 @@ export const NotFoundPage = (): React.JSX.Element => {
           </div>
 
           <h1 id="notfound-title" className="text-3xl font-bold mb-3">
-            Página no encontrada
+            {t('h1')}
           </h1>
 
-          <p className="text-base text-muted mb-6">
-            Lo sentimos — no encontramos la página que buscas. Es posible que la URL esté mal
-            escrita o que esa sección ya no exista.
-          </p>
+          <p className="text-base text-muted mb-6">{t('paragraph')}</p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Link to="/home" className="btn btn-primary" aria-label="Volver al inicio">
-              Volver al inicio
+            <Link to="/home" className="btn btn-primary" aria-label={t('buttons.backAria')}>
+              {t('buttons.back')}
             </Link>
 
-            <Link to="/contact" className="btn btn-ghost" aria-label="Ir a contacto">
-              Contacto
+            <Link to="/contact" className="btn btn-ghost" aria-label={t('buttons.contactAria')}>
+              {t('buttons.contact')}
             </Link>
           </div>
 
-          <p className="mt-8 text-sm text-muted">© {currentYear} Ezequiel Fernández</p>
+          <p className="mt-8 text-sm text-muted">{t('copy', { year: currentYear })}</p>
         </div>
       </section>
     </>

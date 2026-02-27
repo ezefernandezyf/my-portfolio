@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "title": "Acerca de mí"
+  },
+  "hero": {
+    "photoAlt": "Foto de {{name}}",
+    "downloadCV": "Descargar CV",
+    "github": "GitHub",
+    "linkedIn": "LinkedIn"
+  },
+  "h1": "Acerca de mí",
+  "summary": "Soy Front-end Developer enfocado en construir interfaces limpias, accesibles y mantenibles. Trabajo principalmente con React, TypeScript y JavaScript, desarrollando SPAs que consumen APIs REST y priorizan rendimiento, buenas prácticas y experiencia de usuario. Me interesa escribir código claro, testeable y escalable, aplicando principios de arquitectura por features, manejo de estado eficiente y validación de datos.",
+  "projects": {
+    "title": "Proyectos destacados",
+    "links": {
+      "repo": "Ver repo",
+      "demo": "Ver demo",
+      "caseStudy": "Case study"
+    },
+    "learnedLabel": "Qué aprendí:",
+    "cinelab": {
+      "name": "CineLab",
+      "short": "Movie Search App — búsqueda, filtros, favoritos persistentes y recomendaciones dinámicas (TMDB). Construida con React, TypeScript y Vite; foco en rendimiento y UX.",
+      "whatILearned": "Optimización de imágenes, manejo de cache, arquitectura de hooks y testing de UI. (Detalles en el case study)"
+    }
+  },
+  "education": {
+    "title": "Educación",
+    "0": {
+      "title": "Analista en Sistemas - Da Vinci | Primera Escuela de Arte Multimedial",
+      "period": "2025 - presente",
+      "bullets": []
+    }
+  },
+  "contact": {
+    "title": "Contacto",
+    "paragraph": "Podés escribirme a {{email}} o usar la página de Contacto."
+  },
+  "categories": {
+    "frontend": "Frontend",
+    "styles": "Estilos",
+    "testing": "Testing",
+    "apis": "APIs",
+    "tools": "Herramientas"
+  },
+  "abilities": {
+    "title": "Habilidades profesionales",
+    "items": [
+      "Comunicación clara",
+      "Resolución de problemas",
+      "Pensamiento analítico",
+      "Arquitectura modular",
+      "Trabajo en equipo",
+      "Scrum / Kanban",
+      "Aprendizaje continuo",
+      "Autonomía"
+    ]
+  },
+  "availability": "Disponibilidad: inmediata, horario flexible."
+}

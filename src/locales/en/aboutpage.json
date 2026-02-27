@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "title": "About me"
+  },
+  "hero": {
+    "photoAlt": "Photo of {{name}}",
+    "downloadCV": "Download CV",
+    "github": "GitHub",
+    "linkedIn": "LinkedIn"
+  },
+  "h1": "About me",
+  "summary": "I am a Front-end Developer focused on building clean, accessible, and maintainable interfaces. I mainly work with React, TypeScript and JavaScript, developing SPAs that consume REST APIs and prioritize performance, best practices and user experience. I'm interested in writing clear, testable and scalable code, applying feature-based architecture principles, efficient state management and data validation.",
+  "projects": {
+    "title": "Featured projects",
+    "links": {
+      "repo": "View repo",
+      "demo": "View demo",
+      "caseStudy": "Case study"
+    },
+    "learnedLabel": "What I learned:",
+    "cinelab": {
+      "name": "CineLab",
+      "short": "Movie Search App — search, filters, persistent favorites and dynamic recommendations (TMDB). Built with React, TypeScript and Vite; focus on performance and UX.",
+      "whatILearned": "Image optimization, cache handling, hooks architecture and UI testing. (Details in the case study)"
+    }
+  },
+  "education": {
+    "title": "Education",
+    "0": {
+      "title": "Analyst in Systems - Da Vinci | First Multimedia Art School",
+      "period": "2025 - present",
+      "bullets": []
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "paragraph": "You can write to me at {{email}} or use the Contact page."
+  },
+  "categories": {
+    "frontend": "Frontend",
+    "styles": "Styling",
+    "testing": "Testing",
+    "apis": "APIs",
+    "tools": "Tools"
+  },
+  "abilities": {
+    "title": "Professional skills",
+    "items": [
+      "Clear communication",
+      "Problem solving",
+      "Analytical thinking",
+      "Modular architecture",
+      "Teamwork",
+      "Scrum / Kanban",
+      "Continuous learning",
+      "Autonomy"
+    ]
+  },
+  "availability": "Availability: immediate, flexible schedule."
+}

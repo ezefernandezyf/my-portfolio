@@ -5,33 +5,34 @@ export const about = {
   github: 'https://github.com/ezefernandezyf',
   linkedIn: 'https://www.linkedin.com/in/ezequiel-fernandez-59a21a387/',
   cv: '/Ezequiel_Fernandez_CV.pdf',
-  summary:
-    'Soy Front-end Developer enfocado en construir interfaces limpias, accesibles y mantenibles. Trabajo principalmente con React, TypeScript y JavaScript, desarrollando SPAs que consumen APIs REST y priorizan rendimiento, buenas prácticas y experiencia de usuario. Me interesa escribir código claro, testeable y escalable, aplicando principios de arquitectura por features, manejo de estado eficiente y validación de datos.',
+
+  summaryKey: 'aboutpage.summary',
+
   categories: [
     {
-      title: 'Frontend',
+      titleKey: 'aboutpage.categories.frontend',
       items: ['React', 'TypeScript', 'JavaScript', 'Vite', 'React Router', 'HTML'],
     },
     {
-      title: 'Estilos',
+      titleKey: 'aboutpage.categories.styles',
       items: ['Tailwind', 'CSS'],
     },
     {
-      title: 'Testing',
+      titleKey: 'aboutpage.categories.testing',
       items: ['Vitest', 'React Testing Library'],
     },
     {
-      title: 'APIs',
+      titleKey: 'aboutpage.categories.apis',
       items: ['Axios', 'Zod', 'TMDB API'],
     },
     {
-      title: 'Herramientas',
+      titleKey: 'aboutpage.categories.tools',
       items: ['Git', 'GitHub', 'Bun', 'NPM', 'Prettier', 'ESLint', 'React Hook Form'],
     },
   ],
+
   abilities: [
     {
-      title: 'Habilidades profesionales',
       items: [
         'Comunicación clara',
         'Resolución de problemas',
@@ -44,25 +45,28 @@ export const about = {
       ],
     },
   ],
+  
+  abilitiesKey: 'abilities.items',
+
   projects: [
     {
       id: 'cinelab',
-      name: 'CineLab',
-      short:
-        'Movie Search App — búsqueda, filtros, favoritos persistentes y recomendaciones dinámicas (TMDB). Construida con React, TypeScript y Vite; foco en rendimiento y UX.',
+      nameKey: 'cinelab.name',
+      shortKey: 'cinelab.short',
       repo: 'https://github.com/ezefernandezyf/cinelab-react',
       demo: 'https://cinelab-movies.vercel.app',
-      whatILearned:
-        'Optimización de imágenes, manejo de cache, arquitectura de hooks y testing de UI. (Detalles en el case study)',
+      whatILearnedKey: 'projects.cinelab.whatILearned',
       tech: ['React', 'TypeScript', 'TMDB API', 'Vite', 'Tailwind'],
     },
   ],
+
   education: [
     {
-      title: 'Analista en Sistemas - Da Vinci | Primera Escuela de Arte Multimedial',
+      titleKey: 'aboutpage.education.0.title',
       period: '2025 - presente',
-      bullets: [],
+      bulletsKeys: [],
     },
   ],
-  availability: 'Disponibilidad: inmediata, horario flexible.',
+
+  availabilityKey: 'aboutpage.availability',
 } as const;

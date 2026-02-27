@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "title": "Proyectos",
+    "description": "Colección de proyectos públicos: repositorios, demos y case studies. Built with React, Vite & TypeScript."
+  },
+  "header": {
+    "title": "Proyectos",
+    "subtitle": "Algunos proyectos públicos, con repositorios y demos."
+  },
+  "search": {
+    "placeholder": "Buscar proyectos...",
+    "ariaLabel": "Buscar proyectos"
+  },
+  "button": {
+    "loadMore": "Ver más"
+  },
+  "links": {
+    "repo": "Ver repo",
+    "demo": "Ver demo",
+    "caseStudy": "Case study"
+  },
+  "notFound": "Proyecto no encontrado",
+  "cinelab": {
+    "name": "CineLab",
+    "short": "Movie Search App — búsqueda, filtros, favoritos persistentes y recomendaciones dinámicas (TMDB)."
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "contact": {
+      "title": "Contacto",
+      "description": "Formulario de contacto — enviame un mensaje sobre proyectos, dudas o propuestas."
+    }
+  },
+  "title": "Contacto",
+  "intro": "Contactame si creés que mi perfil encaja en tu equipo. Estoy disponible para roles Front-end.",
+  "form": {
+    "name": {
+      "label": "Nombre",
+      "placeholder": "Tu nombre",
+      "validation_min": "El nombre debe tener al menos 2 caracteres"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "tu@ejemplo.com",
+      "validation": "Email inválido"
+    },
+    "subject": {
+      "label": "Asunto",
+      "placeholder": "Sobre qué querés escribirme",
+      "validation_min": "Asunto demasiado corto"
+    },
+    "message": {
+      "label": "Mensaje",
+      "placeholder": "Escribí tu mensaje aquí",
+      "validation_min": "Mensaje demasiado corto"
+    },
+    "consent": {
+      "label": "Acepto que se guarde mi email para responder",
+      "validation": "Debes aceptar el consentimiento"
+    },
+    "submit": {
+      "sending": "Enviando...",
+      "default": "Enviar mensaje"
+    }
+  },
+  "status": {
+    "success": "Gracias — tu mensaje fue enviado",
+    "error_prefix": "Error al enviar:"
+  },
+  "errors": {
+    "no_endpoint": "No está configurado el endpoint de envío",
+    "send_failed": "No se pudo enviar el mensaje. Intentá de nuevo más tarde."
+  }
+}

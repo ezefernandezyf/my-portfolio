@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "contact": {
+      "title": "Contact",
+      "description": "Contact form — send me a message about projects, questions or opportunities."
+    }
+  },
+  "title": "Contact",
+  "intro": "Contact me if you think my profile fits your team. I am available for Front-end roles.",
+  "form": {
+    "name": {
+      "label": "Name",
+      "placeholder": "Your name",
+      "validation_min": "Name must be at least 2 characters"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "you@example.com",
+      "validation": "Invalid email"
+    },
+    "subject": {
+      "label": "Subject",
+      "placeholder": "What is this about",
+      "validation_min": "Subject too short"
+    },
+    "message": {
+      "label": "Message",
+      "placeholder": "Write your message here",
+      "validation_min": "Message too short"
+    },
+    "consent": {
+      "label": "I agree that my email will be stored to reply",
+      "validation": "You must accept consent"
+    },
+    "submit": {
+      "sending": "Sending...",
+      "default": "Send message"
+    }
+  },
+  "status": {
+    "success": "Thanks — your message has been sent",
+    "error_prefix": "Error sending:"
+  },
+  "errors": {
+    "no_endpoint": "No endpoint configured to send messages.",
+    "send_failed": "Could not send the message. Please try again later."
+  }
+}

@@ -3,22 +3,23 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { MetaTags } from '../components';
-
-const contactSchema = z.object({
-  name: z.string().min(2, 'El nombre debe tener al menos 2 caracteres'),
-  email: z.email('Email inválido'),
-  subject: z.string().min(4, 'Asunto demasiado corto'),
-  message: z.string().min(10, 'Mensaje demasiado corto'),
-  consent: z
-    .boolean()
-    .refine((val) => val === true, { message: 'Debes aceptar el consentimiento para enviar' }),
-});
-
-type ContactFormData = z.infer<typeof contactSchema>;
-
-const endpoint = import.meta.env.VITE_CONTACT_FORM_ENDPOINT as string | undefined;
+import { useTranslation } from 'react-i18next';
 
 export const ContactPage = (): React.JSX.Element => {
+  const { t } = useTranslation('contact');
+
+  const contactSchema = z.object({
+    name: z.string().min(2, t('form.name.validation_min')),
+    email: z.string().email(t('form.email.validation')),
+    subject: z.string().min(4, t('form.subject.validation_min')),
+    message: z.string().min(10, t('form.message.validation_min')),
+    consent: z.boolean().refine((val) => val === true, { message: t('form.consent.validation') }),
+  });
+
+  type ContactFormData = z.infer<typeof contactSchema>;
+
+  const endpoint = import.meta.env.VITE_CONTACT_FORM_ENDPOINT as string | undefined;
+
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -38,9 +39,7 @@ export const ContactPage = (): React.JSX.Element => {
     setErrorMessage(null);
 
     if (!endpoint) {
-      setErrorMessage(
-        'No está configurado el endpoint de envío. Revisa VITE_CONTACT_FORM_ENDPOINT.',
-      );
+      setErrorMessage(t('errors.no_endpoint'));
       setStatus('error');
       return;
     }
@@ -72,7 +71,7 @@ export const ContactPage = (): React.JSX.Element => {
       reset();
     } catch (err) {
       console.error('Contact submit error:', err);
-      setErrorMessage(err instanceof Error ? err.message : 'Error al enviar');
+      setErrorMessage(err instanceof Error ? err.message : t('errors.send_failed'));
       setStatus('error');
     }
   };
@@ -80,33 +79,29 @@ export const ContactPage = (): React.JSX.Element => {
   return (
     <>
       <MetaTags
-        title="Contacto"
-        description="Contactame si creés que mi perfil encaja en tu equipo. Estoy disponible para roles Front-end."
+        title={t('meta.contact.title')}
+        description={t('meta.contact.description')}
         pathname="/contact"
         type="article"
       />
       <main className="site-container pb-12 pt-8">
         <div className="mx-auto w-full px-4 sm:px-6 lg:px-8 max-w-3xl">
           <header className="mb-6">
-            <h1 className="text-2xl font-semibold">Contacto</h1>
-            <p className="text-sm text-muted mt-2">
-              Estoy buscando mi primera oportunidad profesional como Frontend Developer. Si creés
-              que mi perfil puede encajar en tu equipo, podés contactarme por correo o rellenar el
-              formulario abajo.
-            </p>
+            <h1 className="text-2xl font-semibold">{t('title')}</h1>
+            <p className="text-sm text-muted mt-2">{t('intro')}</p>
           </header>
 
           <section>
             <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-4">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium">
-                  Nombre
+                  {t('form.name.label')}
                 </label>
                 <input
                   id="name"
                   {...register('name')}
                   className="input w-full"
-                  placeholder="Tu nombre"
+                  placeholder={t('form.name.placeholder')}
                   aria-invalid={!!errors.name}
                 />
                 {errors.name && (
@@ -118,14 +113,14 @@ export const ContactPage = (): React.JSX.Element => {
 
               <div>
                 <label htmlFor="email" className="block text-sm font-medium">
-                  Email
+                  {t('form.email.label')}
                 </label>
                 <input
                   id="email"
                   type="email"
                   {...register('email')}
                   className="input w-full"
-                  placeholder="tu@ejemplo.com"
+                  placeholder={t('form.email.placeholder')}
                   aria-invalid={!!errors.email}
                 />
                 {errors.email && (
@@ -137,13 +132,13 @@ export const ContactPage = (): React.JSX.Element => {
 
               <div>
                 <label htmlFor="subject" className="block text-sm font-medium">
-                  Asunto
+                  {t('form.subject.label')}
                 </label>
                 <input
                   id="subject"
                   {...register('subject')}
                   className="input w-full"
-                  placeholder="Asunto del mensaje"
+                  placeholder={t('form.subject.placeholder')}
                   aria-invalid={!!errors.subject}
                 />
                 {errors.subject && (
@@ -155,14 +150,14 @@ export const ContactPage = (): React.JSX.Element => {
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium">
-                  Mensaje
+                  {t('form.message.label')}
                 </label>
                 <textarea
                   id="message"
                   {...register('message')}
                   rows={6}
                   className="textarea w-full"
-                  placeholder="Contame más sobre la oportunidad..."
+                  placeholder={t('form.message.placeholder')}
                   aria-invalid={!!errors.message}
                 />
                 {errors.message && (
@@ -180,7 +175,7 @@ export const ContactPage = (): React.JSX.Element => {
                   className="checkbox mt-1"
                 />
                 <label htmlFor="consent" className="text-sm text-muted">
-                  Acepto que mi mensaje sea enviado y almacenado temporalmente para responder.
+                  {t('form.consent.label')}
                 </label>
               </div>
               {errors.consent && (
@@ -196,18 +191,18 @@ export const ContactPage = (): React.JSX.Element => {
                   disabled={isSubmitting || status === 'sending'}
                   aria-busy={isSubmitting || status === 'sending'}
                 >
-                  {status === 'sending' ? 'Enviando...' : 'Enviar mensaje'}
+                  {status === 'sending' ? t('form.submit.sending') : t('form.submit.default')}
                 </button>
               </div>
 
               {status === 'success' && (
                 <p role="status" className="text-sm text-success">
-                  Gracias — tu mensaje fue enviado.
+                  {t('status.success')}
                 </p>
               )}
               {status === 'error' && errorMessage && (
                 <p role="alert" className="text-sm text-error">
-                  Error: {errorMessage}
+                  {t('status.error_prefix')} {errorMessage}
                 </p>
               )}
             </form>
