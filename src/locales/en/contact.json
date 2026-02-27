@@ -1,50 +1,48 @@
 {
   "meta": {
     "contact": {
-      "title": "Contacto",
-      "description": "Formulario de contacto — enviame un mensaje sobre proyectos, dudas o propuestas."
+      "title": "Contact",
+      "description": "Contact form — send me a message about projects, questions or opportunities."
     }
   },
-  "contact": {
-    "title": "Contacto",
-    "intro": "Si tenés un proyecto, consulta o propuesta, escribime usando el siguiente formulario.",
-    "form": {
-      "name": {
-        "label": "Nombre",
-        "placeholder": "Tu nombre",
-        "validation_min": "El nombre debe tener al menos 2 caracteres"
-      },
-      "email": {
-        "label": "Email",
-        "placeholder": "tu@ejemplo.com",
-        "validation": "Ingrese un email válido"
-      },
-      "subject": {
-        "label": "Asunto",
-        "placeholder": "Sobre qué querés escribirme",
-        "validation_min": "El asunto debe tener al menos 4 caracteres"
-      },
-      "message": {
-        "label": "Mensaje",
-        "placeholder": "Escribí tu mensaje aquí",
-        "validation_min": "El mensaje debe tener al menos 10 caracteres"
-      },
-      "consent": {
-        "label": "Acepto que se guarde mi email para responder",
-        "validation": "Debés aceptar para enviar el formulario"
-      },
-      "submit": {
-        "sending": "Enviando...",
-        "default": "Enviar"
-      }
+  "title": "Contact",
+  "intro": "If you have a project, question or proposal, write me using the form below.",
+  "form": {
+    "name": {
+      "label": "Name",
+      "placeholder": "Your name",
+      "validation_min": "Name must be at least 2 characters"
     },
-    "status": {
-      "success": "Mensaje enviado correctamente. Gracias.",
-      "error_prefix": "Error al enviar:"
+    "email": {
+      "label": "Email",
+      "placeholder": "you@example.com",
+      "validation": "Invalid email"
     },
-    "errors": {
-      "no_endpoint": "No hay un endpoint configurado para enviar mensajes.",
-      "send_failed": "No se pudo enviar el mensaje. Intentá de nuevo más tarde."
+    "subject": {
+      "label": "Subject",
+      "placeholder": "What is this about",
+      "validation_min": "Subject too short"
+    },
+    "message": {
+      "label": "Message",
+      "placeholder": "Write your message here",
+      "validation_min": "Message too short"
+    },
+    "consent": {
+      "label": "I agree that my email will be stored to reply",
+      "validation": "You must accept consent"
+    },
+    "submit": {
+      "sending": "Sending...",
+      "default": "Send message"
     }
+  },
+  "status": {
+    "success": "Thanks — your message has been sent",
+    "error_prefix": "Error sending:"
+  },
+  "errors": {
+    "no_endpoint": "No endpoint configured to send messages.",
+    "send_failed": "Could not send the message. Please try again later."
   }
 }
