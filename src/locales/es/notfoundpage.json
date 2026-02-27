@@ -1,0 +1,16 @@
+{
+  "meta": {
+    "title": "Página no encontrada",
+    "description": "Lo sentimos — no encontramos la página que buscas en el portfolio de Ezequiel Fernández."
+  },
+  "h1": "Página no encontrada",
+  "paragraph": "Lo sentimos — no encontramos la página que buscas. Es posible que la URL esté mal escrita o que esa sección ya no exista.",
+  "buttons": {
+    "back": "Volver al inicio",
+    "backAria": "Volver al inicio",
+    "contact": "Contacto",
+    "contactAria": "Ir a contacto"
+  },
+  "copy": "© {{year}} Ezequiel Fernández",
+  "noIndexNote": true
+}

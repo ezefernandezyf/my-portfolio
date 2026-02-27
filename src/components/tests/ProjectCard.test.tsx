@@ -18,17 +18,24 @@ it('ProjectCard muestra título, enlaces y botón demo con icono', () => {
     </MemoryRouter>,
   );
 
-  // título y textos
   expect(screen.getByText('Demo')).toBeInTheDocument();
-  expect(screen.getByText('Ver case study')).toBeInTheDocument();
-  expect(screen.getByText('Ver repo')).toBeInTheDocument();
 
-  const demoLinks = screen.getAllByRole('link', { name: /Demo/i });
-  expect(demoLinks.length).toBeGreaterThan(0);
-  expect(demoLinks.some((link) => link.getAttribute('href') === 'https://demo')).toBe(true);
+  const caseStudyLink = screen
+    .getAllByRole('link')
+    .find((l) => l.getAttribute('href') === '/projects/x');
+  expect(caseStudyLink).toBeDefined();
 
-  expect(screen.getByRole('link', { name: /Repositorio Demo/i })).toHaveAttribute(
-    'href',
-    'https://repo',
-  );
+  const repoLink = screen
+    .getAllByRole('link')
+    .find((l) => l.getAttribute('href') === 'https://repo');
+  expect(repoLink).toBeDefined();
+
+  const demoLink = screen
+    .getAllByRole('link')
+    .find((l) => l.getAttribute('href') === 'https://demo');
+  expect(demoLink).toBeDefined();
+  expect(demoLink?.querySelector('svg')).toBeTruthy();
+
+  expect(screen.getByText('React')).toBeInTheDocument();
+  expect(screen.getByText('Vite')).toBeInTheDocument();
 });

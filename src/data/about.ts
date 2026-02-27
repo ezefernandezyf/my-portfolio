@@ -33,7 +33,6 @@ export const about = {
 
   abilities: [
     {
-      titleKey: 'aboutpage.abilities.title',
       items: [
         'Comunicación clara',
         'Resolución de problemas',
@@ -50,8 +49,8 @@ export const about = {
   projects: [
     {
       id: 'cinelab',
-      nameKey: 'projects.cinelab.name',
-      shortKey: 'projects.cinelab.short',
+      nameKey: 'cinelab.name',
+      shortKey: 'cinelab.short',
       repo: 'https://github.com/ezefernandezyf/cinelab-react',
       demo: 'https://cinelab-movies.vercel.app',
       whatILearnedKey: 'projects.cinelab.whatILearned',
@@ -63,8 +62,7 @@ export const about = {
     {
       titleKey: 'aboutpage.education.0.title',
       period: '2025 - presente',
-      bulletsKeys: [
-      ],
+      bulletsKeys: [],
     },
   ],
 

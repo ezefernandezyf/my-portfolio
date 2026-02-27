@@ -5,6 +5,22 @@ import type { ReactNode } from 'react';
 
 import esCommon from './locales/es/common.json';
 import enCommon from './locales/en/common.json';
+import esFooter from './locales/es/footer.json';
+import enFooter from './locales/en/footer.json';
+import esHeader from './locales/es/header.json';
+import enHeader from './locales/en/header.json';
+import esHome from './locales/es/home.json';
+import enHome from './locales/en/home.json';
+import esContact from './locales/es/contact.json';
+import enContact from './locales/en/contact.json';
+import esProjects from './locales/es/projects.json';
+import enProjects from './locales/en/projects.json';
+import esAbout from './locales/es/aboutpage.json';
+import enAbout from './locales/en/aboutpage.json';
+import esNotFound from './locales/es/notfoundpage.json';
+import enNotFound from './locales/en/notfoundpage.json';
+import esCineLab from './locales/es/cinelabcasestudy.json';
+import enCineLab from './locales/en/cinelabcasestudy.json';
 
 type JsonValue = string | number | boolean | JsonObject | JsonArray | null;
 interface JsonObject {
@@ -12,27 +28,103 @@ interface JsonObject {
 }
 type JsonArray = Array<JsonValue>;
 
-const resources: Record<'es' | 'en', JsonObject> = {
-  es: esCommon as JsonObject,
-  en: enCommon as JsonObject,
+// resources: mimic src/i18n.ts resources structure
+const resources: Record<'es' | 'en', Record<string, JsonObject>> = {
+  es: {
+    common: esCommon,
+    footer: esFooter,
+    header: esHeader,
+    home: esHome,
+    contact: esContact,
+    projects: esProjects,
+    aboutpage: esAbout,
+    notfoundpage: esNotFound,
+    cinelabcasestudy: esCineLab,
+  },
+  en: {
+    common: enCommon,
+    footer: enFooter,
+    header: enHeader,
+    home: enHome,
+    contact: enContact,
+    projects: enProjects,
+    aboutpage: enAbout,
+    notfoundpage: enNotFound,
+    cinelabcasestudy: enCineLab,
+  },
 };
 
 let currentLang: 'es' | 'en' = 'es';
 
-function getTranslation(key: string): string {
-  const parts = key.split('.');
-  let cur: JsonValue | undefined = resources[currentLang] ?? resources['es'];
+function interpolate(str: string, vars?: Record<string, unknown>): string {
+  return str.replace(/\{\{\s*(\w+)\s*\}\}/g, (_, v) => {
+    if (vars && v in vars) return String(vars[v] ?? '');
+    if (v === 'year') return String(new Date().getFullYear());
+    return '';
+  });
+}
 
+function normalizeNsKey(key: string) {
+  // support "ns:key.sub" or "ns.key.sub" (transform to [ns, key.sub])
+  if (key.includes(':')) {
+    const [ns, rest] = key.split(':', 2);
+    return { ns, key: rest };
+  }
+  if (key.includes('.') && key.split('.')[0] in (resources.es || {})) {
+    // when key starts with a known namespace like "projects.cinelab.name"
+    const pos = key.indexOf('.');
+    return { ns: key.slice(0, pos), key: key.slice(pos + 1) };
+  }
+  return { ns: undefined, key };
+}
+
+function getFromNamespace(namespace: string, realKey: string): JsonValue | undefined {
+  const parts = realKey.split('.');
+  let cur: JsonValue | undefined =
+    resources[currentLang]?.[namespace] ?? resources['es']?.[namespace];
   for (const p of parts) {
     if (cur && typeof cur === 'object' && !Array.isArray(cur) && p in (cur as JsonObject)) {
       cur = (cur as JsonObject)[p];
     } else {
-      cur = undefined;
-      break;
+      return undefined;
     }
   }
+  return cur;
+}
 
-  return typeof cur === 'string' ? cur : key;
+function resolveTranslation(
+  rawKey: string,
+  opts?: { ns?: string | string[]; returnObjects?: boolean; [k: string]: any },
+  defaultNs = 'common',
+): unknown {
+  // determine namespace
+  const normalized = normalizeNsKey(rawKey);
+  let namespace = normalized.ns ?? defaultNs;
+  let realKey = normalized.key;
+
+  // options override ns
+  if (opts?.ns) {
+    namespace = Array.isArray(opts.ns) ? opts.ns[0] : opts.ns;
+  }
+
+  const value = getFromNamespace(namespace, realKey);
+
+  if (value === undefined) return rawKey;
+
+  // if caller asked for returnObjects and the resource is array/object, return it
+  if (opts?.returnObjects) {
+    if (Array.isArray(value)) return value;
+    if (value && typeof value === 'object') return value;
+    // if not object/array, fallback to string behavior
+  }
+
+  if (typeof value === 'string') {
+    // basic interpolation: prefer opts values for placeholders
+    return interpolate(value, opts);
+  }
+
+  // For non-string values, return as-is (caller can cast)
+  return value;
 }
 
 afterEach(() => {
@@ -47,16 +139,22 @@ export const changeTestLang = async (lng: 'es' | 'en') => {
 };
 
 vi.mock('react-i18next', () => {
-  const useTranslation = () => ({
-    t: (key: string) => getTranslation(key),
-    i18n: {
-      language: currentLang,
-      changeLanguage: async (lng: 'es' | 'en') => {
-        await changeTestLang(lng);
-        return Promise.resolve();
+  const useTranslation = (ns: string | string[] = 'common') => {
+    const defaultNs = Array.isArray(ns) ? ns[0] : ns;
+    return {
+      t: (
+        key: string,
+        opts?: { ns?: string | string[]; returnObjects?: boolean; [k: string]: any },
+      ) => resolveTranslation(key, opts, defaultNs) as any,
+      i18n: {
+        language: currentLang,
+        changeLanguage: async (lng: 'es' | 'en') => {
+          await changeTestLang(lng);
+          return Promise.resolve();
+        },
       },
-    },
-  });
+    };
+  };
 
   const Trans = ({ children }: { children: ReactNode }) => children;
 

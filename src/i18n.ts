@@ -26,7 +26,10 @@ import esHeader from './locales/es/header.json';
 import enFooter from './locales/en/footer.json';
 import esFooter from './locales/es/footer.json';
 
-export const resources = {
+import enCineLab from './locales/en/cinelabcasestudy.json';
+import esCineLab from './locales/es/cinelabcasestudy.json';
+
+const resources = {
   en: {
     common: enCommon,
     home: enHome,
@@ -36,6 +39,7 @@ export const resources = {
     aboutpage: enAbout,
     header: enHeader,
     footer: enFooter,
+    cinelabcasestudy: enCineLab,
   },
   es: {
     common: esCommon,
@@ -46,6 +50,7 @@ export const resources = {
     aboutpage: esAbout,
     header: esHeader,
     footer: esFooter,
+    cinelabcasestudy: esCineLab,
   },
 };
 
@@ -55,7 +60,17 @@ i18n
   .init({
     resources,
     fallbackLng: 'es',
-    ns: ['common', 'home', 'projects', 'contact', 'notfoundpage', 'aboutpage', 'header', 'footer'],
+    ns: [
+      'common',
+      'home',
+      'projects',
+      'contact',
+      'notfoundpage',
+      'aboutpage',
+      'header',
+      'footer',
+      'cinelabcasestudy',
+    ],
     defaultNS: 'common',
     debug: false,
     interpolation: {
@@ -68,3 +83,4 @@ i18n
     },
   });
 
+export default i18n;

@@ -145,8 +145,8 @@ export const CineLabCaseStudy = (): React.JSX.Element => {
 
         <section className="space-y-8">
           <article>
-            <h2 className="text-2xl font-semibold mb-3">{t('whatIs.heading')}</h2>
-            <p className="text-sm text-muted">{t('whatIs.text')}</p>
+            <h2 className="text-2xl font-semibold mb-3">{t('summary.heading')}</h2>
+            <p className="text-sm text-muted">{t('summary.text')}</p>
           </article>
 
           <article>

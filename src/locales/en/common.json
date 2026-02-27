@@ -1,0 +1,15 @@
+{
+  "ok": "ok",
+  "loading": "Loading...",
+  "noPreview": "No preview",
+  "buttons": {
+    "loadMore": "Load more",
+    "back": "Back"
+  },
+  "search": {
+    "placeholder": "Search..."
+  },
+  "errors": {
+    "generic": "An error occurred. Please try again."
+  }
+}

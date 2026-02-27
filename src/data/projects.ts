@@ -1,8 +1,8 @@
 export const projects = [
   {
     id: 'cinelab',
-    nameKey: 'projects.cinelab.name',
-    shortKey: 'projects.cinelab.short',
+    nameKey: 'cinelab.name',
+    shortKey: 'cinelab.short',
     repo: 'https://github.com/ezefernandezyf/cinelab-react',
     demo: 'https://cinelab-movies.vercel.app',
     images: [
