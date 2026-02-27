@@ -4,7 +4,7 @@ Portfolio personal de Ezequiel Fernández — Front-end Developer.
 
 ## Demo
 
-- Demo en: (añadir URL de despliegue cuando esté disponible)
+- Demo en: https://ezefernandez.com
 
 ## Resumen
 
@@ -18,10 +18,9 @@ Proyecto construido con Vite + React. Incluye páginas principales (Home, About,
 - Tailwind / CSS
 - react-hook-form, Zod
 - i18next (localización)
-- Axios / fetch (para APIs)
 - Vitest + React Testing Library
 - Prettier, ESLint
-- Deploy: Vercel (recomendado)
+- Deploy: Vercel 
 
 ## Estructura relevante
 
@@ -34,16 +33,16 @@ Proyecto construido con Vite + React. Incluye páginas principales (Home, About,
 ## Capturas
 
 ### Vista Desktop (Home)
-![Home - Hero y preview de proyecto](/screenshots/screenshot-home-desktop.png)
+![Home - Hero y preview de proyecto](/public/screenshots/screenshot-home-desktop.png)
 
 ### Case study: CineLab
-![CineLab case study — detalles del proyecto](/screenshots/screenshot-project-cinelab.png)
+![CineLab case study — detalles del proyecto](/public/screenshots/screenshot-project-cinelab.png)
 
 ### Formulario de contacto (Mobile)
-![Formulario de contacto — vista móvil](/screenshots/screenshot-contact-mobile.png)
+![Formulario de contacto — vista móvil](/public/screenshots/screenshot-contact-mobile.png)
 
-### Internationalization (EN)
-![Home - Mobile](/screenshots/screenshot-home.png)
+### Vista Desktop (Mobile)
+![Home - Mobile](/public/screenshots/screenshot-home.png)
 
 ## Requisitos locales
 
