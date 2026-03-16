@@ -46,11 +46,11 @@ export const NotFoundPage = (): React.JSX.Element => {
           <p className="text-base text-muted mb-6">{t('paragraph')}</p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Link to="/home" className="btn btn-primary" aria-label={t('buttons.backAria')}>
+            <Link to="/home" className="btn btn-primary btn-minimal" aria-label={t('buttons.backAria')}>
               {t('buttons.back')}
             </Link>
 
-            <Link to="/contact" className="btn btn-ghost" aria-label={t('buttons.contactAria')}>
+            <Link to="/contact" className="btn btn-ghost btn-minimal" aria-label={t('buttons.contactAria')}>
               {t('buttons.contact')}
             </Link>
           </div>

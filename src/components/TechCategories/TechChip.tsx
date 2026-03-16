@@ -42,7 +42,7 @@ export const TechIcon = ({ name, size = 'sm' }: { name: string; size?: 'sm' | 'm
   return (
     <div
       aria-hidden
-      className={`${size === 'sm' ? 'w-4 h-4 text-[10px]' : 'w-5 h-5 text-xs'} rounded-full bg-base-200 inline-flex items-center justify-center font-semibold`}
+      className={`${size === 'sm' ? 'w-4 h-4 text-[10px]' : 'w-5 h-5 text-xs'} chip chip-ghost inline-flex items-center justify-center font-semibold`}
     >
       {initials(name)}
     </div>
@@ -57,7 +57,7 @@ export const TechChip = ({ name, showIcon = true, size = 'sm' }: Props) => {
           <TechIcon name={name} size={size} />
         </span>
       )}
-      <span className="inline-block px-3 py-1 rounded-full bg-base-200 text-xs border">{name}</span>
+      <span className="chip chip-outline">{name}</span>
     </span>
   );
 };

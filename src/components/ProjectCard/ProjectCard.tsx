@@ -78,12 +78,12 @@ export const ProjectCard = ({
 
         <div className="mt-3 flex flex-wrap gap-2">
           {visibleTech.map((tName) => (
-            <span key={tName} className="px-2 py-1 rounded bg-base-200 text-xs">
+            <span key={tName} className="chip chip-outline">
               {tName}
             </span>
           ))}
           {moreCount > 0 && (
-            <span className="px-2 py-1 rounded bg-base-200 text-xs">+{moreCount}</span>
+            <span className="chip chip-ghost">+{moreCount}</span>
           )}
         </div>
 
@@ -115,7 +115,7 @@ export const ProjectCard = ({
               href={demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-auto inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-base-300 hover:bg-base-300"
+              className="ml-auto inline-flex items-center gap-2 btn btn-outline btn-minimal"
             >
               {t('links.demo', { defaultValue: 'Ver demo' })}
               <ArrowTopRightOnSquareIcon className="w-4 h-4" aria-hidden />

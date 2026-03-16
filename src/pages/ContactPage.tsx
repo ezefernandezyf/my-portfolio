@@ -100,7 +100,7 @@ export const ContactPage = (): React.JSX.Element => {
                 <input
                   id="name"
                   {...register('name')}
-                  className="input w-full"
+                  className="input input-minimal input-outline w-full"
                   placeholder={t('form.name.placeholder')}
                   aria-invalid={!!errors.name}
                 />
@@ -119,7 +119,7 @@ export const ContactPage = (): React.JSX.Element => {
                   id="email"
                   type="email"
                   {...register('email')}
-                  className="input w-full"
+                  className="input input-minimal input-outline w-full"
                   placeholder={t('form.email.placeholder')}
                   aria-invalid={!!errors.email}
                 />
@@ -137,7 +137,7 @@ export const ContactPage = (): React.JSX.Element => {
                 <input
                   id="subject"
                   {...register('subject')}
-                  className="input w-full"
+                  className="input input-minimal input-outline w-full"
                   placeholder={t('form.subject.placeholder')}
                   aria-invalid={!!errors.subject}
                 />
@@ -156,7 +156,7 @@ export const ContactPage = (): React.JSX.Element => {
                   id="message"
                   {...register('message')}
                   rows={6}
-                  className="textarea w-full"
+                  className="textarea input-minimal input-outline w-full"
                   placeholder={t('form.message.placeholder')}
                   aria-invalid={!!errors.message}
                 />
@@ -187,7 +187,7 @@ export const ContactPage = (): React.JSX.Element => {
               <div>
                 <button
                   type="submit"
-                  className="btn btn-primary"
+                  className="btn btn-primary btn-minimal"
                   disabled={isSubmitting || status === 'sending'}
                   aria-busy={isSubmitting || status === 'sending'}
                 >

@@ -36,7 +36,7 @@ export const HomePage = (): React.JSX.Element => {
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <Link
                 to="/about"
-                className="btn btn-primary"
+                className="btn btn-primary btn-minimal"
                 aria-label={t('hero.cta.about', { ns: 'home' })}
               >
                 {t('hero.cta.about', { ns: 'home' })}
@@ -44,7 +44,7 @@ export const HomePage = (): React.JSX.Element => {
 
               <Link
                 to="/projects"
-                className="btn btn-outline"
+                className="btn btn-outline btn-minimal"
                 aria-label={t('hero.cta.projects', { ns: 'home' })}
               >
                 {t('hero.cta.projects', { ns: 'home' })}
@@ -52,7 +52,7 @@ export const HomePage = (): React.JSX.Element => {
 
               <a
                 href="/Ezequiel_Fernandez_CV.pdf"
-                className="btn btn-ghost"
+                className="btn btn-ghost btn-minimal"
                 aria-label={t('hero.cta.downloadCV', { ns: 'home' })}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -67,7 +67,7 @@ export const HomePage = (): React.JSX.Element => {
                 {['React', 'TypeScript', 'JavaScript', 'Vite', 'Testing', 'Tanstack Query'].map((tName) => (
                   <li
                     key={tName}
-                    className="px-3 py-1 rounded-full bg-base-200 text-sm text-muted"
+                    className="chip chip-ghost"
                     aria-hidden
                   >
                     {tName}
@@ -134,7 +134,7 @@ export const HomePage = (): React.JSX.Element => {
                     href="https://moviesdashboard.vercel.app/home"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="ml-3 inline-flex items-center gap-2 btn btn-outline"
+                    className="ml-3 inline-flex items-center gap-2 btn btn-outline btn-minimal"
                     aria-label={t('featured.demoAria', { ns: 'home', name: featuredName })}
                   >
                     {t('featured.demoBtn', { ns: 'home' })}
@@ -143,11 +143,11 @@ export const HomePage = (): React.JSX.Element => {
                 </div>
 
                 <div className="mt-3 flex flex-wrap gap-2 text-xs text-muted">
-                  <span className="px-2 py-1 rounded bg-base-200">React</span>
-                  <span className="px-2 py-1 rounded bg-base-200">TypeScript</span>
-                  <span className="px-2 py-1 rounded bg-base-200">Vite</span>
-                  <span className="px-2 py-1 rounded bg-base-200">Tanstack Query</span>
-                  <span className="px-2 py-1 rounded bg-base-200">Supabase</span>
+                  <span className="chip chip-outline">React</span>
+                  <span className="chip chip-outline">TypeScript</span>
+                  <span className="chip chip-outline">Vite</span>
+                  <span className="chip chip-outline">Tanstack Query</span>
+                  <span className="chip chip-outline">Supabase</span>
                 </div>
               </div>
             </div>

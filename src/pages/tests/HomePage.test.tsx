@@ -47,15 +47,15 @@ describe('HomePage', () => {
 
     expect(screen.getByTestId('carousel-mock')).toBeInTheDocument();
 
-    expect(screen.getByRole('heading', { name: /cinelab/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Movie Management Dashboard/i })).toBeInTheDocument();
 
     expect(
-      screen.getByRole('link', { name: /repositorio de cinelab|ver repo|view repo/i }),
-    ).toHaveAttribute('href', 'https://github.com/ezefernandezyf/cinelab-react');
+      screen.getByRole('link', { name: /repositorio|ver repo|view repo/i }),
+    ).toHaveAttribute('href', 'https://github.com/ezefernandezyf/movie-management-dashboard');
 
     expect(screen.getByRole('link', { name: /abrir demo|ver demo|view demo/i })).toHaveAttribute(
       'href',
-      'https://cinelab-movies.vercel.app',
+      'https://moviesdashboard.vercel.app/home',
     );
 
     expect(screen.getByRole('link', { name: /ver todos|view all/i })).toBeInTheDocument();

@@ -103,7 +103,7 @@ export const Header = (): React.JSX.Element => {
               href="/Ezequiel_Fernandez_CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-ghost"
+              className="btn btn-ghost btn-minimal"
               aria-label={t('social.downloadCvAria')}
             >
               <CvIcon className="h-5 w-5 text-base-content/90" />
@@ -120,7 +120,7 @@ export const Header = (): React.JSX.Element => {
               aria-expanded={open}
               aria-controls="mobile-drawer"
               onClick={toggle}
-              className="btn btn-ghost btn-circle"
+              className="btn btn-ghost btn-circle btn-minimal"
             >
               {open ? (
                 <XMarkIcon className="h-6 w-6" aria-hidden />
@@ -162,7 +162,7 @@ export const Header = (): React.JSX.Element => {
             <button
               onClick={close}
               aria-label={t('mobile.closeMenu')}
-              className="btn btn-ghost btn-square"
+              className="btn btn-ghost btn-square btn-minimal"
             >
               <XMarkIcon className="h-5 w-5" aria-hidden />
             </button>

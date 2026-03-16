@@ -14,7 +14,7 @@ export const ThemeToggle = (): React.JSX.Element => {
       onClick={toggle}
       aria-label="Alternar tema"
       title={title}
-      className="btn btn-ghost btn-circle"
+      className="btn btn-ghost btn-circle btn-minimal"
     >
       {resolvedTheme === 'dark' ? (
         <SunIcon className="h-5 w-5" />

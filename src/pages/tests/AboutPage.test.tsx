@@ -49,7 +49,8 @@ describe('AboutPage', () => {
       expect(occurrences.length).toBeGreaterThanOrEqual(1);
     }
 
-    const stackHeading = screen.getByText(/stack/i);
+    const stackHeading = screen.getByRole('heading', { name: /stack/i });
+    expect(stackHeading).toBeInTheDocument();
     const stackSection = stackHeading.closest('div');
     expect(stackSection).toBeTruthy();
 

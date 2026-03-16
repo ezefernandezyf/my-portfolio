@@ -41,7 +41,7 @@ export const ProjectsPage = (): React.JSX.Element => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={t('search.placeholder')}
-            className="input input-sm flex-1"
+            className="input input-sm input-minimal input-outline flex-1"
             aria-label={t('search.ariaLabel')}
           />
         </div>
@@ -54,7 +54,10 @@ export const ProjectsPage = (): React.JSX.Element => {
 
         {visibleCount < filtered.length && (
           <div className="mt-6 text-center">
-            <button onClick={() => setVisibleCount((c) => c + 9)} className="btn btn-outline">
+            <button
+              onClick={() => setVisibleCount((c) => c + 9)}
+              className="btn btn-outline btn-minimal"
+            >
               {t('button.loadMore')}
             </button>
           </div>
