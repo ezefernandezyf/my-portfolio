@@ -7,8 +7,8 @@ import { useTranslation } from 'react-i18next';
 export const HomePage = (): React.JSX.Element => {
   const { t } = useTranslation(['home', 'projects']);
 
-  const featuredName = t('projects:cinelab.name');
-  const featuredShort = t('projects:cinelab.short');
+  const featuredName = t('projects:movieDashboard.name');
+  const featuredShort = t('projects:movieDashboard.short');
 
   return (
     <>
@@ -64,7 +64,7 @@ export const HomePage = (): React.JSX.Element => {
             <div className="mt-6">
               <h3 className="text-sm font-semibold mb-2">{t('stack.heading', { ns: 'home' })}</h3>
               <ul className="flex flex-wrap gap-2">
-                {['React', 'TypeScript', 'JavaScript', 'Vite', 'Testing'].map((tName) => (
+                {['React', 'TypeScript', 'JavaScript', 'Vite', 'Testing', 'Tanstack Query'].map((tName) => (
                   <li
                     key={tName}
                     className="px-3 py-1 rounded-full bg-base-200 text-sm text-muted"
@@ -97,10 +97,10 @@ export const HomePage = (): React.JSX.Element => {
               <div className="relative">
                 <ProjectCarousel
                   images={[
-                    '/projects/cinelab-1.jpg',
-                    '/projects/cinelab-2.jpg',
-                    '/projects/cinelab-3.jpg',
-                    '/projects/cinelab-4.jpg',
+                    '/projects/moviedash-1.jpg',
+                    '/projects/moviedash-2.jpg',
+                    '/projects/moviedash-3.jpg',
+                    '/projects/moviedash-4.jpg',
                   ]}
                   interval={3500}
                   autoPlay={true}
@@ -114,7 +114,7 @@ export const HomePage = (): React.JSX.Element => {
 
                 <div className="mt-3 flex items-center gap-2 text-sm">
                   <Link
-                    to="/projects#cinelab"
+                    to="/projects/movie-dashboard"
                     className="hover:text-primary hover:underline"
                     aria-label={t('featured.caseStudyLinkAria', { ns: 'home' })}
                   >
@@ -122,7 +122,7 @@ export const HomePage = (): React.JSX.Element => {
                   </Link>
 
                   <a
-                    href="https://github.com/ezefernandezyf/cinelab-react"
+                    href="https://github.com/ezefernandezyf/movie-management-dashboard"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="ml-3 not-first-of-type:text-muted hover:text-primary hover:underline"
@@ -131,7 +131,7 @@ export const HomePage = (): React.JSX.Element => {
                     {t('featured.repoBtn', { ns: 'home' })}
                   </a>
                   <a
-                    href="https://cinelab-movies.vercel.app"
+                    href="https://moviesdashboard.vercel.app/home"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="ml-3 inline-flex items-center gap-2 btn btn-outline"
@@ -145,8 +145,9 @@ export const HomePage = (): React.JSX.Element => {
                 <div className="mt-3 flex flex-wrap gap-2 text-xs text-muted">
                   <span className="px-2 py-1 rounded bg-base-200">React</span>
                   <span className="px-2 py-1 rounded bg-base-200">TypeScript</span>
-                  <span className="px-2 py-1 rounded bg-base-200">TMDB API</span>
                   <span className="px-2 py-1 rounded bg-base-200">Vite</span>
+                  <span className="px-2 py-1 rounded bg-base-200">Tanstack Query</span>
+                  <span className="px-2 py-1 rounded bg-base-200">Supabase</span>
                 </div>
               </div>
             </div>

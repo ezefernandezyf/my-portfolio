@@ -11,7 +11,7 @@ export const about = {
   categories: [
     {
       titleKey: 'aboutpage.categories.frontend',
-      items: ['React', 'TypeScript', 'JavaScript', 'Vite', 'React Router', 'HTML'],
+      items: ['React', 'TypeScript', 'JavaScript', 'Vite', 'TanStack Query', 'React Router', 'HTML'],
     },
     {
       titleKey: 'aboutpage.categories.styles',

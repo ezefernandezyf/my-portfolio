@@ -8,6 +8,7 @@ import {
   ProjectsPage,
   CineLabCaseStudy,
   PrivacyPage,
+  MovieDashboardCaseStudy,
 } from '../pages';
 
 export const AppRoutes = (): React.JSX.Element => {
@@ -19,6 +20,7 @@ export const AppRoutes = (): React.JSX.Element => {
         <Route path="about" element={<AboutPage />} />
         <Route path="projects" element={<ProjectsPage />} />
         <Route path="/projects/cinelab" element={<CineLabCaseStudy />} />
+        <Route path="/projects/movie-dashboard" element={<MovieDashboardCaseStudy />} />
         <Route path="privacy" element={<PrivacyPage />} />
         <Route path="contact" element={<ContactPage />} />
         <Route path="not-found" element={<NotFoundPage />} />

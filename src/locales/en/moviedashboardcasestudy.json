@@ -1,0 +1,98 @@
+{
+  "meta": {
+    "title": "Movie Management Dashboard"
+  },
+  "header": {
+    "title": "Movie Management Dashboard",
+    "short": "SPA dashboard for managing movie catalog. Secure CRUD, Supabase authentication, advanced React Query usage, robust forms and automated tests.",
+    "repoAria": "Repository Movie Dashboard",
+    "demoAria": "Demo Movie Dashboard",
+    "backToProjects": "← Back to Projects"
+  },
+  "stack": {
+    "heading": "Stack & Technologies",
+    "sections": {
+      "frontend": "Frontend",
+      "styles": "Styles",
+      "data": "Data & APIs",
+      "forms": "Forms",
+      "testing": "Testing",
+      "vcs": "Version control"
+    }
+  },
+  "summary": {
+    "heading": "Summary",
+    "text": "Movie Management Dashboard is a SPA for internal movie catalog management. Full CRUD, authentication for permission control and React Query for data sync. The focus was security, UX, modularity and testing."
+  },
+  "problem": {
+    "heading": "Problem solved",
+    "text": "Needed a fast, secure, easy platform for users to manage movies. Authentication and permission control were key: only the author can edit/delete own records. Efficient and scalable data handling was required."
+  },
+  "techTools": {
+    "heading": "Technologies & tools",
+    "text": "Stack chosen for speed, robustness & best practices: React + Vite, TypeScript & Tailwind for UI; Supabase for backend, React Query for fetching/caching; typed validations and tests.",
+    "list": [
+      "React + Vite (fast build, SPA architecture)",
+      "TypeScript (strict typing)",
+      "Tailwind CSS",
+      "Supabase (Auth, Row Level Security, Realtime Database)",
+      "React Query (@tanstack/react-query) for automated sync",
+      "react-hook-form + Zod for forms and validations",
+      "Vitest + React Testing Library for integrated tests"
+    ]
+  },
+  "architecture": {
+    "heading": "Architecture & decisions",
+    "text": "Modularity prioritized: custom hooks for Supabase & React Query, separation of logic: UI components, data hooks & views. Supabase RLS ensures data mutation integrity. Code is portable, easy to test & extend."
+  },
+  "implementation": {
+    "heading": "Featured implementation",
+    "hookTitle": "useMovies hook (react-query + Supabase)",
+    "hookCode": "import { useQuery, type UseQueryOptions } from '@tanstack/react-query';\nimport { getMovies } from '../services/movie.service';\nimport type { Movie, MovieQueryParams } from '../models';\nimport { movieKeys } from '../queries';\n\nexport const useMovies = (params?: MovieQueryParams, options?: UseQueryOptions<Movie[], Error>) => {\n  const queryKey = movieKeys.list(params);\n\n  const opts: UseQueryOptions<Movie[], Error> = {\n    queryKey,\n    queryFn: () => getMovies(params),\n    staleTime: 30000,\n    ...options,\n  };\n\n  return useQuery(opts);\n};",
+    "hookDescription": "This hook combines react-query and Supabase to get/sync movies. Leverages react-query cache, automatic refetch and error handling."
+  },
+  "accessibility": {
+    "heading": "Accessibility",
+    "lead": "UI components are accessible (roles, aria-labels). Keyboard navigation. Adequate contrast. Alert messages for CRUD feedback.",
+    "list": [
+      "Focus visible: clear indicators for inputs and buttons.",
+      "aria-label in buttons like 'edit'/'delete'.",
+      "Accessible alerts/messages for feedback after operations."
+    ]
+  },
+  "performance": {
+    "heading": "Performance & results",
+    "list": [
+      "Render optimization via react-query and cache.",
+      "Lazy-load components only on needed routes.",
+      "Performance tested with Lighthouse: 90+."
+    ]
+  },
+  "challenges": {
+    "heading": "Challenges & learnings",
+    "list": [
+      "Configuring RLS in Supabase for security.",
+      "Realtime data sync.",
+      "Testing state/auth/permissions in CRUD flows.",
+      "Refactored to decouple hooks & UI logic."
+    ]
+  },
+  "improvements": {
+    "heading": "What could be improved",
+    "list": [
+      "Full i18n/multi-language support.",
+      "Dashboard for more advanced permissions.",
+      "Bulk-edit/delete features.",
+      "Integration with other movie APIs."
+    ]
+  },
+  "carousel": {
+    "alt": "Movie Management Dashboard preview"
+  },
+  "labels": {
+    "year": "Year:",
+    "featured": "Featured"
+  },
+  "notFound": "Project not found",
+  "noPreview": "No preview"
+}

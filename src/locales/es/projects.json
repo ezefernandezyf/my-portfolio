@@ -20,6 +20,10 @@
     "caseStudy": "Case study"
   },
   "notFound": "Proyecto no encontrado",
+  "movieDashboard": {
+    "name": "Movie Management Dashboard",
+    "short": "Dashboard SPA para gestión de catálogo de películas. CRUD, autenticación vía Supabase, uso de React Query, formularios y tests."
+  },
   "cinelab": {
     "name": "CineLab",
     "short": "Movie Search App — búsqueda, filtros, favoritos persistentes y recomendaciones dinámicas (TMDB)."
