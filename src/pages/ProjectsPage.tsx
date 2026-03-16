@@ -46,7 +46,7 @@ export const ProjectsPage = (): React.JSX.Element => {
           />
         </div>
 
-        <section className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+        <section className="grid gap-6 grid-cols-1 sm:[grid-template-columns:repeat(auto-fit,minmax(18rem,22rem))] sm:justify-center">
           {filtered.slice(0, visibleCount).map((p) => (
             <ProjectCard key={p.id} {...p} image={p.images?.[0]} />
           ))}

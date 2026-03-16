@@ -30,6 +30,7 @@ export const ProjectCard = ({
   images = [],
   tech = [],
   year,
+  featured = false,
 }: Props) => {
   const { t } = useTranslation('projects');
 
@@ -42,9 +43,12 @@ export const ProjectCard = ({
   const projectShort = short ?? (shortKey ? t(shortKey) : '');
 
   const imgSrc = image ?? images[0];
+  const cardClass = featured
+    ? 'card-minimal group overflow-hidden transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg focus-within:-translate-y-1 focus-within:shadow-lg md:col-span-2'
+    : 'card-minimal group overflow-hidden transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg focus-within:-translate-y-1 focus-within:shadow-lg';
 
   return (
-    <article className="group rounded-lg overflow-hidden border bg-base-100 transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg focus-within:-translate-y-1 focus-within:shadow-lg">
+    <article className={cardClass}>
       <div className="w-full aspect-video bg-base-200">
         {imgSrc ? (
           <img

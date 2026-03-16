@@ -130,6 +130,66 @@ body {
   margin-right: auto;
 }
 
+/* Molecular UI layer */
+.card-minimal {
+  border-radius: var(--radius-minimal);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  box-shadow: 0 1px 3px rgba(2, 6, 23, 0.08);
+}
+
+.control-cluster {
+  border-radius: var(--radius-minimal);
+  padding: var(--spacing-1);
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+}
+
+.control-button {
+  min-height: var(--spacing-8);
+}
+
+.carousel-control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-8);
+  height: var(--spacing-8);
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+  color: var(--color-text);
+  transition:
+    background-color var(--transition-fast) ease,
+    border-color var(--transition-fast) ease,
+    transform var(--transition-fast) ease;
+}
+.carousel-control:hover {
+  background: color-mix(in srgb, var(--color-surface) 78%, var(--color-accent) 22%);
+  border-color: color-mix(in srgb, var(--color-border) 65%, var(--color-accent) 35%);
+}
+.carousel-control:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-primary) 60%, transparent);
+  outline-offset: 2px;
+}
+
+.carousel-dot {
+  width: var(--spacing-2);
+  height: var(--spacing-2);
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--color-border) 85%, transparent);
+  background: color-mix(in srgb, var(--color-muted) 28%, transparent);
+  transition:
+    background-color var(--transition-fast) ease,
+    transform var(--transition-fast) ease,
+    border-color var(--transition-fast) ease;
+}
+.carousel-dot.is-active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  transform: scale(1.05);
+}
+
 /* Atomic UI layer: buttons, chips, badges, inputs */
 .btn.btn-minimal {
   border-radius: var(--radius-minimal);
