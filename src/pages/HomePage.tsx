@@ -7,8 +7,8 @@ import { useTranslation } from 'react-i18next';
 export const HomePage = (): React.JSX.Element => {
   const { t } = useTranslation(['home', 'projects']);
 
-  const featuredName = t('projects:movieDashboard.name');
-  const featuredShort = t('projects:movieDashboard.short');
+  const featuredName = t('projects:movie-dashboard.name');
+  const featuredShort = t('projects:movie-dashboard.short');
 
   return (
     <>

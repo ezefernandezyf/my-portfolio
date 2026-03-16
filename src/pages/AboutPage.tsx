@@ -79,48 +79,50 @@ export const AboutPage = (): React.JSX.Element => {
 
             <section>
               <h3 className="text-lg font-semibold">{t('projects.title')}</h3>
-              <ol className="mt-4 space-y-4 rounded-lg bg-base-100 border border-base-200 p-4">
+              <ol className="mt-4 space-y-4">
                 {projects.map((p) => (
-                  <li key={p.id}>
-                    <strong>{t(`projects.${p.id}.name`)}</strong> — {t(`projects.${p.id}.short`)}
-                    <div className="text-sm mt-1">
-                      <div className="text-purple-400">
-                        <a
-                          href={p.repo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="hover:underline hover:text-gray-400"
-                          aria-label={t('projects.links.repo')}
-                        >
-                          {t('projects.links.repo')}
-                        </a>
-                        {' · '}
-                        <a
-                          href={p.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="hover:underline hover:text-gray-400"
-                          aria-label={t('projects.links.demo')}
-                        >
-                          {t('projects.links.demo')}
-                        </a>
-                        {' · '}
-                        <Link to={`/projects/${p.id}`} className="hover:underline hover:text-gray-400">
-                          {t('projects.links.caseStudy')}
-                        </Link>
+                  <div className='bg-base-100 rounded-lg border border-base-200 p-4'>
+                    <li key={p.id}>
+                      <strong>{t(`projects.${p.id}.name`)}</strong> — {t(`projects.${p.id}.short`)}
+                      <div className="text-sm mt-1">
+                        <div className="text-purple-400">
+                          <a
+                            href={p.repo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:underline hover:text-gray-400"
+                            aria-label={t('projects.links.repo')}
+                          >
+                            {t('projects.links.repo')}
+                          </a>
+                          {' · '}
+                          <a
+                            href={p.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:underline hover:text-gray-400"
+                            aria-label={t('projects.links.demo')}
+                          >
+                            {t('projects.links.demo')}
+                          </a>
+                          {' · '}
+                          <Link to={`/projects/${p.id}`} className="hover:underline hover:text-gray-400">
+                            {t('projects.links.caseStudy')}
+                          </Link>
+                        </div>
+                        <div className="mt-1 text-muted">
+                          <em>{t('projects.learnedLabel')}</em> {t(`projects.${p.id}.whatILearned`)}
+                        </div>
+                        <div className="mt-2 text-xs flex flex-wrap gap-2 text-muted">
+                          {p.tech.map((tName) => (
+                            <span key={tName} className="chip chip-outline">
+                              {tName}
+                            </span>
+                          ))}
+                        </div>
                       </div>
-                      <div className="mt-1 text-muted">
-                        <em>{t('projects.learnedLabel')}</em> {t(`projects.${p.id}.whatILearned`)}
-                      </div>
-                      <div className="mt-2 text-xs flex flex-wrap gap-2 text-muted">
-                        {p.tech.map((tName) => (
-                          <span key={tName} className="chip chip-outline">
-                            {tName}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </li>
+                    </li>
+                  </div>
                 ))}
               </ol>
             </section>

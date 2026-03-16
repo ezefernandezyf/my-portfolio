@@ -18,6 +18,11 @@
       "caseStudy": "Case study"
     },
     "learnedLabel": "What I learned:",
+      "movie-dashboard": {
+        "name": "Movie Management Dashboard",
+        "short": "SPA dashboard to manage movie catalog. CRUD, Supabase authentication, React Query (cache, fetching), forms and tests. Built with React, TypeScript and Vite; focus on security, UX and modular architecture.",
+        "whatILearned": "Supabase RLS configuration, react-query cache management and testing strategies for stateful CRUD apps. (Details in the case study)"
+      },
     "cinelab": {
       "name": "CineLab",
       "short": "Movie Search App — search, filters, persistent favorites and dynamic recommendations (TMDB). Built with React, TypeScript and Vite; focus on performance and UX.",

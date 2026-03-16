@@ -20,7 +20,7 @@
     "caseStudy": "Case study"
   },
   "notFound": "Proyecto no encontrado",
-  "movieDashboard": {
+  "movie-dashboard": {
     "name": "Movie Management Dashboard",
     "short": "Dashboard SPA para gestión de catálogo de películas. CRUD, autenticación vía Supabase, uso de React Query, formularios y tests."
   },

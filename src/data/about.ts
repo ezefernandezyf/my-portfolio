@@ -50,6 +50,15 @@ export const about = {
 
   projects: [
     {
+      id: 'movie-dashboard',
+      nameKey: 'movie-dashboard.name',
+      shortKey: 'movie-dashboard.short',
+      repo: 'https://github.com/ezefernandezyf/movie-management-dashboard',
+      demo: 'https://moviesdashboard.vercel.app/',
+      whatILearnedKey: 'projects.movie-dashboard.whatILearned',
+      tech: ['React', 'TypeScript', 'Tanstack Query', 'Vite', 'Supabase', 'Tailwind'],
+    },
+    {
       id: 'cinelab',
       nameKey: 'cinelab.name',
       shortKey: 'cinelab.short',

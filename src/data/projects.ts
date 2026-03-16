@@ -1,8 +1,8 @@
 export const projects = [
   {
     id: 'movie-dashboard',
-    nameKey: 'movieDashboard.name',
-    shortKey: 'movieDashboard.short',
+    nameKey: 'movie-dashboard.name',
+    shortKey: 'movie-dashboard.short',
     repo: 'https://github.com/ezefernandezyf/movie-management-dashboard',
     demo: 'https://moviesdashboard.vercel.app/',
     images: [
