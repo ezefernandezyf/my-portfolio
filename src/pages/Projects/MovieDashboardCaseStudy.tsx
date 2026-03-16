@@ -46,7 +46,7 @@ export const MovieDashboardCaseStudy = (): React.JSX.Element => {
                                 href={project.repo}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="btn btn-outline"
+                                className="btn btn-outline btn-minimal"
                                 aria-label={t('header.repoAria', { name: projectName })}
                             >
                                 {t('header.repoAria', { name: projectName })}
@@ -57,7 +57,7 @@ export const MovieDashboardCaseStudy = (): React.JSX.Element => {
                                 href={project.demo}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="btn btn-primary"
+                                className="btn btn-primary btn-minimal"
                                 aria-label={t('header.demoAria', { name: projectName })}
                             >
                                 {t('header.demoAria', { name: projectName })}
@@ -100,7 +100,7 @@ export const MovieDashboardCaseStudy = (): React.JSX.Element => {
                                     <ul className="flex flex-wrap gap-2" role="list">
                                         {sec.items.map((it) => (
                                             <li key={it}>
-                                                <span className="px-2 py-1 rounded bg-base-200 text-xs">{it}</span>
+                                                <span className="chip chip-outline">{it}</span>
                                             </li>
                                         ))}
                                     </ul>
@@ -113,7 +113,7 @@ export const MovieDashboardCaseStudy = (): React.JSX.Element => {
                             </div>
                             {project.featured && (
                                 <div className="mt-2">
-                                    <span className="badge">{t('labels.featured')}</span>
+                                    <span className="badge badge-minimal badge-primary">{t('labels.featured')}</span>
                                 </div>
                             )}
                         </div>

@@ -29,7 +29,7 @@ export const AboutPage = (): React.JSX.Element => {
                   href={cv}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-primary w-full"
+                  className="btn btn-primary btn-minimal w-full"
                   aria-label={t('hero.downloadCV')}
                 >
                   {t('hero.downloadCV')}
@@ -41,7 +41,7 @@ export const AboutPage = (): React.JSX.Element => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={t('hero.github')}
-                    className="btn btn-ghost btn-sm"
+                    className="btn btn-ghost btn-sm btn-minimal"
                   >
                     {t('hero.github')}
                   </a>
@@ -50,7 +50,7 @@ export const AboutPage = (): React.JSX.Element => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={t('hero.linkedIn')}
-                    className="btn btn-ghost btn-sm"
+                    className="btn btn-ghost btn-sm btn-minimal"
                   >
                     {t('hero.linkedIn')}
                   </a>
@@ -114,7 +114,7 @@ export const AboutPage = (): React.JSX.Element => {
                       </div>
                       <div className="mt-2 text-xs flex flex-wrap gap-2 text-muted">
                         {p.tech.map((tName) => (
-                          <span key={tName} className="px-2 py-1 rounded bg-base-200 text-xs border">
+                          <span key={tName} className="chip chip-outline">
                             {tName}
                           </span>
                         ))}

@@ -5,15 +5,19 @@ export const Footer = (): React.JSX.Element => {
   const { t } = useTranslation('footer');
 
   return (
-    <footer role="contentinfo" className="border-t border-base-200 bg-base-100 py-6">
+    <footer role="contentinfo" className="footer bg-base-100 border-t border-base-200 py-6">
       <div className="site-container flex flex-col md:flex-row items-center justify-between gap-4">
         <div>
-          <p className="text-sm text-muted">{t('copy', { year: currentYear })}</p>
+          <p className="text-base text-muted leading-6">{t('copy', { year: currentYear })}</p>
         </div>
 
         <div className="flex items-center gap-4">
-          <a href="/privacy" className="text-sm hover:text-primary" aria-label={t('privacyAria')}>
-            {t('privacy')}
+          <a
+            href="/privacy"
+            className="inline-flex items-center p-2 rounded-md hover:bg-base-200 focus:outline-none focus:ring-2 focus:ring-primary"
+            aria-label={t('privacyAria')}
+          >
+            <span className="text-base">{t('privacy')}</span>
           </a>
         </div>
       </div>

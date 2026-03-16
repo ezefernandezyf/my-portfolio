@@ -44,19 +44,19 @@ export const Header = (): React.JSX.Element => {
   };
 
   return (
-    <header className="bg-base-100 sticky top-0 z-50 border-b border-base-200">
-      <div className="site-container flex items-center justify-between h-16">
+    <header className="navbar bg-base-100 sticky top-0 z-50 border-b border-base-200">
+      <div className="site-container flex items-center justify-between h-14 md:h-16">
         <div className="flex items-center gap-3">
           <Link
             to="/"
             className="flex items-center gap-3 no-underline"
             aria-label={t('logo.ariaHome')}
           >
-            <div className="w-10 h-10 rounded-md bg-linear-to-br from-primary to-accent flex items-center justify-center text-white font-bold">
+            <div className="w-10 h-10 rounded-md bg-base-100 border border-base-200 flex items-center justify-center text-primary font-semibold">
               <span className="select-none">{t('logo.abbr')}</span>
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-lg font-semibold">{t('logo.name')}</h1>
+              <h1 className="text-base font-semibold">{t('logo.name')}</h1>
               <p className="text-xs text-muted">{t('logo.role')}</p>
             </div>
           </Link>
@@ -103,7 +103,7 @@ export const Header = (): React.JSX.Element => {
               href="/Ezequiel_Fernandez_CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-ghost"
+              className="btn btn-ghost btn-minimal"
               aria-label={t('social.downloadCvAria')}
             >
               <CvIcon className="h-5 w-5 text-base-content/90" />
@@ -120,7 +120,7 @@ export const Header = (): React.JSX.Element => {
               aria-expanded={open}
               aria-controls="mobile-drawer"
               onClick={toggle}
-              className="btn btn-ghost btn-circle"
+              className="btn btn-ghost btn-circle btn-minimal"
             >
               {open ? (
                 <XMarkIcon className="h-6 w-6" aria-hidden />
@@ -162,7 +162,7 @@ export const Header = (): React.JSX.Element => {
             <button
               onClick={close}
               aria-label={t('mobile.closeMenu')}
-              className="btn btn-ghost btn-square"
+              className="btn btn-ghost btn-square btn-minimal"
             >
               <XMarkIcon className="h-5 w-5" aria-hidden />
             </button>

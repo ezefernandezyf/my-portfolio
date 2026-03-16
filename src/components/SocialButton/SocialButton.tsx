@@ -16,7 +16,7 @@ export const SocialButton = ({
 }: Props): React.JSX.Element => {
   const isExternal = /^https?:\/\//.test(to) || to.startsWith('mailto:');
 
-  const baseClass = `btn btn-ghost btn-sm ${className}`;
+  const baseClass = `btn btn-ghost btn-sm btn-minimal control-button ${className}`;
 
   if (isExternal) {
     return (

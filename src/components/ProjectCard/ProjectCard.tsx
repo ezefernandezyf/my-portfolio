@@ -30,6 +30,7 @@ export const ProjectCard = ({
   images = [],
   tech = [],
   year,
+  featured = false,
 }: Props) => {
   const { t } = useTranslation('projects');
 
@@ -42,9 +43,12 @@ export const ProjectCard = ({
   const projectShort = short ?? (shortKey ? t(shortKey) : '');
 
   const imgSrc = image ?? images[0];
+  const cardClass = featured
+    ? 'card-minimal group overflow-hidden transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg focus-within:-translate-y-1 focus-within:shadow-lg md:col-span-2'
+    : 'card-minimal group overflow-hidden transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg focus-within:-translate-y-1 focus-within:shadow-lg';
 
   return (
-    <article className="group rounded-lg overflow-hidden border bg-base-100 transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg focus-within:-translate-y-1 focus-within:shadow-lg">
+    <article className={cardClass}>
       <div className="w-full aspect-video bg-base-200">
         {imgSrc ? (
           <img
@@ -78,12 +82,12 @@ export const ProjectCard = ({
 
         <div className="mt-3 flex flex-wrap gap-2">
           {visibleTech.map((tName) => (
-            <span key={tName} className="px-2 py-1 rounded bg-base-200 text-xs">
+            <span key={tName} className="chip chip-outline">
               {tName}
             </span>
           ))}
           {moreCount > 0 && (
-            <span className="px-2 py-1 rounded bg-base-200 text-xs">+{moreCount}</span>
+            <span className="chip chip-ghost">+{moreCount}</span>
           )}
         </div>
 
@@ -115,7 +119,7 @@ export const ProjectCard = ({
               href={demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-auto inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-base-300 hover:bg-base-300"
+              className="ml-auto inline-flex items-center gap-2 btn btn-outline btn-minimal"
             >
               {t('links.demo', { defaultValue: 'Ver demo' })}
               <ArrowTopRightOnSquareIcon className="w-4 h-4" aria-hidden />

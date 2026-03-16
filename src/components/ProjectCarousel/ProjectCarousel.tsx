@@ -97,7 +97,7 @@ export const ProjectCarousel = ({
       <button
         onClick={prev}
         aria-label="Anterior"
-        className="absolute left-2 top-1/2 -translate-y-1/2 bg-base-200/80 hover:bg-base-200 rounded-full p-2 focus:outline-none focus-visible:ring focus-visible:ring-primary"
+        className="carousel-control absolute left-2 top-1/2 -translate-y-1/2"
       >
         <ChevronLeftIcon className="w-5 h-5" aria-hidden />
       </button>
@@ -105,7 +105,7 @@ export const ProjectCarousel = ({
       <button
         onClick={next}
         aria-label="Siguiente"
-        className="absolute right-2 top-1/2 -translate-y-1/2 bg-base-200/80 hover:bg-base-200 rounded-full p-2 focus:outline-none focus-visible:ring focus-visible:ring-primary"
+        className="carousel-control absolute right-2 top-1/2 -translate-y-1/2"
       >
         <ChevronRightIcon className="w-5 h-5" aria-hidden />
       </button>
@@ -116,7 +116,7 @@ export const ProjectCarousel = ({
             key={i}
             onClick={() => setIndex(i)}
             aria-label={`Ir a imagen ${i + 1}`}
-            className={`w-2 h-2 rounded-full ${i === index ? 'bg-primary' : 'bg-base-200/60'}`}
+            className={`carousel-dot ${i === index ? 'is-active' : ''}`}
           />
         ))}
       </div>

@@ -3,38 +3,81 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-:root {
+@theme {
+  /* Spacing scale (base 4px) */
+  --spacing-1: 0.25rem; /* 4px */
+  --spacing-2: 0.5rem; /* 8px */
+  --spacing-3: 0.75rem; /* 12px */
+  --spacing-4: 1rem; /* 16px */
+  --spacing-5: 1.25rem; /* 20px */
+  --spacing-6: 1.5rem; /* 24px */
+  --spacing-7: 2rem; /* 32px */
+  --spacing-8: 2.5rem; /* 40px */
+  --spacing-9: 3rem; /* 48px */
+  --spacing-10: 3.5rem; /* 56px */
+  --spacing-11: 4rem; /* 64px */
+  --spacing-12: 4.5rem; /* 72px (optional extension) */
+
+  /* Typography tokens */
+  --font-h1-size: 2.5rem; /* 40px */
+  --font-h1-line: 3rem; /* 48px */
+  --font-h2-size: 1.75rem; /* 28px */
+  --font-h2-line: 2.25rem; /* 36px */
+  --font-body-size: 1rem; /* 16px */
+  --font-body-line: 1.5rem; /* 24px */
+
+  /* Colors (minimalist palette) */
   --color-bg: #ffffff;
   --color-surface: #f3f4f6;
   --color-text: #0f172a;
-  --color-muted: #424242;
+  --color-muted: #64748b;
   --color-primary: #6b46c1;
   --color-accent: #2563eb;
+  --color-on-primary: #ffffff;
   --color-border: rgba(2, 6, 23, 0.06);
 
+  /* DaisyUI semantic mapping (keep compatibility) */
+  --p: var(--color-primary);
+  --a: var(--color-accent);
+  --base-100: var(--color-bg);
+  --neutral: var(--color-surface);
+  --base-content: var(--color-text);
+
+  /* Radii */
+  --radius-minimal: 8px;
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
 
+  /* Layout tokens */
   --site-max-width: 1200px;
-  --container-padding: 1rem;
+  --container-padding: var(--spacing-4);
 
+  /* Transitions */
   --transition-fast: 150ms;
   --transition-medium: 250ms;
 
-  --font-sans:
-    'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  /* Font stack */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   --line-height-base: 1.45;
 }
 
+/* Dark theme variables (kept outside @theme — only custom properties inside @theme allowed) */
 .dark,
 [data-theme='dark'] {
   --color-bg: #0b1220;
-  --color-surface: #12161b;
+  --color-surface: #0f1724;
   --color-text: #e6eef8;
   --color-muted: #94a3b8;
   --color-primary: #7c3aed;
   --color-accent: #60a5fa;
+
+  /* DaisyUI mapping for dark */
+  --p: var(--color-primary);
+  --a: var(--color-accent);
+  --base-100: var(--color-bg);
+  --neutral: var(--color-surface);
+  --base-content: var(--color-text);
 }
 
 /* ===========================
@@ -73,6 +116,236 @@ body {
   margin-right: auto;
 }
 
+.grid-clean {
+  display: grid;
+  gap: var(--spacing-4);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .grid-clean {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+  /* By default make direct children span the full width so pages remain centered
+     while allowing components to opt into column spans via utility classes. */
+  .grid-clean > * {
+    grid-column: 1 / -1;
+  }
+}
+
+.container-min {
+  width: 100%;
+  max-width: 900px;
+  padding-left: var(--spacing-4);
+  padding-right: var(--spacing-4);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Molecular UI layer */
+.card-minimal {
+  border-radius: var(--radius-minimal);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  box-shadow: 0 1px 3px rgba(2, 6, 23, 0.08);
+}
+
+.control-cluster {
+  border-radius: var(--radius-minimal);
+  padding: var(--spacing-1);
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+}
+
+.control-button {
+  min-height: var(--spacing-8);
+}
+
+.carousel-control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-8);
+  height: var(--spacing-8);
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+  color: var(--color-text);
+  transition:
+    background-color var(--transition-fast) ease,
+    border-color var(--transition-fast) ease,
+    transform var(--transition-fast) ease;
+}
+.carousel-control:hover {
+  background: color-mix(in srgb, var(--color-surface) 78%, var(--color-accent) 22%);
+  border-color: color-mix(in srgb, var(--color-border) 65%, var(--color-accent) 35%);
+}
+.carousel-control:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-primary) 60%, transparent);
+  outline-offset: 2px;
+}
+
+.carousel-dot {
+  width: var(--spacing-2);
+  height: var(--spacing-2);
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--color-border) 85%, transparent);
+  background: color-mix(in srgb, var(--color-muted) 28%, transparent);
+  transition:
+    background-color var(--transition-fast) ease,
+    transform var(--transition-fast) ease,
+    border-color var(--transition-fast) ease;
+}
+.carousel-dot.is-active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  transform: scale(1.05);
+}
+
+/* Atomic UI layer: buttons, chips, badges, inputs */
+.btn.btn-minimal {
+  border-radius: var(--radius-minimal);
+  border: 1px solid var(--color-border);
+  padding-inline: var(--spacing-4);
+  min-height: calc(var(--spacing-8) + var(--spacing-1));
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: 0 1px 2px rgba(2, 6, 23, 0.08);
+  transition:
+    background-color var(--transition-fast) ease,
+    border-color var(--transition-fast) ease,
+    color var(--transition-fast) ease,
+    box-shadow var(--transition-fast) ease,
+    transform var(--transition-fast) ease;
+}
+.btn.btn-minimal:hover {
+  background-color: color-mix(in srgb, var(--color-surface) 85%, var(--color-accent) 15%);
+  border-color: color-mix(in srgb, var(--color-border) 60%, var(--color-accent) 40%);
+}
+.btn.btn-minimal:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-primary) 70%, transparent);
+  outline-offset: 2px;
+}
+.btn.btn-minimal svg {
+  flex: 0 0 auto;
+}
+
+.btn.btn-minimal.btn-primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+.btn.btn-minimal.btn-primary:hover {
+  background-color: color-mix(in srgb, var(--color-primary) 88%, black 12%);
+  border-color: color-mix(in srgb, var(--color-primary) 88%, black 12%);
+}
+
+.btn.btn-minimal.btn-ghost {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--color-text);
+  box-shadow: none;
+}
+.btn.btn-minimal.btn-ghost:hover {
+  background-color: color-mix(in srgb, var(--color-surface) 88%, var(--color-accent) 12%);
+  border-color: var(--color-border);
+}
+
+.btn.btn-minimal.btn-outline {
+  background-color: transparent;
+  border-color: color-mix(in srgb, var(--color-border) 55%, var(--color-primary) 45%);
+  color: var(--color-primary);
+  box-shadow: none;
+}
+.btn.btn-minimal.btn-outline:hover {
+  background-color: color-mix(in srgb, var(--color-primary) 12%, transparent);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-1) var(--spacing-3);
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+.chip-primary {
+  background-color: color-mix(in srgb, var(--color-primary) 20%, var(--color-bg) 80%);
+  border-color: color-mix(in srgb, var(--color-primary) 55%, var(--color-border) 45%);
+  color: var(--color-primary);
+}
+.chip-ghost {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--color-muted);
+}
+.chip-outline {
+  background-color: transparent;
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.badge,
+.badge-minimal {
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  padding: 0.125rem var(--spacing-2);
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+}
+.badge-primary {
+  background-color: color-mix(in srgb, var(--color-primary) 16%, var(--color-bg) 84%);
+  border-color: color-mix(in srgb, var(--color-primary) 60%, var(--color-border) 40%);
+  color: var(--color-primary);
+}
+.badge-ghost {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--color-muted);
+}
+.badge-outline {
+  background-color: transparent;
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.input.input-minimal,
+.textarea.input-minimal {
+  border-radius: var(--radius-minimal);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+.input.input-minimal::placeholder,
+.textarea.input-minimal::placeholder {
+  color: var(--color-muted);
+}
+.input.input-minimal:focus,
+.textarea.input-minimal:focus {
+  border-color: color-mix(in srgb, var(--color-primary) 60%, var(--color-border) 40%);
+  outline: 3px solid color-mix(in srgb, var(--color-primary) 35%, transparent);
+  outline-offset: 1px;
+}
+.input.input-minimal.input-primary,
+.textarea.input-minimal.input-primary {
+  border-color: var(--color-primary);
+}
+.input.input-minimal.input-ghost,
+.textarea.input-minimal.input-ghost {
+  background-color: transparent;
+}
+.input.input-minimal.input-outline,
+.textarea.input-minimal.input-outline {
+  background-color: transparent;
+  border-color: var(--color-border);
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -86,6 +359,31 @@ img {
   outline: 3px solid color-mix(in srgb, var(--color-primary) 70%, transparent);
   outline-offset: 3px;
   border-radius: 6px;
+}
+
+/* Explicit focus-visible ring using the --color-accent token for interactive elements */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+.btn-minimal:focus-visible,
+.control-button:focus-visible,
+.carousel-control:focus-visible,
+.input:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.project-card a:focus-visible,
+.card-minimal a:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-accent) 72%, transparent);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* Provide a clear fallback for elements that use Tailwind's ring-primary utility */
+.focus-visible\:ring-primary:focus-visible,
+.focus-visible\:ring:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
 }
 
 /* Small helpers */
