@@ -35,7 +35,7 @@ export const HomePage = (): React.JSX.Element => {
             >
               {t('hero.name', { ns: 'home' })}
             </h1>
-            <p className="mt-3 text-[16px] leading-9 text-muted max-w-xl wrap-break-word">
+            <p className="mt-3 text-[16px] leading-6 text-muted max-w-xl wrap-break-word">
               {t('hero.summary', { ns: 'home' })}
             </p>
 

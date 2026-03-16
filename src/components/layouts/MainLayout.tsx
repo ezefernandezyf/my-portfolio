@@ -2,9 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { Header } from './Header';
 import { Footer } from './Footer';
 
-interface MainLayoutProps {}
-
-export const MainLayout = (_props: MainLayoutProps): React.JSX.Element => {
+export const MainLayout = (): React.JSX.Element => {
   return (
     <div className="min-h-screen flex flex-col bg-base-100 text-base-content">
       <Header />

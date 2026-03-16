@@ -10,9 +10,7 @@ import {
 import { CvIcon, GithubIcon, LanguageSwitcher, LinkedInIcon, SocialButton, ThemeToggle } from '..';
 import { useTranslation } from 'react-i18next';
 
-interface HeaderProps {}
-
-export const Header = (_props: HeaderProps): React.JSX.Element => {
+export const Header = (): React.JSX.Element => {
   const { t } = useTranslation('header');
   const [open, setOpen] = useState(false);
   const drawerRef = useRef<HTMLDivElement | null>(null);

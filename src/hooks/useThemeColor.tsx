@@ -25,7 +25,19 @@ export function setThemeColorMeta(color: string) {
 
 export default function useThemeColor(theme: Theme) {
   useEffect(() => {
-    const color = theme === 'dark' ? '#0b1220' : '#ffffff';
+    let color = '';
+    try {
+      const doc = document.documentElement;
+      const css = getComputedStyle(doc).getPropertyValue('--color-bg');
+      if (css) color = css.trim();
+    } catch {
+      // ignore and fallback
+    }
+
+    if (!color) {
+      color = theme === 'dark' ? '#0b1220' : '#ffffff';
+    }
+
     setThemeColorMeta(color);
   }, [theme]);
 }

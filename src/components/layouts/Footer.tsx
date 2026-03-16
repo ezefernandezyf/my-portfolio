@@ -1,8 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-interface FooterProps {}
-
-export const Footer = (_props: FooterProps): React.JSX.Element => {
+export const Footer = (): React.JSX.Element => {
   const currentYear = new Date().getFullYear();
   const { t } = useTranslation('footer');
 

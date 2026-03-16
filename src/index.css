@@ -33,6 +33,7 @@
   --color-muted: #64748b;
   --color-primary: #6b46c1;
   --color-accent: #2563eb;
+  --color-on-primary: #ffffff;
   --color-border: rgba(2, 6, 23, 0.06);
 
   /* DaisyUI semantic mapping (keep compatibility) */
@@ -232,7 +233,7 @@ body {
 .btn.btn-minimal.btn-primary {
   background-color: var(--color-primary);
   border-color: var(--color-primary);
-  color: #fff;
+  color: var(--color-on-primary);
 }
 .btn.btn-minimal.btn-primary:hover {
   background-color: color-mix(in srgb, var(--color-primary) 88%, black 12%);
@@ -358,6 +359,31 @@ img {
   outline: 3px solid color-mix(in srgb, var(--color-primary) 70%, transparent);
   outline-offset: 3px;
   border-radius: 6px;
+}
+
+/* Explicit focus-visible ring using the --color-accent token for interactive elements */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+.btn-minimal:focus-visible,
+.control-button:focus-visible,
+.carousel-control:focus-visible,
+.input:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.project-card a:focus-visible,
+.card-minimal a:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-accent) 72%, transparent);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* Provide a clear fallback for elements that use Tailwind's ring-primary utility */
+.focus-visible\:ring-primary:focus-visible,
+.focus-visible\:ring:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
 }
 
 /* Small helpers */
