@@ -117,7 +117,7 @@ Fase 3 — Layouts (PR: `ui/layouts-clean`)
 
 Fase 4 — Páginas y ajuste final (PR: `ui/pages-refactor`)
 - Tareas:
-  - Adaptar `HomePage` y `ProjectsPage` a la cuadrícula limpia.
+  - Adaptar todas las pages de la carpeta `pages` a la cuadrícula limpia.
   - Revisar textos largos y tamaños responsivos.
 - Checklist PR:
   - ✅ Visual consistente con átomos y moléculas.

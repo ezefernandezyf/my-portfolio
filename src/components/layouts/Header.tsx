@@ -10,7 +10,9 @@ import {
 import { CvIcon, GithubIcon, LanguageSwitcher, LinkedInIcon, SocialButton, ThemeToggle } from '..';
 import { useTranslation } from 'react-i18next';
 
-export const Header = (): React.JSX.Element => {
+interface HeaderProps {}
+
+export const Header = (_props: HeaderProps): React.JSX.Element => {
   const { t } = useTranslation('header');
   const [open, setOpen] = useState(false);
   const drawerRef = useRef<HTMLDivElement | null>(null);
@@ -44,19 +46,19 @@ export const Header = (): React.JSX.Element => {
   };
 
   return (
-    <header className="bg-base-100 sticky top-0 z-50 border-b border-base-200">
-      <div className="site-container flex items-center justify-between h-16">
+    <header className="navbar bg-base-100 sticky top-0 z-50 border-b border-base-200">
+      <div className="site-container flex items-center justify-between h-14 md:h-16">
         <div className="flex items-center gap-3">
           <Link
             to="/"
             className="flex items-center gap-3 no-underline"
             aria-label={t('logo.ariaHome')}
           >
-            <div className="w-10 h-10 rounded-md bg-linear-to-br from-primary to-accent flex items-center justify-center text-white font-bold">
+            <div className="w-10 h-10 rounded-md bg-base-100 border border-base-200 flex items-center justify-center text-primary font-semibold">
               <span className="select-none">{t('logo.abbr')}</span>
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-lg font-semibold">{t('logo.name')}</h1>
+              <h1 className="text-base font-semibold">{t('logo.name')}</h1>
               <p className="text-xs text-muted">{t('logo.role')}</p>
             </div>
           </Link>

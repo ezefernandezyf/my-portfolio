@@ -118,7 +118,18 @@ body {
 .grid-clean {
   display: grid;
   gap: var(--spacing-4);
-  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .grid-clean {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+  /* By default make direct children span the full width so pages remain centered
+     while allowing components to opt into column spans via utility classes. */
+  .grid-clean > * {
+    grid-column: 1 / -1;
+  }
 }
 
 .container-min {
