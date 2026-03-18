@@ -52,18 +52,18 @@ export const CineLabCaseStudy = (): React.JSX.Element => {
         type="article"
       />
 
-      <main className="site-container pb-12 pt-8">
-        <header className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">{projectName}</h1>
-          <p className="text-sm text-muted max-w-3xl">{projectShort}</p>
+      <main className="site-container pb-10 pt-6 sm:pb-12 sm:pt-8 overflow-x-hidden">
+        <header className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold mb-2 leading-tight wrap-break-word">{projectName}</h1>
+          <p className="text-sm text-muted max-w-3xl leading-6 wrap-break-word">{projectShort}</p>
 
-          <div className="mt-4 flex flex-wrap items-center gap-3">
+          <div className="mt-4 flex flex-wrap items-center gap-2 sm:gap-3">
             {project.repo && (
               <a
                 href={project.repo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-outline btn-minimal"
+                className="btn btn-outline btn-minimal w-full sm:w-auto justify-center whitespace-normal wrap-break-word text-center"
                 aria-label={t('header.repoAria', { name: projectName })}
               >
                 {t('header.repoAria', { name: projectName })}
@@ -74,20 +74,20 @@ export const CineLabCaseStudy = (): React.JSX.Element => {
                 href={project.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-primary btn-minimal"
+                className="btn btn-primary btn-minimal w-full sm:w-auto justify-center whitespace-normal wrap-break-word text-center"
                 aria-label={t('header.demoAria', { name: projectName })}
               >
                 {t('header.demoAria', { name: projectName })}
               </a>
             )}
-            <Link to="/projects" className="ml-2 text-sm hover:underline">
+            <Link to="/projects" className="ml-0 sm:ml-2 text-sm hover:underline w-full sm:w-auto wrap-break-word">
               {t('header.backToProjects')}
             </Link>
           </div>
         </header>
 
-        <section className="mb-8 grid gap-6 md:grid-cols-3">
-          <div className="md:col-span-2 rounded-lg overflow-hidden border bg-base-100">
+        <section className="mb-6 sm:mb-8 grid gap-4 sm:gap-6 md:grid-cols-3">
+          <div className="md:col-span-2 rounded-lg overflow-hidden border bg-base-100 min-w-0">
             {project.images && project.images.length > 0 ? (
               <ProjectCarousel
                 images={project.images}
@@ -100,14 +100,14 @@ export const CineLabCaseStudy = (): React.JSX.Element => {
               </div>
             )}
 
-            <div className="p-4 prose max-w-none">
-              <h2 className="text-xl font-semibold">{t('summary.heading')}</h2>
-              <p className="text-sm text-muted">{t('summary.text')}</p>
+            <div className="p-3 sm:p-4 max-w-none">
+              <h2 className="text-lg sm:text-xl font-semibold wrap-break-word">{t('summary.heading')}</h2>
+              <p className="text-sm text-muted leading-6 wrap-break-word">{t('summary.text')}</p>
             </div>
           </div>
 
           <aside
-            className="rounded-lg p-4 border bg-base-100"
+            className="rounded-lg p-3 sm:p-4 border bg-base-100 min-w-0"
             aria-labelledby="stack-heading"
             data-testid="stack-aside"
           >
@@ -143,20 +143,20 @@ export const CineLabCaseStudy = (): React.JSX.Element => {
           </aside>
         </section>
 
-        <section className="space-y-8">
+        <section className="space-y-6 sm:space-y-8">
           <article>
-            <h2 className="text-2xl font-semibold mb-3">{t('summary.heading')}</h2>
-            <p className="text-sm text-muted">{t('summary.text')}</p>
+            <h2 className="text-xl sm:text-2xl font-semibold mb-3 wrap-break-word">{t('summary.heading')}</h2>
+            <p className="text-sm text-muted leading-6 wrap-break-word">{t('summary.text')}</p>
           </article>
 
           <article>
-            <h3 className="text-xl font-semibold mb-2">{t('problem.heading')}</h3>
-            <p className="text-sm text-muted">{t('problem.text')}</p>
+            <h3 className="text-lg sm:text-xl font-semibold mb-2 wrap-break-word">{t('problem.heading')}</h3>
+            <p className="text-sm text-muted leading-6 wrap-break-word">{t('problem.text')}</p>
           </article>
 
           <article>
-            <h3 className="text-xl font-semibold mb-2">{t('techTools.heading')}</h3>
-            <p className="text-sm text-muted mb-2">{t('techTools.text')}</p>
+            <h3 className="text-lg sm:text-xl font-semibold mb-2 wrap-break-word">{t('techTools.heading')}</h3>
+            <p className="text-sm text-muted mb-2 leading-6 wrap-break-word">{t('techTools.text')}</p>
 
             <ul className="list-disc list-inside text-sm text-muted">
               {(t('techTools.list', { returnObjects: true }) as string[]).map(
@@ -168,16 +168,16 @@ export const CineLabCaseStudy = (): React.JSX.Element => {
           </article>
 
           <article>
-            <h3 className="text-xl font-semibold mb-2">{t('architecture.heading')}</h3>
-            <p className="text-sm text-muted">{t('architecture.text')}</p>
+            <h3 className="text-lg sm:text-xl font-semibold mb-2 wrap-break-word">{t('architecture.heading')}</h3>
+            <p className="text-sm text-muted leading-6 wrap-break-word">{t('architecture.text')}</p>
           </article>
 
           <article>
-            <h3 className="text-xl font-semibold mb-2">{t('implementation.heading')}</h3>
+            <h3 className="text-lg sm:text-xl font-semibold mb-2 wrap-break-word">{t('implementation.heading')}</h3>
 
-            <div className="bg-base-100 border rounded-lg p-4">
+            <div className="bg-base-100 border rounded-lg p-3 sm:p-4">
               <h4 className="font-medium">{t('implementation.hookTitle')}</h4>
-              <pre className="overflow-auto text-xs bg-base-200 p-3 rounded">
+              <pre className="overflow-auto max-w-full text-[11px] sm:text-xs bg-base-200 p-2 sm:p-3 rounded whitespace-pre-wrap wrap-break-word">
                 {`export const useApi = (url: string) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -194,13 +194,13 @@ export const CineLabCaseStudy = (): React.JSX.Element => {
   return { data, loading };
 };`}
               </pre>
-              <p className="text-sm text-muted">{t('implementation.hookDescription')}</p>
+              <p className="text-sm text-muted leading-6 wrap-break-word">{t('implementation.hookDescription')}</p>
             </div>
           </article>
 
           <article>
-            <h3 className="text-xl font-semibold mb-2">{t('accessibility.heading')}</h3>
-            <p className="text-sm text-muted">{t('accessibility.lead')}</p>
+            <h3 className="text-lg sm:text-xl font-semibold mb-2 wrap-break-word">{t('accessibility.heading')}</h3>
+            <p className="text-sm text-muted leading-6 wrap-break-word">{t('accessibility.lead')}</p>
             <ul className="list-disc list-inside text-sm text-muted">
               {(t('accessibility.list', { returnObjects: true }) as string[]).map(
                 (li: string, idx: number) => (
@@ -211,7 +211,7 @@ export const CineLabCaseStudy = (): React.JSX.Element => {
           </article>
 
           <article>
-            <h3 className="text-xl font-semibold mb-2">{t('performance.heading')}</h3>
+            <h3 className="text-lg sm:text-xl font-semibold mb-2 wrap-break-word">{t('performance.heading')}</h3>
             <ul className="list-disc list-inside text-sm text-muted">
               {(t('performance.list', { returnObjects: true }) as string[]).map(
                 (li: string, idx: number) => (
@@ -222,7 +222,7 @@ export const CineLabCaseStudy = (): React.JSX.Element => {
           </article>
 
           <article>
-            <h3 className="text-xl font-semibold mb-2">{t('challenges.heading')}</h3>
+            <h3 className="text-lg sm:text-xl font-semibold mb-2 wrap-break-word">{t('challenges.heading')}</h3>
             <ol className="list-decimal list-inside text-sm text-muted">
               {(t('challenges.list', { returnObjects: true }) as string[]).map(
                 (li: string, idx: number) => (
@@ -233,7 +233,7 @@ export const CineLabCaseStudy = (): React.JSX.Element => {
           </article>
 
           <article>
-            <h3 className="text-xl font-semibold mb-2">{t('improvements.heading')}</h3>
+            <h3 className="text-lg sm:text-xl font-semibold mb-2 wrap-break-word">{t('improvements.heading')}</h3>
             <ul className="list-disc list-inside text-sm text-muted">
               {(t('improvements.list', { returnObjects: true }) as string[]).map(
                 (li: string, idx: number) => (
