@@ -27,5 +27,9 @@
   "cinelab": {
     "name": "CineLab",
     "short": "Movie Search App — búsqueda, filtros, favoritos persistentes y recomendaciones dinámicas (TMDB)."
+  },
+  "chefcitoia": {
+    "name": "ChefcitoIA",
+    "short": "Generador de recetas con IA que convierte ingredientes y restricciones en ideas de comidas útiles."
   }
 }

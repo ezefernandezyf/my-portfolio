@@ -44,7 +44,9 @@ export const Header = (): React.JSX.Element => {
   };
 
   return (
-    <header className="navbar bg-base-100 sticky top-0 z-50 border-b border-base-200">
+    <header
+      className="sticky top-0 z-50 border-b border-slate-200/80 bg-slate-50/92 shadow-[0_10px_30px_rgba(15,23,42,0.05)] dark:border-slate-700/80 dark:bg-slate-900/95"
+    >
       <div className="site-container flex items-center justify-between h-14 md:h-16">
         <div className="flex items-center gap-3">
           <Link
@@ -52,41 +54,50 @@ export const Header = (): React.JSX.Element => {
             className="flex items-center gap-3 no-underline"
             aria-label={t('logo.ariaHome')}
           >
-            <div className="w-10 h-10 rounded-md bg-base-100 border border-base-200 flex items-center justify-center text-primary font-semibold">
+            <div className="w-10 h-10 rounded-2xl bg-linear-to-br from-primary/90 to-accent/80 border border-base-200/80 ring-1 ring-white/40 flex items-center justify-center text-white font-semibold shadow-sm">
               <span className="select-none">{t('logo.abbr')}</span>
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-base font-semibold">{t('logo.name')}</h1>
-              <p className="text-xs text-muted">{t('logo.role')}</p>
+              <h1 className="text-base font-semibold tracking-tight">{t('logo.name')}</h1>
+              <p className="text-xs text-muted leading-tight">{t('logo.role')}</p>
             </div>
           </Link>
         </div>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm" aria-label={t('nav.aria')}>
+        <nav
+          className="hidden md:flex items-center gap-1 rounded-full border border-slate-200/80 bg-white/85 p-1 text-sm shadow-sm dark:border-slate-700/80 dark:bg-slate-800/90"
+          aria-label={t('nav.aria')}
+        >
           <NavLink
             to="/about"
-            className={({ isActive }) => `hover:text-primary ${isActive ? 'text-primary' : ''}`}
+            className={({ isActive }) =>
+              `rounded-full px-4 py-2 transition-all duration-200 hover:bg-base-200/80 hover:text-primary ${isActive ? 'bg-base-200 text-primary shadow-sm' : 'text-base-content/80'}`
+            }
             aria-label={t('mobile.about')}
           >
             {t('nav.about')}
           </NavLink>
           <NavLink
             to="/projects"
-            className={({ isActive }) => `hover:text-primary ${isActive ? 'text-primary' : ''}`}
+            className={({ isActive }) =>
+              `rounded-full px-4 py-2 transition-all duration-200 hover:bg-base-200/80 hover:text-primary ${isActive ? 'bg-base-200 text-primary shadow-sm' : 'text-base-content/80'}`
+            }
             aria-label={t('nav.projects')}
           >
             {t('nav.projects')}
           </NavLink>
           <NavLink
             to="/contact"
-            className={({ isActive }) => `hover:text-primary ${isActive ? 'text-primary' : ''}`}
+            className={({ isActive }) =>
+              `rounded-full px-4 py-2 transition-all duration-200 hover:bg-base-200/80 hover:text-primary ${isActive ? 'bg-base-200 text-primary shadow-sm' : 'text-base-content/80'}`
+            }
             aria-label={t('nav.contact')}
           >
             {t('nav.contact')}
           </NavLink>
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <div className="hidden sm:flex items-center gap-2">
             <SocialButton to="https://github.com/ezefernandezyf" ariaLabel={t('social.githubAria')}>
               <GithubIcon className="h-5 w-5 text-base-content/90" />
@@ -136,26 +147,26 @@ export const Header = (): React.JSX.Element => {
         id="mobile-drawer"
         ref={drawerRef}
         tabIndex={-1}
-        className={`fixed top-0 right-0 h-full w-80 max-w-full bg-base-100 shadow-lg transform transition-transform duration-300 ease-in-out z-40
+        className={`mobile-drawer-solid fixed inset-y-0 right-0 h-full w-80 max-w-full rounded-l-[1.75rem] border-l border-base-200 bg-base-100 shadow-[0_24px_80px_rgba(0,0,0,0.22)] transform transition-transform duration-300 ease-in-out z-70
           ${open ? 'translate-x-0' : 'translate-x-full'}`}
         aria-hidden={!open}
         role="dialog"
         aria-modal="true"
       >
-        <div className="pt-6 ps-4 h-full flex flex-col">
-          <div className="flex items-center justify-between mb-6">
+        <div className="pt-6 ps-4 pe-4 h-full flex flex-col">
+          <div className="flex items-center justify-between mb-6 pb-4 border-b border-base-200/70">
             <Link
               to="/"
               onClick={onLinkClick}
               className="flex items-center gap-3 no-underline"
               aria-label={t('mobile.backToHome')}
             >
-              <div className="w-10 h-10 rounded-md bg-linear-to-br from-primary to-accent flex items-center justify-center text-white font-bold">
+              <div className="w-10 h-10 rounded-2xl bg-linear-to-br from-primary/90 to-accent/80 flex items-center justify-center text-white font-bold shadow-sm ring-1 ring-white/20">
                 EZ
               </div>
               <div>
-                <h2 className="text-sm font-semibold">{t('logo.name')}</h2>
-                <p className="text-xs text-muted">{t('logo.role')}</p>
+                <h2 className="text-sm font-semibold tracking-tight">{t('logo.name')}</h2>
+                <p className="text-xs text-muted leading-tight">{t('logo.role')}</p>
               </div>
             </Link>
 
@@ -173,7 +184,7 @@ export const Header = (): React.JSX.Element => {
               to="/about"
               onClick={onLinkClick}
               className={({ isActive }) =>
-                `flex items-center gap-3 p-2 rounded-md hover:bg-base-200 transition-colors ${isActive ? 'text-primary' : ''}`
+                `flex items-center gap-3 p-3 rounded-2xl border border-transparent hover:bg-base-200/80 hover:border-base-200 transition-colors ${isActive ? 'bg-base-200 text-primary border-base-200 shadow-sm' : 'text-base-content/85'}`
               }
               aria-label={t('mobile.about')}
             >
@@ -185,7 +196,7 @@ export const Header = (): React.JSX.Element => {
               to="/projects"
               onClick={onLinkClick}
               className={({ isActive }) =>
-                `flex items-center gap-3 p-2 rounded-md hover:bg-base-200 transition-colors ${isActive ? 'text-primary' : ''}`
+                `flex items-center gap-3 p-3 rounded-2xl border border-transparent hover:bg-base-200/80 hover:border-base-200 transition-colors ${isActive ? 'bg-base-200 text-primary border-base-200 shadow-sm' : 'text-base-content/85'}`
               }
               aria-label={t('mobile.projects')}
             >
@@ -197,7 +208,7 @@ export const Header = (): React.JSX.Element => {
               to="/contact"
               onClick={onLinkClick}
               className={({ isActive }) =>
-                `flex items-center gap-3 p-2 rounded-md hover:bg-base-200 transition-colors ${isActive ? 'text-primary' : ''}`
+                `flex items-center gap-3 p-3 rounded-2xl border border-transparent hover:bg-base-200/80 hover:border-base-200 transition-colors ${isActive ? 'bg-base-200 text-primary border-base-200 shadow-sm' : 'text-base-content/85'}`
               }
               aria-label={t('mobile.contact')}
             >
@@ -242,7 +253,7 @@ export const Header = (): React.JSX.Element => {
       </div>
 
       <div
-        className={`fixed inset-0 bg-black/40 transition-opacity duration-300 z-30 ${open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        className={`fixed inset-0 bg-black/40 backdrop-blur-[1px] transition-opacity duration-300 z-60 ${open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
         onClick={close}
         aria-hidden
       />

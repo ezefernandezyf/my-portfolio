@@ -26,6 +26,7 @@ describe('Header (mobile drawer)', () => {
 
     const drawer = screen.getByRole('dialog', { hidden: true });
     expect(drawer).toHaveAttribute('aria-hidden', 'true');
+    expect(drawer).toHaveClass('bg-base-100');
 
     await userEvent.click(menuButton);
 

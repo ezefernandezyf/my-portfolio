@@ -1,4 +1,45 @@
-export const about = {
+interface AboutCategory {
+  titleKey: string;
+  items: readonly string[];
+}
+
+interface AboutAbilityGroup {
+  items: readonly string[];
+}
+
+interface AboutProject {
+  id: string;
+  nameKey: string;
+  shortKey: string;
+  repo?: string;
+  demo?: string;
+  whatILearnedKey: string;
+  tech: readonly string[];
+}
+
+interface AboutEducation {
+  titleKey: string;
+  periodKey: string;
+  bulletsKeys: readonly string[];
+}
+
+interface AboutData {
+  name: string;
+  role: string;
+  email: string;
+  github: string;
+  linkedIn: string;
+  cv: string;
+  summaryKey: string;
+  categories: readonly AboutCategory[];
+  abilities: readonly AboutAbilityGroup[];
+  abilitiesKey: string;
+  projects: readonly AboutProject[];
+  education: readonly AboutEducation[];
+  availabilityKey: string;
+}
+
+export const about: AboutData = {
   name: 'Ezequiel Fernández',
   role: 'Front-end Developer',
   email: 'ezefernandezyf@gmail.com',
@@ -67,15 +108,34 @@ export const about = {
       whatILearnedKey: 'projects.cinelab.whatILearned',
       tech: ['React', 'TypeScript', 'TMDB API', 'Vite', 'Tailwind'],
     },
+    {
+      id: 'chefcitoia',
+      nameKey: 'chefcitoia.name',
+      shortKey: 'chefcitoia.short',
+      repo: 'https://github.com/ezefernandezyf/ia-recipe-generator',
+      demo: 'https://chefcitoia.vercel.app',
+      whatILearnedKey: 'projects.chefcitoia.whatILearned',
+      tech: ['React', 'TypeScript', 'Zod', 'Vite', 'Tailwind'],
+    },
   ],
 
   education: [
     {
       titleKey: 'aboutpage.education.0.title',
-      period: '2025 - presente',
+      periodKey: 'education.0.period',
+      bulletsKeys: [],
+    },
+    {
+      titleKey: 'aboutpage.education.1.title',
+      periodKey: 'education.1.period',
+      bulletsKeys: [],
+    },
+    {
+      titleKey: 'aboutpage.education.2.title',
+      periodKey: 'education.2.period',
       bulletsKeys: [],
     },
   ],
 
   availabilityKey: 'aboutpage.availability',
-} as const;
+};

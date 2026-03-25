@@ -8,7 +8,7 @@ Portfolio personal de Ezequiel Fernández — Front-end Developer.
 
 ## Resumen
 
-Proyecto construido con Vite + React. Incluye páginas principales (Home, About, Projects, Contact, Privacy) y soporte completo de internacionalización (i18n, ES/EN). Tests con Vitest + React Testing Library.
+Proyecto construido con Vite + React. Incluye páginas principales (Home, About, Projects, Contact, Privacy), case studies por proyecto y soporte completo de internacionalización (i18n, ES/EN). Tests con Vitest + React Testing Library.
 
 ## Tecnologías
 
@@ -30,6 +30,14 @@ Proyecto construido con Vite + React. Incluye páginas principales (Home, About,
 - src/data — contenidos y referencias (ids / keys)
 - src/setupTests.ts — mock de i18n y configuración de tests
 
+## Proyectos destacados
+
+- Movie Management Dashboard
+- CineLab
+- ChefcitoIA
+
+Los assets del portfolio viven en `public/projects/` y los case studies usan rutas dedicadas por proyecto.
+
 ## Capturas
 
 ### Vista Desktop (Home)
@@ -37,6 +45,9 @@ Proyecto construido con Vite + React. Incluye páginas principales (Home, About,
 
 ### Case study: CineLab
 ![CineLab case study — detalles del proyecto](/public/screenshots/screenshot-project-cinelab.png)
+
+### Case study: ChefcitoIA
+![ChefcitoIA case study — vista del generador de recetas](/public/projects/chefcitoia-1.jpg)
 
 ### Formulario de contacto (Mobile)
 ![Formulario de contacto — vista móvil](/public/screenshots/screenshot-contact-mobile.png)

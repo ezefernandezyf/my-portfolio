@@ -32,6 +32,9 @@ import esCineLab from './locales/es/cinelabcasestudy.json';
 import enMovieDashboard from './locales/en/moviedashboardcasestudy.json';
 import esMovieDashboard from './locales/es/moviedashboardcasestudy.json';
 
+import enChefcitoIA from './locales/en/chefcitoiacasestudy.json';
+import esChefcitoIA from './locales/es/chefcitoiacasestudy.json';
+
 import enPrivacy from './locales/en/privacy.json';
 import esPrivacy from './locales/es/privacy.json';
 
@@ -47,7 +50,8 @@ const resources = {
     footer: enFooter,
     cinelabcasestudy: enCineLab,
     privacy: enPrivacy,
-    moviedashboardcasestudy: enMovieDashboard
+    moviedashboardcasestudy: enMovieDashboard,
+    chefcitoiacasestudy: enChefcitoIA,
   },
   es: {
     common: esCommon,
@@ -61,6 +65,7 @@ const resources = {
     cinelabcasestudy: esCineLab,
     privacy: esPrivacy,
     moviedashboardcasestudy: esMovieDashboard,
+    chefcitoiacasestudy: esChefcitoIA,
   },
 };
 
@@ -81,6 +86,7 @@ i18n
       'footer',
       'cinelabcasestudy',
       'privacy',
+      'chefcitoiacasestudy',
     ],
     defaultNS: 'common',
     debug: false,

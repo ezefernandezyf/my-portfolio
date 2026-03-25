@@ -44,8 +44,8 @@ export const ProjectCard = ({
 
   const imgSrc = image ?? images[0];
   const cardClass = featured
-    ? 'card-minimal group overflow-hidden transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg focus-within:-translate-y-1 focus-within:shadow-lg md:col-span-2'
-    : 'card-minimal group overflow-hidden transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg focus-within:-translate-y-1 focus-within:shadow-lg';
+    ? 'card-minimal group overflow-hidden transition-all duration-300 transform-gpu hover:-translate-y-1 hover:shadow-xl focus-within:-translate-y-1 focus-within:shadow-xl md:col-span-2'
+    : 'card-minimal group overflow-hidden transition-all duration-300 transform-gpu hover:-translate-y-1 hover:shadow-xl focus-within:-translate-y-1 focus-within:shadow-xl';
 
   return (
     <article className={cardClass}>
@@ -55,7 +55,7 @@ export const ProjectCard = ({
             src={imgSrc}
             alt={`${projectName} preview`}
             loading="lazy"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-sm text-muted">
@@ -64,19 +64,20 @@ export const ProjectCard = ({
         )}
       </div>
 
-      <div className="p-4">
+      <div className="p-5">
         <div className="flex items-start justify-between gap-3">
           <Link
             to={`/projects/${id}`}
             className="block text-left focus:outline-none focus-visible:ring focus-visible:ring-primary"
             aria-label={`${t('links.caseStudy', { defaultValue: 'Ver case study' })} ${projectName}`}
           >
-            <h3 className="font-semibold text-lg">{projectName}</h3>
+            <h3 className="font-semibold text-lg leading-snug">{projectName}</h3>
             {year && <div className="text-xs text-muted">{year}</div>}
           </Link>
+          {featured && <span className="badge badge-primary badge-minimal shrink-0">{t('featured', { defaultValue: 'Featured' })}</span>}
         </div>
 
-        <p className="text-sm text-muted mt-2 max-h-14 overflow-hidden" aria-hidden>
+        <p className="text-sm text-muted mt-3 max-h-14 overflow-hidden" aria-hidden>
           {projectShort}
         </p>
 
@@ -94,7 +95,7 @@ export const ProjectCard = ({
         <div className="mt-4 flex items-center gap-3 text-sm">
           <Link
             to={`/projects/${id}`}
-            className="hover:text-primary hover:underline"
+            className="hover:text-primary hover:underline underline-offset-4"
             aria-label={`${t('links.caseStudy', { defaultValue: 'Ver case study' })} ${projectName}`}
           >
             {t('links.caseStudy', { defaultValue: 'Ver case study' })}
@@ -107,7 +108,7 @@ export const ProjectCard = ({
               href={repo}
               target="_blank"
               rel="noopener noreferrer"
-              className=" hover:text-primary hover:underline"
+              className="hover:text-primary hover:underline underline-offset-4"
             >
               {t('links.repo', { defaultValue: 'Ver repo' })}
             </a>

@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "title": "IA Recipe Generator"
+  },
+  "header": {
+    "title": "IA Recipe Generator",
+    "short": "Generador de recetas basado en IA: ingresa ingredientes y preferencias y recibe recetas tipadas con macros, tiempos y dificultad.",
+    "repoAria": "Repositorio IA Recipe Generator",
+    "demoAria": "Demo IA Recipe Generator",
+    "backToProjects": "← Volver a Proyectos"
+  },
+  "stack": {
+    "heading": "Stack & Tecnologías",
+    "sections": {
+      "frontend": "Frontend",
+      "styles": "Estilos",
+      "data": "Datos & APIs",
+      "forms": "Formularios",
+      "testing": "Testing",
+      "vcs": "Control de versiones"
+    }
+  },
+  "summary": {
+    "heading": "Resumen",
+    "text": "IA Recipe Generator (ChefcitoIA) es una SPA que genera recetas personalizadas a partir de ingredientes y preferencias del usuario. La app valida entradas, orquesta llamadas a proveedores de IA mediante rutas internas y mapea la respuesta a un modelo tipado seguro para consumo en UI."
+  },
+  "problem": {
+    "heading": "Problema que resuelve",
+    "text": "Muchos usuarios no saben cómo combinar ingredientes disponibles o adaptar recetas a restricciones (dietas, porciones). La herramienta busca transformar entradas simples en recetas prácticas, claras y seguras, evitando confiar directamente en la salida cruda de modelos generativos."
+  },
+  "techTools": {
+    "heading": "Tecnologías y herramientas",
+    "text": "Stack elegido para rapidez de desarrollo y confianza en producción: React 19 + Vite, TypeScript y Tailwind para UI; Zod para validaciones tipadas; Vitest para tests. Las llamadas a IA se orquestan desde rutas internas expuestas por el dev server.",
+    "list": [
+      "React 19 + Vite 5 (SPA, HMR, build rápido)",
+      "TypeScript para seguridad de tipos",
+      "Tailwind CSS 4 para estilos utilitarios",
+      "Zod para validaciones tipadas de inputs",
+      "Fetch + AbortController para manejo de requests y cancelación",
+      "Servicios internos /api/recipe-generator que delegan a proveedores de IA",
+      "Vitest + Testing Library para pruebas unitarias e integración"
+    ]
+  },
+  "architecture": {
+    "heading": "Arquitectura y decisiones",
+    "text": "Se siguió feature-folder pattern: componentes, model y services agrupados por feature. Las rutas internas (/api/recipe-generator/*) permiten que la UI funcione en dev sin backend adicional. Se implementó un mapper robusto (recipeMapper) para validar y normalizar la respuesta de la IA antes de mostrarla."
+  },
+  "implementation": {
+    "heading": "Implementación destacada",
+    "hookTitle": "generateRecipe (cliente hacia /api/recipe-generator)",
+    "hookCode": "const AI_SERVICE_BASE_URL = '/api/recipe-generator';\n\nconst requestJson = async <T>(input: RequestInfo | URL, init?: RequestInit): Promise<T> => {\n  const response = typeof init === 'undefined' ? await fetch(input) : await fetch(input, init);\n  if (!response.ok) throw new Error('Recipe service is unavailable right now.');\n  return (await response.json()) as T;\n};\n\nexport const generateRecipe = async (\n  request: { ingredients: Ingredient[]; servings?: number; notes?: string },\n  options?: { signal?: AbortSignal }\n) => {\n  const response = await requestJson<{ recipe: unknown }>(\n    `${AI_SERVICE_BASE_URL}/generate`,\n    {\n      method: 'POST',\n      headers: { 'Content-Type': 'application/json' },\n      body: JSON.stringify(request),\n      signal: options?.signal,\n    }\n  );\n\n  return mapApiRecipeToDomain(response.recipe);\n};",
+    "hookDescription": "Cliente ligero que envía el request al endpoint interno y delega el mapeo de la respuesta al mapper (mapApiRecipeToDomain) para asegurar un dominio tipado y manejo seguro de payloads generativos."
+  },
+  "accessibility": {
+    "heading": "Accesibilidad",
+    "lead": "La interfaz prioriza controles accesibles, navegación por teclado y mensajes claros para estados (loading/error).",
+    "list": [
+      "Controles formularios con etiquetas y aria-attributes apropiados.",
+      "Mensajes de error y estado accesibles (alert roles) para operaciones de generación.",
+      "Keyboard-first: foco visible y navegabilidad completa."
+    ]
+  },
+  "performance": {
+    "heading": "Performance y resultados",
+    "list": [
+      "Cancelación de peticiones previas con AbortController para evitar trabajo innecesario.",
+      "Render optimizado: separar panel de entrada y resultado para evitar re-renders caros.",
+      "Build optimizado con Vite; preview en producción en Vercel."
+    ]
+  },
+  "challenges": {
+    "heading": "Retos y aprendizajes",
+    "list": [
+      "Validar y normalizar respuestas de modelos generativos (payloads inconsistentes).",
+      "Evitar race conditions entre solicitudes de generación — se usó combinación AbortController + requestSequenceRef.",
+      "Balance UX/validación: evitar bloquear al usuario sin feedback claro."
+    ]
+  },
+  "improvements": {
+    "heading": "Qué mejoraría",
+    "list": [
+      "Historial local y guardado de recetas generadas (caching).",
+      "Instrumentar métricas de coste/latencia por proveedor de IA.",
+      "Agregar E2E tests para el flujo completo (Playwright).",
+      "Internacionalización (i18n) para ampliar audiencia."
+    ]
+  },
+  "carousel": {
+    "alt": "IA Recipe Generator preview"
+  },
+  "labels": {
+    "year": "Año:",
+    "featured": "Destacado"
+  },
+  "notFound": "Proyecto no encontrado",
+  "noPreview": "Sin preview disponible"
+}

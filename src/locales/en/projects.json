@@ -27,5 +27,9 @@
   "cinelab": {
     "name": "CineLab",
     "short": "Movie Search App — search, filters, persistent favorites and dynamic recommendations (TMDB)."
+  },
+  "chefcitoia": {
+    "name": "ChefcitoIA",
+    "short": "AI recipe generator that turns ingredients and constraints into practical meal ideas."
   }
 }

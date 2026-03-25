@@ -74,5 +74,18 @@ describe('AboutPage', () => {
       .getAllByRole('link')
       .find((l) => (l.getAttribute('href') || '').includes('/projects/cinelab'));
     expect(caseStudyLink).toBeDefined();
+
+    const chefcitoiaRepo = screen
+      .getAllByRole('link')
+      .find((l) => l.getAttribute('href') === 'https://github.com/ezefernandezyf/ia-recipe-generator');
+    expect(chefcitoiaRepo).toBeDefined();
+
+    const chefcitoiaDemo = screen
+      .getAllByRole('link')
+      .find((l) => l.getAttribute('href') === 'https://chefcitoia.vercel.app');
+    expect(chefcitoiaDemo).toBeDefined();
+
+    expect(screen.getByRole('heading', { name: /certificado profesional en ciberseguridad/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /desarrollo con ia: de 0 a producción/i })).toBeInTheDocument();
   });
 });

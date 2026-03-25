@@ -68,7 +68,7 @@ export const ProjectCarousel = ({
       aria-roledescription="carousel"
       aria-label={`${alt} carousel`}
     >
-      <div className="overflow-hidden rounded-t-md">
+      <div className="overflow-hidden rounded-t-lg">
         <div
           className="flex transition-transform duration-500 ease-in-out will-change-transform"
           style={{
