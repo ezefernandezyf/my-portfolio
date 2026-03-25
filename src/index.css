@@ -97,6 +97,7 @@ body {
   margin: 0;
   font-family: var(--font-sans);
   line-height: var(--line-height-base);
+  overflow-x: hidden;
   background-color: var(--color-bg);
   background-image:
     radial-gradient(circle at top left, color-mix(in srgb, var(--color-primary) 10%, transparent) 0, transparent 34%),

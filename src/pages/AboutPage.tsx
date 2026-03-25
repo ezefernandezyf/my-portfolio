@@ -81,69 +81,72 @@ export const AboutPage = (): React.JSX.Element => {
               <h3 className="text-lg font-semibold">{t('projects.title')}</h3>
               <ol className="mt-4 space-y-4">
                 {projects.map((p) => (
-                  <div className='bg-base-100 rounded-lg border border-base-200 p-4'>
-                    <li key={p.id}>
-                      <strong>{t(`projects.${p.id}.name`)}</strong> — {t(`projects.${p.id}.short`)}
-                      <div className="text-sm mt-1">
-                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-primary">
-                          {p.repo && (
-                            <a
-                              href={p.repo}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="hover:underline hover:text-primary/80"
-                              aria-label={t('projects.links.repo')}
-                            >
-                              {t('projects.links.repo')}
-                            </a>
-                          )}
-                          {p.repo && p.demo && <span aria-hidden className="text-muted">·</span>}
-                          {p.demo && (
-                            <a
-                              href={p.demo}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="hover:underline hover:text-primary/80"
-                              aria-label={t('projects.links.demo')}
-                            >
-                              {t('projects.links.demo')}
-                            </a>
-                          )}
-                          {(p.repo || p.demo) && <span aria-hidden className="text-muted">·</span>}
-                          <Link to={`/projects/${p.id}`} className="hover:underline hover:text-primary/80">
-                            {t('projects.links.caseStudy')}
-                          </Link>
-                        </div>
-                        <div className="mt-1 text-muted">
-                          <em>{t('projects.learnedLabel')}</em> {t(`projects.${p.id}.whatILearned`)}
-                        </div>
-                        <div className="mt-2 text-xs flex flex-wrap gap-2 text-muted">
-                          {p.tech.map((tName) => (
-                            <span key={tName} className="chip chip-outline">
-                              {tName}
-                            </span>
-                          ))}
-                        </div>
+                  <li key={p.id} className="bg-base-100 rounded-lg border border-base-200 p-4">
+                    <strong>{t(`projects.${p.id}.name`)}</strong> — {t(`projects.${p.id}.short`)}
+                    <div className="text-sm mt-1">
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-primary">
+                        {p.repo && (
+                          <a
+                            href={p.repo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:underline hover:text-primary/80"
+                            aria-label={t('projects.links.repo')}
+                          >
+                            {t('projects.links.repo')}
+                          </a>
+                        )}
+                        {p.repo && p.demo && <span aria-hidden className="text-muted">·</span>}
+                        {p.demo && (
+                          <a
+                            href={p.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:underline hover:text-primary/80"
+                            aria-label={t('projects.links.demo')}
+                          >
+                            {t('projects.links.demo')}
+                          </a>
+                        )}
+                        {(p.repo || p.demo) && <span aria-hidden className="text-muted">·</span>}
+                        <Link to={`/projects/${p.id}`} className="hover:underline hover:text-primary/80">
+                          {t('projects.links.caseStudy')}
+                        </Link>
                       </div>
-                    </li>
-                  </div>
+                      <div className="mt-1 text-muted">
+                        <em>{t('projects.learnedLabel')}</em> {t(`projects.${p.id}.whatILearned`)}
+                      </div>
+                      <div className="mt-2 text-xs flex flex-wrap gap-2 text-muted">
+                        {p.tech.map((tName) => (
+                          <span key={tName} className="chip chip-outline">
+                            {tName}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </li>
                 ))}
               </ol>
             </section>
 
             <section>
               <h3 className="text-lg font-semibold">{t('education.title')}</h3>
-              <div className="mt-3 space-y-4 rounded-lg bg-base-100 border border-base-200 p-4">
+              <div className="mt-4 grid gap-5 md:grid-cols-3 auto-rows-fr">
                 {education.map((e, idx) => (
-                  <div key={idx}>
-                    <div className="font-semibold">{t(`education.${idx}.title`)}</div>
-                    <div className="text-sm text-muted">{e.period}</div>
-                    <ul className="mt-2 list-disc list-inside text-sm text-muted">
-                      {e.bulletsKeys?.map((bk, i) => (
-                        <li key={i}>{t(bk)}</li>
-                      ))}
-                    </ul>
-                  </div>
+                  <article
+                    key={idx}
+                    className="card-minimal flex h-full flex-col overflow-hidden transition-all duration-300 transform-gpu hover:-translate-y-1 hover:shadow-xl"
+                  >
+                    <div className="p-5 flex h-full flex-col">
+                      <h4 className="font-semibold leading-snug text-base md:text-[1.05rem]">
+                        {t(`education.${idx}.title`)}
+                      </h4>
+                      <div className="mt-3 inline-flex w-fit rounded-full border border-base-200 bg-base-200/80 px-3 py-1 text-xs font-medium text-muted">
+                        {t(e.periodKey)}
+                      </div>
+                      <div className="mt-auto h-px w-full bg-base-200/80" aria-hidden />
+                    </div>
+                  </article>
                 ))}
               </div>
             </section>

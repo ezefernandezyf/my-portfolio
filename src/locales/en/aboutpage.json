@@ -39,6 +39,19 @@
     "0": {
       "title": "Analyst in Systems - Da Vinci | First Multimedia Art School",
       "period": "2025 - present",
+      "periodLabel": "2025 - present",
+      "bullets": []
+    },
+    "1": {
+      "title": "Professional Certificate in Cybersecurity — IBM SkillsBuild",
+      "period": "2026 — present",
+      "periodLabel": "2026 — present",
+      "bullets": []
+    },
+    "2": {
+      "title": "AI Development: From 0 to Production — BIG school",
+      "period": "2026 — completed",
+      "periodLabel": "2026 — completed",
       "bullets": []
     }
   },

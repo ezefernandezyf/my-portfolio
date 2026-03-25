@@ -39,6 +39,19 @@
     "0": {
       "title": "Analista en Sistemas - Da Vinci | Primera Escuela de Arte Multimedial",
       "period": "2025 - presente",
+      "periodLabel": "2025 - presente",
+      "bullets": []
+    },
+    "1": {
+      "title": "Certificado Profesional en Ciberseguridad — IBM SkillsBuild",
+      "period": "2026 — en curso",
+      "periodLabel": "2026 — en curso",
+      "bullets": []
+    },
+    "2": {
+      "title": "Desarrollo con IA: de 0 a Producción — BIG school",
+      "period": "2026 — finalizado",
+      "periodLabel": "2026 — finalizado",
       "bullets": []
     }
   },

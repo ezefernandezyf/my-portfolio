@@ -71,8 +71,8 @@ export const about = {
       id: 'chefcitoia',
       nameKey: 'chefcitoia.name',
       shortKey: 'chefcitoia.short',
-      repo: '',
-      demo: '',
+      repo: 'https://github.com/ezefernandezyf/ia-recipe-generator',
+      demo: 'https://chefcitoia.vercel.app',
       whatILearnedKey: 'projects.chefcitoia.whatILearned',
       tech: ['React', 'TypeScript', 'Zod', 'Vite', 'Tailwind'],
     },
@@ -81,7 +81,17 @@ export const about = {
   education: [
     {
       titleKey: 'aboutpage.education.0.title',
-      period: '2025 - presente',
+      periodKey: 'education.0.period',
+      bulletsKeys: [],
+    },
+    {
+      titleKey: 'aboutpage.education.1.title',
+      periodKey: 'education.1.period',
+      bulletsKeys: [],
+    },
+    {
+      titleKey: 'aboutpage.education.2.title',
+      periodKey: 'education.2.period',
       bulletsKeys: [],
     },
   ],
