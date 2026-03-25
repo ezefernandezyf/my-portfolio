@@ -129,8 +129,8 @@ export const Header = (): React.JSX.Element => {
         id="mobile-drawer"
         ref={drawerRef}
         tabIndex={-1}
-        style={{ backgroundColor: 'var(--color-surface, #ffffff)', backgroundImage: 'none' }}
-        className={`fixed top-0 right-0 h-full w-80 max-w-full border-l border-base-200 bg-(--color-surface) shadow-[0_24px_80px_rgba(0,0,0,0.22)] transform transition-transform duration-300 ease-in-out z-40 opacity-100 backdrop-blur-0 ${
+        style={{ background: 'var(--color-surface, #ffffff)', opacity: 1 }}
+        className={`fixed top-0 right-0 h-full w-80 max-w-full border-l border-base-200 bg-base-100 shadow-[0_24px_80px_rgba(0,0,0,0.22)] transform transition-transform duration-300 ease-in-out z-40 backdrop-blur-0 ${
           open ? 'translate-x-0' : 'translate-x-full'
         }`}
         aria-hidden={!open}

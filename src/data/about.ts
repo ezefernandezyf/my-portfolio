@@ -1,4 +1,45 @@
-export const about = {
+interface AboutCategory {
+  titleKey: string;
+  items: readonly string[];
+}
+
+interface AboutAbilityGroup {
+  items: readonly string[];
+}
+
+interface AboutProject {
+  id: string;
+  nameKey: string;
+  shortKey: string;
+  repo?: string;
+  demo?: string;
+  whatILearnedKey: string;
+  tech: readonly string[];
+}
+
+interface AboutEducation {
+  titleKey: string;
+  periodKey: string;
+  bulletsKeys: readonly string[];
+}
+
+interface AboutData {
+  name: string;
+  role: string;
+  email: string;
+  github: string;
+  linkedIn: string;
+  cv: string;
+  summaryKey: string;
+  categories: readonly AboutCategory[];
+  abilities: readonly AboutAbilityGroup[];
+  abilitiesKey: string;
+  projects: readonly AboutProject[];
+  education: readonly AboutEducation[];
+  availabilityKey: string;
+}
+
+export const about: AboutData = {
   name: 'Ezequiel Fernández',
   role: 'Front-end Developer',
   email: 'ezefernandezyf@gmail.com',
@@ -97,4 +138,4 @@ export const about = {
   ],
 
   availabilityKey: 'aboutpage.availability',
-} as const;
+};
