@@ -85,28 +85,32 @@ export const AboutPage = (): React.JSX.Element => {
                     <li key={p.id}>
                       <strong>{t(`projects.${p.id}.name`)}</strong> — {t(`projects.${p.id}.short`)}
                       <div className="text-sm mt-1">
-                        <div className="text-purple-400">
-                          <a
-                            href={p.repo}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:underline hover:text-gray-400"
-                            aria-label={t('projects.links.repo')}
-                          >
-                            {t('projects.links.repo')}
-                          </a>
-                          {' · '}
-                          <a
-                            href={p.demo}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:underline hover:text-gray-400"
-                            aria-label={t('projects.links.demo')}
-                          >
-                            {t('projects.links.demo')}
-                          </a>
-                          {' · '}
-                          <Link to={`/projects/${p.id}`} className="hover:underline hover:text-gray-400">
+                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-primary">
+                          {p.repo && (
+                            <a
+                              href={p.repo}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:underline hover:text-primary/80"
+                              aria-label={t('projects.links.repo')}
+                            >
+                              {t('projects.links.repo')}
+                            </a>
+                          )}
+                          {p.repo && p.demo && <span aria-hidden className="text-muted">·</span>}
+                          {p.demo && (
+                            <a
+                              href={p.demo}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:underline hover:text-primary/80"
+                              aria-label={t('projects.links.demo')}
+                            >
+                              {t('projects.links.demo')}
+                            </a>
+                          )}
+                          {(p.repo || p.demo) && <span aria-hidden className="text-muted">·</span>}
+                          <Link to={`/projects/${p.id}`} className="hover:underline hover:text-primary/80">
                             {t('projects.links.caseStudy')}
                           </Link>
                         </div>

@@ -67,6 +67,15 @@ export const about = {
       whatILearnedKey: 'projects.cinelab.whatILearned',
       tech: ['React', 'TypeScript', 'TMDB API', 'Vite', 'Tailwind'],
     },
+    {
+      id: 'chefcitoia',
+      nameKey: 'chefcitoia.name',
+      shortKey: 'chefcitoia.short',
+      repo: '',
+      demo: '',
+      whatILearnedKey: 'projects.chefcitoia.whatILearned',
+      tech: ['React', 'TypeScript', 'Zod', 'Vite', 'Tailwind'],
+    },
   ],
 
   education: [

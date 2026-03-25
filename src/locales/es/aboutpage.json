@@ -27,6 +27,11 @@
       "name": "CineLab",
       "short": "Movie Search App — búsqueda, filtros, favoritos persistentes y recomendaciones dinámicas (TMDB). Construida con React, TypeScript y Vite; foco en rendimiento y UX.",
       "whatILearned": "Optimización de imágenes, manejo de cache, arquitectura de hooks y testing de UI. (Detalles en el case study)"
+    },
+    "chefcitoia": {
+      "name": "ChefcitoIA",
+      "short": "Generador de recetas con IA que convierte ingredientes y restricciones en ideas de comidas útiles. Construida con React, TypeScript y Vite; foco en validación y manejo confiable de requests.",
+      "whatILearned": "Validación con Zod, seguridad al mapear payloads y requests abortables para evitar resultados obsoletos. (Detalles en el case study)"
     }
   },
   "education": {
