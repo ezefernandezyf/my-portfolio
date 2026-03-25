@@ -38,23 +38,6 @@ Proyecto construido con Vite + React. Incluye páginas principales (Home, About,
 
 Los assets del portfolio viven en `public/projects/` y los case studies usan rutas dedicadas por proyecto.
 
-## Capturas
-
-### Vista Desktop (Home)
-![Home - Hero y preview de proyecto](/public/screenshots/screenshot-home-desktop.png)
-
-### Case study: CineLab
-![CineLab case study — detalles del proyecto](/public/screenshots/screenshot-project-cinelab.png)
-
-### Case study: ChefcitoIA
-![ChefcitoIA case study — vista del generador de recetas](/public/projects/chefcitoia-1.jpg)
-
-### Formulario de contacto (Mobile)
-![Formulario de contacto — vista móvil](/public/screenshots/screenshot-contact-mobile.png)
-
-### Vista Desktop (Mobile)
-![Home - Mobile](/public/screenshots/screenshot-home.png)
-
 ## Requisitos locales
 
 - Node.js >= 18 (recomendado)
