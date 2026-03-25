@@ -448,6 +448,12 @@ textarea:focus-visible,
   color: var(--color-muted);
 }
 
+#mobile-drawer.mobile-drawer-solid {
+  background-color: var(--color-surface) !important;
+  background-image: none !important;
+  opacity: 1 !important;
+}
+
 /* Line clamp util (si no usas plugin) */
 .line-clamp-3 {
   display: -webkit-box;
