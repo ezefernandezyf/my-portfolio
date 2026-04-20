@@ -5,9 +5,9 @@ import { ThemeProvider } from '../../context/ThemeProvider';
 import { MainLayout } from '../layouts/MainLayout';
 
 describe('MainLayout', () => {
-  it('renderiza header, outlet y footer', () => {
+  it('renderiza header, outlet y footer en el orden esperado', () => {
     render(
-      <MemoryRouter initialEntries={['/']}> 
+      <MemoryRouter initialEntries={['/']}>
         <ThemeProvider>
           <Routes>
             <Route element={<MainLayout />}>
@@ -21,5 +21,6 @@ describe('MainLayout', () => {
     expect(screen.getByText('Layout outlet content')).toBeInTheDocument();
     expect(screen.getByRole('banner')).toBeInTheDocument();
     expect(screen.getByRole('contentinfo')).toBeInTheDocument();
+    expect(screen.getByText('Layout outlet content').parentElement?.previousElementSibling).not.toBeNull();
   });
 });

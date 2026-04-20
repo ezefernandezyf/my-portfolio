@@ -45,33 +45,33 @@ export const Header = (): React.JSX.Element => {
 
   return (
     <header
-      className="sticky top-0 z-50 border-b border-slate-200/80 bg-slate-50/92 shadow-[0_10px_30px_rgba(15,23,42,0.05)] dark:border-slate-700/80 dark:bg-slate-900/95"
+      className="sticky top-0 z-50 border-b border-base-200/70 bg-base-100/90 backdrop-blur-md"
     >
-      <div className="site-container flex items-center justify-between h-14 md:h-16">
-        <div className="flex items-center gap-3">
+      <div className="site-container flex h-16 items-center justify-between gap-4 md:h-[4.5rem]">
+        <div className="flex items-center gap-4">
           <Link
             to="/"
             className="flex items-center gap-3 no-underline"
             aria-label={t('logo.ariaHome')}
           >
-            <div className="w-10 h-10 rounded-2xl bg-linear-to-br from-primary/90 to-accent/80 border border-base-200/80 ring-1 ring-white/40 flex items-center justify-center text-white font-semibold shadow-sm">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-base-200 bg-base-100 text-sm font-bold uppercase tracking-tight text-base-content shadow-sm">
               <span className="select-none">{t('logo.abbr')}</span>
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-base font-semibold tracking-tight">{t('logo.name')}</h1>
-              <p className="text-xs text-muted leading-tight">{t('logo.role')}</p>
+              <h1 className="text-sm font-semibold tracking-tight text-base-content">{t('logo.name')}</h1>
+              <p className="text-[11px] uppercase tracking-[0.18em] text-muted">{t('logo.role')}</p>
             </div>
           </Link>
         </div>
 
         <nav
-          className="hidden md:flex items-center gap-1 rounded-full border border-slate-200/80 bg-white/85 p-1 text-sm shadow-sm dark:border-slate-700/80 dark:bg-slate-800/90"
+          className="hidden items-center gap-6 text-sm font-semibold uppercase tracking-tight md:flex"
           aria-label={t('nav.aria')}
         >
           <NavLink
             to="/about"
             className={({ isActive }) =>
-              `rounded-full px-4 py-2 transition-all duration-200 hover:bg-base-200/80 hover:text-primary ${isActive ? 'bg-base-200 text-primary shadow-sm' : 'text-base-content/80'}`
+              `transition-colors duration-200 hover:text-primary focus-visible:outline-none focus-visible:text-primary ${isActive ? 'text-primary' : 'text-base-content/70'}`
             }
             aria-label={t('mobile.about')}
           >
@@ -80,7 +80,7 @@ export const Header = (): React.JSX.Element => {
           <NavLink
             to="/projects"
             className={({ isActive }) =>
-              `rounded-full px-4 py-2 transition-all duration-200 hover:bg-base-200/80 hover:text-primary ${isActive ? 'bg-base-200 text-primary shadow-sm' : 'text-base-content/80'}`
+              `transition-colors duration-200 hover:text-primary focus-visible:outline-none focus-visible:text-primary ${isActive ? 'text-primary' : 'text-base-content/70'}`
             }
             aria-label={t('nav.projects')}
           >
@@ -89,7 +89,7 @@ export const Header = (): React.JSX.Element => {
           <NavLink
             to="/contact"
             className={({ isActive }) =>
-              `rounded-full px-4 py-2 transition-all duration-200 hover:bg-base-200/80 hover:text-primary ${isActive ? 'bg-base-200 text-primary shadow-sm' : 'text-base-content/80'}`
+              `transition-colors duration-200 hover:text-primary focus-visible:outline-none focus-visible:text-primary ${isActive ? 'text-primary' : 'text-base-content/70'}`
             }
             aria-label={t('nav.contact')}
           >
@@ -98,7 +98,7 @@ export const Header = (): React.JSX.Element => {
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          <div className="hidden sm:flex items-center gap-2">
+          <div className="hidden items-center gap-2 sm:flex">
             <SocialButton to="https://github.com/ezefernandezyf" ariaLabel={t('social.githubAria')}>
               <GithubIcon className="h-5 w-5 text-base-content/90" />
             </SocialButton>
@@ -121,9 +121,9 @@ export const Header = (): React.JSX.Element => {
             </a>
           </div>
 
-          <ThemeToggle />
-
           <LanguageSwitcher />
+
+          <ThemeToggle />
 
           <div className="md:hidden">
             <button
@@ -132,6 +132,7 @@ export const Header = (): React.JSX.Element => {
               aria-controls="mobile-drawer"
               onClick={toggle}
               className="btn btn-ghost btn-circle btn-minimal"
+              type="button"
             >
               {open ? (
                 <XMarkIcon className="h-6 w-6" aria-hidden />
@@ -147,26 +148,26 @@ export const Header = (): React.JSX.Element => {
         id="mobile-drawer"
         ref={drawerRef}
         tabIndex={-1}
-        className={`mobile-drawer-solid fixed inset-y-0 right-0 h-full w-80 max-w-full rounded-l-[1.75rem] border-l border-base-200 bg-base-100 shadow-[0_24px_80px_rgba(0,0,0,0.22)] transform transition-transform duration-300 ease-in-out z-70
+        className={`mobile-drawer-solid fixed inset-y-0 right-0 h-full w-80 max-w-full rounded-l-[1.5rem] border-l border-base-200 bg-base-100/98 shadow-[0_24px_80px_rgba(15,23,42,0.22)] transform transition-transform duration-300 ease-in-out z-70
           ${open ? 'translate-x-0' : 'translate-x-full'}`}
         aria-hidden={!open}
         role="dialog"
         aria-modal="true"
       >
-        <div className="pt-6 ps-4 pe-4 h-full flex flex-col">
-          <div className="flex items-center justify-between mb-6 pb-4 border-b border-base-200/70">
+        <div className="flex h-full flex-col px-4 pb-4 pt-6">
+          <div className="mb-6 flex items-center justify-between border-b border-base-200/70 pb-4">
             <Link
               to="/"
               onClick={onLinkClick}
               className="flex items-center gap-3 no-underline"
               aria-label={t('mobile.backToHome')}
             >
-              <div className="w-10 h-10 rounded-2xl bg-linear-to-br from-primary/90 to-accent/80 flex items-center justify-center text-white font-bold shadow-sm ring-1 ring-white/20">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full border border-base-200 bg-base-100 text-sm font-bold uppercase tracking-tight text-base-content shadow-sm">
                 EZ
               </div>
               <div>
-                <h2 className="text-sm font-semibold tracking-tight">{t('logo.name')}</h2>
-                <p className="text-xs text-muted leading-tight">{t('logo.role')}</p>
+                <h2 className="text-sm font-semibold tracking-tight text-base-content">{t('logo.name')}</h2>
+                <p className="text-[11px] uppercase tracking-[0.18em] text-muted">{t('logo.role')}</p>
               </div>
             </Link>
 
@@ -174,6 +175,7 @@ export const Header = (): React.JSX.Element => {
               onClick={close}
               aria-label={t('mobile.closeMenu')}
               className="btn btn-ghost btn-square btn-minimal"
+              type="button"
             >
               <XMarkIcon className="h-5 w-5" aria-hidden />
             </button>
@@ -184,7 +186,7 @@ export const Header = (): React.JSX.Element => {
               to="/about"
               onClick={onLinkClick}
               className={({ isActive }) =>
-                `flex items-center gap-3 p-3 rounded-2xl border border-transparent hover:bg-base-200/80 hover:border-base-200 transition-colors ${isActive ? 'bg-base-200 text-primary border-base-200 shadow-sm' : 'text-base-content/85'}`
+                `flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 transition-colors hover:border-base-200 hover:bg-base-200/80 ${isActive ? 'border-base-200 bg-base-200 text-primary' : 'text-base-content/85'}`
               }
               aria-label={t('mobile.about')}
             >
@@ -196,7 +198,7 @@ export const Header = (): React.JSX.Element => {
               to="/projects"
               onClick={onLinkClick}
               className={({ isActive }) =>
-                `flex items-center gap-3 p-3 rounded-2xl border border-transparent hover:bg-base-200/80 hover:border-base-200 transition-colors ${isActive ? 'bg-base-200 text-primary border-base-200 shadow-sm' : 'text-base-content/85'}`
+                `flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 transition-colors hover:border-base-200 hover:bg-base-200/80 ${isActive ? 'border-base-200 bg-base-200 text-primary' : 'text-base-content/85'}`
               }
               aria-label={t('mobile.projects')}
             >
@@ -208,7 +210,7 @@ export const Header = (): React.JSX.Element => {
               to="/contact"
               onClick={onLinkClick}
               className={({ isActive }) =>
-                `flex items-center gap-3 p-3 rounded-2xl border border-transparent hover:bg-base-200/80 hover:border-base-200 transition-colors ${isActive ? 'bg-base-200 text-primary border-base-200 shadow-sm' : 'text-base-content/85'}`
+                `flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 transition-colors hover:border-base-200 hover:bg-base-200/80 ${isActive ? 'border-base-200 bg-base-200 text-primary' : 'text-base-content/85'}`
               }
               aria-label={t('mobile.contact')}
             >
@@ -217,7 +219,7 @@ export const Header = (): React.JSX.Element => {
             </NavLink>
           </nav>
 
-          <div className="mt-auto flex flex-col gap-3 mb-4 text-base-content/80">
+          <div className="mt-auto mb-4 flex flex-col gap-3 text-base-content/80">
             <div className="flex items-center gap-2">
               <SocialButton
                 to="https://github.com/ezefernandezyf"

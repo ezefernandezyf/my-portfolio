@@ -26,7 +26,7 @@ describe('Header (mobile drawer)', () => {
 
     const drawer = screen.getByRole('dialog', { hidden: true });
     expect(drawer).toHaveAttribute('aria-hidden', 'true');
-    expect(drawer).toHaveClass('bg-base-100');
+    expect(drawer).toHaveClass('mobile-drawer-solid');
 
     await userEvent.click(menuButton);
 
@@ -85,7 +85,7 @@ describe('Header (mobile drawer)', () => {
     renderHeader('/about');
 
     const aboutLink = screen.getByRole('link', { name: /acerca/i });
-    expect(aboutLink).toHaveClass('bg-base-200');
+    expect(aboutLink).toHaveAttribute('aria-current', 'page');
     expect(aboutLink).toHaveClass('text-primary');
   });
 });

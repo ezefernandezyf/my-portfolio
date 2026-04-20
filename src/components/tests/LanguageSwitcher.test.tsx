@@ -31,21 +31,22 @@ describe('LanguageSwitcher (UI)', () => {
     document.documentElement.lang = '';
   });
 
-  it('cambia la clase btn-primary al cambiar idioma (ES -> EN)', async () => {
+  it('marca el idioma activo y actualiza document.documentElement.lang', async () => {
     render(<LanguageSwitcher />);
     const user = userEvent.setup();
 
     const esBtn = screen.getByRole('button', { name: /cambiar a español/i });
     const enBtn = screen.getByRole('button', { name: /switch to english/i });
 
-    expect(esBtn).toHaveClass('btn-primary');
-    expect(enBtn).not.toHaveClass('btn-primary');
+    expect(esBtn).toHaveAttribute('aria-pressed', 'true');
+    expect(enBtn).toHaveAttribute('aria-pressed', 'false');
 
     await user.click(enBtn);
 
     await waitFor(() => {
-      expect(enBtn).toHaveClass('btn-primary');
-      expect(esBtn).not.toHaveClass('btn-primary');
+      expect(enBtn).toHaveAttribute('aria-pressed', 'true');
+      expect(esBtn).toHaveAttribute('aria-pressed', 'false');
+      expect(document.documentElement.lang).toBe('en');
     });
   });
 });

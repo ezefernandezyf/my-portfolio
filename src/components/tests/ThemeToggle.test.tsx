@@ -24,6 +24,7 @@ describe('ThemeToggle', () => {
     );
 
     const button = screen.getByRole('button', { name: /alternar tema/i });
+    expect(button).toHaveAttribute('type', 'button');
     expect(button).toHaveAttribute('title');
     expect(button.getAttribute('title')?.toLowerCase()).toContain('tema: light');
 
