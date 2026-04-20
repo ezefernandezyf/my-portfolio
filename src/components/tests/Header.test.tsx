@@ -5,9 +5,9 @@ import { ThemeProvider } from '../../context/ThemeProvider';
 import { Header } from '..';
 
 describe('Header (mobile drawer)', () => {
-  const renderHeader = () =>
+  const renderHeader = (initialEntry = '/') =>
     render(
-      <MemoryRouter>
+      <MemoryRouter initialEntries={[initialEntry]}>
         <ThemeProvider>
           <Header />
         </ThemeProvider>
@@ -79,5 +79,13 @@ describe('Header (mobile drawer)', () => {
       expect(menuButton).toHaveAttribute('aria-expanded', 'false');
       expect(document.body.style.overflow).toBe('');
     });
+  });
+
+  it('marca el enlace activo correcto cuando la ruta inicial es /about', () => {
+    renderHeader('/about');
+
+    const aboutLink = screen.getByRole('link', { name: /acerca/i });
+    expect(aboutLink).toHaveClass('bg-base-200');
+    expect(aboutLink).toHaveClass('text-primary');
   });
 });

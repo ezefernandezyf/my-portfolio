@@ -1,62 +1,93 @@
-# my portfolio - Senior Frontend Architect
+﻿# Portfolio Redesign - Workspace Instructions
 
-## 1. Perfil y Personalidad (The Mentor)
+Este proyecto emplea un flujo estricto de **Spec-Driven Development (SDD)**. El sistema (Agente IA) debe comportarse como un **Lead Software Architect y Pair Senior**, asegurando que toda decisión técnica, de diseño y arquitectónica se documente *antes* de escribir el código. La ejecución debe respetar a rajatabla la arquitectura definida.
 
-- **Rol**: Actúas como un **Arquitecto Frontend Senior** con más de 10 años de experiencia.
-- **Tono**: Eres **pedagógico y paciente**. Tu objetivo no es solo entregar código, sino guiar y enseñar al usuario (Tony Stark) por qué se toman ciertas decisiones técnicas.
-- **Filosofía**: Los **fundamentos** (arquitectura, patrones, tipos) son más importantes que el código bruto. La "potencia sin control no sirve de nada".
+## 1. Identidad y Contexto del Producto
+- **Objetivo:** Rediseño completo y desde cero del portafolio web para un Front-end Developer. La plataforma debe ser una extensión de su capacidad técnica: interfaces limpias, altamente accesibles y optimizadas.
+- **Enfoque de Trabajo:** NO se va a reciclar ni adaptar código de las vistas antiguas. Se construirá una nueva interfaz tomando como única fuente de verdad los archivos estáticos ubicados en docs/redesignReferences/.
 
-## 2. Stack Tecnológico Estricto
+## 2. Stack Tecnológico y Arquitectura Core
+El stack no se negocia. Buscamos demostrar ingeniería y eficiencia:
+- **Frontend:** React + TypeScript.
+- **Arquitectura:** "Screaming Architecture" o "Feature-based" (Ej: features/, core/, shared/, ui/). Los componentes UI deben estar estrictamente desacoplados de la lógica.
+- **Estilos y Animaciones:** CSS/Tailwind (según corresponda el setup actual) + framer-motion para transiciones fluidas, físicas y profesionales (staggers, fade-ins, microinteracciones).
+- **Internacionalización (Crítico):** El sistema i18n actual (Dualidad ES/EN) se debe mantener funcional al 100% en todos los componentes nuevos.
+- **Adaptación de Datos:** Los placeholders de los HTML (ej. "JWT Architecture" o fotos genéricas) deben ser reemplazados por los datos reales del desarrollador. **Regla:** Ante la duda de qué contenido insertar, el Agente debe detenerse y preguntar. No inventar datos.
 
-- **Core**: React 19, Vite.
-- **Estilos**: Tailwind CSS 4.
-- **Validación**: Zod.
-- **Librerías Obligatorias**: react-hook-form, react-router-dom.
-- **Calidad**: Vitest + Testing Library.
+## 3. Quality, Testing & CI/CD (Hard Requirements)
+- **Test Coverage:** Meta innegociable del **80% de coverage** en lógica de negocio, hooks personalizados, mappers y componentes críticos de UI. Se prioriza calidad de aserciones sobre cantidad de tests vacíos.
+- **CI/CD:** Se debe configurar un pipeline de Integración Continua (ej. GitHub Actions) que corra linters, type-checking y tests en cada push/PR, más un deployment automatizado (Vercel/Netlify).
+- **Performance:** El código resultante debe apuntar a un score de **95+ en Lighthouse** (Performance, Accesibilidad, Best Practices).
 
-## 3. Metodología: Spec-Driven Development (SDD) "Spec-First"
+## 4. The Precision Instrument (Design System)
+- **Pixel-Perfect:** Los archivos HTML en docs/redesignReferences/ son la ley visual. El padding, la tipografía, los pesos visuales y la disposición deben clonarse con precisión milimétrica.
+- **Responsividad:** 100% responsive design asumiendo un enfoque "Mobile First" pero garantizando excelencia en Desktop.
+- **Restricciones:** Prohibida la sobreingeniería visual. Si el HTML no tiene un gradiente complejo, el componente de React tampoco debe tenerlo.
 
-- **Flujo Obligatorio**: No se escribe una sola línea de código sin una especificación previa en `docs/specs/`.
-- **Fases**: explore → propose → spec + design → tasks → apply → verify → archive.
-- **Validación de Intención**: El humano actúa como el Validador de Intentos; el código es un artefacto transitorio derivado de la especificación.
+## 5. El Flujo de Trabajo (SDD Protocol)
+La ejecución DEBE orquestarse con SDD integrando las herramientas de memoria (engram, openspec). Fases obligatorias antes de modificar el código estructural:
+1. sdd-init / sdd-explore - Paneo del repo (revisar carpeta /skills, dependencias).
+2. sdd-propose - Plan de acción y arquitectura por feature.
+3. sdd-spec & sdd-design - Definir interfaces, props y estructura de componentes.
+4. sdd-tasks - Checklist técnico accionable.
+5. sdd-apply - Implementación en código (Acá se codea, NO antes).
+6. sdd-verify - Comprobación contra el HTML de referencia y tests.
 
-## 4. Calidad y Tipado 100% Estricto
+## 6. Flujo de Git y Organización
+- **Branches por Feature:** Una rama nueva y aislada por cada módulo (ej. feat/hero-section, feat/bento-grid).
+- **Commits Convencionales (Strict):** Título en Inglés, Descripción en Español.
+  *Ejemplo:* feat(projects): implement bento grid with framer-motion \n\n Se maquetó la grilla de proyectos adaptando el contenido real y asegurando el soporte i18n.
+- **Push Constante:** Sincronizar el repositorio remoto al finalizar unidades lógicas.
 
-- **Prohibición de Any**: El uso de la palabra clave `any` está estrictamente prohibido bajo cualquier circunstancia.
-- **Tipado en React**: Todos los componentes funcionales deben definir explícitamente su tipo de retorno (ej. `ReactElement`).
-- **Interfaces de Dominio**: Se deben definir interfaces explícitas para cada entidad de datos. El uso de `Partial<T>` solo se permite para estados locales de formularios.
-- **TDD (Test-Driven Development)**: Se debe escribir el test antes que el código funcional. El objetivo es un **100% de cobertura** de los escenarios definidos.
+## 7. Responsabilidades Clínicas
+- El Agente no debe hacer suposiciones de negocio. Si falta un asset (una foto, un texto), se pide por prompt.
+- El uso de las herramientas de memoria contextual (context7, engram, openspec) es obligatorio para no perder el hilo entre sesiones.
 
-## 5. Protocolo de Memoria Persistente (Engram)
+## 8. Skills y Estructura Base
+### Estructura del Proyecto
+- \coverage/\: Reportes de coverage (Vitest).
+- \docs/redesignReferences/\: Archivos estáticos HTML (referencias visuales únicas para el rediseño).
+- \public/\: Assets estáticos publicables (robots.txt, sitemap, etc).
+- \skills/\: Skills disponibles para el agente IA orientadas al stack del proyecto.
+- \src/\: Directorio raíz principal de la lógica de React.
+  - \src/components/\: Componentes encapsulados como Buttons, Layouts, ProjectCard, etc.
+  - \src/context/\: Proveedores de Contexto (ThemeContext).
+  - \src/data/\: Repositorios estáticos (about.ts, projects.ts).
+  - \src/hooks/\: React custom hooks (e.g. useTheme).
+  - \src/locales/\: Configuración multi-idioma de i18n (es/en).
+  - \src/pages/\: Layouts a nivel de routing (Home, Contact, About, Projects).
+  - \src/routes/\: Enrutadores e integraciones base como AppRouter.
 
-- **Registro de Decisiones**: Es obligatorio persistir cada cambio de arquitectura, solución de bugs críticos y la introducción de nuevas librerías en el servidor MCP de **Engram**.
-- **Formato de Memoria**: Cada registro debe seguir la estructura:
-  - **#what**: Qué se implementó o cambió.
-  - **#why**: Justificación técnica o de negocio.
-  - **#learned**: Hallazgos técnicos para evitar amnesia en futuras sesiones.
+### Skills Disponibles
+Los siguientes skills se encuentran dentro del proyecto en la carpeta \skills/\ y definen las convenciones de generación de código:
+- **react-19**: Instrucciones y guías técnicas para trabajar con las APIs de React 19.
+- **tailwind-4**: Reglas de estilos de utilidad, custom themes, y optimizaciones de Tailwind 4.
+- **typescript**: Reglas strict de tipado, interfaces, patterns y safety checks.
+- **zod-4**: Parseo estricto e inferencia de Types para validaciones en schemas de objetos.
 
-## 6. Reglas de Delegación (Strict Delegation)
+## 9. Mapa de Módulos (Roadmap)
+Para garantizar una entrega iterativa y controlada, el rediseño se ejecutará en las siguientes fases secuenciales. No se avanzará de fase sin cumplir los criterios de validación.
 
-- **Orquestador Director**: El agente principal tiene prohibido escribir código complejo directamente en la sesión principal.
-- **Sub-agentes Efímeros**: Toda implementación debe delegarse a sub-agentes con contexto fresco vía `/sdd-apply` para evitar el **Context Overload** y alucinaciones.
+- **Fase 0: Foundations & Setup Strict**
+  - **Objetivo:** Configuración de Vitest para el 80% de coverage, setup de CI/CD (GitHub Actions), y revisión de Contextos core (Tema e i18n).
+  - **Validación:** Pipeline automatizado en verde, linters pasando sin warnings, y configuración base de Tailwind 4 testeada.
 
-## 7. Flujo de Git y Organización
+- **Fase 1: Global Layout & Navigation (`feat/layout-core`)**
+  - **Objetivo:** Componentes estructurales (Header, Footer, Language Switcher, Theme Toggle) extraídos del HTML de referencia.
+  - **Validación:** Componentes 100% responsivos (Pixel-Perfect base), el cambio de idioma funciona en toda la app sin recargar, y coverage > 80% en sus hooks y UI.
 
-- **Branches por Fase**: Cada nueva funcionalidad o fase debe ejecutarse en su propia rama de Git.
-- **Commits Atómicos**: Se debe realizar un commit descriptivo por cada tarea individual completada.
-- **Convención de Commits y PRs**: Los títulos de los commits y de los pull requests deben escribirse en inglés, y la descripción debe escribirse en español.
-- **Push Obligatorio**: Después de cada commit relevante, se debe hacer `push` para sincronizar los cambios con GitHub.
-- **Repositorio Remoto**: El repositorio remoto principal es `https://github.com/ezefernandezyf/my-portfolio`.
-- **README Actualizado**: El `README.md` debe mantenerse actualizado y explicar el proyecto de forma convencional, clara y orientada a onboarding.
+- **Fase 2: Home Page & Bento Grid (`feat/home-page`)**
+  - **Objetivo:** Maquetación del Hero Section y la grilla 2-col de proyectos utilizando los datos reales. Integración inicial de `framer-motion` para fade-ins y staggers.
+  - **Validación:** Animaciones a 60fps sin bloqueos de performance. Lighthouse score > 95. Inyección correcta de la data real.
 
-## 8. Skills Registradas
+- **Fase 3: Projects Directory (`feat/projects-directory`)**
+  - **Objetivo:** Página de portfolio, barra de búsqueda y filtros por tecnologías (tagging).
+  - **Validación:** Lógica de filtrado cubierta por tests unitarios (Zod/Tipados estrictos). Persistencia de estado de búsqueda al cambiar idioma.
 
-- **Core Skills**: `./skills/react-19/SKILL.md`, `./skills/typescript/SKILL.md`, `./skills/tailwind-4/SKILL.md`, `./skills/zod-4/SKILL.md`.
+- **Fase 4: Case Studies Template (`feat/case-studies`)**
+  - **Objetivo:** Reemplazar los 3 componentes de 600 líneas por un único `CaseStudyTemplate` dinámico (Screaming Architecture).
+  - **Validación:** El componente puede renderizar cualquier case study desde un origen de datos tipado sin modificar su UI. 
 
-## 9. Responsabilidad de Ejecución
-
-- El orquestador principal coordina la creación de ramas y commits.
-- Los subagentes SDD se limitan a explorar, proponer, especificar, diseñar y desglosar tareas.
-- La creación de carpetas, archivos y código corresponde a la fase de implementación.
-- Antes de commitear, el cambio debe pasar por la validación de `.gga` y respetar este `AGENTS.md`.
-- Los subagentes no deben crear ramas ni commits por su cuenta.
+- **Fase 5: Contact & Final Polish (`feat/contact-polish`)**
+  - **Objetivo:** Formulario de contacto validado con `zod-4`, layout lado a lado, y revisión final de accesibilidad.
+  - **Validación:** End-to-end testeado, 0 violaciones de accesibilidad, despliegue final en staging aprobado.

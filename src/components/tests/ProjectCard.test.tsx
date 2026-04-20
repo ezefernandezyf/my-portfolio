@@ -39,3 +39,28 @@ it('ProjectCard muestra título, enlaces y botón demo con icono', () => {
   expect(screen.getByText('React')).toBeInTheDocument();
   expect(screen.getByText('Vite')).toBeInTheDocument();
 });
+
+it('ProjectCard cubre los fallback de imagen, featured y exceso de tech', () => {
+  render(
+    <MemoryRouter>
+      <ProjectCard
+        id="y"
+        nameKey="movie-dashboard.name"
+        shortKey="movie-dashboard.short"
+        repo={undefined}
+        demo={undefined}
+        images={[]}
+        tech={['React', 'TypeScript', 'Vite', 'Tailwind', 'Zod', 'ESLint']}
+        year={2025}
+        featured={true}
+      />
+    </MemoryRouter>,
+  );
+
+  expect(screen.getByText('Movie Management Dashboard')).toBeInTheDocument();
+  expect(screen.getByText('Proyecto no encontrado')).toBeInTheDocument();
+  expect(screen.getByText('+1')).toBeInTheDocument();
+  expect(screen.getByText('featured')).toBeInTheDocument();
+  expect(screen.queryByRole('link', { name: /ver repo/i })).not.toBeInTheDocument();
+  expect(screen.queryByRole('link', { name: /ver demo/i })).not.toBeInTheDocument();
+});

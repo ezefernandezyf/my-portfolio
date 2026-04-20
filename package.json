@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "lint": "eslint src/**/*.{ts,tsx,js,jsx} --max-warnings=0",
     "lint:fix": "eslint src/**/*.{ts,tsx,js,jsx} --fix",
+    "check": "npm run lint && npm run build && npm run test:coverage",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md,html}\"",
     "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,scss,md,html}\"",
     "test": "vitest",

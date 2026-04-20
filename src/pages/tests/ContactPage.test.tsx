@@ -5,16 +5,29 @@ import { ContactPage } from '../ContactPage';
 
 describe('ContactPage', () => {
   let fetchMock: ReturnType<typeof vi.fn>;
-
   beforeEach(() => {
     fetchMock = vi.fn();
     vi.stubGlobal('fetch', fetchMock as unknown);
+    (globalThis as { __CONTACT_FORM_ENDPOINT__?: string }).__CONTACT_FORM_ENDPOINT__ =
+      'https://api.example.com/contact';
   });
 
   afterEach(() => {
     vi.unstubAllGlobals();
     vi.restoreAllMocks();
+    delete (globalThis as { __CONTACT_FORM_ENDPOINT__?: string }).__CONTACT_FORM_ENDPOINT__;
   });
+
+  const fillValidForm = async (user: ReturnType<typeof userEvent.setup>) => {
+    await user.type(screen.getByRole('textbox', { name: /Nombre/i }), 'Ezequiel');
+    await user.type(screen.getByRole('textbox', { name: /Email/i }), 'ezefernandezyf@example.com');
+    await user.type(screen.getByRole('textbox', { name: /Asunto/i }), 'Oferta');
+    await user.type(
+      screen.getByRole('textbox', { name: /Mensaje/i }),
+      'Hola! Me interesa la posición.',
+    );
+    await user.click(screen.getByRole('checkbox', { name: /Acepto/i }));
+  };
 
   it('renderiza el formulario', () => {
     render(<ContactPage />);
@@ -55,21 +68,11 @@ describe('ContactPage', () => {
 
     render(<ContactPage />);
 
-    await user.type(screen.getByRole('textbox', { name: /Nombre/i }), 'Ezequiel');
-    await user.type(screen.getByRole('textbox', { name: /Email/i }), 'ezefernandezyf@example.com');
-    await user.type(screen.getByRole('textbox', { name: /Asunto/i }), 'Oferta');
-    await user.type(
-      screen.getByRole('textbox', { name: /Mensaje/i }),
-      'Hola! Me interesa la posición.',
-    );
-    await user.click(screen.getByRole('checkbox', { name: /Acepto/i }));
+    await fillValidForm(user);
 
     await user.click(screen.getByRole('button', { name: /Enviar mensaje/i }));
 
-    const maybe = await screen.findByText(
-      /Gracias — tu mensaje fue enviado|No está configurado el endpoint de envío/i,
-    );
-    expect(maybe).toBeInTheDocument();
+    expect(await screen.findByText(/Gracias — tu mensaje fue enviado/i)).toBeInTheDocument();
   });
 
   it('simula fallo de envío (mock) y muestra error', async () => {
@@ -83,20 +86,22 @@ describe('ContactPage', () => {
 
     render(<ContactPage />);
 
-    await user.type(screen.getByRole('textbox', { name: /Nombre/i }), 'Ezequiel');
-    await user.type(screen.getByRole('textbox', { name: /Email/i }), 'ezefernandezyf@example.com');
-    await user.type(screen.getByRole('textbox', { name: /Asunto/i }), 'Oferta');
-    await user.type(
-      screen.getByRole('textbox', { name: /Mensaje/i }),
-      'Hola! Me interesa la posición.',
-    );
-    await user.click(screen.getByRole('checkbox', { name: /Acepto/i }));
+    await fillValidForm(user);
 
     await user.click(screen.getByRole('button', { name: /Enviar mensaje/i }));
 
-    const maybeError = await screen.findByText(
-      /No está configurado el endpoint de envío|Error al enviar:|Error:/i,
-    );
-    expect(maybeError).toBeInTheDocument();
+    expect(await screen.findByText(/Error al enviar:|Error:/i)).toBeInTheDocument();
+  });
+
+  it('muestra error genérico si el submit falla con un valor no Error', async () => {
+    const user = userEvent.setup();
+    fetchMock.mockRejectedValue('boom');
+
+    render(<ContactPage />);
+    await fillValidForm(user);
+
+    await user.click(screen.getByRole('button', { name: /Enviar mensaje/i }));
+
+    expect(await screen.findByText(/No se pudo enviar el mensaje/i)).toBeInTheDocument();
   });
 });

@@ -1,5 +1,6 @@
-import { render, screen, act } from '@testing-library/react';
+import { render, screen, act, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 import { ProjectCarousel } from '../';
 
 describe('ProjectCarousel', () => {
@@ -55,5 +56,76 @@ describe('ProjectCarousel', () => {
       await userEvent.keyboard('{ArrowLeft}');
     });
     expect(screen.getByText(/imagen 1 de 2/i)).toBeInTheDocument();
+  });
+
+  it('avanza solo con autoPlay y se pausa al pasar el mouse', async () => {
+    vi.useFakeTimers();
+    const images = ['a.jpg', 'b.jpg'];
+
+    const { getByRole } = render(<ProjectCarousel images={images} alt="Auto" />);
+    expect(screen.getByText(/imagen 1 de 2/i)).toBeInTheDocument();
+
+    await act(async () => {
+      vi.advanceTimersByTime(4000);
+    });
+    expect(screen.getByText(/imagen 2 de 2/i)).toBeInTheDocument();
+
+    fireEvent.mouseEnter(getByRole('region', { name: /auto carousel/i }));
+
+    await act(async () => {
+      vi.advanceTimersByTime(4000);
+    });
+    expect(screen.getByText(/imagen 2 de 2/i)).toBeInTheDocument();
+
+    vi.useRealTimers();
+  });
+
+  it('no crea intervalo cuando hay una sola imagen', () => {
+    vi.useFakeTimers();
+
+    render(<ProjectCarousel images={['only.jpg']} autoPlay={true} alt="Single" />);
+
+    expect(screen.getByText(/imagen 1 de 1/i)).toBeInTheDocument();
+
+    act(() => {
+      vi.advanceTimersByTime(8000);
+    });
+
+    expect(screen.getByText(/imagen 1 de 1/i)).toBeInTheDocument();
+    vi.useRealTimers();
+  });
+
+  it('reanuda el autoplay al salir del foco o del hover', async () => {
+    vi.useFakeTimers();
+    const images = ['a.jpg', 'b.jpg'];
+
+    const { getByRole } = render(<ProjectCarousel images={images} alt="Resume" />);
+    const region = getByRole('region', { name: /resume carousel/i });
+
+    fireEvent.focus(region);
+    await act(async () => {
+      vi.advanceTimersByTime(4000);
+    });
+    expect(screen.getByText(/imagen 1 de 2/i)).toBeInTheDocument();
+
+    fireEvent.blur(region);
+    await act(async () => {
+      vi.advanceTimersByTime(4000);
+    });
+    expect(screen.getByText(/imagen 2 de 2/i)).toBeInTheDocument();
+
+    fireEvent.mouseEnter(region);
+    await act(async () => {
+      vi.advanceTimersByTime(4000);
+    });
+    expect(screen.getByText(/imagen 2 de 2/i)).toBeInTheDocument();
+
+    fireEvent.mouseLeave(region);
+    await act(async () => {
+      vi.advanceTimersByTime(4000);
+    });
+    expect(screen.getByText(/imagen 1 de 2/i)).toBeInTheDocument();
+
+    vi.useRealTimers();
   });
 });
