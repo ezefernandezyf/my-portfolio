@@ -17,6 +17,14 @@
   "stack": {
     "heading": "Stack destacado"
   },
+  "sections": {
+    "recentWork": {
+      "eyebrow": "Trabajo reciente",
+      "title": "Proyectos seleccionados",
+      "description": "Una pequeña selección curada del trabajo reciente destacada en la home.",
+      "viewAll": "Ver todos los proyectos"
+    }
+  },
   "featured": {
     "title": "CineLab",
     "short": "Movie Search App — búsqueda, filtros, favoritos persistentes y recomendaciones dinámicas (TMDB). Built with React, TypeScript & Vite.",

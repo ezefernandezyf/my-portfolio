@@ -21,7 +21,7 @@ describe('HomePage', () => {
     vi.resetAllMocks();
   });
 
-  it('renderiza el hero, links principales y la preview de proyecto', () => {
+  it('renderiza el hero, la preview y la grilla curada de proyectos', () => {
     render(
       <MemoryRouter>
         <HomePage />
@@ -34,7 +34,7 @@ describe('HomePage', () => {
       screen.getByRole('link', { name: /acerca de mí|about/i }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole('link', { name: /proyectos|projects/i }),
+      screen.getByRole('link', { name: /^proyectos$|^projects$/i }),
     ).toBeInTheDocument();
 
     const cvLinks = screen.getAllByRole('link', { name: /descargar cv/i });
@@ -47,18 +47,32 @@ describe('HomePage', () => {
 
     expect(screen.getByTestId('carousel-mock')).toBeInTheDocument();
 
-    expect(screen.getByRole('heading', { name: /Movie Management Dashboard/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: /proyectos seleccionados|selected projects/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: /Movie Management Dashboard/i, level: 4 }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: /Movie Management Dashboard/i, level: 3 }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /CineLab/i })).toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: /ChefcitoIA/i })).not.toBeInTheDocument();
 
     expect(
-      screen.getByRole('link', { name: /repositorio|ver repo|view repo/i }),
-    ).toHaveAttribute('href', 'https://github.com/ezefernandezyf/movie-management-dashboard');
+      screen
+        .getAllByRole('link')
+        .find((link) => link.getAttribute('href') === 'https://github.com/ezefernandezyf/movie-management-dashboard'),
+    ).toBeDefined();
 
-    expect(screen.getByRole('link', { name: /abrir demo|ver demo|view demo/i })).toHaveAttribute(
-      'href',
-      'https://moviesdashboard.vercel.app/home',
-    );
+    expect(
+      screen
+        .getAllByRole('link')
+        .find((link) => link.getAttribute('href') === 'https://moviesdashboard.vercel.app/home'),
+    ).toBeDefined();
 
-    expect(screen.getByRole('link', { name: /ver todos|view all/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /contactar|contact/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: /ver todos los proyectos|view all projects/i }),
+    ).toBeInTheDocument();
   });
 });

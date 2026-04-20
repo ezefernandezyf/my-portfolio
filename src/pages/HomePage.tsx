@@ -1,11 +1,45 @@
 import { Link } from 'react-router-dom';
-import { ProjectCarousel } from '../components';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
-import { MetaTags } from '../components';
+import { motion, useReducedMotion } from 'framer-motion';
+import { MetaTags, ProjectCard, ProjectCarousel } from '../components';
+import { projects } from '../data/projects';
 import { useTranslation } from 'react-i18next';
+
+const HOME_PROJECT_LIMIT = 2;
+
+type Project = (typeof projects)[number];
+
+const selectHomeProjects = (items: Project[]): Project[] => {
+  const featured = items.filter((project) => project.featured);
+  const ordered = featured.length > 0 ? featured : items;
+
+  return ordered.slice(0, HOME_PROJECT_LIMIT);
+};
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.06,
+    },
+  },
+} as const;
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 18 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: 'easeOut' },
+  },
+} as const;
 
 export const HomePage = (): React.JSX.Element => {
   const { t } = useTranslation(['home', 'projects']);
+  const reduceMotion = useReducedMotion();
+  const recentProjects = selectHomeProjects(projects);
 
   const featuredName = t('projects:movie-dashboard.name');
   const featuredShort = t('projects:movie-dashboard.short');
@@ -19,23 +53,29 @@ export const HomePage = (): React.JSX.Element => {
         image="/og-image.png"
       />
 
-      <main role="main" className="site-container pb-12 pt-8">
-        <div className="page-shell">
-          <section
+      <main role="main" className="site-container pb-14 pt-8 md:pb-16">
+        <motion.div
+          className="page-shell"
+          variants={containerVariants}
+          initial={reduceMotion ? false : 'hidden'}
+          animate="visible"
+        >
+          <motion.section
             aria-labelledby="home-hero-title"
-            className="section-shell grid gap-8 p-6 md:p-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center"
+            className="section-shell grid gap-8 p-6 md:p-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-10"
+            variants={itemVariants}
           >
             <div>
-              <p className="inline-flex items-center rounded-full border border-base-200 bg-base-100 px-3 py-1 text-xs font-medium tracking-[0.18em] uppercase text-muted">
+              <p className="inline-flex items-center rounded-full border border-base-200 bg-base-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-muted">
                 {t('hero.greeting', { ns: 'home' })}
               </p>
               <h1
                 id="home-hero-title"
-                className="mt-4 text-[clamp(2.6rem,5vw,4.5rem)] font-extrabold leading-[0.96] tracking-tight wrap-break-word"
+                className="mt-4 text-[clamp(2.8rem,6vw,5rem)] font-extrabold leading-[0.95] tracking-tight wrap-break-word"
               >
                 {t('hero.name', { ns: 'home' })}
               </h1>
-              <p className="mt-4 max-w-xl text-base leading-7 text-muted wrap-break-word">
+              <p className="mt-4 max-w-2xl text-base leading-7 text-muted wrap-break-word">
                 {t('hero.summary', { ns: 'home' })}
               </p>
 
@@ -79,7 +119,7 @@ export const HomePage = (): React.JSX.Element => {
               </div>
             </div>
 
-            <aside aria-label="Preview destacado" className="space-y-6">
+            <aside aria-label="Preview destacado" className="space-y-5 lg:max-w-md lg:justify-self-end">
               <div className="flex items-center gap-4 rounded-2xl border border-base-200 bg-base-100 p-4 shadow-sm">
                 <img
                   src="/profile.jpg"
@@ -155,39 +195,50 @@ export const HomePage = (): React.JSX.Element => {
                 </div>
               </div>
             </aside>
-          </section>
 
-          <section className="grid gap-4 md:grid-cols-3">
-            <div className="section-shell p-4">
-              <h5 className="font-semibold">{t('cards.projects.title', { ns: 'home' })}</h5>
-              <p className="mt-2 text-sm text-muted">{t('cards.projects.text', { ns: 'home' })}</p>
-              <Link to="/projects" className="mt-3 inline-block text-sm hover:text-primary hover:underline underline-offset-4">
-                {t('cards.projects.link', { ns: 'home' })}
+          </motion.section>
+
+          <motion.section
+            aria-labelledby="home-recent-work-title"
+            className="section-shell bg-base-100/95 p-6 md:p-8 lg:p-10"
+            variants={itemVariants}
+          >
+            <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+              <div className="max-w-2xl space-y-3">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted">
+                  {t('sections.recentWork.eyebrow', { ns: 'home' })}
+                </p>
+                <h2 id="home-recent-work-title" className="text-2xl font-semibold tracking-tight md:text-3xl">
+                  {t('sections.recentWork.title', { ns: 'home' })}
+                </h2>
+                <p className="max-w-2xl text-base leading-7 text-muted">
+                  {t('sections.recentWork.description', { ns: 'home' })}
+                </p>
+              </div>
+
+              <Link to="/projects" className="btn btn-ghost btn-minimal self-start md:self-auto">
+                {t('sections.recentWork.viewAll', { ns: 'home' })}
               </Link>
             </div>
 
-            <div className="section-shell p-4">
-              <h5 className="font-semibold">{t('cards.contact.title', { ns: 'home' })}</h5>
-              <p className="mt-2 text-sm text-muted">{t('cards.contact.text', { ns: 'home' })}</p>
-              <Link to="/contact" className="mt-3 inline-block text-sm hover:text-primary hover:underline underline-offset-4">
-                {t('cards.contact.link', { ns: 'home' })}
-              </Link>
-            </div>
-
-            <div className="section-shell p-4">
-              <h5 className="font-semibold">{t('cards.cv.title', { ns: 'home' })}</h5>
-              <p className="mt-2 text-sm text-muted">{t('cards.cv.text', { ns: 'home' })}</p>
-              <a
-                href="/Ezequiel_Fernandez_CV.pdf"
-                className="mt-3 inline-block text-sm hover:text-primary hover:underline underline-offset-4"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {t('cards.cv.link', { ns: 'home' })}
-              </a>
-            </div>
-          </section>
-        </div>
+            <motion.div className="mt-8 grid gap-6 lg:grid-cols-2" variants={containerVariants}>
+              {recentProjects.map((project) => (
+                <motion.div key={project.id} variants={itemVariants} className="h-full">
+                  <ProjectCard
+                    id={project.id}
+                    nameKey={project.nameKey}
+                    shortKey={project.shortKey}
+                    repo={project.repo}
+                    demo={project.demo}
+                    images={project.images}
+                    tech={project.tech}
+                    year={project.year}
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.section>
+        </motion.div>
       </main>
     </>
   );
