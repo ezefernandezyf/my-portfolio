@@ -18,7 +18,13 @@ export const ContactPage = (): React.JSX.Element => {
 
   type ContactFormData = z.infer<typeof contactSchema>;
 
-  const endpoint = import.meta.env.VITE_CONTACT_FORM_ENDPOINT as string | undefined;
+  const getEndpoint = () => {
+    const meta = import.meta as unknown as { env?: Record<string, string | undefined> };
+    const envEndpoint = meta.env?.VITE_CONTACT_FORM_ENDPOINT;
+    const globalEndpoint = (globalThis as { __CONTACT_FORM_ENDPOINT__?: string })
+      .__CONTACT_FORM_ENDPOINT__;
+    return envEndpoint ?? globalEndpoint;
+  };
 
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -38,6 +44,7 @@ export const ContactPage = (): React.JSX.Element => {
     setStatus('sending');
     setErrorMessage(null);
 
+    const endpoint = getEndpoint();
     if (!endpoint) {
       setErrorMessage(t('errors.no_endpoint'));
       setStatus('error');

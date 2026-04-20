@@ -1,46 +1,21 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-type ContactPageComponent = typeof import('../ContactPage').ContactPage;
-let ContactPageComponent: ContactPageComponent;
+import { ContactPage } from '../ContactPage';
 
 describe('ContactPage', () => {
   let fetchMock: ReturnType<typeof vi.fn>;
-  let originalEnv: Record<string, string | undefined> | undefined;
-
-  const setEndpoint = (value: string | undefined) => {
-    const meta = import.meta as unknown as { env?: Record<string, string | undefined> };
-    const env = { ...(meta.env ?? {}) };
-    if (value === undefined) {
-      delete env.VITE_CONTACT_FORM_ENDPOINT;
-    } else {
-      env.VITE_CONTACT_FORM_ENDPOINT = value;
-    }
-    Object.defineProperty(meta, 'env', {
-      value: env,
-      configurable: true,
-      writable: true,
-    });
-  };
-
-  beforeEach(async () => {
+  beforeEach(() => {
     fetchMock = vi.fn();
     vi.stubGlobal('fetch', fetchMock as unknown);
-    originalEnv = (import.meta as unknown as { env?: Record<string, string | undefined> }).env;
-    setEndpoint('https://api.example.com/contact');
-    ContactPageComponent = (await import('../ContactPage')).ContactPage;
+    (globalThis as { __CONTACT_FORM_ENDPOINT__?: string }).__CONTACT_FORM_ENDPOINT__ =
+      'https://api.example.com/contact';
   });
 
   afterEach(() => {
     vi.unstubAllGlobals();
     vi.restoreAllMocks();
-    if (originalEnv) {
-      Object.defineProperty(import.meta, 'env', {
-        value: originalEnv,
-        configurable: true,
-        writable: true,
-      });
-    }
+    delete (globalThis as { __CONTACT_FORM_ENDPOINT__?: string }).__CONTACT_FORM_ENDPOINT__;
   });
 
   const fillValidForm = async (user: ReturnType<typeof userEvent.setup>) => {
@@ -55,7 +30,7 @@ describe('ContactPage', () => {
   };
 
   it('renderiza el formulario', () => {
-    render(<ContactPageComponent />);
+    render(<ContactPage />);
 
     expect(screen.getByRole('heading', { name: /Contacto/i })).toBeInTheDocument();
     expect(screen.getByRole('textbox', { name: /Nombre/i })).toBeInTheDocument();
@@ -68,7 +43,7 @@ describe('ContactPage', () => {
 
   it('muestra errores de validación al enviar vacío y no llama a fetch', async () => {
     const user = userEvent.setup();
-    render(<ContactPageComponent />);
+    render(<ContactPage />);
 
     await user.click(screen.getByRole('button', { name: /Enviar mensaje/i }));
 
@@ -91,16 +66,13 @@ describe('ContactPage', () => {
       json: async () => ({}),
     });
 
-    render(<ContactPageComponent />);
+    render(<ContactPage />);
 
     await fillValidForm(user);
 
     await user.click(screen.getByRole('button', { name: /Enviar mensaje/i }));
 
-    const maybe = await screen.findByText(
-      /Gracias — tu mensaje fue enviado|No está configurado el endpoint de envío/i,
-    );
-    expect(maybe).toBeInTheDocument();
+    expect(await screen.findByText(/Gracias — tu mensaje fue enviado/i)).toBeInTheDocument();
   });
 
   it('simula fallo de envío (mock) y muestra error', async () => {
@@ -112,7 +84,7 @@ describe('ContactPage', () => {
       json: async () => ({ message: 'Server error' }),
     });
 
-    render(<ContactPageComponent />);
+    render(<ContactPage />);
 
     await fillValidForm(user);
 
@@ -125,14 +97,11 @@ describe('ContactPage', () => {
     const user = userEvent.setup();
     fetchMock.mockRejectedValue('boom');
 
-    render(<ContactPageComponent />);
+    render(<ContactPage />);
     await fillValidForm(user);
 
     await user.click(screen.getByRole('button', { name: /Enviar mensaje/i }));
 
-    const maybeError = await screen.findByText(
-      /No se pudo enviar el mensaje|No está configurado el endpoint de envío/i,
-    );
-    expect(maybeError).toBeInTheDocument();
+    expect(await screen.findByText(/No se pudo enviar el mensaje/i)).toBeInTheDocument();
   });
 });
