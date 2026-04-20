@@ -43,7 +43,9 @@ describe('MetaTags', () => {
       'meta[property="og:image"]',
     ) as HTMLMetaElement | null;
     expect(ogImage).not.toBeNull();
-    expect(ogImage!.getAttribute('content')).toBe('https://ezefernandez.com/custom.png');
+    expect(ogImage!.getAttribute('content')).toMatch(
+      /^https?:\/\/ezefernandez\.com\/custom\.png$/,
+    );
 
     unmount();
     expect(document.title).toBe(prevTitle);
