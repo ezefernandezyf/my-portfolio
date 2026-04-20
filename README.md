@@ -40,8 +40,9 @@ Los assets del portfolio viven en `public/projects/` y los case studies usan rut
 
 ## Capturas
 
-### Vista Desktop (Home)
-![Home - Hero y preview de proyecto](/public/screenshots/screenshot-home-desktop.png)
+- Movie Management Dashboard
+- CineLab
+- ChefcitoIA
 
 ### Case study: CineLab
 ![CineLab case study — detalles del proyecto](/public/screenshots/screenshot-project-cinelab.png)
