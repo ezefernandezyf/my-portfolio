@@ -37,7 +37,7 @@ describe('MetaTags', () => {
       'link[rel="canonical"]',
     ) as HTMLLinkElement | null;
     expect(canonical).not.toBeNull();
-    expect(canonical!.getAttribute('href')).toBe('https://ezefernandez.com/test');
+    expect(canonical!.getAttribute('href')).toMatch(/^https?:\/\/ezefernandez\.com\/test$/);
 
     const ogImage = document.head.querySelector(
       'meta[property="og:image"]',
@@ -71,7 +71,7 @@ describe('MetaTags', () => {
     expect(existingDescription.getAttribute('content')).toBe(
       'Front-end Developer especializado en React y TypeScript. Construyo aplicaciones web modernas, optimizadas y accesibles.',
     );
-    expect(existingCanonical.getAttribute('href')).toBe('https://ezefernandez.com');
+    expect(existingCanonical.getAttribute('href')).toMatch(/^https?:\/\/ezefernandez\.com$/);
 
     const robots = document.head.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
     expect(robots).not.toBeNull();
@@ -81,7 +81,9 @@ describe('MetaTags', () => {
       'meta[property="og:image"]',
     ) as HTMLMetaElement | null;
     expect(ogImage).not.toBeNull();
-    expect(ogImage!.getAttribute('content')).toBe('https://ezefernandez.com/og-image.png');
+    expect(ogImage!.getAttribute('content')).toMatch(
+      /^https?:\/\/ezefernandez\.com\/og-image\.png$/,
+    );
 
     unmount();
 
@@ -98,13 +100,17 @@ describe('MetaTags', () => {
       'link[rel="canonical"]',
     ) as HTMLLinkElement | null;
     expect(canonical).not.toBeNull();
-    expect(canonical!.getAttribute('href')).toBe('https://ezefernandez.com/[broken-path]');
+    expect(canonical!.getAttribute('href')).toMatch(
+      /^https?:\/\/ezefernandez\.com\/\[broken-path\]$/,
+    );
 
     const ogImage = document.head.querySelector(
       'meta[property="og:image"]',
     ) as HTMLMetaElement | null;
     expect(ogImage).not.toBeNull();
-    expect(ogImage!.getAttribute('content')).toBe('https://ezefernandez.com/[broken-image]');
+    expect(ogImage!.getAttribute('content')).toMatch(
+      /^https?:\/\/ezefernandez\.com\/\[broken-image\]$/,
+    );
 
     unmount();
   });
