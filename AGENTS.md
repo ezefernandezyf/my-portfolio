@@ -6,6 +6,13 @@ Este proyecto emplea un flujo estricto de **Spec-Driven Development (SDD)**. El 
 - **Objetivo:** Rediseño completo y desde cero del portafolio web para un Front-end Developer. La plataforma debe ser una extensión de su capacidad técnica: interfaces limpias, altamente accesibles y optimizadas.
 - **Enfoque de Trabajo:** NO se va a reciclar ni adaptar código de las vistas antiguas. Se construirá una nueva interfaz tomando como única fuente de verdad los archivos estáticos ubicados en docs/redesignReferences/.
 
+### Regla de Rebuild UI (No Negociable)
+- El rediseño debe ser un **rebuild visual completo** y no un "reskin" sobre componentes existentes.
+- Queda prohibido considerar "cumplido" un módulo por ajustar colores, spacing o clases sobre la UI previa.
+- Si un componente actual no replica fielmente la referencia (estructura, tipografía, jerarquía, layout y estados), se debe **reconstruir**.
+- Se permite mover implementaciones previas a una zona de legado (por ejemplo `src/components/old/`) cuando ayude a mantener claridad durante el rebuild.
+- El criterio de aceptación principal es **pixel-perfect contra referencias** en `docs/redesignReferences/`.
+
 ## 2. Stack Tecnológico y Arquitectura Core
 El stack no se negocia. Buscamos demostrar ingeniería y eficiencia:
 - **Frontend:** React + TypeScript.
@@ -23,6 +30,7 @@ El stack no se negocia. Buscamos demostrar ingeniería y eficiencia:
 - **Pixel-Perfect:** Los archivos HTML en docs/redesignReferences/ son la ley visual. El padding, la tipografía, los pesos visuales y la disposición deben clonarse con precisión milimétrica.
 - **Responsividad:** 100% responsive design asumiendo un enfoque "Mobile First" pero garantizando excelencia en Desktop.
 - **Restricciones:** Prohibida la sobreingeniería visual. Si el HTML no tiene un gradiente complejo, el componente de React tampoco debe tenerlo.
+- **Criterio de Implementación:** Si hay divergencia visual entre componente actual y referencia, se prioriza rehacer el componente antes que iterar micro-ajustes.
 
 ## 5. El Flujo de Trabajo (SDD Protocol)
 La ejecución DEBE orquestarse con SDD integrando las herramientas de memoria (engram, openspec). Fases obligatorias antes de modificar el código estructural:
@@ -72,13 +80,15 @@ Para garantizar una entrega iterativa y controlada, el rediseño se ejecutará e
   - **Objetivo:** Configuración de Vitest para el 80% de coverage, setup de CI/CD (GitHub Actions), y revisión de Contextos core (Tema e i18n).
   - **Validación:** Pipeline automatizado en verde, linters pasando sin warnings, y configuración base de Tailwind 4 testeada.
 
-- **Fase 1: Global Layout & Navigation (`feat/layout-core`)**
-  - **Objetivo:** Componentes estructurales (Header, Footer, Language Switcher, Theme Toggle) extraídos del HTML de referencia.
-  - **Validación:** Componentes 100% responsivos (Pixel-Perfect base), el cambio de idioma funciona en toda la app sin recargar, y coverage > 80% en sus hooks y UI.
+- **Fase 1R: Global Layout & Navigation Rebuild (`feat/layout-core-rebuild`)**
+  - **Objetivo:** Reconstrucción desde cero de Header, Footer, Language Switcher y Theme Toggle con estructura y estilos fieles a la referencia, sin reusar markup visual previo.
+  - **Validación:** Paridad pixel-perfect contra referencias, componentes 100% responsivos, i18n funcional sin recarga y coverage > 80% en hooks/UI críticos.
+  - **Nota de Control:** Fase 2 queda bloqueada hasta cerrar Fase 1R.
 
 - **Fase 2: Home Page & Bento Grid (`feat/home-page`)**
   - **Objetivo:** Maquetación del Hero Section y la grilla 2-col de proyectos utilizando los datos reales. Integración inicial de `framer-motion` para fade-ins y staggers.
   - **Validación:** Animaciones a 60fps sin bloqueos de performance. Lighthouse score > 95. Inyección correcta de la data real.
+  - **Estado:** En pausa hasta completar Fase 1R.
 
 - **Fase 3: Projects Directory (`feat/projects-directory`)**
   - **Objetivo:** Página de portfolio, barra de búsqueda y filtros por tecnologías (tagging).
