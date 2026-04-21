@@ -3,6 +3,11 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, vi, afterEach } from 'vitest';
 
+let changeLanguageBehavior = (newLng: string) =>
+  new Promise<void>((resolve) => {
+    setTimeout(() => resolve(), 0);
+  });
+
 
 vi.mock('react-i18next', () => {
   return {
@@ -13,9 +18,8 @@ vi.mock('react-i18next', () => {
         i18n: {
           language: lng,
           changeLanguage: (newLng: string) =>
-            new Promise<void>((resolve) => {
+            changeLanguageBehavior(newLng).then(() => {
               setLng(newLng);
-              setTimeout(() => resolve(), 0);
             }),
         },
       };
@@ -28,6 +32,10 @@ import { LanguageSwitcher } from '../';
 describe('LanguageSwitcher (UI)', () => {
   afterEach(() => {
     vi.resetAllMocks();
+    changeLanguageBehavior = (newLng: string) =>
+      new Promise<void>((resolve) => {
+        setTimeout(() => resolve(), 0);
+      });
     document.documentElement.lang = '';
   });
 
@@ -47,6 +55,34 @@ describe('LanguageSwitcher (UI)', () => {
       expect(enBtn).toHaveAttribute('aria-pressed', 'true');
       expect(esBtn).toHaveAttribute('aria-pressed', 'false');
       expect(document.documentElement.lang).toBe('en');
+    });
+  });
+
+  it('permite volver a español y mantiene el estado sincronizado', async () => {
+    render(<LanguageSwitcher />);
+    const user = userEvent.setup();
+
+    const esBtn = screen.getByRole('button', { name: /cambiar a español/i });
+    await user.click(esBtn);
+
+    await waitFor(() => {
+      expect(esBtn).toHaveAttribute('aria-pressed', 'true');
+      expect(document.documentElement.lang).toBe('es');
+    });
+  });
+
+  it('registra un error cuando changeLanguage falla', async () => {
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+    changeLanguageBehavior = () => Promise.reject(new Error('boom'));
+
+    render(<LanguageSwitcher />);
+    const user = userEvent.setup();
+
+    const enBtn = screen.getByRole('button', { name: /switch to english/i });
+    await user.click(enBtn);
+
+    await waitFor(() => {
+      expect(errorSpy).toHaveBeenCalled();
     });
   });
 });
