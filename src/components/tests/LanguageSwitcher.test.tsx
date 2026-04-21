@@ -3,7 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, vi, afterEach } from 'vitest';
 
-let changeLanguageBehavior = () =>
+let changeLanguageBehavior = (_newLng: string) =>
   new Promise<void>((resolve) => {
     setTimeout(() => resolve(), 0);
   });
@@ -32,7 +32,7 @@ import { LanguageSwitcher } from '../';
 describe('LanguageSwitcher (UI)', () => {
   afterEach(() => {
     vi.resetAllMocks();
-    changeLanguageBehavior = () =>
+    changeLanguageBehavior = (_newLng: string) =>
       new Promise<void>((resolve) => {
         setTimeout(() => resolve(), 0);
       });
