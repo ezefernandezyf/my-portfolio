@@ -14,13 +14,13 @@ export const ThemeToggle = (): React.JSX.Element => {
       onClick={toggle}
       aria-label="Alternar tema"
       title={title}
-      className="btn btn-ghost btn-circle btn-minimal control-button"
+      className="inline-flex h-10 w-10 items-center justify-center text-text/70 transition-colors hover:text-primary focus-ring"
       type="button"
     >
       {resolvedTheme === 'dark' ? (
-        <SunIcon className="h-5 w-5" />
+        <SunIcon className="h-5 w-5" aria-hidden />
       ) : (
-        <MoonIcon className="h-5 w-5" />
+        <MoonIcon className="h-5 w-5" aria-hidden />
       )}
     </button>
   );
