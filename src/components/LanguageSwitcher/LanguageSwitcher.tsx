@@ -15,7 +15,7 @@ export const LanguageSwitcher = (): React.JSX.Element => {
 
   return (
     <div
-      className="control-cluster inline-flex items-center gap-1"
+      className="flex items-center rounded-full bg-surface-container-high p-1 text-[10px] font-bold uppercase tracking-widest font-space-grotesk"
       role="group"
       aria-label="Language switcher"
     >
@@ -24,7 +24,7 @@ export const LanguageSwitcher = (): React.JSX.Element => {
         onClick={() => changeTo('es')}
         aria-pressed={current === 'es'}
         aria-label="Cambiar a español"
-        className={`control-button rounded-full px-3 py-1 transition-colors ${current === 'es' ? 'bg-base-100 text-primary shadow-sm' : 'text-base-content/55 hover:text-base-content'}`}
+        className={`rounded-full px-3 py-1 transition-colors focus-ring ${current === 'es' ? 'bg-surface-container-lowest text-primary shadow-sm' : 'text-text/50 hover:text-text'}`}
       >
         ES
       </button>
@@ -34,7 +34,7 @@ export const LanguageSwitcher = (): React.JSX.Element => {
         onClick={() => changeTo('en')}
         aria-pressed={current === 'en'}
         aria-label="Switch to English"
-        className={`control-button rounded-full px-3 py-1 transition-colors ${current === 'en' ? 'bg-base-100 text-primary shadow-sm' : 'text-base-content/55 hover:text-base-content'}`}
+        className={`rounded-full px-3 py-1 transition-colors focus-ring ${current === 'en' ? 'bg-surface-container-lowest text-primary shadow-sm' : 'text-text/50 hover:text-text'}`}
       >
         EN
       </button>

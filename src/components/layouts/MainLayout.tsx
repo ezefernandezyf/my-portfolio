@@ -4,7 +4,7 @@ import { Footer } from './Footer';
 
 export const MainLayout = (): React.JSX.Element => {
   return (
-    <div className="min-h-screen flex flex-col bg-base-100 text-base-content">
+    <div className="min-h-screen flex flex-col bg-surface text-on-surface font-body">
       <Header />
 
       <div className="flex-1">

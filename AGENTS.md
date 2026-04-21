@@ -13,6 +13,11 @@ Este proyecto emplea un flujo estricto de **Spec-Driven Development (SDD)**. El 
 - Se permite mover implementaciones previas a una zona de legado (por ejemplo `src/components/old/`) cuando ayude a mantener claridad durante el rebuild.
 - El criterio de aceptación principal es **pixel-perfect contra referencias** en `docs/redesignReferences/`.
 
+### Estrategia de Legacy para esta rama
+- Mantener los componentes legacy en su ubicación actual mientras la fase 2 no requiera moverlos.
+- No introducir `src/components/old/` por inercia: solo se moverán piezas si estorban la lectura del rebuild o si una futura fase necesita aislar explícitamente el código previo.
+- La rama `feat/layout-core-rebuild` debe exponer como fuente de verdad los componentes reconstruidos, no los incrementales.
+
 ## 2. Stack Tecnológico y Arquitectura Core
 El stack no se negocia. Buscamos demostrar ingeniería y eficiencia:
 - **Frontend:** React + TypeScript.
