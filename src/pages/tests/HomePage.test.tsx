@@ -5,11 +5,6 @@ vi.mock('../../components', async (importOriginal) => {
   const actual = await importOriginal<typeof import('../../components')>();
   return {
     ...actual,
-    ProjectCarousel: (props: React.ComponentProps<'div'>) => (
-      <div data-testid="carousel-mock" {...props}>
-        Carousel Mock
-      </div>
-    ),
     MetaTags: () => null,
   };
 });
@@ -21,14 +16,14 @@ describe('HomePage', () => {
     vi.resetAllMocks();
   });
 
-  it('renderiza el hero, links principales y la preview de proyecto', () => {
+  it('renderiza el hero, stack, proyectos recientes y CTA de contacto', () => {
     render(
       <MemoryRouter>
         <HomePage />
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole('heading', { name: /ezequiel fernández/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /ezequiel\s*fernández/i })).toBeInTheDocument();
 
     expect(
       screen.getByRole('link', { name: /acerca de mí|about/i }),
@@ -41,24 +36,30 @@ describe('HomePage', () => {
     expect(cvLinks.length).toBeGreaterThanOrEqual(1);
     expect(cvLinks[0]).toHaveAttribute('href', '/Ezequiel_Fernandez_CV.pdf');
 
-    expect(screen.getByText(/stack destacado|featured stack/i)).toBeInTheDocument();
+    expect(screen.getByText(/technical ecosystem|ecosistema técnico/i)).toBeInTheDocument();
     expect(screen.getAllByText(/react/i).length).toBeGreaterThanOrEqual(1);
     expect(screen.getAllByText(/typescript/i).length).toBeGreaterThanOrEqual(1);
 
-    expect(screen.getByTestId('carousel-mock')).toBeInTheDocument();
-
+    expect(screen.getByRole('heading', { name: /recent work|trabajos recientes/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /Movie Management Dashboard/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /CineLab/i })).toBeInTheDocument();
 
-    expect(
-      screen.getByRole('link', { name: /repositorio|ver repo|view repo/i }),
-    ).toHaveAttribute('href', 'https://github.com/ezefernandezyf/movie-management-dashboard');
+    const repoLinks = screen.getAllByRole('link', { name: /view repo/i });
+    expect(repoLinks).toHaveLength(2);
+    expect(repoLinks[0]).toHaveAttribute('href', 'https://github.com/ezefernandezyf/movie-management-dashboard');
+    expect(repoLinks[1]).toHaveAttribute('href', 'https://github.com/ezefernandezyf/cinelab-react');
 
-    expect(screen.getByRole('link', { name: /abrir demo|ver demo|view demo/i })).toHaveAttribute(
-      'href',
-      'https://moviesdashboard.vercel.app/home',
-    );
+    const demoLinks = screen.getAllByRole('link', { name: /view demo/i });
+    expect(demoLinks).toHaveLength(2);
+    expect(demoLinks[0]).toHaveAttribute('href', 'https://moviesdashboard.vercel.app/');
+    expect(demoLinks[1]).toHaveAttribute('href', 'https://cinelab-movies.vercel.app');
 
-    expect(screen.getByRole('link', { name: /ver todos|view all/i })).toBeInTheDocument();
+    const caseStudyLinks = screen.getAllByRole('link', { name: /view case study/i });
+    expect(caseStudyLinks).toHaveLength(2);
+    expect(caseStudyLinks[0]).toHaveAttribute('href', '/projects/movie-dashboard');
+    expect(caseStudyLinks[1]).toHaveAttribute('href', '/projects/cinelab');
+
+    expect(screen.getByRole('heading', { name: /interested in my profile|te interesa mi perfil/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /contactar|contact/i })).toBeInTheDocument();
   });
 });

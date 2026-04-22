@@ -1,14 +1,91 @@
-import { Link } from 'react-router-dom';
-import { ProjectCarousel } from '../components';
-import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
-import { MetaTags } from '../components';
+import { ArrowTopRightOnSquareIcon, BookOpenIcon, CommandLineIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import { GithubIcon, MetaTags } from '../components';
+import { projects } from '../data/projects';
+
+type Project = (typeof projects)[number];
+
+const featuredProjects = projects.slice(0, 2);
+const technicalStack = ['React', 'TypeScript', 'JS (ES6+)', 'Vite', 'Testing Library', 'TanStack Query'];
+
+type HomeProjectCardProps = {
+  project: Project;
+};
+
+const HomeProjectCard = ({ project }: HomeProjectCardProps): React.JSX.Element => {
+  const { t } = useTranslation('projects');
+  const projectName = t(project.nameKey);
+  const projectShort = t(project.shortKey);
+  const previewImage = project.images[0];
+  const topTech = project.tech.slice(0, 3);
+
+  return (
+    <article className="group flex flex-col border border-outline-variant/20 bg-surface-container-lowest p-8 transition-all duration-300 hover:border-outline-variant dark:border-outline-variant/30 dark:bg-surface">
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex flex-wrap gap-2">
+          {topTech.map((tech) => (
+            <span
+              key={tech}
+              className="border border-outline-variant/40 px-3 py-1 text-[10px] font-bold uppercase tracking-tighter text-on-surface-variant"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+        <span className="text-[10px] font-mono text-outline">{project.year}</span>
+      </div>
+
+      <div className="mt-8 min-h-35 md:min-h-40">
+        <h3 className="text-3xl font-bold tracking-tight font-headline">{projectName}</h3>
+        <p className="mt-4 max-w-[45ch] leading-relaxed text-on-surface-variant">{projectShort}</p>
+      </div>
+
+      <div className="relative mt-12 h-80 overflow-hidden bg-surface-container-low md:h-88 lg:h-96">
+        <img
+          alt={`${projectName} preview`}
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          src={previewImage}
+        />
+      </div>
+
+      <div className="mt-auto flex flex-wrap gap-6 border-t border-outline-variant/10 pt-6">
+        <Link
+          className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary-fixed hover:underline focus-ring"
+          to={`/projects/${project.id}`}
+        >
+          View case study
+          <BookOpenIcon className="h-4 w-4" aria-hidden />
+        </Link>
+
+        <a
+          className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-on-surface-variant transition-colors hover:text-primary focus-ring"
+          href={project.repo}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <GithubIcon className="h-4 w-4" />
+          View repo
+        </a>
+
+        <a
+          className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-on-surface-variant transition-colors hover:text-primary focus-ring"
+          href={project.demo}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <ArrowTopRightOnSquareIcon className="h-4 w-4" aria-hidden />
+          View demo
+        </a>
+      </div>
+    </article>
+  );
+};
 
 export const HomePage = (): React.JSX.Element => {
   const { t } = useTranslation(['home', 'projects']);
 
-  const featuredName = t('projects:movie-dashboard.name');
-  const featuredShort = t('projects:movie-dashboard.short');
+  const projectCountLabel = String(projects.length).padStart(2, '0');
 
   return (
     <>
@@ -19,175 +96,105 @@ export const HomePage = (): React.JSX.Element => {
         image="/og-image.png"
       />
 
-      <main role="main" className="site-container pb-12 pt-8">
-        <div className="page-shell">
-          <section
-            aria-labelledby="home-hero-title"
-            className="section-shell grid gap-8 p-6 md:p-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center"
-          >
-            <div>
-              <p className="inline-flex items-center rounded-full border border-base-200 bg-base-100 px-3 py-1 text-xs font-medium tracking-[0.18em] uppercase text-muted">
-                {t('hero.greeting', { ns: 'home' })}
-              </p>
-              <h1
-                id="home-hero-title"
-                className="mt-4 text-[clamp(2.6rem,5vw,4.5rem)] font-extrabold leading-[0.96] tracking-tight wrap-break-word"
+      <main role="main">
+        <section className="site-container flex min-h-[calc(100svh-4rem)] flex-col justify-center pb-12 pt-32">
+          <div className="max-w-[60ch]">
+            <p className="mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-primary-fixed font-label">
+              {t('hero.label', { ns: 'home' })}
+            </p>
+
+            <h1 className="text-6xl font-bold leading-[0.9] tracking-tighter md:text-8xl font-headline">
+              <span className="block">{t('hero.name', { ns: 'home' }).split(' ')[0]}</span>
+              <span>{t('hero.name', { ns: 'home' }).split(' ').slice(1).join(' ')}</span>
+            </h1>
+
+            <h2 className="mt-8 max-w-3xl text-xl font-medium leading-relaxed text-on-surface-variant md:text-2xl">
+              {t('hero.summary', { ns: 'home' })}
+            </h2>
+
+            <div className="mt-12 flex flex-wrap items-center gap-6">
+              <Link
+                aria-label={t('hero.cta.projects', { ns: 'home' })}
+                className="inline-flex h-14 items-center justify-center bg-primary px-8 text-sm font-bold uppercase tracking-widest text-white transition-all hover:bg-primary/90 focus-ring active:scale-95"
+                to="/projects"
               >
-                {t('hero.name', { ns: 'home' })}
-              </h1>
-              <p className="mt-4 max-w-xl text-base leading-7 text-muted wrap-break-word">
-                {t('hero.summary', { ns: 'home' })}
-              </p>
-
-              <div className="mt-6 flex flex-wrap items-center gap-3">
-                <Link
-                  to="/about"
-                  className="btn btn-primary btn-minimal"
-                  aria-label={t('hero.cta.about', { ns: 'home' })}
-                >
-                  {t('hero.cta.about', { ns: 'home' })}
-                </Link>
-
-                <Link
-                  to="/projects"
-                  className="btn btn-outline btn-minimal"
-                  aria-label={t('hero.cta.projects', { ns: 'home' })}
-                >
-                  {t('hero.cta.projects', { ns: 'home' })}
-                </Link>
-
-                <a
-                  href="/Ezequiel_Fernandez_CV.pdf"
-                  className="btn btn-ghost btn-minimal"
-                  aria-label={t('hero.cta.downloadCV', { ns: 'home' })}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {t('hero.cta.downloadCV', { ns: 'home' })}
-                </a>
-              </div>
-
-              <div className="mt-6">
-                <h3 className="text-sm font-semibold mb-2">{t('stack.heading', { ns: 'home' })}</h3>
-                <ul className="flex flex-wrap gap-2">
-                  {['React', 'TypeScript', 'JavaScript', 'Vite', 'Testing', 'TanStack Query'].map((tName) => (
-                    <li key={tName} className="chip chip-ghost" aria-hidden>
-                      {tName}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <aside aria-label="Preview destacado" className="space-y-6">
-              <div className="flex items-center gap-4 rounded-2xl border border-base-200 bg-base-100 p-4 shadow-sm">
-                <img
-                  src="/profile.jpg"
-                  alt={t('hero.name', { ns: 'home' })}
-                  width={64}
-                  height={64}
-                  loading="lazy"
-                  className="h-16 w-16 rounded-xl object-cover"
-                />
-                <div>
-                  <p className="font-semibold">{t('hero.name', { ns: 'home' })}</p>
-                  <p className="text-sm text-muted">{t('hero.role', { ns: 'home' })}</p>
-                </div>
-              </div>
-
-              <div className="overflow-hidden rounded-2xl border border-base-200 bg-base-100 shadow-sm">
-                <ProjectCarousel
-                  images={[
-                    '/projects/moviedash-1.jpg',
-                    '/projects/moviedash-2.jpg',
-                    '/projects/moviedash-3.jpg',
-                    '/projects/moviedash-4.jpg',
-                  ]}
-                  interval={3500}
-                  autoPlay={true}
-                  alt={t('featured.title', { ns: 'home' }) + ' preview'}
-                />
-
-                <div className="p-4">
-                  <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted">
-                    {t('featured.caseStudyBtn', { ns: 'home' })}
-                  </p>
-                  <h4 className="mt-2 font-semibold wrap-break-word">{featuredName}</h4>
-                  <p className="mt-1 text-sm text-muted wrap-break-word">{featuredShort}</p>
-
-                  <div className="mt-3 flex flex-wrap items-center gap-3 text-sm">
-                    <Link
-                      to="/projects/movie-dashboard"
-                      className="hover:text-primary hover:underline underline-offset-4"
-                      aria-label={t('featured.caseStudyLinkAria', { ns: 'home' })}
-                    >
-                      {t('featured.caseStudyBtn', { ns: 'home' })}
-                    </Link>
-
-                    <a
-                      href="https://github.com/ezefernandezyf/movie-management-dashboard"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-primary hover:underline underline-offset-4"
-                      aria-label={t('featured.repoAria', { ns: 'home', name: featuredName })}
-                    >
-                      {t('featured.repoBtn', { ns: 'home' })}
-                    </a>
-                    <a
-                      href="https://moviesdashboard.vercel.app/home"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 btn btn-outline btn-minimal"
-                      aria-label={t('featured.demoAria', { ns: 'home', name: featuredName })}
-                    >
-                      {t('featured.demoBtn', { ns: 'home' })}
-                      <ArrowTopRightOnSquareIcon className="w-4 h-4" aria-hidden />
-                    </a>
-                  </div>
-
-                  <div className="mt-3 flex flex-wrap gap-2 text-xs text-muted">
-                    <span className="chip chip-outline">React</span>
-                    <span className="chip chip-outline">TypeScript</span>
-                    <span className="chip chip-outline">Vite</span>
-                    <span className="chip chip-outline">TanStack Query</span>
-                    <span className="chip chip-outline">Supabase</span>
-                  </div>
-                </div>
-              </div>
-            </aside>
-          </section>
-
-          <section className="grid gap-4 md:grid-cols-3">
-            <div className="section-shell p-4">
-              <h5 className="font-semibold">{t('cards.projects.title', { ns: 'home' })}</h5>
-              <p className="mt-2 text-sm text-muted">{t('cards.projects.text', { ns: 'home' })}</p>
-              <Link to="/projects" className="mt-3 inline-block text-sm hover:text-primary hover:underline underline-offset-4">
-                {t('cards.projects.link', { ns: 'home' })}
+                {t('hero.cta.projects', { ns: 'home' })}
               </Link>
-            </div>
 
-            <div className="section-shell p-4">
-              <h5 className="font-semibold">{t('cards.contact.title', { ns: 'home' })}</h5>
-              <p className="mt-2 text-sm text-muted">{t('cards.contact.text', { ns: 'home' })}</p>
-              <Link to="/contact" className="mt-3 inline-block text-sm hover:text-primary hover:underline underline-offset-4">
-                {t('cards.contact.link', { ns: 'home' })}
+              <Link
+                aria-label={t('hero.cta.about', { ns: 'home' })}
+                className="inline-flex h-14 items-center justify-center border border-outline/20 px-8 text-sm font-bold uppercase tracking-widest text-on-surface transition-all hover:bg-surface-container-low focus-ring active:scale-95"
+                to="/about"
+              >
+                {t('hero.cta.about', { ns: 'home' })}
               </Link>
-            </div>
 
-            <div className="section-shell p-4">
-              <h5 className="font-semibold">{t('cards.cv.title', { ns: 'home' })}</h5>
-              <p className="mt-2 text-sm text-muted">{t('cards.cv.text', { ns: 'home' })}</p>
               <a
+                aria-label={t('hero.cta.downloadCV', { ns: 'home' })}
+                className="inline-flex h-14 items-center gap-2 px-4 text-sm font-bold uppercase tracking-tight text-primary-fixed hover:underline underline-offset-8 focus-ring"
                 href="/Ezequiel_Fernandez_CV.pdf"
-                className="mt-3 inline-block text-sm hover:text-primary hover:underline underline-offset-4"
-                target="_blank"
                 rel="noopener noreferrer"
+                target="_blank"
               >
-                {t('cards.cv.link', { ns: 'home' })}
+                {t('hero.cta.downloadCV', { ns: 'home' })}
+                <ArrowTopRightOnSquareIcon className="h-4 w-4 transition-transform" aria-hidden />
               </a>
             </div>
-          </section>
-        </div>
+          </div>
+
+          <div className="mt-24">
+            <p className="mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-outline">
+              {t('stackHeading', { ns: 'home' })}
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              {technicalStack.map((stackItem) => (
+                <span
+                  key={stackItem}
+                  className="border border-outline-variant/30 px-4 py-2 text-[11px] font-semibold uppercase tracking-wider text-on-surface-variant"
+                >
+                  {stackItem}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-surface-container-low py-24" id="projects">
+          <div className="site-container">
+            <div className="mb-16 flex items-end justify-between border-b border-outline-variant/20 pb-8">
+              <h2 className="font-headline text-4xl font-bold tracking-tight md:text-5xl">
+                {t('recentWorkHeading', { ns: 'home' })}
+              </h2>
+              <p className="text-sm font-medium text-outline">02 / {projectCountLabel}</p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+              {featuredProjects.map((project) => (
+                <HomeProjectCard key={project.id} project={project} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="site-container py-32 text-center" id="contact">
+          <div className="mx-auto max-w-2xl">
+            <CommandLineIcon className="mx-auto mb-8 h-12 w-12 text-primary-fixed" aria-hidden />
+            <h2 className="mb-6 font-headline text-4xl font-bold tracking-tight md:text-5xl">
+              {t('contactTitle', { ns: 'home' })}
+            </h2>
+            <p className="mb-12 text-xl font-medium text-on-surface-variant">
+              {t('contactText', { ns: 'home' })}
+            </p>
+            <Link
+              className="inline-flex h-16 items-center gap-4 bg-primary px-12 text-sm font-bold uppercase tracking-[0.2em] text-white transition-transform active:scale-95 focus-ring"
+              to="/contact"
+            >
+              {t('contactCta', { ns: 'home' })}
+              <ArrowTopRightOnSquareIcon className="h-4 w-4 transition-transform" aria-hidden />
+            </Link>
+          </div>
+        </section>
       </main>
     </>
   );
