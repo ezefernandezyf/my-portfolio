@@ -1,7 +1,7 @@
-import { ArrowTopRightOnSquareIcon, CodeBracketIcon, CommandLineIcon } from '@heroicons/react/24/outline';
+import { ArrowTopRightOnSquareIcon, BookOpenIcon, CommandLineIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { MetaTags } from '../components';
+import { GithubIcon, MetaTags } from '../components';
 import { projects } from '../data/projects';
 
 type Project = (typeof projects)[number];
@@ -36,10 +36,12 @@ const HomeProjectCard = ({ project }: HomeProjectCardProps): React.JSX.Element =
         <span className="text-[10px] font-mono text-outline">{project.year}</span>
       </div>
 
-      <h3 className="mt-8 text-3xl font-bold tracking-tight font-headline">{projectName}</h3>
-      <p className="mt-4 max-w-[45ch] leading-relaxed text-on-surface-variant">{projectShort}</p>
+      <div className="mt-8 min-h-35 md:min-h-40">
+        <h3 className="text-3xl font-bold tracking-tight font-headline">{projectName}</h3>
+        <p className="mt-4 max-w-[45ch] leading-relaxed text-on-surface-variant">{projectShort}</p>
+      </div>
 
-      <div className="relative mt-12 aspect-video overflow-hidden bg-surface-container-low">
+      <div className="relative mt-12 h-80 overflow-hidden bg-surface-container-low md:h-88 lg:h-96">
         <img
           alt={`${projectName} preview`}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -53,7 +55,7 @@ const HomeProjectCard = ({ project }: HomeProjectCardProps): React.JSX.Element =
           to={`/projects/${project.id}`}
         >
           View case study
-          <ArrowTopRightOnSquareIcon className="h-4 w-4" aria-hidden />
+          <BookOpenIcon className="h-4 w-4" aria-hidden />
         </Link>
 
         <a
@@ -62,7 +64,7 @@ const HomeProjectCard = ({ project }: HomeProjectCardProps): React.JSX.Element =
           rel="noopener noreferrer"
           target="_blank"
         >
-          <CodeBracketIcon className="h-4 w-4" aria-hidden />
+          <GithubIcon className="h-4 w-4" />
           View repo
         </a>
 
