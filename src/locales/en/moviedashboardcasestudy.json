@@ -25,8 +25,17 @@
     "text": "Movie Management Dashboard is a SPA for internal movie catalog management. Full CRUD, authentication for permission control and React Query for data sync. The focus was security, UX, modularity and testing."
   },
   "problem": {
-    "heading": "Problem solved",
+    "heading": "The problem",
     "text": "Needed a fast, secure, easy platform for users to manage movies. Authentication and permission control were key: only the author can edit/delete own records. Efficient and scalable data handling was required."
+  },
+  "solution": {
+    "heading": "The Solution",
+    "list": [
+      "Replaced blocking CRUD flows with async updates backed by React Query.",
+      "Used Supabase RLS to keep edit/delete permissions scoped to the author.",
+      "Normalized forms and validation with react-hook-form + Zod.",
+      "Added resilient error handling and tests around the CRUD lifecycle."
+    ]
   },
   "techTools": {
     "heading": "Technologies & tools",
@@ -43,7 +52,13 @@
   },
   "architecture": {
     "heading": "Architecture & decisions",
-    "text": "Modularity prioritized: custom hooks for Supabase & React Query, separation of logic: UI components, data hooks & views. Supabase RLS ensures data mutation integrity. Code is portable, easy to test & extend."
+    "text": "Modularity prioritized: custom hooks for Supabase & React Query, separation of logic: UI components, data hooks & views. Supabase RLS ensures data mutation integrity. Code is portable, easy to test & extend.",
+    "list": [
+      "Custom hooks separate Supabase and React Query concerns.",
+      "UI components, data hooks and views stay isolated.",
+      "Supabase RLS protects write operations at the database layer.",
+      "The code stays portable, testable and easy to extend."
+    ]
   },
   "implementation": {
     "heading": "Featured implementation",
@@ -85,6 +100,9 @@
       "Bulk-edit/delete features.",
       "Integration with other movie APIs."
     ]
+  },
+  "deepDive": {
+    "heading": "Technical Deep Dive"
   },
   "carousel": {
     "alt": "Movie Management Dashboard preview"

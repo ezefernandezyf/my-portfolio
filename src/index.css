@@ -29,12 +29,12 @@
   /* Colors (calm recruiter-friendly palette) */
   --color-bg: #f8fafc;
   --color-surface: #ffffff;
-  --color-text: #0f172a;
-  --color-on-surface: #0f172a;
-  --color-on-surface-variant: #526173;
-  --color-muted: #526173;
-  --color-primary: #3346c8;
-  --color-primary-fixed: #005ac2;
+  --color-text: #09090b;
+  --color-on-surface: #09090b;
+  --color-on-surface-variant: #52525b;
+  --color-muted: #52525b;
+  --color-primary: #3b82f6;
+  --color-primary-fixed: #60a5fa;
   --color-on-primary-fixed: #ffffff;
   --color-accent: #0f766e;
   --color-on-primary: #ffffff;
@@ -81,21 +81,21 @@
 /* Dark theme variables (kept outside @theme — only custom properties inside @theme allowed) */
 .dark,
 [data-theme='dark'] {
-  --color-bg: #0b1220;
-  --color-surface: #101a2a;
-  --color-text: #e6eef8;
-  --color-on-surface: #e6eef8;
-  --color-on-surface-variant: #93a4bb;
-  --color-muted: #93a4bb;
-  --color-primary: #7aa2ff;
-  --color-primary-fixed: #adc6ff;
+  --color-bg: #09090b;
+  --color-surface: #18181b;
+  --color-text: #fafafa;
+  --color-on-surface: #fafafa;
+  --color-on-surface-variant: #a1a1aa;
+  --color-muted: #52525b;
+  --color-primary: #3b82f6;
+  --color-primary-fixed: #60a5fa;
   --color-on-primary-fixed: #ffffff;
   --color-accent: #34d399;
-  --color-outline: #93a4bb;
-  --color-outline-variant: #475569;
-  --color-surface-container-low: #101a2a;
-  --color-surface-container-high: #132033;
-  --color-surface-container-lowest: #0b1220;
+  --color-outline: #52525b;
+  --color-outline-variant: rgba(39, 39, 42, 0.5);
+  --color-surface-container-low: #18181b;
+  --color-surface-container-high: #27272a;
+  --color-surface-container-lowest: #09090b;
 
   /* DaisyUI mapping for dark */
   --p: var(--color-primary);
@@ -244,8 +244,8 @@ label {
 }
 
 .focus-ring:focus-visible {
-  outline: 3px solid color-mix(in srgb, var(--color-primary) 70%, transparent);
-  outline-offset: 3px;
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
 }
 
 .control-button {
@@ -277,7 +277,7 @@ label {
   border-color: color-mix(in srgb, var(--color-border) 65%, var(--color-accent) 35%);
 }
 .carousel-control:focus-visible {
-  outline: 3px solid color-mix(in srgb, var(--color-primary) 60%, transparent);
+  outline: 2px solid #3b82f6;
   outline-offset: 2px;
 }
 
