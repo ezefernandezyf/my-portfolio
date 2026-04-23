@@ -25,7 +25,7 @@
     "text": "IA Recipe Generator (ChefcitoIA) is an SPA that builds personalized recipes from user-provided ingredients and preferences. The app validates inputs, orchestrates calls to AI providers via internal routes, and maps the response to a safe typed domain model for UI consumption."
   },
   "problem": {
-    "heading": "Problem solved",
+    "heading": "The problem",
     "text": "Many users struggle to combine available ingredients or adapt recipes to dietary restrictions/portions. This tool aims to convert simple inputs into practical, clear and safe recipes without relying on raw AI output."
   },
   "techTools": {
@@ -43,7 +43,13 @@
   },
   "architecture": {
     "heading": "Architecture & decisions",
-    "text": "Feature-folder pattern: components, model and services kept per feature. Internal API routes (/api/recipe-generator/*) allow the UI to work during dev without an external backend. A strict mapper (recipeMapper) validates and normalizes IA responses before use."
+    "text": "Feature-folder pattern: components, model and services kept per feature. Internal API routes (/api/recipe-generator/*) allow the UI to work during dev without an external backend. A strict mapper (recipeMapper) validates and normalizes IA responses before use.",
+    "list": [
+      "Feature folders keep components, models and services together.",
+      "Internal /api routes let the UI run in dev without an external backend.",
+      "recipeMapper validates and normalizes AI responses before rendering.",
+      "Typed flows protect the domain model from unsafe payloads."
+    ]
   },
   "implementation": {
     "heading": "Featured implementation",
@@ -91,6 +97,9 @@
   "labels": {
     "year": "Year:",
     "featured": "Featured"
+  },
+  "deepDive": {
+    "heading": "Technical Deep Dive"
   },
   "notFound": "Project not found",
   "noPreview": "No preview"

@@ -14,30 +14,35 @@ describe('ChefcitoIACaseStudy', () => {
     expect(screen.getByRole('heading', { name: /chefcitoia/i })).toBeInTheDocument();
     expect(
       screen.getByRole('link', {
-        name: /repositorio ia recipe generator|ia recipe generator repository/i,
+        name: /repository chefcitoia/i,
       }),
     ).toHaveAttribute('href', 'https://github.com/ezefernandezyf/ia-recipe-generator');
     expect(
       screen.getByRole('link', {
-        name: /demo ia recipe generator|ia recipe generator demo/i,
+        name: /demo chefcitoia/i,
       }),
     ).toHaveAttribute('href', 'https://chefcitoia.vercel.app');
 
     const aside = screen.getByTestId('stack-aside');
     const withinAside = within(aside);
 
-    expect(withinAside.getByText(/frontend/i)).toBeInTheDocument();
-    expect(withinAside.getByText(/estilos|styles/i)).toBeInTheDocument();
-    expect(withinAside.getByText(/zod/i)).toBeInTheDocument();
+    expect(withinAside.getByText(/2026/)).toBeInTheDocument();
+    expect(withinAside.getByText(/featured/i)).toBeInTheDocument();
+    expect(withinAside.getByText(/stack & tecnologías/i)).toBeInTheDocument();
 
     expect(
       screen.getByRole('heading', {
-        name: /tecnologías y herramientas|technologies & tools/i,
+        name: /problema|problem/i,
       }),
     ).toBeInTheDocument();
     expect(
       screen.getByRole('heading', {
-        name: /arquitectura y decisiones|architecture & decisions/i,
+        name: /arquitectura y decisiones/i,
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', {
+        name: /solución|solution/i,
       }),
     ).toBeInTheDocument();
   });

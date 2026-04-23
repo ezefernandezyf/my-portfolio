@@ -25,8 +25,17 @@
     "text": "CineLab is an app designed for movie lovers. It allows searching movies, accessing details (ratings, synopsis), getting recommendations and managing favorites persistently. The project was a technical and creative challenge, focused on performance, accessibility and user experience."
   },
   "problem": {
-    "heading": "Problem solved",
+    "heading": "The problem",
     "text": "Many movie search apps have slow interfaces or lack persistence for favorites. The goal was to build a fast, accessible SPA with robust state handling, focused on frontend architecture best practices."
+  },
+  "solution": {
+    "heading": "The Solution",
+    "list": [
+      "Added abortable fetching to prevent race conditions and memory leaks.",
+      "Centralized movies and favorites with Context + reducer to avoid prop drilling.",
+      "Kept previews responsive with lazy-loaded assets and skeleton states.",
+      "Covered fetch, carousel and favorites flows with tests."
+    ]
   },
   "techTools": {
     "heading": "Technologies and tools",
@@ -41,7 +50,13 @@
   },
   "architecture": {
     "heading": "Architecture and decisions",
-    "text": "Modularity and separation of concerns were prioritized: decoupled API services, hooks for fetching logic, and utilities for persistence. Global favorites state is handled with Context + reducer, avoiding prop-drilling."
+    "text": "Modularity and separation of concerns were prioritized: decoupled API services, hooks for fetching logic, and utilities for persistence. Global favorites state is handled with Context + reducer, avoiding prop-drilling.",
+    "list": [
+      "API services, fetching hooks and persistence utilities are decoupled.",
+      "Context + reducer keeps favorites state out of props.",
+      "localStorage synchronization stays in dedicated helpers.",
+      "The SPA remains easy to test and refactor."
+    ]
   },
   "implementation": {
     "heading": "Highlighted implementation",
@@ -82,6 +97,9 @@
       "Consider SSR with Next.js for SEO and initial performance.",
       "Explore React Query for caching and automatic synchronization."
     ]
+  },
+  "deepDive": {
+    "heading": "Technical Deep Dive"
   },
   "carousel": {
     "alt": "{{name}} preview"

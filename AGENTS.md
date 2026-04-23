@@ -37,6 +37,14 @@ El stack no se negocia. Buscamos demostrar ingeniería y eficiencia:
 - **Restricciones:** Prohibida la sobreingeniería visual. Si el HTML no tiene un gradiente complejo, el componente de React tampoco debe tenerlo.
 - **Criterio de Implementación:** Si hay divergencia visual entre componente actual y referencia, se prioriza rehacer el componente antes que iterar micro-ajustes.
 
+### Antes de cada módulo (obligatorio)
+- Leer la referencia HTML correspondiente antes de tocar código.
+- Comparar el componente actual contra la referencia y nombrar la diferencia concreta en estructura, jerarquía, tipografía, spacing y estados.
+- Formular una sola hipótesis falsable y una comprobación barata que la pueda refutar.
+- Si el resultado visual no es igual, igual, igual, igual a la referencia, el módulo no se considera terminado.
+- Si la referencia cambia, se rehace el bloque afectado; no se intenta mejorar con criterio propio.
+- No cerrar un módulo por aproximación: el criterio sigue siendo pixel-perfect contra `docs/redesignReferences/`.
+
 ## 5. El Flujo de Trabajo (SDD Protocol)
 La ejecución DEBE orquestarse con SDD integrando las herramientas de memoria (engram, openspec). Fases obligatorias antes de modificar el código estructural:
 1. sdd-init / sdd-explore - Paneo del repo (revisar carpeta /skills, dependencias).
