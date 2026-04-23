@@ -44,18 +44,18 @@ describe('HomePage', () => {
     expect(screen.getByRole('heading', { name: /Movie Management Dashboard/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /CineLab/i })).toBeInTheDocument();
 
-    const repoLinks = screen.getAllByRole('link', { name: /view repo/i });
-    expect(repoLinks).toHaveLength(2);
+      const repoLinks = screen.getAllByRole('link', { name: /ver repo|view repo/i });
+      expect(repoLinks).toHaveLength(2);
     expect(repoLinks[0]).toHaveAttribute('href', 'https://github.com/ezefernandezyf/movie-management-dashboard');
     expect(repoLinks[1]).toHaveAttribute('href', 'https://github.com/ezefernandezyf/cinelab-react');
 
-    const demoLinks = screen.getAllByRole('link', { name: /view demo/i });
-    expect(demoLinks).toHaveLength(2);
+      const demoLinks = screen.getAllByRole('link', { name: /ver demo|view demo/i });
+      expect(demoLinks).toHaveLength(2);
     expect(demoLinks[0]).toHaveAttribute('href', 'https://moviesdashboard.vercel.app/');
     expect(demoLinks[1]).toHaveAttribute('href', 'https://cinelab-movies.vercel.app');
 
-    const caseStudyLinks = screen.getAllByRole('link', { name: /view case study/i });
-    expect(caseStudyLinks).toHaveLength(2);
+      const caseStudyLinks = screen.getAllByRole('link', { name: /ver case study|view case study/i });
+      expect(caseStudyLinks).toHaveLength(2);
     expect(caseStudyLinks[0]).toHaveAttribute('href', '/projects/movie-dashboard');
     expect(caseStudyLinks[1]).toHaveAttribute('href', '/projects/cinelab');
 

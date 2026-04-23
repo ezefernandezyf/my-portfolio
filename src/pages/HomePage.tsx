@@ -1,86 +1,11 @@
-import { ArrowTopRightOnSquareIcon, BookOpenIcon, CommandLineIcon } from '@heroicons/react/24/outline';
+import { ArrowTopRightOnSquareIcon, CommandLineIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { GithubIcon, MetaTags } from '../components';
+import { MetaTags, ProjectCard } from '../components';
 import { projects } from '../data/projects';
-
-type Project = (typeof projects)[number];
 
 const featuredProjects = projects.slice(0, 2);
 const technicalStack = ['React', 'TypeScript', 'JS (ES6+)', 'Vite', 'Testing Library', 'TanStack Query'];
-
-type HomeProjectCardProps = {
-  project: Project;
-};
-
-const HomeProjectCard = ({ project }: HomeProjectCardProps): React.JSX.Element => {
-  const { t } = useTranslation('projects');
-  const projectName = t(project.nameKey);
-  const projectShort = t(project.shortKey);
-  const previewImage = project.images[0];
-  const topTech = project.tech.slice(0, 3);
-
-  return (
-    <article className="group flex flex-col border border-outline-variant/20 bg-surface-container-lowest p-8 transition-all duration-300 hover:border-outline-variant dark:border-outline-variant/30 dark:bg-surface">
-      <div className="flex items-start justify-between gap-4">
-        <div className="flex flex-wrap gap-2">
-          {topTech.map((tech) => (
-            <span
-              key={tech}
-              className="border border-outline-variant/40 px-3 py-1 text-[10px] font-bold uppercase tracking-tighter text-on-surface-variant"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-        <span className="text-[10px] font-mono text-outline">{project.year}</span>
-      </div>
-
-      <div className="mt-8 min-h-35 md:min-h-40">
-        <h3 className="text-3xl font-bold tracking-tight font-headline">{projectName}</h3>
-        <p className="mt-4 max-w-[45ch] leading-relaxed text-on-surface-variant">{projectShort}</p>
-      </div>
-
-      <div className="relative mt-12 h-80 overflow-hidden bg-surface-container-low md:h-88 lg:h-96">
-        <img
-          alt={`${projectName} preview`}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          src={previewImage}
-        />
-      </div>
-
-      <div className="mt-auto flex flex-wrap gap-6 border-t border-outline-variant/10 pt-6">
-        <Link
-          className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary-fixed hover:underline focus-ring"
-          to={`/projects/${project.id}`}
-        >
-          View case study
-          <BookOpenIcon className="h-4 w-4" aria-hidden />
-        </Link>
-
-        <a
-          className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-on-surface-variant transition-colors hover:text-primary focus-ring"
-          href={project.repo}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <GithubIcon className="h-4 w-4" />
-          View repo
-        </a>
-
-        <a
-          className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-on-surface-variant transition-colors hover:text-primary focus-ring"
-          href={project.demo}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <ArrowTopRightOnSquareIcon className="h-4 w-4" aria-hidden />
-          View demo
-        </a>
-      </div>
-    </article>
-  );
-};
 
 export const HomePage = (): React.JSX.Element => {
   const { t } = useTranslation(['home', 'projects']);
@@ -171,7 +96,17 @@ export const HomePage = (): React.JSX.Element => {
 
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
               {featuredProjects.map((project) => (
-                <HomeProjectCard key={project.id} project={project} />
+                <ProjectCard
+                  key={project.id}
+                  id={project.id}
+                  nameKey={project.nameKey}
+                  shortKey={project.shortKey}
+                  repo={project.repo}
+                  demo={project.demo}
+                  image={project.images[0]}
+                  tech={project.tech}
+                  year={project.year}
+                />
               ))}
             </div>
           </div>
