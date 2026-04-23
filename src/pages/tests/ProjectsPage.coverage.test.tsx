@@ -1,10 +1,21 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
 vi.mock('../../data/projects', () => ({
   projects: [
+    {
+      id: 'omega',
+      nameKey: 'Omega Project',
+      shortKey: 'Omega fallback summary',
+      repo: 'https://example.com/omega-repo',
+      demo: 'https://example.com/omega-demo',
+      images: [],
+      tech: ['React'],
+      year: 2025,
+      featured: false,
+    },
     {
       id: 'alpha',
       nameKey: 'Alpha Project',
@@ -121,30 +132,43 @@ vi.mock('../../data/projects', () => ({
 import { ProjectsPage } from '../ProjectsPage';
 
 describe('ProjectsPage coverage', () => {
-  it('filtra proyectos, muestra load more y maneja enlaces faltantes', async () => {
+  it('filters projects, loads more items, and preserves missing action branches', async () => {
+    const user = userEvent.setup();
+
     render(
       <MemoryRouter>
         <ProjectsPage />
       </MemoryRouter>,
     );
 
-    const input = screen.getByRole('textbox');
-    await userEvent.clear(input);
-    await userEvent.type(input, 'beta');
+    expect(screen.getAllByRole('heading', { level: 3 })).toHaveLength(6);
+    expect(screen.getByRole('button', { name: /load more|cargar más/i })).toBeInTheDocument();
+    expect(screen.getByText(/proyecto no encontrado|no preview/i)).toBeInTheDocument();
+
+    const input = screen.getByRole('textbox', { name: /search projects|buscar proyectos/i });
+    await user.clear(input);
+    await user.type(input, 'beta');
 
     expect(screen.getByRole('heading', { name: /beta project/i })).toBeInTheDocument();
     expect(screen.queryByRole('heading', { name: /alpha project/i })).not.toBeInTheDocument();
 
-    await userEvent.clear(input);
-    await userEvent.type(input, 'project');
+    const betaCard = screen.getByRole('heading', { name: /beta project/i }).closest('article');
+    expect(betaCard).toBeTruthy();
 
-    expect(screen.getAllByRole('heading', { level: 2 }).length).toBe(9);
-
-    const betaSection = screen.getByRole('heading', { name: /beta project/i }).closest('section');
-    expect(betaSection).toBeTruthy();
-
-    const betaLinks = betaSection ? betaSection.querySelectorAll('a') : [];
+    const betaLinks = betaCard ? betaCard.querySelectorAll('a') : [];
     expect(Array.from(betaLinks).some((link) => link.getAttribute('href')?.includes('beta-demo'))).toBe(true);
     expect(Array.from(betaLinks).some((link) => link.getAttribute('href')?.includes('beta-repo'))).toBe(false);
+
+    await user.clear(input);
+    await user.type(input, 'project');
+
+    expect(screen.getAllByRole('heading', { level: 3 })).toHaveLength(6);
+
+    await user.click(screen.getByRole('button', { name: /load more|cargar más/i }));
+    expect(screen.getAllByRole('heading', { level: 3 })).toHaveLength(9);
+
+    await user.click(screen.getByRole('button', { name: /load more|cargar más/i }));
+    expect(screen.getAllByRole('heading', { level: 3 })).toHaveLength(11);
+    expect(screen.queryByRole('button', { name: /load more|cargar más/i })).not.toBeInTheDocument();
   });
 });

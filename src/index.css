@@ -132,6 +132,27 @@ body {
     color var(--transition-medium) ease;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-headline);
+}
+
+p,
+li,
+span,
+a,
+button,
+input,
+textarea,
+select,
+label {
+  font-family: var(--font-body);
+}
+
 ::selection {
   background: color-mix(in srgb, var(--color-primary) 26%, transparent);
   color: var(--color-on-primary);
