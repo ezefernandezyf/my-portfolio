@@ -6,10 +6,22 @@
     "photoAlt": "Foto de {{name}}",
     "downloadCV": "Descargar CV",
     "github": "GitHub",
-    "linkedIn": "LinkedIn"
+    "linkedIn": "LinkedIn",
+    "viewProjects": "Ver Proyectos",
+    "contact": "Contactar"
   },
   "h1": "Acerca de mí",
   "summary": "Soy Front-end Developer enfocado en construir interfaces limpias, accesibles y mantenibles. Trabajo principalmente con React, TypeScript y JavaScript, desarrollando SPAs que consumen APIs REST y priorizan rendimiento, buenas prácticas y experiencia de usuario. Me interesa escribir código claro, testeable y escalable, aplicando principios de arquitectura por features, manejo de estado eficiente y validación de datos.",
+  "sections": {
+    "stack": "Stack Tecnológico",
+    "softSkills": "Habilidades Blandas",
+    "education": "Educación"
+  },
+  "stackCards": {
+    "frontend": "Frontend Core",
+    "styles": "Styles & UI",
+    "testing": "Testing & Tools"
+  },
   "projects": {
     "title": "Proyectos destacados",
     "links": {
@@ -79,5 +91,6 @@
       "Autonomía"
     ]
   },
-  "availability": "Disponibilidad: inmediata, horario flexible."
+  "availability": "Disponibilidad: inmediata, horario flexible.",
+  "contactCta": "Contactar"
 }

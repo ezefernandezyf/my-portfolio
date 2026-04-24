@@ -23,6 +23,7 @@ El stack no se negocia. Buscamos demostrar ingeniería y eficiencia:
 - **Frontend:** React + TypeScript.
 - **Arquitectura:** "Screaming Architecture" o "Feature-based" (Ej: features/, core/, shared/, ui/). Los componentes UI deben estar estrictamente desacoplados de la lógica.
 - **Estilos y Animaciones:** CSS/Tailwind (según corresponda el setup actual) + framer-motion para transiciones fluidas, físicas y profesionales (staggers, fade-ins, microinteracciones).
+- **Regla de Motion Transversal:** Si una animación mejora lectura, jerarquía o percepción de calidad sin traicionar la referencia, debe aplicarse de forma consistente en todas las páginas nuevas del módulo; evitar efectos aislados que aparezcan solo en una pantalla.
 - **Internacionalización (Crítico):** El sistema i18n actual (Dualidad ES/EN) se debe mantener funcional al 100% en todos los componentes nuevos.
 - **Adaptación de Datos:** Los placeholders de los HTML (ej. "JWT Architecture" o fotos genéricas) deben ser reemplazados por los datos reales del desarrollador. **Regla:** Ante la duda de qué contenido insertar, el Agente debe detenerse y preguntar. No inventar datos.
 
@@ -111,6 +112,11 @@ Para garantizar una entrega iterativa y controlada, el rediseño se ejecutará e
   - **Objetivo:** Reemplazar los 3 componentes de 600 líneas por un único `CaseStudyTemplate` dinámico (Screaming Architecture).
   - **Validación:** El componente puede renderizar cualquier case study desde un origen de datos tipado sin modificar su UI. 
 
-- **Fase 5: Contact & Final Polish (`feat/contact-polish`)**
+- **Fase 5: About Me Page (`feat/about-page`)**
+  - **Objetivo:** Reconstrucción completa de la página About Me tomando `docs/redesignReferences/aboutmeReference.html` como única fuente de verdad, con paridad pixel-perfect en hero, stack, habilidades blandas, educación y footer/CTA si aplica.
+  - **Validación:** Estructura, tipografía, jerarquía, iconografía, spacing y estados iguales a la referencia; animaciones fluidas con `framer-motion` cuando el HTML lo sugiera y, si el resultado mejora, extender la misma lógica a páginas hermanas del módulo; contenido ES/EN consistente; accesibilidad WCAG 2.1 AA.
+  - **Nota de Control:** Si un bloque no está claro o falta contenido real del desarrollador, se detiene y se pregunta antes de inventar datos.
+
+- **Fase 6: Contact & Final Polish (`feat/contact-polish`)**
   - **Objetivo:** Formulario de contacto validado con `zod-4`, layout lado a lado, y revisión final de accesibilidad.
   - **Validación:** End-to-end testeado, 0 violaciones de accesibilidad, despliegue final en staging aprobado.
