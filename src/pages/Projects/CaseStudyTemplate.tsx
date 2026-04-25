@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import {
   CheckIcon,
   CodeBracketIcon,
@@ -72,6 +73,20 @@ const deepDiveIcons = {
 const deepDiveHeadingClass = 'font-headline text-[1.75rem] font-medium tracking-[-0.01em] text-on-surface';
 const cardClass =
   'bg-surface-container-lowest p-8 rounded-sm border border-outline-variant/20 hover:bg-surface-container-high hover:border-outline-variant transition-all duration-200 group';
+
+const pageVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+} as const;
+
+const riseVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0 },
+} as const;
 
 function normalizeItems(items: string[] | string): string[] {
   return Array.isArray(items) ? items : [items];
@@ -152,10 +167,10 @@ export const CaseStudyTemplate = ({
     <>
       <MetaTags title={title} description={description} pathname={pathname} type="article" />
 
-      <main className="pb-0 pt-24">
-        <section className="max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-24">
+      <motion.main className="pb-0 pt-24" initial="hidden" animate="visible" variants={pageVariants}>
+        <motion.section className="max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-24" variants={riseVariants}>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end">
-            <div className="lg:col-span-8">
+            <motion.div className="lg:col-span-8" variants={riseVariants}>
               <p className="font-label mb-4 text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-outline">
                 Case Study
               </p>
@@ -165,7 +180,7 @@ export const CaseStudyTemplate = ({
               <p className="font-body mt-6 max-w-[60ch] text-[1.125rem] leading-relaxed text-on-surface-variant">
                 {description}
               </p>
-              <div className="mt-10 flex flex-wrap gap-4">
+              <motion.div className="mt-10 flex flex-wrap gap-4" variants={riseVariants}>
                 {demo ? (
                   <a
                     href={demo}
@@ -194,12 +209,13 @@ export const CaseStudyTemplate = ({
                 >
                   {backLabel}
                 </Link>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
-            <aside
+            <motion.aside
               className="flex flex-col gap-6 lg:col-span-4 lg:border-l lg:border-outline-variant/20 lg:pl-12"
               data-testid="stack-aside"
+              variants={riseVariants}
             >
               <div>
                 <span className="mb-1 block font-label text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-outline">
@@ -232,11 +248,11 @@ export const CaseStudyTemplate = ({
                   ))}
                 </div>
               </div>
-            </aside>
+            </motion.aside>
           </div>
-        </section>
+        </motion.section>
 
-        <section className="max-w-6xl mx-auto mb-28 px-6 lg:px-12">
+        <motion.section className="max-w-6xl mx-auto mb-28 px-6 lg:px-12" variants={riseVariants}>
           <div className="relative w-full overflow-hidden rounded-lg border border-outline-variant/20 bg-surface-container-low shadow-[0_16px_32px_-16px_rgba(27,27,27,0.04)]">
             {images.length > 0 ? (
               <ProjectCarousel images={images} alt={carouselAlt} interval={5000} />
@@ -246,12 +262,12 @@ export const CaseStudyTemplate = ({
               </div>
             )}
           </div>
-        </section>
+        </motion.section>
 
-        <section className="bg-surface-container-low py-32">
+        <motion.section className="bg-surface-container-low py-32" variants={riseVariants}>
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 gap-20 lg:grid-cols-2">
-              <div>
+              <motion.div variants={riseVariants}>
                 <h2 className="font-headline mb-6 flex items-center text-[1.75rem] font-medium tracking-[-0.01em] text-on-surface">
                   <ExclamationTriangleIcon className="mr-3 h-6 w-6 text-primary-fixed" aria-hidden="true" />
                   {problemHeading}
@@ -259,9 +275,9 @@ export const CaseStudyTemplate = ({
                 <p className="font-body max-w-[60ch] text-[0.875rem] leading-relaxed text-on-surface-variant">
                   {problemText}
                 </p>
-              </div>
+              </motion.div>
 
-              <div>
+              <motion.div variants={riseVariants}>
                 <h2 className="font-headline mb-6 flex items-center text-[1.75rem] font-medium tracking-[-0.01em] text-on-surface">
                   <SparklesIcon className="mr-3 h-6 w-6 text-primary-fixed" aria-hidden="true" />
                   {solutionHeading}
@@ -274,19 +290,19 @@ export const CaseStudyTemplate = ({
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
-        <section className="max-w-7xl mx-auto px-6 lg:px-12 py-32">
+        <motion.section className="max-w-7xl mx-auto px-6 lg:px-12 py-32" variants={riseVariants}>
           <h2 className={`${deepDiveHeadingClass} mb-12`}>{deepDiveHeading}</h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {deepDiveSections.map((section) => renderSection(section))}
           </div>
-        </section>
+        </motion.section>
 
-        <section className="border-y border-outline-variant/20 bg-surface-container-low py-24">
+        <motion.section className="border-y border-outline-variant/20 bg-surface-container-low py-24" variants={riseVariants}>
           <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
             <h2 className={`${deepDiveHeadingClass} mb-10`}>The Engineering Stack</h2>
             <div className="flex flex-wrap justify-center gap-3">
@@ -300,10 +316,10 @@ export const CaseStudyTemplate = ({
               ))}
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {codeSection ? (
-          <section className="max-w-3xl mx-auto px-6 lg:px-12 py-32 text-center">
+          <motion.section className="max-w-3xl mx-auto px-6 lg:px-12 py-32 text-center" variants={riseVariants}>
             <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-sm bg-surface-container-low text-primary-fixed/20">
               <CodeBracketIcon className="h-8 w-8" aria-hidden="true" />
             </div>
@@ -321,9 +337,9 @@ export const CaseStudyTemplate = ({
                 {codeSection.description}
               </p>
             </div>
-          </section>
+          </motion.section>
         ) : null}
-      </main>
+      </motion.main>
     </>
   );
 };
