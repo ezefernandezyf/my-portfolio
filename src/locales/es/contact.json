@@ -2,35 +2,42 @@
   "meta": {
     "contact": {
       "title": "Contacto",
-      "description": "Formulario de contacto — enviame un mensaje sobre proyectos, dudas o propuestas."
+      "description": "Formulario de contacto para consultas de proyectos, colaboraciones u oportunidades técnicas."
     }
   },
-  "title": "Contacto",
-  "intro": "Contactame si creés que mi perfil encaja en tu equipo. Estoy disponible para roles Front-end.",
+  "hero": {
+    "label": "Disponible para trabajar",
+    "titleAccessible": "Construyamos algo preciso.",
+    "titleLine1": "Construyamos",
+    "titleLine2": "algo",
+    "titleAccent": "preciso.",
+    "description": "Traduzco requisitos complejos en interfaces clínicas, accesibles y de alto rendimiento. Escribime para iniciar la conversación técnica.",
+    "emailLabel": "Email",
+    "locationLabel": "Ubicación",
+    "locationValue": "Global / Remote (GMT-3)",
+    "responseTime": "Respuesta en 24 h"
+  },
   "form": {
     "name": {
-      "label": "Nombre",
-      "placeholder": "Tu nombre",
+      "label": "Nombre completo",
+      "placeholder": "Jane Doe",
       "validation_min": "El nombre debe tener al menos 2 caracteres"
     },
     "email": {
       "label": "Email",
-      "placeholder": "tu@ejemplo.com",
+      "placeholder": "jane@example.com",
       "validation": "Email inválido"
     },
     "subject": {
       "label": "Asunto",
-      "placeholder": "Sobre qué querés escribirme",
-      "validation_min": "Asunto demasiado corto"
+      "helper": "(Consulta técnica, colaboración, etc.)",
+      "placeholder": "Project Scope: UI/UX System",
+      "validation_min": "El asunto debe tener al menos 4 caracteres"
     },
     "message": {
       "label": "Mensaje",
-      "placeholder": "Escribí tu mensaje aquí",
-      "validation_min": "Mensaje demasiado corto"
-    },
-    "consent": {
-      "label": "Acepto que se guarde mi email para responder",
-      "validation": "Debes aceptar el consentimiento"
+      "placeholder": "Describí objetivos, plazos y restricciones técnicas...",
+      "validation_min": "El mensaje debe tener al menos 10 caracteres"
     },
     "submit": {
       "sending": "Enviando...",
@@ -42,7 +49,7 @@
     "error_prefix": "Error al enviar:"
   },
   "errors": {
-    "no_endpoint": "No está configurado el endpoint de envío",
+    "no_endpoint": "No hay un endpoint configurado para enviar mensajes.",
     "send_failed": "No se pudo enviar el mensaje. Intentá de nuevo más tarde."
   }
 }
