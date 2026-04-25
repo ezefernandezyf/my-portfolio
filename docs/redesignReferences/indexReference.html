@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Ezequiel Fernández | Portfolio</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      crossorigin="anonymous"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      referrerpolicy="no-referrer"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error-container": "#410002",
+              "secondary-fixed": "#c3c7cc",
+              "primary-fixed": "#005ac2",
+              "on-primary-fixed": "#ffffff",
+              "surface-variant": "#e2e2e2",
+              secondary: "#5b5f63",
+              "on-surface-variant": "#474747",
+              "on-primary-fixed-variant": "#d8e2ff",
+              background: "#f9f9f9",
+              "surface-container-high": "#e8e8e8",
+              "on-secondary-container": "#181c20",
+              "surface-container-low": "#f3f3f3",
+              "on-tertiary-fixed": "#ffffff",
+              "primary-fixed-dim": "#004494",
+              "on-tertiary-fixed-variant": "#b7eaff",
+              outline: "#777777",
+              "surface-bright": "#f9f9f9",
+              "surface-container-highest": "#e2e2e2",
+              surface: "#f9f9f9",
+              "secondary-container": "#d1d4da",
+              "inverse-on-surface": "#f1f1f1",
+              "tertiary-container": "#007f9c",
+              "surface-container": "#eeeeee",
+              "on-primary-container": "#ffffff",
+              "on-tertiary-container": "#ffffff",
+              "on-secondary-fixed": "#181c20",
+              "outline-variant": "#c6c6c6",
+              "tertiary-fixed": "#00677f",
+              "on-background": "#1b1b1b",
+              "on-tertiary": "#b7eaff",
+              "on-secondary": "#ffffff",
+              "inverse-primary": "#adc6ff",
+              "surface-dim": "#dadada",
+              "on-primary": "#d8e2ff",
+              "on-error": "#ffffff",
+              "on-surface": "#1b1b1b",
+              error: "#ba1a1a",
+              "primary-container": "#00397e",
+              "surface-tint": "#005ac2",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed-dim": "#004e60",
+              primary: "#000000",
+              "inverse-surface": "#303030",
+              "secondary-fixed-dim": "#a8abb1",
+              "on-secondary-fixed-variant": "#383c40",
+              "error-container": "#ffdad6",
+              tertiary: "#004152",
+            },
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
+            },
+            fontFamily: {
+              headline: ["Space Grotesk"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f9f9f9;
+        color: #1b1b1b;
+      }
+      h1,
+      h2,
+      h3,
+      .font-space-grotesk {
+        font-family: "Space Grotesk", sans-serif;
+      }
+      .focus-ring:focus {
+        outline: 2px solid #005ac2;
+        outline-offset: 2px;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background selection:bg-primary-fixed selection:text-on-primary-fixed"
+  >
+    <!-- TopNavBar -->
+    <header
+      class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-md border-b border-zinc-200/20"
+    >
+     <nav
+        class="flex justify-between items-center h-16 px-6 lg:px-12 w-full max-w-full"
+      >
+        <div class="flex items-center gap-8">
+          <a
+            class="text-xl font-bold text-on-surface tracking-tight uppercase font-space-grotesk focus-ring"
+            href="#"
+            >[EZ]</a
+          >
+          <!-- Desktop Navigation Links -->
+          <div class="hidden md:flex items-center gap-6">
+            <a
+              class="text-on-surface/70 hover:text-primary transition-colors duration-200 font-bold uppercase tracking-tight text-sm font-space-grotesk focus-ring"
+              href="#projects"
+              >Projects</a
+            >
+            <a
+              class="text-on-surface/70 hover:text-primary transition-colors duration-200 font-bold uppercase tracking-tight text-sm font-space-grotesk focus-ring"
+              href="#about"
+              >About me</a
+            >
+            <a
+              class="text-on-surface/70 hover:text-primary transition-colors duration-200 font-bold uppercase tracking-tight text-sm font-space-grotesk focus-ring"
+              href="#contact"
+              >Contact</a
+            >
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <!-- Language Toggle -->
+          <div
+            class="flex items-center bg-surface-container-high p-1 rounded-full text-[10px] font-bold tracking-widest uppercase"
+          >
+            <button
+              class="px-3 py-1 bg-surface-container-lowest rounded-full shadow-sm text-primary focus-ring"
+            >
+              EN
+            </button>
+            <button
+              class="px-3 py-1 text-on-surface/50 hover:text-on-surface focus-ring"
+            >
+              ES
+            </button>
+          </div>
+          <!-- Action Icons -->
+          <div class="flex items-center gap-2">
+            <a
+              class="w-10 h-10 flex items-center justify-center text-on-surface/70 hover:text-primary focus-ring transition-colors"
+              href="#"
+              title="GitHub"
+            >
+              <i class="fa-brands fa-github text-lg"></i>
+            </a>
+            <a
+              class="w-10 h-10 flex items-center justify-center text-on-surface/70 hover:text-primary focus-ring transition-colors"
+              href="#"
+              title="LinkedIn"
+            >
+              <i class="fa-brands fa-linkedin-in text-lg"></i>
+            </a>
+          </div>
+          <a
+            class="hidden sm:inline-flex items-center justify-center h-10 px-6 border-2 border-primary text-primary text-sm font-bold uppercase tracking-tight focus-ring transition-all hover:bg-primary/5 active:scale-95"
+            href="#"
+          >
+            Download CV
+          </a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <!-- Hero Section -->
+      <section
+        class="relative min-h-[819px] flex flex-col justify-center px-6 lg:px-12 pt-32 pb-12 max-w-7xl mx-auto"
+      >
+        <div class="max-w-[60ch]">
+          <p
+            class="font-label text-label-sm font-semibold uppercase tracking-[0.2em] text-primary-fixed mb-6"
+          >
+            Software Engineer
+          </p>
+          <h1
+            class="text-6xl md:text-8xl font-bold tracking-tighter leading-[0.9] mb-8 font-headline"
+          >
+            Ezequiel <br />Fernández
+          </h1>
+          <h2
+            class="text-xl md:text-2xl text-on-surface-variant font-medium leading-relaxed mb-12"
+          >
+            Front-end Developer specializing in
+            <span class="text-on-surface">accessible architectures</span> and
+            <span class="text-on-surface">high-performance</span> interfaces.
+          </h2>
+          <div class="flex flex-wrap gap-6 items-center">
+            <button
+              class="h-14 px-8 bg-primary text-on-primary-fixed text-sm font-bold uppercase tracking-widest flex items-center justify-center focus-ring transition-all hover:bg-primary-fixed"
+            >
+              Projects
+            </button>
+            <button
+              class="h-14 px-8 border border-outline/20 text-on-surface text-sm font-bold uppercase tracking-widest flex items-center justify-center focus-ring transition-all hover:bg-surface-container-low"
+            >
+              About me
+            </button>
+            <a
+              class="h-14 px-4 flex items-center gap-2 text-primary-fixed font-bold uppercase tracking-tight text-sm hover:underline underline-offset-8 focus-ring group"
+              href="#"
+            >
+              Download CV
+              <span
+                class="material-symbols-outlined transition-transform group-hover:translate-x-1"
+                data-icon="arrow_forward"
+                >arrow_forward</span
+              >
+            </a>
+          </div>
+        </div>
+        <!-- Featured Stack -->
+        <div class="mt-24">
+          <p
+            class="text-[10px] font-bold uppercase tracking-[0.3em] text-outline mb-6"
+          >
+            Technical Ecosystem
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <span
+              class="px-4 py-2 border border-outline-variant/30 text-[11px] font-semibold uppercase tracking-wider text-on-surface-variant"
+              >React</span
+            >
+            <span
+              class="px-4 py-2 border border-outline-variant/30 text-[11px] font-semibold uppercase tracking-wider text-on-surface-variant"
+              >TypeScript</span
+            >
+            <span
+              class="px-4 py-2 border border-outline-variant/30 text-[11px] font-semibold uppercase tracking-wider text-on-surface-variant"
+              >JS (ES6+)</span
+            >
+            <span
+              class="px-4 py-2 border border-outline-variant/30 text-[11px] font-semibold uppercase tracking-wider text-on-surface-variant"
+              >Vite</span
+            >
+            <span
+              class="px-4 py-2 border border-outline-variant/30 text-[11px] font-semibold uppercase tracking-wider text-on-surface-variant"
+              >Testing Library</span
+            >
+            <span
+              class="px-4 py-2 border border-outline-variant/30 text-[11px] font-semibold uppercase tracking-wider text-on-surface-variant"
+              >TanStack Query</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- Project Grid Section -->
+      <section
+        class="bg-surface-container-low py-24 px-6 lg:px-12"
+        id="projects"
+      >
+        <div class="max-w-7xl mx-auto">
+          <div
+            class="flex items-end justify-between mb-16 border-b border-outline-variant/20 pb-8"
+          >
+            <h2 class="text-4xl font-bold tracking-tight font-headline">
+              Recent Work
+            </h2>
+            <p class="text-sm text-outline font-medium">02 / 04</p>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Project Card 1: Movie Management Dashboard -->
+            <div
+              class="bg-surface-container-lowest border border-outline-variant/20 p-8 flex flex-col group transition-all duration-300 hover:border-outline-variant"
+            >
+              <div class="flex justify-between items-start mb-8">
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="px-3 py-1 border border-outline-variant/40 text-[10px] font-bold uppercase tracking-tighter text-on-surface-variant"
+                    >React</span
+                  >
+                  <span
+                    class="px-3 py-1 border border-outline-variant/40 text-[10px] font-bold uppercase tracking-tighter text-on-surface-variant"
+                    >Supabase</span
+                  >
+                  <span
+                    class="px-3 py-1 border border-outline-variant/40 text-[10px] font-bold uppercase tracking-tighter text-on-surface-variant"
+                    >Tailwind</span
+                  >
+                </div>
+                <span class="text-[10px] font-mono text-outline">2024</span>
+              </div>
+              <h3 class="text-3xl font-bold mb-4 font-headline">
+                Movie Management Dashboard
+              </h3>
+              <p
+                class="text-on-surface-variant leading-relaxed mb-12 max-w-[45ch]"
+              >
+                SPA dashboard with full CRUD operations and real-time updates.
+                Engineered for high-performance data visualization and seamless
+                user experience across devices.
+              </p>
+              <div
+                class="relative w-full aspect-video bg-surface-container mb-12 overflow-hidden"
+              >
+                <img
+                  alt="Dashboard Preview"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXyzNuebvQRpxHlkCOonOwxXk7n-SoIFGUFfl38wq3p_uBilY1d-jVszCyit0m6QWyZrNx2hVEdS7xMs_UJv7DNZNVYpU8VuxjVSatNpNQUrRNMncQczgNDbatA6SfUJ5Fv2sdqw1BDfcH8bKKaeKUf3YV0ZiWelbH_0BA8V3gLyDcSbxvsMGJuTm_2tnYPU2NCK0tQoJDpakKW1G8KLEKW7W0pfIUS49u8fI5W_RsWWTTK7LtUFEdX5oi0oNE4tsMJ3yd8Q08ldA"
+                />
+              </div>
+              <div
+                class="mt-auto flex flex-wrap gap-6 pt-6 border-t border-outline-variant/10"
+              >
+                <a
+                  class="text-xs font-bold uppercase tracking-widest text-primary-fixed hover:underline focus-ring flex items-center gap-2"
+                  href="#"
+                >
+                  View case study
+                  <span
+                    class="material-symbols-outlined text-sm"
+                    data-icon="open_in_new"
+                    >open_in_new</span
+                  >
+                </a>
+                <a
+                  class="text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors focus-ring flex items-center gap-2"
+                  href="#"
+                >
+                  <i class="fa-brands fa-github"></i> View repo
+                </a>
+                <a
+                  class="text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors focus-ring flex items-center gap-2"
+                  href="#"
+                >
+                  <i
+                    class="fa-solid fa-arrow-up-right-from-square text-[10px]"
+                  ></i>
+                  View demo
+                </a>
+              </div>
+            </div>
+            <!-- Project Card 2: Core Infrastructure Engine -->
+            <div
+              class="bg-surface-container-lowest border border-outline-variant/20 p-8 flex flex-col group transition-all duration-300 hover:border-outline-variant"
+            >
+              <div class="flex justify-between items-start mb-8">
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="px-3 py-1 border border-outline-variant/40 text-[10px] font-bold uppercase tracking-tighter text-on-surface-variant"
+                    >TypeScript</span
+                  >
+                  <span
+                    class="px-3 py-1 border border-outline-variant/40 text-[10px] font-bold uppercase tracking-tighter text-on-surface-variant"
+                    >Node.js</span
+                  >
+                  <span
+                    class="px-3 py-1 border border-outline-variant/40 text-[10px] font-bold uppercase tracking-tighter text-on-surface-variant"
+                    >Architecture</span
+                  >
+                </div>
+                <span class="text-[10px] font-mono text-outline">2024</span>
+              </div>
+              <h3 class="text-3xl font-bold mb-4 font-headline">
+                Core Infrastructure Engine
+              </h3>
+              <p
+                class="text-on-surface-variant leading-relaxed mb-12 max-w-[45ch]"
+              >
+                Architecting a modular design system and component library that
+                increased development velocity by 40% across three enterprise
+                platforms.
+              </p>
+              <div
+                class="relative w-full aspect-video bg-surface-container mb-12 overflow-hidden"
+              >
+                <img
+                  alt="Infrastructure Engine Preview"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2VCncjDcV3zWMV9EMS-j8aYLqewJ4GTXgAeG_IoL3CRQXnay6ynb40ZqZQ_YYEMt-4b0zzlGURk3VvdleD2_dO3wTlan2UylJgCH0WFkdDMzdCTOF5pnTHabZVgWYs6Co1s9K8B8D2UJXs4Pj6TJ0RnzULNLS1I1zDLK38oLK-jg7Jo76JoJtmOxfkDalTCizbz5mX-SO6xvbb9FT-XsXCGnUkBhgDZo41Hbd02I8-ByGqms3VHkdKaaZJ4ADLzzN1rUNxbIK8is"
+                />
+              </div>
+              <div
+                class="mt-auto flex flex-wrap gap-6 pt-6 border-t border-outline-variant/10"
+              >
+                <a
+                  class="text-xs font-bold uppercase tracking-widest text-primary-fixed hover:underline focus-ring flex items-center gap-2"
+                  href="#"
+                >
+                  View case study
+                  <span
+                    class="material-symbols-outlined text-sm"
+                    data-icon="open_in_new"
+                    >open_in_new</span
+                  >
+                </a>
+                <a
+                  class="text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors focus-ring flex items-center gap-2"
+                  href="#"
+                >
+                  <i class="fa-brands fa-github"></i> View repo
+                </a>
+                <a
+                  class="text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors focus-ring flex items-center gap-2"
+                  href="#"
+                >
+                  <i
+                    class="fa-solid fa-arrow-up-right-from-square text-[10px]"
+                  ></i>
+                  View demo
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Contact CTA Section -->
+      <section
+        class="py-32 px-6 lg:px-12 max-w-7xl mx-auto text-center"
+        id="contact"
+      >
+        <div class="max-w-2xl mx-auto">
+          <span
+            class="material-symbols-outlined text-primary-fixed text-5xl mb-8"
+            data-icon="terminal"
+            >terminal</span
+          >
+          <h2
+            class="text-4xl md:text-5xl font-bold tracking-tight mb-6 font-headline"
+          >
+            Interested in my profile?
+          </h2>
+          <p class="text-xl text-on-surface-variant mb-12 font-medium">
+            Currently available for high-impact opportunities in engineering and
+            UI development.
+          </p>
+          <button
+            class="inline-flex items-center justify-center h-16 px-12 bg-primary text-on-primary-fixed text-sm font-bold uppercase tracking-[0.2em] focus-ring transition-transform active:scale-95 group"
+          >
+            Contact
+            <span
+              class="material-symbols-outlined ml-4 transition-transform group-hover:rotate-45"
+              data-icon="north_east"
+              >north_east</span
+            >
+          </button>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer
+      class="w-full py-12 bg-neutral-100 dark:bg-neutral-950 border-t border-neutral-200 dark:border-neutral-800"
+    >
+      <div
+        class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto px-6 gap-4"
+      >
+        <p
+          class="font-['Inter'] text-[11px] uppercase tracking-widest text-neutral-500 dark:text-neutral-400"
+        >
+          © 2024 Ezequiel Fernández. Engineered for precision.
+        </p>
+        <div class="flex gap-8">
+          <a
+            class="font-['Inter'] text-[11px] uppercase tracking-widest text-neutral-500 dark:text-neutral-400 hover:text-blue-600 underline opacity-80 hover:opacity-100 transition-all"
+            href="#"
+            >Privacy Policy</a
+          >
+          
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

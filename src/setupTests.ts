@@ -21,6 +21,10 @@ import esNotFound from './locales/es/notfoundpage.json';
 import enNotFound from './locales/en/notfoundpage.json';
 import esCineLab from './locales/es/cinelabcasestudy.json';
 import enCineLab from './locales/en/cinelabcasestudy.json';
+import esChefcitoIA from './locales/es/chefcitoiacasestudy.json';
+import enChefcitoIA from './locales/en/chefcitoiacasestudy.json';
+import esPrivacy from './locales/es/privacy.json';
+import enPrivacy from './locales/en/privacy.json';
 
 type JsonValue = string | number | boolean | JsonObject | JsonArray | null;
 interface JsonObject {
@@ -39,6 +43,8 @@ const resources: Record<'es' | 'en', Record<string, JsonObject>> = {
     aboutpage: esAbout,
     notfoundpage: esNotFound,
     cinelabcasestudy: esCineLab,
+    chefcitoiacasestudy: esChefcitoIA,
+    privacy: esPrivacy,
   },
   en: {
     common: enCommon,
@@ -50,6 +56,8 @@ const resources: Record<'es' | 'en', Record<string, JsonObject>> = {
     aboutpage: enAbout,
     notfoundpage: enNotFound,
     cinelabcasestudy: enCineLab,
+    chefcitoiacasestudy: enChefcitoIA,
+    privacy: enPrivacy,
   },
 };
 

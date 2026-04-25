@@ -5,9 +5,9 @@ import { ThemeProvider } from '../../context/ThemeProvider';
 import { Header } from '..';
 
 describe('Header (mobile drawer)', () => {
-  const renderHeader = () =>
+  const renderHeader = (initialEntry = '/') =>
     render(
-      <MemoryRouter>
+      <MemoryRouter initialEntries={[initialEntry]}>
         <ThemeProvider>
           <Header />
         </ThemeProvider>
@@ -26,6 +26,7 @@ describe('Header (mobile drawer)', () => {
 
     const drawer = screen.getByRole('dialog', { hidden: true });
     expect(drawer).toHaveAttribute('aria-hidden', 'true');
+    expect(drawer).toHaveClass('rounded-l-3xl');
 
     await userEvent.click(menuButton);
 
@@ -78,5 +79,45 @@ describe('Header (mobile drawer)', () => {
       expect(menuButton).toHaveAttribute('aria-expanded', 'false');
       expect(document.body.style.overflow).toBe('');
     });
+  });
+
+  it('marca el enlace activo correcto cuando la ruta inicial es /about', () => {
+    renderHeader('/about');
+
+    const aboutLink = screen.getByRole('link', { name: /acerca/i });
+    expect(aboutLink).toHaveAttribute('aria-current', 'page');
+    expect(aboutLink).toHaveClass('text-primary');
+  });
+
+  it('marca el enlace activo correcto cuando la ruta inicial es /projects', async () => {
+    renderHeader('/projects');
+
+    const projectsLink = screen.getByRole('link', { name: /proyectos/i });
+    expect(projectsLink).toHaveAttribute('aria-current', 'page');
+    expect(projectsLink).toHaveClass('text-primary');
+
+    const menuButton = screen.getByRole('button', { name: /abrir menú/i });
+    await userEvent.click(menuButton);
+
+    const drawer = screen.getByRole('dialog', { hidden: true });
+    const mobileProjectsLink = within(drawer).getByRole('link', { name: /proyectos/i });
+    expect(mobileProjectsLink).toHaveAttribute('aria-current', 'page');
+    expect(mobileProjectsLink).toHaveClass('text-primary');
+  });
+
+  it('marca el enlace activo correcto cuando la ruta inicial es /contact', async () => {
+    renderHeader('/contact');
+
+    const contactLink = screen.getByRole('link', { name: /contacto/i });
+    expect(contactLink).toHaveAttribute('aria-current', 'page');
+    expect(contactLink).toHaveClass('text-primary');
+
+    const menuButton = screen.getByRole('button', { name: /abrir menú/i });
+    await userEvent.click(menuButton);
+
+    const drawer = screen.getByRole('dialog', { hidden: true });
+    const mobileContactLink = within(drawer).getByRole('link', { name: /contacto/i });
+    expect(mobileContactLink).toHaveAttribute('aria-current', 'page');
+    expect(mobileContactLink).toHaveClass('text-primary');
   });
 });

@@ -24,6 +24,7 @@ describe('ThemeToggle', () => {
     );
 
     const button = screen.getByRole('button', { name: /alternar tema/i });
+    expect(button).toHaveAttribute('type', 'button');
     expect(button).toHaveAttribute('title');
     expect(button.getAttribute('title')?.toLowerCase()).toContain('tema: light');
 
@@ -87,5 +88,25 @@ describe('ThemeToggle', () => {
 
     const svgAfter = button.querySelector('svg')?.outerHTML ?? '';
     expect(svgBefore).not.toBe(svgAfter);
+  });
+
+  it('describe el modo system en el título cuando theme = system', () => {
+    const toggleMock = vi.fn();
+    const contextValue: ThemeContextValue = {
+      theme: 'system',
+      resolvedTheme: 'dark',
+      setTheme: vi.fn(),
+      toggle: toggleMock,
+    };
+
+    render(
+      <ThemeContext.Provider value={contextValue}>
+        <ThemeToggle />
+      </ThemeContext.Provider>,
+    );
+
+    const button = screen.getByRole('button', { name: /alternar tema/i });
+    expect(button.getAttribute('title')?.toLowerCase()).toContain('tema: system');
+    expect(button.getAttribute('title')?.toLowerCase()).toContain('dark');
   });
 });

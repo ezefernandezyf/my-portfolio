@@ -1,0 +1,517 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>EZ Engineering - Movie Management Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+      <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      crossorigin="anonymous"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      referrerpolicy="no-referrer"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              'secondary-fixed': '#c3c7cc',
+              'surface-container-high': '#e8e8e8',
+              'on-secondary': '#ffffff',
+              'secondary-container': '#d1d4da',
+              'on-tertiary': '#b7eaff',
+              'outline-variant': '#c6c6c6',
+              'on-secondary-fixed-variant': '#383c40',
+              'on-tertiary-container': '#ffffff',
+              'secondary-fixed-dim': '#a8abb1',
+              'on-tertiary-fixed-variant': '#b7eaff',
+              'on-primary-fixed-variant': '#d8e2ff',
+              'tertiary-fixed-dim': '#004e60',
+              surface: '#f9f9f9',
+              'on-tertiary-fixed': '#ffffff',
+              'on-background': '#1b1b1b',
+              'surface-bright': '#f9f9f9',
+              'surface-container-low': '#f3f3f3',
+              'on-secondary-fixed': '#181c20',
+              secondary: '#5b5f63',
+              'on-error': '#ffffff',
+              'surface-container': '#eeeeee',
+              'surface-container-highest': '#e2e2e2',
+              'inverse-on-surface': '#f1f1f1',
+              'on-surface-variant': '#474747',
+              'on-primary-fixed': '#ffffff',
+              'error-container': '#ffdad6',
+              'surface-dim': '#dadada',
+              'on-secondary-container': '#181c20',
+              'surface-container-lowest': '#ffffff',
+              'inverse-surface': '#303030',
+              'tertiary-fixed': '#00677f',
+              outline: '#777777',
+              'surface-variant': '#e2e2e2',
+              'surface-tint': '#005ac2',
+              'primary-fixed': '#005ac2',
+              'on-primary': '#d8e2ff',
+              'on-surface': '#1b1b1b',
+              'inverse-primary': '#adc6ff',
+              'primary-fixed-dim': '#004494',
+              background: '#f9f9f9',
+              'primary-container': '#00397e',
+              tertiary: '#004152',
+              'tertiary-container': '#007f9c',
+              primary: '#000000',
+              'on-primary-container': '#ffffff',
+              error: '#ba1a1a',
+              'on-error-container': '#410002',
+            },
+            borderRadius: {
+              DEFAULT: '0.125rem',
+              lg: '0.25rem',
+              xl: '0.5rem',
+              full: '0.75rem',
+            },
+            fontFamily: {
+              headline: ['Space Grotesk', 'sans-serif'],
+              body: ['Inter', 'sans-serif'],
+              label: ['Inter', 'monospace'],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24;
+      }
+    </style>
+  </head>
+  <body class="bg-surface text-on-surface font-body antialiased min-h-screen flex flex-col">
+    <!-- TopNavBar -->
+   <nav class="flex justify-between items-center h-16 px-6 lg:px-12 w-full max-w-full">
+      <div class="flex items-center gap-8">
+        <a
+          class="text-xl font-bold text-on-surface tracking-tight uppercase font-space-grotesk focus-ring"
+          href="#"
+          >[EZ]</a
+        >
+        <!-- Desktop Navigation Links -->
+        <div class="hidden md:flex items-center gap-6">
+          <a
+            class="text-on-surface/70 hover:text-primary transition-colors duration-200 font-bold uppercase tracking-tight text-sm font-space-grotesk focus-ring"
+            href="#projects"
+            >Projects</a
+          >
+          <a
+            class="text-on-surface/70 hover:text-primary transition-colors duration-200 font-bold uppercase tracking-tight text-sm font-space-grotesk focus-ring"
+            href="#about"
+            >About me</a
+          >
+          <a
+            class="text-on-surface/70 hover:text-primary transition-colors duration-200 font-bold uppercase tracking-tight text-sm font-space-grotesk focus-ring"
+            href="#contact"
+            >Contact</a
+          >
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <!-- Language Toggle -->
+        <div
+          class="flex items-center bg-surface-container-high p-1 rounded-full text-[10px] font-bold tracking-widest uppercase"
+        >
+          <button
+            class="px-3 py-1 bg-surface-container-lowest rounded-full shadow-sm text-primary focus-ring"
+          >
+            EN
+          </button>
+          <button class="px-3 py-1 text-on-surface/50 hover:text-on-surface focus-ring">ES</button>
+        </div>
+        <!-- Action Icons -->
+        <div class="flex items-center gap-2">
+          <a
+            class="w-10 h-10 flex items-center justify-center text-on-surface/70 hover:text-primary focus-ring transition-colors"
+            href="#"
+            title="GitHub"
+          >
+            <i class="fa-brands fa-github text-lg"></i>
+          </a>
+          <a
+            class="w-10 h-10 flex items-center justify-center text-on-surface/70 hover:text-primary focus-ring transition-colors"
+            href="#"
+            title="LinkedIn"
+          >
+            <i class="fa-brands fa-linkedin-in text-lg"></i>
+          </a>
+        </div>
+        <a
+          class="hidden sm:inline-flex items-center justify-center h-10 px-6 border-2 border-primary text-primary text-sm font-bold uppercase tracking-tight focus-ring transition-all hover:bg-primary/5 active:scale-95"
+          href="#"
+        >
+          Download CV
+        </a>
+      </div>
+    </nav>
+    <!-- Main Content -->
+    <main class="flex-grow pt-24 pb-20">
+      <!-- Hero Section -->
+      <section class="max-w-screen-xl mx-auto px-6 lg:px-12 pt-16 pb-24">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+          <div class="lg:col-span-8">
+            <h1
+              class="font-headline text-[3.5rem] font-bold leading-tight tracking-[-0.02em] text-primary mb-6"
+            >
+              Movie Management Dashboard
+            </h1>
+            <p
+              class="font-body text-[1.125rem] leading-relaxed text-on-surface-variant max-w-[60ch] mb-10"
+            >
+              A high-performance enterprise dashboard engineered to process and visualize complex
+              movie licensing agreements in real-time. Designed to replace a legacy system with an
+              intuitive, concurrent architecture.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a
+                class="inline-flex items-center justify-center px-6 py-3 bg-primary text-on-primary rounded-sm font-label text-[0.6875rem] font-semibold uppercase tracking-[0.05em] hover:bg-primary-fixed transition-colors duration-200 bg-gradient-to-br from-primary to-primary-fixed"
+                href="#"
+              >
+                Live Project Demo
+                <span class="material-symbols-outlined ml-2 text-[1.125rem]">open_in_new</span>
+              </a>
+              <a
+                class="inline-flex items-center justify-center px-6 py-3 border border-outline-variant/20 text-on-surface rounded-sm font-label text-[0.6875rem] font-semibold uppercase tracking-[0.05em] hover:bg-surface-container-high transition-colors duration-200"
+                href="#"
+              >
+                View Repository
+                <i class="fa-brands fa-github text-lg ml-2"></i>
+              </a>
+            </div>
+          </div>
+          <!-- Metadata -->
+          <div
+            class="lg:col-span-4 flex flex-col gap-6 lg:pl-12 border-l border-outline-variant/20"
+          >
+            <div>
+              <span
+                class="block font-label text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-outline mb-1"
+                >Timeline</span
+              >
+              <span class="block font-body text-sm text-on-surface font-medium"
+                >Q3 2023 - Q1 2024</span
+              >
+            </div>
+            <div>
+              <span
+                class="block font-label text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-outline mb-1"
+                >Role</span
+              >
+              <span class="block font-body text-sm text-on-surface font-medium"
+                >Lead Frontend Engineer</span
+              >
+            </div>
+            <div>
+              <span
+                class="block font-label text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-outline mb-1"
+                >Core Focus</span
+              >
+              <span class="block font-body text-sm text-on-surface font-medium"
+                >Performance, State Management, UI Architecture</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Main Visual -->
+      <section class="max-w-screen-2xl mx-auto px-6 lg:px-12 mb-32">
+        <div
+          class="relative w-full aspect-video bg-surface-container-low rounded-lg overflow-hidden shadow-[0_16px_32px_-16px_rgba(27,27,27,0.04)] border border-outline-variant/20"
+        >
+          <img
+            alt="Dashboard Preview"
+            class="w-full h-full object-cover"
+            data-alt="High quality professional screenshot of a modern dark-mode data analytics dashboard with charts, graphs, and complex data tables displayed on a sleek monitor"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAs6Va6Lfzj_VbWcvQk8UGdRGZp8jocJ9JjEGjIBazoD1Df7X5WD6qHJJmCLyIDRo6n18QZJoWwgqDONLtdZJdEcvS6inJCwajEY3DsEP80yt5oVJo3pmWCgFjszZUQO-lFLp-KiAB4xZa6dGvyH-0j7_OJDQsnHnMAR9JjHfLzPkz1BxKZ_LNKpy0MXQ8T5IfH9AL-RlzcJ5vYfvaRDI2eNGnul-WjZwKlb9wUM5WnVe5-DjeHtPlXGjFPXw8R-2-fXysUA06JzSg"
+          />
+        </div>
+      </section>
+      <!-- Problem & Solution -->
+      <section class="bg-surface-container-low py-32">
+        <div class="max-w-screen-xl mx-auto px-6 lg:px-12">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+            <!-- The Problem -->
+            <div>
+              <h2
+                class="font-headline text-[1.75rem] font-medium tracking-[-0.01em] text-primary mb-6 flex items-center"
+              >
+                <span class="material-symbols-outlined mr-3 text-primary-fixed">warning</span>
+                The Problem
+              </h2>
+              <p
+                class="font-body text-[0.875rem] leading-relaxed text-on-surface-variant max-w-[60ch]"
+              >
+                The existing legacy software was crippled by deep technical debt, relying on
+                synchronous data fetching that blocked the UI thread during large batch updates.
+                Licensing coordinators were experiencing 15+ second delay times when verifying
+                global distribution rights across different territories, leading to significant
+                workflow bottlenecks and data integrity risks due to manual workarounds.
+              </p>
+            </div>
+            <!-- The Solution -->
+            <div>
+              <h2
+                class="font-headline text-[1.75rem] font-medium tracking-[-0.01em] text-primary mb-6 flex items-center"
+              >
+                <span class="material-symbols-outlined mr-3 text-primary-fixed">check_circle</span>
+                The Solution
+              </h2>
+              <ul class="space-y-4">
+                <li class="flex items-start">
+                  <span
+                    class="material-symbols-outlined text-[1.25rem] text-primary-fixed mt-0.5 mr-3"
+                    >done</span
+                  >
+                  <span class="font-body text-[0.875rem] text-on-surface-variant"
+                    >Implemented an asynchronous, optimistic UI update model to eliminate blocking
+                    operations.</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <span
+                    class="material-symbols-outlined text-[1.25rem] text-primary-fixed mt-0.5 mr-3"
+                    >done</span
+                  >
+                  <span class="font-body text-[0.875rem] text-on-surface-variant"
+                    >Automated licensing window validation using a custom rules engine deployed via
+                    edge functions.</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <span
+                    class="material-symbols-outlined text-[1.25rem] text-primary-fixed mt-0.5 mr-3"
+                    >done</span
+                  >
+                  <span class="font-body text-[0.875rem] text-on-surface-variant"
+                    >Migrated global state to a normalized Redux store, reducing redundant API calls
+                    by 40%.</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <span
+                    class="material-symbols-outlined text-[1.25rem] text-primary-fixed mt-0.5 mr-3"
+                    >done</span
+                  >
+                  <span class="font-body text-[0.875rem] text-on-surface-variant"
+                    >Introduced a robust error boundary and fallback system for graceful degradation
+                    during partial API outages.</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Technical Deep Dive (Bento Grid) -->
+      <section class="max-w-screen-xl mx-auto px-6 lg:px-12 py-32">
+        <h2 class="font-headline text-[1.75rem] font-medium tracking-[-0.01em] text-primary mb-12">
+          Technical Deep Dive
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <div
+            class="bg-surface-container-lowest p-8 rounded-sm border border-outline-variant/20 hover:bg-surface-container-high hover:border-outline-variant transition-all duration-200 group lg:col-span-2"
+          >
+            <div
+              class="mb-6 h-12 w-12 bg-surface-container-low flex items-center justify-center rounded-sm text-primary"
+            >
+              <span class="material-symbols-outlined">memory</span>
+            </div>
+            <h3 class="font-headline text-[1.125rem] font-medium text-primary mb-3">
+              Concurrency &amp; UI Thread
+            </h3>
+            <p
+              class="font-body text-[0.875rem] leading-relaxed text-on-surface-variant max-w-[60ch]"
+            >
+              Leveraged React 18's concurrent rendering features (`useTransition`,
+              `useDeferredValue`) to keep the interface highly responsive even when processing
+              thousands of licensing rows. Heavy client-side calculations were offloaded to Web
+              Workers, ensuring smooth 60fps scrolling performance during complex filtering
+              operations.
+            </p>
+          </div>
+          <!-- Card 2 -->
+          <div
+            class="bg-surface-container-lowest p-8 rounded-sm border border-outline-variant/20 hover:bg-surface-container-high hover:border-outline-variant transition-all duration-200 group"
+          >
+            <div
+              class="mb-6 h-12 w-12 bg-surface-container-low flex items-center justify-center rounded-sm text-primary"
+            >
+              <span class="material-symbols-outlined">search</span>
+            </div>
+            <h3 class="font-headline text-[1.125rem] font-medium text-primary mb-3">
+              Search Optimization
+            </h3>
+            <p class="font-body text-[0.875rem] leading-relaxed text-on-surface-variant">
+              Implemented a custom Trie data structure on the client for sub-millisecond prefix
+              matching against the entire movie catalog, completely bypassing network latency for
+              primary lookups.
+            </p>
+          </div>
+          <!-- Card 3 -->
+          <div
+            class="bg-surface-container-lowest p-8 rounded-sm border border-outline-variant/20 hover:bg-surface-container-high hover:border-outline-variant transition-all duration-200 group"
+          >
+            <div
+              class="mb-6 h-12 w-12 bg-surface-container-low flex items-center justify-center rounded-sm text-primary"
+            >
+              <span class="material-symbols-outlined">vpn_key</span>
+            </div>
+            <h3 class="font-headline text-[1.125rem] font-medium text-primary mb-3">
+              JWT Architecture
+            </h3>
+            <p class="font-body text-[0.875rem] leading-relaxed text-on-surface-variant">
+              Engineered a secure, seamless token refresh mechanism utilizing HttpOnly cookies and
+              short-lived access tokens, neutralizing XSS vulnerabilities while maintaining
+              frictionless sessions.
+            </p>
+          </div>
+          <!-- Card 4 -->
+          <div
+            class="bg-surface-container-lowest p-8 rounded-sm border border-outline-variant/20 hover:bg-surface-container-high hover:border-outline-variant transition-all duration-200 group lg:col-span-2"
+          >
+            <div
+              class="mb-6 h-12 w-12 bg-surface-container-low flex items-center justify-center rounded-sm text-primary"
+            >
+              <span class="material-symbols-outlined">schedule</span>
+            </div>
+            <h3 class="font-headline text-[1.125rem] font-medium text-primary mb-3">
+              The Temporal Engine
+            </h3>
+            <p
+              class="font-body text-[0.875rem] leading-relaxed text-on-surface-variant max-w-[60ch]"
+            >
+              To handle the complex reality of overlapping distribution rights, we built a 'Temporal
+              Engine'—a client-side utility that calculates and visualizes rights availability on a
+              timeline. It identifies gaps and conflicts instantly, transforming a previously
+              manual, error-prone task into a clear, visual validation process.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- Engineering Stack -->
+      <section class="bg-surface-container-low py-24 border-y border-outline-variant/20">
+        <div class="max-w-screen-xl mx-auto px-6 lg:px-12 text-center">
+          <h2
+            class="font-headline text-[1.75rem] font-medium tracking-[-0.01em] text-primary mb-10"
+          >
+            The Engineering Stack
+          </h2>
+          <div class="flex flex-wrap justify-center gap-3">
+            <span
+              class="px-4 py-2 border border-outline-variant/20 rounded-full font-label text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-on-surface hover:bg-surface-container-high transition-colors"
+              >React 18</span
+            >
+            <span
+              class="px-4 py-2 border border-outline-variant/20 rounded-full font-label text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-on-surface hover:bg-surface-container-high transition-colors"
+              >TypeScript</span
+            >
+            <span
+              class="px-4 py-2 border border-outline-variant/20 rounded-full font-label text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-on-surface hover:bg-surface-container-high transition-colors"
+              >Redux Toolkit</span
+            >
+            <span
+              class="px-4 py-2 border border-outline-variant/20 rounded-full font-label text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-on-surface hover:bg-surface-container-high transition-colors"
+              >Tailwind CSS</span
+            >
+            <span
+              class="px-4 py-2 border border-outline-variant/20 rounded-full font-label text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-on-surface hover:bg-surface-container-high transition-colors"
+              >Node.js</span
+            >
+            <span
+              class="px-4 py-2 border border-outline-variant/20 rounded-full font-label text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-on-surface hover:bg-surface-container-high transition-colors"
+              >PostgreSQL</span
+            >
+            <span
+              class="px-4 py-2 border border-outline-variant/20 rounded-full font-label text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-on-surface hover:bg-surface-container-high transition-colors"
+              >Jest / RTL</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- Testimonial IMPORTANTE: Aca en realidad quiero que pongamos algo como la porcion de codigo de ejemplo que ponemos siempre en los case study, por lo tanto reemplazamos esto con esa porcion de codigo pero mantenemos el estilo nuevo -->
+      <section class="max-w-screen-md mx-auto px-6 lg:px-12 py-32 text-center">
+        <span class="material-symbols-outlined text-[3rem] text-primary-fixed/20 mb-6 block"
+          >format_quote</span
+        >
+        <blockquote
+          class="font-headline text-[1.75rem] font-medium leading-tight tracking-[-0.01em] text-primary mb-8"
+        >
+          "The new dashboard fundamentally changed how our team operates. What used to take hours of
+          verifying overlapping regions in spreadsheets is now visually obvious in seconds. The
+          performance gain isn't just a metric; it's improved our quality of life."
+        </blockquote>
+        <cite
+          class="not-italic font-label text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-outline flex flex-col items-center gap-1"
+        >
+          <span class="text-on-surface">Director of Global Licensing</span>
+          <span>Major Motion Picture Studio</span>
+        </cite>
+      </section>
+    </main>
+    <!-- Footer -->
+      <footer
+      class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 tonal-shift bg-slate-100 dark:bg-slate-900 flat"
+    >
+      <div
+        class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full max-w-screen-2xl mx-auto"
+      >
+        <div
+          class="font-['Inter'] text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-6 md:mb-0"
+        >
+          © 2024 EZ Engineering. Built with architectural precision.
+        </div>
+        <nav class="flex space-x-8">
+          <a
+            class="font-['Inter'] text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:text-blue-600 hover:underline decoration-blue-600 decoration-2 underline-offset-4 transition-all duration-200 opacity-80 hover:opacity-100"
+            href="#"
+            >Privacy Policy</a
+          >
+        
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

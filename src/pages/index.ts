@@ -6,3 +6,4 @@ export * from './ProjectsPage';
 export * from './Projects/CineLabCaseStudy';
 export * from './PrivacyPage';
 export * from './Projects/MovieDashboardCaseStudy';    
+export * from './Projects/ChefcitoIACaseStudy';

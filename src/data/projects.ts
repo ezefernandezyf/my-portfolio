@@ -56,4 +56,19 @@ export const projects = [
     year: 2026,
     featured: true,
   },
+  {
+    id: 'chefcitoia',
+    nameKey: 'chefcitoia.name',
+    shortKey: 'chefcitoia.short',
+    repo: 'https://github.com/ezefernandezyf/ia-recipe-generator',
+    demo: 'https://chefcitoia.vercel.app',
+    images: [
+      '/projects/chefcitoia-1.jpg',
+      '/projects/chefcitoia-2.jpg',
+      '/projects/chefcitoia-3.jpg',
+    ],
+    tech: ['React', 'TypeScript', 'Vite', 'Tailwind', 'Zod', 'AbortController'],
+    year: 2026,
+    featured: true,
+  },
 ];

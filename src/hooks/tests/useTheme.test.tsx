@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, cleanup, screen, waitFor, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 import { useTheme } from '../';
 
 const STORAGE_KEY = 'my-portfolio.theme';
@@ -115,5 +116,66 @@ describe('useTheme hook', () => {
       expect(screen.getByTestId('resolved').textContent).toBe('dark');
       expect(document.documentElement.classList.contains('dark')).toBe(true);
     });
+  });
+
+  it('usa light cuando matchMedia no existe', () => {
+    localStorage.removeItem(STORAGE_KEY);
+    window.matchMedia = undefined as unknown as typeof window.matchMedia;
+
+    render(<TestComponent />);
+
+    expect(screen.getByTestId('theme').textContent).toBe('system');
+    expect(screen.getByTestId('resolved').textContent).toBe('light');
+    expect(document.documentElement.dataset.theme).toBe('light');
+  });
+
+  it('funciona cuando matchMedia no expone addEventListener', async () => {
+    localStorage.removeItem(STORAGE_KEY);
+
+    const mql = {
+      matches: false,
+      media: '(prefers-color-scheme: dark)',
+      onchange: null,
+      dispatchEvent: () => false,
+    } as unknown as MediaQueryList;
+
+    window.matchMedia = (() => mql) as (query: string) => MediaQueryList;
+
+    render(<TestComponent />);
+
+    expect(screen.getByTestId('theme').textContent).toBe('system');
+    expect(screen.getByTestId('resolved').textContent).toBe('light');
+  });
+
+  it('cae a system cuando localStorage falla al leer', () => {
+    const getItemSpy = vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => {
+      throw new Error('storage unavailable');
+    });
+
+    render(<TestComponent />);
+
+    expect(screen.getByTestId('theme').textContent).toBe('system');
+    expect(screen.getByTestId('resolved').textContent).toBe('light');
+
+    getItemSpy.mockRestore();
+  });
+
+  it('sigue cambiando el tema aunque localStorage falle al escribir', async () => {
+    localStorage.setItem(STORAGE_KEY, 'light');
+
+    const setItemSpy = vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
+      throw new Error('storage unavailable');
+    });
+
+    render(<TestComponent />);
+
+    await act(async () => {
+      await userEvent.click(screen.getByTestId('toggle'));
+    });
+
+    expect(screen.getByTestId('theme').textContent).toBe('dark');
+    expect(document.documentElement.classList.contains('dark')).toBe(true);
+
+    setItemSpy.mockRestore();
   });
 });
