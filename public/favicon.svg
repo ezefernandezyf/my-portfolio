@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Ezequiel Fernández">
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="#ffffff" />
+  <rect x="4.75" y="4.75" width="54.5" height="54.5" rx="13.25" fill="none" stroke="#111111" stroke-width="2" />
+  <text
+    x="32"
+    y="38"
+    text-anchor="middle"
+    font-family="Space Grotesk, Inter, Arial, sans-serif"
+    font-size="22"
+    font-weight="700"
+    fill="#111111"
+    letter-spacing="1.5"
+  >
+    EZ
+  </text>
+</svg>
