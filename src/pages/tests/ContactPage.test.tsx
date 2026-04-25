@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ContactPage } from '../ContactPage';
+import { about } from '../../data/about';
 
 describe('ContactPage', () => {
   let fetchMock: ReturnType<typeof vi.fn>;
@@ -19,25 +20,31 @@ describe('ContactPage', () => {
   });
 
   const fillValidForm = async (user: ReturnType<typeof userEvent.setup>) => {
-    await user.type(screen.getByRole('textbox', { name: /Nombre/i }), 'Ezequiel');
+    await user.type(screen.getByRole('textbox', { name: /Nombre completo/i }), 'Ezequiel');
     await user.type(screen.getByRole('textbox', { name: /Email/i }), 'ezefernandezyf@example.com');
     await user.type(screen.getByRole('textbox', { name: /Asunto/i }), 'Oferta');
     await user.type(
       screen.getByRole('textbox', { name: /Mensaje/i }),
       'Hola! Me interesa la posición.',
     );
-    await user.click(screen.getByRole('checkbox', { name: /Acepto/i }));
   };
 
-  it('renderiza el formulario', () => {
+  it('renderiza la estructura principal del contacto', () => {
     render(<ContactPage />);
 
-    expect(screen.getByRole('heading', { name: /Contacto/i })).toBeInTheDocument();
-    expect(screen.getByRole('textbox', { name: /Nombre/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: /quiero sumarme a un equipo y construir algo preciso/i }),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/busco sumarme a un equipo/i)).toBeInTheDocument();
+    expect(screen.getByText(/available for work|disponible para sumarme a un equipo/i)).toBeInTheDocument();
+    expect(screen.getByText(new RegExp(about.email, 'i'))).toBeInTheDocument();
+    expect(screen.getByText(/global \/ remote \(gmt-3\)/i)).toBeInTheDocument();
+    expect(screen.getByText(/respuesta en 24 h|24h response time/i)).toBeInTheDocument();
+
+    expect(screen.getByRole('textbox', { name: /Nombre completo/i })).toBeInTheDocument();
     expect(screen.getByRole('textbox', { name: /Email/i })).toBeInTheDocument();
     expect(screen.getByRole('textbox', { name: /Asunto/i })).toBeInTheDocument();
     expect(screen.getByRole('textbox', { name: /Mensaje/i })).toBeInTheDocument();
-    expect(screen.getByRole('checkbox', { name: /Acepto/i })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /Enviar mensaje/i })).toBeInTheDocument();
   });
 
@@ -51,9 +58,8 @@ describe('ContactPage', () => {
       await screen.findByText(/El nombre debe tener al menos 2 caracteres/i),
     ).toBeInTheDocument();
     expect(screen.getByText(/Email inválido/i)).toBeInTheDocument();
-    expect(screen.getByText(/Asunto demasiado corto/i)).toBeInTheDocument();
-    expect(screen.getByText(/Mensaje demasiado corto/i)).toBeInTheDocument();
-    expect(screen.getByText(/Debes aceptar el consentimiento/i)).toBeInTheDocument();
+    expect(screen.getByText(/El asunto debe tener al menos 4 caracteres/i)).toBeInTheDocument();
+    expect(screen.getByText(/El mensaje debe tener al menos 10 caracteres/i)).toBeInTheDocument();
 
     expect(fetchMock).not.toHaveBeenCalled();
   });

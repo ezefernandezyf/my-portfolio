@@ -1,23 +1,24 @@
 {
   "meta": {
     "title": "Proyectos",
-    "description": "Colección de proyectos públicos: repositorios, demos y case studies. Built with React, Vite & TypeScript."
+    "description": "Colección de proyectos públicos enfocada en arquitectura escalable, front-ends performantes y ejecución técnica rigurosa."
   },
   "header": {
     "title": "Proyectos",
-    "subtitle": "Algunos proyectos públicos, con repositorios y demos."
+    "subtitle": "Una selección de proyectos de ingeniería centrados en arquitectura escalable, front-ends performantes y ejecución técnica rigurosa. Filtrá por tecnología o revisá el código fuente."
   },
   "search": {
-    "placeholder": "Buscar proyectos...",
+    "placeholder": "Buscar proyectos por nombre, stack o objetivo...",
     "ariaLabel": "Buscar proyectos"
   },
   "button": {
-    "loadMore": "Ver más"
+    "loadMore": "Cargar más",
+    "filters": "Filtros"
   },
   "links": {
     "repo": "Ver repo",
     "demo": "Ver demo",
-    "caseStudy": "Case study"
+    "caseStudy": "Ver case study"
   },
   "notFound": "Proyecto no encontrado",
   "movie-dashboard": {

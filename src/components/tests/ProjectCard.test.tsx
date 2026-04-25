@@ -24,11 +24,13 @@ it('ProjectCard muestra título, enlaces y botón demo con icono', () => {
     .getAllByRole('link')
     .find((l) => l.getAttribute('href') === '/projects/x');
   expect(caseStudyLink).toBeDefined();
+  expect(caseStudyLink?.querySelector('svg')).toBeTruthy();
 
   const repoLink = screen
     .getAllByRole('link')
     .find((l) => l.getAttribute('href') === 'https://repo');
   expect(repoLink).toBeDefined();
+  expect(repoLink?.querySelector('svg')).toBeTruthy();
 
   const demoLink = screen
     .getAllByRole('link')
@@ -51,16 +53,32 @@ it('ProjectCard cubre los fallback de imagen, featured y exceso de tech', () => 
         demo={undefined}
         images={[]}
         tech={['React', 'TypeScript', 'Vite', 'Tailwind', 'Zod', 'ESLint']}
-        year={2025}
-        featured={true}
       />
     </MemoryRouter>,
   );
 
   expect(screen.getByText('Movie Management Dashboard')).toBeInTheDocument();
   expect(screen.getByText('Proyecto no encontrado')).toBeInTheDocument();
-  expect(screen.getByText('+1')).toBeInTheDocument();
-  expect(screen.getByText('featured')).toBeInTheDocument();
+  expect(screen.getByText('+3')).toBeInTheDocument();
   expect(screen.queryByRole('link', { name: /ver repo/i })).not.toBeInTheDocument();
   expect(screen.queryByRole('link', { name: /ver demo/i })).not.toBeInTheDocument();
+});
+
+it('ProjectCard cubre el fallback cuando no hay textos directos ni keys', () => {
+  render(
+    <MemoryRouter>
+      <ProjectCard
+        id="z"
+        repo="https://repo"
+        demo="https://demo"
+        images={['/img.jpg']}
+        tech={['React']}
+        year={2024}
+      />
+    </MemoryRouter>,
+  );
+
+  expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent('');
+  expect(screen.getByRole('link', { name: /ver repo|view repo/i })).toBeInTheDocument();
+  expect(screen.getByRole('link', { name: /ver demo|view demo/i })).toBeInTheDocument();
 });

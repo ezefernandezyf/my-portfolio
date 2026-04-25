@@ -2,35 +2,42 @@
   "meta": {
     "contact": {
       "title": "Contacto",
-      "description": "Formulario de contacto — enviame un mensaje sobre proyectos, dudas o propuestas."
+      "description": "Formulario de contacto para oportunidades de equipo, colaboraciones técnicas o propuestas de trabajo."
     }
   },
-  "title": "Contacto",
-  "intro": "Contactame si creés que mi perfil encaja en tu equipo. Estoy disponible para roles Front-end.",
+  "hero": {
+    "label": "Disponible para sumarme a un equipo",
+    "titleAccessible": "Quiero sumarme a un equipo y construir algo preciso.",
+    "titleLine1": "Construyamos",
+    "titleLine2": "algo",
+    "titleAccent": "preciso.",
+    "description": "Busco sumarme a un equipo donde pueda traducir requisitos complejos en interfaces clínicas, accesibles y de alto rendimiento. Escribime si querés conversar sobre un rol o una oportunidad concreta.",
+    "emailLabel": "Email",
+    "locationLabel": "Ubicación",
+    "locationValue": "Global / Remote (GMT-3)",
+    "responseTime": "Respuesta en 24 h"
+  },
   "form": {
     "name": {
-      "label": "Nombre",
-      "placeholder": "Tu nombre",
+      "label": "Nombre completo",
+      "placeholder": "Jane Doe",
       "validation_min": "El nombre debe tener al menos 2 caracteres"
     },
     "email": {
       "label": "Email",
-      "placeholder": "tu@ejemplo.com",
+      "placeholder": "jane@example.com",
       "validation": "Email inválido"
     },
     "subject": {
       "label": "Asunto",
-      "placeholder": "Sobre qué querés escribirme",
-      "validation_min": "Asunto demasiado corto"
+      "helper": "(Rol en equipo, colaboración técnica, etc.)",
+      "placeholder": "Oportunidad en equipo / Front-end",
+      "validation_min": "El asunto debe tener al menos 4 caracteres"
     },
     "message": {
       "label": "Mensaje",
-      "placeholder": "Escribí tu mensaje aquí",
-      "validation_min": "Mensaje demasiado corto"
-    },
-    "consent": {
-      "label": "Acepto que se guarde mi email para responder",
-      "validation": "Debes aceptar el consentimiento"
+      "placeholder": "Contame sobre el equipo, el rol y los objetivos del proyecto...",
+      "validation_min": "El mensaje debe tener al menos 10 caracteres"
     },
     "submit": {
       "sending": "Enviando...",
@@ -42,7 +49,7 @@
     "error_prefix": "Error al enviar:"
   },
   "errors": {
-    "no_endpoint": "No está configurado el endpoint de envío",
+    "no_endpoint": "No hay un endpoint configurado para enviar mensajes.",
     "send_failed": "No se pudo enviar el mensaje. Intentá de nuevo más tarde."
   }
 }

@@ -25,8 +25,17 @@
     "text": "IA Recipe Generator (ChefcitoIA) es una SPA que genera recetas personalizadas a partir de ingredientes y preferencias del usuario. La app valida entradas, orquesta llamadas a proveedores de IA mediante rutas internas y mapea la respuesta a un modelo tipado seguro para consumo en UI."
   },
   "problem": {
-    "heading": "Problema que resuelve",
+    "heading": "El problema",
     "text": "Muchos usuarios no saben cómo combinar ingredientes disponibles o adaptar recetas a restricciones (dietas, porciones). La herramienta busca transformar entradas simples en recetas prácticas, claras y seguras, evitando confiar directamente en la salida cruda de modelos generativos."
+  },
+  "solution": {
+    "heading": "La solución",
+    "list": [
+      "Se protegieron las solicitudes de generación con AbortController y validación tipada.",
+      "Se mapearon las respuestas de la API mediante un recipe mapper antes de renderizar.",
+      "Se mantuvieron interacciones accesibles y robustas con Zod + react-hook-form.",
+      "Se cubrieron con tests los estados de request, validación y UI."
+    ]
   },
   "techTools": {
     "heading": "Tecnologías y herramientas",
@@ -43,7 +52,13 @@
   },
   "architecture": {
     "heading": "Arquitectura y decisiones",
-    "text": "Se siguió feature-folder pattern: componentes, model y services agrupados por feature. Las rutas internas (/api/recipe-generator/*) permiten que la UI funcione en dev sin backend adicional. Se implementó un mapper robusto (recipeMapper) para validar y normalizar la respuesta de la IA antes de mostrarla."
+    "text": "Se siguió feature-folder pattern: componentes, model y services agrupados por feature. Las rutas internas (/api/recipe-generator/*) permiten que la UI funcione en dev sin backend adicional. Se implementó un mapper robusto (recipeMapper) para validar y normalizar la respuesta de la IA antes de mostrarla.",
+    "list": [
+      "Feature folders agrupan componentes, modelos y servicios por feature.",
+      "Las rutas internas /api permiten que la UI funcione en dev sin backend externo.",
+      "recipeMapper valida y normaliza las respuestas de IA antes de renderizar.",
+      "Los flujos tipados protegen el dominio de payloads inseguros."
+    ]
   },
   "implementation": {
     "heading": "Implementación destacada",
@@ -91,6 +106,9 @@
   "labels": {
     "year": "Año:",
     "featured": "Destacado"
+  },
+  "deepDive": {
+    "heading": "Profundización técnica"
   },
   "notFound": "Proyecto no encontrado",
   "noPreview": "Sin preview disponible"

@@ -25,8 +25,17 @@
     "text": "Movie Management Dashboard es una SPA creada para gestionar internamente un catálogo de películas. Permite CRUD completo, autenticación para control de permisos y uso de React Query para sincronización de datos. El foco fue seguridad, experiencia UX, modularidad y tests."
   },
   "problem": {
-    "heading": "Problema que resuelve",
+    "heading": "El problema",
     "text": "Se necesitaba una plataforma rápida, segura y fácil para que usuarios gestionen películas. La autenticación y el control de permisos eran clave: solo el autor puede editar o eliminar sus registros. El manejo de datos debía ser eficiente y escalable."
+  },
+  "solution": {
+    "heading": "La solución",
+    "list": [
+      "Se reemplazaron flujos CRUD bloqueantes por actualizaciones asíncronas apoyadas en React Query.",
+      "Se usó RLS de Supabase para limitar edición y borrado al autor del registro.",
+      "Se normalizaron formularios y validaciones con react-hook-form + Zod.",
+      "Se agregaron manejo de errores y tests robustos sobre el ciclo CRUD."
+    ]
   },
   "techTools": {
     "heading": "Tecnologías y herramientas",
@@ -43,7 +52,13 @@
   },
   "architecture": {
     "heading": "Arquitectura y decisiones",
-    "text": "Se priorizó modularidad: hooks custom para Supabase y React Query, separación de lógica: componentes UI, hooks de datos y vistas. RLS en Supabase asegura integridad en la mutación de datos. Código portable, fácil de testear y extender."
+    "text": "Se priorizó modularidad: hooks custom para Supabase y React Query, separación de lógica: componentes UI, hooks de datos y vistas. RLS en Supabase asegura integridad en la mutación de datos. Código portable, fácil de testear y extender.",
+    "list": [
+      "Hooks modulares separan Supabase y React Query.",
+      "Componentes UI, hooks de datos y vistas quedan aislados.",
+      "RLS de Supabase protege las mutaciones en la base.",
+      "El código queda portable, testeable y fácil de extender."
+    ]
   },
   "implementation": {
     "heading": "Implementación destacada",
@@ -85,6 +100,9 @@
       "Features de bulk-edit/delete.",
       "Integración con otras APIs de películas."
     ]
+  },
+  "deepDive": {
+    "heading": "Profundización técnica"
   },
   "carousel": {
     "alt": "Movie Management Dashboard preview"

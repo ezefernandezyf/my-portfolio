@@ -5,19 +5,19 @@ export const Footer = (): React.JSX.Element => {
   const { t } = useTranslation('footer');
 
   return (
-    <footer role="contentinfo" className="footer border-t border-base-200/70 bg-base-100/90 backdrop-blur py-6">
-      <div className="site-container flex flex-col md:flex-row items-center justify-between gap-4">
-        <div>
-          <p className="text-sm text-muted leading-6">{t('copy', { year: currentYear })}</p>
-        </div>
+    <footer role="contentinfo" className="w-full border-t border-neutral-200 bg-neutral-100 py-12 dark:border-neutral-800 dark:bg-neutral-950">
+      <div className="site-container flex flex-col items-center justify-between gap-4 md:flex-row">
+        <p className="font-body text-[11px] uppercase tracking-widest text-neutral-500 dark:text-neutral-400">
+          {t('copy', { year: currentYear })}
+        </p>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-8">
           <a
             href="/privacy"
-            className="btn btn-ghost btn-minimal text-sm"
+            className="font-body text-[11px] uppercase tracking-widest text-neutral-500 opacity-80 underline transition-all hover:opacity-100 hover:text-primary dark:text-neutral-400"
             aria-label={t('privacyAria')}
           >
-            <span className="text-base">{t('privacy')}</span>
+            {t('privacy')}
           </a>
         </div>
       </div>

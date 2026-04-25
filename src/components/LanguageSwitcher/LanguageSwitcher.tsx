@@ -15,24 +15,26 @@ export const LanguageSwitcher = (): React.JSX.Element => {
 
   return (
     <div
-      className="control-cluster inline-flex items-center gap-2"
-      role="navigation"
+      className="flex items-center rounded-full bg-surface-container-high p-1 text-[10px] font-bold uppercase tracking-widest font-space-grotesk"
+      role="group"
       aria-label="Language switcher"
     >
       <button
+        type="button"
         onClick={() => changeTo('es')}
         aria-pressed={current === 'es'}
         aria-label="Cambiar a español"
-        className={`btn btn-sm btn-minimal control-button ${current === 'es' ? 'btn-primary' : 'btn-ghost'}`}
+        className={`rounded-full px-3 py-1 transition-colors focus-ring ${current === 'es' ? 'bg-surface-container-lowest text-primary shadow-sm' : 'text-text/50 hover:text-text'}`}
       >
         ES
       </button>
 
       <button
+        type="button"
         onClick={() => changeTo('en')}
         aria-pressed={current === 'en'}
         aria-label="Switch to English"
-        className={`btn btn-sm btn-minimal control-button ${current === 'en' ? 'btn-primary' : 'btn-ghost'}`}
+        className={`rounded-full px-3 py-1 transition-colors focus-ring ${current === 'en' ? 'bg-surface-container-lowest text-primary shadow-sm' : 'text-text/50 hover:text-text'}`}
       >
         EN
       </button>

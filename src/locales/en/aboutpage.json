@@ -6,10 +6,22 @@
     "photoAlt": "Photo of {{name}}",
     "downloadCV": "Download CV",
     "github": "GitHub",
-    "linkedIn": "LinkedIn"
+    "linkedIn": "LinkedIn",
+    "viewProjects": "View Projects",
+    "contact": "Contact"
   },
   "h1": "About me",
   "summary": "I am a Front-end Developer focused on building clean, accessible, and maintainable interfaces. I mainly work with React, TypeScript and JavaScript, developing SPAs that consume REST APIs and prioritize performance, best practices and user experience. I'm interested in writing clear, testable and scalable code, applying feature-based architecture principles, efficient state management and data validation.",
+  "sections": {
+    "stack": "Technical Stack",
+    "softSkills": "Soft Skills",
+    "education": "Education"
+  },
+  "stackCards": {
+    "frontend": "Frontend Core",
+    "styles": "Styles & UI",
+    "testing": "Testing & Tools"
+  },
   "projects": {
     "title": "Featured projects",
     "links": {
@@ -44,8 +56,8 @@
     },
     "1": {
       "title": "Professional Certificate in Cybersecurity — IBM SkillsBuild",
-      "period": "2026 — present",
-      "periodLabel": "2026 — present",
+      "period": "2026 - present",
+      "periodLabel": "2026 - present",
       "bullets": []
     },
     "2": {
@@ -79,5 +91,6 @@
       "Autonomy"
     ]
   },
-  "availability": "Availability: immediate, flexible schedule."
+  "availability": "Availability: immediate, flexible schedule.",
+  "contactCta": "Contact"
 }

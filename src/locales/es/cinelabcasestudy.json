@@ -25,8 +25,17 @@
     "text": "CineLab es una aplicación diseñada para los amantes del cine. Permite buscar películas, acceder a detalles (calificaciones, sinopsis), obtener recomendaciones y gestionar favoritos de forma persistente. El proyecto fue un reto técnico y creativo, enfocado en rendimiento, accesibilidad y experiencia de usuario."
   },
   "problem": {
-    "heading": "Problema que resuelve",
+    "heading": "El problema",
     "text": "Muchas apps de búsqueda de películas presentan interfaces lentas o sin persistencia de favoritos. El objetivo fue construir una SPA rápida, accesible y con manejo robusto de estado, enfocada en buenas prácticas de arquitectura frontend."
+  },
+  "solution": {
+    "heading": "La solución",
+    "list": [
+      "Se agregó fetching cancelable para evitar race conditions y memory leaks.",
+      "Se centralizaron películas y favoritos con Context + reducer para evitar prop-drilling.",
+      "Se mantuvieron previews responsivas con assets lazy-loaded y skeleton states.",
+      "Se cubrieron con tests los flujos de fetch, carousel y favoritos."
+    ]
   },
   "techTools": {
     "heading": "Tecnologías y herramientas",
@@ -41,7 +50,13 @@
   },
   "architecture": {
     "heading": "Arquitectura y decisiones",
-    "text": "Se priorizó modularidad y separación de responsabilidades: servicios de API desacoplados, hooks para lógica de fetching y utilidades para persistencia. El estado global de favoritos se maneja con Context + reducer, evitando prop-drilling."
+    "text": "Se priorizó modularidad y separación de responsabilidades: servicios de API desacoplados, hooks para lógica de fetching y utilidades para persistencia. El estado global de favoritos se maneja con Context + reducer, evitando prop-drilling.",
+    "list": [
+      "Servicios de API, hooks de fetching y utilidades de persistencia desacoplados.",
+      "Context + reducer mantiene el estado de favoritos fuera de props.",
+      "La sincronización con localStorage vive en helpers dedicados.",
+      "La SPA sigue siendo fácil de testear y refactorizar."
+    ]
   },
   "implementation": {
     "heading": "Implementación destacada",
@@ -82,6 +97,9 @@
       "Considerar SSR con Next.js para SEO y performance inicial.",
       "Explorar React Query para caching y sincronización automáticos."
     ]
+  },
+  "deepDive": {
+    "heading": "Profundización técnica"
   },
   "carousel": {
     "alt": "{{name}} preview"
