@@ -2,35 +2,42 @@
   "meta": {
     "contact": {
       "title": "Contact",
-      "description": "Contact form — send me a message about projects, questions or opportunities."
+      "description": "Contact form for team opportunities, technical collaborations or work proposals."
     }
   },
-  "title": "Contact",
-  "intro": "Contact me if you think my profile fits your team. I am available for Front-end roles.",
+  "hero": {
+    "label": "Open to joining a team",
+    "titleAccessible": "I want to join a team and build something precise.",
+    "titleLine1": "Let's build",
+    "titleLine2": "something",
+    "titleAccent": "precise.",
+    "description": "I'm looking to join a team where I can translate complex requirements into clinical, high-performance interfaces. Reach out if you want to discuss a role or a concrete opportunity.",
+    "emailLabel": "Email",
+    "locationLabel": "Location",
+    "locationValue": "Global / Remote (GMT-3)",
+    "responseTime": "24h response time"
+  },
   "form": {
     "name": {
-      "label": "Name",
-      "placeholder": "Your name",
+      "label": "Full name",
+      "placeholder": "Jane Doe",
       "validation_min": "Name must be at least 2 characters"
     },
     "email": {
-      "label": "Email",
-      "placeholder": "you@example.com",
+      "label": "Email address",
+      "placeholder": "jane@example.com",
       "validation": "Invalid email"
     },
     "subject": {
       "label": "Subject",
-      "placeholder": "What is this about",
-      "validation_min": "Subject too short"
+      "helper": "(Team role, technical collaboration, etc.)",
+      "placeholder": "Team opportunity / Front-end",
+      "validation_min": "Subject must be at least 4 characters"
     },
     "message": {
       "label": "Message",
-      "placeholder": "Write your message here",
-      "validation_min": "Message too short"
-    },
-    "consent": {
-      "label": "I agree that my email will be stored to reply",
-      "validation": "You must accept consent"
+      "placeholder": "Tell me about the team, the role and the project goals...",
+      "validation_min": "Message must be at least 10 characters"
     },
     "submit": {
       "sending": "Sending...",
@@ -42,7 +49,7 @@
     "error_prefix": "Error sending:"
   },
   "errors": {
-    "no_endpoint": "No endpoint configured to send messages.",
+    "no_endpoint": "No endpoint is configured to send messages.",
     "send_failed": "Could not send the message. Please try again later."
   }
 }
