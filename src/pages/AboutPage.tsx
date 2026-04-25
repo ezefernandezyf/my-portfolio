@@ -50,12 +50,12 @@ const stackCards = [
   {
     key: 'frontend',
     icon: CodeBracketIcon,
-    items: ['React', 'TypeScript', 'JavaScript (ES6+)', 'Vite', 'TanStack Query'],
+    items: ['React', 'TypeScript', 'JavaScript (ES6+)', 'Vite', 'TanStack Query', 'HTML5'],
   },
   {
     key: 'styles',
     icon: SwatchIcon,
-    items: ['Tailwind CSS', 'CSS', 'HTML5', 'Responsive UI', 'Accessibility'],
+    items: ['Tailwind CSS', 'CSS', 'Responsive UI', 'Accessibility'],
   },
   {
     key: 'testing',
@@ -109,14 +109,8 @@ export const AboutPage = (): React.JSX.Element => {
             variants={riseVariants}
           >
             <div className="lg:col-span-8">
-              <motion.p
-                className="font-label mb-4 text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-outline"
-                variants={riseVariants}
-              >
-                About me
-              </motion.p>
               <motion.h1
-                className="font-headline text-[3rem] font-bold leading-tight tracking-[-0.02em] text-on-surface sm:text-[3.5rem]"
+                className="font-headline text-[2.75rem] font-medium leading-tight tracking-[-0.03em] text-on-surface sm:text-[3.25rem]"
                 variants={riseVariants}
               >
                 {t('h1')}
@@ -180,17 +174,14 @@ export const AboutPage = (): React.JSX.Element => {
               </motion.div>
             </div>
 
-            <motion.div className="lg:col-span-4" variants={cardVariants}>
-              <div className="group relative aspect-4/5 overflow-hidden rounded-lg bg-surface-container-low">
-                <img
-                  src="/profile.jpg"
-                  alt={t('hero.photoAlt', { name })}
-                  className="h-full w-full object-cover grayscale opacity-90 mix-blend-multiply transition-all duration-500 group-hover:grayscale-0 group-hover:opacity-100"
-                  width={640}
-                  height={800}
-                />
-                <div className="pointer-events-none absolute inset-0 rounded-lg border border-outline-variant/20" />
-              </div>
+            <motion.div className="group lg:col-span-4 w-full max-w-95 lg:justify-self-end" variants={cardVariants}>
+              <img
+                src="/profile.jpg"
+                alt={t('hero.photoAlt', { name })}
+                className="block w-full rounded-lg border border-outline-variant/20 object-cover grayscale opacity-95 transition-all duration-500 group-hover:grayscale-0 group-hover:opacity-100 dark:grayscale-0 dark:opacity-100 dark:brightness-110 dark:contrast-105"
+                width={640}
+                height={800}
+              />
               <div className="mt-5 flex items-center justify-between text-xs uppercase tracking-[0.18em] text-muted">
                 <span>{role}</span>
                 <span>{name}</span>
@@ -277,7 +268,7 @@ export const AboutPage = (): React.JSX.Element => {
               </h2>
               <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
                 {educationCards.map((item, index) => {
-                  const isPrimary = index === 0;
+                  const isActive = index < 2;
                   const title = t(`education.${index}.title`);
                   const period = t(item.periodKey);
 
@@ -289,12 +280,12 @@ export const AboutPage = (): React.JSX.Element => {
                     >
                       <div className="mb-6 flex items-center justify-between">
                         <span
-                          className={`rounded-sm border px-3 py-1 text-[0.6875rem] font-bold uppercase tracking-[0.05em] ${isPrimary ? 'border-primary-fixed/20 bg-primary-fixed/10 text-primary-fixed' : 'border-outline-variant/20 bg-surface-container-high text-on-surface-variant'}`}
+                          className={`rounded-sm border px-3 py-1 text-[0.6875rem] font-bold uppercase tracking-[0.05em] ${isActive ? 'border-primary-fixed/20 bg-primary-fixed/10 text-primary-fixed' : 'border-outline-variant/20 bg-surface-container-high text-on-surface-variant'}`}
                         >
                           {period}
                         </span>
                         <span
-                          className={`h-3 w-3 rounded-full border-2 ${isPrimary ? 'border-primary-fixed bg-surface-container-lowest' : 'border-outline-variant bg-surface-container-lowest'}`}
+                          className={`h-3 w-3 rounded-full border-2 ${isActive ? 'border-primary-fixed bg-surface-container-lowest' : 'border-outline-variant bg-surface-container-lowest'}`}
                         />
                       </div>
                       <h3 className="mb-2 text-[1.125rem] font-medium text-on-surface">{title}</h3>

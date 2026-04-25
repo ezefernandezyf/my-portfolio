@@ -118,5 +118,5 @@ Para garantizar una entrega iterativa y controlada, el rediseño se ejecutará e
   - **Nota de Control:** Si un bloque no está claro o falta contenido real del desarrollador, se detiene y se pregunta antes de inventar datos.
 
 - **Fase 6: Contact & Final Polish (`feat/contact-polish`)**
-  - **Objetivo:** Formulario de contacto validado con `zod-4`, layout lado a lado, y revisión final de accesibilidad.
+  - **Objetivo:** Formulario de contacto validado con `zod-4`, layout lado a lado, y revisión final de accesibilidad. Reconstrucción completa de la página About Me tomando `docs/redesignReferences/contactReference.html` como única fuente de verdad, con paridad pixel-perfect 
   - **Validación:** End-to-end testeado, 0 violaciones de accesibilidad, despliegue final en staging aprobado.
