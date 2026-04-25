@@ -32,9 +32,11 @@ describe('ContactPage', () => {
   it('renderiza la estructura principal del contacto', () => {
     render(<ContactPage />);
 
-    expect(screen.getByRole('heading', { name: /construyamos algo preciso/i })).toBeInTheDocument();
-    expect(screen.getByText(/traduzco requisitos complejos/i)).toBeInTheDocument();
-    expect(screen.getByText(/available for work|disponible para trabajar/i)).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: /quiero sumarme a un equipo y construir algo preciso/i }),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/busco sumarme a un equipo/i)).toBeInTheDocument();
+    expect(screen.getByText(/available for work|disponible para sumarme a un equipo/i)).toBeInTheDocument();
     expect(screen.getByText(new RegExp(about.email, 'i'))).toBeInTheDocument();
     expect(screen.getByText(/global \/ remote \(gmt-3\)/i)).toBeInTheDocument();
     expect(screen.getByText(/respuesta en 24 h|24h response time/i)).toBeInTheDocument();

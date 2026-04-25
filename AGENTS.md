@@ -117,6 +117,10 @@ Para garantizar una entrega iterativa y controlada, el rediseño se ejecutará e
   - **Validación:** Estructura, tipografía, jerarquía, iconografía, spacing y estados iguales a la referencia; animaciones fluidas con `framer-motion` cuando el HTML lo sugiera y, si el resultado mejora, extender la misma lógica a páginas hermanas del módulo; contenido ES/EN consistente; accesibilidad WCAG 2.1 AA.
   - **Nota de Control:** Si un bloque no está claro o falta contenido real del desarrollador, se detiene y se pregunta antes de inventar datos.
 
-- **Fase 6: Contact & Final Polish (`feat/contact-polish`)**
+- **Fase 6: Privacy Page & Trust Layer (`feat/privacy-page`)**
+  - **Objetivo:** Rediseño sencillo y sobrio de la política de privacidad, alineado al sistema visual ya reconstruido, con una jerarquía clara, lectura cómoda y sin sobrecarga visual.
+  - **Validación:** Estructura, tipografía, spacing e interacciones consistentes con las otras páginas rediseñadas; contenido legal legible y accesible; animaciones solo si ayudan a la lectura y mantienen la sobriedad del módulo.
+
+- **Fase 7: Contact & Final Polish (`feat/contact-polish`)**
   - **Objetivo:** Formulario de contacto validado con `zod-4`, layout lado a lado, y revisión final de accesibilidad. Reconstrucción completa de la página About Me tomando `docs/redesignReferences/contactReference.html` como única fuente de verdad, con paridad pixel-perfect 
   - **Validación:** End-to-end testeado, 0 violaciones de accesibilidad, despliegue final en staging aprobado.

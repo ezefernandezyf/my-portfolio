@@ -2,16 +2,16 @@
   "meta": {
     "contact": {
       "title": "Contact",
-      "description": "Contact form for project inquiries, collaborations or technical opportunities."
+      "description": "Contact form for team opportunities, technical collaborations or work proposals."
     }
   },
   "hero": {
-    "label": "Available for work",
-    "titleAccessible": "Let's build something precise.",
+    "label": "Open to joining a team",
+    "titleAccessible": "I want to join a team and build something precise.",
     "titleLine1": "Let's build",
     "titleLine2": "something",
     "titleAccent": "precise.",
-    "description": "I translate complex requirements into clinical, high-performance interfaces. Reach out to start the technical conversation.",
+    "description": "I'm looking to join a team where I can translate complex requirements into clinical, high-performance interfaces. Reach out if you want to discuss a role or a concrete opportunity.",
     "emailLabel": "Email",
     "locationLabel": "Location",
     "locationValue": "Global / Remote (GMT-3)",
@@ -30,13 +30,13 @@
     },
     "subject": {
       "label": "Subject",
-      "helper": "(Technical inquiry, collaboration, etc.)",
-      "placeholder": "Project Scope: UI/UX System",
+      "helper": "(Team role, technical collaboration, etc.)",
+      "placeholder": "Team opportunity / Front-end",
       "validation_min": "Subject must be at least 4 characters"
     },
     "message": {
       "label": "Message",
-      "placeholder": "Describe your project goals, timelines and technical constraints...",
+      "placeholder": "Tell me about the team, the role and the project goals...",
       "validation_min": "Message must be at least 10 characters"
     },
     "submit": {

@@ -2,16 +2,16 @@
   "meta": {
     "contact": {
       "title": "Contacto",
-      "description": "Formulario de contacto para consultas de proyectos, colaboraciones u oportunidades técnicas."
+      "description": "Formulario de contacto para oportunidades de equipo, colaboraciones técnicas o propuestas de trabajo."
     }
   },
   "hero": {
-    "label": "Disponible para trabajar",
-    "titleAccessible": "Construyamos algo preciso.",
+    "label": "Disponible para sumarme a un equipo",
+    "titleAccessible": "Quiero sumarme a un equipo y construir algo preciso.",
     "titleLine1": "Construyamos",
     "titleLine2": "algo",
     "titleAccent": "preciso.",
-    "description": "Traduzco requisitos complejos en interfaces clínicas, accesibles y de alto rendimiento. Escribime para iniciar la conversación técnica.",
+    "description": "Busco sumarme a un equipo donde pueda traducir requisitos complejos en interfaces clínicas, accesibles y de alto rendimiento. Escribime si querés conversar sobre un rol o una oportunidad concreta.",
     "emailLabel": "Email",
     "locationLabel": "Ubicación",
     "locationValue": "Global / Remote (GMT-3)",
@@ -30,13 +30,13 @@
     },
     "subject": {
       "label": "Asunto",
-      "helper": "(Consulta técnica, colaboración, etc.)",
-      "placeholder": "Project Scope: UI/UX System",
+      "helper": "(Rol en equipo, colaboración técnica, etc.)",
+      "placeholder": "Oportunidad en equipo / Front-end",
       "validation_min": "El asunto debe tener al menos 4 caracteres"
     },
     "message": {
       "label": "Mensaje",
-      "placeholder": "Describí objetivos, plazos y restricciones técnicas...",
+      "placeholder": "Contame sobre el equipo, el rol y los objetivos del proyecto...",
       "validation_min": "El mensaje debe tener al menos 10 caracteres"
     },
     "submit": {
