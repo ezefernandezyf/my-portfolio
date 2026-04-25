@@ -178,7 +178,7 @@ export const AboutPage = (): React.JSX.Element => {
               <img
                 src="/profile.jpg"
                 alt={t('hero.photoAlt', { name })}
-                className="block w-full rounded-lg border border-outline-variant/20 object-cover grayscale opacity-95 transition-all duration-500 group-hover:grayscale-0 group-hover:opacity-100 dark:grayscale-0 dark:opacity-100 dark:brightness-110 dark:contrast-105"
+                className="block w-full rounded-lg border border-outline-variant/20 object-cover opacity-100 transition-all duration-500"
                 width={640}
                 height={800}
               />
