@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { projects } from '../data/projects';
 import { ProjectCard } from '../components';
@@ -7,6 +8,20 @@ const INITIAL_VISIBLE_PROJECTS = 6;
 const LOAD_MORE_STEP = 3;
 
 const normalize = (value: string): string => value.toLowerCase().trim();
+
+const pageVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+} as const;
+
+const riseVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0 },
+} as const;
 
 export const ProjectsPage = (): React.JSX.Element => {
   const { t } = useTranslation('projects');
@@ -40,21 +55,21 @@ export const ProjectsPage = (): React.JSX.Element => {
   };
 
   return (
-    <main className="bg-base-100">
-      <section className="border-b border-base-300/70 bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.12),transparent_42%),linear-gradient(180deg,rgba(2,6,23,0.03),transparent_28%)]">
+    <motion.main className="bg-base-100" initial="hidden" animate="visible" variants={pageVariants}>
+      <motion.section className="border-b border-base-300/70 bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.12),transparent_42%),linear-gradient(180deg,rgba(2,6,23,0.03),transparent_28%)]" variants={riseVariants}>
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-7 px-6 py-24 lg:px-10 lg:py-10 lg:pt-50">
-          <div className="max-w-3xl space-y-5">
-            <div className="space-y-4">
-              <h1 className="font-headline text-[3.5rem] font-bold leading-none tracking-[-0.02em] text-on-surface">
+          <motion.div className="max-w-3xl space-y-5" variants={riseVariants}>
+            <motion.div className="space-y-4" variants={riseVariants}>
+              <motion.h1 className="font-headline text-[3.5rem] font-bold leading-none tracking-[-0.02em] text-on-surface" variants={riseVariants}>
                 {t('meta.title')}
-              </h1>
-              <p className="max-w-[60ch] text-[1.125rem] leading-relaxed text-on-surface-variant">
+              </motion.h1>
+              <motion.p className="max-w-[60ch] text-[1.125rem] leading-relaxed text-on-surface-variant" variants={riseVariants}>
                 {t('meta.description')}
-              </p>
-            </div>
-          </div>
+              </motion.p>
+            </motion.div>
+          </motion.div>
 
-          <div className="grid gap-4 rounded-4xl border border-base-300 bg-base-100/90 p-4 shadow-[0_18px_50px_rgba(15,23,42,0.08)] backdrop-blur md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:p-4">
+          <motion.div className="grid gap-4 rounded-4xl border border-base-300 bg-base-100/90 p-4 shadow-[0_18px_50px_rgba(15,23,42,0.08)] backdrop-blur md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:p-4" variants={riseVariants}>
             <label className="flex items-center gap-3 rounded-4xl border border-base-300 bg-base-200/60 px-4 py-3 text-base-content/60 transition-colors focus-within:border-primary/40 focus-within:bg-base-100">
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="h-5 w-5 shrink-0 stroke-current" strokeWidth="1.8">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-4.35-4.35" />
@@ -82,34 +97,35 @@ export const ProjectsPage = (): React.JSX.Element => {
               </svg>
               {t('button.filters')}
             </button>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
-      <section className="mx-auto w-full max-w-7xl px-6 pt-12 pb-10 lg:px-10 lg:pt-16 lg:pb-12">
-        <div className="mb-6 flex items-center justify-between gap-4 text-xs font-semibold uppercase tracking-[0.24em] text-base-content/45">
+      <motion.section className="mx-auto w-full max-w-7xl px-6 pt-12 pb-10 lg:px-10 lg:pt-16 lg:pb-12" variants={pageVariants} initial="hidden" animate="visible">
+        <motion.div className="mb-6 flex items-center justify-between gap-4 text-xs font-semibold uppercase tracking-[0.24em] text-base-content/45" variants={riseVariants}>
           <span>{filteredProjects.length} projects</span>
           <span>{visibleItems.length} visible</span>
-        </div>
+        </motion.div>
 
-        <div className="grid gap-6 lg:grid-cols-2 lg:gap-6">
+        <motion.div className="grid gap-6 lg:grid-cols-2 lg:gap-6" variants={pageVariants}>
           {visibleItems.map((project) => (
-            <ProjectCard
-              key={project.id}
-              id={project.id}
-              nameKey={project.nameKey}
-              shortKey={project.shortKey}
-              repo={project.repo}
-              demo={project.demo}
-              image={project.images[0]}
-              tech={project.tech}
-              year={project.year}
-            />
+            <motion.div key={project.id} variants={riseVariants}>
+              <ProjectCard
+                id={project.id}
+                nameKey={project.nameKey}
+                shortKey={project.shortKey}
+                repo={project.repo}
+                demo={project.demo}
+                image={project.images[0]}
+                tech={project.tech}
+                year={project.year}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {canLoadMore ? (
-          <div className="mt-10 flex justify-center">
+          <motion.div className="mt-10 flex justify-center" variants={riseVariants}>
             <button
               type="button"
               onClick={handleLoadMore}
@@ -117,9 +133,9 @@ export const ProjectsPage = (): React.JSX.Element => {
             >
               {t('button.loadMore')}
             </button>
-          </div>
+          </motion.div>
         ) : null}
-      </section>
-    </main>
+      </motion.section>
+    </motion.main>
   );
 };
