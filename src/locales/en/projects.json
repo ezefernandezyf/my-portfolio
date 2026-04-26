@@ -21,6 +21,10 @@
     "caseStudy": "View case study"
   },
   "notFound": "Project not found",
+  "nexus-talent": {
+    "name": "Nexus Talent",
+    "short": "AI-assisted recruitment platform that turns raw job descriptions into structured skill matrices and technical application strategies."
+  },
   "movie-dashboard": {
     "name": "Movie Management Dashboard",
     "short": "SPA dashboard to manage movie catalog. CRUD, Supabase authentication, React Query (cache, fetching), forms and tests."

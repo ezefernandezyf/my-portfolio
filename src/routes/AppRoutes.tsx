@@ -10,6 +10,7 @@ import {
   PrivacyPage,
   MovieDashboardCaseStudy,
   ChefcitoIACaseStudy,
+  NexusTalentCaseStudy,
 } from '../pages';
 
 export const AppRoutes = (): React.JSX.Element => {
@@ -23,6 +24,7 @@ export const AppRoutes = (): React.JSX.Element => {
         <Route path="/projects/cinelab" element={<CineLabCaseStudy />} />
         <Route path="/projects/movie-dashboard" element={<MovieDashboardCaseStudy />} />
         <Route path="/projects/chefcitoia" element={<ChefcitoIACaseStudy />} />
+        <Route path="/projects/nexus-talent" element={<NexusTalentCaseStudy />} />
         <Route path="privacy" element={<PrivacyPage />} />
         <Route path="contact" element={<ContactPage />} />
         <Route path="not-found" element={<NotFoundPage />} />

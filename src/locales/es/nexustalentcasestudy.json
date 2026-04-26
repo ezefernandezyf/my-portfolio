@@ -1,0 +1,99 @@
+{
+  "meta": {
+    "title": "Nexus Talent"
+  },
+  "header": {
+    "title": "Nexus Talent",
+    "short": "Plataforma de reclutamiento asistida por IA que convierte job descriptions crudas en matrices de skills estructuradas y estrategias técnicas de postulación.",
+    "repoAria": "Repositorio Nexus Talent",
+    "demoAria": "Demo Nexus Talent",
+    "backToProjects": "← Volver a Proyectos"
+  },
+  "stack": {
+    "heading": "Stack & Tecnologías",
+    "sections": {
+      "frontend": "Frontend",
+      "state": "Estado & Validación",
+      "backend": "Backend & Auth",
+      "testing": "Testing & Infra"
+    }
+  },
+  "summary": {
+    "heading": "Resumen",
+    "text": "Nexus Talent es una plataforma de recruiting asistida por IA que convierte job descriptions crudas en matrices de skills estructuradas y estrategias técnicas de postulación. El foco estuvo en validación tipada, modularidad, autenticación segura y una arquitectura orientada a features."
+  },
+  "problem": {
+    "heading": "El problema",
+    "text": "Los developers suelen postularse a roles con perfiles genéricos que no reflejan los requisitos técnicos de la vacante. El objetivo fue extraer esos requisitos de forma confiable, transformarlos en una guía accionable y mantener todo el flujo seguro dentro de un frontend tipado."
+  },
+  "solution": {
+    "heading": "La solución",
+    "list": [
+      "Se construyó un cliente LLM desacoplado para extraer y normalizar requerimientos técnicos desde descripciones libres de puestos.",
+      "Todo el input del usuario y la salida de la IA quedó envuelto en validación estricta con Zod para evitar que respuestas malformadas lleguen a la UI.",
+      "Se implementó autenticación con Supabase usando email y proveedores OAuth para GitHub, Google y LinkedIn.",
+      "La aplicación se organizó con Feature-Sliced Design para aislar la lógica de negocio de las responsabilidades visuales."
+    ]
+  },
+  "architecture": {
+    "heading": "Arquitectura & decisiones",
+    "text": "El proyecto sigue Feature-Sliced Design como enfoque de Screaming Architecture, manteniendo Analysis, Auth y Settings en áreas de feature separadas. El flujo es intencionalmente unidireccional y tipado de punta a punta, mientras que el proceso fue guiado por Spec-Driven Development para documentar las decisiones estructurales antes de implementar.",
+    "list": [
+      "Feature-Sliced Design mantiene explícitos los límites de dominio y facilita la evolución del sistema.",
+      "El flujo de datos es unidireccional: input, validación Zod, request a IA, response de IA, mapper, validación y render.",
+      "Spec-Driven Development se usó para documentar decisiones estructurales antes de implementar.",
+      "Los componentes de UI quedaron separados de la lógica de negocio y de la orquestación de servicios."
+    ]
+  },
+  "implementation": {
+    "heading": "Implementación destacada",
+    "hookTitle": "Pipeline de request a IA con validación en runtime",
+    "hookCode": "export async function analyzeJobDescription(input: string) {\n  const parsedInput = jobDescriptionSchema.parse({ input });\n\n  const aiResponse = await llmClient.generate(parsedInput);\n  const normalizedResponse = skillMatrixSchema.safeParse(aiResponse);\n\n  if (!normalizedResponse.success) {\n    return { status: 'error', message: 'Respuesta de IA inválida' };\n  }\n\n  return {\n    status: 'success',\n    data: mapSkillMatrix(normalizedResponse.data),\n  };\n}",
+    "hookDescription": "El flujo de IA está protegido por validación en runtime en los bordes de entrada y salida. Eso evita que respuestas incompletas o alucinadas lleguen a la UI y convierte los errores en estados manejables de la aplicación."
+  },
+  "accessibility": {
+    "heading": "Accesibilidad",
+    "lead": "La interfaz fue diseñada para ser usable con teclado y para mantener estados semánticos claros en las pantallas de carga, éxito y error.",
+    "list": [
+      "La navegación por teclado se mantiene en el flujo principal de análisis y en los botones de acción.",
+      "Las decisiones de color y elevación siguen el sistema visual sin depender de bordes de bajo contraste.",
+      "Los estados asíncronos exponen feedback semántico de carga, éxito y error.",
+      "El layout conserva un orden de foco predecible durante las interacciones de análisis en varios pasos."
+    ]
+  },
+  "performance": {
+    "heading": "Performance & resultados",
+    "list": [
+      "El estado del servidor se minimiza con TanStack Query y el estado local se mantiene deliberadamente pequeño.",
+      "Las animaciones de Framer Motion montan solo cuando la UI relevante aparece.",
+      "Se configuraron rewrites de SPA en Vercel para evitar problemas de routing en los callbacks de OAuth y reducir fricción."
+    ]
+  },
+  "challenges": {
+    "heading": "Desafíos & aprendizajes",
+    "list": [
+      "Estabilizar los callbacks de OAuth en una SPA alojada en Vercel sin errores de ruta.",
+      "Mantener la salida de IA lo bastante predecible como para confiar en ella dentro de un frontend tipado.",
+      "Equilibrar profundidad técnica con una experiencia clara para analizar vacantes."
+    ]
+  },
+  "improvements": {
+    "heading": "Qué se podría mejorar",
+    "list": [
+      "Agregar generación personalizada de CV a partir de la matriz de skills extraída.",
+      "Introducir paginación del lado del servidor para el historial de análisis usando cursores de Supabase."
+    ]
+  },
+  "deepDive": {
+    "heading": "Technical Deep Dive"
+  },
+  "carousel": {
+    "alt": "Vista previa de Nexus Talent"
+  },
+  "labels": {
+    "year": "Año:",
+    "featured": "Destacado"
+  },
+  "notFound": "Proyecto no encontrado",
+  "noPreview": "Sin vista previa"
+}

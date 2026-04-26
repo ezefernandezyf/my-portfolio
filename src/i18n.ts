@@ -35,6 +35,9 @@ import esMovieDashboard from './locales/es/moviedashboardcasestudy.json';
 import enChefcitoIA from './locales/en/chefcitoiacasestudy.json';
 import esChefcitoIA from './locales/es/chefcitoiacasestudy.json';
 
+import enNexusTalent from './locales/en/nexustalentcasestudy.json';
+import esNexusTalent from './locales/es/nexustalentcasestudy.json';
+
 import enPrivacy from './locales/en/privacy.json';
 import esPrivacy from './locales/es/privacy.json';
 
@@ -52,6 +55,7 @@ const resources = {
     privacy: enPrivacy,
     moviedashboardcasestudy: enMovieDashboard,
     chefcitoiacasestudy: enChefcitoIA,
+    nexustalentcasestudy: enNexusTalent,
   },
   es: {
     common: esCommon,
@@ -66,6 +70,7 @@ const resources = {
     privacy: esPrivacy,
     moviedashboardcasestudy: esMovieDashboard,
     chefcitoiacasestudy: esChefcitoIA,
+    nexustalentcasestudy: esNexusTalent,
   },
 };
 
@@ -87,6 +92,7 @@ i18n
       'cinelabcasestudy',
       'privacy',
       'chefcitoiacasestudy',
+      'nexustalentcasestudy',
     ],
     defaultNS: 'common',
     debug: false,

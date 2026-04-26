@@ -1,0 +1,99 @@
+{
+  "meta": {
+    "title": "Nexus Talent"
+  },
+  "header": {
+    "title": "Nexus Talent",
+    "short": "AI-assisted recruitment platform that turns raw job descriptions into structured skill matrices and technical application strategies.",
+    "repoAria": "Repository Nexus Talent",
+    "demoAria": "Demo Nexus Talent",
+    "backToProjects": "← Back to Projects"
+  },
+  "stack": {
+    "heading": "Stack & Technologies",
+    "sections": {
+      "frontend": "Frontend",
+      "state": "State & Validation",
+      "backend": "Backend & Auth",
+      "testing": "Testing & Infra"
+    }
+  },
+  "summary": {
+    "heading": "Summary",
+    "text": "Nexus Talent is an AI-assisted recruiting platform that converts raw job descriptions into structured skill matrices and technical application strategies. The focus was on typed validation, modularity, secure authentication and an opinionated feature architecture."
+  },
+  "problem": {
+    "heading": "The problem",
+    "text": "Developers often apply to roles using generic profiles that do not reflect the technical requirements of the vacancy. The goal was to extract those requirements reliably, turn them into actionable guidance and keep the entire flow safe in a typed frontend environment."
+  },
+  "solution": {
+    "heading": "The Solution",
+    "list": [
+      "Built a decoupled LLM client to extract and normalize technical requirements from free-text job descriptions.",
+      "Wrapped all user input and AI output in strict Zod validation to prevent malformed responses from reaching the UI.",
+      "Implemented authentication with Supabase using email and OAuth providers for GitHub, Google and LinkedIn.",
+      "Organized the application with Feature-Sliced Design to isolate business logic from presentation concerns."
+    ]
+  },
+  "architecture": {
+    "heading": "Architecture & decisions",
+    "text": "The project follows Feature-Sliced Design as a Screaming Architecture approach, keeping Analysis, Auth and Settings in dedicated feature areas. The flow is intentionally unidirectional and typed end to end, while the process itself was guided by Spec-Driven Development so structural decisions were documented before implementation.",
+    "list": [
+      "Feature-Sliced Design keeps domain boundaries explicit and easy to evolve.",
+      "The data path stays unidirectional: input, Zod validation, AI request, AI response, mapper, validation and render.",
+      "Spec-Driven Development was used to document structural decisions before implementation.",
+      "UI components remain separated from business logic and service orchestration."
+    ]
+  },
+  "implementation": {
+    "heading": "Featured implementation",
+    "hookTitle": "AI request pipeline with runtime validation",
+    "hookCode": "export async function analyzeJobDescription(input: string) {\n  const parsedInput = jobDescriptionSchema.parse({ input });\n\n  const aiResponse = await llmClient.generate(parsedInput);\n  const normalizedResponse = skillMatrixSchema.safeParse(aiResponse);\n\n  if (!normalizedResponse.success) {\n    return { status: 'error', message: 'Invalid AI response' };\n  }\n\n  return {\n    status: 'success',\n    data: mapSkillMatrix(normalizedResponse.data),\n  };\n}",
+    "hookDescription": "The AI flow is protected by runtime validation at the input and output boundaries. That keeps hallucinated or incomplete model responses out of the UI and turns failures into manageable application states."
+  },
+  "accessibility": {
+    "heading": "Accessibility",
+    "lead": "The interface was designed to remain usable in keyboard-only flows and to preserve clear semantic states across loading, success and error screens.",
+    "list": [
+      "Keyboard navigation is preserved across the main analysis flow and action buttons.",
+      "Color and elevation choices follow the design system without relying on low-contrast borders.",
+      "Async states are exposed with semantic loading, success and error feedback.",
+      "The layout keeps focus order predictable during multi-step analysis interactions."
+    ]
+  },
+  "performance": {
+    "heading": "Performance & results",
+    "list": [
+      "Server state is minimized with TanStack Query and local state is kept deliberately small.",
+      "Framer Motion animations mount only when the relevant UI becomes visible.",
+      "Vercel SPA rewrites were configured to avoid callback routing issues and reduce friction in OAuth flows."
+    ]
+  },
+  "challenges": {
+    "heading": "Challenges & learnings",
+    "list": [
+      "Stabilizing OAuth callbacks in a Vercel-hosted SPA without route errors.",
+      "Keeping AI output predictable enough to trust inside a typed frontend.",
+      "Balancing technical depth with a clear user-facing experience for job analysis."
+    ]
+  },
+  "improvements": {
+    "heading": "What could be improved",
+    "list": [
+      "Add personalized CV generation from the extracted skill matrix.",
+      "Introduce server-side pagination for the analysis history with Supabase cursors."
+    ]
+  },
+  "deepDive": {
+    "heading": "Technical Deep Dive"
+  },
+  "carousel": {
+    "alt": "Nexus Talent preview"
+  },
+  "labels": {
+    "year": "Year:",
+    "featured": "Featured"
+  },
+  "notFound": "Project not found",
+  "noPreview": "No preview"
+}
