@@ -40,7 +40,7 @@ export const Header = (): React.JSX.Element => {
   const closeDrawer = () => close();
 
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-zinc-200/20 bg-surface/70 backdrop-blur-md">
+    <header className="fixed top-0 z-50 w-full border-b border-zinc-200/20 bg-surface md:bg-surface/70 md:backdrop-blur-md">
       <nav className="site-container flex h-16 w-full max-w-full items-center justify-between gap-8 md:h-12">
         <div className="flex items-center gap-8">
           <Link
@@ -135,7 +135,7 @@ export const Header = (): React.JSX.Element => {
         role="dialog"
         aria-modal="true"
         aria-hidden={!open}
-        className={`fixed inset-y-0 right-0 z-70 h-full w-80 max-w-full rounded-l-3xl border-l border-neutral-200 bg-surface shadow-[0_24px_80px_rgba(0,0,0,0.22)] transition-transform duration-300 ease-in-out ${open ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`fixed inset-y-0 right-0 z-70 h-full w-80 max-w-full rounded-l-3xl border-l border-neutral-200 bg-surface-container-lowest shadow-[0_24px_80px_rgba(0,0,0,0.22)] transition-transform duration-300 ease-in-out ${open ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <div className="flex h-full flex-col px-4 pb-4 pt-6">
           <div className="mb-6 flex items-center justify-between border-b border-neutral-200 pb-4">
@@ -238,7 +238,7 @@ export const Header = (): React.JSX.Element => {
       <div
         onClick={closeDrawer}
         aria-hidden
-        className={`fixed inset-0 z-60 bg-black/40 backdrop-blur-[1px] transition-opacity duration-300 ${open ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`}
+        className={`fixed inset-0 z-60 bg-black/45 backdrop-blur-[1px] transition-opacity duration-300 ${open ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`}
       />
     </header>
   );
