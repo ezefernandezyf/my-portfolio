@@ -4,8 +4,5 @@ export * from './layouts/Header';
 export * from './Icons/SocialIcons';
 export * from './layouts/Footer';
 export * from './layouts/MainLayout';
-export * from './ProjectCarousel/ProjectCarousel';
 export * from './TechCategories/TechCategories';
-export * from './ProjectCard/ProjectCard';
-export * from './MetaTags/MetaTags';
 export * from './LanguageSwitcher/LanguageSwitcher';

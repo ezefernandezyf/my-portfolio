@@ -1,11 +1,11 @@
 import { render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { CineLabCaseStudy } from '../Projects/CineLabCaseStudy';
+import { ProjectCaseStudyPage } from '../../features/projects-case-study/page';
 
 test('CineLab muestra cabecera, metadata y deep dive principal', () => {
   render(
     <MemoryRouter>
-      <CineLabCaseStudy />
+      <ProjectCaseStudyPage projectId="cinelab" namespace="cinelabcasestudy" />
     </MemoryRouter>,
   );
 

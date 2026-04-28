@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
-import { MetaTags } from '../';
+import { MetaTags } from '../MetaTags/MetaTags';
 
 afterEach(() => {
   document.head

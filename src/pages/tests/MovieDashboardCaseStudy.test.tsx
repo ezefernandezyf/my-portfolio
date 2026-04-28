@@ -1,13 +1,13 @@
 import { render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
-import { MovieDashboardCaseStudy } from '../Projects/MovieDashboardCaseStudy';
+import { ProjectCaseStudyPage } from '../../features/projects-case-study/page';
 
 describe('MovieDashboardCaseStudy', () => {
   it('muestra la cabecera con repo y demo, más stack y secciones principales', () => {
     render(
       <MemoryRouter>
-        <MovieDashboardCaseStudy />
+        <ProjectCaseStudyPage projectId="movie-dashboard" namespace="moviedashboardcasestudy" />
       </MemoryRouter>,
     );
 
@@ -28,7 +28,7 @@ describe('MovieDashboardCaseStudy', () => {
 
     expect(withinAside.getByText(/2026/)).toBeInTheDocument();
     expect(withinAside.getAllByText(/featured/i)).not.toHaveLength(0);
-    expect(withinAside.getByText(/stack\.heading/i)).toBeInTheDocument();
+    expect(withinAside.getByText(/stack\s*&\s*(tecnolog[ií]as|technologies)/i)).toBeInTheDocument();
 
     expect(
       screen.getByRole('heading', {

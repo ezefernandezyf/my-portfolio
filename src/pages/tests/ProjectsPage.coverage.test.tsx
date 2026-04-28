@@ -3,8 +3,9 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { describe, expect, it, vi } from 'vitest';
 
-vi.mock('../../data/projects', () => ({
-  projects: [
+vi.mock('../../entities/project', () => ({
+  projectRepository: {
+    getProjects: () => [
     {
       id: 'omega',
       nameKey: 'Omega Project',
@@ -127,6 +128,7 @@ vi.mock('../../data/projects', () => ({
       featured: false,
     },
   ],
+  },
 }));
 
 import { ProjectsPage } from '../ProjectsPage';

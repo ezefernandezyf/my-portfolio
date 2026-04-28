@@ -1,13 +1,13 @@
 import { render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
-import { ChefcitoIACaseStudy } from '../Projects/ChefcitoIACaseStudy';
+import { ProjectCaseStudyPage } from '../../features/projects-case-study/page';
 
 describe('ChefcitoIACaseStudy', () => {
   it('muestra la cabecera con repo y demo, más stack y secciones principales', () => {
     render(
       <MemoryRouter>
-        <ChefcitoIACaseStudy />
+        <ProjectCaseStudyPage projectId="chefcitoia" namespace="chefcitoiacasestudy" />
       </MemoryRouter>,
     );
 
