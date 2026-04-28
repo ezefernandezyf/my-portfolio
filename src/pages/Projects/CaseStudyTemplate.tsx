@@ -11,7 +11,8 @@ import {
   WrenchScrewdriverIcon,
 } from '@heroicons/react/24/outline';
 
-import { MetaTags, ProjectCarousel } from '../../components';
+import { ProjectCarousel } from '../../shared/ui/project-carousel';
+import { MetaTags } from '../../shared/seo';
 
 type StackSection = {
   title: string;

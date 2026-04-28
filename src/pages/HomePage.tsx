@@ -2,10 +2,11 @@ import { ArrowTopRightOnSquareIcon, CommandLineIcon } from '@heroicons/react/24/
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { MetaTags, ProjectCard } from '../components';
-import { projects } from '../data/projects';
+import { projectRepository } from '../entities/project';
+import { MetaTags } from '../shared/seo';
+import { ProjectCard } from '../shared/ui/project-card';
 
-const featuredProjects = projects.slice(0, 2);
+const featuredProjects = projectRepository.getProjects().slice(0, 2);
 const technicalStack = ['React', 'TypeScript', 'JS (ES6+)', 'Vite', 'Testing Library', 'TanStack Query'];
 
 const pageVariants = {
@@ -24,6 +25,7 @@ const riseVariants = {
 
 export const HomePage = (): React.JSX.Element => {
   const { t } = useTranslation(['home', 'projects']);
+  const projects = projectRepository.getProjects();
 
   const projectCountLabel = String(projects.length).padStart(2, '0');
 

@@ -1,0 +1,1 @@
+export { MetaTags } from '../../components/MetaTags/MetaTags';

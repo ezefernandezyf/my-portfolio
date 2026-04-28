@@ -11,7 +11,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
 
-import { MetaTags } from '../components';
+import { MetaTags } from '../shared/seo';
 
 const pageVariants = {
   hidden: {},

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { MetaTags } from '../components';
+import { MetaTags } from '../shared/seo';
 import { useTranslation } from 'react-i18next';
 
 export const NotFoundPage = (): React.JSX.Element => {

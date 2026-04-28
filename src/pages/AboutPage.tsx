@@ -18,7 +18,8 @@ import {
 } from '@heroicons/react/24/outline';
 
 import { about } from '../data/about';
-import { GithubIcon, LinkedInIcon, MetaTags } from '../components';
+import { GithubIcon, LinkedInIcon } from '../components';
+import { MetaTags } from '../shared/seo';
 import { useTranslation } from 'react-i18next';
 
 const pageVariants = {

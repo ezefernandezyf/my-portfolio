@@ -42,6 +42,7 @@ export const projects = [
       'Prettier',
     ],
     year: 2026,
+    featured: true,
   },
   {
     id: 'chefcitoia',

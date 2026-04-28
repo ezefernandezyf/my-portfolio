@@ -28,6 +28,15 @@
     "heading": "The problem",
     "text": "Many users struggle to combine available ingredients or adapt recipes to dietary restrictions/portions. This tool aims to convert simple inputs into practical, clear and safe recipes without relying on raw AI output."
   },
+  "solution": {
+    "heading": "The Solution",
+    "list": [
+      "Protected generation requests with AbortController and typed validation.",
+      "Mapped API responses through a recipe mapper before rendering.",
+      "Kept interactions accessible and robust with Zod + react-hook-form.",
+      "Covered request, validation and UI states with tests."
+    ]
+  },
   "techTools": {
     "heading": "Technologies & tools",
     "text": "Stack chosen for fast iteration and production readiness: React 19 + Vite, TypeScript, Tailwind for UI; Zod for typed validation; Vitest for testing. AI calls are orchestrated from internal routes to keep dev UX simple.",

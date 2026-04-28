@@ -26,17 +26,7 @@ import esHeader from './locales/es/header.json';
 import enFooter from './locales/en/footer.json';
 import esFooter from './locales/es/footer.json';
 
-import enCineLab from './locales/en/cinelabcasestudy.json';
-import esCineLab from './locales/es/cinelabcasestudy.json';
-
-import enMovieDashboard from './locales/en/moviedashboardcasestudy.json';
-import esMovieDashboard from './locales/es/moviedashboardcasestudy.json';
-
-import enChefcitoIA from './locales/en/chefcitoiacasestudy.json';
-import esChefcitoIA from './locales/es/chefcitoiacasestudy.json';
-
-import enNexusTalent from './locales/en/nexustalentcasestudy.json';
-import esNexusTalent from './locales/es/nexustalentcasestudy.json';
+import { caseStudyNamespaces, caseStudyResources } from './features/projects-case-study/i18n';
 
 import enPrivacy from './locales/en/privacy.json';
 import esPrivacy from './locales/es/privacy.json';
@@ -51,11 +41,8 @@ const resources = {
     aboutpage: enAbout,
     header: enHeader,
     footer: enFooter,
-    cinelabcasestudy: enCineLab,
     privacy: enPrivacy,
-    moviedashboardcasestudy: enMovieDashboard,
-    chefcitoiacasestudy: enChefcitoIA,
-    nexustalentcasestudy: enNexusTalent,
+    ...caseStudyResources.en,
   },
   es: {
     common: esCommon,
@@ -66,11 +53,8 @@ const resources = {
     aboutpage: esAbout,
     header: esHeader,
     footer: esFooter,
-    cinelabcasestudy: esCineLab,
     privacy: esPrivacy,
-    moviedashboardcasestudy: esMovieDashboard,
-    chefcitoiacasestudy: esChefcitoIA,
-    nexustalentcasestudy: esNexusTalent,
+    ...caseStudyResources.es,
   },
 };
 
@@ -89,10 +73,8 @@ i18n
       'aboutpage',
       'header',
       'footer',
-      'cinelabcasestudy',
       'privacy',
-      'chefcitoiacasestudy',
-      'nexustalentcasestudy',
+      ...caseStudyNamespaces,
     ],
     defaultNS: 'common',
     debug: false,

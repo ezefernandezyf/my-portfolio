@@ -23,6 +23,10 @@ import esCineLab from './locales/es/cinelabcasestudy.json';
 import enCineLab from './locales/en/cinelabcasestudy.json';
 import esChefcitoIA from './locales/es/chefcitoiacasestudy.json';
 import enChefcitoIA from './locales/en/chefcitoiacasestudy.json';
+import esMovieDashboard from './locales/es/moviedashboardcasestudy.json';
+import enMovieDashboard from './locales/en/moviedashboardcasestudy.json';
+import esNexusTalent from './locales/es/nexustalentcasestudy.json';
+import enNexusTalent from './locales/en/nexustalentcasestudy.json';
 import esPrivacy from './locales/es/privacy.json';
 import enPrivacy from './locales/en/privacy.json';
 
@@ -44,6 +48,8 @@ const resources: Record<'es' | 'en', Record<string, JsonObject>> = {
     notfoundpage: esNotFound,
     cinelabcasestudy: esCineLab,
     chefcitoiacasestudy: esChefcitoIA,
+    moviedashboardcasestudy: esMovieDashboard,
+    nexustalentcasestudy: esNexusTalent,
     privacy: esPrivacy,
   },
   en: {
@@ -57,6 +63,8 @@ const resources: Record<'es' | 'en', Record<string, JsonObject>> = {
     notfoundpage: enNotFound,
     cinelabcasestudy: enCineLab,
     chefcitoiacasestudy: enChefcitoIA,
+    moviedashboardcasestudy: enMovieDashboard,
+    nexustalentcasestudy: enNexusTalent,
     privacy: enPrivacy,
   },
 };
@@ -99,7 +107,7 @@ function getFromNamespace(namespace: string, realKey: string): JsonValue | undef
 
 function resolveTranslation(
   rawKey: string,
-  opts?: { ns?: string | string[]; returnObjects?: boolean; [k: string]: unknown },
+  opts?: { ns?: string | string[]; returnObjects?: boolean; defaultValue?: unknown; [k: string]: unknown },
   defaultNs = 'common',
 ): unknown {
   const normalized = normalizeNsKey(rawKey);
@@ -112,7 +120,9 @@ function resolveTranslation(
 
   const value = getFromNamespace(namespace, realKey);
 
-  if (value === undefined) return rawKey;
+  if (value === undefined) {
+    return typeof opts?.defaultValue === 'undefined' ? rawKey : opts.defaultValue;
+  }
 
   if (opts?.returnObjects) {
     if (Array.isArray(value)) return value;
@@ -143,7 +153,7 @@ vi.mock('react-i18next', () => {
     return {
       t: (
         key: string,
-        opts?: { ns?: string | string[]; returnObjects?: boolean; [k: string]: unknown },
+        opts?: { ns?: string | string[]; returnObjects?: boolean; defaultValue?: unknown; [k: string]: unknown },
       ) => resolveTranslation(key, opts, defaultNs),
       i18n: {
         language: currentLang,
