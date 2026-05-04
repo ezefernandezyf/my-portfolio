@@ -9,6 +9,46 @@ const { sendMock } = vi.hoisted(() => ({
   sendMock: vi.fn(),
 }));
 
+const EMAILJS_ENV_KEYS = [
+  'VITE_EMAILJS_SERVICE_ID',
+  'VITE_EMAILJS_TEMPLATE_ID',
+  'VITE_EMAILJS_PUBLIC_KEY',
+] as const;
+
+type EmailJsEnvKey = (typeof EMAILJS_ENV_KEYS)[number];
+
+let emailJsEnvSnapshot: Partial<Record<EmailJsEnvKey, string | undefined>> = {};
+
+const setEmailJsEnv = (values: Record<EmailJsEnvKey, string>) => {
+  const env = import.meta.env as Record<string, string | undefined>;
+  EMAILJS_ENV_KEYS.forEach((key) => {
+    env[key] = values[key];
+  });
+};
+
+const snapshotEmailJsEnv = () => {
+  const env = import.meta.env as Record<string, string | undefined>;
+  emailJsEnvSnapshot = EMAILJS_ENV_KEYS.reduce<Partial<Record<EmailJsEnvKey, string | undefined>>>(
+    (acc, key) => {
+      acc[key] = env[key];
+      return acc;
+    },
+    {},
+  );
+};
+
+const restoreEmailJsEnv = () => {
+  const env = import.meta.env as Record<string, string | undefined>;
+  EMAILJS_ENV_KEYS.forEach((key) => {
+    const value = emailJsEnvSnapshot[key];
+    if (typeof value === 'undefined') {
+      delete env[key];
+      return;
+    }
+    env[key] = value;
+  });
+};
+
 vi.mock('@emailjs/browser', () => ({
   send: sendMock,
   default: {
@@ -19,40 +59,17 @@ vi.mock('@emailjs/browser', () => ({
 describe('ContactPage', () => {
   beforeEach(() => {
     sendMock.mockReset();
-    (globalThis as {
-      __EMAILJS_SERVICE_ID__?: string;
-      __EMAILJS_TEMPLATE_ID__?: string;
-      __EMAILJS_PUBLIC_KEY__?: string;
-    }).__EMAILJS_SERVICE_ID__ = 'service_5xpc509';
-    (globalThis as {
-      __EMAILJS_SERVICE_ID__?: string;
-      __EMAILJS_TEMPLATE_ID__?: string;
-      __EMAILJS_PUBLIC_KEY__?: string;
-    }).__EMAILJS_TEMPLATE_ID__ = 'template_hcpsn6c';
-    (globalThis as {
-      __EMAILJS_SERVICE_ID__?: string;
-      __EMAILJS_TEMPLATE_ID__?: string;
-      __EMAILJS_PUBLIC_KEY__?: string;
-    }).__EMAILJS_PUBLIC_KEY__ = 'mjHKDsM12bd6FN0x7';
+    snapshotEmailJsEnv();
+    setEmailJsEnv({
+      VITE_EMAILJS_SERVICE_ID: 'service_5xpc509',
+      VITE_EMAILJS_TEMPLATE_ID: 'template_hcpsn6c',
+      VITE_EMAILJS_PUBLIC_KEY: 'mjHKDsM12bd6FN0x7',
+    });
   });
 
   afterEach(() => {
     vi.restoreAllMocks();
-    delete (globalThis as {
-      __EMAILJS_SERVICE_ID__?: string;
-      __EMAILJS_TEMPLATE_ID__?: string;
-      __EMAILJS_PUBLIC_KEY__?: string;
-    }).__EMAILJS_SERVICE_ID__;
-    delete (globalThis as {
-      __EMAILJS_SERVICE_ID__?: string;
-      __EMAILJS_TEMPLATE_ID__?: string;
-      __EMAILJS_PUBLIC_KEY__?: string;
-    }).__EMAILJS_TEMPLATE_ID__;
-    delete (globalThis as {
-      __EMAILJS_SERVICE_ID__?: string;
-      __EMAILJS_TEMPLATE_ID__?: string;
-      __EMAILJS_PUBLIC_KEY__?: string;
-    }).__EMAILJS_PUBLIC_KEY__;
+    restoreEmailJsEnv();
   });
 
   const fillValidForm = async (user: ReturnType<typeof userEvent.setup>) => {

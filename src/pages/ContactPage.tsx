@@ -44,18 +44,10 @@ export const ContactPage = (): React.JSX.Element => {
   type ContactFormData = z.infer<typeof contactSchema>;
 
   const getEmailJsConfig = () => {
-    const meta = import.meta as unknown as { env?: Record<string, string | undefined> };
-    const env = meta.env ?? {};
-
-    const globalVars = globalThis as {
-      __EMAILJS_SERVICE_ID__?: string;
-      __EMAILJS_TEMPLATE_ID__?: string;
-      __EMAILJS_PUBLIC_KEY__?: string;
-    };
-
-    const serviceId = env.VITE_EMAILJS_SERVICE_ID || globalVars.__EMAILJS_SERVICE_ID__;
-    const templateId = env.VITE_EMAILJS_TEMPLATE_ID || globalVars.__EMAILJS_TEMPLATE_ID__;
-    const publicKey = env.VITE_EMAILJS_PUBLIC_KEY || globalVars.__EMAILJS_PUBLIC_KEY__;
+    const env = import.meta.env;
+    const serviceId = env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = env.VITE_EMAILJS_PUBLIC_KEY;
 
     if (!serviceId || !templateId || !publicKey) {
       return null;
