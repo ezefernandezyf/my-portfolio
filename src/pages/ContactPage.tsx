@@ -9,6 +9,7 @@ import {
   MapPinIcon,
   PaperAirplaneIcon,
 } from '@heroicons/react/24/outline';
+import emailjs from '@emailjs/browser';
 import { MetaTags } from '../shared/seo';
 import { about } from '../data/about';
 import { useTranslation } from 'react-i18next';
@@ -42,12 +43,25 @@ export const ContactPage = (): React.JSX.Element => {
 
   type ContactFormData = z.infer<typeof contactSchema>;
 
-  const getEndpoint = () => {
+  const getEmailJsConfig = () => {
     const meta = import.meta as unknown as { env?: Record<string, string | undefined> };
-    const envEndpoint = meta.env?.VITE_CONTACT_FORM_ENDPOINT;
-    const globalEndpoint = (globalThis as { __CONTACT_FORM_ENDPOINT__?: string })
-      .__CONTACT_FORM_ENDPOINT__;
-    return envEndpoint ?? globalEndpoint;
+    const env = meta.env ?? {};
+
+    const globalVars = globalThis as {
+      __EMAILJS_SERVICE_ID__?: string;
+      __EMAILJS_TEMPLATE_ID__?: string;
+      __EMAILJS_PUBLIC_KEY__?: string;
+    };
+
+    const serviceId = env.VITE_EMAILJS_SERVICE_ID || globalVars.__EMAILJS_SERVICE_ID__;
+    const templateId = env.VITE_EMAILJS_TEMPLATE_ID || globalVars.__EMAILJS_TEMPLATE_ID__;
+    const publicKey = env.VITE_EMAILJS_PUBLIC_KEY || globalVars.__EMAILJS_PUBLIC_KEY__;
+
+    if (!serviceId || !templateId || !publicKey) {
+      return null;
+    }
+
+    return { serviceId, templateId, publicKey };
   };
 
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
@@ -67,13 +81,6 @@ export const ContactPage = (): React.JSX.Element => {
     setStatus('sending');
     setErrorMessage(null);
 
-    const endpoint = getEndpoint();
-    if (!endpoint) {
-      setErrorMessage(t('errors.no_endpoint'));
-      setStatus('error');
-      return;
-    }
-
     try {
       const payload = {
         name: data.name,
@@ -82,20 +89,17 @@ export const ContactPage = (): React.JSX.Element => {
         message: data.message,
       };
 
-      const res = await fetch(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify(payload),
-      });
+      const emailJsConfig = getEmailJsConfig();
 
-      if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
-        const msg = (body && (body.error || body.message)) || `Error ${res.status}`;
-        throw new Error(String(msg));
+      if (!emailJsConfig) {
+        setErrorMessage(t('errors.no_emailjs'));
+        setStatus('error');
+        return;
       }
+
+      await emailjs.send(emailJsConfig.serviceId, emailJsConfig.templateId, payload, {
+        publicKey: emailJsConfig.publicKey,
+      });
 
       setStatus('success');
       reset();

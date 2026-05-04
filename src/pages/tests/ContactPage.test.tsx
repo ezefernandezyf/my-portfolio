@@ -1,22 +1,28 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { ContactPage } from '../ContactPage';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+
 import { about } from '../../data/about';
+import { ContactPage } from '../ContactPage';
+
+const { sendMock } = vi.hoisted(() => ({
+  sendMock: vi.fn(),
+}));
+
+vi.mock('@emailjs/browser', () => ({
+  send: sendMock,
+  default: {
+    send: sendMock,
+  },
+}));
 
 describe('ContactPage', () => {
-  let fetchMock: ReturnType<typeof vi.fn>;
   beforeEach(() => {
-    fetchMock = vi.fn();
-    vi.stubGlobal('fetch', fetchMock as unknown);
-    (globalThis as { __CONTACT_FORM_ENDPOINT__?: string }).__CONTACT_FORM_ENDPOINT__ =
-      'https://api.example.com/contact';
+    sendMock.mockReset();
   });
 
   afterEach(() => {
-    vi.unstubAllGlobals();
     vi.restoreAllMocks();
-    delete (globalThis as { __CONTACT_FORM_ENDPOINT__?: string }).__CONTACT_FORM_ENDPOINT__;
   });
 
   const fillValidForm = async (user: ReturnType<typeof userEvent.setup>) => {
@@ -48,7 +54,7 @@ describe('ContactPage', () => {
     expect(screen.getByRole('button', { name: /Enviar mensaje/i })).toBeInTheDocument();
   });
 
-  it('muestra errores de validación al enviar vacío y no llama a fetch', async () => {
+  it('muestra errores de validación al enviar vacío y no llama a EmailJS', async () => {
     const user = userEvent.setup();
     render(<ContactPage />);
 
@@ -61,15 +67,15 @@ describe('ContactPage', () => {
     expect(screen.getByText(/El asunto debe tener al menos 4 caracteres/i)).toBeInTheDocument();
     expect(screen.getByText(/El mensaje debe tener al menos 10 caracteres/i)).toBeInTheDocument();
 
-    expect(fetchMock).not.toHaveBeenCalled();
+    expect(sendMock).not.toHaveBeenCalled();
   });
 
-  it('simula envío exitoso (mock) y maneja la respuesta', async () => {
+  it('simula envío exitoso con EmailJS y maneja la respuesta', async () => {
     const user = userEvent.setup();
 
-    fetchMock.mockResolvedValue({
-      ok: true,
-      json: async () => ({}),
+    sendMock.mockResolvedValue({
+      status: 200,
+      text: 'OK',
     });
 
     render(<ContactPage />);
@@ -78,17 +84,24 @@ describe('ContactPage', () => {
 
     await user.click(screen.getByRole('button', { name: /Enviar mensaje/i }));
 
+    expect(sendMock).toHaveBeenCalledWith(
+      'service_5xpc509',
+      'template_hcpsn6c',
+      expect.objectContaining({
+        name: 'Ezequiel',
+        email: 'ezefernandezyf@example.com',
+        subject: 'Oferta',
+        message: 'Hola! Me interesa la posición.',
+      }),
+      { publicKey: 'mjHKDsM12bd6FN0x7' },
+    );
     expect(await screen.findByText(/Gracias — tu mensaje fue enviado/i)).toBeInTheDocument();
   });
 
-  it('simula fallo de envío (mock) y muestra error', async () => {
+  it('simula fallo de envío con EmailJS y muestra error', async () => {
     const user = userEvent.setup();
 
-    fetchMock.mockResolvedValue({
-      ok: false,
-      status: 500,
-      json: async () => ({ message: 'Server error' }),
-    });
+    sendMock.mockRejectedValue(new Error('Server error'));
 
     render(<ContactPage />);
 
@@ -99,9 +112,9 @@ describe('ContactPage', () => {
     expect(await screen.findByText(/Error al enviar:|Error:/i)).toBeInTheDocument();
   });
 
-  it('muestra error genérico si el submit falla con un valor no Error', async () => {
+  it('muestra error genérico si EmailJS falla con un valor no Error', async () => {
     const user = userEvent.setup();
-    fetchMock.mockRejectedValue('boom');
+    sendMock.mockRejectedValue('boom');
 
     render(<ContactPage />);
     await fillValidForm(user);

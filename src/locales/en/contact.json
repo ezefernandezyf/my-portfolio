@@ -49,7 +49,7 @@
     "error_prefix": "Error sending:"
   },
   "errors": {
-    "no_endpoint": "No endpoint is configured to send messages.",
+    "no_emailjs": "EmailJS is not configured.",
     "send_failed": "Could not send the message. Please try again later."
   }
 }
