@@ -19,10 +19,40 @@ vi.mock('@emailjs/browser', () => ({
 describe('ContactPage', () => {
   beforeEach(() => {
     sendMock.mockReset();
+    (globalThis as {
+      __EMAILJS_SERVICE_ID__?: string;
+      __EMAILJS_TEMPLATE_ID__?: string;
+      __EMAILJS_PUBLIC_KEY__?: string;
+    }).__EMAILJS_SERVICE_ID__ = 'service_5xpc509';
+    (globalThis as {
+      __EMAILJS_SERVICE_ID__?: string;
+      __EMAILJS_TEMPLATE_ID__?: string;
+      __EMAILJS_PUBLIC_KEY__?: string;
+    }).__EMAILJS_TEMPLATE_ID__ = 'template_hcpsn6c';
+    (globalThis as {
+      __EMAILJS_SERVICE_ID__?: string;
+      __EMAILJS_TEMPLATE_ID__?: string;
+      __EMAILJS_PUBLIC_KEY__?: string;
+    }).__EMAILJS_PUBLIC_KEY__ = 'mjHKDsM12bd6FN0x7';
   });
 
   afterEach(() => {
     vi.restoreAllMocks();
+    delete (globalThis as {
+      __EMAILJS_SERVICE_ID__?: string;
+      __EMAILJS_TEMPLATE_ID__?: string;
+      __EMAILJS_PUBLIC_KEY__?: string;
+    }).__EMAILJS_SERVICE_ID__;
+    delete (globalThis as {
+      __EMAILJS_SERVICE_ID__?: string;
+      __EMAILJS_TEMPLATE_ID__?: string;
+      __EMAILJS_PUBLIC_KEY__?: string;
+    }).__EMAILJS_TEMPLATE_ID__;
+    delete (globalThis as {
+      __EMAILJS_SERVICE_ID__?: string;
+      __EMAILJS_TEMPLATE_ID__?: string;
+      __EMAILJS_PUBLIC_KEY__?: string;
+    }).__EMAILJS_PUBLIC_KEY__;
   });
 
   const fillValidForm = async (user: ReturnType<typeof userEvent.setup>) => {
