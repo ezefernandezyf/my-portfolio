@@ -1,5 +1,7 @@
 {
   "copy": "© {{year}} Ezequiel Fernández. All rights reserved.",
-  "privacy": "Privacy Policy",
-  "privacyAria": "Privacy Policy"
+  "privacy": "Privacy",
+  "privacyAria": "View privacy policy",
+  "githubAria": "Open GitHub profile",
+  "linkedinAria": "Open LinkedIn profile"
 }

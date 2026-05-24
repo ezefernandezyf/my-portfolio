@@ -20,6 +20,7 @@ export const AppRoutes = (): React.JSX.Element => {
         <Route path="/projects/movie-dashboard" element={<ProjectCaseStudyPage projectId="movie-dashboard" namespace="moviedashboardcasestudy" />} />
         <Route path="/projects/chefcitoia" element={<ProjectCaseStudyPage projectId="chefcitoia" namespace="chefcitoiacasestudy" />} />
         <Route path="/projects/nexus-talent" element={<ProjectCaseStudyPage projectId="nexus-talent" namespace="nexustalentcasestudy" />} />
+        <Route path="/projects/echolog" element={<ProjectCaseStudyPage projectId="echolog" namespace="echologcasestudy" />} />
         <Route path="privacy" element={<PrivacyPage />} />
         <Route path="contact" element={<ContactPage />} />
         <Route path="not-found" element={<NotFoundPage />} />

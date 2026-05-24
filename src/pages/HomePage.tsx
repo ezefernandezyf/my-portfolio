@@ -7,7 +7,7 @@ import { MetaTags } from '../shared/seo';
 import { ProjectCard } from '../shared/ui/project-card';
 
 const featuredProjects = projectRepository.getProjects().slice(0, 2);
-const technicalStack = ['React', 'TypeScript', 'JS (ES6+)', 'Vite', 'Testing Library', 'TanStack Query'];
+const technicalStack = ['React 19', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma', 'Tailwind CSS 4', 'Vite'];
 
 const pageVariants = {
   hidden: {},
@@ -127,6 +127,14 @@ export const HomePage = (): React.JSX.Element => {
                   />
                 </motion.div>
               ))}
+            </motion.div>
+            <motion.div className="mt-12 text-center" variants={riseVariants}>
+              <Link
+                to="/projects"
+                className="inline-flex items-center gap-2 border border-outline-variant/30 px-8 py-3 text-[11px] font-bold uppercase tracking-[0.15em] text-on-surface-variant transition-all hover:border-outline-variant hover:text-on-surface focus-ring"
+              >
+                {t('viewAllProjects', { ns: 'home' })}
+              </Link>
             </motion.div>
           </div>
         </motion.section>

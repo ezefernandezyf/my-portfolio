@@ -1,0 +1,109 @@
+﻿{
+  "meta": {
+    "title": "EchoLog"
+  },
+  "header": {
+    "title": "EchoLog",
+    "short": "SaaS multi-tenant de feedback para productos - boards, votos, comentarios, gestión de workspaces. Full-stack TypeScript con React 19, Node.js, Express, PostgreSQL.",
+    "repoAria": "Repositorio EchoLog",
+    "demoAria": "Demo EchoLog",
+    "backToProjects": "← Volver a Proyectos"
+  },
+  "stack": {
+    "heading": "Stack & Tecnologías",
+    "sections": {
+      "frontend": "Frontend",
+      "backend": "Backend & API",
+      "state": "Estado & Validación",
+      "data": "Base de Datos & ORM",
+      "testing": "Testing & Infra"
+    }
+  },
+  "summary": {
+    "heading": "Resumen",
+    "text": "EchoLog es un SaaS multi-tenant de feedback para productos - una alternativa a Canny.io - que permite a equipos de producto recolectar, organizar y actuar sobre el feedback de usuarios mediante boards, votos, comentarios y gestión de workspaces."
+  },
+  "problem": {
+    "heading": "El problema",
+    "text": "Los equipos de producto necesitan un lugar centralizado para recolectar feedback de usuarios, priorizar funcionalidades basadas en votos de la comunidad y comunicar actualizaciones de estado - sin construirlo desde cero ni pagar por herramientas costosas como Canny. La mayoría de las alternativas son sobrepreciadas, están atadas a ecosistemas propietarios, o carecen de funcionalidades esenciales como acceso basado en roles y aislamiento multi-workspace."
+  },
+  "solution": {
+    "heading": "La solución",
+    "list": [
+      "Se construyó un monorepo full-stack con pnpm workspaces: frontend React 19, API Express, y contratos Zod compartidos para type safety de punta a punta.",
+      "Se arquitecturó el backend con screaming architecture - dominios de negocio (auth, boards, posts, votes, comments, workspaces, invitations, notifications) como carpetas de primer nivel.",
+      "Se implementó autenticación JWT en cookies httpOnly con soporte cross-origin para deploy Vercel + Render, incluyendo fix de auth móvil mediante proxy API.",
+      "Se diseñó aislamiento multi-tenant usando claves compuestas únicas (`@@unique([workspaceId, slug])`) y acceso basado en roles (OWNER, ADMIN, MEMBER, VIEWER) con middleware de membresía en cada endpoint.",
+      "Se entregó testing comprehensivo: 75+ tests entre Vitest (unit + integración), React Testing Library (componentes), y Playwright (E2E), más CI con GitHub Actions."
+    ]
+  },
+  "architecture": {
+    "heading": "Arquitectura & decisiones",
+    "text": "EchoLog sigue screaming architecture en el backend - cada dominio de negocio es una carpeta de primer nivel que 'grita' su propósito sin revelar el framework. El frontend usa organización por features con React Query para estado del servidor y Zustand para estado de UI. Los contratos Zod compartidos aseguran type safety en todo el stack.",
+    "list": [
+      "Screaming architecture: server/src/auth/, boards/, comments/, posts/, votes/, workspaces/, invitations/, notifications/ - cada uno con capas de controller, service y router.",
+      "Contratos Zod compartidos en `shared/contracts/` como única fuente de verdad para formularios frontend Y validación backend - tipos DTO derivados via z.infer.",
+      "Aislamiento multi-tenant mediante claves compuestas de Prisma: `@@unique([workspaceId, slug])` asegura slugs únicos por workspace, no globalmente.",
+      "JWT almacenado en cookies httpOnly con sameSite=none para producción cross-origin (Vercel → Render) - sin localStorage, resistente a XSS.",
+      "Flujo de trabajo con feature branches, conventional commits, commits atómicos y PRs - cada cambio documentado via Spec-Driven Development."
+    ]
+  },
+  "implementation": {
+    "heading": "Implementación destacada",
+    "hookTitle": "Middleware de membresía multi-tenant",
+    "hookCode": "export function requireWorkspaceMember(role?: WorkspaceRole) {\n  return async (req: AuthRequest, res: Response, next: NextFunction) => {\n    const workspaceId = extractWorkspaceId(req);\n    const membership = await prisma.workspaceMember.findUnique({\n      where: { userId_workspaceId: { userId: req.userId!, workspaceId } },\n    });\n    if (!membership) {\n      return res.status(403).json({ error: 'No eres miembro de este workspace' });\n    }\n    if (role && membership.role !== role && membership.role !== 'OWNER') {\n      return res.status(403).json({ error: 'Permisos insuficientes' });\n    }\n    req.membership = membership;\n    next();\n  };\n}",
+    "hookDescription": "Un middleware Express reutilizable que extrae el ID del workspace de params, body o query, busca la membresía del usuario en una sola consulta Prisma, y opcionalmente exige un rol mínimo. Este middleware protege cada endpoint scoped a workspace en la aplicación - boards, posts, votes, comments, invitations, y settings - asegurando autorización consistente en todo el backend."
+  },
+  "accessibility": {
+    "heading": "Accesibilidad",
+    "lead": "EchoLog fue auditado sistemáticamente (P0→P3) para cumplimiento WCAG 2.1 AA en todas las interfaces.",
+    "list": [
+      "Skip link, landmarks semánticos y jerarquía de encabezados correcta en toda la aplicación.",
+      "Errores de formulario anunciados via regiones aria-live, labels con htmlFor, y aria-describedby para texto de ayuda.",
+      "Navegación por teclado preservada en todos los componentes interactivos: boards, posts, votes, comments, y modales.",
+      "Títulos de página dinámicos actualizados al cambiar de ruta para contexto de lectores de pantalla.",
+      "Manejo de foco en diálogos (trap + restore), sidebar móvil (auto-focus + Escape), y elementos interactivos.",
+      "prefers-reduced-motion respetado - todas las animaciones CSS y framer-motion respetan la configuración del sistema."
+    ]
+  },
+  "performance": {
+    "heading": "Performance & resultados",
+    "list": [
+      "Virtualización de listas con @tanstack/react-virtual activada en móvil O >20 items - boards grandes scrolleando a 60fps incluso con cientos de posts.",
+      "Actualizaciones optimistas con React Query en votos - feedback instantáneo con rollback automático en conflictos 409.",
+      "Búsqueda con debounce (300ms) evita llamadas API excesivas durante escritura rápida.",
+      "Paginación basada en cursores con patrón 'Cargar más' en lugar de offset/limit - rendimiento consistente a medida que crece el dataset.",
+      "Patrones de renderizado condicional: skeletons durante carga, estados vacíos con CTAs, y error boundaries con reintento."
+    ]
+  },
+  "challenges": {
+    "heading": "Desafíos & aprendizajes",
+    "list": [
+      "Autenticación cross-origin en móvil: Vercel (frontend) y Render (backend) son orígenes distintos. Cookies httpOnly con sameSite=none funcionaron en desktop pero iOS Safari bloquea cookies de terceros. Solucionado con un rewrite proxy en Vite/Vercel.",
+      "Aislamiento multi-tenant sin filtraciones: cada consulta Prisma debía incluir scope de workspaceId. El middleware de membresía se convirtió en la fuente única de verdad para autorización, detectando varias filtraciones potenciales durante el desarrollo.",
+      "Mantener contratos Zod verdaderamente compartidos entre frontend y backend requirió manejo cuidadoso de dependencias en el monorepo - shared/ no puede importar código de server o web.",
+      "Testing con PostgreSQL real en CI: se migró de SQLite a un service container de PostgreSQL en GitHub Actions para paridad con producción, detectando varios bugs específicos de dialecto SQL."
+    ]
+  },
+  "improvements": {
+    "heading": "Qué se podría mejorar",
+    "list": [
+      "Agregar actualizaciones en tiempo real via WebSockets (Socket.IO o SSE) para votos y notificaciones en vivo.",
+      "Implementar servicio de email (Resend) para emails de invitación, recuperación de contraseña y resúmenes de notificaciones.",
+      "Agregar feed de workspaces públicos con ranking de popularidad y opción 'Continuar sin cuenta'.",
+      "Hardening de producción: rate limiting, logging estructurado (pino), y expansión de cobertura de tests para casos borde."
+    ]
+  },
+  "deepDive": {
+    "heading": "Technical Deep Dive"
+  },
+  "carousel": {
+    "alt": "Vista previa de EchoLog"
+  },
+  "labels": {
+    "year": "Año:",
+    "featured": "Destacado"
+  },
+  "notFound": "Proyecto no encontrado",
+  "noPreview": "Sin vista previa"
+}

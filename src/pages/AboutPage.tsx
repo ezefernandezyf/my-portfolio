@@ -5,6 +5,7 @@ import {
   ArrowRightIcon,
   ArrowDownTrayIcon,
   BeakerIcon,
+  ServerStackIcon,
   BoltIcon,
   ChartBarIcon,
   ChatBubbleLeftRightIcon,
@@ -51,17 +52,22 @@ const stackCards = [
   {
     key: 'frontend',
     icon: CodeBracketIcon,
-    items: ['React', 'TypeScript', 'JavaScript (ES6+)', 'Vite', 'TanStack Query', 'HTML5'],
+    items: ['React 19', 'TypeScript', 'JavaScript (ES6+)', 'Vite', 'TanStack Query', 'React Router', 'HTML5'],
   },
   {
     key: 'styles',
     icon: SwatchIcon,
-    items: ['Tailwind CSS', 'CSS', 'Responsive UI', 'Accessibility'],
+    items: ['Tailwind CSS 4', 'CSS', 'Responsive UI', 'Accessibility'],
+  },
+  {
+    key: 'backend',
+    icon: ServerStackIcon,
+    items: ['Node.js', 'Express', 'REST APIs', 'Prisma ORM', 'PostgreSQL', 'JWT'],
   },
   {
     key: 'testing',
     icon: BeakerIcon,
-    items: ['Vitest', 'React Testing Library', 'React Hook Form', 'Zod', 'Git / GitHub', 'ESLint', 'Prettier'],
+    items: ['Vitest', 'React Testing Library', 'Playwright', 'React Hook Form', 'Zod', 'Zustand', 'ESLint', 'Prettier'],
   },
 ] as const;
 

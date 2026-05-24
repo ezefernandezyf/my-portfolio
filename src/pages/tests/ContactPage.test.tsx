@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+﻿import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -61,7 +61,7 @@ describe('ContactPage', () => {
     sendMock.mockReset();
     snapshotEmailJsEnv();
     setEmailJsEnv({
-      VITE_EMAILJS_SERVICE_ID: 'service_5xpc509',
+      VITE_EMAILJS_SERVICE_ID: 'service_vtd7man',
       VITE_EMAILJS_TEMPLATE_ID: 'template_hcpsn6c',
       VITE_EMAILJS_PUBLIC_KEY: 'mjHKDsM12bd6FN0x7',
     });
@@ -132,7 +132,7 @@ describe('ContactPage', () => {
     await user.click(screen.getByRole('button', { name: /Enviar mensaje/i }));
 
     expect(sendMock).toHaveBeenCalledWith(
-      'service_5xpc509',
+      'service_vtd7man',
       'template_hcpsn6c',
       expect.objectContaining({
         name: 'Ezequiel',
@@ -142,7 +142,7 @@ describe('ContactPage', () => {
       }),
       { publicKey: 'mjHKDsM12bd6FN0x7' },
     );
-    expect(await screen.findByText(/Gracias — tu mensaje fue enviado/i)).toBeInTheDocument();
+    expect(await screen.findByText(/Gracias - tu mensaje fue enviado/i)).toBeInTheDocument();
   });
 
   it('simula fallo de envío con EmailJS y muestra error', async () => {

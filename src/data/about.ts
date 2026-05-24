@@ -41,7 +41,7 @@ interface AboutData {
 
 export const about: AboutData = {
   name: 'Ezequiel Fernández',
-  role: 'Front-end Developer',
+  role: 'Full Stack Developer',
   email: 'ezefernandezyf@gmail.com',
   github: 'https://github.com/ezefernandezyf',
   linkedIn: 'https://www.linkedin.com/in/ezequiel-fernandez-59a21a387/',
@@ -90,6 +90,15 @@ export const about: AboutData = {
   abilitiesKey: 'abilities.items',
 
   projects: [
+    {
+      id: 'echolog',
+      nameKey: 'echolog.name',
+      shortKey: 'echolog.short',
+      repo: 'https://github.com/ezefernandezyf/echolog',
+      demo: 'https://echolog-web.vercel.app',
+      whatILearnedKey: 'projects.echolog.whatILearned',
+      tech: ['React 19', 'TypeScript', 'Node.js', 'Express', 'Prisma', 'PostgreSQL', 'Tailwind 4', 'Zod'],
+    },
     {
       id: 'movie-dashboard',
       nameKey: 'movie-dashboard.name',
