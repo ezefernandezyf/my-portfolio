@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import {
   AcademicCapIcon,
   ArrowRightIcon,
@@ -23,30 +22,10 @@ import { GithubIcon, LinkedInIcon } from '../components';
 import { MetaTags } from '../shared/seo';
 import { useTranslation } from 'react-i18next';
 
-const pageVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.08,
-    },
-  },
-};
-
-const riseVariants = {
-  hidden: { opacity: 0, y: 18 },
-  visible: {
-    opacity: 1,
-    y: 0,
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-  },
-};
+const fadeInUp = (delay = 0): React.CSSProperties => ({
+  animation: `fade-in-up 0.5s ease-out ${delay}s forwards`,
+  opacity: 0,
+});
 
 const stackCards = [
   {
@@ -103,32 +82,29 @@ export const AboutPage = (): React.JSX.Element => {
   return (
     <>
       <MetaTags title={t('meta.title')} description={t('summary')} pathname="/about" type="website" />
-      <motion.main
+      <main
         role="main"
         className="pb-24 pt-24"
-        variants={pageVariants}
-        initial="hidden"
-        animate="visible"
       >
         <div className="site-container space-y-32">
-          <motion.section
+          <section
             className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end"
-            variants={riseVariants}
+            style={fadeInUp()}
           >
             <div className="lg:col-span-8">
-              <motion.h1
+              <h1
                 className="font-headline text-[2.75rem] font-medium leading-tight tracking-[-0.03em] text-on-surface sm:text-[3.25rem]"
-                variants={riseVariants}
+                style={fadeInUp(0.08)}
               >
                 {t('h1')}
-              </motion.h1>
-              <motion.p
+              </h1>
+              <p
                 className="font-body mt-6 max-w-[60ch] text-[1.125rem] leading-relaxed text-on-surface-variant"
-                variants={riseVariants}
+                style={fadeInUp(0.16)}
               >
                 {t('summary')}
-              </motion.p>
-              <motion.div className="mt-10 flex flex-wrap gap-4" variants={riseVariants}>
+              </p>
+              <div className="mt-10 flex flex-wrap gap-4" style={fadeInUp(0.24)}>
                 <Link
                   to="/projects"
                   className="inline-flex items-center justify-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-medium text-on-primary transition-colors hover:bg-primary-fixed"
@@ -142,8 +118,8 @@ export const AboutPage = (): React.JSX.Element => {
                 >
                   {t('hero.contact')}
                 </Link>
-              </motion.div>
-              <motion.div className="mt-8 flex flex-wrap gap-4 text-sm text-on-surface-variant" variants={riseVariants}>
+              </div>
+              <div className="mt-8 flex flex-wrap gap-4 text-sm text-on-surface-variant">
                 <a
                   href={github}
                   target="_blank"
@@ -174,14 +150,14 @@ export const AboutPage = (): React.JSX.Element => {
                   <ArrowDownTrayIcon className="h-4 w-4" aria-hidden="true" />
                   <span>{t('hero.downloadCV')}</span>
                 </a>
-              </motion.div>
-              <motion.div className="mt-4 text-sm text-on-surface-variant" variants={riseVariants}>
+              </div>
+              <div className="mt-4 text-sm text-on-surface-variant">
                 <div>{email}</div>
                 <div className="mt-1">{t('availability')}</div>
-              </motion.div>
+              </div>
             </div>
 
-            <motion.div className="group lg:col-span-4 w-full max-w-95 lg:justify-self-end" variants={cardVariants}>
+            <div className="group lg:col-span-4 w-full max-w-95 lg:justify-self-end" style={fadeInUp(0.16)}>
               <img
                 src="/profile.jpg"
                 alt={t('hero.photoAlt', { name })}
@@ -193,12 +169,12 @@ export const AboutPage = (): React.JSX.Element => {
                 <span>{role}</span>
                 <span>{name}</span>
               </div>
-            </motion.div>
-          </motion.section>
+            </div>
+          </section>
 
-          <motion.section
+          <section
             className="bg-surface-container-low py-24 px-8 md:px-16 w-full border-t border-outline-variant/10"
-            variants={cardVariants}
+            style={fadeInUp(0.24)}
           >
             <div className="max-w-7xl mx-auto flex flex-col gap-12">
               <h2 className="flex items-center gap-3 text-[1.75rem] font-medium tracking-[-0.01em] text-on-surface">
@@ -210,10 +186,9 @@ export const AboutPage = (): React.JSX.Element => {
                   const Icon = card.icon;
 
                   return (
-                    <motion.article
+                    <article
                       key={card.key}
                       className="bg-surface-container-lowest p-8 rounded-lg border border-outline-variant/20 hover:bg-surface-container-high transition-colors duration-200 group"
-                      variants={cardVariants}
                     >
                       <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-surface-container-low text-primary-fixed">
                         <Icon className="h-6 w-6" aria-hidden="true" />
@@ -231,14 +206,14 @@ export const AboutPage = (): React.JSX.Element => {
                           </span>
                         ))}
                       </div>
-                    </motion.article>
+                    </article>
                   );
                 })}
               </div>
             </div>
-          </motion.section>
+          </section>
 
-          <motion.section className="border-t border-outline-variant/10 bg-surface py-24 px-8 md:px-16 w-full" variants={cardVariants}>
+          <section className="border-t border-outline-variant/10 bg-surface py-24 px-8 md:px-16 w-full">
             <div className="max-w-7xl mx-auto flex flex-col gap-12">
               <h2 className="flex items-center gap-3 text-[1.75rem] font-medium tracking-[-0.01em] text-on-surface">
                 <SparklesIcon className="h-6 w-6 text-primary-fixed" aria-hidden="true" />
@@ -262,11 +237,11 @@ export const AboutPage = (): React.JSX.Element => {
                 </div>
               </div>
             </div>
-          </motion.section>
+          </section>
 
-          <motion.section
+          <section
             className="border-t border-outline-variant/10 bg-surface-container-low py-24 px-8 md:px-16 w-full"
-            variants={cardVariants}
+            style={fadeInUp(0.32)}
           >
             <div className="max-w-7xl mx-auto flex flex-col gap-12">
               <h2 className="flex items-center gap-3 text-[1.75rem] font-medium tracking-[-0.01em] text-on-surface">
@@ -280,10 +255,9 @@ export const AboutPage = (): React.JSX.Element => {
                   const period = t(item.periodKey);
 
                   return (
-                    <motion.article
+                    <article
                       key={item.titleKey}
                       className="flex h-full flex-col rounded-lg border border-outline-variant/20 bg-surface-container-lowest p-8 transition-colors duration-200 hover:bg-surface-container-high"
-                      variants={cardVariants}
                     >
                       <div className="mb-6 flex items-center justify-between">
                         <span
@@ -303,14 +277,14 @@ export const AboutPage = (): React.JSX.Element => {
                             ? 'Certificación enfocada en seguridad, control de acceso y prácticas de hardening aplicadas a productos web modernos.'
                             : 'Formación intensiva en modelos generativos, flujo de entrega y criterios para llevar experimentos de IA a producción.'}
                       </p>
-                    </motion.article>
+                    </article>
                   );
                 })}
               </div>
             </div>
-          </motion.section>
+          </section>
         </div>
-      </motion.main>
+      </main>
     </>
   );
 };

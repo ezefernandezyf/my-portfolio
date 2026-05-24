@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import {
   ArrowTopRightOnSquareIcon,
   EnvelopeIcon,
@@ -13,19 +12,10 @@ import { useTranslation } from 'react-i18next';
 
 import { MetaTags } from '../shared/seo';
 
-const pageVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.08,
-    },
-  },
-} as const;
-
-const riseVariants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0 },
-} as const;
+const fadeInUp = (delay = 0): React.CSSProperties => ({
+  animation: `fade-in-up 0.5s ease-out ${delay}s forwards`,
+  opacity: 0,
+});
 
 const privacySections = [
   { key: 'data', icon: KeyIcon },
@@ -50,22 +40,22 @@ export const PrivacyPage = (): React.JSX.Element => {
         type="article"
       />
 
-      <motion.main role="main" className="pb-24 pt-24" initial="hidden" animate="visible" variants={pageVariants}>
+      <main role="main" className="pb-24 pt-24">
         <div className="site-container space-y-24">
-          <motion.section className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end" variants={riseVariants}>
+          <section className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end" style={fadeInUp()}>
             <div className="lg:col-span-8">
-              <motion.p className="mb-4 font-label text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-outline" variants={riseVariants}>
+              <p className="mb-4 font-label text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-outline" style={fadeInUp(0.08)}>
                 Privacy & Trust
-              </motion.p>
-              <motion.h1 className="font-headline text-[2.75rem] font-medium leading-tight tracking-[-0.03em] text-on-surface sm:text-[3.25rem]" variants={riseVariants}>
+              </p>
+              <h1 className="font-headline text-[2.75rem] font-medium leading-tight tracking-[-0.03em] text-on-surface sm:text-[3.25rem]" style={fadeInUp(0.16)}>
                 {t('title')}
-              </motion.h1>
-              <motion.p className="mt-6 max-w-[60ch] text-[1.125rem] leading-relaxed text-on-surface-variant" variants={riseVariants}>
+              </h1>
+              <p className="mt-6 max-w-[60ch] text-[1.125rem] leading-relaxed text-on-surface-variant" style={fadeInUp(0.24)}>
                 {t('intro')}
-              </motion.p>
+              </p>
             </div>
 
-            <motion.aside className="lg:col-span-4 lg:border-l lg:border-outline-variant/20 lg:pl-12" variants={riseVariants}>
+            <aside className="lg:col-span-4 lg:border-l lg:border-outline-variant/20 lg:pl-12" style={fadeInUp(0.32)}>
               <div className="rounded-lg border border-outline-variant/20 bg-surface-container-lowest p-6">
                 <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-outline">
                   {t('lastUpdated', { date: lastUpdated })}
@@ -81,20 +71,19 @@ export const PrivacyPage = (): React.JSX.Element => {
                   <ArrowTopRightOnSquareIcon className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </div>
-            </motion.aside>
-          </motion.section>
+            </aside>
+          </section>
 
-          <motion.section className="grid grid-cols-1 gap-6 lg:grid-cols-2" variants={pageVariants}>
+          <section className="grid grid-cols-1 gap-6 lg:grid-cols-2" style={fadeInUp(0.40)}>
             {privacySections.map((section) => {
               const Icon = section.icon;
               const heading = t(`sections.${section.key}.heading`);
               const paragraph = t(`sections.${section.key}.paragraph`);
 
               return (
-                <motion.article
+                <article
                   key={section.key}
                   className={`rounded-lg border border-outline-variant/20 bg-surface-container-lowest p-8 transition-colors duration-200 hover:bg-surface-container-high ${section.key === 'contact' ? 'lg:col-span-2' : ''}`}
-                  variants={riseVariants}
                 >
                   <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-surface-container-low text-primary-fixed">
                     <Icon className="h-6 w-6" aria-hidden="true" />
@@ -113,13 +102,13 @@ export const PrivacyPage = (): React.JSX.Element => {
                       {paragraph}
                     </p>
                   )}
-                </motion.article>
+                </article>
               );
             })}
-          </motion.section>
+          </section>
 
         </div>
-      </motion.main>
+      </main>
     </>
   );
 };

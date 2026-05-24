@@ -63,7 +63,7 @@
       "Navegación por teclado preservada en todos los componentes interactivos: boards, posts, votes, comments, y modales.",
       "Títulos de página dinámicos actualizados al cambiar de ruta para contexto de lectores de pantalla.",
       "Manejo de foco en diálogos (trap + restore), sidebar móvil (auto-focus + Escape), y elementos interactivos.",
-      "prefers-reduced-motion respetado - todas las animaciones CSS y framer-motion respetan la configuración del sistema."
+      "prefers-reduced-motion respetado - todas las animaciones CSS respetan la configuración del sistema."
     ]
   },
   "performance": {
