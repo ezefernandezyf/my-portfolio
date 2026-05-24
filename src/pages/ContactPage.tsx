@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -14,22 +13,10 @@ import { MetaTags } from '../shared/seo';
 import { about } from '../data/about';
 import { useTranslation } from 'react-i18next';
 
-const pageVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.08,
-    },
-  },
-};
-
-const riseVariants = {
-  hidden: { opacity: 0, y: 18 },
-  visible: {
-    opacity: 1,
-    y: 0,
-  },
-};
+const fadeInUp = (delay = 0): React.CSSProperties => ({
+  animation: `fade-in-up 0.5s ease-out ${delay}s forwards`,
+  opacity: 0,
+});
 
 export const ContactPage = (): React.JSX.Element => {
   const { t } = useTranslation('contact');
@@ -110,16 +97,13 @@ export const ContactPage = (): React.JSX.Element => {
         pathname="/contact"
         type="article"
       />
-      <motion.main
+      <main
         role="main"
         className="pb-24 pt-24"
-        variants={pageVariants}
-        initial="hidden"
-        animate="visible"
       >
         <div className="site-container">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-24">
-            <motion.section className="lg:col-span-5 flex flex-col justify-between" variants={riseVariants}>
+            <section className="lg:col-span-5 flex flex-col justify-between" style={fadeInUp()}>
               <div className="space-y-8">
                 <div className="inline-flex items-center gap-2 rounded-full border border-outline-variant/20 bg-surface-container-high px-3 py-1">
                   <span className="h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
@@ -174,9 +158,9 @@ export const ContactPage = (): React.JSX.Element => {
                   </div>
                 </div>
               </div>
-            </motion.section>
+            </section>
 
-            <motion.section className="relative lg:col-span-7" variants={riseVariants}>
+            <section className="relative lg:col-span-7" style={fadeInUp(0.08)}>
               <div className="absolute -top-12 -right-12 -z-10 h-64 w-64 rounded-full bg-primary-fixed/5 blur-3xl" />
 
               <div className="rounded-xl border border-outline-variant/20 bg-surface-container-lowest p-8 shadow-sm md:p-12">
@@ -306,10 +290,10 @@ export const ContactPage = (): React.JSX.Element => {
                   {t('hero.responseTime')}
                 </div>
               </div>
-            </motion.section>
+            </section>
           </div>
         </div>
-      </motion.main>
+      </main>
     </>
   );
 };

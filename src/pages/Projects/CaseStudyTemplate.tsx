@@ -1,5 +1,4 @@
 ﻿import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import {
   CheckIcon,
   CodeBracketIcon,
@@ -75,19 +74,10 @@ const deepDiveHeadingClass = 'font-headline text-[1.75rem] font-medium tracking-
 const cardClass =
   'bg-surface-container-lowest p-8 rounded-sm border border-outline-variant/20 hover:bg-surface-container-high hover:border-outline-variant transition-all duration-200 group';
 
-const pageVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.08,
-    },
-  },
-} as const;
-
-const riseVariants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0 },
-} as const;
+const fadeInUp = (delay = 0): React.CSSProperties => ({
+  animation: `fade-in-up 0.5s ease-out ${delay}s forwards`,
+  opacity: 0,
+});
 
 function normalizeItems(items: string[] | string): string[] {
   return Array.isArray(items) ? items : [items];
@@ -168,20 +158,20 @@ export const CaseStudyTemplate = ({
     <>
       <MetaTags title={title} description={description} pathname={pathname} type="article" />
 
-      <motion.main className="pb-0 pt-24" initial="hidden" animate="visible" variants={pageVariants}>
-        <motion.section className="max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-24" variants={riseVariants}>
+      <main className="pb-0 pt-24">
+        <section className="max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-24" style={fadeInUp()}>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end">
-            <motion.div className="lg:col-span-8" variants={riseVariants}>
-              <p className="font-label mb-4 text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-outline">
+            <div className="lg:col-span-8">
+              <p className="font-label mb-4 text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-outline" style={fadeInUp(0.08)}>
                 Case Study
               </p>
-              <h1 className="font-headline text-[3rem] font-bold leading-tight tracking-[-0.02em] text-on-surface sm:text-[3.5rem]">
+              <h1 className="font-headline text-[3rem] font-bold leading-tight tracking-[-0.02em] text-on-surface sm:text-[3.5rem]" style={fadeInUp(0.16)}>
                 {title}
               </h1>
-              <p className="font-body mt-6 max-w-[60ch] text-[1.125rem] leading-relaxed text-on-surface-variant">
+              <p className="font-body mt-6 max-w-[60ch] text-[1.125rem] leading-relaxed text-on-surface-variant" style={fadeInUp(0.24)}>
                 {description}
               </p>
-              <motion.div className="mt-10 flex flex-wrap gap-4" variants={riseVariants}>
+              <div className="mt-10 flex flex-wrap gap-4" style={fadeInUp(0.32)}>
                 {demo ? (
                   <a
                     href={demo}
@@ -210,13 +200,13 @@ export const CaseStudyTemplate = ({
                 >
                   {backLabel}
                 </Link>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
-            <motion.aside
+            <aside
               className="flex flex-col gap-6 lg:col-span-4 lg:border-l lg:border-outline-variant/20 lg:pl-12"
               data-testid="stack-aside"
-              variants={riseVariants}
+              style={fadeInUp(0.16)}
             >
               <div>
                 <span className="mb-1 block font-label text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-outline">
@@ -249,11 +239,11 @@ export const CaseStudyTemplate = ({
                   ))}
                 </div>
               </div>
-            </motion.aside>
+            </aside>
           </div>
-        </motion.section>
+        </section>
 
-        <motion.section className="max-w-6xl mx-auto mb-28 px-6 lg:px-12" variants={riseVariants}>
+        <section className="max-w-6xl mx-auto mb-28 px-6 lg:px-12" style={fadeInUp(0.24)}>
           <div className="relative w-full overflow-hidden rounded-lg border border-outline-variant/20 bg-surface-container-low shadow-[0_16px_32px_-16px_rgba(27,27,27,0.04)]">
             {images.length > 0 ? (
               <ProjectCarousel images={images} alt={carouselAlt} interval={5000} />
@@ -263,22 +253,22 @@ export const CaseStudyTemplate = ({
               </div>
             )}
           </div>
-        </motion.section>
+        </section>
 
-        <motion.section className="bg-surface-container-low py-32" variants={riseVariants}>
+        <section className="bg-surface-container-low py-32" style={fadeInUp(0.32)}>
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 gap-20 lg:grid-cols-2">
-              <motion.div variants={riseVariants}>
-                <h2 className="font-headline mb-6 flex items-center text-[1.75rem] font-medium tracking-[-0.01em] text-on-surface">
+              <div>
+                <h2 className="font-headline mb-6 flex items-center text-[1.75rem] font-medium tracking-[-0.01em] text-on-surface" style={fadeInUp(0.08)}>
                   <ExclamationTriangleIcon className="mr-3 h-6 w-6 text-primary-fixed" aria-hidden="true" />
                   {problemHeading}
                 </h2>
                 <p className="font-body max-w-[60ch] text-[0.875rem] leading-relaxed text-on-surface-variant">
                   {problemText}
                 </p>
-              </motion.div>
+              </div>
 
-              <motion.div variants={riseVariants}>
+              <div>
                 <h2 className="font-headline mb-6 flex items-center text-[1.75rem] font-medium tracking-[-0.01em] text-on-surface">
                   <SparklesIcon className="mr-3 h-6 w-6 text-primary-fixed" aria-hidden="true" />
                   {solutionHeading}
@@ -291,19 +281,19 @@ export const CaseStudyTemplate = ({
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+              </div>
             </div>
           </div>
-        </motion.section>
+        </section>
 
-        <motion.section className="max-w-7xl mx-auto px-6 lg:px-12 py-32" variants={riseVariants}>
+        <section className="max-w-7xl mx-auto px-6 lg:px-12 py-32" style={fadeInUp(0.40)}>
           <h2 className={`${deepDiveHeadingClass} mb-12`}>{deepDiveHeading}</h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {deepDiveSections.map((section) => renderSection(section))}
           </div>
-        </motion.section>
+        </section>
 
-        <motion.section className="border-y border-outline-variant/20 bg-surface-container-low py-24" variants={riseVariants}>
+        <section className="border-y border-outline-variant/20 bg-surface-container-low py-24" style={fadeInUp(0.48)}>
           <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
             <h2 className={`${deepDiveHeadingClass} mb-10`}>The Engineering Stack</h2>
             <div className="flex flex-wrap justify-center gap-3">
@@ -317,10 +307,10 @@ export const CaseStudyTemplate = ({
               ))}
             </div>
           </div>
-        </motion.section>
+        </section>
 
         {codeSection ? (
-          <motion.section className="max-w-3xl mx-auto px-6 lg:px-12 py-32 text-center" variants={riseVariants}>
+          <section className="max-w-3xl mx-auto px-6 lg:px-12 py-32 text-center">
             <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-sm bg-surface-container-low text-primary-fixed/20">
               <CodeBracketIcon className="h-8 w-8" aria-hidden="true" />
             </div>
@@ -338,9 +328,9 @@ export const CaseStudyTemplate = ({
                 {codeSection.description}
               </p>
             </div>
-          </motion.section>
+          </section>
         ) : null}
-      </motion.main>
+      </main>
     </>
   );
 };

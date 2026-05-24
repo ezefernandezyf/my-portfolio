@@ -63,7 +63,7 @@
       "Keyboard navigation preserved across all interactive components: boards, posts, votes, comments, and modals.",
       "Dynamic page titles updated on route changes for screen reader context.",
       "Focus management in dialogs (trap + restore), mobile sidebar (auto-focus + Escape), and interactive elements.",
-      "prefers-reduced-motion respected - all framer-motion and CSS animations respect the system setting."
+      "prefers-reduced-motion respected - all CSS animations respect the system setting."
     ]
   },
   "performance": {

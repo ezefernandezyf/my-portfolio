@@ -1,5 +1,4 @@
 import { ArrowTopRightOnSquareIcon, CommandLineIcon } from '@heroicons/react/24/outline';
-import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { projectRepository } from '../entities/project';
@@ -9,19 +8,10 @@ import { ProjectCard } from '../shared/ui/project-card';
 const featuredProjects = projectRepository.getProjects().slice(0, 2);
 const technicalStack = ['React 19', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma', 'Tailwind CSS 4', 'Vite'];
 
-const pageVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.09,
-    },
-  },
-} as const;
-
-const riseVariants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0 },
-} as const;
+const fadeInUp = (delay = 0): React.CSSProperties => ({
+  animation: `fade-in-up 0.5s ease-out ${delay}s forwards`,
+  opacity: 0,
+});
 
 export const HomePage = (): React.JSX.Element => {
   const { t } = useTranslation(['home', 'projects']);
@@ -38,23 +28,23 @@ export const HomePage = (): React.JSX.Element => {
         image="/og-image.png"
       />
 
-      <motion.main role="main" initial="hidden" animate="visible" variants={pageVariants}>
+      <main role="main">
         <section className="site-container flex min-h-[calc(100svh-4rem)] flex-col justify-center pb-12 pt-32">
-          <motion.div className="max-w-[60ch]" variants={riseVariants}>
-            <motion.p className="mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-primary-fixed font-label" variants={riseVariants}>
+          <div className="max-w-[60ch]" style={fadeInUp()}>
+            <p className="mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-primary-fixed font-label" style={fadeInUp(0.08)}>
               {t('hero.label', { ns: 'home' })}
-            </motion.p>
+            </p>
 
-            <motion.h1 className="text-6xl font-bold leading-[0.9] tracking-tighter md:text-8xl font-headline" variants={riseVariants}>
+            <h1 className="text-6xl font-bold leading-[0.9] tracking-tighter md:text-8xl font-headline" style={fadeInUp(0.16)}>
               <span className="block">{t('hero.name', { ns: 'home' }).split(' ')[0]}</span>
               <span>{t('hero.name', { ns: 'home' }).split(' ').slice(1).join(' ')}</span>
-            </motion.h1>
+            </h1>
 
-            <motion.h2 className="mt-8 max-w-3xl text-xl font-medium leading-relaxed text-on-surface-variant md:text-2xl" variants={riseVariants}>
+            <h2 className="mt-8 max-w-3xl text-xl font-medium leading-relaxed text-on-surface-variant md:text-2xl" style={fadeInUp(0.24)}>
               {t('hero.summary', { ns: 'home' })}
-            </motion.h2>
+            </h2>
 
-            <motion.div className="mt-12 flex flex-wrap items-center gap-6" variants={riseVariants}>
+            <div className="mt-12 flex flex-wrap items-center gap-6" style={fadeInUp(0.32)}>
               <Link
                 aria-label={t('hero.cta.projects', { ns: 'home' })}
                 className="inline-flex h-14 items-center justify-center bg-primary px-8 text-sm font-bold uppercase tracking-widest text-white transition-all hover:bg-primary/90 focus-ring active:scale-95"
@@ -81,40 +71,40 @@ export const HomePage = (): React.JSX.Element => {
                 {t('hero.cta.downloadCV', { ns: 'home' })}
                 <ArrowTopRightOnSquareIcon className="h-4 w-4 transition-transform" aria-hidden />
               </a>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
-          <motion.div className="mt-24" variants={riseVariants}>
-            <motion.p className="mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-outline" variants={riseVariants}>
+          <div className="mt-24" style={fadeInUp(0.24)}>
+            <p className="mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-outline" style={fadeInUp(0.32)}>
               {t('stackHeading', { ns: 'home' })}
-            </motion.p>
+            </p>
 
-            <motion.div className="flex flex-wrap gap-3" variants={riseVariants}>
+            <div className="flex flex-wrap gap-3" style={fadeInUp(0.40)}>
               {technicalStack.map((stackItem) => (
-                <motion.span
+                <span
                   key={stackItem}
                   className="border border-outline-variant/30 px-4 py-2 text-[11px] font-semibold uppercase tracking-wider text-on-surface-variant"
-                  variants={riseVariants}
+                 
                 >
                   {stackItem}
-                </motion.span>
+                </span>
               ))}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </section>
 
-        <motion.section className="bg-surface-container-low py-24" id="projects" variants={riseVariants}>
+        <section className="bg-surface-container-low py-24" id="projects" style={fadeInUp(0.32)}>
           <div className="site-container">
-            <motion.div className="mb-16 flex items-end justify-between border-b border-outline-variant/20 pb-8" variants={riseVariants}>
-              <motion.h2 className="font-headline text-4xl font-bold tracking-tight md:text-5xl" variants={riseVariants}>
+            <div className="mb-16 flex items-end justify-between border-b border-outline-variant/20 pb-8">
+              <h2 className="font-headline text-4xl font-bold tracking-tight md:text-5xl">
                 {t('recentWorkHeading', { ns: 'home' })}
-              </motion.h2>
-              <motion.p className="text-sm font-medium text-outline" variants={riseVariants}>02 / {projectCountLabel}</motion.p>
-            </motion.div>
+              </h2>
+              <p className="text-sm font-medium text-outline">02 / {projectCountLabel}</p>
+            </div>
 
-            <motion.div className="grid grid-cols-1 gap-8 lg:grid-cols-2" variants={pageVariants}>
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
               {featuredProjects.map((project) => (
-                <motion.div key={project.id} variants={riseVariants}>
+                <div key={project.id}>
                   <ProjectCard
                     id={project.id}
                     nameKey={project.nameKey}
@@ -125,29 +115,29 @@ export const HomePage = (): React.JSX.Element => {
                     tech={project.tech}
                     year={project.year}
                   />
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
-            <motion.div className="mt-12 text-center" variants={riseVariants}>
+            </div>
+            <div className="mt-12 text-center">
               <Link
                 to="/projects"
                 className="inline-flex items-center gap-2 border border-outline-variant/30 px-8 py-3 text-[11px] font-bold uppercase tracking-[0.15em] text-on-surface-variant transition-all hover:border-outline-variant hover:text-on-surface focus-ring"
               >
                 {t('viewAllProjects', { ns: 'home' })}
               </Link>
-            </motion.div>
+            </div>
           </div>
-        </motion.section>
+        </section>
 
-        <motion.section className="site-container py-32 text-center" id="contact" variants={riseVariants}>
+        <section className="site-container py-32 text-center" id="contact" style={fadeInUp(0.40)}>
           <div className="mx-auto max-w-2xl">
             <CommandLineIcon className="mx-auto mb-8 h-12 w-12 text-primary-fixed" aria-hidden />
-            <motion.h2 className="mb-6 font-headline text-4xl font-bold tracking-tight md:text-5xl" variants={riseVariants}>
+            <h2 className="mb-6 font-headline text-4xl font-bold tracking-tight md:text-5xl">
               {t('contactTitle', { ns: 'home' })}
-            </motion.h2>
-            <motion.p className="mb-12 text-xl font-medium text-on-surface-variant" variants={riseVariants}>
+            </h2>
+            <p className="mb-12 text-xl font-medium text-on-surface-variant">
               {t('contactText', { ns: 'home' })}
-            </motion.p>
+            </p>
             <Link
               className="inline-flex h-16 items-center gap-4 bg-primary px-12 text-sm font-bold uppercase tracking-[0.2em] text-white transition-transform active:scale-95 focus-ring"
               to="/contact"
@@ -156,8 +146,8 @@ export const HomePage = (): React.JSX.Element => {
               <ArrowTopRightOnSquareIcon className="h-4 w-4 transition-transform" aria-hidden />
             </Link>
           </div>
-        </motion.section>
-      </motion.main>
+        </section>
+      </main>
     </>
   );
 };
