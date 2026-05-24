@@ -11,7 +11,7 @@
     "contact": "Contact"
   },
   "h1": "About me",
-  "summary": "I build complete web applications from the ground up — designing the database schema, shaping the API layer, and crafting interfaces that are a pleasure to use. My stack runs on React, TypeScript, Node.js, Express, and PostgreSQL, and I care deeply about writing code that's testable, maintainable, and secure. I'm passionate about clean architecture, accessible design, and building products that solve real problems — whether it's a multi-tenant SaaS like EchoLog or a focused tool like Nexus Talent. Every project teaches me something new, and I bring those lessons into the next one.",
+  "summary": "I'm a Full Stack Developer who likes building things that work well from top to bottom - database, API, frontend, the whole picture. React, TypeScript, Node.js, Express, and PostgreSQL are my daily tools, but what I really care about is writing code that doesn't fall apart the moment someone else touches it. I've built everything from a multi-tenant SaaS (EchoLog) to focused tools like Nexus Talent, and I try to make each project tighter than the last.",
   "sections": {
     "stack": "Technical Stack",
     "softSkills": "Soft Skills",

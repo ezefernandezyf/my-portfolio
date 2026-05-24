@@ -11,7 +11,7 @@
     "contact": "Contactar"
   },
   "h1": "Acerca de mí",
-  "summary": "Construyo aplicaciones web completas desde cero — diseño el esquema de la base de datos,defino la capa de la API, y creo interfaces que son un placer usar. Mi stack principal es React, TypeScript, Node.js, Express y PostgreSQL, y me importa profundamente escribir código testeable, mantenible y seguro. Me apasiona la arquitectura limpia, el diseño accesible, y construir productos que resuelvan problemas reales — ya sea un SaaS multi-tenant como EchoLog o una herramienta enfocada como Nexus Talent. Cada proyecto me enseña algo nuevo, y llevo esas lecciones al siguiente.",
+  "summary": "Soy Full Stack Developer y me gusta construir cosas que funcionen bien de punta a punta - base de datos, API, frontend, todo el panorama. React, TypeScript, Node.js, Express y PostgreSQL son mis herramientas del día a día, pero lo que realmente me importa es escribir código que no se rompa en cuanto alguien más lo toca. Hice desde un SaaS multi-tenant (EchoLog) hasta herramientas enfocadas como Nexus Talent, y trato de que cada proyecto sea más sólido que el anterior.",
   "sections": {
     "stack": "Stack Tecnológico",
     "softSkills": "Habilidades Blandas",
