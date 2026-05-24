@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   CheckIcon,
@@ -222,7 +222,7 @@ export const CaseStudyTemplate = ({
                 <span className="mb-1 block font-label text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-outline">
                   {yearLabel}
                 </span>
-                <span className="block font-body text-sm font-medium text-on-surface">{year ?? '—'}</span>
+                <span className="block font-body text-sm font-medium text-on-surface">{year ?? '-'}</span>
               </div>
               {featured && featuredLabel ? (
                 <div>

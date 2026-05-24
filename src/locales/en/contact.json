@@ -1,4 +1,4 @@
-{
+﻿{
   "meta": {
     "contact": {
       "title": "Contact",
@@ -45,7 +45,7 @@
     }
   },
   "status": {
-    "success": "Thanks — your message has been sent",
+    "success": "Thanks - your message has been sent",
     "error_prefix": "Error sending:"
   },
   "errors": {

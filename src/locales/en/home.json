@@ -1,7 +1,7 @@
-{
+﻿{
   "meta": {
     "title": "Home",
-    "description": "Portfolio of Ezequiel Fernández — Full Stack Developer. Building complete web applications with React, Node.js, TypeScript and PostgreSQL."
+    "description": "Portfolio of Ezequiel Fernández - Full Stack Developer. Building complete web applications with React, Node.js, TypeScript and PostgreSQL."
   },
   "hero": {
     "label": "Full Stack Developer",
@@ -16,11 +16,6 @@
   "stackHeading": "Technical Ecosystem",
   "recentWorkHeading": "Recent Work",
   "recentWorkCounter": "Selected projects",
-  "stats": {
-    "projects": "Projects",
-    "technologies": "Technologies",
-    "experience": "Years"
-  },
   "viewAllProjects": "View all projects",
   "contactTitle": "Interested in my profile?",
   "contactText": "Currently available for high-impact opportunities in engineering and UI development.",

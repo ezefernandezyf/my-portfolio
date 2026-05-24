@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+﻿import { render } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
 import { MetaTags } from '../MetaTags/MetaTags';
 
@@ -23,7 +23,7 @@ describe('MetaTags', () => {
       />,
     );
 
-    expect(document.title).toBe('Test Page | Ezequiel Fernández — Front-end Developer');
+    expect(document.title).toBe('Test Page | Ezequiel Fernández - Full Stack Developer');
 
     const desc = document.head.querySelector('meta[name="description"]') as HTMLMetaElement | null;
     expect(desc).not.toBeNull();
@@ -69,7 +69,7 @@ describe('MetaTags', () => {
 
     const { unmount } = render(<MetaTags />);
 
-    expect(document.title).toBe('Ezequiel Fernández — Front-end Developer');
+    expect(document.title).toBe('Ezequiel Fernández - Full Stack Developer');
     expect(existingDescription.getAttribute('content')).toBe(
       'Front-end Developer especializado en React y TypeScript. Construyo aplicaciones web modernas, optimizadas y accesibles.',
     );

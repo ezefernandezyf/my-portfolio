@@ -1,4 +1,4 @@
-{
+﻿{
   "meta": {
     "title": "IA Recipe Generator"
   },
@@ -87,7 +87,7 @@
     "heading": "Challenges & learnings",
     "list": [
       "Validating and normalizing generative model responses (inconsistent payloads).",
-      "Avoiding race conditions between generation requests — used AbortController + request sequence checks.",
+      "Avoiding race conditions between generation requests - used AbortController + request sequence checks.",
       "Balancing UX and strict validation without blocking the user."
     ]
   },

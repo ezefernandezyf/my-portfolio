@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+﻿import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -142,7 +142,7 @@ describe('ContactPage', () => {
       }),
       { publicKey: 'mjHKDsM12bd6FN0x7' },
     );
-    expect(await screen.findByText(/Gracias — tu mensaje fue enviado/i)).toBeInTheDocument();
+    expect(await screen.findByText(/Gracias - tu mensaje fue enviado/i)).toBeInTheDocument();
   });
 
   it('simula fallo de envío con EmailJS y muestra error', async () => {

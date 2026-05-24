@@ -1,4 +1,4 @@
-{
+﻿{
   "meta": {
     "title": "About me"
   },
@@ -11,7 +11,7 @@
     "contact": "Contact"
   },
   "h1": "About me",
-  "summary": "I am a Full Stack Developer focused on building complete web applications — from accessible, high-performance interfaces to scalable REST APIs and relational databases. I work with React, TypeScript, Node.js, Express and PostgreSQL, developing SPAs that consume and serve REST APIs with a focus on performance, best practices and user experience. I'm interested in writing clean, testable and scalable code, applying screaming architecture principles, efficient state management and data validation.",
+  "summary": "I build complete web applications from the ground up — designing the database schema, shaping the API layer, and crafting interfaces that are a pleasure to use. My stack runs on React, TypeScript, Node.js, Express, and PostgreSQL, and I care deeply about writing code that's testable, maintainable, and secure. I'm passionate about clean architecture, accessible design, and building products that solve real problems — whether it's a multi-tenant SaaS like EchoLog or a focused tool like Nexus Talent. Every project teaches me something new, and I bring those lessons into the next one.",
   "sections": {
     "stack": "Technical Stack",
     "softSkills": "Soft Skills",
@@ -33,7 +33,7 @@
     "learnedLabel": "What I learned:",
     "echolog": {
       "name": "EchoLog",
-      "short": "Multi-tenant customer feedback SaaS — boards, upvoting, comments, workspace management. Full-stack TypeScript with React 19, Node.js, Express, PostgreSQL.",
+      "short": "Multi-tenant customer feedback SaaS - boards, upvoting, comments, workspace management. Full-stack TypeScript with React 19, Node.js, Express, PostgreSQL.",
       "whatILearned": "Screaming architecture on the backend, cross-origin JWT auth, multi-tenant isolation with composite keys, WCAG 2.1 AA compliance. (Details in the case study)"
     },
       "movie-dashboard": {
@@ -43,7 +43,7 @@
       },
     "cinelab": {
       "name": "CineLab",
-      "short": "Movie Search App — search, filters, persistent favorites and dynamic recommendations (TMDB). Built with React, TypeScript and Vite; focus on performance and UX.",
+      "short": "Movie Search App - search, filters, persistent favorites and dynamic recommendations (TMDB). Built with React, TypeScript and Vite; focus on performance and UX.",
       "whatILearned": "Image optimization, cache handling, hooks architecture and UI testing. (Details in the case study)"
     },
     "chefcitoia": {
@@ -61,15 +61,15 @@
       "bullets": []
     },
     "1": {
-      "title": "Professional Certificate in Cybersecurity — IBM SkillsBuild",
+      "title": "Professional Certificate in Cybersecurity - IBM SkillsBuild",
       "period": "2026 - present",
       "periodLabel": "2026 - present",
       "bullets": []
     },
     "2": {
-      "title": "AI Development: From 0 to Production — BIG school",
-      "period": "2026 — completed",
-      "periodLabel": "2026 — completed",
+      "title": "AI Development: From 0 to Production - BIG school",
+      "period": "2026 - completed",
+      "periodLabel": "2026 - completed",
       "bullets": []
     }
   },

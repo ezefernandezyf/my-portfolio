@@ -1,4 +1,4 @@
-{
+﻿{
   "meta": {
     "title": "Proyectos",
     "description": "Colección de proyectos públicos enfocada en arquitectura escalable, front-ends performantes y ejecución técnica rigurosa."
@@ -23,7 +23,7 @@
   "notFound": "Proyecto no encontrado",
   "echolog": {
     "name": "EchoLog",
-    "short": "SaaS multi-tenant de feedback para productos — boards, votos, comentarios, gestión de workspaces. Full-stack TypeScript con React 19, Node.js, Express, PostgreSQL."
+    "short": "SaaS multi-tenant de feedback para productos - boards, votos, comentarios, gestión de workspaces. Full-stack TypeScript con React 19, Node.js, Express, PostgreSQL."
   },
   "nexus-talent": {
     "name": "Nexus Talent",
@@ -35,7 +35,7 @@
   },
   "cinelab": {
     "name": "CineLab",
-    "short": "Movie Search App — búsqueda, filtros, favoritos persistentes y recomendaciones dinámicas (TMDB)."
+    "short": "Movie Search App - búsqueda, filtros, favoritos persistentes y recomendaciones dinámicas (TMDB)."
   },
   "chefcitoia": {
     "name": "ChefcitoIA",

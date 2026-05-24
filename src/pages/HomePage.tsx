@@ -84,19 +84,6 @@ export const HomePage = (): React.JSX.Element => {
             </motion.div>
           </motion.div>
 
-          <motion.div className="mt-16 flex flex-wrap gap-8 md:gap-12" variants={riseVariants}>
-            {[
-              { label: t('stats.projects', { ns: 'home' }), value: '5' },
-              { label: t('stats.technologies', { ns: 'home' }), value: '15+' },
-              { label: t('stats.experience', { ns: 'home' }), value: '2+' },
-            ].map((stat) => (
-              <div key={stat.label} className="flex flex-col">
-                <span className="font-headline text-3xl font-bold tracking-tight text-primary-fixed">{stat.value}</span>
-                <span className="mt-1 text-[10px] font-bold uppercase tracking-[0.2em] text-outline">{stat.label}</span>
-              </div>
-            ))}
-          </motion.div>
-
           <motion.div className="mt-24" variants={riseVariants}>
             <motion.p className="mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-outline" variants={riseVariants}>
               {t('stackHeading', { ns: 'home' })}

@@ -1,4 +1,4 @@
-{
+﻿{
   "meta": {
     "contact": {
       "title": "Contacto",
@@ -45,7 +45,7 @@
     }
   },
   "status": {
-    "success": "Gracias — tu mensaje fue enviado",
+    "success": "Gracias - tu mensaje fue enviado",
     "error_prefix": "Error al enviar:"
   },
   "errors": {

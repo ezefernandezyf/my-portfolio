@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 
 type Props = {
   title?: string;
@@ -10,7 +10,7 @@ type Props = {
 };
 
 const SITE_URL = (import.meta.env.VITE_SITE_URL as string) ?? 'http://ezefernandez.com';
-const DEFAULT_TITLE = 'Ezequiel Fernández — Front-end Developer';
+const DEFAULT_TITLE = 'Ezequiel Fernández - Full Stack Developer';
 const DEFAULT_DESC =
   'Front-end Developer especializado en React y TypeScript. Construyo aplicaciones web modernas, optimizadas y accesibles.';
 const DEFAULT_IMAGE = '/og-image.png';

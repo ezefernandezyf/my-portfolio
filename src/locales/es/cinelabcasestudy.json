@@ -1,10 +1,10 @@
-{
+﻿{
   "meta": {
     "title": "{{name}}"
   },
   "header": {
     "title": "{{name}}",
-    "short": "Movie Search App — búsqueda, filtros, favoritos persistentes y recomendaciones dinámicas (TMDB).",
+    "short": "Movie Search App - búsqueda, filtros, favoritos persistentes y recomendaciones dinámicas (TMDB).",
     "repoAria": "Repositorio {{name}}",
     "demoAria": "Demo {{name}}",
     "backToProjects": "← Volver a Proyectos"
