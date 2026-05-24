@@ -1,5 +1,21 @@
 export const projects = [
   {
+    id: 'echolog',
+    nameKey: 'echolog.name',
+    shortKey: 'echolog.short',
+    repo: 'https://github.com/ezefernandezyf/echolog',
+    demo: 'https://echolog-web.vercel.app',
+    images: [
+      '/projects/echolog/echolog-1.webp',
+      '/projects/echolog/echolog-2.webp',
+      '/projects/echolog/echolog-3.webp',
+      '/projects/echolog/echolog-4.webp',
+    ],
+    tech: ['React 19', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma', 'Tailwind 4', 'Zod'],
+    year: 2026,
+    featured: true,
+  },
+  {
     id: 'nexus-talent',
     nameKey: 'nexus-talent.name',
     shortKey: 'nexus-talent.short',

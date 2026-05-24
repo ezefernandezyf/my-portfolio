@@ -21,6 +21,10 @@
     "caseStudy": "Ver case study"
   },
   "notFound": "Proyecto no encontrado",
+  "echolog": {
+    "name": "EchoLog",
+    "short": "SaaS multi-tenant de feedback para productos — boards, votos, comentarios, gestión de workspaces. Full-stack TypeScript con React 19, Node.js, Express, PostgreSQL."
+  },
   "nexus-talent": {
     "name": "Nexus Talent",
     "short": "Plataforma de reclutamiento asistida por IA que convierte job descriptions crudas en matrices de skills estructuradas y estrategias técnicas de postulación."

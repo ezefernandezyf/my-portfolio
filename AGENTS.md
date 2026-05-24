@@ -3,8 +3,9 @@
 Este proyecto emplea un flujo estricto de **Spec-Driven Development (SDD)**. El sistema (Agente IA) debe comportarse como un **Lead Software Architect y Pair Senior**, asegurando que toda decisión técnica, de diseño y arquitectónica se documente *antes* de escribir el código. La ejecución debe respetar a rajatabla la arquitectura definida.
 
 ## 1. Identidad y Contexto del Producto
-- **Objetivo:** Rediseño completo y desde cero del portafolio web para un Front-end Developer. La plataforma debe ser una extensión de su capacidad técnica: interfaces limpias, altamente accesibles y optimizadas.
+- **Objetivo:** Rediseño completo y desde cero del portafolio web para un Full Stack Developer. La plataforma debe ser una extensión de su capacidad técnica: interfaces limpias, altamente accesibles y optimizadas.
 - **Enfoque de Trabajo:** NO se va a reciclar ni adaptar código de las vistas antiguas. Se construirá una nueva interfaz tomando como única fuente de verdad los archivos estáticos ubicados en docs/redesignReferences/.
+- **Proyecto principal:** EchoLog — SaaS multi-tenant de feedback para productos, alternativa a Canny.io. Full-stack TypeScript (React 19 + Node/Express + PostgreSQL + Prisma). Deploy en Vercel + Fly.io + Neon. 75+ tests, CI/CD, WCAG 2.1 AA.
 
 ### Regla de Rebuild UI (No Negociable)
 - El rediseño debe ser un **rebuild visual completo** y no un "reskin" sobre componentes existentes.
@@ -21,6 +22,7 @@ Este proyecto emplea un flujo estricto de **Spec-Driven Development (SDD)**. El 
 ## 2. Stack Tecnológico y Arquitectura Core
 El stack no se negocia. Buscamos demostrar ingeniería y eficiencia:
 - **Frontend:** React + TypeScript.
+- **Backend:** Node.js + Express + Prisma + PostgreSQL.
 - **Arquitectura:** "Screaming Architecture" o "Feature-based" (Ej: features/, core/, shared/, ui/). Los componentes UI deben estar estrictamente desacoplados de la lógica.
 - **Estilos y Animaciones:** CSS/Tailwind (según corresponda el setup actual) + framer-motion para transiciones fluidas, físicas y profesionales (staggers, fade-ins, microinteracciones).
 - **Regla de Motion Transversal:** Si una animación mejora lectura, jerarquía o percepción de calidad sin traicionar la referencia, debe aplicarse de forma consistente en todas las páginas nuevas del módulo; evitar efectos aislados que aparezcan solo en una pantalla.
@@ -86,41 +88,46 @@ Los siguientes skills se encuentran dentro del proyecto en la carpeta \skills/\ 
 - **tailwind-4**: Reglas de estilos de utilidad, custom themes, y optimizaciones de Tailwind 4.
 - **typescript**: Reglas strict de tipado, interfaces, patterns y safety checks.
 - **zod-4**: Parseo estricto e inferencia de Types para validaciones en schemas de objetos.
+- **node-express**: Prácticas para APIs REST con Express + TypeScript, middleware, autenticación JWT.
+- **prisma-postgres**: Patrones de acceso a datos con Prisma ORM y PostgreSQL, migraciones, seed.
 
-## 9. Mapa de Módulos (Roadmap)
-Para garantizar una entrega iterativa y controlada, el rediseño se ejecutará en las siguientes fases secuenciales. No se avanzará de fase sin cumplir los criterios de validación.
+## 9. Roadmap — Estado del Proyecto
 
-- **Fase 0: Foundations & Setup Strict**
-  - **Objetivo:** Configuración de Vitest para el 80% de coverage, setup de CI/CD (GitHub Actions), y revisión de Contextos core (Tema e i18n).
-  - **Validación:** Pipeline automatizado en verde, linters pasando sin warnings, y configuración base de Tailwind 4 testeada.
+Todas las fases del rediseño están completadas. El portfolio está en estado estable con identidad Full Stack, case study de EchoLog incluido, y ajustes de diseño finalizados.
 
-- **Fase 1R: Global Layout & Navigation Rebuild (`feat/layout-core-rebuild`)**
-  - **Objetivo:** Reconstrucción desde cero de Header, Footer, Language Switcher y Theme Toggle con estructura y estilos fieles a la referencia, sin reusar markup visual previo.
-  - **Validación:** Paridad pixel-perfect contra referencias, componentes 100% responsivos, i18n funcional sin recarga y coverage > 80% en hooks/UI críticos.
-  - **Nota de Control:** Fase 2 queda bloqueada hasta cerrar Fase 1R.
+### ✅ Fases Completadas
 
-- **Fase 2: Home Page & Bento Grid (`feat/home-page`)**
-  - **Objetivo:** Maquetación del Hero Section y la grilla 2-col de proyectos utilizando los datos reales. Integración inicial de `framer-motion` para fade-ins y staggers.
-  - **Validación:** Animaciones a 60fps sin bloqueos de performance. Lighthouse score > 95. Inyección correcta de la data real.
-  - **Estado:** En pausa hasta completar Fase 1R.
+- **Fase 0 — Foundations & Setup Strict ✅**
+  Vitest configurado, CI/CD (GitHub Actions) operativo, Theme e i18n establecidos.
 
-- **Fase 3: Projects Directory (`feat/projects-directory`)**
-  - **Objetivo:** Página de portfolio, barra de búsqueda y filtros por tecnologías (tagging).
-  - **Validación:** Lógica de filtrado cubierta por tests unitarios (Zod/Tipados estrictos). Persistencia de estado de búsqueda al cambiar idioma.
+- **Fase 1R — Global Layout & Navigation Rebuild ✅**
+  Header, Footer, Language Switcher y Theme Toggle reconstruidos desde cero.
 
-- **Fase 4: Case Studies Template (`feat/case-studies`)**
-  - **Objetivo:** Reemplazar los 3 componentes de 600 líneas por un único `CaseStudyTemplate` dinámico (Screaming Architecture).
-  - **Validación:** El componente puede renderizar cualquier case study desde un origen de datos tipado sin modificar su UI. 
+- **Fase 2 — Home Page & Bento Grid ✅**
+  Hero Section, stats recientes, grilla 2-col de proyectos con framer-motion.
 
-- **Fase 5: About Me Page (`feat/about-page`)**
-  - **Objetivo:** Reconstrucción completa de la página About Me tomando `docs/redesignReferences/aboutmeReference.html` como única fuente de verdad, con paridad pixel-perfect en hero, stack, habilidades blandas, educación y footer/CTA si aplica.
-  - **Validación:** Estructura, tipografía, jerarquía, iconografía, spacing y estados iguales a la referencia; animaciones fluidas con `framer-motion` cuando el HTML lo sugiera y, si el resultado mejora, extender la misma lógica a páginas hermanas del módulo; contenido ES/EN consistente; accesibilidad WCAG 2.1 AA.
-  - **Nota de Control:** Si un bloque no está claro o falta contenido real del desarrollador, se detiene y se pregunta antes de inventar datos.
+- **Fase 3 — Projects Directory ✅**
+  Página de portfolio con búsqueda y filtros por tecnología.
 
-- **Fase 6: Privacy Page & Trust Layer (`feat/privacy-page`)**
-  - **Objetivo:** Rediseño sencillo y sobrio de la política de privacidad, alineado al sistema visual ya reconstruido, con una jerarquía clara, lectura cómoda y sin sobrecarga visual.
-  - **Validación:** Estructura, tipografía, spacing e interacciones consistentes con las otras páginas rediseñadas; contenido legal legible y accesible; animaciones solo si ayudan a la lectura y mantienen la sobriedad del módulo.
+- **Fase 4 — Case Studies Template ✅**
+  `CaseStudyTemplate` dinámico único que renderiza cualquier case study desde datos tipados.
 
-- **Fase 7: Contact & Final Polish (`feat/contact-polish`)**
-  - **Objetivo:** Formulario de contacto validado con `zod-4`, layout lado a lado, y revisión final de accesibilidad. Reconstrucción completa de la página About Me tomando `docs/redesignReferences/contactReference.html` como única fuente de verdad, con paridad pixel-perfect 
-  - **Validación:** End-to-end testeado, 0 violaciones de accesibilidad, despliegue final en staging aprobado.
+- **Fase 5 — About Me Page ✅**
+  Página About Me reconstruida con hero, stack cards, habilidades, educación.
+
+- **Fase 6 — Privacy Page & Trust Layer ✅**
+  Política de privacidad en formato card, sobria y consistente.
+
+- **Fase 7 — Contact & Final Polish ✅**
+  Formulario de contacto con Zod, layout lado a lado, accesibilidad validada.
+
+- **Fase 8 — Full Stack Identity + EchoLog Case Study ✅**
+  Identidad actualizada de Front-end a Full Stack Developer en todo el sitio. EchoLog agregado como proyecto principal con case study completo (locales EN/ES, ruta, stack, screenshots).
+
+- **Fase 9 — Design Polish ✅**
+  Stats en hero de homepage, link "Ver todos los proyectos" en Recent Work, redes sociales en footer.
+
+### Notas
+
+- El proyecto sigue el flujo SDD para cambios sustanciales futuros.
+- Toda nueva funcionalidad debe crearse en una **feature branch** con commits convencionales.

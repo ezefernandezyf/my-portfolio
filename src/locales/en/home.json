@@ -1,12 +1,12 @@
 {
   "meta": {
     "title": "Home",
-    "description": "Portfolio of Ezequiel Fernández — Front-end Developer. Projects in React and TypeScript, focused on accessibility and performance."
+    "description": "Portfolio of Ezequiel Fernández — Full Stack Developer. Building complete web applications with React, Node.js, TypeScript and PostgreSQL."
   },
   "hero": {
-    "label": "Frontend Developer",
+    "label": "Full Stack Developer",
     "name": "Ezequiel Fernández",
-    "summary": "Front-end Developer specializing in accessible architectures and high-performance interfaces.",
+    "summary": "Full Stack Developer specializing in accessible architectures, REST APIs, and high-performance interfaces.",
     "cta": {
       "about": "About me",
       "projects": "Projects",
@@ -16,6 +16,12 @@
   "stackHeading": "Technical Ecosystem",
   "recentWorkHeading": "Recent Work",
   "recentWorkCounter": "Selected projects",
+  "stats": {
+    "projects": "Projects",
+    "technologies": "Technologies",
+    "experience": "Years"
+  },
+  "viewAllProjects": "View all projects",
   "contactTitle": "Interested in my profile?",
   "contactText": "Currently available for high-impact opportunities in engineering and UI development.",
   "contactCta": "Contact"

@@ -61,7 +61,7 @@ describe('ContactPage', () => {
     sendMock.mockReset();
     snapshotEmailJsEnv();
     setEmailJsEnv({
-      VITE_EMAILJS_SERVICE_ID: 'service_5xpc509',
+      VITE_EMAILJS_SERVICE_ID: 'service_vtd7man',
       VITE_EMAILJS_TEMPLATE_ID: 'template_hcpsn6c',
       VITE_EMAILJS_PUBLIC_KEY: 'mjHKDsM12bd6FN0x7',
     });
@@ -132,7 +132,7 @@ describe('ContactPage', () => {
     await user.click(screen.getByRole('button', { name: /Enviar mensaje/i }));
 
     expect(sendMock).toHaveBeenCalledWith(
-      'service_5xpc509',
+      'service_vtd7man',
       'template_hcpsn6c',
       expect.objectContaining({
         name: 'Ezequiel',

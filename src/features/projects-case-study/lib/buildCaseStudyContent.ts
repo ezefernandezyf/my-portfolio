@@ -33,6 +33,13 @@ type StackItem = {
 };
 
 const stackByProject: Record<string, StackItem[]> = {
+  echolog: [
+    { titleKey: 'stack.sections.frontend', defaultTitle: 'Frontend', items: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS 4', 'React Router 7'] },
+    { titleKey: 'stack.sections.backend', defaultTitle: 'Backend & API', items: ['Node.js', 'Express 5', 'REST API', 'JWT (httpOnly cookies)'] },
+    { titleKey: 'stack.sections.state', defaultTitle: 'State & Validation', items: ['React Query', 'Zustand', 'Zod', 'React Hook Form'] },
+    { titleKey: 'stack.sections.data', defaultTitle: 'Database & ORM', items: ['PostgreSQL', 'Prisma ORM', 'Composite keys', 'SQLite (dev)'] },
+    { titleKey: 'stack.sections.testing', defaultTitle: 'Testing & Infra', items: ['Vitest', 'Testing Library', 'Playwright', 'Supertest', 'GitHub Actions CI'] },
+  ],
   'movie-dashboard': [
     { titleKey: 'stack.sections.frontend', defaultTitle: 'Frontend', items: ['React', 'TypeScript', 'Vite'] },
     { titleKey: 'stack.sections.styles', defaultTitle: 'Styles', items: ['Tailwind CSS'] },

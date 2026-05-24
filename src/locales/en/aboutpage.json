@@ -11,16 +11,17 @@
     "contact": "Contact"
   },
   "h1": "About me",
-  "summary": "I am a Front-end Developer focused on building clean, accessible, and maintainable interfaces. I mainly work with React, TypeScript and JavaScript, developing SPAs that consume REST APIs and prioritize performance, best practices and user experience. I'm interested in writing clear, testable and scalable code, applying feature-based architecture principles, efficient state management and data validation.",
+  "summary": "I am a Full Stack Developer focused on building complete web applications — from accessible, high-performance interfaces to scalable REST APIs and relational databases. I work with React, TypeScript, Node.js, Express and PostgreSQL, developing SPAs that consume and serve REST APIs with a focus on performance, best practices and user experience. I'm interested in writing clean, testable and scalable code, applying screaming architecture principles, efficient state management and data validation.",
   "sections": {
     "stack": "Technical Stack",
     "softSkills": "Soft Skills",
     "education": "Education"
   },
   "stackCards": {
-    "frontend": "Frontend Core",
+    "frontend": "Frontend",
     "styles": "Styles & UI",
-    "testing": "Testing & Tools"
+    "testing": "Testing & Tools",
+    "backend": "Backend & Database"
   },
   "projects": {
     "title": "Featured projects",
@@ -30,6 +31,11 @@
       "caseStudy": "Case study"
     },
     "learnedLabel": "What I learned:",
+    "echolog": {
+      "name": "EchoLog",
+      "short": "Multi-tenant customer feedback SaaS — boards, upvoting, comments, workspace management. Full-stack TypeScript with React 19, Node.js, Express, PostgreSQL.",
+      "whatILearned": "Screaming architecture on the backend, cross-origin JWT auth, multi-tenant isolation with composite keys, WCAG 2.1 AA compliance. (Details in the case study)"
+    },
       "movie-dashboard": {
         "name": "Movie Management Dashboard",
         "short": "SPA dashboard to manage movie catalog. CRUD, Supabase authentication, React Query (cache, fetching), forms and tests. Built with React, TypeScript and Vite; focus on security, UX and modular architecture.",

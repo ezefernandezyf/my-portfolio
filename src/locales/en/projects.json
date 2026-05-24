@@ -21,6 +21,10 @@
     "caseStudy": "View case study"
   },
   "notFound": "Project not found",
+  "echolog": {
+    "name": "EchoLog",
+    "short": "Multi-tenant customer feedback SaaS — boards, upvoting, comments, workspace management. Full-stack TypeScript with React 19, Node.js, Express, PostgreSQL."
+  },
   "nexus-talent": {
     "name": "Nexus Talent",
     "short": "AI-assisted recruitment platform that turns raw job descriptions into structured skill matrices and technical application strategies."
