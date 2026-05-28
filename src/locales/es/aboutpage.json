@@ -11,7 +11,7 @@
     "contact": "Contactar"
   },
   "h1": "Acerca de mí",
-  "summary": "Tengo 22 años, soy de Argentina y construyo productos digitales que escalan. Trabajo con TypeScript, React, Node.js, Express y PostgreSQL — el stack completo, de la base de datos al frontend. Me gusta entender cómo funciona cada capa para que todo encaje sin fricción.\n\nMi forma de trabajar se apoya en tres pilares: arquitectura limpia, testing y experiencia de usuario. No me sirve que algo funcione si no se entiende, si no se puede mantener o si rompe silenciosamente cuando alguien más lo toca. Por eso pongo énfasis en código legible, buenas prácticas y una mentalidad de producto.\n\nHoy estoy metido de lleno en EchoLog, un SaaS multi-tenant de feedback para productos que desarrollo de punta a punta. Al mismo tiempo, sigo explorando AI Agents, patrones de backend y todo lo que me ayude a escribir mejor software.",
+  "summary": "Tengo 22 años, soy de Argentina y construyo productos digitales que escalan. Trabajo con TypeScript, React, Node.js, Express y PostgreSQL, el stack completo.\n\nMi enfoque combina arquitectura limpia, testing y experiencia de usuario. Valoro el código legible, las buenas prácticas y la mentalidad de producto.\n\nActualmente desarrollo EchoLog, un SaaS multi-tenant de feedback para productos. También exploro AI Agents y patrones de backend.",
   "sections": {
     "stack": "Stack Tecnológico",
     "softSkills": "Habilidades Blandas",

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -12,6 +12,29 @@ import emailjs from '@emailjs/browser';
 import { MetaTags } from '../shared/seo';
 import { about } from '../data/about';
 import { useTranslation } from 'react-i18next';
+
+function useSectionFadeIn() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return [ref, visible] as const;
+}
 
 export const ContactPage = (): React.JSX.Element => {
   const { t } = useTranslation('contact');
@@ -84,6 +107,8 @@ export const ContactPage = (): React.JSX.Element => {
     }
   };
 
+  const [formRef, formVisible] = useSectionFadeIn();
+
   return (
     <>
       <MetaTags
@@ -95,7 +120,6 @@ export const ContactPage = (): React.JSX.Element => {
       <main role="main" className="pb-24 pt-24 bg-bg-primary">
         <div className="site-container">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-24">
-            {/* Left: Info Section */}
             <section className="lg:col-span-5 flex flex-col justify-between">
               <div className="space-y-8">
                 <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1">
@@ -153,129 +177,130 @@ export const ContactPage = (): React.JSX.Element => {
               </div>
             </section>
 
-            {/* Right: Form */}
             <section className="relative lg:col-span-7">
               <div className="absolute -top-12 -right-12 -z-10 h-64 w-64 rounded-full bg-accent/5 blur-3xl" />
 
-              <div className="rounded-xl border border-border bg-surface p-8 md:p-12">
-                <form className="space-y-8" onSubmit={handleSubmit(onSubmit)} noValidate>
-                  <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div ref={formRef} className={formVisible ? 'animate-fade-in-up' : 'opacity-0'}>
+                <div className="rounded-xl border border-border bg-surface p-8 md:p-12">
+                  <form className="space-y-8" onSubmit={handleSubmit(onSubmit)} noValidate>
+                    <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+                      <div className="space-y-2">
+                        <label
+                          htmlFor="name"
+                          className="block text-[11px] font-semibold uppercase tracking-widest text-text-secondary font-body"
+                        >
+                          {t('form.name.label')}
+                        </label>
+                        <input
+                          id="name"
+                          {...register('name')}
+                          className={`min-h-[44px] w-full rounded border bg-surface-elevated px-4 py-3 text-text-primary placeholder:text-text-muted transition-all focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none ${errors.name ? 'border-red-500' : 'border-border'}`}
+                          placeholder={t('form.name.placeholder')}
+                          aria-invalid={!!errors.name}
+                        />
+                        {errors.name && (
+                          <p role="alert" className="mt-1 text-xs text-red-500">
+                            {errors.name.message}
+                          </p>
+                        )}
+                      </div>
+
+                      <div className="space-y-2">
+                        <label
+                          htmlFor="email"
+                          className="block text-[11px] font-semibold uppercase tracking-widest text-text-secondary font-body"
+                        >
+                          {t('form.email.label')}
+                        </label>
+                        <input
+                          id="email"
+                          type="email"
+                          {...register('email')}
+                          className={`min-h-[44px] w-full rounded border bg-surface-elevated px-4 py-3 text-text-primary placeholder:text-text-muted transition-all focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none ${errors.email ? 'border-red-500' : 'border-border'}`}
+                          placeholder={t('form.email.placeholder')}
+                          aria-invalid={!!errors.email}
+                        />
+                        {errors.email && (
+                          <p role="alert" className="mt-1 text-xs text-red-500">
+                            {errors.email.message}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+
                     <div className="space-y-2">
                       <label
-                        htmlFor="name"
+                        htmlFor="subject"
                         className="block text-[11px] font-semibold uppercase tracking-widest text-text-secondary font-body"
                       >
-                        {t('form.name.label')}
+                        {t('form.subject.label')}
+                        <span className="ml-2 font-normal lowercase tracking-normal text-text-muted italic">
+                          {t('form.subject.helper')}
+                        </span>
                       </label>
                       <input
-                        id="name"
-                        {...register('name')}
-                        className={`min-h-[44px] w-full rounded border bg-surface-elevated px-4 py-3 text-text-primary placeholder:text-text-muted transition-all focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none ${errors.name ? 'border-red-500' : 'border-border'}`}
-                        placeholder={t('form.name.placeholder')}
-                        aria-invalid={!!errors.name}
+                        id="subject"
+                        {...register('subject')}
+                        className={`min-h-[44px] w-full rounded border bg-surface-elevated px-4 py-3 text-text-primary placeholder:text-text-muted transition-all focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none ${errors.subject ? 'border-red-500' : 'border-border'}`}
+                        placeholder={t('form.subject.placeholder')}
+                        aria-invalid={!!errors.subject}
                       />
-                      {errors.name && (
+                      {errors.subject && (
                         <p role="alert" className="mt-1 text-xs text-red-500">
-                          {errors.name.message}
+                          {errors.subject.message}
                         </p>
                       )}
                     </div>
 
                     <div className="space-y-2">
                       <label
-                        htmlFor="email"
+                        htmlFor="message"
                         className="block text-[11px] font-semibold uppercase tracking-widest text-text-secondary font-body"
                       >
-                        {t('form.email.label')}
+                        {t('form.message.label')}
                       </label>
-                      <input
-                        id="email"
-                        type="email"
-                        {...register('email')}
-                        className={`min-h-[44px] w-full rounded border bg-surface-elevated px-4 py-3 text-text-primary placeholder:text-text-muted transition-all focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none ${errors.email ? 'border-red-500' : 'border-border'}`}
-                        placeholder={t('form.email.placeholder')}
-                        aria-invalid={!!errors.email}
+                      <textarea
+                        id="message"
+                        {...register('message')}
+                        rows={5}
+                        className={`min-h-30 w-full resize-none rounded border bg-surface-elevated px-4 py-3 text-text-primary placeholder:text-text-muted transition-all focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none ${errors.message ? 'border-red-500' : 'border-border'}`}
+                        placeholder={t('form.message.placeholder')}
+                        aria-invalid={!!errors.message}
                       />
-                      {errors.email && (
+                      {errors.message && (
                         <p role="alert" className="mt-1 text-xs text-red-500">
-                          {errors.email.message}
+                          {errors.message.message}
                         </p>
                       )}
                     </div>
-                  </div>
 
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="subject"
-                      className="block text-[11px] font-semibold uppercase tracking-widest text-text-secondary font-body"
-                    >
-                      {t('form.subject.label')}
-                      <span className="ml-2 font-normal lowercase tracking-normal text-text-muted italic">
-                        {t('form.subject.helper')}
-                      </span>
-                    </label>
-                    <input
-                      id="subject"
-                      {...register('subject')}
-                      className={`min-h-[44px] w-full rounded border bg-surface-elevated px-4 py-3 text-text-primary placeholder:text-text-muted transition-all focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none ${errors.subject ? 'border-red-500' : 'border-border'}`}
-                      placeholder={t('form.subject.placeholder')}
-                      aria-invalid={!!errors.subject}
-                    />
-                    {errors.subject && (
-                      <p role="alert" className="mt-1 text-xs text-red-500">
-                        {errors.subject.message}
+                    <div className="pt-4">
+                      <button
+                        type="submit"
+                        className="group flex min-h-[44px] w-full items-center justify-center gap-2 bg-accent px-10 py-3 text-sm font-bold tracking-tight text-bg-primary transition-colors hover:bg-accent-hover focus-ring md:w-auto"
+                        disabled={isSubmitting || status === 'sending'}
+                        aria-busy={isSubmitting || status === 'sending'}
+                      >
+                        {status === 'sending' ? t('form.submit.sending') : t('form.submit.default')}
+                        <PaperAirplaneIcon
+                          className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                          aria-hidden="true"
+                        />
+                      </button>
+                    </div>
+
+                    {status === 'success' && (
+                      <p role="status" className="text-sm text-accent">
+                        {t('status.success')}
                       </p>
                     )}
-                  </div>
-
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="message"
-                      className="block text-[11px] font-semibold uppercase tracking-widest text-text-secondary font-body"
-                    >
-                      {t('form.message.label')}
-                    </label>
-                    <textarea
-                      id="message"
-                      {...register('message')}
-                      rows={5}
-                      className={`min-h-30 w-full resize-none rounded border bg-surface-elevated px-4 py-3 text-text-primary placeholder:text-text-muted transition-all focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none ${errors.message ? 'border-red-500' : 'border-border'}`}
-                      placeholder={t('form.message.placeholder')}
-                      aria-invalid={!!errors.message}
-                    />
-                    {errors.message && (
-                      <p role="alert" className="mt-1 text-xs text-red-500">
-                        {errors.message.message}
+                    {status === 'error' && errorMessage && (
+                      <p role="alert" className="text-sm text-red-500">
+                        {t('status.error_prefix')} {errorMessage}
                       </p>
                     )}
-                  </div>
-
-                  <div className="pt-4">
-                    <button
-                      type="submit"
-                      className="group flex min-h-[44px] w-full items-center justify-center gap-2 bg-accent px-10 py-3 text-sm font-bold tracking-tight text-bg-primary transition-colors hover:bg-accent-hover focus-ring md:w-auto"
-                      disabled={isSubmitting || status === 'sending'}
-                      aria-busy={isSubmitting || status === 'sending'}
-                    >
-                      {status === 'sending' ? t('form.submit.sending') : t('form.submit.default')}
-                      <PaperAirplaneIcon
-                        className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                        aria-hidden="true"
-                      />
-                    </button>
-                  </div>
-
-                  {status === 'success' && (
-                    <p role="status" className="text-sm text-accent">
-                      {t('status.success')}
-                    </p>
-                  )}
-                  {status === 'error' && errorMessage && (
-                    <p role="alert" className="text-sm text-red-500">
-                      {t('status.error_prefix')} {errorMessage}
-                    </p>
-                  )}
-                </form>
+                  </form>
+                </div>
               </div>
 
               <div className="mt-8 flex flex-wrap gap-4">

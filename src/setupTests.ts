@@ -150,6 +150,20 @@ beforeEach(() => {
       dispatchEvent: vi.fn(),
     })),
   });
+
+  const ioInstance = {
+    observe: vi.fn(),
+    unobserve: vi.fn(),
+    disconnect: vi.fn(),
+    takeRecords: vi.fn(() => []),
+    root: null,
+    rootMargin: '',
+    thresholds: [],
+  };
+
+  window.IntersectionObserver = function (_callback: unknown) {
+    return ioInstance;
+  } as unknown as typeof IntersectionObserver;
 });
 
 afterEach(() => {

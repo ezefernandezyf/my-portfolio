@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ArrowTopRightOnSquareIcon, CommandLineIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -16,14 +16,19 @@ export const HomePage = (): React.JSX.Element => {
   const currentlyItems = t('currently.list', { returnObjects: true }) as CurrentlyItem[];
 
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [reducedMotion, setReducedMotion] = useState(false);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+    return false;
+  });
+  const [isTouchDevice] = useState(() =>
+    typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0),
+  );
+  const [isPointerInHero, setIsPointerInHero] = useState(false);
 
   useEffect(() => {
-    setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
-
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setReducedMotion(mq.matches);
     const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
     mq.addEventListener('change', handler);
     return () => mq.removeEventListener('change', handler);
@@ -34,7 +39,70 @@ export const HomePage = (): React.JSX.Element => {
     setMousePos({ x: e.clientX, y: e.clientY });
   };
 
+  const handlePointerEnter = () => {
+    if (isTouchDevice || reducedMotion) return;
+    setIsPointerInHero(true);
+  };
+
+  const handlePointerLeave = () => {
+    setIsPointerInHero(false);
+  };
+
   const projectCountLabel = String(projects.length).padStart(2, '0');
+
+  const currentlyRef = useRef<HTMLDivElement>(null);
+  const [currentlyVisible, setCurrentlyVisible] = useState(false);
+  useEffect(() => {
+    const el = currentlyRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setCurrentlyVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const projectsRef = useRef<HTMLDivElement>(null);
+  const [projectsVisible, setProjectsVisible] = useState(false);
+  useEffect(() => {
+    const el = projectsRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setProjectsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const contactRef = useRef<HTMLDivElement>(null);
+  const [contactVisible, setContactVisible] = useState(false);
+  useEffect(() => {
+    const el = contactRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setContactVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <>
@@ -49,13 +117,15 @@ export const HomePage = (): React.JSX.Element => {
         <section
           className="relative min-h-[calc(100svh-4rem)] bg-bg-primary pb-12 pt-32"
           onPointerMove={handlePointerMove}
+          onPointerEnter={handlePointerEnter}
+          onPointerLeave={handlePointerLeave}
         >
-          {/* Cursor glow — desktop only */}
           {!isTouchDevice && !reducedMotion && (
             <div
-              className="pointer-events-none fixed inset-0 z-0"
+              className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-500"
               style={{
                 background: `radial-gradient(circle at ${mousePos.x}px ${mousePos.y}px, rgba(245, 158, 11, 0.12), transparent 300px)`,
+                opacity: isPointerInHero ? 1 : 0,
               }}
               aria-hidden="true"
             />
@@ -125,60 +195,66 @@ export const HomePage = (): React.JSX.Element => {
           </div>
         </section>
 
-        <CurrentlySection items={currentlyItems} />
+        <div ref={currentlyRef} className={currentlyVisible ? 'animate-fade-in-up' : 'opacity-0'}>
+          <CurrentlySection items={currentlyItems} />
+        </div>
 
         <section className="bg-surface py-24" id="projects">
-          <div className="site-container">
-            <div className="mb-16 flex items-end justify-between border-b border-border pb-8">
-              <h2 className="text-4xl font-bold tracking-tight text-text-primary md:text-5xl font-display">
-                {t('recentWorkHeading', { ns: 'home' })}
-              </h2>
-              <p className="text-sm font-medium text-text-muted">02 / {projectCountLabel}</p>
-            </div>
+          <div ref={projectsRef} className={projectsVisible ? 'animate-fade-in-up' : 'opacity-0'}>
+            <div className="site-container">
+              <div className="mb-16 flex items-end justify-between border-b border-border pb-8">
+                <h2 className="text-4xl font-bold tracking-tight text-text-primary md:text-5xl font-display">
+                  {t('recentWorkHeading', { ns: 'home' })}
+                </h2>
+                <p className="text-sm font-medium text-text-muted">02 / {projectCountLabel}</p>
+              </div>
 
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-              {featuredProjects.map((project) => (
-                <div key={project.id}>
-                  <ProjectCard
-                    id={project.id}
-                    nameKey={project.nameKey}
-                    shortKey={project.shortKey}
-                    repo={project.repo}
-                    demo={project.demo}
-                    image={project.images[0]}
-                    tech={project.tech}
-                    year={project.year}
-                  />
-                </div>
-              ))}
-            </div>
-            <div className="mt-12 text-center">
-              <Link
-                to="/projects"
-                className="btn-minimal btn-outline inline-flex items-center gap-2 px-8 py-3 text-[11px] font-bold uppercase tracking-[0.15em]"
-              >
-                {t('viewAllProjects', { ns: 'home' })}
-              </Link>
+              <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+                {featuredProjects.map((project) => (
+                  <div key={project.id}>
+                    <ProjectCard
+                      id={project.id}
+                      nameKey={project.nameKey}
+                      shortKey={project.shortKey}
+                      repo={project.repo}
+                      demo={project.demo}
+                      image={project.images[0]}
+                      tech={project.tech}
+                      year={project.year}
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className="mt-12 text-center">
+                <Link
+                  to="/projects"
+                  className="btn-minimal btn-outline inline-flex items-center gap-2 px-8 py-3 text-[11px] font-bold uppercase tracking-[0.15em]"
+                >
+                  {t('viewAllProjects', { ns: 'home' })}
+                </Link>
+              </div>
             </div>
           </div>
         </section>
 
         <section className="site-container py-32 text-center" id="contact">
-          <div className="mx-auto max-w-2xl">
-            <CommandLineIcon className="mx-auto mb-8 h-12 w-12 text-accent" aria-hidden />
-            <h2 className="mb-6 text-4xl font-bold tracking-tight text-text-primary md:text-5xl font-display">
-              {t('contactTitle', { ns: 'home' })}
-            </h2>
-            <p className="mb-12 text-xl font-medium text-text-secondary font-body">
-              {t('contactText', { ns: 'home' })}
-            </p>
-            <Link
-              className="inline-flex h-16 items-center gap-4 bg-accent px-12 text-sm font-bold uppercase tracking-[0.2em] text-bg-primary transition-transform active:scale-95 focus-ring"
-              to="/contact"
-            >
-              {t('contactCta', { ns: 'home' })}
-              <ArrowTopRightOnSquareIcon className="h-4 w-4 transition-transform" aria-hidden />
-            </Link>
+          <div ref={contactRef} className={contactVisible ? 'animate-fade-in-up' : 'opacity-0'}>
+            <div className="mx-auto max-w-2xl">
+              <CommandLineIcon className="mx-auto mb-8 h-12 w-12 text-accent" aria-hidden />
+              <h2 className="mb-6 text-4xl font-bold tracking-tight text-text-primary md:text-5xl font-display">
+                {t('contactTitle', { ns: 'home' })}
+              </h2>
+              <p className="mb-12 text-xl font-medium text-text-secondary font-body">
+                {t('contactText', { ns: 'home' })}
+              </p>
+              <Link
+                className="inline-flex h-16 items-center gap-4 bg-accent px-12 text-sm font-bold uppercase tracking-[0.2em] text-bg-primary transition-transform active:scale-95 focus-ring"
+                to="/contact"
+              >
+                {t('contactCta', { ns: 'home' })}
+                <ArrowTopRightOnSquareIcon className="h-4 w-4 transition-transform" aria-hidden />
+              </Link>
+            </div>
           </div>
         </section>
       </main>

@@ -11,7 +11,7 @@
     "contact": "Contact"
   },
   "h1": "About me",
-  "summary": "I'm 22, based in Argentina, and I build digital products that scale. I work across the full stack — TypeScript, React, Node.js, Express, PostgreSQL — from database to frontend. I like understanding how every layer works so everything fits without friction.\n\nMy approach relies on three things: clean architecture, testing, and user experience. It's not enough for something to work — it needs to be understandable, maintainable, and not break silently when someone else touches it. That's why I focus on readable code, solid practices, and a product-minded approach.\n\nRight now I'm deep into EchoLog, a multi-tenant customer feedback SaaS I'm building end to end. At the same time, I keep exploring AI Agents, backend patterns, and anything that helps me write better software.",
+  "summary": "I'm 22, based in Argentina, and I build digital products that scale. I work with TypeScript, React, Node.js, Express and PostgreSQL, the full stack.\n\nMy approach combines clean architecture, testing and user experience. I value readable code, solid practices and a product mindset.\n\nI'm currently building EchoLog, a multi-tenant customer feedback SaaS. I also explore AI Agents and backend patterns.",
   "sections": {
     "stack": "Technical Stack",
     "softSkills": "Soft Skills",
