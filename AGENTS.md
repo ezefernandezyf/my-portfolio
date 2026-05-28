@@ -17,7 +17,7 @@ Este proyecto emplea un flujo estricto de **Spec-Driven Development (SDD)**. El 
 ### Estrategia de Legacy para esta rama
 - Mantener los componentes legacy en su ubicación actual mientras la fase 2 no requiera moverlos.
 - No introducir `src/components/old/` por inercia: solo se moverán piezas si estorban la lectura del rebuild o si una futura fase necesita aislar explícitamente el código previo.
-- La rama `feat/layout-core-rebuild` debe exponer como fuente de verdad los componentes reconstruidos, no los incrementales.
+- La rama activa debe exponer como fuente de verdad los componentes reconstruidos.
 
 ## 2. Stack Tecnológico y Arquitectura Core
 El stack no se negocia. Buscamos demostrar ingeniería y eficiencia:
@@ -49,7 +49,7 @@ El stack no se negocia. Buscamos demostrar ingeniería y eficiencia:
 - No cerrar un módulo por aproximación: el criterio sigue siendo pixel-perfect contra `docs/redesignReferences/`.
 
 ## 5. El Flujo de Trabajo (SDD Protocol)
-La ejecución DEBE orquestarse con SDD integrando las herramientas de memoria (engram, openspec). Fases obligatorias antes de modificar el código estructural:
+La ejecución DEBE orquestarse con SDD integrando las herramientas de memoria — engram como backend primario (openspec disponible como fallback). Fases obligatorias antes de modificar el código estructural:
 1. sdd-init / sdd-explore - Paneo del repo (revisar carpeta /skills, dependencias).
 2. sdd-propose - Plan de acción y arquitectura por feature.
 3. sdd-spec & sdd-design - Definir interfaces, props y estructura de componentes.
@@ -65,7 +65,7 @@ La ejecución DEBE orquestarse con SDD integrando las herramientas de memoria (e
 
 ## 7. Responsabilidades Clínicas
 - El Agente no debe hacer suposiciones de negocio. Si falta un asset (una foto, un texto), se pide por prompt.
-- El uso de las herramientas de memoria contextual (context7, engram, openspec) es obligatorio para no perder el hilo entre sesiones.
+- El uso de las herramientas de memoria contextual (context7, engram como primario, openspec como fallback) es obligatorio para no perder el hilo entre sesiones.
 
 ## 8. Skills y Estructura Base
 ### Estructura del Proyecto
@@ -88,8 +88,9 @@ Los siguientes skills se encuentran dentro del proyecto en la carpeta \skills/\ 
 - **tailwind-4**: Reglas de estilos de utilidad, custom themes, y optimizaciones de Tailwind 4.
 - **typescript**: Reglas strict de tipado, interfaces, patterns y safety checks.
 - **zod-4**: Parseo estricto e inferencia de Types para validaciones en schemas de objetos.
-- **node-express**: Prácticas para APIs REST con Express + TypeScript, middleware, autenticación JWT.
-- **prisma-postgres**: Patrones de acceso a datos con Prisma ORM y PostgreSQL, migraciones, seed.
+- **portfolio-personality**: Genera portfolios con identidad visual propia, micro-interacciones con propósito, y jerarquía visual clara. Anti-generic design.
+
+El source of truth de skills es `.atl/skill-registry.md`. Algunos skills pueden ser globales (`~/.config/opencode/skills/`).
 
 ## 9. Roadmap — Estado del Proyecto
 
@@ -126,6 +127,8 @@ Todas las fases del rediseño están completadas. El portfolio está en estado e
 
 - **Fase 9 — Design Polish ✅**
   Stats en hero de homepage, link "Ver todos los proyectos" en Recent Work, redes sociales en footer.
+
+- 🔲 Fase 10 — Portfolio Personality Redesign (en progreso en `feat/redesign-portfolio-personality`)
 
 ### Notas
 
