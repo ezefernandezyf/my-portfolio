@@ -11,7 +11,7 @@
     "contact": "Contact"
   },
   "h1": "About me",
-  "summary": "I'm a Full Stack Developer who likes building things that work well from top to bottom - database, API, frontend, the whole picture. React, TypeScript, Node.js, Express, and PostgreSQL are my daily tools, but what I really care about is writing code that doesn't fall apart the moment someone else touches it. I've built everything from a multi-tenant SaaS (EchoLog) to focused tools like Nexus Talent, and I try to make each project tighter than the last.",
+  "summary": "I'm 24, based in Argentina, and I build digital products that scale. I work across the full stack — TypeScript, React, Node.js, Express, PostgreSQL — from database to frontend. I like understanding how every layer works so everything fits without friction.\n\nMy approach relies on three things: clean architecture, testing, and user experience. It's not enough for something to work — it needs to be understandable, maintainable, and not break silently when someone else touches it. That's why I focus on readable code, solid practices, and a product-minded approach.\n\nRight now I'm deep into EchoLog, a multi-tenant customer feedback SaaS I'm building end to end. At the same time, I keep exploring AI Agents, backend patterns, and anything that helps me write better software.",
   "sections": {
     "stack": "Technical Stack",
     "softSkills": "Soft Skills",
@@ -72,10 +72,6 @@
       "periodLabel": "2026 - completed",
       "bullets": []
     }
-  },
-  "contact": {
-    "title": "Contact",
-    "paragraph": "You can write to me at {{email}} or use the Contact page."
   },
   "categories": {
     "frontend": "Frontend",

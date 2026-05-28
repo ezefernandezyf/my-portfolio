@@ -11,7 +11,7 @@
     "contact": "Contactar"
   },
   "h1": "Acerca de mí",
-  "summary": "Soy Full Stack Developer y me gusta construir cosas que funcionen bien de punta a punta - base de datos, API, frontend, todo el panorama. React, TypeScript, Node.js, Express y PostgreSQL son mis herramientas del día a día, pero lo que realmente me importa es escribir código que no se rompa en cuanto alguien más lo toca. Hice desde un SaaS multi-tenant (EchoLog) hasta herramientas enfocadas como Nexus Talent, y trato de que cada proyecto sea más sólido que el anterior.",
+  "summary": "Tengo 24 años, soy de Argentina y construyo productos digitales que escalan. Trabajo con TypeScript, React, Node.js, Express y PostgreSQL — el stack completo, de la base de datos al frontend. Me gusta entender cómo funciona cada capa para que todo encaje sin fricción.\n\nMi forma de trabajar se apoya en tres pilares: arquitectura limpia, testing y experiencia de usuario. No me sirve que algo funcione si no se entiende, si no se puede mantener o si rompe silenciosamente cuando alguien más lo toca. Por eso pongo énfasis en código legible, buenas prácticas y una mentalidad de producto.\n\nHoy estoy metido de lleno en EchoLog, un SaaS multi-tenant de feedback para productos que desarrollo de punta a punta. Al mismo tiempo, sigo explorando AI Agents, patrones de backend y todo lo que me ayude a escribir mejor software.",
   "sections": {
     "stack": "Stack Tecnológico",
     "softSkills": "Habilidades Blandas",
@@ -72,10 +72,6 @@
       "periodLabel": "2026 - finalizado",
       "bullets": []
     }
-  },
-  "contact": {
-    "title": "Contacto",
-    "paragraph": "Podés escribirme a {{email}} o usar la página de Contacto."
   },
   "categories": {
     "frontend": "Frontend",
