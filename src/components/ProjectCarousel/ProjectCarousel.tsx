@@ -77,7 +77,7 @@ export const ProjectCarousel = ({
         >
           {images.map((src, i) => (
             <div key={src} className="w-full shrink-0">
-              <div className="w-full aspect-video bg-base-200">
+              <div className="aspect-video w-full bg-surface-elevated">
                 <img
                   src={src}
                   alt={`${alt} ${i + 1}`}
