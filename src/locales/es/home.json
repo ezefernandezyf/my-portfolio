@@ -21,7 +21,7 @@
   "contactText": "Actualmente disponible para oportunidades de alto impacto en ingeniería y UI.",
   "contactCta": "Contactar",
   "currently": {
-    "title": "En qué ando",
+    "title": "En qué estoy trabajando ahora",
     "list": [
       { "emoji": "🚀", "label": "EchoLog v1.1", "url": "https://github.com/ezefernandezyf/echolog" },
       { "emoji": "🧠", "label": "Explorando AI Agents y profundizando en arquitectura backend", "url": "" }
