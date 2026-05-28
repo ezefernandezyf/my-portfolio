@@ -91,7 +91,7 @@ export const Header = (): React.JSX.Element => {
 
         <div className="flex items-center gap-2">
           {/* Grouped controls: ThemeToggle + LanguageSwitcher */}
-          <div className="control-cluster hidden sm:flex">
+          <div className="control-cluster hidden sm:inline-flex">
             <ThemeToggle />
             <LanguageSwitcher />
           </div>

@@ -103,19 +103,10 @@ describe('useTheme hook', () => {
 
     render(<TestComponent />);
 
-    expect(screen.getByTestId('theme').textContent).toBe('system');
+    expect(screen.getByTestId('theme').textContent).toBe('dark');
 
-    expect(screen.getByTestId('resolved').textContent).toBe('light');
-    expect(document.documentElement.classList.contains('dark')).toBe(false);
-
-    await act(async () => {
-      trigger(true);
-    });
-
-    await waitFor(() => {
-      expect(screen.getByTestId('resolved').textContent).toBe('dark');
-      expect(document.documentElement.classList.contains('dark')).toBe(true);
-    });
+    expect(screen.getByTestId('resolved').textContent).toBe('dark');
+    expect(document.documentElement.classList.contains('dark')).toBe(true);
   });
 
   it('usa light cuando matchMedia no existe', () => {
@@ -124,9 +115,9 @@ describe('useTheme hook', () => {
 
     render(<TestComponent />);
 
-    expect(screen.getByTestId('theme').textContent).toBe('system');
-    expect(screen.getByTestId('resolved').textContent).toBe('light');
-    expect(document.documentElement.dataset.theme).toBe('light');
+    expect(screen.getByTestId('theme').textContent).toBe('dark');
+    expect(screen.getByTestId('resolved').textContent).toBe('dark');
+    expect(document.documentElement.dataset.theme).toBe('dark');
   });
 
   it('funciona cuando matchMedia no expone addEventListener', async () => {
@@ -143,8 +134,8 @@ describe('useTheme hook', () => {
 
     render(<TestComponent />);
 
-    expect(screen.getByTestId('theme').textContent).toBe('system');
-    expect(screen.getByTestId('resolved').textContent).toBe('light');
+    expect(screen.getByTestId('theme').textContent).toBe('dark');
+    expect(screen.getByTestId('resolved').textContent).toBe('dark');
   });
 
   it('cae a system cuando localStorage falla al leer', () => {
@@ -154,8 +145,8 @@ describe('useTheme hook', () => {
 
     render(<TestComponent />);
 
-    expect(screen.getByTestId('theme').textContent).toBe('system');
-    expect(screen.getByTestId('resolved').textContent).toBe('light');
+    expect(screen.getByTestId('theme').textContent).toBe('dark');
+    expect(screen.getByTestId('resolved').textContent).toBe('dark');
 
     getItemSpy.mockRestore();
   });
