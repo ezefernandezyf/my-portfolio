@@ -142,7 +142,7 @@ export const Header = (): React.JSX.Element => {
         role="dialog"
         aria-modal="true"
         aria-hidden={!open}
-        className={`fixed inset-y-0 right-0 z-70 h-full w-80 max-w-full rounded-l-3xl border-l border-border bg-bg-primary shadow-[0_24px_80px_rgba(0,0,0,0.22)] transition-transform duration-300 ease-in-out ${open ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`mobile-drawer-solid fixed inset-y-0 right-0 z-70 h-full w-80 max-w-full rounded-l-3xl border-l border-border bg-bg-primary shadow-[0_24px_80px_rgba(0,0,0,0.22)] transition-transform duration-300 ease-in-out ${open ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <div className="flex h-full flex-col px-4 pb-4 pt-6">
           <div className="mb-6 flex items-center justify-between border-b border-border pb-4">

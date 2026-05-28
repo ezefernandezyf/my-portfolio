@@ -56,6 +56,10 @@
   /* Transitions */
   --transition-fast: 150ms;
   --transition-medium: 250ms;
+
+  /* Z-index scale */
+  --z-60: 60;
+  --z-70: 70;
 }
 
 /* Light mode override (dark-first — dark is default in @theme) */

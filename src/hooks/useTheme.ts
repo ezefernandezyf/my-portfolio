@@ -18,9 +18,9 @@ export const useTheme = () => {
       if (typeof window === 'undefined') return 'system';
       const raw = localStorage.getItem(STORAGE_KEY);
       if (isValidTheme(raw)) return raw;
-      return 'system';
+      return 'dark';
     } catch {
-      return 'system';
+      return 'dark';
     }
   });
 
