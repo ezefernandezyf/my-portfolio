@@ -21,10 +21,10 @@ export const NotFoundPage = (): React.JSX.Element => {
         role="main"
       >
         <div className="max-w-xl">
-          <div className="mx-auto mb-6 w-32 h-32 flex items-center justify-center rounded-full bg-base-200">
+          <div className="mx-auto mb-6 flex h-32 w-32 items-center justify-center rounded-full bg-surface">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-16 h-16 text-muted"
+              className="h-16 w-16 text-text-muted"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -39,23 +39,23 @@ export const NotFoundPage = (): React.JSX.Element => {
             </svg>
           </div>
 
-          <h1 id="notfound-title" className="text-3xl font-bold mb-3">
+          <h1 id="notfound-title" className="text-3xl font-bold mb-3 text-text-primary">
             {t('h1')}
           </h1>
 
-          <p className="text-base text-muted mb-6">{t('paragraph')}</p>
+          <p className="mb-6 text-base text-text-muted">{t('paragraph')}</p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Link to="/home" className="btn btn-primary btn-minimal" aria-label={t('buttons.backAria')}>
+          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Link to="/home" className="btn-minimal btn-primary" aria-label={t('buttons.backAria')}>
               {t('buttons.back')}
             </Link>
 
-            <Link to="/contact" className="btn btn-ghost btn-minimal" aria-label={t('buttons.contactAria')}>
+            <Link to="/contact" className="btn-minimal btn-ghost" aria-label={t('buttons.contactAria')}>
               {t('buttons.contact')}
             </Link>
           </div>
 
-          <p className="mt-8 text-sm text-muted">{t('copy', { year: currentYear })}</p>
+          <p className="mt-8 text-sm text-text-muted">{t('copy', { year: currentYear })}</p>
         </div>
       </section>
     </>
