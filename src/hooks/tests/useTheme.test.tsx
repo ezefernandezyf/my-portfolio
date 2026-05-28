@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, screen, waitFor, act } from '@testing-library/react';
+import { render, cleanup, screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
 import { useTheme } from '../';
@@ -98,7 +98,7 @@ describe('useTheme hook', () => {
   it("cuando la preferencia es 'system' sigue matchMedia y responde a cambios", async () => {
     localStorage.removeItem(STORAGE_KEY);
 
-    const { mql, trigger } = createMockMatchMedia(false);
+    const { mql } = createMockMatchMedia(false);
     window.matchMedia = (() => mql) as (query: string) => MediaQueryList;
 
     render(<TestComponent />);
