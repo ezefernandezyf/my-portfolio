@@ -161,7 +161,7 @@ beforeEach(() => {
     thresholds: [],
   };
 
-  window.IntersectionObserver = function (_callback: unknown) {
+  window.IntersectionObserver = function () {
     return ioInstance;
   } as unknown as typeof IntersectionObserver;
 });

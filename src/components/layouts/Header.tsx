@@ -40,8 +40,9 @@ export const Header = (): React.JSX.Element => {
   const closeDrawer = () => close();
 
   return (
-    <header className="fixed top-0 z-50 w-full bg-bg-primary/80 backdrop-blur-md">
-      <nav className="site-container flex h-16 w-full items-center justify-between gap-8">
+    <header className="fixed top-0 z-50 w-full">
+      <div className="bg-bg-primary/80 backdrop-blur-md">
+        <nav className="site-container flex h-16 w-full items-center justify-between gap-8">
         <div className="flex items-center gap-8">
           <Link
             to="/"
@@ -133,6 +134,7 @@ export const Header = (): React.JSX.Element => {
           </button>
         </div>
       </nav>
+      </div>
 
       {/* Mobile Drawer */}
       <div
@@ -230,10 +232,6 @@ export const Header = (): React.JSX.Element => {
                 <LinkedInIcon className="h-5 w-5" />
                 <span>{t('social.linkedIn')}</span>
               </a>
-            </div>
-            <div className="flex items-center gap-2">
-              <ThemeToggle />
-              <span className="text-sm text-text-muted font-label">{t('social.downloadCvAria')}</span>
             </div>
             <a
               href="/Ezequiel_Fernandez_CV.pdf"
