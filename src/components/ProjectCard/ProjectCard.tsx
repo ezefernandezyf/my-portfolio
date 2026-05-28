@@ -43,36 +43,36 @@ export const ProjectCard = ({
   const imgSrc = image ?? images[0];
 
   return (
-    <article className="group flex h-full flex-col border border-outline-variant/20 bg-surface-container-lowest p-8 transition-all duration-300 hover:border-outline-variant dark:border-outline-variant/30 dark:bg-surface">
+    <article className="group flex h-full flex-col border border-border bg-surface p-8 transition-all duration-300 hover:scale-[1.02] hover:border-accent/50">
       <div className="flex items-start justify-between gap-4">
         <div className="flex flex-wrap gap-2">
           {visibleTech.map((tName) => (
             <span
               key={tName}
-              className="border border-outline-variant/40 px-3 py-1 text-[10px] font-bold uppercase tracking-tighter text-on-surface-variant"
+              className="chip chip-outline text-[10px] font-bold uppercase tracking-tighter"
             >
               {tName}
             </span>
           ))}
           {moreCount > 0 ? (
-            <span className="border border-outline-variant/40 px-3 py-1 text-[10px] font-bold uppercase tracking-tighter text-on-surface-variant">
+            <span className="chip chip-outline text-[10px] font-bold uppercase tracking-tighter">
               +{moreCount}
             </span>
           ) : null}
         </div>
-        {year ? <span className="text-[10px] font-mono text-outline">{year}</span> : null}
+        {year ? <span className="font-mono text-[10px] text-text-muted">{year}</span> : null}
       </div>
 
       <div className="mt-8 min-h-32 md:min-h-36">
-        <h3 className="mb-3 font-headline text-3xl font-bold leading-tight tracking-[-0.02em] text-on-surface">
+        <h3 className="mb-3 font-display text-3xl leading-tight tracking-[-0.02em] text-text-primary">
           {projectName}
         </h3>
-        <p className="mt-0 max-w-[60ch] text-base leading-relaxed text-on-surface-variant">
+        <p className="mt-0 max-w-[60ch] text-base leading-relaxed text-text-secondary">
           {projectShort}
         </p>
       </div>
 
-      <div className="mt-8 aspect-video overflow-hidden bg-surface-container-low">
+      <div className="mt-8 aspect-video overflow-hidden bg-surface-elevated">
         {imgSrc ? (
           <img
             src={imgSrc}
@@ -81,16 +81,16 @@ export const ProjectCard = ({
             className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
           />
         ) : (
-          <div className="flex aspect-video w-full items-center justify-center text-sm text-base-content/50">
+          <div className="flex aspect-video w-full items-center justify-center text-sm text-text-secondary">
             {t('notFound', { defaultValue: 'No preview' })}
           </div>
         )}
       </div>
 
-      <div className="mt-8 flex flex-wrap gap-6 border-t border-outline-variant/10 pt-6">
+      <div className="mt-8 flex flex-wrap gap-6 border-t border-border/10 pt-6">
         <Link
           to={`/projects/${id}`}
-          className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary-fixed hover:underline focus-ring"
+          className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-accent hover:text-accent-hover focus-ring"
           aria-label={`${t('links.caseStudy', { defaultValue: 'View case study' })} ${projectName}`}
         >
           <ArrowTopRightOnSquareIcon className="w-4 h-4" aria-hidden />
@@ -104,7 +104,7 @@ export const ProjectCard = ({
             href={repo}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-on-surface-variant transition-colors hover:text-primary focus-ring"
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-text-secondary transition-colors hover:text-accent focus-ring"
           >
             <GithubIcon className="w-4 h-4" />
             {t('links.repo', { defaultValue: 'View repo' })}
@@ -117,7 +117,7 @@ export const ProjectCard = ({
             href={demo}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-on-surface-variant transition-colors hover:text-primary focus-ring"
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-text-secondary transition-colors hover:text-accent focus-ring"
           >
             {t('links.demo', { defaultValue: 'View demo' })}
             <ArrowTopRightOnSquareIcon className="w-4 h-4" aria-hidden />

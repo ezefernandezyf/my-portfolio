@@ -40,8 +40,8 @@ export const TechCategories = ({ categories, abilities }: Props) => {
 
   return (
     <>
-      <div className="mt-6 p-4 rounded-lg bg-base-100 border border-base-200">
-        <h3 className="text-sm font-semibold mb-3">
+      <div className="mt-6 rounded-lg bg-surface p-4 border border-border">
+        <h3 className="mb-3 text-sm font-semibold">
           {t('categoriesTitle.stack', { defaultValue: 'Stack' })}
         </h3>
 
@@ -53,7 +53,7 @@ export const TechCategories = ({ categories, abilities }: Props) => {
 
             return (
               <div key={keyForItem}>
-                <h4 className="text-xs font-medium text-muted mb-2">{title}</h4>
+                <h4 className="mb-2 text-xs font-medium text-text-muted">{title}</h4>
 
                 <ul role="list" className="flex flex-wrap gap-2">
                   {cat.items.map((tech) => (
@@ -68,8 +68,8 @@ export const TechCategories = ({ categories, abilities }: Props) => {
         </div>
       </div>
 
-      <div className="mt-6 p-4 rounded-lg bg-base-100 border border-base-200">
-        <h3 className="text-sm font-semibold mb-3">
+      <div className="mt-6 rounded-lg bg-surface p-4 border border-border">
+        <h3 className="mb-3 text-sm font-semibold">
           {t('abilities.title', { defaultValue: 'Habilidades profesionales' })}
         </h3>
 
@@ -90,7 +90,7 @@ export const TechCategories = ({ categories, abilities }: Props) => {
               return (
                 <div key={listKey}>
                   {abi.title || abi.titleKey ? (
-                    <div className="text-xs font-medium text-muted mb-2">
+                    <div className="mb-2 text-xs font-medium text-text-muted">
                       {abi.title ?? (abi.titleKey ? t(normalizeKeyForNs(abi.titleKey)) : '')}
                     </div>
                   ) : null}

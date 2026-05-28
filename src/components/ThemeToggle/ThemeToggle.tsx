@@ -14,7 +14,7 @@ export const ThemeToggle = (): React.JSX.Element => {
       onClick={toggle}
       aria-label="Alternar tema"
       title={title}
-      className="inline-flex h-10 w-10 items-center justify-center text-text/70 transition-colors hover:text-primary focus-ring"
+      className="inline-flex h-10 w-10 items-center justify-center text-text-secondary transition-colors hover:text-accent focus-ring"
       type="button"
     >
       {resolvedTheme === 'dark' ? (

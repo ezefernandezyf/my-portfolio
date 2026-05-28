@@ -40,12 +40,12 @@ export const Header = (): React.JSX.Element => {
   const closeDrawer = () => close();
 
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-zinc-200/20 bg-surface md:bg-surface/70 md:backdrop-blur-md">
-      <nav className="site-container flex h-16 w-full max-w-full items-center justify-between gap-8 md:h-12">
+    <header className="fixed top-0 z-50 w-full bg-bg-primary/80 backdrop-blur-md">
+      <nav className="site-container flex h-16 w-full items-center justify-between gap-8">
         <div className="flex items-center gap-8">
           <Link
             to="/"
-            className="text-xl font-bold uppercase tracking-tight text-on-surface font-space-grotesk focus-ring"
+            className="text-xl font-bold text-accent font-mono focus-ring"
             aria-label={t('logo.ariaHome')}
           >
             [EZ]
@@ -55,7 +55,10 @@ export const Header = (): React.JSX.Element => {
             <NavLink
               to="/projects"
               className={({ isActive }) =>
-                `text-sm font-bold uppercase tracking-tight font-space-grotesk transition-colors duration-200 focus-ring ${isActive ? 'text-primary' : 'text-text/70 hover:text-primary'}`
+                `relative text-sm font-medium uppercase tracking-wider font-body text-text-secondary transition-colors duration-200 focus-ring
+                after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-200
+                hover:text-accent hover:after:w-full
+                ${isActive ? 'text-accent after:w-full' : ''}`
               }
             >
               {t('nav.projects')}
@@ -63,7 +66,10 @@ export const Header = (): React.JSX.Element => {
             <NavLink
               to="/about"
               className={({ isActive }) =>
-                `text-sm font-bold uppercase tracking-tight font-space-grotesk transition-colors duration-200 focus-ring ${isActive ? 'text-primary' : 'text-text/70 hover:text-primary'}`
+                `relative text-sm font-medium uppercase tracking-wider font-body text-text-secondary transition-colors duration-200 focus-ring
+                after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-200
+                hover:text-accent hover:after:w-full
+                ${isActive ? 'text-accent after:w-full' : ''}`
               }
             >
               {t('nav.about')}
@@ -71,7 +77,10 @@ export const Header = (): React.JSX.Element => {
             <NavLink
               to="/contact"
               className={({ isActive }) =>
-                `text-sm font-bold uppercase tracking-tight font-space-grotesk transition-colors duration-200 focus-ring ${isActive ? 'text-primary' : 'text-text/70 hover:text-primary'}`
+                `relative text-sm font-medium uppercase tracking-wider font-body text-text-secondary transition-colors duration-200 focus-ring
+                after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-200
+                hover:text-accent hover:after:w-full
+                ${isActive ? 'text-accent after:w-full' : ''}`
               }
             >
               {t('nav.contact')}
@@ -79,15 +88,18 @@ export const Header = (): React.JSX.Element => {
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
-          <LanguageSwitcher />
-
+        <div className="flex items-center gap-2">
+          {/* Grouped controls: ThemeToggle + LanguageSwitcher */}
+          <div className="control-cluster hidden sm:flex">
+            <ThemeToggle />
+            <LanguageSwitcher />
+          </div>
           <div className="hidden items-center gap-2 sm:flex">
             <a
               href="https://github.com/ezefernandezyf"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 flex items-center justify-center text-text/70 hover:text-primary focus-ring transition-colors"
+              className="flex h-10 w-10 items-center justify-center text-text-secondary transition-colors hover:text-accent focus-ring"
               title={t('social.githubAria')}
               aria-label={t('social.githubAria')}
             >
@@ -97,22 +109,16 @@ export const Header = (): React.JSX.Element => {
               href="https://www.linkedin.com/in/ezequiel-fernandez-59a21a387/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 flex items-center justify-center text-text/70 hover:text-primary focus-ring transition-colors"
+              className="flex h-10 w-10 items-center justify-center text-text-secondary transition-colors hover:text-accent focus-ring"
               title={t('social.linkedInAria')}
               aria-label={t('social.linkedInAria')}
             >
               <LinkedInIcon className="h-5 w-5" />
             </a>
+          </div>
+
+          <div className="sm:hidden">
             <ThemeToggle />
-            <a
-              href="/Ezequiel_Fernandez_CV.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden h-10 items-center justify-center border-2 border-primary px-6 text-sm font-bold uppercase tracking-tight text-primary transition-all hover:bg-primary/5 active:scale-95 sm:inline-flex"
-              aria-label={t('social.downloadCvAria')}
-            >
-              {t('social.downloadCv')}
-            </a>
           </div>
 
           <button
@@ -121,13 +127,14 @@ export const Header = (): React.JSX.Element => {
             aria-label={open ? t('mobile.closeMenu') : t('mobile.openMenu')}
             aria-expanded={open}
             aria-controls="mobile-drawer"
-            className="inline-flex h-10 w-10 items-center justify-center text-text/70 transition-colors hover:text-primary focus-ring md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center text-text-secondary transition-colors hover:text-accent focus-ring md:hidden"
           >
             {open ? <XMarkIcon className="h-6 w-6" aria-hidden /> : <Bars3Icon className="h-6 w-6" aria-hidden />}
           </button>
         </div>
       </nav>
 
+      {/* Mobile Drawer */}
       <div
         id="mobile-drawer"
         ref={drawerRef}
@@ -135,21 +142,31 @@ export const Header = (): React.JSX.Element => {
         role="dialog"
         aria-modal="true"
         aria-hidden={!open}
-        className={`fixed inset-y-0 right-0 z-70 h-full w-80 max-w-full rounded-l-3xl border-l border-neutral-200 bg-surface-container-lowest shadow-[0_24px_80px_rgba(0,0,0,0.22)] transition-transform duration-300 ease-in-out ${open ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`mobile-drawer-solid fixed inset-y-0 right-0 z-70 h-full w-80 max-w-full rounded-l-3xl border-l border-border bg-bg-primary shadow-[0_24px_80px_rgba(0,0,0,0.22)] transition-transform duration-300 ease-in-out ${open ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <div className="flex h-full flex-col px-4 pb-4 pt-6">
-          <div className="mb-6 flex items-center justify-between border-b border-neutral-200 pb-4">
-            <Link to="/" onClick={closeDrawer} className="flex items-center gap-3 text-text no-underline" aria-label={t('mobile.backToHome')}>
-              <div className="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 bg-surface text-sm font-bold uppercase tracking-tight text-text font-space-grotesk shadow-sm">
+          <div className="mb-6 flex items-center justify-between border-b border-border pb-4">
+            <Link
+              to="/"
+              onClick={closeDrawer}
+              className="flex items-center gap-3 text-text-primary no-underline"
+              aria-label={t('mobile.backToHome')}
+            >
+              <div className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface text-sm font-bold uppercase tracking-tight text-accent font-mono shadow-sm">
                 EZ
               </div>
               <div>
-                <h2 className="text-sm font-semibold tracking-tight text-text font-space-grotesk">{t('logo.name')}</h2>
-                <p className="text-[11px] uppercase tracking-[0.18em] text-muted font-label">{t('logo.role')}</p>
+                <h2 className="text-sm font-semibold tracking-tight text-text-primary font-body">{t('logo.name')}</h2>
+                <p className="text-[11px] uppercase tracking-[0.18em] text-text-muted font-label">{t('logo.role')}</p>
               </div>
             </Link>
 
-            <button type="button" onClick={closeDrawer} aria-label={t('mobile.closeMenu')} className="inline-flex h-10 w-10 items-center justify-center text-text/70 transition-colors hover:text-primary focus-ring">
+            <button
+              type="button"
+              onClick={closeDrawer}
+              aria-label={t('mobile.closeMenu')}
+              className="inline-flex h-10 w-10 items-center justify-center text-text-secondary transition-colors hover:text-accent focus-ring"
+            >
               <XMarkIcon className="h-5 w-5" aria-hidden />
             </button>
           </div>
@@ -159,10 +176,10 @@ export const Header = (): React.JSX.Element => {
               to="/projects"
               onClick={closeDrawer}
               className={({ isActive }) =>
-                `flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-base font-semibold transition-colors hover:border-neutral-200 hover:bg-neutral-200/80 ${isActive ? 'border-neutral-200 bg-neutral-200 text-primary' : 'text-text/85'}`
+                `flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-base font-semibold transition-colors hover:border-border-hover hover:bg-surface-elevated/80 ${isActive ? 'border-border bg-surface-elevated text-accent' : 'text-text-secondary'}`
               }
             >
-              <FolderIcon className="h-5 w-5 text-muted" aria-hidden />
+              <FolderIcon className="h-5 w-5 text-text-muted" aria-hidden />
               <span>{t('mobile.projects')}</span>
             </NavLink>
 
@@ -170,10 +187,10 @@ export const Header = (): React.JSX.Element => {
               to="/about"
               onClick={closeDrawer}
               className={({ isActive }) =>
-                `flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-base font-semibold transition-colors hover:border-neutral-200 hover:bg-neutral-200/80 ${isActive ? 'border-neutral-200 bg-neutral-200 text-primary' : 'text-text/85'}`
+                `flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-base font-semibold transition-colors hover:border-border-hover hover:bg-surface-elevated/80 ${isActive ? 'border-border bg-surface-elevated text-accent' : 'text-text-secondary'}`
               }
             >
-              <HomeIcon className="h-5 w-5 text-muted" aria-hidden />
+              <HomeIcon className="h-5 w-5 text-text-muted" aria-hidden />
               <span>{t('mobile.about')}</span>
             </NavLink>
 
@@ -181,10 +198,10 @@ export const Header = (): React.JSX.Element => {
               to="/contact"
               onClick={closeDrawer}
               className={({ isActive }) =>
-                `flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-base font-semibold transition-colors hover:border-neutral-200 hover:bg-neutral-200/80 ${isActive ? 'border-neutral-200 bg-neutral-200 text-primary' : 'text-text/85'}`
+                `flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-base font-semibold transition-colors hover:border-border-hover hover:bg-surface-elevated/80 ${isActive ? 'border-border bg-surface-elevated text-accent' : 'text-text-secondary'}`
               }
             >
-              <EnvelopeIcon className="h-5 w-5 text-muted" aria-hidden />
+              <EnvelopeIcon className="h-5 w-5 text-text-muted" aria-hidden />
               <span>{t('mobile.contact')}</span>
             </NavLink>
           </nav>
@@ -195,7 +212,7 @@ export const Header = (): React.JSX.Element => {
                 href="https://github.com/ezefernandezyf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 text-base-content/80 transition-colors hover:text-primary"
+                className="inline-flex items-center gap-3 text-text-secondary transition-colors hover:text-accent"
                 aria-label={t('social.githubAria')}
               >
                 <GithubIcon className="h-5 w-5" />
@@ -207,7 +224,7 @@ export const Header = (): React.JSX.Element => {
                 href="https://www.linkedin.com/in/ezequiel-fernandez-59a21a387/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 text-base-content/80 transition-colors hover:text-primary"
+                className="inline-flex items-center gap-3 text-text-secondary transition-colors hover:text-accent"
                 aria-label={t('social.linkedInAria')}
               >
                 <LinkedInIcon className="h-5 w-5" />
@@ -216,13 +233,13 @@ export const Header = (): React.JSX.Element => {
             </div>
             <div className="flex items-center gap-2">
               <ThemeToggle />
-              <span className="text-sm text-muted font-label">{t('social.downloadCvAria')}</span>
+              <span className="text-sm text-text-muted font-label">{t('social.downloadCvAria')}</span>
             </div>
             <a
               href="/Ezequiel_Fernandez_CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 inline-flex h-10 items-center justify-center border-2 border-primary px-6 text-sm font-bold uppercase tracking-tight text-primary transition-all hover:bg-primary/5 active:scale-95"
+              className="mt-2 inline-flex h-10 items-center justify-center border-2 border-accent px-6 text-sm font-bold uppercase tracking-tight text-accent transition-all hover:bg-accent/5 active:scale-95"
               aria-label={t('social.downloadCvAria')}
             >
               {t('social.downloadCv')}
@@ -235,6 +252,7 @@ export const Header = (): React.JSX.Element => {
         </div>
       </div>
 
+      {/* Drawer overlay */}
       <div
         onClick={closeDrawer}
         aria-hidden

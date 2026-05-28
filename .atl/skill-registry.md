@@ -4,3 +4,4 @@
 - tailwind-4: skills/tailwind-4/SKILL.md
 - typescript: skills/typescript/SKILL.md
 - zod-4: skills/zod-4/SKILL.md
+- portfolio-personality: skills/portfolio-personality/SKILL.md

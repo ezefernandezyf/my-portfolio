@@ -86,7 +86,7 @@ describe('Header (mobile drawer)', () => {
 
     const aboutLink = screen.getByRole('link', { name: /acerca/i });
     expect(aboutLink).toHaveAttribute('aria-current', 'page');
-    expect(aboutLink).toHaveClass('text-primary');
+    expect(aboutLink).toHaveClass('text-accent');
   });
 
   it('marca el enlace activo correcto cuando la ruta inicial es /projects', async () => {
@@ -94,7 +94,7 @@ describe('Header (mobile drawer)', () => {
 
     const projectsLink = screen.getByRole('link', { name: /proyectos/i });
     expect(projectsLink).toHaveAttribute('aria-current', 'page');
-    expect(projectsLink).toHaveClass('text-primary');
+    expect(projectsLink).toHaveClass('text-accent');
 
     const menuButton = screen.getByRole('button', { name: /abrir menú/i });
     await userEvent.click(menuButton);
@@ -102,7 +102,7 @@ describe('Header (mobile drawer)', () => {
     const drawer = screen.getByRole('dialog', { hidden: true });
     const mobileProjectsLink = within(drawer).getByRole('link', { name: /proyectos/i });
     expect(mobileProjectsLink).toHaveAttribute('aria-current', 'page');
-    expect(mobileProjectsLink).toHaveClass('text-primary');
+    expect(mobileProjectsLink).toHaveClass('text-accent');
   });
 
   it('marca el enlace activo correcto cuando la ruta inicial es /contact', async () => {
@@ -110,7 +110,7 @@ describe('Header (mobile drawer)', () => {
 
     const contactLink = screen.getByRole('link', { name: /contacto/i });
     expect(contactLink).toHaveAttribute('aria-current', 'page');
-    expect(contactLink).toHaveClass('text-primary');
+    expect(contactLink).toHaveClass('text-accent');
 
     const menuButton = screen.getByRole('button', { name: /abrir menú/i });
     await userEvent.click(menuButton);
@@ -118,6 +118,6 @@ describe('Header (mobile drawer)', () => {
     const drawer = screen.getByRole('dialog', { hidden: true });
     const mobileContactLink = within(drawer).getByRole('link', { name: /contacto/i });
     expect(mobileContactLink).toHaveAttribute('aria-current', 'page');
-    expect(mobileContactLink).toHaveClass('text-primary');
+    expect(mobileContactLink).toHaveClass('text-accent');
   });
 });

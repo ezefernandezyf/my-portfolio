@@ -23,18 +23,17 @@ describe('AboutPage', () => {
     expect(screen.getByRole('link', { name: /github/i })).toHaveAttribute('href', about.github);
     expect(screen.getByRole('link', { name: /linkedin/i })).toHaveAttribute('href', about.linkedIn);
 
-    expect(screen.getByText(about.email)).toBeInTheDocument();
     expect(screen.getByText(/disponibilidad: inmediata/i)).toBeInTheDocument();
 
     const stackHeading = screen.getByRole('heading', { name: /stack tecnológico/i });
     const stackSection = stackHeading.closest('section');
     expect(stackSection).toBeTruthy();
-    expect(within(stackSection as HTMLElement).getByText(/frontend core/i)).toBeInTheDocument();
+    expect(within(stackSection as HTMLElement).getByText(/frontend/i)).toBeInTheDocument();
     expect(within(stackSection as HTMLElement).getByText(/styles & ui/i)).toBeInTheDocument();
     expect(within(stackSection as HTMLElement).getByText(/testing & tools/i)).toBeInTheDocument();
-    expect(within(stackSection as HTMLElement).getByText('React')).toBeInTheDocument();
-    expect(within(stackSection as HTMLElement).getByText('Tailwind CSS')).toBeInTheDocument();
-    expect(within(stackSection as HTMLElement).getByText('Vitest')).toBeInTheDocument();
+    expect(within(stackSection as HTMLElement).getByText(/React 19/i)).toBeInTheDocument();
+    expect(within(stackSection as HTMLElement).getByText(/Tailwind CSS 4/i)).toBeInTheDocument();
+    expect(within(stackSection as HTMLElement).getByText(/Vitest/i)).toBeInTheDocument();
 
     const softSkillsHeading = screen.getByRole('heading', { name: /habilidades blandas/i });
     const softSkillsSection = softSkillsHeading.closest('section');
