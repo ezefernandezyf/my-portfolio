@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { projectRepository } from '../entities/project';
 import { MetaTags } from '../shared/seo';
 import { ProjectCard } from '../shared/ui/project-card';
+import { CurrentlySection, type CurrentlyItem } from '../components/CurrentlySection';
 
 const featuredProjects = projectRepository.getProjects().slice(0, 2);
 const technicalStack = ['React 19', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma', 'Tailwind CSS 4', 'Vite'];
@@ -16,6 +17,7 @@ const fadeInUp = (delay = 0): React.CSSProperties => ({
 export const HomePage = (): React.JSX.Element => {
   const { t } = useTranslation(['home', 'projects']);
   const projects = projectRepository.getProjects();
+  const currentlyItems = t('currently.list', { returnObjects: true }) as CurrentlyItem[];
 
   const projectCountLabel = String(projects.length).padStart(2, '0');
 
@@ -92,6 +94,8 @@ export const HomePage = (): React.JSX.Element => {
             </div>
           </div>
         </section>
+
+        <CurrentlySection items={currentlyItems} />
 
         <section className="bg-surface-container-low py-24" id="projects" style={fadeInUp(0.32)}>
           <div className="site-container">

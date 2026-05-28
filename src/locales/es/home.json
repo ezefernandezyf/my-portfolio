@@ -19,5 +19,12 @@
   "viewAllProjects": "Ver todos los proyectos",
   "contactTitle": "¿Te interesa mi perfil?",
   "contactText": "Actualmente disponible para oportunidades de alto impacto en ingeniería y UI.",
-  "contactCta": "Contactar"
+  "contactCta": "Contactar",
+  "currently": {
+    "title": "Ahora",
+    "list": [
+      { "emoji": "🚀", "label": "EchoLog v1.1", "url": "https://github.com/ezefernandezyf/echolog" },
+      { "emoji": "🧠", "label": "Explorando AI Agents y profundizando en arquitectura backend", "url": "" }
+    ]
+  }
 }
