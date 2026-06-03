@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 
 vi.mock('../../shared/seo', () => ({
@@ -57,5 +58,83 @@ describe('HomePage', () => {
 
     expect(screen.getByRole('heading', { name: /interested in my profile|te interesa mi perfil/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /contactar|contact/i })).toBeInTheDocument();
+  });
+
+  it('renderiza el glow del cursor y responde a pointer events', async () => {
+    const { container } = render(
+      <MemoryRouter>
+        <HomePage />
+      </MemoryRouter>,
+    );
+
+    const heroSection = container.querySelector('section');
+    expect(heroSection).toBeInTheDocument();
+
+    const glow = container.querySelector('[aria-hidden="true"]');
+    expect(glow).toBeInTheDocument();
+
+    const user = userEvent.setup();
+    await user.pointer({ target: heroSection!, coords: { clientX: 200, clientY: 150 } });
+
+    expect(glow).toBeInTheDocument();
+  });
+
+  it('activa animaciones cuando el IntersectionObserver detecta interseccion', () => {
+    const observerCallbacks: Array<(entries: IntersectionObserverEntry[]) => void> = [];
+
+    window.IntersectionObserver = vi.fn(function (callback: (entries: IntersectionObserverEntry[]) => void) {
+      observerCallbacks.push(callback);
+      return {
+        observe: vi.fn(),
+        unobserve: vi.fn(),
+        disconnect: vi.fn(),
+        takeRecords: vi.fn(() => []),
+        root: null,
+        rootMargin: '',
+        thresholds: [],
+      };
+    }) as unknown as typeof IntersectionObserver;
+
+    render(
+      <MemoryRouter>
+        <HomePage />
+      </MemoryRouter>,
+    );
+
+    act(() => {
+      observerCallbacks.forEach((cb) => {
+        cb([{ isIntersecting: true } as IntersectionObserverEntry]);
+      });
+    });
+
+    const animatedElements = document.querySelectorAll('.animate-fade-in-up');
+    expect(animatedElements.length).toBeGreaterThanOrEqual(1);
+  });
+
+  it('no mueve el cursor glow cuando reducedMotion esta activo', async () => {
+    window.matchMedia = vi.fn().mockImplementation((query: string) => ({
+      matches: query === '(prefers-reduced-motion: reduce)',
+      media: query,
+      onchange: null,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      dispatchEvent: vi.fn(),
+    })) as unknown as typeof window.matchMedia;
+
+    const { container } = render(
+      <MemoryRouter>
+        <HomePage />
+      </MemoryRouter>,
+    );
+
+    const heroSection = container.querySelector('section');
+    expect(heroSection).toBeInTheDocument();
+
+    // Glow div should NOT render when reducedMotion is true
+    const glow = container.querySelector('.pointer-events-none.fixed.inset-0');
+    expect(glow).not.toBeInTheDocument();
+
+    const user = userEvent.setup();
+    await user.pointer({ target: heroSection!, coords: { clientX: 200, clientY: 150 } });
   });
 });

@@ -138,6 +138,41 @@ describe('useTheme hook', () => {
     expect(screen.getByTestId('resolved').textContent).toBe('dark');
   });
 
+  it('maneja system theme sin addEventListener y no rompe', async () => {
+    localStorage.removeItem(STORAGE_KEY);
+
+    const mql = {
+      matches: false,
+      media: '(prefers-color-scheme: dark)',
+      onchange: null,
+      dispatchEvent: () => false,
+    } as unknown as MediaQueryList;
+
+    window.matchMedia = (() => mql) as (query: string) => MediaQueryList;
+
+    render(<TestComponent />);
+
+    await act(async () => {
+      await userEvent.click(screen.getByTestId('set-system'));
+    });
+
+    expect(screen.getByTestId('theme').textContent).toBe('system');
+  });
+
+  it('maneja cuando matchMedia no es una funcion con theme system', async () => {
+    localStorage.removeItem(STORAGE_KEY);
+
+    window.matchMedia = 'not a function' as unknown as typeof window.matchMedia;
+
+    render(<TestComponent />);
+
+    await act(async () => {
+      await userEvent.click(screen.getByTestId('set-system'));
+    });
+
+    expect(screen.getByTestId('theme').textContent).toBe('system');
+  });
+
   it('cae a system cuando localStorage falla al leer', () => {
     const getItemSpy = vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => {
       throw new Error('storage unavailable');
@@ -149,6 +184,55 @@ describe('useTheme hook', () => {
     expect(screen.getByTestId('resolved').textContent).toBe('dark');
 
     getItemSpy.mockRestore();
+  });
+
+  it('toggle de dark a light cuando la preferencia inicial es dark', async () => {
+    localStorage.setItem(STORAGE_KEY, 'dark');
+
+    render(<TestComponent />);
+
+    expect(screen.getByTestId('resolved').textContent).toBe('dark');
+    expect(document.documentElement.classList.contains('dark')).toBe(true);
+
+    await act(async () => {
+      await userEvent.click(screen.getByTestId('toggle'));
+    });
+
+    expect(screen.getByTestId('theme').textContent).toBe('light');
+    expect(screen.getByTestId('resolved').textContent).toBe('light');
+    expect(document.documentElement.classList.contains('dark')).toBe(false);
+    expect(localStorage.getItem(STORAGE_KEY)).toBe('light');
+  });
+
+  it('responde a cambios de preferencia del sistema cuando theme es system', async () => {
+    localStorage.removeItem(STORAGE_KEY);
+    const { mql, trigger } = createMockMatchMedia(false);
+    window.matchMedia = (() => mql) as (query: string) => MediaQueryList;
+
+    render(<TestComponent />);
+
+    expect(screen.getByTestId('theme').textContent).toBe('dark');
+
+    await act(async () => {
+      await userEvent.click(screen.getByTestId('set-system'));
+    });
+
+    expect(screen.getByTestId('theme').textContent).toBe('system');
+    expect(screen.getByTestId('resolved').textContent).toBe('light');
+
+    act(() => {
+      trigger(true);
+    });
+
+    expect(screen.getByTestId('resolved').textContent).toBe('dark');
+    expect(document.documentElement.classList.contains('dark')).toBe(true);
+
+    act(() => {
+      trigger(false);
+    });
+
+    expect(screen.getByTestId('resolved').textContent).toBe('light');
+    expect(document.documentElement.classList.contains('dark')).toBe(false);
   });
 
   it('sigue cambiando el tema aunque localStorage falle al escribir', async () => {
