@@ -34,7 +34,7 @@
       "Architected the backend with screaming architecture - business domains (auth, boards, posts, votes, comments, workspaces, invitations, notifications) as top-level folders.",
       "Implemented JWT authentication in httpOnly cookies with cross-origin support for Vercel + Render deployment, including mobile auth fix via API proxy.",
       "Designed multi-tenant isolation using composite unique keys (`@@unique([workspaceId, slug])`) and role-based access (OWNER, ADMIN, MEMBER, VIEWER) with membership middleware on every endpoint.",
-      "Delivered comprehensive testing: 75+ tests across Vitest (unit + integration), React Testing Library (component), and Playwright (E2E), plus GitHub Actions CI."
+      "Delivered comprehensive testing: 78+ tests across Vitest (unit + integration), React Testing Library (component), and Playwright (E2E), plus GitHub Actions CI."
     ]
   },
   "architecture": {
@@ -88,10 +88,10 @@
   "improvements": {
     "heading": "What could be improved",
     "list": [
-      "Add real-time updates via WebSockets (Socket.IO or Server-Sent Events) for live vote counts and notifications.",
-      "Implement email service (Resend) for invitation emails, password reset, and notification digests.",
-      "Add public workspace discovery feed with popularity ranking and 'Continue without account' option.",
-      "Production hardening: rate limiting, structured logging (pino), and expanded test coverage for edge cases."
+      "Add real-time updates via WebSockets (Socket.IO or Server-Sent Events) for live votes, comments, and notifications.",
+      "Implement public workspace discovery feed with popularity rankings and the ability to post without signing up.",
+      "Webhook system for integrating EchoLog with Slack, Discord, or other team tools.",
+      "Additional E2E tests for critical flows (invitations, board approval, granular permissions)."
     ]
   },
   "deepDive": {

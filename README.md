@@ -32,17 +32,24 @@ Proyecto construido con Vite + React. Incluye páginas principales (Home, About,
 
 ## Proyectos destacados
 
-- Movie Management Dashboard
-- CineLab
-- ChefcitoIA
+- **EchoLog** — SaaS multi-tenant de feedback para productos (boards, votos, comentarios, workspaces)
+- **Nexus Talent** — Plataforma de reclutamiento asistida por IA con análisis de vacantes
+- **Movie Management Dashboard** — Dashboard SPA con CRUD, Supabase Auth y tests
+- **CineLab** — Movie search app con TMDB API, hooks personalizados y testing
+- **ChefcitoIA** — Generador de recetas con IA (Groq, Google) y validación Zod
 
 Los assets del portfolio viven en `public/projects/` y los case studies usan rutas dedicadas por proyecto.
 
 ## Capturas
 
+- EchoLog
+- Nexus Talent
 - Movie Management Dashboard
 - CineLab
 - ChefcitoIA
+
+### Case study: EchoLog
+![EchoLog case study](/public/projects/echolog/echolog-1.webp)
 
 ### Case study: CineLab
 ![CineLab case study — detalles del proyecto](/public/screenshots/screenshot-project-cinelab.png)
