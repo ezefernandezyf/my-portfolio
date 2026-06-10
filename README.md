@@ -1,6 +1,6 @@
 # My Portfolio
 
-Portfolio personal de Ezequiel Fernández — Front-end Developer.
+Portfolio personal de Ezequiel Fernández - Front-end Developer.
 
 ## Demo
 
@@ -24,11 +24,11 @@ Proyecto construido con Vite + React. Incluye páginas principales (Home, About,
 
 ## Estructura relevante
 
-- src/pages — páginas (Home, About, Projects, Contact, Privacy, etc.)
-- src/components — componentes reutilizables (Header, Footer, TechCategories, ProjectCard...)
-- src/locales — traducciones (es / en)
-- src/data — contenidos y referencias (ids / keys)
-- src/setupTests.ts — mock de i18n y configuración de tests
+- src/pages - páginas (Home, About, Projects, Contact, Privacy, etc.)
+- src/components - componentes reutilizables (Header, Footer, TechCategories, ProjectCard...)
+- src/locales - traducciones (es / en)
+- src/data - contenidos y referencias (ids / keys)
+- src/setupTests.ts - mock de i18n y configuración de tests
 
 ## Proyectos destacados
 
@@ -37,24 +37,6 @@ Proyecto construido con Vite + React. Incluye páginas principales (Home, About,
 - ChefcitoIA
 
 Los assets del portfolio viven en `public/projects/` y los case studies usan rutas dedicadas por proyecto.
-
-## Capturas
-
-- Movie Management Dashboard
-- CineLab
-- ChefcitoIA
-
-### Case study: CineLab
-![CineLab case study — detalles del proyecto](/public/screenshots/screenshot-project-cinelab.png)
-
-### Case study: ChefcitoIA
-![ChefcitoIA case study — vista del generador de recetas](/public/projects/chefcitoia-1.jpg)
-
-### Formulario de contacto (Mobile)
-![Formulario de contacto — vista móvil](/public/screenshots/screenshot-contact-mobile.png)
-
-### Vista Desktop (Mobile)
-![Home - Mobile](/public/screenshots/screenshot-home.png)
 
 ## Requisitos locales
 
@@ -90,12 +72,12 @@ npm run dev
 
 ## Scripts útiles
 
-- `npm run dev` — arranca Vite en dev
-- `npm run build` — build de producción (genera `dist`)
-- `npm run preview` — preview del build local (`vite preview`)
-- `npm run test` — ejecuta Vitest
-- `npm run lint` — ESLint (si está configurado)
-- `npm run format` — Prettier (si está configurado)
+- `npm run dev` - arranca Vite en dev
+- `npm run build` - build de producción (genera `dist`)
+- `npm run preview` - preview del build local (`vite preview`)
+- `npm run test` - ejecuta Vitest
+- `npm run lint` - ESLint (si está configurado)
+- `npm run format` - Prettier (si está configurado)
 
 ## Testing
 
