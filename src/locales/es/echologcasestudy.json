@@ -34,7 +34,7 @@
       "Se arquitecturó el backend con screaming architecture - dominios de negocio (auth, boards, posts, votes, comments, workspaces, invitations, notifications) como carpetas de primer nivel.",
       "Se implementó autenticación JWT en cookies httpOnly con soporte cross-origin para deploy Vercel + Render, incluyendo fix de auth móvil mediante proxy API.",
       "Se diseñó aislamiento multi-tenant usando claves compuestas únicas (`@@unique([workspaceId, slug])`) y acceso basado en roles (OWNER, ADMIN, MEMBER, VIEWER) con middleware de membresía en cada endpoint.",
-      "Se entregó testing comprehensivo: 78+ tests entre Vitest (unit + integración), React Testing Library (componentes), y Playwright (E2E), más CI con GitHub Actions."
+      "Se entregó testing comprehensivo: 75+ tests entre Vitest (unit + integración), React Testing Library (componentes), y Playwright (E2E), más CI con GitHub Actions."
     ]
   },
   "architecture": {
@@ -88,10 +88,10 @@
   "improvements": {
     "heading": "Qué se podría mejorar",
     "list": [
-      "Agregar actualizaciones en tiempo real via WebSockets (Socket.IO o SSE) para votos, comentarios y notificaciones en vivo.",
-      "Implementar feed de descubrimiento de workspaces públicos con rankings y opción de crear posts sin registrarse.",
-      "Sistema de webhooks para integrar EchoLog con Slack, Discord u otras herramientas del equipo.",
-      "Tests E2E adicionales para flujos críticos (invitaciones, aprobación de boards, permisos granulares)."
+      "Agregar actualizaciones en tiempo real via WebSockets (Socket.IO o SSE) para votos y notificaciones en vivo.",
+      "Implementar servicio de email (Resend) para emails de invitación, recuperación de contraseña y resúmenes de notificaciones.",
+      "Agregar feed de workspaces públicos con ranking de popularidad y opción 'Continuar sin cuenta'.",
+      "Hardening de producción: rate limiting, logging estructurado (pino), y expansión de cobertura de tests para casos borde."
     ]
   },
   "deepDive": {
