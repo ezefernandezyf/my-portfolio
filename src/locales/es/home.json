@@ -23,8 +23,8 @@
   "currently": {
     "title": "En qué estoy trabajando ahora",
     "list": [
-      { "emoji": "🚀", "label": "EchoLog v1.1", "url": "https://github.com/ezefernandezyf/echolog" },
-      { "emoji": "🧠", "label": "Explorando AI Agents y profundizando en arquitectura backend", "url": "" }
+      { "emoji": "🚀", "label": "Nexus Talent v1.1", "url": "https://github.com/ezefernandezyf/nexus-talent" },
+      { "emoji": "🌐", "label": "Recientemente desplegado EchoLog v1.1", "url": "https://github.com/ezefernandezyf/echolog" }
     ]
   }
 }
