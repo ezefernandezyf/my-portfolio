@@ -1,136 +1,141 @@
-﻿# Portfolio Redesign - Workspace Instructions
+﻿# my-portfolio — Agent Context
 
-Este proyecto emplea un flujo estricto de **Spec-Driven Development (SDD)**. El sistema (Agente IA) debe comportarse como un **Lead Software Architect y Pair Senior**, asegurando que toda decisión técnica, de diseño y arquitectónica se documente *antes* de escribir el código. La ejecución debe respetar a rajatabla la arquitectura definida.
+> Portfolio personal de Ezequiel Fernández, Full Stack Developer. Sitio estático desplegado en Vercel.
 
-## 1. Identidad y Contexto del Producto
-- **Objetivo:** Rediseño completo y desde cero del portafolio web para un Full Stack Developer. La plataforma debe ser una extensión de su capacidad técnica: interfaces limpias, altamente accesibles y optimizadas.
-- **Enfoque de Trabajo:** NO se va a reciclar ni adaptar código de las vistas antiguas. Se construirá una nueva interfaz tomando como única fuente de verdad los archivos estáticos ubicados en docs/redesignReferences/.
-- **Proyecto principal:** EchoLog — SaaS multi-tenant de feedback para productos, alternativa a Canny.io. Full-stack TypeScript (React 19 + Node/Express + PostgreSQL + Prisma). Deploy en Vercel + Fly.io + Neon. 75+ tests, CI/CD, WCAG 2.1 AA.
+## Stack
+- **Frontend**: React 19 + TypeScript 5.9 (strict) + Vite 7 + React Router 7
+- **Styling**: Tailwind CSS 4 + DaisyUI 5 + OKLCH design tokens + CSS keyframes
+- **Fonts**: Instrument Serif (display), Work Sans (body), JetBrains Mono (code)
+- **i18n**: i18next + react-i18next + i18next-browser-languagedetector (ES/EN, 14+ namespaces)
+- **Validation**: Zod 4 + react-hook-form + @hookform/resolvers
+- **Email**: @emailjs/browser (contact form)
+- **Icons**: @heroicons/react
+- **Testing**: Vitest 4 + React Testing Library + jsdom (80% coverage threshold)
+- **Lint/Format**: ESLint 9 flat config + Prettier
+- **Package Manager**: npm
+- **Deploy**: Vercel (automatic from `main`)
 
-### Regla de Rebuild UI (No Negociable)
-- El rediseño debe ser un **rebuild visual completo** y no un "reskin" sobre componentes existentes.
-- Queda prohibido considerar "cumplido" un módulo por ajustar colores, spacing o clases sobre la UI previa.
-- Si un componente actual no replica fielmente la referencia (estructura, tipografía, jerarquía, layout y estados), se debe **reconstruir**.
-- Se permite mover implementaciones previas a una zona de legado (por ejemplo `src/components/old/`) cuando ayude a mantener claridad durante el rebuild.
-- El criterio de aceptación principal es **pixel-perfect contra referencias** en `docs/redesignReferences/`.
+## Architecture
+- **Feature-based / Screaming Architecture** con DDD-lite:
+  - `src/components/` — UI reutilizable (layouts, MetaTags, ThemeToggle, LanguageSwitcher, SocialButton)
+  - `src/context/` — React contexts (ThemeContext/Provider)
+  - `src/data/` — repositorios estáticos tipados (about.ts, projects.ts)
+  - `src/entities/` — modelos de dominio (project types, repository)
+  - `src/features/` — slices verticales (projects-list, projects-case-study con i18n propio)
+  - `src/hooks/` — custom hooks (useTheme, useThemeColor)
+  - `src/locales/` — JSON de traducción ES/EN por namespace
+  - `src/pages/` — componentes de ruta (HomePage, AboutPage, ContactPage, ProjectsPage, PrivacyPage, NotFoundPage, + case studies)
+  - `src/routes/` — AppRouter (BrowserRouter) + AppRoutes
+  - `src/shared/` — seo (MetaTags), ui (ProjectCard, ProjectCarousel)
+- **Sin backend** — portfolio 100% estático, sin API ni base de datos
+- **Sin SSR** actualmente — el HTML servido es `<div id="root"></div>` (en proceso de arreglar con `geo-seo-enhancements`)
 
-### Estrategia de Legacy para esta rama
-- Mantener los componentes legacy en su ubicación actual mientras la fase 2 no requiera moverlos.
-- No introducir `src/components/old/` por inercia: solo se moverán piezas si estorban la lectura del rebuild o si una futura fase necesita aislar explícitamente el código previo.
-- La rama activa debe exponer como fuente de verdad los componentes reconstruidos.
+## Conventions
+- Conventional Commits: `feat(scope):`, `fix(scope):`, `chore:`, `docs:`, `test(scope):` — **título en inglés, descripción en español**
+- React 19: named imports, no `useMemo`/`useCallback` innecesarios, hooks en `src/hooks/`
+- TypeScript: strict mode, nunca `any`, `interface` para objetos, `type` para uniones/alias
+- Tailwind 4: tokens OKLCH en `src/index.css` (`@theme` + custom variants), DaisyUI 5 para componentes accesibles
+- Testing: tests co-localizados (`src/**/tests/`), cobertura mínima 80%, `npm run test:coverage`
+- i18n: cada namespace = un `{namespace}.json` en `src/locales/{lang}/`, keys en camelCase
+- Accesibilidad: WCAG 2.2 AA target, `aria-labelledby` en secciones, `prefers-reduced-motion` respetado, focus-visible rings
+- Performance: Lighthouse 95+ target, fonts preloaded con `preconnect`
+- Never build after changes, never add "Co-Authored-By" to commits
+- ESLint + Prettier: `npm run lint` / `npm run format`
 
-## 2. Stack Tecnológico y Arquitectura Core
-El stack no se negocia. Buscamos demostrar ingeniería y eficiencia:
-- **Frontend:** React + TypeScript.
-- **Backend:** Node.js + Express + Prisma + PostgreSQL.
-- **Arquitectura:** "Screaming Architecture" o "Feature-based" (Ej: features/, core/, shared/, ui/). Los componentes UI deben estar estrictamente desacoplados de la lógica.
-- **Estilos y Animaciones:** CSS/Tailwind (según corresponda el setup actual) + framer-motion para transiciones fluidas, físicas y profesionales (staggers, fade-ins, microinteracciones).
-- **Regla de Motion Transversal:** Si una animación mejora lectura, jerarquía o percepción de calidad sin traicionar la referencia, debe aplicarse de forma consistente en todas las páginas nuevas del módulo; evitar efectos aislados que aparezcan solo en una pantalla.
-- **Internacionalización (Crítico):** El sistema i18n actual (Dualidad ES/EN) se debe mantener funcional al 100% en todos los componentes nuevos.
-- **Adaptación de Datos:** Los placeholders de los HTML (ej. "JWT Architecture" o fotos genéricas) deben ser reemplazados por los datos reales del desarrollador. **Regla:** Ante la duda de qué contenido insertar, el Agente debe detenerse y preguntar. No inventar datos.
+## Git Workflow (STRICT)
+1. **Feature branches**: toda tarea arranca en una rama nueva desde `develop`
+2. **Branch naming**: `feat/short-name`, `fix/short-name`, `chore/short-name`
+3. **Atomic commits**: un cambio lógico por commit, formato convencional
+4. **Push + PR + Merge**: push a la rama, crear PR a `develop`, mergear — nunca commit directo a `develop` o `main`
+5. **Clean working tree**: sin archivos sin trackear, sin WIP antes del PR
+6. **Lint before push**: `npm run lint` debe pasar
+7. **Tests before merge**: `npm test` debe pasar
+8. **Deploy**: merge a `main` dispara deploy automático a Vercel
 
-## 3. Quality, Testing & CI/CD (Hard Requirements)
-- **Test Coverage:** Meta innegociable del **80% de coverage** en lógica de negocio, hooks personalizados, mappers y componentes críticos de UI. Se prioriza calidad de aserciones sobre cantidad de tests vacíos.
-- **CI/CD:** Se debe configurar un pipeline de Integración Continua (ej. GitHub Actions) que corra linters, type-checking y tests en cada push/PR, más un deployment automatizado (Vercel/Netlify).
-- **Performance:** El código resultante debe apuntar a un score de **95+ en Lighthouse** (Performance, Accesibilidad, Best Practices).
+## How to Run
+```bash
+npm install              # instala dependencias
+npm run dev              # dev server en localhost:5173
+npm run build            # build de producción (tsc + vite build)
+npm run preview          # preview del build
+npm run test             # correr tests
+npm run test:coverage    # tests con coverage
+npm run lint             # ESLint check
+npm run lint:fix         # ESLint auto-fix
+npm run format           # Prettier write
+npm run check            # lint + build + test:coverage (todo junto)
+```
 
-## 4. The Precision Instrument (Design System)
-- **Pixel-Perfect:** Los archivos HTML en docs/redesignReferences/ son la ley visual. El padding, la tipografía, los pesos visuales y la disposición deben clonarse con precisión milimétrica.
-- **Responsividad:** 100% responsive design asumiendo un enfoque "Mobile First" pero garantizando excelencia en Desktop.
-- **Restricciones:** Prohibida la sobreingeniería visual. Si el HTML no tiene un gradiente complejo, el componente de React tampoco debe tenerlo.
-- **Criterio de Implementación:** Si hay divergencia visual entre componente actual y referencia, se prioriza rehacer el componente antes que iterar micro-ajustes.
+## Key Files
+- `index.html` — HTML entry point, meta tags base, font preloads, `<div id="root">`
+- `vite.config.ts` — Vite configure (React + Tailwind plugins)
+- `vercel.json` — Vercel deploy config (SPA rewrites)
+- `src/main.tsx` — React entry, StrictMode + ThemeProvider + AppRouter
+- `src/App.tsx` — top-level app shell
+- `src/i18n.ts` — i18next configuration (namespaces, LanguageDetector)
+- `src/index.css` — Tailwind `@theme` tokens, base styles, animation keyframes, utility classes
+- `src/routes/AppRouter.tsx` — BrowserRouter wrapper
+- `src/routes/AppRoutes.tsx` — route definitions (/, /home, /about, /projects, /projects/:id, /privacy, /contact)
+- `src/data/about.ts` — tipado completo (AboutData interface, categorías, skills, proyectos, educación)
+- `src/data/projects.ts` — array de proyectos (ids, tech stacks, repos, demos, imágenes)
+- `src/components/MetaTags/MetaTags.tsx` — inyección client-side de meta tags (title, description, OG, Twitter, canonical)
+- `src/components/ThemeToggle/ThemeToggle.tsx` — toggle dark/light con persistencia en localStorage
+- `src/components/LanguageSwitcher/LanguageSwitcher.tsx` — toggle ES/EN con i18next
+- `src/components/layouts/Header.tsx` — header responsive con nav + LanguageSwitcher + ThemeToggle
+- `src/components/layouts/Footer.tsx` — footer con links, social icons, copyright
+- `src/context/ThemeContext.ts` — definición del ThemeContext
+- `src/context/ThemeProvider.tsx` — provider con lógica de tema (dark default, localStorage)
+- `src/hooks/useTheme.ts` — hook para consumir ThemeContext
+- `src/features/projects-case-study/` — feature de case studies (template dinámico, i18n por proyecto)
+- `src/shared/seo/MetaTags.tsx` — versión compartida del componente MetaTags
+- `public/robots.txt` — abierto a todos los crawlers
+- `public/sitemap.xml` — 4 URLs principales
+- `.atl/skill-registry.md` — registro de skills del proyecto
+- `skills/` — skills locales (react-19, tailwind-4, typescript, zod-4, portfolio-personality)
 
-### Antes de cada módulo (obligatorio)
-- Leer la referencia HTML correspondiente antes de tocar código.
-- Comparar el componente actual contra la referencia y nombrar la diferencia concreta en estructura, jerarquía, tipografía, spacing y estados.
-- Formular una sola hipótesis falsable y una comprobación barata que la pueda refutar.
-- Si el resultado visual no es igual, igual, igual, igual a la referencia, el módulo no se considera terminado.
-- Si la referencia cambia, se rehace el bloque afectado; no se intenta mejorar con criterio propio.
-- No cerrar un módulo por aproximación: el criterio sigue siendo pixel-perfect contra `docs/redesignReferences/`.
+## Skills
+- `react-19` — React 19 APIs y patterns
+- `tailwind-4` — Tailwind 4 con OKLCH tokens y custom variants
+- `typescript` — strict mode, generics, type narrowing
+- `zod-4` — schemas de validación
+- `portfolio-personality` — identidad visual, micro-interacciones, anti-generic design
 
-## 5. El Flujo de Trabajo (SDD Protocol)
-La ejecución DEBE orquestarse con SDD integrando las herramientas de memoria — engram como backend primario (openspec disponible como fallback). Fases obligatorias antes de modificar el código estructural:
-1. sdd-init / sdd-explore - Paneo del repo (revisar carpeta /skills, dependencias).
-2. sdd-propose - Plan de acción y arquitectura por feature.
-3. sdd-spec & sdd-design - Definir interfaces, props y estructura de componentes.
-4. sdd-tasks - Checklist técnico accionable.
-5. sdd-apply - Implementación en código (Acá se codea, NO antes).
-6. sdd-verify - Comprobación contra el HTML de referencia y tests.
+Source of truth: `.atl/skill-registry.md`. Skills globales en `~/.config/opencode/skills/`.
 
-## 6. Flujo de Git y Organización
-- **Branches por Feature:** Una rama nueva y aislada por cada módulo (ej. feat/hero-section, feat/bento-grid).
-- **Commits Convencionales (Strict):** Título en Inglés, Descripción en Español.
-  *Ejemplo:* feat(projects): implement bento grid with framer-motion \n\n Se maquetó la grilla de proyectos adaptando el contenido real y asegurando el soporte i18n.
-- **Push Constante:** Sincronizar el repositorio remoto al finalizar unidades lógicas.
+## Roadmap
 
-## 7. Responsabilidades Clínicas
-- El Agente no debe hacer suposiciones de negocio. Si falta un asset (una foto, un texto), se pide por prompt.
-- El uso de las herramientas de memoria contextual (context7, engram como primario, openspec como fallback) es obligatorio para no perder el hilo entre sesiones.
+### Fase 0 — Foundations & Setup ✅
+Vitest, CI/CD (GitHub Actions), Theme (dark-first), i18n (ES/EN con 14 namespaces), Tailwind 4 + DaisyUI 5.
 
-## 8. Skills y Estructura Base
-### Estructura del Proyecto
-- \coverage/\: Reportes de coverage (Vitest).
-- \docs/redesignReferences/\: Archivos estáticos HTML (referencias visuales únicas para el rediseño).
-- \public/\: Assets estáticos publicables (robots.txt, sitemap, etc).
-- \skills/\: Skills disponibles para el agente IA orientadas al stack del proyecto.
-- \src/\: Directorio raíz principal de la lógica de React.
-  - \src/components/\: Componentes encapsulados como Buttons, Layouts, ProjectCard, etc.
-  - \src/context/\: Proveedores de Contexto (ThemeContext).
-  - \src/data/\: Repositorios estáticos (about.ts, projects.ts).
-  - \src/hooks/\: React custom hooks (e.g. useTheme).
-  - \src/locales/\: Configuración multi-idioma de i18n (es/en).
-  - \src/pages/\: Layouts a nivel de routing (Home, Contact, About, Projects).
-  - \src/routes/\: Enrutadores e integraciones base como AppRouter.
+### Fase 1 — Global Layout & Navigation Rebuild ✅
+Header, Footer, LanguageSwitcher, ThemeToggle reconstruidos desde cero.
 
-### Skills Disponibles
-Los siguientes skills se encuentran dentro del proyecto en la carpeta \skills/\ y definen las convenciones de generación de código:
-- **react-19**: Instrucciones y guías técnicas para trabajar con las APIs de React 19.
-- **tailwind-4**: Reglas de estilos de utilidad, custom themes, y optimizaciones de Tailwind 4.
-- **typescript**: Reglas strict de tipado, interfaces, patterns y safety checks.
-- **zod-4**: Parseo estricto e inferencia de Types para validaciones en schemas de objetos.
-- **portfolio-personality**: Genera portfolios con identidad visual propia, micro-interacciones con propósito, y jerarquía visual clara. Anti-generic design.
+### Fase 2 — Home Page ✅
+Hero section (fade-in animation, stats, CTAs), stack grid, featured project carousel, contact CTA.
 
-El source of truth de skills es `.atl/skill-registry.md`. Algunos skills pueden ser globales (`~/.config/opencode/skills/`).
+### Fase 3 — Projects Directory ✅
+Bento grid con búsqueda y filtros por tecnología, links a repos y demos.
 
-## 9. Roadmap — Estado del Proyecto
+### Fase 4 — Case Studies Template ✅
+`CaseStudyTemplate` dinámico único que renderiza cualquier case study desde `src/features/projects-case-study/`.
 
-Todas las fases del rediseño están completadas. El portfolio está en estado estable con identidad Full Stack, case study de EchoLog incluido, y ajustes de diseño finalizados.
+### Fase 5 — About Me Page ✅
+Hero, stack cards, categorías de skills, habilidades blandas, proyectos destacados, educación, disponibilidad.
 
-### ✅ Fases Completadas
+### Fase 6 — Privacy Page ✅
+Política de privacidad en formato card, sobria y consistente.
 
-- **Fase 0 — Foundations & Setup Strict ✅**
-  Vitest configurado, CI/CD (GitHub Actions) operativo, Theme e i18n establecidos.
+### Fase 7 — Contact & Final Polish ✅
+Formulario de contacto con Zod validation + react-hook-form, layout lado a lado, email via EmailJS.
 
-- **Fase 1R — Global Layout & Navigation Rebuild ✅**
-  Header, Footer, Language Switcher y Theme Toggle reconstruidos desde cero.
+### Fase 8 — Full Stack Identity + EchoLog Case Study ✅
+Identidad actualizada a Full Stack Developer (home, about, meta tags, footer). EchoLog como proyecto principal con case study completo (ES/EN, screenshots, stack detallado).
 
-- **Fase 2 — Home Page & Bento Grid ✅**
-  Hero Section, stats recientes, grilla 2-col de proyectos con framer-motion.
+### Fase 9 — Design Polish ✅
+Stats en hero de homepage, link "Ver todos los proyectos" en Recent Work, redes sociales en footer, ajustes visuales.
 
-- **Fase 3 — Projects Directory ✅**
-  Página de portfolio con búsqueda y filtros por tecnología.
-
-- **Fase 4 — Case Studies Template ✅**
-  `CaseStudyTemplate` dinámico único que renderiza cualquier case study desde datos tipados.
-
-- **Fase 5 — About Me Page ✅**
-  Página About Me reconstruida con hero, stack cards, habilidades, educación.
-
-- **Fase 6 — Privacy Page & Trust Layer ✅**
-  Política de privacidad en formato card, sobria y consistente.
-
-- **Fase 7 — Contact & Final Polish ✅**
-  Formulario de contacto con Zod, layout lado a lado, accesibilidad validada.
-
-- **Fase 8 — Full Stack Identity + EchoLog Case Study ✅**
-  Identidad actualizada de Front-end a Full Stack Developer en todo el sitio. EchoLog agregado como proyecto principal con case study completo (locales EN/ES, ruta, stack, screenshots).
-
-- **Fase 9 — Design Polish ✅**
-  Stats en hero de homepage, link "Ver todos los proyectos" en Recent Work, redes sociales en footer.
-
-- 🔲 Fase 10 — Portfolio Personality Redesign (en progreso en `feat/redesign-portfolio-personality`)
-
-### Notas
-
-- El proyecto sigue el flujo SDD para cambios sustanciales futuros.
-- Toda nueva funcionalidad debe crearse en una **feature branch** con commits convencionales.
+### Fase 10 — GEO & SEO Enhancements 🔲 (en `feat/geo-seo-enhancements`)
+> SDD completo. GEO score actual: 20/100 (Critical). Target: 60+/100.
+- [ ] **Slice A — Prerender + Infra**: static prerender de todas las rutas, Vercel security/cache headers, sitemap mejorado
+- [ ] **Slice B — AI Visibility**: schema JSON-LD, meta tags únicos por ruta en HTML, llms.txt, adaptar MetaTags
+- [ ] **Slice C — Content & Polish**: expansión de contenido a 2,000+ palabras, AGENTS.md rewrite, auditoría de diseño
