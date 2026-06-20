@@ -1,11 +1,11 @@
 {
-  "name": "Ezequiel Fernández",
+  "name": "Ezequiel Fernández — Full Stack Developer",
   "short_name": "Ezequiel",
-  "description": "Portfolio de Ezequiel Fernández — Front-end Developer",
+  "description": "Portfolio de Ezequiel Fernández — Full Stack Developer",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#0b1220",
+  "background_color": "#0a0a0f",
+  "theme_color": "#f59e0b",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -20,11 +20,11 @@
   ],
   "shortcuts": [
     {
-      "name": "Proyectos",
-      "short_name": "Proyectos",
-      "description": "Ver proyectos",
+      "name": "Projects",
+      "short_name": "Projects",
+      "description": "View projects",
       "url": "/projects",
-      "icons": [{ "src": "/icons/shortcut-projects.png", "sizes": "96x96" }]
+      "icons": [{ "src": "/android-chrome-192x192.png", "sizes": "96x96" }]
     }
   ]
 }
