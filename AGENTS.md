@@ -12,7 +12,7 @@
 - **Icons**: @heroicons/react
 - **Testing**: Vitest 4 + React Testing Library + jsdom (80% coverage threshold)
 - **Lint/Format**: ESLint 9 flat config + Prettier
-- **Package Manager**: npm
+- **Package Manager**: pnpm 11
 - **Deploy**: Vercel (automatic from `main`)
 
 ## Architecture
@@ -40,7 +40,7 @@
 - Accesibilidad: WCAG 2.2 AA target, `aria-labelledby` en secciones, `prefers-reduced-motion` respetado, focus-visible rings
 - Performance: Lighthouse 95+ target, fonts preloaded con `preconnect`
 - Never build after changes, never add "Co-Authored-By" to commits
-- ESLint + Prettier: `npm run lint` / `npm run format`
+- ESLint + Prettier: `pnpm run lint` / `pnpm run format`
 
 ## Git Workflow (STRICT)
 1. **Feature branches**: toda tarea arranca en una rama nueva desde `develop`
@@ -48,22 +48,22 @@
 3. **Atomic commits**: un cambio lógico por commit, formato convencional
 4. **Push + PR + Merge**: push a la rama, crear PR a `develop`, mergear — nunca commit directo a `develop` o `main`
 5. **Clean working tree**: sin archivos sin trackear, sin WIP antes del PR
-6. **Lint before push**: `npm run lint` debe pasar
-7. **Tests before merge**: `npm test` debe pasar
+6. **Lint before push**: `pnpm run lint` debe pasar
+7. **Tests before merge**: `pnpm test` debe pasar
 8. **Deploy**: merge a `main` dispara deploy automático a Vercel
 
 ## How to Run
 ```bash
-npm install              # instala dependencias
-npm run dev              # dev server en localhost:5173
-npm run build            # build de producción (tsc + vite build)
-npm run preview          # preview del build
-npm run test             # correr tests
-npm run test:coverage    # tests con coverage
-npm run lint             # ESLint check
-npm run lint:fix         # ESLint auto-fix
-npm run format           # Prettier write
-npm run check            # lint + build + test:coverage (todo junto)
+pnpm install              # instala dependencias
+pnpm run dev              # dev server en localhost:5173
+pnpm run build            # build de producción (tsc + vite build)
+pnpm run preview          # preview del build
+pnpm run test             # correr tests
+pnpm run test:coverage    # tests con coverage
+pnpm run lint             # ESLint check
+pnpm run lint:fix         # ESLint auto-fix
+pnpm run format           # Prettier write
+pnpm run check            # lint + build + test:coverage (todo junto)
 ```
 
 ## Key Files
