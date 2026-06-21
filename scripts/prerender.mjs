@@ -27,20 +27,21 @@ const SRC = path.resolve(__dirname, '..');
 const SITE_URL = 'https://ezefernandez.com';
 
 /* ── Routes ──────────────────────────────────────────────────── */
+/* NOTE: Keep in sync with src/data/route-meta.ts (canonical source) */
 
 const LANGUAGES = ['es', 'en'];
 const ROUTES = [
-  { path: 'home',            i18nFile: 'home',            ns: 'home' },
-  { path: 'about',           i18nFile: 'aboutpage',       ns: 'aboutpage' },
-  { path: 'projects',        i18nFile: 'projects',        ns: 'projects' },
-  { path: 'projects/cinelab',  i18nFile: 'cinelabcasestudy',           ns: 'cinelabcasestudy' },
-  { path: 'projects/movie-dashboard', i18nFile: 'moviedashboardcasestudy', ns: 'moviedashboardcasestudy' },
-  { path: 'projects/chefcitoia', i18nFile: 'chefcitoiacasestudy',      ns: 'chefcitoiacasestudy' },
-  { path: 'projects/nexus-talent', i18nFile: 'nexustalentcasestudy',   ns: 'nexustalentcasestudy' },
-  { path: 'projects/echolog', i18nFile: 'echologcasestudy',            ns: 'echologcasestudy' },
-  { path: 'privacy',         i18nFile: 'privacy',         ns: 'privacy' },
-  { path: 'contact',         i18nFile: 'contact',         ns: 'contact' },
-  { path: 'not-found',       i18nFile: 'notfoundpage',    ns: 'notfoundpage' },
+  { path: 'home',            ns: 'home',            titleKey: 'meta.title',                   descKey: 'meta.description',                schemaType: 'WebPage',        priority: 1.0, changefreq: 'daily',   ogImage: '/og-image.png' },
+  { path: 'about',           ns: 'aboutpage',       titleKey: 'meta.title',                   descKey: 'meta.title',                      schemaType: 'AboutPage',      priority: 0.8, changefreq: 'monthly', ogImage: '/og-image.png' },
+  { path: 'projects',        ns: 'projects',        titleKey: 'meta.title',                   descKey: 'meta.description',                schemaType: 'CollectionPage', priority: 0.9, changefreq: 'weekly',  ogImage: '/og-image.png' },
+  { path: 'projects/cinelab',           ns: 'cinelabcasestudy',          titleKey: 'meta.title', descKey: 'meta.title', schemaType: 'WebPage', priority: 0.7, changefreq: 'monthly', ogImage: '/og-image.png' },
+  { path: 'projects/movie-dashboard',  ns: 'moviedashboardcasestudy',   titleKey: 'meta.title', descKey: 'meta.title', schemaType: 'WebPage', priority: 0.7, changefreq: 'monthly', ogImage: '/og-image.png' },
+  { path: 'projects/chefcitoia',       ns: 'chefcitoiacasestudy',       titleKey: 'meta.title', descKey: 'meta.title', schemaType: 'WebPage', priority: 0.7, changefreq: 'monthly', ogImage: '/og-image.png' },
+  { path: 'projects/nexus-talent',     ns: 'nexustalentcasestudy',      titleKey: 'meta.title', descKey: 'meta.title', schemaType: 'WebPage', priority: 0.7, changefreq: 'monthly', ogImage: '/og-image.png' },
+  { path: 'projects/echolog',          ns: 'echologcasestudy',          titleKey: 'meta.title', descKey: 'meta.title', schemaType: 'WebPage', priority: 0.7, changefreq: 'monthly', ogImage: '/og-image.png' },
+  { path: 'privacy',         ns: 'privacy',         titleKey: 'meta.title',                   descKey: 'meta.description',                schemaType: 'WebPage',        priority: 0.3, changefreq: 'yearly',  ogImage: '/og-image.png' },
+  { path: 'contact',         ns: 'contact',         titleKey: 'meta.contact.title',           descKey: 'meta.contact.description',        schemaType: 'ContactPage',    priority: 0.6, changefreq: 'monthly', ogImage: '/og-image.png' },
+  { path: 'not-found',       ns: 'notfoundpage',    titleKey: 'meta.title',                   descKey: 'meta.description',                schemaType: 'WebPage',        priority: 0.1, changefreq: 'yearly',  ogImage: '/og-image.png' },
 ];
 
 /* ── I18N resources ──────────────────────────────────────────── */
@@ -79,27 +80,72 @@ function tr(lang, ns, key) {
 
 /* ── Helpers ────────────────────────────────────────────────── */
 
+function resolveI18n(lang, route, key) {
+  return tr(lang, route.ns, key) || '';
+}
+
 function metaTitle(lang, route) {
-  const ns = route.ns;
-  if (ns === 'contact') return tr(lang, ns, 'meta.contact.title') || 'Contact';
-  if (ns === 'projects') return tr(lang, ns, 'meta.title') || 'Projects';
-  return tr(lang, ns, 'meta.title') || route.path;
+  return resolveI18n(lang, route, route.titleKey) || route.path;
 }
 
 function metaDesc(lang, route) {
-  const ns = route.ns;
-  if (ns === 'contact') return tr(lang, ns, 'meta.contact.description') || '';
-  if (ns === 'projects') return tr(lang, ns, 'meta.description') || '';
-  return tr(lang, ns, 'meta.description') || '';
+  return resolveI18n(lang, route, route.descKey) || '';
 }
 
-function ogImage(route) {
-  return `${SITE_URL}/og-image.png`;
+function ogImageUrl(route) {
+  return `${SITE_URL}${route.ogImage}`;
 }
 
 function pageUrl(lang, route) {
   const prefix = lang === 'en' ? '/en' : '';
   return `${SITE_URL}${prefix}/${route.path}`;
+}
+
+/* ── JSON-LD Schema builder (mirrors src/data/schema.ts) ─── */
+
+const SITE_AUTHOR = 'Ezequiel Fernández';
+const SITE_DESC = 'Full Stack Developer — portfolio, projects, and case studies';
+
+function buildJsonLdScript(lang, route) {
+  const prefix = lang === 'en' ? '/en' : '';
+  const pageUrl_ = `${SITE_URL}${prefix}/${route.path}`;
+  const graph = [
+    {
+      '@type': 'Person',
+      '@id': `${SITE_URL}/#person`,
+      name: SITE_AUTHOR,
+      url: `${SITE_URL}/about`,
+      jobTitle: 'Full Stack Developer',
+      sameAs: [
+        'https://github.com/ezefernandezyf',
+        'https://linkedin.com/in/ezequiel-fernandez-y-f/',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: `${SITE_AUTHOR} — ${SITE_DESC}`,
+      description: SITE_DESC,
+      publisher: { '@id': `${SITE_URL}/#person` },
+    },
+    {
+      '@type': route.schemaType,
+      '@id': pageUrl_,
+      url: pageUrl_,
+      name: metaTitle(lang, route),
+      description: metaDesc(lang, route),
+      isPartOf: { '@id': `${SITE_URL}/#website` },
+      about: { '@id': `${SITE_URL}/#person` },
+      inLanguage: lang,
+    },
+  ];
+  const json = JSON.stringify(
+    { '@context': 'https://schema.org', '@graph': graph },
+    null,
+    2,
+  );
+  return `<script type="application/ld+json">\n${json}\n</script>`;
 }
 
 /* ── Page content builders (createElement, no TSX) ──────────── */
@@ -292,32 +338,35 @@ function injectIntoHtml(templateHtml, renderedContent, lang, route) {
   const existingMeta = document.querySelector('meta[name="description"]');
   if (existingMeta) existingMeta.remove();
 
-  // Add new title
+  // Add new title with prerendered marker
   const titleText = metaTitle(lang, route);
   const titleEl = document.createElement('title');
   titleEl.textContent = titleText;
+  titleEl.setAttribute('data-prerendered', 'true');
   document.head.appendChild(titleEl);
 
   // Add meta description
   const descText = metaDesc(lang, route);
   if (descText) {
-    const metaDesc = document.createElement('meta');
-    metaDesc.setAttribute('name', 'description');
-    metaDesc.setAttribute('content', descText);
-    document.head.appendChild(metaDesc);
+    const metaDescEl = document.createElement('meta');
+    metaDescEl.setAttribute('name', 'description');
+    metaDescEl.setAttribute('content', descText);
+    metaDescEl.setAttribute('data-prerendered', 'true');
+    document.head.appendChild(metaDescEl);
   }
 
-  // Add canonical URL
+  // Add canonical URL with prerendered marker
   const canonical = document.createElement('link');
   canonical.setAttribute('rel', 'canonical');
   canonical.setAttribute('href', pageUrl(lang, route));
+  canonical.setAttribute('data-prerendered', 'true');
   document.head.appendChild(canonical);
 
-  // Add OG meta tags
+  // Add OG meta tags with prerendered markers
   const ogTags = [
     { property: 'og:title', content: titleText },
     { property: 'og:description', content: descText || titleText },
-    { property: 'og:image', content: ogImage(route) },
+    { property: 'og:image', content: ogImageUrl(route) },
     { property: 'og:url', content: pageUrl(lang, route) },
     { property: 'og:type', content: 'website' },
   ];
@@ -325,22 +374,28 @@ function injectIntoHtml(templateHtml, renderedContent, lang, route) {
     const el = document.createElement('meta');
     el.setAttribute('property', tag.property);
     el.setAttribute('content', tag.content);
+    el.setAttribute('data-prerendered', 'true');
     document.head.appendChild(el);
   }
 
-  // Add Twitter card meta
+  // Add Twitter card meta with prerendered markers
   const twitterTags = [
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: titleText },
     { name: 'twitter:description', content: descText || titleText },
-    { name: 'twitter:image', content: ogImage(route) },
+    { name: 'twitter:image', content: ogImageUrl(route) },
   ];
   for (const tag of twitterTags) {
     const el = document.createElement('meta');
     el.setAttribute('name', tag.name);
     el.setAttribute('content', tag.content);
+    el.setAttribute('data-prerendered', 'true');
     document.head.appendChild(el);
   }
+
+  // Inject JSON-LD structured data (Task B4)
+  const jsonLdScript = buildJsonLdScript(lang, route);
+  document.head.insertAdjacentHTML('beforeend', `\n    ${jsonLdScript}\n    `);
 
   // Add hreflang alternate links (Task A5)
   const hreflangHtml = buildHreflangLinks(route);

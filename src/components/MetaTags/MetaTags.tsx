@@ -12,7 +12,7 @@ type Props = {
 const SITE_URL = (import.meta.env.VITE_SITE_URL as string) ?? 'http://ezefernandez.com';
 const DEFAULT_TITLE = 'Ezequiel Fernández - Full Stack Developer';
 const DEFAULT_DESC =
-  'Front-end Developer especializado en React y TypeScript. Construyo aplicaciones web modernas, optimizadas y accesibles.';
+  'Full Stack Developer especializado en React, TypeScript y Node.js. Construyo aplicaciones web modernas, optimizadas y accesibles.';
 const DEFAULT_IMAGE = '/og-image.png';
 
 function toAbsolute(path?: string) {
@@ -24,40 +24,65 @@ function toAbsolute(path?: string) {
   }
 }
 
-function setOrCreateMeta(attrName: 'name' | 'property', attrValue: string, content: string) {
-  const selector = `meta[${attrName}="${attrValue}"]`;
-  let el = document.head.querySelector(selector) as HTMLMetaElement | null;
-  if (el) {
-    const prev = el.getAttribute('content');
-    el.setAttribute('data-prev-content', prev ?? '');
-    el.setAttribute('content', content);
-    return el;
-  } else {
-    el = document.createElement('meta');
-    el.setAttribute(attrName, attrValue);
-    el.setAttribute('content', content);
-    el.setAttribute('data-created-by', 'MetaTags');
-    document.head.appendChild(el);
-    return el;
-  }
+/**
+ * Skip elements that were prerendered — they already have the correct values
+ * and should not be duplicated or overwritten by client-side hydration.
+ * `document.title` is still updated via SPA navigation (handled in the effect).
+ */
+function isPrerendered(el: Element | null): boolean {
+  return el?.getAttribute('data-prerendered') === 'true';
 }
 
-function setOrCreateLink(rel: string, href: string) {
-  const selector = `link[rel="${rel}"]`;
-  let el = document.head.querySelector(selector) as HTMLLinkElement | null;
-  if (el) {
-    const prev = el.getAttribute('href');
-    el.setAttribute('data-prev-href', prev ?? '');
-    el.setAttribute('href', href);
-    return el;
-  } else {
-    el = document.createElement('link');
-    el.setAttribute('rel', rel);
-    el.setAttribute('href', href);
-    el.setAttribute('data-created-by', 'MetaTags');
-    document.head.appendChild(el);
-    return el;
+function setOrCreateMeta(
+  attrName: 'name' | 'property',
+  attrValue: string,
+  content: string,
+): HTMLMetaElement | null {
+  const selector = `meta[${attrName}="${attrValue}"]`;
+  const existing = document.head.querySelector(selector) as HTMLMetaElement | null;
+
+  // If prerendered, preserve original — don't override
+  if (isPrerendered(existing)) {
+    return null;
   }
+
+  if (existing) {
+    const prev = existing.getAttribute('content');
+    existing.setAttribute('data-prev-content', prev ?? '');
+    existing.setAttribute('content', content);
+    return existing;
+  }
+
+  const el = document.createElement('meta');
+  el.setAttribute(attrName, attrValue);
+  el.setAttribute('content', content);
+  el.setAttribute('data-created-by', 'MetaTags');
+  document.head.appendChild(el);
+  return el;
+}
+
+function setOrCreateLink(rel: string, href: string): HTMLLinkElement | null {
+  const selector = `link[rel="${rel}"]`;
+  const existing = document.head.querySelector(selector) as HTMLLinkElement | null;
+
+  // If prerendered, preserve original
+  if (isPrerendered(existing)) {
+    return null;
+  }
+
+  if (existing) {
+    const prev = existing.getAttribute('href');
+    existing.setAttribute('data-prev-href', prev ?? '');
+    existing.setAttribute('href', href);
+    return existing;
+  }
+
+  const el = document.createElement('link');
+  el.setAttribute('rel', rel);
+  el.setAttribute('href', href);
+  el.setAttribute('data-created-by', 'MetaTags');
+  document.head.appendChild(el);
+  return el;
 }
 
 export const MetaTags = ({
@@ -77,7 +102,7 @@ export const MetaTags = ({
     const finalUrl = pathname ? new URL(pathname, SITE_URL).toString() : SITE_URL;
     const finalImage = toAbsolute(image ?? DEFAULT_IMAGE);
 
-    const createdEls: Element[] = [];
+    const createdEls: (Element | null)[] = [];
 
     createdEls.push(setOrCreateMeta('name', 'description', finalDesc));
     createdEls.push(
@@ -100,7 +125,7 @@ export const MetaTags = ({
 
     return () => {
       document.title = prevTitle;
-      createdEls.forEach((el) => {
+      createdEls.filter(Boolean).forEach((el) => {
         if (el instanceof HTMLMetaElement) {
           const createdFlag = el.getAttribute('data-created-by');
           if (createdFlag === 'MetaTags') {

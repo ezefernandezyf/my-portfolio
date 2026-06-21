@@ -32,14 +32,14 @@ Chain strategy: stacked-to-develop
 
 ## Slice B — AI Visibility
 
-- [ ] B1. Create `src/data/route-meta.ts` — `RouteMeta` interface + 11-route meta mapping with i18n keys, schema types, ogImage. File: `src/data/route-meta.ts`. Effort: M.
-- [ ] B2. Create `src/data/schema.ts` — `buildJsonLdGraph()` returning `<script type="application/ld+json">` with Person, WebSite, WebPage nodes. File: `src/data/schema.ts`. Effort: M.
-- [ ] B3. Update prerender to inject per-route title, description, OG, Twitter, canonical from route-meta. File: `scripts/prerender.mjs`. Deps: B1. Effort: S.
-- [ ] B4. Update prerender to inject JSON-LD `@graph` block into `<head>`. File: `scripts/prerender.mjs`. Deps: B2. Effort: S.
-- [ ] B5. Create `public/llms.txt` and `public/.well-known/llms.txt` with AI crawler site summary. File: `public/llms.txt`, `public/.well-known/llms.txt`. Effort: S.
-- [ ] B6. Replace `public/sitemap.xml` — 22 URLs with hreflang, lastmod, changefreq. File: `public/sitemap.xml`. Effort: S.
-- [ ] B7. Update `MetaTags.tsx` — skip elements with `data-prerendered="true"`; fix `DEFAULT_DESC` to "Full Stack Developer". File: `src/components/MetaTags/MetaTags.tsx`. Deps: B3. Effort: M.
-- [ ] B8. Verify: `pnpm build` → unique meta per page, valid JSON-LD; `pnpm test` passes; no dupe meta. Effort: S.
+- [x] B1. Create `src/data/route-meta.ts` — `RouteMeta` interface + 11-route meta mapping with i18n keys, schema types, ogImage. File: `src/data/route-meta.ts`. Effort: M.
+- [x] B2. Create `src/data/schema.ts` — `buildJsonLdGraph()` returning `<script type="application/ld+json">` with Person, WebSite, WebPage nodes. File: `src/data/schema.ts`. Effort: M.
+- [x] B3. Update prerender to inject per-route title, description, OG, Twitter, canonical from route-meta. File: `scripts/prerender.mjs`. Deps: B1. Effort: S.
+- [x] B4. Update prerender to inject JSON-LD `@graph` block into `<head>`. File: `scripts/prerender.mjs`. Deps: B2. Effort: S.
+- [x] B5. Create `public/llms.txt` and `public/.well-known/llms.txt` with AI crawler site summary. File: `public/llms.txt`, `public/.well-known/llms.txt`. Effort: S.
+- [x] B6. Replace `public/sitemap.xml` — 22 URLs with hreflang, lastmod, changefreq. File: `public/sitemap.xml`. Effort: S.
+- [x] B7. Update `MetaTags.tsx` — skip elements with `data-prerendered="true"`; fix `DEFAULT_DESC` to "Full Stack Developer". File: `src/components/MetaTags/MetaTags.tsx`. Deps: B3. Effort: M.
+- [x] B8. Verify: `pnpm build` → unique meta per page, valid JSON-LD; `pnpm test` passes; no dupe meta. Effort: S.
 
 ## Slice C — Design Token Fixes
 
