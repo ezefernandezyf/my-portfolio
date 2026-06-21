@@ -28,6 +28,23 @@ export const AppRoutes = (): React.JSX.Element => {
         <Route path="not-found" element={<NotFoundPage />} />
         <Route path="*" element={<Navigate to="/not-found" replace />} />
       </Route>
+
+      {/* English route group under /en/* prefix */}
+      <Route path="/en" element={<MainLayout />}>
+        <Route index element={<Navigate to="home" replace />} />
+        <Route path="home" element={<HomePage />} />
+        <Route path="about" element={<AboutPage />} />
+        <Route path="projects" element={<ProjectsPage />} />
+        <Route path="/en/projects/cinelab" element={<ProjectCaseStudyPage projectId="cinelab" namespace="cinelabcasestudy" />} />
+        <Route path="/en/projects/movie-dashboard" element={<ProjectCaseStudyPage projectId="movie-dashboard" namespace="moviedashboardcasestudy" />} />
+        <Route path="/en/projects/chefcitoia" element={<ProjectCaseStudyPage projectId="chefcitoia" namespace="chefcitoiacasestudy" />} />
+        <Route path="/en/projects/nexus-talent" element={<ProjectCaseStudyPage projectId="nexus-talent" namespace="nexustalentcasestudy" />} />
+        <Route path="/en/projects/echolog" element={<ProjectCaseStudyPage projectId="echolog" namespace="echologcasestudy" />} />
+        <Route path="privacy" element={<PrivacyPage />} />
+        <Route path="contact" element={<ContactPage />} />
+        <Route path="not-found" element={<NotFoundPage />} />
+        <Route path="*" element={<Navigate to="/en/not-found" replace />} />
+      </Route>
     </Routes>
     </Suspense>
   );
