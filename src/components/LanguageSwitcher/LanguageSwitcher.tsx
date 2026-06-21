@@ -1,13 +1,24 @@
 import { useTranslation } from 'react-i18next';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export const LanguageSwitcher = (): React.JSX.Element => {
   const { i18n } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
   const current = i18n.language?.startsWith('en') ? 'en' : 'es';
 
   const changeTo = async (lng: 'es' | 'en') => {
+    if (lng === current) return;
     try {
       await i18n.changeLanguage(lng);
       document.documentElement.lang = lng;
+      // Redirect to locale-specific URL
+      const path = location.pathname;
+      if (lng === 'en') {
+        navigate(`/en${path}`);
+      } else {
+        navigate(path.replace(/^\/en/, '') || '/');
+      }
     } catch (err) {
       console.error('i18n changeLanguage error:', err);
     }

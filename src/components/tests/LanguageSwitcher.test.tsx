@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { MemoryRouter } from 'react-router-dom';
 import { describe, it, vi, afterEach } from 'vitest';
 
 let changeLanguageBehavior = () =>
   new Promise<void>((resolve) => {
     setTimeout(() => resolve(), 0);
   });
-
 
 vi.mock('react-i18next', () => {
   return {
@@ -29,6 +29,14 @@ vi.mock('react-i18next', () => {
 
 import { LanguageSwitcher } from '../';
 
+function renderWithRouter() {
+  return render(
+    <MemoryRouter initialEntries={['/about']}>
+      <LanguageSwitcher />
+    </MemoryRouter>
+  );
+}
+
 describe('LanguageSwitcher (UI)', () => {
   afterEach(() => {
     vi.resetAllMocks();
@@ -39,8 +47,8 @@ describe('LanguageSwitcher (UI)', () => {
     document.documentElement.lang = '';
   });
 
-  it('marca el idioma activo y actualiza document.documentElement.lang', async () => {
-    render(<LanguageSwitcher />);
+  it('cambia a inglés y actualiza document.documentElement.lang', async () => {
+    renderWithRouter();
     const user = userEvent.setup();
 
     const esBtn = screen.getByRole('button', { name: /cambiar a español/i });
@@ -52,22 +60,22 @@ describe('LanguageSwitcher (UI)', () => {
     await user.click(enBtn);
 
     await waitFor(() => {
-      expect(enBtn).toHaveAttribute('aria-pressed', 'true');
       expect(esBtn).toHaveAttribute('aria-pressed', 'false');
+      expect(enBtn).toHaveAttribute('aria-pressed', 'true');
       expect(document.documentElement.lang).toBe('en');
     });
   });
 
-  it('permite volver a español y mantiene el estado sincronizado', async () => {
-    render(<LanguageSwitcher />);
+  it('no hace nada si ya está en el idioma seleccionado', async () => {
+    renderWithRouter();
     const user = userEvent.setup();
 
     const esBtn = screen.getByRole('button', { name: /cambiar a español/i });
-    await user.click(esBtn);
+    await user.click(esBtn); // already ES
 
     await waitFor(() => {
       expect(esBtn).toHaveAttribute('aria-pressed', 'true');
-      expect(document.documentElement.lang).toBe('es');
+      expect(document.documentElement.lang).toBe(''); // not changed
     });
   });
 
@@ -75,7 +83,7 @@ describe('LanguageSwitcher (UI)', () => {
     const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
     changeLanguageBehavior = () => Promise.reject(new Error('boom'));
 
-    render(<LanguageSwitcher />);
+    renderWithRouter();
     const user = userEvent.setup();
 
     const enBtn = screen.getByRole('button', { name: /switch to english/i });
