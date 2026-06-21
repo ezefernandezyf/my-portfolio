@@ -252,8 +252,9 @@ function buildPageContent(lang, route) {
 
   // Case studies (cinelabcasestudy, moviedashboardcasestudy, ...)
   if (ns.endsWith('casestudy')) {
-    const title = getVal(content, 'header.title') || route.path.split('/').pop() || 'Case Study';
-    const short = getVal(content, 'header.short') || '';
+    const interp = route.i18nInterpolation || {};
+    const title = tr(lang, ns, 'header.title', interp) || route.path.split('/').pop() || 'Case Study';
+    const short = tr(lang, ns, 'header.short', interp) || '';
     const summaryH = getVal(content, 'summary.heading') || '';
     const summaryT = getVal(content, 'summary.text') || '';
     const problemH = getVal(content, 'problem.heading') || '';
