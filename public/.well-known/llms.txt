@@ -4,15 +4,15 @@
 
 ## About
 
-Full Stack Developer especializado en arquitecturas accesibles, APIs REST e interfaces de alto rendimiento. 15+ años de experiencia. Stack principal: React 19, TypeScript 5.9, Node.js, Express, PostgreSQL.
+Full Stack Developer especializado en arquitecturas accesibles, APIs REST e interfaces de alto rendimiento. Stack principal: React 19, TypeScript, Node.js, Express, PostgreSQL, Prisma.
 
 ## Skills
 
-- **Frontend**: React 19, TypeScript 5.9 (strict), Vite 7, Tailwind CSS 4, DaisyUI 5, React Router 7
-- **Backend**: Node.js, Express, REST APIs, PostgreSQL, TypeORM
-- **Testing**: Vitest 4, React Testing Library, Playwright
-- **DevOps**: Docker, Vercel, GitHub Actions, CI/CD
-- **Arquitectura**: DDD, Clean Architecture, Screaming Architecture, Atomic Design
+- **Frontend**: React 19, TypeScript 5.9 (strict), Vite 7, Tailwind CSS 4, React Router 7, TanStack Query
+- **Backend**: Node.js, Express, REST APIs, PostgreSQL, Prisma ORM
+- **Testing**: Vitest 4, React Testing Library
+- **DevOps**: Vercel, GitHub Actions, CI/CD
+- **Arquitectura**: Clean Architecture, Screaming Architecture, DDD
 - **Herramientas**: Git, ESLint, Prettier, pnpm
 
 ## Projects
@@ -21,7 +21,7 @@ Full Stack Developer especializado en arquitecturas accesibles, APIs REST e inte
 - [Nexus Talent](https://github.com/ezefernandezyf/nexus-talent) — Plataforma de reclutamiento con autenticación, matching de candidatos y dashboard de métricas.
 - [Movie Management Dashboard](https://github.com/ezefernandezyf/movie-dashboard) — Aplicación de búsqueda de películas con filtros, favoritos y recomendaciones.
 - [CinemaLab](https://github.com/ezefernandezyf/cinelab) — Catálogo cinematográfico con TMDB, autenticación y dashboard admin.
-- [IA Recipe Generator](https://github.com/ezefernandezyf/IA-Recipe-Generator) — Generador de recetas con IA. Full-stack con autenticación y panel admin.
+- [ChefcitoIA](https://github.com/ezefernandezyf/ia-recipe-generator) — Generador de recetas con IA. Integración con API de IA, manejo de errores con AbortController.
 
 ## Site Structure
 
@@ -39,8 +39,8 @@ Full Stack Developer especializado en arquitecturas accesibles, APIs REST e inte
 | `/en/projects/cinelab` | CinemaLab case study | EN |
 | `/projects/movie-dashboard` | Movie Dashboard case study | ES |
 | `/en/projects/movie-dashboard` | Movie Dashboard case study | EN |
-| `/projects/chefcitoia` | IA Recipe Generator case study | ES |
-| `/en/projects/chefcitoia` | IA Recipe Generator case study | EN |
+| `/projects/chefcitoia` | ChefcitoIA case study | ES |
+| `/en/projects/chefcitoia` | ChefcitoIA case study | EN |
 | `/projects/nexus-talent` | Nexus Talent case study | ES |
 | `/en/projects/nexus-talent` | Nexus Talent case study | EN |
 | `/contact` | Contact form | ES |
@@ -52,4 +52,4 @@ Full Stack Developer especializado en arquitecturas accesibles, APIs REST e inte
 
 - GitHub: [github.com/ezefernandezyf](https://github.com/ezefernandezyf)
 - LinkedIn: [linkedin.com/in/ezequiel-fernandez-y-f/](https://linkedin.com/in/ezequiel-fernandez-y-f/)
-- Email: ezequiel@ezefernandez.com
+- Email: ezefernandezyf@gmail.com
