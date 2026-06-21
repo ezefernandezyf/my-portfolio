@@ -34,7 +34,7 @@ const ROUTES = [
   { path: 'home',            ns: 'home',            titleKey: 'meta.title',                   descKey: 'meta.description',                schemaType: 'WebPage',        priority: 1.0, changefreq: 'daily',   ogImage: '/og-image.png' },
   { path: 'about',           ns: 'aboutpage',       titleKey: 'meta.title',                   descKey: 'meta.title',                      schemaType: 'AboutPage',      priority: 0.8, changefreq: 'monthly', ogImage: '/og-image.png' },
   { path: 'projects',        ns: 'projects',        titleKey: 'meta.title',                   descKey: 'meta.description',                schemaType: 'CollectionPage', priority: 0.9, changefreq: 'weekly',  ogImage: '/og-image.png' },
-  { path: 'projects/cinelab',           ns: 'cinelabcasestudy',          titleKey: 'meta.title', descKey: 'meta.title', schemaType: 'WebPage', priority: 0.7, changefreq: 'monthly', ogImage: '/og-image.png' },
+  { path: 'projects/cinelab',           ns: 'cinelabcasestudy',          titleKey: 'meta.title', descKey: 'meta.title', schemaType: 'WebPage', priority: 0.7, changefreq: 'monthly', ogImage: '/og-image.png', i18nInterpolation: { name: 'CineLab' } },
   { path: 'projects/movie-dashboard',  ns: 'moviedashboardcasestudy',   titleKey: 'meta.title', descKey: 'meta.title', schemaType: 'WebPage', priority: 0.7, changefreq: 'monthly', ogImage: '/og-image.png' },
   { path: 'projects/chefcitoia',       ns: 'chefcitoiacasestudy',       titleKey: 'meta.title', descKey: 'meta.title', schemaType: 'WebPage', priority: 0.7, changefreq: 'monthly', ogImage: '/og-image.png' },
   { path: 'projects/nexus-talent',     ns: 'nexustalentcasestudy',      titleKey: 'meta.title', descKey: 'meta.title', schemaType: 'WebPage', priority: 0.7, changefreq: 'monthly', ogImage: '/og-image.png' },
@@ -72,24 +72,29 @@ function getVal(obj, key) {
   return key.split('.').reduce((cur, k) => (cur && typeof cur === 'object' ? cur[k] : undefined), obj) ?? '';
 }
 
-function tr(lang, ns, key) {
+function tr(lang, ns, key, interpolation = {}) {
   const nsData = getNs(lang, ns);
-  const val = getVal(nsData, key);
-  return typeof val === 'string' ? val : key;
+  let val = getVal(nsData, key);
+  if (typeof val !== 'string') return key;
+  // Resolve i18next-style {{variable}} interpolation
+  for (const [varName, varValue] of Object.entries(interpolation)) {
+    val = val.replaceAll(`{{${varName}}}`, varValue);
+  }
+  return val;
 }
 
 /* ── Helpers ────────────────────────────────────────────────── */
 
-function resolveI18n(lang, route, key) {
-  return tr(lang, route.ns, key) || '';
+function resolveI18n(lang, route, key, interpolation = {}) {
+  return tr(lang, route.ns, key, interpolation) || '';
 }
 
 function metaTitle(lang, route) {
-  return resolveI18n(lang, route, route.titleKey) || route.path;
+  return resolveI18n(lang, route, route.titleKey, route.i18nInterpolation) || route.path;
 }
 
 function metaDesc(lang, route) {
-  return resolveI18n(lang, route, route.descKey) || '';
+  return resolveI18n(lang, route, route.descKey, route.i18nInterpolation) || '';
 }
 
 function ogImageUrl(route) {
