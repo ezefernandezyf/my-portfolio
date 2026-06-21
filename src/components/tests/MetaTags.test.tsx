@@ -71,7 +71,7 @@ describe('MetaTags', () => {
 
     expect(document.title).toBe('Ezequiel Fernández - Full Stack Developer');
     expect(existingDescription.getAttribute('content')).toBe(
-      'Front-end Developer especializado en React y TypeScript. Construyo aplicaciones web modernas, optimizadas y accesibles.',
+      'Full Stack Developer especializado en React, TypeScript y Node.js. Construyo aplicaciones web modernas, optimizadas y accesibles.',
     );
     expect(existingCanonical.getAttribute('href')).toMatch(/^https?:\/\/ezefernandez\.com$/);
 

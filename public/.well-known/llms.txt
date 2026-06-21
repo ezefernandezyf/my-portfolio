@@ -1,0 +1,55 @@
+# Ezequiel Fernández — Full Stack Developer
+
+> Portfolio personal y profesional. Sitio estático, sin backend.
+
+## About
+
+Full Stack Developer especializado en arquitecturas accesibles, APIs REST e interfaces de alto rendimiento. 15+ años de experiencia. Stack principal: React 19, TypeScript 5.9, Node.js, Express, PostgreSQL.
+
+## Skills
+
+- **Frontend**: React 19, TypeScript 5.9 (strict), Vite 7, Tailwind CSS 4, DaisyUI 5, React Router 7
+- **Backend**: Node.js, Express, REST APIs, PostgreSQL, TypeORM
+- **Testing**: Vitest 4, React Testing Library, Playwright
+- **DevOps**: Docker, Vercel, GitHub Actions, CI/CD
+- **Arquitectura**: DDD, Clean Architecture, Screaming Architecture, Atomic Design
+- **Herramientas**: Git, ESLint, Prettier, pnpm
+
+## Projects
+
+- [EchoLog](https://github.com/ezefernandezyf/echolog) — SaaS multi-tenant de feedback para productos. Boards, votos, comentarios, gestión de workspaces. Full-stack TypeScript.
+- [Nexus Talent](https://github.com/ezefernandezyf/nexus-talent) — Plataforma de reclutamiento con autenticación, matching de candidatos y dashboard de métricas.
+- [Movie Management Dashboard](https://github.com/ezefernandezyf/movie-dashboard) — Aplicación de búsqueda de películas con filtros, favoritos y recomendaciones.
+- [CinemaLab](https://github.com/ezefernandezyf/cinelab) — Catálogo cinematográfico con TMDB, autenticación y dashboard admin.
+- [IA Recipe Generator](https://github.com/ezefernandezyf/IA-Recipe-Generator) — Generador de recetas con IA. Full-stack con autenticación y panel admin.
+
+## Site Structure
+
+| Route | Description | Lang |
+|-------|-------------|------|
+| `/home` | Home | ES |
+| `/en/home` | Home | EN |
+| `/about` | About me | ES |
+| `/en/about` | About me | EN |
+| `/projects` | Projects directory | ES |
+| `/en/projects` | Projects directory | EN |
+| `/projects/echolog` | EchoLog case study | ES |
+| `/en/projects/echolog` | EchoLog case study | EN |
+| `/projects/cinelab` | CinemaLab case study | ES |
+| `/en/projects/cinelab` | CinemaLab case study | EN |
+| `/projects/movie-dashboard` | Movie Dashboard case study | ES |
+| `/en/projects/movie-dashboard` | Movie Dashboard case study | EN |
+| `/projects/chefcitoia` | IA Recipe Generator case study | ES |
+| `/en/projects/chefcitoia` | IA Recipe Generator case study | EN |
+| `/projects/nexus-talent` | Nexus Talent case study | ES |
+| `/en/projects/nexus-talent` | Nexus Talent case study | EN |
+| `/contact` | Contact form | ES |
+| `/en/contact` | Contact form | EN |
+| `/privacy` | Privacy policy | ES |
+| `/en/privacy` | Privacy policy | EN |
+
+## Contact
+
+- GitHub: [github.com/ezefernandezyf](https://github.com/ezefernandezyf)
+- LinkedIn: [linkedin.com/in/ezequiel-fernandez-y-f/](https://linkedin.com/in/ezequiel-fernandez-y-f/)
+- Email: ezequiel@ezefernandez.com
