@@ -123,7 +123,7 @@ function buildJsonLdScript(lang, route) {
       jobTitle: 'Full Stack Developer',
       sameAs: [
         'https://github.com/ezefernandezyf',
-        'https://linkedin.com/in/ezequiel-fernandez-y-f/',
+        'https://www.linkedin.com/in/ezequiel-fernandez-59a21a387/',
       ],
     },
     {

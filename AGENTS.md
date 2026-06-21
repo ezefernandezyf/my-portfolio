@@ -134,8 +134,25 @@ Identidad actualizada a Full Stack Developer (home, about, meta tags, footer). E
 ### Fase 9 — Design Polish ✅
 Stats en hero de homepage, link "Ver todos los proyectos" en Recent Work, redes sociales en footer, ajustes visuales.
 
-### Fase 10 — GEO & SEO Enhancements 🔲 (en `feat/geo-seo-enhancements`)
-> SDD completo. GEO score actual: 20/100 (Critical). Target: 60+/100.
-- [ ] **Slice A — Prerender + Infra**: static prerender de todas las rutas, Vercel security/cache headers, sitemap mejorado
-- [ ] **Slice B — AI Visibility**: schema JSON-LD, meta tags únicos por ruta en HTML, llms.txt, adaptar MetaTags
-- [ ] **Slice C — Content & Polish**: expansión de contenido a 2,000+ palabras, AGENTS.md rewrite, auditoría de diseño
+### Fase 10 — GEO & SEO Enhancements ✅
+> SDD completo. GEO score: 20/100 → 54/100 (+34 puntos).
+- [x] **Slice A — Prerender + Infra**: static prerender 22 páginas, Vercel security/cache headers, hreflang
+- [x] **Slice B — AI Visibility**: schema JSON-LD @graph, meta tags únicos por ruta, llms.txt, sitemap 22 URLs, MetaTags adapt
+- [x] **Slice C — Content & Polish**: fix CSS tokens huérfanos, AGENTS.md rewrite, favicons regenerados
+- [x] Migración npm → pnpm 11, CI Node 22
+- [x] Redirect raíz `/` → `/home` (fix post-audit)
+
+### Fase 11 — Diseño: Personalidad Visual 🔲 (en `feat/design-audit-improvements`)
+> Auditoría de diseño completada (score: 72/100). Mejoras priorizadas según portfolio-personality skill.
+
+Prioridad (top 3):
+- [ ] **Stagger animation en grilla de proyectos** — cards aparecen secuencialmente al scrollear (50ms delay)
+- [ ] **Skip-to-content link** — primer elemento focusable, requerido WCAG 2.2 AA
+- [ ] **Dark/light mood diferenciado** — light mode con personalidad propia, no solo colores invertidos
+
+Segunda tanda:
+- [ ] Layout asimétrico: alternar secciones centradas con alineadas a izquierda
+- [ ] Hover morphing mejorado en cards (shadow + translateY)
+- [ ] Unificar escala de H2
+- [ ] Scroll progress en case studies
+- [ ] Foto de perfil más arriba en AboutPage
