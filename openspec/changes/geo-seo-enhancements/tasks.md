@@ -43,6 +43,6 @@ Chain strategy: stacked-to-develop
 
 ## Slice C — Design Token Fixes
 
-- [ ] C1. Replace orphaned MD3 tokens in `PrivacyPage.tsx` with `@theme` equivalents per design mapping. File: `src/pages/PrivacyPage.tsx`. Effort: S.
-- [ ] C2. Replace orphaned MD3 tokens in `CaseStudyTemplate.tsx`; replace local `fadeInUp()` with `.animate-fade-in-up`. File: `src/pages/Projects/CaseStudyTemplate.tsx`. Effort: M.
-- [ ] C3. Verify: `pnpm test` passes; both pages render with correct tokens; no visual regression. Effort: S.
+- [x] C1. Replace orphaned MD3 tokens in `PrivacyPage.tsx` with `@theme` equivalents per design mapping. File: `src/pages/PrivacyPage.tsx`. Effort: S.
+- [x] C2. Replace orphaned MD3 tokens in `CaseStudyTemplate.tsx`; replace local `fadeInUp()` with `.animate-fade-in-up`. File: `src/pages/Projects/CaseStudyTemplate.tsx`. Effort: M.
+- [x] C3. Verify: `pnpm test` passes; both pages render with correct tokens; no visual regression. Effort: S.

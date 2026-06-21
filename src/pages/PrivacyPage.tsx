@@ -44,28 +44,28 @@ export const PrivacyPage = (): React.JSX.Element => {
         <div className="site-container space-y-24">
           <section className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end" style={fadeInUp()}>
             <div className="lg:col-span-8">
-              <p className="mb-4 font-label text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-outline" style={fadeInUp(0.08)}>
+              <p className="mb-4 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-border" style={fadeInUp(0.08)}>
                 Privacy & Trust
               </p>
-              <h1 className="font-headline text-[2.75rem] font-medium leading-tight tracking-[-0.03em] text-on-surface sm:text-[3.25rem]" style={fadeInUp(0.16)}>
+              <h1 className="font-display text-[2.75rem] font-medium leading-tight tracking-[-0.03em] text-text-primary sm:text-[3.25rem]" style={fadeInUp(0.16)}>
                 {t('title')}
               </h1>
-              <p className="mt-6 max-w-[60ch] text-[1.125rem] leading-relaxed text-on-surface-variant" style={fadeInUp(0.24)}>
+              <p className="mt-6 max-w-[60ch] text-[1.125rem] leading-relaxed text-text-secondary" style={fadeInUp(0.24)}>
                 {t('intro')}
               </p>
             </div>
 
-            <aside className="lg:col-span-4 lg:border-l lg:border-outline-variant/20 lg:pl-12" style={fadeInUp(0.32)}>
-              <div className="rounded-lg border border-outline-variant/20 bg-surface-container-lowest p-6">
-                <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-outline">
+            <aside className="lg:col-span-4 lg:border-l lg:border-border/20 lg:pl-12" style={fadeInUp(0.32)}>
+              <div className="rounded-lg border border-border/20 bg-surface p-6">
+                <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-border">
                   {t('lastUpdated', { date: lastUpdated })}
                 </p>
-                <p className="mt-4 text-sm leading-relaxed text-on-surface-variant">
+                <p className="mt-4 text-sm leading-relaxed text-text-secondary">
                   {t('note')}
                 </p>
                 <Link
                   to="/contact"
-                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.05em] text-primary-fixed underline-offset-4 hover:underline"
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.05em] text-accent underline-offset-4 hover:underline"
                 >
                   {t('links.contact')}
                   <ArrowTopRightOnSquareIcon className="h-4 w-4" aria-hidden="true" />
@@ -83,22 +83,22 @@ export const PrivacyPage = (): React.JSX.Element => {
               return (
                 <article
                   key={section.key}
-                  className={`rounded-lg border border-outline-variant/20 bg-surface-container-lowest p-8 transition-colors duration-200 hover:bg-surface-container-high ${section.key === 'contact' ? 'lg:col-span-2' : ''}`}
+                  className={`rounded-lg border border-border/20 bg-surface p-8 transition-colors duration-200 hover:bg-surface-elevated ${section.key === 'contact' ? 'lg:col-span-2' : ''}`}
                 >
-                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-surface-container-low text-primary-fixed">
+                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-surface text-accent">
                     <Icon className="h-6 w-6" aria-hidden="true" />
                   </div>
-                  <h2 className="mb-4 text-[1.125rem] font-medium text-on-surface">{heading}</h2>
+                  <h2 className="mb-4 text-[1.125rem] font-medium text-text-primary">{heading}</h2>
                   {section.key === 'contact' ? (
-                    <p className="max-w-[60ch] text-[0.875rem] leading-relaxed text-on-surface-variant">
+                    <p className="max-w-[60ch] text-[0.875rem] leading-relaxed text-text-secondary">
                       {paragraph}{' '}
-                      <a className="font-semibold text-on-surface underline-offset-4 hover:underline" href={`mailto:${t('contact.email')}`} aria-label={t('contact.email')}>
+                      <a className="font-semibold text-text-primary underline-offset-4 hover:underline" href={`mailto:${t('contact.email')}`} aria-label={t('contact.email')}>
                         {t('contact.email')}
                       </a>
                       .
                     </p>
                   ) : (
-                    <p className="max-w-[60ch] text-[0.875rem] leading-relaxed text-on-surface-variant">
+                    <p className="max-w-[60ch] text-[0.875rem] leading-relaxed text-text-secondary">
                       {paragraph}
                     </p>
                   )}
