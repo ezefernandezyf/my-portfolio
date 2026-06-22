@@ -1,9 +1,14 @@
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import { Footer } from '../';
 
 describe('Footer minimal', () => {
   it('muestra copyright y el link de privacidad', () => {
-    render(<Footer />);
+    render(
+      <MemoryRouter>
+        <Footer />
+      </MemoryRouter>,
+    );
 
     expect(screen.getByText(/© \d{4} Ezequiel Fernández/i)).toBeInTheDocument();
 
