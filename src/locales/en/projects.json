@@ -46,5 +46,9 @@
   "chefcitoia": {
     "name": "ChefcitoIA",
     "short": "AI recipe generator that turns ingredients and constraints into practical meal ideas."
+  },
+  "geo-seo-opencode": {
+    "name": "geo-seo-opencode",
+    "short": "Open-source GEO toolkit for opencode — 16 analysis skills for ChatGPT, Claude, Perplexity and Gemini. Cross-platform, one-command installer."
   }
 }
