@@ -2,9 +2,9 @@
  * JSON-LD Schema.org @graph builder.
  *
  * Generates a `<script type="application/ld+json">` block with:
- * - Person (@id /#person) — the site author
- * - WebSite (@id /#website) — the portfolio site
- * - WebPage (per route) — with isPartOf → #website, about → #person
+ * - Person (@id /#person) | the site author
+ * - WebSite (@id /#website) | the portfolio site
+ * - WebPage (per route) | with isPartOf → #website, about → #person
  *
  * Consumed at build time by `scripts/prerender.mjs` (schema logic mirrored there
  * for mjs compat) and available for client-side use.
@@ -15,7 +15,7 @@ import { ROUTE_META, type RouteMeta } from './route-meta';
 const SITE_URL = 'https://ezefernandez.com';
 const AUTHOR_NAME = 'Ezequiel Fernández';
 const AUTHOR_URL = `${SITE_URL}/about`;
-const SITE_DESC = 'Full Stack Developer — portfolio, projects, and case studies';
+const SITE_DESC = 'Full Stack Developer | portfolio, projects, and case studies';
 
 interface JsonLdNode {
   '@type': string | string[];
@@ -42,7 +42,7 @@ function buildWebSite(): JsonLdNode {
     '@type': 'WebSite',
     '@id': `${SITE_URL}/#website`,
     url: SITE_URL,
-    name: `${AUTHOR_NAME} — ${SITE_DESC}`,
+    name: `${AUTHOR_NAME} | ${SITE_DESC}`,
     description: SITE_DESC,
     publisher: { '@id': `${SITE_URL}/#person` },
   };
@@ -97,10 +97,10 @@ function buildBreadcrumbList(route: RouteMeta, lang: string): JsonLdNode {
 
       let name: string;
       if (i === segments.length - 1) {
-        // Last segment — use current route's resolved title
+        // Last segment | use current route's resolved title
         name = lang === 'en' ? route.en.title : route.es.title;
       } else {
-        // Intermediate segment — look up parent route in ROUTE_META
+        // Intermediate segment | look up parent route in ROUTE_META
         const parentKey = accumulatedPath.slice(1);
         const parentMeta = ROUTE_META[parentKey];
         name = parentMeta ? (lang === 'en' ? parentMeta.en.title : parentMeta.es.title) : segments[i];

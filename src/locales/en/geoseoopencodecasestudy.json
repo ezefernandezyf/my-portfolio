@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "geo-seo-opencode — Open Source GEO Toolkit for opencode"
+    "title": "geo-seo-opencode , Open Source GEO Toolkit for opencode"
   },
   "header": {
     "title": "geo-seo-opencode",
@@ -53,7 +53,7 @@
   "accessibility": {
     "heading": "Accessibility",
     "list": [
-      "CLI tool — no visual interface, all interaction is through the terminal.",
+      "CLI tool , no visual interface, all interaction is through the terminal.",
       "Colors in output respect terminals with and without color support (--no-color flag).",
       "Clear error messages with actionable suggestions."
     ]
@@ -95,5 +95,5 @@
     "featured": "Open Source"
   },
   "notFound": "Project not found",
-  "noPreview": "CLI Toolkit — No web demo"
+  "noPreview": "CLI Toolkit , No web demo"
 }

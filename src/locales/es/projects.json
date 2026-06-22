@@ -23,7 +23,7 @@
   "contentSection": {
     "heading": "Cómo trabajo",
     "paragraph1": "Cada proyecto que construyo arranca con una premisa simple: entender el problema antes de escribir una línea de código. Trabajo con arquitectura basada en features, aplicando principios de DDD-lite para que el dominio del negocio quede reflejado en la estructura del proyecto. Esto significa que las carpetas y módulos hablan el mismo idioma que el producto, no que el framework.",
-    "paragraph2": "Mi stack técnico es pragmático, no hype-driven. Elijo TypeScript en frontend y backend por su seguridad de tipos, React para interfaces declarativas y predecibles, Node.js con Express para APIs REST, y PostgreSQL como base de datos relacional. No sigo modas — elijo herramientas que resuelvan el problema real con el menor overhead posible.",
+    "paragraph2": "Mi stack técnico es pragmático, no hype-driven. Elijo TypeScript en frontend y backend por su seguridad de tipos, React para interfaces declarativas y predecibles, Node.js con Express para APIs REST, y PostgreSQL como base de datos relacional. No sigo modas , elijo herramientas que resuelvan el problema real con el menor overhead posible.",
     "paragraph3": "Cada proyecto pasa por investigación, diseño de arquitectura, implementación con tests y deploy automatizado. Priorizo el código legible y testeable sobre la optimización prematura. Mi objetivo es que cualquier desarrollador pueda leer el código y entender no solo qué hace, sino por qué está estructurado así."
   },
   "notFound": "Proyecto no encontrado",
@@ -49,6 +49,6 @@
   },
   "geo-seo-opencode": {
     "name": "geo-seo-opencode",
-    "short": "Toolkit GEO open source para opencode — 16 skills de análisis para ChatGPT, Claude, Perplexity y Gemini. Cross-platform, instalador one-command."
+    "short": "Toolkit GEO open source para opencode , 16 skills de análisis para ChatGPT, Claude, Perplexity y Gemini. Cross-platform, instalador one-command."
   }
 }
