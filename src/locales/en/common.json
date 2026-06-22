@@ -11,5 +11,9 @@
   },
   "errors": {
     "generic": "An error occurred. Please try again."
+  },
+  "skipToContent": "Skip to content",
+  "scrollProgress": {
+    "ariaLabel": "Reading progress"
   }
 }
