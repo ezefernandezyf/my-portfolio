@@ -9,9 +9,12 @@ import {
 } from '@heroicons/react/24/outline';
 import { GithubIcon, LinkedInIcon, LanguageSwitcher, ThemeToggle } from '..';
 import { useTranslation } from 'react-i18next';
+import { useLocalizedPath } from '../../hooks/useLocalizedPath';
 
 export const Header = (): React.JSX.Element => {
-  const { t } = useTranslation('header');
+  const { t, i18n } = useTranslation('header');
+  const localize = useLocalizedPath();
+  const cvPath = i18n.language?.startsWith('en') ? '/Ezequiel_Fernandez_CV_EN.pdf' : '/Ezequiel_Fernandez_CV.pdf';
   const [open, setOpen] = useState(false);
   const drawerRef = useRef<HTMLDivElement | null>(null);
 
@@ -45,7 +48,7 @@ export const Header = (): React.JSX.Element => {
         <nav className="site-container flex h-16 w-full items-center justify-between gap-8">
         <div className="flex items-center gap-8">
           <Link
-            to="/"
+            to={localize('/')}
             className="text-xl font-bold text-accent font-mono focus-ring"
             aria-label={t('logo.ariaHome')}
           >
@@ -54,7 +57,7 @@ export const Header = (): React.JSX.Element => {
 
           <div className="hidden items-center gap-6 md:flex">
             <NavLink
-              to="/projects"
+              to={localize('/projects')}
               className={({ isActive }) =>
                 `relative text-sm font-medium uppercase tracking-wider font-body text-text-secondary transition-colors duration-200 focus-ring
                 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-200
@@ -65,7 +68,7 @@ export const Header = (): React.JSX.Element => {
               {t('nav.projects')}
             </NavLink>
             <NavLink
-              to="/about"
+              to={localize('/about')}
               className={({ isActive }) =>
                 `relative text-sm font-medium uppercase tracking-wider font-body text-text-secondary transition-colors duration-200 focus-ring
                 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-200
@@ -76,7 +79,7 @@ export const Header = (): React.JSX.Element => {
               {t('nav.about')}
             </NavLink>
             <NavLink
-              to="/contact"
+              to={localize('/contact')}
               className={({ isActive }) =>
                 `relative text-sm font-medium uppercase tracking-wider font-body text-text-secondary transition-colors duration-200 focus-ring
                 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-200
@@ -149,7 +152,7 @@ export const Header = (): React.JSX.Element => {
         <div className="flex h-full flex-col px-4 pb-4 pt-6">
           <div className="mb-6 flex items-center justify-between border-b border-border pb-4">
             <Link
-              to="/"
+              to={localize('/')}
               onClick={closeDrawer}
               className="flex items-center gap-3 text-text-primary no-underline"
               aria-label={t('mobile.backToHome')}
@@ -175,7 +178,7 @@ export const Header = (): React.JSX.Element => {
 
           <nav className="flex flex-col gap-2" aria-label={t('mobile.navLabel')}>
             <NavLink
-              to="/projects"
+              to={localize('/projects')}
               onClick={closeDrawer}
               className={({ isActive }) =>
                 `flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-base font-semibold transition-colors hover:border-border-hover hover:bg-surface-elevated/80 ${isActive ? 'border-border bg-surface-elevated text-accent' : 'text-text-secondary'}`
@@ -186,7 +189,7 @@ export const Header = (): React.JSX.Element => {
             </NavLink>
 
             <NavLink
-              to="/about"
+              to={localize('/about')}
               onClick={closeDrawer}
               className={({ isActive }) =>
                 `flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-base font-semibold transition-colors hover:border-border-hover hover:bg-surface-elevated/80 ${isActive ? 'border-border bg-surface-elevated text-accent' : 'text-text-secondary'}`
@@ -197,7 +200,7 @@ export const Header = (): React.JSX.Element => {
             </NavLink>
 
             <NavLink
-              to="/contact"
+              to={localize('/contact')}
               onClick={closeDrawer}
               className={({ isActive }) =>
                 `flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-base font-semibold transition-colors hover:border-border-hover hover:bg-surface-elevated/80 ${isActive ? 'border-border bg-surface-elevated text-accent' : 'text-text-secondary'}`
@@ -234,7 +237,7 @@ export const Header = (): React.JSX.Element => {
               </a>
             </div>
             <a
-              href="/Ezequiel_Fernandez_CV.pdf"
+              href={cvPath}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-2 inline-flex h-10 items-center justify-center border-2 border-accent px-6 text-sm font-bold uppercase tracking-tight text-accent transition-all hover:bg-accent/5 active:scale-95"

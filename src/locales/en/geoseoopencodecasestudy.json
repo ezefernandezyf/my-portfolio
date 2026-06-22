@@ -1,0 +1,99 @@
+{
+  "meta": {
+    "title": "geo-seo-opencode , Open Source GEO Toolkit for opencode"
+  },
+  "header": {
+    "title": "geo-seo-opencode",
+    "short": "Open-source adaptation of geo-seo-claude (8.3k ⭐) for opencode. 16 GEO analysis skills, Python scripts, cross-platform installer. Optimization for ChatGPT, Claude, Perplexity and Gemini.",
+    "repoAria": "Repository geo-seo-opencode",
+    "demoAria": "Demo geo-seo-opencode",
+    "backToProjects": "← Back to Projects"
+  },
+  "stack": {
+    "heading": "Stack & Technologies",
+    "sections": {
+      "tools": "Tools",
+      "languages": "Languages",
+      "platforms": "Platforms"
+    }
+  },
+  "summary": {
+    "heading": "Summary",
+    "text": "Open-source adaptation of geo-seo-claude (8.3k ⭐) for opencode. 16 GEO analysis skills, Python scripts, cross-platform installer. Optimization for ChatGPT, Claude, Perplexity and Gemini."
+  },
+  "problem": {
+    "heading": "The Problem",
+    "text": "Websites need to be visible not only on Google, but also on AI-powered search engines like ChatGPT, Claude and Perplexity. Generative Engine Optimization (GEO) is a new discipline and there was no toolkit for developers using opencode."
+  },
+  "solution": {
+    "heading": "The Solution",
+    "list": [
+      "Complete adaptation of geo-seo-claude (8.3k stars) for the opencode ecosystem",
+      "16 analysis skills: citability, crawlers, schema, content, brand mentions",
+      "Cross-platform installer (Linux, macOS, Windows Git Bash) with a single command",
+      "Composite GEO Score (0-100) with 6 weighted categories",
+      "Professional Markdown and PDF reports ready for clients"
+    ]
+  },
+  "architecture": {
+    "heading": "Architecture & Adaptation",
+    "list": [
+      "Agent model: Claude Code uses slash commands (/geo audit), opencode uses natural language. The geo-agent registers as a sub-agent and the orchestrator detects GEO intent by context.",
+      "Skills as independent units: each of the 16 skills is self-contained with its own SKILL.md, Python scripts and isolated dependencies in venv.",
+      "Cross-platform: the installer detects the OS, uses native Python venv, and handles path differences between Linux (shebangs), macOS (Homebrew) and Windows (Git Bash).",
+      "MIT License compliance: full attribution to the original author (Zubair Trabzada), same open source spirit."
+    ]
+  },
+  "implementation": {
+    "heading": "Featured implementation",
+    "hookTitle": "Geo-agent registration in opencode",
+    "hookCode": "",
+    "hookDescription": "The installer automatically configures opencode.json to authorize the geo-agent, which registers as a sub-agent of the orchestrator. opencode detects GEO intent by context in natural language and delegates to the specialized agent."
+  },
+  "accessibility": {
+    "heading": "Accessibility",
+    "list": [
+      "CLI tool , no visual interface, all interaction is through the terminal.",
+      "Colors in output respect terminals with and without color support (--no-color flag).",
+      "Clear error messages with actionable suggestions."
+    ]
+  },
+  "performance": {
+    "heading": "Performance",
+    "list": [
+      "Crawler scans and brand mention checks run in parallel via sub-agents.",
+      "Audit result caching to avoid unnecessary rescans.",
+      "PDF reports generated on demand with pandoc + headless Chrome."
+    ]
+  },
+  "challenges": {
+    "heading": "Challenges Solved",
+    "list": [
+      "Path resolution: Python scripts reference files relative to the skill. The installer patches shebangs and paths so they work from any directory.",
+      "Dependency isolation: each skill uses a shared venv at ~/.config/opencode/skills/geo/.venv/, without polluting the system Python.",
+      "Auto-discovery: opencode scans ~/.config/opencode/skills/ and registers skills automatically. Zero manual configuration.",
+      "Automatic setup: the installer modifies opencode.json to authorize the geo-agent, without the user touching configuration files."
+    ]
+  },
+  "improvements": {
+    "heading": "What could be improved",
+    "list": [
+      "Add more AI search platforms (Grok, Copilot, You.com).",
+      "Support for automatic periodic audits with cron.",
+      "Optional web dashboard for historical results visualization.",
+      "CI/CD plugin that fails the build if GEO score drops below a threshold."
+    ]
+  },
+  "deepDive": {
+    "heading": "Technical Deep Dive"
+  },
+  "carousel": {
+    "alt": "Screenshots of geo-seo-opencode"
+  },
+  "labels": {
+    "year": "Year",
+    "featured": "Open Source"
+  },
+  "notFound": "Project not found",
+  "noPreview": "CLI Toolkit , No web demo"
+}

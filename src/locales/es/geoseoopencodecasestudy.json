@@ -1,0 +1,99 @@
+{
+  "meta": {
+    "title": "geo-seo-opencode , Toolkit GEO Open Source para opencode"
+  },
+  "header": {
+    "title": "geo-seo-opencode",
+    "short": "Adaptación open source de geo-seo-claude (8.3k ⭐) para opencode. 16 skills de análisis GEO, scripts Python, instalador cross-platform. Optimización para ChatGPT, Claude, Perplexity y Gemini.",
+    "repoAria": "Repositorio geo-seo-opencode",
+    "demoAria": "Demo geo-seo-opencode",
+    "backToProjects": "← Volver a Proyectos"
+  },
+  "stack": {
+    "heading": "Stack & Tecnologías",
+    "sections": {
+      "tools": "Herramientas",
+      "languages": "Lenguajes",
+      "platforms": "Plataformas"
+    }
+  },
+  "summary": {
+    "heading": "Resumen",
+    "text": "Adaptación open source de geo-seo-claude (8.3k ⭐) para opencode. 16 skills de análisis GEO, scripts Python, instalador cross-platform. Optimización para ChatGPT, Claude, Perplexity y Gemini."
+  },
+  "problem": {
+    "heading": "El Problema",
+    "text": "Los sitios web necesitan ser visibles no solo para Google, sino para los motores de búsqueda basados en IA como ChatGPT, Claude y Perplexity. La Generative Engine Optimization (GEO) es una disciplina nueva y no existía un toolkit para desarrolladores que usan opencode."
+  },
+  "solution": {
+    "heading": "La Solución",
+    "list": [
+      "Adaptación completa de geo-seo-claude (8.3k estrellas) para el ecosistema opencode",
+      "16 skills de análisis: citabilidad, crawlers, schema, contenido, menciones de marca",
+      "Instalador cross-platform (Linux, macOS, Windows Git Bash) con un solo comando",
+      "Scoring compuesto GEO Score (0-100) con 6 categorías ponderadas",
+      "Reportes profesionales en Markdown y PDF listos para clientes"
+    ]
+  },
+  "architecture": {
+    "heading": "Arquitectura de Adaptación",
+    "list": [
+      "Modelo de agentes: Claude Code usa slash commands (/geo audit), opencode usa lenguaje natural. El geo-agent se registra como subagente y el orquestador detecta intención GEO por contexto.",
+      "Skills como unidades independientes: cada una de las 16 skills es autocontenida con su propio SKILL.md, scripts Python y dependencias aisladas en venv.",
+      "Cross-platform: el instalador detecta el SO, usa Python venv nativo, y maneja diferencias de path entre Linux (shebangs), macOS (Homebrew) y Windows (Git Bash).",
+      "Respeto a la licencia MIT: atribución completa al autor original (Zubair Trabzada), mismo espíritu open source."
+    ]
+  },
+  "implementation": {
+    "heading": "Implementación destacada",
+    "hookTitle": "Registro del geo-agent en opencode",
+    "hookCode": "",
+    "hookDescription": "El instalador configura opencode.json automáticamente para autorizar al geo-agent, que se registra como subagente del orquestador. opencode detecta la intención GEO por contexto en lenguaje natural y delega al agente especializado."
+  },
+  "accessibility": {
+    "heading": "Accesibilidad",
+    "list": [
+      "CLI tool , no hay interfaz visual, toda la interacción es por terminal.",
+      "Colores en output respetan terminales con y sin color soporte (--no-color flag).",
+      "Mensajes de error claros con sugerencias de acción."
+    ]
+  },
+  "performance": {
+    "heading": "Performance",
+    "list": [
+      "Scans de crawlers y menciones de marca se ejecutan en paralelo mediante subagentes.",
+      "Cache de resultados de auditoría para evitar rescans innecesarios.",
+      "Reportes PDF generados con pandoc + Chrome headless bajo demanda."
+    ]
+  },
+  "challenges": {
+    "heading": "Desafíos Resueltos",
+    "list": [
+      "Path resolution: los scripts Python referencian archivos relativos al skill. El instalador parchea shebangs y rutas para que funcionen desde cualquier directorio.",
+      "Aislamiento de dependencias: cada skill usa un venv compartido en ~/.config/opencode/skills/geo/.venv/, sin contaminar el Python del sistema.",
+      "Auto-descubrimiento: opencode escanea ~/.config/opencode/skills/ y registra las skills automáticamente. Cero configuración manual.",
+      "Configuración automática: el instalador modifica opencode.json para autorizar al geo-agent, sin que el usuario toque archivos de configuración."
+    ]
+  },
+  "improvements": {
+    "heading": "Qué se podría mejorar",
+    "list": [
+      "Agregar más plataformas de IA search (Grok, Copilot, You.com).",
+      "Soporte para auditorías periódicas automáticas con cron.",
+      "Dashboard web opcional para visualizar resultados históricos.",
+      "Plugin para CI/CD que falle el build si el GEO score baja de un umbral."
+    ]
+  },
+  "deepDive": {
+    "heading": "Deep Dive Técnico"
+  },
+  "carousel": {
+    "alt": "Capturas de geo-seo-opencode"
+  },
+  "labels": {
+    "year": "Año",
+    "featured": "Open Source"
+  },
+  "notFound": "Proyecto no encontrado",
+  "noPreview": "CLI Toolkit , Sin demo web"
+}

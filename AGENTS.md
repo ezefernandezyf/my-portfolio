@@ -157,14 +157,26 @@ Segunda tanda:
 - [x] Foto de perfil más arriba en AboutPage (ya estaba ok)
 - [x] Legibilidad: text-muted y labels con contraste WCAG AA en ambos modos
 
-### Fase 12 — SEO/GEO Fino + Certificación 🔲 (futura branch)
-> Arrancar después de mergear Fase 11. GEO score actual: 58/100. Objetivo: ~65-70/100.
+### Fase 12 — SEO/GEO Fino + Certificación + Routing ✅ (en `feat/fase12-seo-geo-polish`)
+> SDD completo. 4 PRs. GEO score pendiente de auditoría final.
 
-- [ ] **Títulos descriptivos** — "Inicio" → "Ezequiel Fernández — Full Stack Developer", cada página con title único y descriptivo
-- [ ] **Meta descriptions con keywords reales** — descripciones que incluyan términos de búsqueda relevantes
-- [ ] **Expandir contenido** — /projects y /contact a 200+ palabras c/u para SEO on-page
-- [ ] **BreadcrumbList schema** — structured data de navegación para cada ruta
-- [ ] **Alt text en imágenes del prerender** — `scripts/prerender.mjs` debe inyectar alt relevante en `<img>` tags
-- [ ] **Certificación AI Skills Fest 2026 (Microsoft)** — agregar a sección Educación en AboutPage con badge de Credly
+- [x] **Títulos descriptivos** — cada página con title único, keywords, descriptions en `route-meta.ts`
+- [x] **Meta descriptions con keywords reales** — descripciones SEO para las 12 rutas
+- [x] **Expandir contenido** — secciones nuevas en /projects y /contact (200+ palabras)
+- [x] **BreadcrumbList schema** — structured data de navegación en JSON-LD @graph
+- [x] **Alt text en imágenes del prerender** — JSDOM post-render injection en `scripts/prerender.mjs`
+- [x] **Certificación AI Skills Fest 2026 (Microsoft)** — 4ª card en Educación con badge Credly
+- [x] **geo-seo-opencode case study** — proyecto en posición 3, CLI toolkit open source, sin demo
+- [x] **CV dinámico según idioma** — ES/EN PDF según `i18n.language`
+- [x] **Fix routing** — URLs mantienen `/en/` al navegar en inglés, hook `useLocalizedPath`
+- [x] **Education status** — activo (en curso) vs completado con chip-completed
 - [ ] **GEO audit final** — correr auditoría completa post-cambios, medir score final
+
+### Fase 13 — Pulido Final 🔲 (futura branch)
+> Mejoras pendientes detectadas en verificación.
+
+- [ ] **Expandir word count** — párrafos de /projects y /contact están 20-40% debajo de 200 palabras
+- [ ] **Agregar 3er párrafo en ContactPage** — spec pide 3-4, hay 2
+- [ ] **Fix prerender about descKey** — el prerender emite title como description para /about
+- [ ] **GEO audit final** — si no se corrió en Fase 12
 

@@ -32,6 +32,21 @@ export const projects = [
     featured: true,
   },
   {
+    id: 'geo-seo-opencode',
+    nameKey: 'geo-seo-opencode.name',
+    shortKey: 'geo-seo-opencode.short',
+    repo: 'https://github.com/ezefernandezyf/geo-seo-opencode',
+    images: [
+      '/projects/geo-seo-opencode/geo-seo-1.webp',
+      '/projects/geo-seo-opencode/geo-seo-2.webp',
+      '/projects/geo-seo-opencode/geo-seo-3.webp',
+      '/projects/geo-seo-opencode/geo-seo-4.webp',
+    ],
+    tech: ['Bash', 'Python', 'Shell Scripting', 'Cross-Platform', 'MIT License'],
+    year: 2026,
+    featured: true,
+  },
+  {
     id: 'movie-dashboard',
     nameKey: 'movie-dashboard.name',
     shortKey: 'movie-dashboard.short',

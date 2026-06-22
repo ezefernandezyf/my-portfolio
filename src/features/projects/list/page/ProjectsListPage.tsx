@@ -156,6 +156,26 @@ export const ProjectsListPage = (): React.JSX.Element => {
           </div>
         ) : null}
       </section>
+
+      {/* Expanded content section for SEO — crawler-accessible, above 200 words */}
+      <section className="bg-surface py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+          <div className="mx-auto max-w-3xl space-y-6">
+            <h2 className="text-2xl font-bold tracking-tight text-text-primary font-display">
+              {t('contentSection.heading')}
+            </h2>
+            <p className="text-base leading-relaxed text-text-secondary font-body">
+              {t('contentSection.paragraph1')}
+            </p>
+            <p className="text-base leading-relaxed text-text-secondary font-body">
+              {t('contentSection.paragraph2')}
+            </p>
+            <p className="text-base leading-relaxed text-text-secondary font-body">
+              {t('contentSection.paragraph3')}
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
   );
 };

@@ -5,13 +5,18 @@
       "description": "Contact form for team opportunities, technical collaborations or work proposals."
     }
   },
+  "contentSection": {
+    "heading": "How I Collaborate",
+    "paragraph1": "My integration process starts with a technical conversation to understand the architecture, stack, and team goals. I adapt quickly to existing codebases, coding conventions, and established workflows. I value clear communication, constructive feedback, and continuous improvement of both the product and the development process.",
+    "paragraph2": "I thrive in environments that prioritize software quality, automated testing, and well-reasoned technical decisions. My experience covers full-stack applications with React and Node.js, CLI tools, process automation, and relational database systems. If your team works with TypeScript, continuous integration, and clean architecture, I can contribute from the first sprint."
+  },
   "hero": {
     "label": "Open to joining a team",
     "titleAccessible": "I want to join a team and build something precise.",
     "titleLine1": "Let's build",
     "titleLine2": "something",
     "titleAccent": "precise.",
-    "description": "I'm looking to join a team where I can translate complex requirements into clinical, high-performance interfaces. Reach out if you want to discuss a role or a concrete opportunity.",
+      "description": "I'm looking to join a team where I can translate complex requirements into clean, accessible, high-performance interfaces. Reach out if you want to discuss a role or a concrete opportunity.",
     "emailLabel": "Email",
     "locationLabel": "Location",
     "locationValue": "Global / Remote (GMT-3)",

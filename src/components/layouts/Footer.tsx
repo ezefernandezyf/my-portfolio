@@ -1,9 +1,12 @@
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { GithubIcon, LinkedInIcon } from '../../components';
+import { useLocalizedPath } from '../../hooks/useLocalizedPath';
 
 export const Footer = (): React.JSX.Element => {
   const currentYear = new Date().getFullYear();
   const { t } = useTranslation('footer');
+  const localize = useLocalizedPath();
 
   return (
     <footer
@@ -38,13 +41,13 @@ export const Footer = (): React.JSX.Element => {
             <LinkedInIcon className="h-4 w-4" aria-hidden="true" />
             <span className="hidden sm:inline">LinkedIn</span>
           </a>
-          <a
-            href="/privacy"
+          <Link
+            to={localize('/privacy')}
             className="text-[11px] uppercase tracking-widest text-text-muted opacity-80 underline transition-all hover:opacity-100 hover:text-accent"
             aria-label={t('privacyAria')}
           >
             {t('privacy')}
-          </a>
+          </Link>
         </div>
       </div>
     </footer>

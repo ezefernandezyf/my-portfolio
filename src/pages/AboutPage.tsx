@@ -22,6 +22,7 @@ import { about } from '../data/about';
 import { GithubIcon, LinkedInIcon } from '../components';
 import { MetaTags } from '../shared/seo';
 import { useTranslation } from 'react-i18next';
+import { useLocalizedPath } from '../hooks/useLocalizedPath';
 
 const stackCards = [
   {
@@ -90,8 +91,10 @@ function useSectionFadeIn() {
 }
 
 export const AboutPage = (): React.JSX.Element => {
-  const { t } = useTranslation('aboutpage');
-  const { name, role, github, linkedIn, cv } = about;
+  const { t, i18n } = useTranslation('aboutpage');
+  const localize = useLocalizedPath();
+  const { name, role, github, linkedIn } = about;
+  const cv = i18n.language?.startsWith('en') ? '/Ezequiel_Fernandez_CV_EN.pdf' : '/Ezequiel_Fernandez_CV.pdf';
 
   const translatedSkills = t('abilities.items', { returnObjects: true }) as unknown;
   const skillItems = Array.isArray(translatedSkills) && translatedSkills.length > 0
@@ -137,14 +140,14 @@ export const AboutPage = (): React.JSX.Element => {
 
                 <div className="mt-10 flex flex-wrap gap-4">
                   <Link
-                    to="/projects"
+                    to={localize('/projects')}
                     className="inline-flex items-center justify-center gap-2 bg-accent px-6 py-3 text-sm font-medium text-bg-primary transition-colors hover:bg-accent-hover focus-ring"
                   >
                     {t('hero.viewProjects')}
                     <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
                   </Link>
                   <Link
-                    to="/contact"
+                    to={localize('/contact')}
                     className="inline-flex items-center justify-center border border-border px-6 py-3 text-sm font-medium text-text-primary transition-colors hover:border-border-hover focus-ring"
                   >
                     {t('hero.contact')}
@@ -268,7 +271,8 @@ export const AboutPage = (): React.JSX.Element => {
                 </h2>
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
                   {educationCards.map((item, index) => {
-                    const isActive = index < 2;
+                    // 0-1 = active (in progress), 2+ = completed
+                    const status: 'active' | 'completed' = index <= 1 ? 'active' : 'completed';
                     const title = t(`education.${index}.title`);
                     const period = t(item.periodKey);
 
@@ -279,12 +283,12 @@ export const AboutPage = (): React.JSX.Element => {
                       >
                         <div className="mb-6 flex items-center justify-between">
                           <span
-                            className={`chip ${isActive ? 'chip-primary' : 'chip-outline'}`}
+                            className={`chip ${status === 'active' ? 'chip-primary' : 'chip-completed'}`}
                           >
                             {period}
                           </span>
                           <span
-                            className={`h-3 w-3 rounded-full border-2 ${isActive ? 'border-accent bg-bg-primary' : 'border-border bg-bg-primary'}`}
+                            className={`h-3 w-3 rounded-full border-2 ${status === 'active' ? 'border-accent bg-accent' : 'border-accent/40 bg-bg-primary'}`}
                           />
                         </div>
                         <h3 className="mb-2 text-[1.125rem] font-medium text-text-primary font-display">{title}</h3>
@@ -293,8 +297,20 @@ export const AboutPage = (): React.JSX.Element => {
                             ? 'Formación integral en desarrollo de software, arquitectura de sistemas y metodologías de trabajo para construir productos consistentes.'
                             : index === 1
                               ? 'Certificación enfocada en seguridad, control de acceso y prácticas de hardening aplicadas a productos web modernos.'
-                              : 'Formación intensiva en modelos generativos, flujo de entrega y criterios para llevar experimentos de IA a producción.'}
+                              : index === 2
+                                ? 'Formación intensiva en modelos generativos, flujo de entrega y criterios para llevar experimentos de IA a producción.'
+                                : 'Participación en el evento global de Microsoft sobre IA generativa, agentes y Copilot. Badge verificado en Credly.'}
                         </p>
+                        {index === 3 && (
+                          <a
+                            href="https://www.credly.com/badges/31b0f4c1-3076-4ef0-aca1-d3ada920f6ec"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-accent hover:text-accent-hover focus-ring"
+                          >
+                            {t('education.3.credlyBadge', { defaultValue: 'Ver badge en Credly' })}
+                          </a>
+                        )}
                       </article>
                     );
                   })}

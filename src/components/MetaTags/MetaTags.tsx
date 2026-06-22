@@ -95,7 +95,9 @@ export const MetaTags = ({
 }: Props): React.JSX.Element | null => {
   useEffect(() => {
     const prevTitle = document.title;
-    const finalTitle = title ? `${title} | ${DEFAULT_TITLE}` : DEFAULT_TITLE;
+    const finalTitle = title
+      ? (title.includes(DEFAULT_TITLE) ? title : `${title} | ${DEFAULT_TITLE}`)
+      : DEFAULT_TITLE;
     document.title = finalTitle;
 
     const finalDesc = description ?? DEFAULT_DESC;

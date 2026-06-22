@@ -6,12 +6,15 @@ import { projectRepository } from '../entities/project';
 import { MetaTags } from '../shared/seo';
 import { ProjectCard } from '../shared/ui/project-card';
 import { CurrentlySection, type CurrentlyItem } from '../components/CurrentlySection';
+import { useLocalizedPath } from '../hooks/useLocalizedPath';
 
 const featuredProjects = projectRepository.getProjects().slice(0, 2);
 const technicalStack = ['React 19', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma', 'Tailwind CSS 4', 'Vite'];
 
 export const HomePage = (): React.JSX.Element => {
-  const { t } = useTranslation(['home', 'projects']);
+  const { t, i18n } = useTranslation(['home', 'projects']);
+  const localize = useLocalizedPath();
+  const cvPath = i18n.language?.startsWith('en') ? '/Ezequiel_Fernandez_CV_EN.pdf' : '/Ezequiel_Fernandez_CV.pdf';
   const projects = projectRepository.getProjects();
   const currentlyItems = t('currently.list', { returnObjects: true }) as CurrentlyItem[];
 
@@ -150,7 +153,7 @@ export const HomePage = (): React.JSX.Element => {
                 <Link
                   aria-label={t('hero.cta.projects', { ns: 'home' })}
                   className="inline-flex h-14 items-center justify-center bg-accent px-8 text-sm font-bold uppercase tracking-widest text-bg-primary transition-all hover:bg-accent-hover focus-ring active:scale-95"
-                  to="/projects"
+                  to={localize('/projects')}
                 >
                   {t('hero.cta.projects', { ns: 'home' })}
                 </Link>
@@ -158,7 +161,7 @@ export const HomePage = (): React.JSX.Element => {
                 <Link
                   aria-label={t('hero.cta.about', { ns: 'home' })}
                   className="inline-flex h-14 items-center justify-center border border-border px-8 text-sm font-bold uppercase tracking-widest text-text-primary transition-all hover:border-border-hover focus-ring active:scale-95"
-                  to="/about"
+                  to={localize('/about')}
                 >
                   {t('hero.cta.about', { ns: 'home' })}
                 </Link>
@@ -166,7 +169,7 @@ export const HomePage = (): React.JSX.Element => {
                 <a
                   aria-label={t('hero.cta.downloadCV', { ns: 'home' })}
                   className="inline-flex h-14 items-center gap-2 px-4 text-sm font-bold uppercase tracking-tight text-accent hover:underline underline-offset-8 focus-ring"
-                  href="/Ezequiel_Fernandez_CV.pdf"
+                  href={cvPath}
                   rel="noopener noreferrer"
                   target="_blank"
                 >
@@ -231,7 +234,7 @@ export const HomePage = (): React.JSX.Element => {
               </div>
               <div className="mt-12 text-center">
                 <Link
-                  to="/projects"
+                  to={localize('/projects')}
                   className="btn-minimal btn-outline inline-flex items-center gap-2 px-8 py-3 text-[11px] font-bold uppercase tracking-[0.15em]"
                 >
                   {t('viewAllProjects', { ns: 'home' })}
@@ -253,7 +256,7 @@ export const HomePage = (): React.JSX.Element => {
               </p>
               <Link
                 className="inline-flex h-16 items-center gap-4 bg-accent px-12 text-sm font-bold uppercase tracking-[0.2em] text-bg-primary transition-transform active:scale-95 focus-ring"
-                to="/contact"
+                to={localize('/contact')}
               >
                 {t('contactCta', { ns: 'home' })}
                 <ArrowTopRightOnSquareIcon className="h-4 w-4 transition-transform" aria-hidden />
