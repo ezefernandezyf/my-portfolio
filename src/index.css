@@ -92,7 +92,7 @@
   box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04);
 }
 :root:not(.dark) .card-base:hover {
-  box-shadow: 0 14px 30px rgba(2, 6, 23, 0.08);
+  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.10);
 }
 
 @media (min-width: 1024px) {
@@ -490,8 +490,8 @@ textarea:focus-visible,
     transform var(--transition-medium);
 }
 .card-base:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 30px rgba(2, 6, 23, 0.12);
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.18);
 }
 
 .panel {

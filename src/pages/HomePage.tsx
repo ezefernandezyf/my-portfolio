@@ -132,7 +132,7 @@ export const HomePage = (): React.JSX.Element => {
           )}
 
           <div className="site-container relative z-10 flex min-h-[calc(100svh-4rem)] flex-col justify-center">
-            <div className="max-w-[65ch]">
+            <div className="max-w-[65ch] section-left">
               <p className="animate-fade-in-up mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-accent font-body">
                 {t('hero.label', { ns: 'home' })}
               </p>
@@ -203,15 +203,19 @@ export const HomePage = (): React.JSX.Element => {
           <div ref={projectsRef} className={projectsVisible ? 'animate-fade-in-up' : 'opacity-0'}>
             <div className="site-container">
               <div className="mb-16 flex items-end justify-between border-b border-border pb-8">
-                <h2 className="text-4xl font-bold tracking-tight text-text-primary md:text-5xl font-display">
+                <h2 className="text-[1.75rem] font-bold tracking-tight text-text-primary md:text-[2.25rem] font-display">
                   {t('recentWorkHeading', { ns: 'home' })}
                 </h2>
                 <p className="text-sm font-medium text-text-muted">02 / {projectCountLabel}</p>
               </div>
 
               <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-                {featuredProjects.map((project) => (
-                  <div key={project.id}>
+                {featuredProjects.map((project, index) => (
+                  <div
+                    key={project.id}
+                    className={projectsVisible ? 'animate-fade-in-up' : 'opacity-0'}
+                    style={reducedMotion ? undefined : { animationDelay: `${50 + index * 50}ms` }}
+                  >
                     <ProjectCard
                       id={project.id}
                       nameKey={project.nameKey}
@@ -241,7 +245,7 @@ export const HomePage = (): React.JSX.Element => {
           <div ref={contactRef} className={contactVisible ? 'animate-fade-in-up' : 'opacity-0'}>
             <div className="mx-auto max-w-2xl">
               <CommandLineIcon className="mx-auto mb-8 h-12 w-12 text-accent" aria-hidden />
-              <h2 className="mb-6 text-4xl font-bold tracking-tight text-text-primary md:text-5xl font-display">
+              <h2 className="mb-6 text-[1.75rem] font-bold tracking-tight text-text-primary md:text-[2.25rem] font-display">
                 {t('contactTitle', { ns: 'home' })}
               </h2>
               <p className="mb-12 text-xl font-medium text-text-secondary font-body">

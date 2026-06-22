@@ -1,7 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 
+function calcScrollPercentage(): number {
+  if (typeof window === 'undefined') return 0;
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  if (docHeight <= 0) return 0;
+  return Math.min((scrollTop / docHeight) * 100, 100);
+}
+
 export const ScrollProgress = (): React.JSX.Element => {
-  const [width, setWidth] = useState(0);
+  const [width, setWidth] = useState(calcScrollPercentage);
   const rafRef = useRef<number | null>(null);
   const [reducedMotion, setReducedMotion] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -19,20 +27,8 @@ export const ScrollProgress = (): React.JSX.Element => {
   }, []);
 
   useEffect(() => {
-    const calcWidth = (): number => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-
-      if (docHeight <= 0) return 0;
-
-      return Math.min((scrollTop / docHeight) * 100, 100);
-    };
-
-    // Set initial width immediately
-    setWidth(calcWidth());
-
     const updateProgress = () => {
-      setWidth(calcWidth());
+      setWidth(calcScrollPercentage());
       rafRef.current = requestAnimationFrame(updateProgress);
     };
 

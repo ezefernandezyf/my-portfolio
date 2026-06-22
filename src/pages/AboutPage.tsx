@@ -126,7 +126,7 @@ export const AboutPage = (): React.JSX.Element => {
                 </div>
               </div>
 
-              <div className="lg:col-span-8">
+              <div className="lg:col-span-8 section-left">
                 <h1 className="text-[2.75rem] font-medium leading-tight tracking-[-0.03em] text-text-primary sm:text-[3.25rem] font-display">
                   {t('h1')}
                 </h1>
