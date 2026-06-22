@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { projectRepository } from '../../../../entities/project';
 import { ProjectCard } from '../../../../shared/ui/project-card';
@@ -18,6 +18,31 @@ export const ProjectsListPage = (): React.JSX.Element => {
   const [query, setQuery] = useState('');
   const [visibleProjects, setVisibleProjects] = useState(INITIAL_VISIBLE_PROJECTS);
   const projects = projectRepository.getProjects();
+
+  const gridRef = useRef<HTMLDivElement>(null);
+  const [gridVisible, setGridVisible] = useState(false);
+  const [reducedMotion] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    const el = gridRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setGridVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const normalizedQuery = normalize(query);
   const filteredProjects = projects.filter((project) => {
@@ -98,9 +123,13 @@ export const ProjectsListPage = (): React.JSX.Element => {
           <span>{visibleItems.length} visible</span>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-2 lg:gap-6">
-          {visibleItems.map((project) => (
-            <div key={project.id}>
+        <div ref={gridRef} className="grid gap-6 lg:grid-cols-2 lg:gap-6">
+          {visibleItems.map((project, index) => (
+            <div
+              key={project.id}
+              className={gridVisible ? 'animate-fade-in-up' : 'opacity-0'}
+              style={reducedMotion ? undefined : { animationDelay: `${index * 50}ms` }}
+            >
               <ProjectCard
                 id={project.id}
                 nameKey={project.nameKey}
