@@ -200,19 +200,6 @@ label {
   margin-right: auto;
 }
 
-/* Asymmetric layout utilities */
-.section-left {
-  margin-left: 0;
-  margin-right: auto;
-  max-width: 900px;
-}
-
-.section-center {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 900px;
-}
-
 /* Molecular UI layer */
 .card-minimal {
   border-radius: var(--radius-lg);

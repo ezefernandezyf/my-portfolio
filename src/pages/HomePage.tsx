@@ -132,7 +132,7 @@ export const HomePage = (): React.JSX.Element => {
           )}
 
           <div className="site-container relative z-10 flex min-h-[calc(100svh-4rem)] flex-col justify-center">
-            <div className="max-w-[65ch] section-left">
+            <div className="max-w-[65ch]">
               <p className="animate-fade-in-up mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-accent font-body">
                 {t('hero.label', { ns: 'home' })}
               </p>
@@ -201,7 +201,7 @@ export const HomePage = (): React.JSX.Element => {
 
         <section className="bg-surface py-24" id="projects">
           <div ref={projectsRef} className={projectsVisible ? 'animate-fade-in-up' : 'opacity-0'}>
-            <div className="site-container section-left">
+            <div className="site-container">
               <div className="mb-16 flex items-end justify-between border-b border-border pb-8">
                 <h2 className="text-[1.75rem] font-bold tracking-tight text-text-primary md:text-[2.25rem] font-display">
                   {t('recentWorkHeading', { ns: 'home' })}
