@@ -554,6 +554,17 @@ textarea:focus-visible,
   }
 }
 
+/* SkipLink — hidden until focused */
+.skip-link {
+  transition: transform 150ms ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skip-link {
+    transition-duration: 0.001ms;
+  }
+}
+
 /* Screen reader helper */
 .sr-only {
   position: absolute !important;
