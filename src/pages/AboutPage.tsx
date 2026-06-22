@@ -233,7 +233,7 @@ export const AboutPage = (): React.JSX.Element => {
 
           <div ref={softSkillsRef} className={softSkillsVisible ? 'animate-fade-in-up' : 'opacity-0'}>
             <section className="border-t border-border bg-surface py-24 px-8 md:px-16 w-full">
-              <div className="max-w-7xl mx-auto flex flex-col gap-12">
+              <div className="max-w-7xl mx-auto section-left flex flex-col gap-12">
                 <h2 className="flex items-center gap-3 text-[1.75rem] font-medium tracking-[-0.01em] text-text-primary font-display">
                   <SparklesIcon className="h-6 w-6 text-accent" aria-hidden="true" />
                   {t('sections.softSkills')}
