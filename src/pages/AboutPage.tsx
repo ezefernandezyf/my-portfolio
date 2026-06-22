@@ -271,7 +271,8 @@ export const AboutPage = (): React.JSX.Element => {
                 </h2>
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
                   {educationCards.map((item, index) => {
-                    const isActive = index < 3;
+                    // 0-1 = active (in progress), 2+ = completed
+                    const status: 'active' | 'completed' = index <= 1 ? 'active' : 'completed';
                     const title = t(`education.${index}.title`);
                     const period = t(item.periodKey);
 
@@ -282,12 +283,12 @@ export const AboutPage = (): React.JSX.Element => {
                       >
                         <div className="mb-6 flex items-center justify-between">
                           <span
-                            className={`chip ${isActive ? 'chip-primary' : 'chip-outline'}`}
+                            className={`chip ${status === 'active' ? 'chip-primary' : 'chip-completed'}`}
                           >
                             {period}
                           </span>
                           <span
-                            className={`h-3 w-3 rounded-full border-2 ${isActive ? 'border-accent bg-bg-primary' : 'border-border bg-bg-primary'}`}
+                            className={`h-3 w-3 rounded-full border-2 ${status === 'active' ? 'border-accent bg-accent' : 'border-accent/40 bg-bg-primary'}`}
                           />
                         </div>
                         <h3 className="mb-2 text-[1.125rem] font-medium text-text-primary font-display">{title}</h3>
