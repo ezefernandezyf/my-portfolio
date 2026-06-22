@@ -326,6 +326,9 @@ export const ContactPage = (): React.JSX.Element => {
               <p className="text-base leading-relaxed text-text-secondary font-body">
                 {t('contentSection.paragraph2')}
               </p>
+              <p className="text-base leading-relaxed text-text-secondary font-body">
+                {t('contentSection.paragraph3')}
+              </p>
             </div>
           </div>
         </section>
