@@ -5,7 +5,7 @@
   },
   "header": {
     "title": "Projects",
-    "subtitle": "A selection of engineering projects focused on scalable architecture, performant front-ends, and rigorous technical execution. Filter by technology or view the source code."
+    "subtitle": "A selection of engineering projects spanning multi-tenant SaaS platforms, AI-powered tools, interactive dashboards, and open-source CLI toolkits. Each one reflects my commitment to clean architecture, automated testing, and strict TypeScript. Browse the code, read the case studies, or filter by technology."
   },
   "search": {
     "placeholder": "Search projects by name, tech stack, or objective...",
@@ -22,9 +22,9 @@
   },
   "contentSection": {
     "heading": "How I Work",
-    "paragraph1": "Every project I build starts with a simple premise: understand the problem before writing a single line of code. I work with feature-based architecture, applying DDD-lite principles so the business domain is reflected in the project structure. This means folders and modules speak the same language as the product, not the framework.",
-    "paragraph2": "My tech stack is pragmatic, not hype-driven. I choose TypeScript on both frontend and backend for type safety, React for declarative and predictable interfaces, Node.js with Express for REST APIs, and PostgreSQL as my relational database. I don't follow trends , I pick tools that solve the actual problem with the least overhead possible.",
-    "paragraph3": "Every project goes through research, architecture design, implementation with tests, and automated deployment. I prioritize readable, testable code over premature optimization. My goal is that any developer can read the code and understand not just what it does, but why it's structured that way."
+    "paragraph1": "Every project I build starts with a simple premise: understand the problem before writing a single line of code. I work with feature-based architecture, applying DDD-lite principles so the business domain is reflected in the project structure. This means folders and modules speak the same language as the product, not the framework. I invest time upfront in research and design, mapping user flows, identifying domain entities, and defining bounded contexts before opening the editor. This preventive approach dramatically reduces long-term technical debt and ensures every implementation decision answers a real business requirement. I organize code around domain events, repositories, and services arranged in Feature Slices, allowing any team member to dive into a module without understanding the entire application. The result is a codebase where directory names reflect product capabilities rather than technical layers, making maintenance and evolution straightforward.",
+    "paragraph2": "My tech stack is pragmatic, not hype-driven. I choose TypeScript on both frontend and backend for type safety, React for declarative and predictable interfaces, Node.js with Express for REST APIs, and PostgreSQL as my relational database. I don't follow trends, I pick tools that solve the actual problem with the least overhead possible. On the frontend I work with React 19 and Tailwind CSS 4 with DaisyUI 5, prioritizing WCAG 2.2 AA accessibility and components that work well on both desktop and mobile. On the server side I build REST APIs with Express and Prisma ORM, applying Zod validation and repository patterns to keep business logic decoupled from data access. For CLI tools I use Node.js with Commander, publishing cross-platform npm packages. Every stack decision passes through three filters: it solves the real problem, it adds value to the team, and it keeps complexity manageable. I am not interested in technology for its own sake; I care about what I can build with it sustainably.",
+    "paragraph3": "Every project goes through research, architecture design, implementation with tests, and automated deployment. I prioritize readable, testable code over premature optimization. My goal is that any developer can read the code and understand not just what it does, but why it's structured that way. The development cycle includes continuous integration with GitHub Actions, where every pull request triggers linting, type checking, and the full test suite before allowing a merge. I write unit tests with Vitest and React Testing Library for components, hooks, and utilities, along with integration tests for API endpoints. I maintain minimum eighty percent coverage on critical parts of the system, but what matters most is not the percentage but that tests verify real behaviors, not implementations. When a bug surfaces, I write a test that reproduces it first, then fix it. This testing discipline lets me refactor with confidence and ship software that simply works, even under deadline pressure."
   },
   "notFound": "Project not found",
   "echolog": {
@@ -49,6 +49,6 @@
   },
   "geo-seo-opencode": {
     "name": "geo-seo-opencode",
-    "short": "Open-source GEO toolkit for opencode , 16 analysis skills for ChatGPT, Claude, Perplexity and Gemini. Cross-platform, one-command installer."
+    "short": "Open-source GEO toolkit for opencode, 16 analysis skills for ChatGPT, Claude, Perplexity and Gemini. Cross-platform, one-command installer."
   }
 }
