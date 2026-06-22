@@ -6,9 +6,9 @@
     }
   },
   "contentSection": {
-    "heading": "Qué esperar",
-    "paragraph1": "Cuando me contactás, respondo dentro de las 24 horas hábiles. Mi proceso de colaboración empieza con una conversación para entender el alcance del proyecto, las tecnologías involucradas y las expectativas del equipo. Soy transparente sobre plazos, costos y alcance desde el primer mensaje, y mantengo una comunicación constante durante todo el desarrollo.",
-    "paragraph2": "Trabajo mejor en equipos que valoran la calidad del código, la arquitectura limpia y la experiencia de usuario. Mis proyectos ideales involucran aplicaciones web completas con React en el frontend, Node.js en el backend, y PostgreSQL como base de datos. También me interesan proyectos de herramientas CLI, automatización, y cualquier desafío que combine lógica compleja con interfaces accesibles. Si tu equipo trabaja con TypeScript, testing automatizado y CI/CD, vamos a tener una base sólida desde el día uno."
+    "heading": "Cómo colaboro",
+    "paragraph1": "Mi proceso de integración empieza con una conversación técnica para entender la arquitectura, el stack y los objetivos del equipo. Me adapto rápido a codebases existentes, convenciones de código y flujos de trabajo establecidos. Valoro la comunicación clara, el feedback constructivo y la mejora continua tanto del producto como del proceso de desarrollo.",
+    "paragraph2": "Me desenvuelvo mejor en entornos que priorizan la calidad del software, las pruebas automatizadas y las decisiones técnicas fundamentadas. Mi experiencia abarca aplicaciones full-stack con React y Node.js, herramientas CLI, automatización de procesos y sistemas con bases de datos relacionales. Si tu equipo trabaja con TypeScript, integración continua y arquitectura limpia, puedo aportar desde el primer sprint."
   },
   "hero": {
     "label": "Disponible para sumarme a un equipo",
@@ -16,7 +16,7 @@
     "titleLine1": "Construyamos",
     "titleLine2": "algo",
     "titleAccent": "preciso.",
-    "description": "Busco sumarme a un equipo donde pueda traducir requisitos complejos en interfaces clínicas, accesibles y de alto rendimiento. Escribime si querés conversar sobre un rol o una oportunidad concreta.",
+      "description": "Busco integrarme a un equipo donde pueda traducir requisitos complejos en interfaces claras, accesibles y de alto rendimiento. Escribime si querés conversar sobre un rol o una oportunidad concreta.",
     "emailLabel": "Email",
     "locationLabel": "Ubicación",
     "locationValue": "Global / Remote (GMT-3)",
