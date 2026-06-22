@@ -96,7 +96,7 @@ export const MetaTags = ({
   useEffect(() => {
     const prevTitle = document.title;
     const finalTitle = title
-      ? (title.includes(DEFAULT_TITLE) ? title : `${title} | ${DEFAULT_TITLE}`)
+      ? (title.includes('Ezequiel Fernández') || title.includes('Full Stack Developer') ? title : `${title} | ${DEFAULT_TITLE}`)
       : DEFAULT_TITLE;
     document.title = finalTitle;
 
