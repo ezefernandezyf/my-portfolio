@@ -12,6 +12,7 @@ import {
 
 import { ProjectCarousel } from '../../shared/ui/project-carousel';
 import { MetaTags } from '../../shared/seo';
+import { ScrollProgress } from '../../components/ScrollProgress/ScrollProgress';
 
 type StackSection = {
   title: string;
@@ -152,6 +153,8 @@ export const CaseStudyTemplate = ({
   return (
     <>
       <MetaTags title={title} description={description} pathname={pathname} type="article" />
+
+      <ScrollProgress />
 
       <main className="pb-0 pt-24">
         <section className="animate-fade-in-up max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-24">
