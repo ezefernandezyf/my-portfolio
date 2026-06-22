@@ -20,6 +20,12 @@
     "demo": "View demo",
     "caseStudy": "View case study"
   },
+  "contentSection": {
+    "heading": "How I Work",
+    "paragraph1": "Every project I build starts with a simple premise: understand the problem before writing a single line of code. I work with feature-based architecture, applying DDD-lite principles so the business domain is reflected in the project structure. This means folders and modules speak the same language as the product, not the framework.",
+    "paragraph2": "My tech stack is pragmatic, not hype-driven. I choose TypeScript on both frontend and backend for type safety, React for declarative and predictable interfaces, Node.js with Express for REST APIs, and PostgreSQL as my relational database. I don't follow trends — I pick tools that solve the actual problem with the least overhead possible.",
+    "paragraph3": "Every project goes through research, architecture design, implementation with tests, and automated deployment. I prioritize readable, testable code over premature optimization. My goal is that any developer can read the code and understand not just what it does, but why it's structured that way."
+  },
   "notFound": "Project not found",
   "echolog": {
     "name": "EchoLog",

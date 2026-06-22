@@ -5,6 +5,11 @@
       "description": "Contact form for team opportunities, technical collaborations or work proposals."
     }
   },
+  "contentSection": {
+    "heading": "What to Expect",
+    "paragraph1": "When you reach out, I respond within 24 business hours. My collaboration process starts with a conversation to understand the project scope, the technologies involved, and the team's expectations. I'm transparent about timelines, costs, and scope from the very first message, and I maintain constant communication throughout development.",
+    "paragraph2": "I work best in teams that value code quality, clean architecture, and user experience. My ideal projects involve full-stack web applications with React on the frontend, Node.js on the backend, and PostgreSQL as the database. I'm also interested in CLI tools, automation projects, and any challenge that combines complex logic with accessible interfaces. If your team works with TypeScript, automated testing, and CI/CD, we'll have a solid foundation from day one."
+  },
   "hero": {
     "label": "Open to joining a team",
     "titleAccessible": "I want to join a team and build something precise.",

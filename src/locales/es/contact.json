@@ -5,6 +5,11 @@
       "description": "Formulario de contacto para oportunidades de equipo, colaboraciones técnicas o propuestas de trabajo."
     }
   },
+  "contentSection": {
+    "heading": "Qué esperar",
+    "paragraph1": "Cuando me contactás, respondo dentro de las 24 horas hábiles. Mi proceso de colaboración empieza con una conversación para entender el alcance del proyecto, las tecnologías involucradas y las expectativas del equipo. Soy transparente sobre plazos, costos y alcance desde el primer mensaje, y mantengo una comunicación constante durante todo el desarrollo.",
+    "paragraph2": "Trabajo mejor en equipos que valoran la calidad del código, la arquitectura limpia y la experiencia de usuario. Mis proyectos ideales involucran aplicaciones web completas con React en el frontend, Node.js en el backend, y PostgreSQL como base de datos. También me interesan proyectos de herramientas CLI, automatización, y cualquier desafío que combine lógica compleja con interfaces accesibles. Si tu equipo trabaja con TypeScript, testing automatizado y CI/CD, vamos a tener una base sólida desde el día uno."
+  },
   "hero": {
     "label": "Disponible para sumarme a un equipo",
     "titleAccessible": "Quiero sumarme a un equipo y construir algo preciso.",
