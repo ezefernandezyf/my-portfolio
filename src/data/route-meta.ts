@@ -103,13 +103,13 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     titleI18nKey: 'projects:meta.title',
     descI18nKey: 'projects:meta.description',
     es: {
-      title: 'Proyectos | React, Node.js, TypeScript | Ezequiel Fernández',
+      title: 'Proyectos | Ezequiel Fernández, Full Stack Developer',
       description:
         'Explorá mi portfolio de proyectos construidos con React, Node.js, TypeScript y PostgreSQL. Desde SaaS multi-tenant hasta herramientas con IA y dashboards.',
       keywords: ['proyectos', 'react', 'node.js', 'typescript', 'portfolio', 'open source', 'desarrollo web'],
     },
     en: {
-      title: 'Projects | Ezequiel Fernández | Full Stack Developer',
+      title: 'Projects | Ezequiel Fernández, Full Stack Developer',
       description:
         'Explore my portfolio of projects built with React, Node.js, TypeScript, and PostgreSQL. From multi-tenant SaaS platforms to AI tools and dashboards.',
       keywords: ['projects', 'react', 'node.js', 'typescript', 'portfolio', 'open source', 'web development'],
@@ -124,13 +124,13 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     titleI18nKey: 'cinelabcasestudy:meta.title',
     descI18nKey: 'cinelabcasestudy:meta.title',
     es: {
-      title: 'CineLab | Movie Search App | Ezequiel Fernández',
+      title: 'CineLab | Ezequiel Fernández, Full Stack Developer',
       description:
         'Movie Search App construida con React, TypeScript y la API de TMDB. Búsqueda, filtros, favoritos persistentes y recomendaciones dinámicas.',
       keywords: ['cinelab', 'movie app', 'react', 'typescript', 'tmdb', 'proyecto portfolio'],
     },
     en: {
-      title: 'CineLab | Movie Search App | Ezequiel Fernández',
+      title: 'CineLab | Ezequiel Fernández, Full Stack Developer',
       description:
         'Movie Search App built with React, TypeScript and TMDB API. Features search, filters, persistent favorites, and dynamic recommendations.',
       keywords: ['cinelab', 'movie app', 'react', 'typescript', 'tmdb', 'portfolio project'],
@@ -145,13 +145,13 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     titleI18nKey: 'moviedashboardcasestudy:meta.title',
     descI18nKey: 'moviedashboardcasestudy:meta.title',
     es: {
-      title: 'Movie Management Dashboard | Ezequiel Fernández',
+      title: 'Movie Management Dashboard | Ezequiel Fernández, Full Stack Developer',
       description:
         'Dashboard SPA para gestión de catálogo de películas con CRUD, autenticación Supabase, React Query y arquitectura modular.',
       keywords: ['movie dashboard', 'react', 'supabase', 'react query', 'crud', 'typescript'],
     },
     en: {
-      title: 'Movie Management Dashboard | Ezequiel Fernández',
+      title: 'Movie Management Dashboard | Ezequiel Fernández, Full Stack Developer',
       description:
         'SPA dashboard for movie catalog management with CRUD, Supabase auth, React Query, and modular architecture.',
       keywords: ['movie dashboard', 'react', 'supabase', 'react query', 'crud', 'typescript'],
@@ -166,13 +166,13 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     titleI18nKey: 'chefcitoiacasestudy:meta.title',
     descI18nKey: 'chefcitoiacasestudy:meta.title',
     es: {
-      title: 'ChefcitoIA | Generador de Recetas con IA | Ezequiel Fernández',
+      title: 'ChefcitoIA | Ezequiel Fernández, Full Stack Developer',
       description:
         'Generador de recetas con IA construido con React y TypeScript. Convertí ingredientes en ideas de comidas con validación Zod.',
       keywords: ['chefcitoia', 'generador recetas ia', 'react', 'typescript', 'zod', 'portfolio'],
     },
     en: {
-      title: 'ChefcitoIA | AI Recipe Generator | Ezequiel Fernández',
+      title: 'ChefcitoIA | Ezequiel Fernández, Full Stack Developer',
       description:
         'AI-powered recipe generator built with React and TypeScript. Turn ingredients into practical meal ideas with Zod validation.',
       keywords: ['chefcitoia', 'ai recipe generator', 'react', 'typescript', 'zod', 'portfolio'],
@@ -187,13 +187,13 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     titleI18nKey: 'nexustalentcasestudy:meta.title',
     descI18nKey: 'nexustalentcasestudy:meta.title',
     es: {
-      title: 'Nexus Talent | Plataforma de Reclutamiento con IA | Ezequiel Fernández',
+      title: 'Nexus Talent | Ezequiel Fernández, Full Stack Developer',
       description:
         'Plataforma de reclutamiento asistida por IA que convierte descripciones de trabajo en matrices de skills y estrategias de postulación.',
       keywords: ['nexus talent', 'reclutamiento ia', 'react', 'typescript', 'node.js', 'portfolio'],
     },
     en: {
-      title: 'Nexus Talent | AI Recruitment Platform | Ezequiel Fernández',
+      title: 'Nexus Talent | Ezequiel Fernández, Full Stack Developer',
       description:
         'AI-assisted recruitment platform that transforms job descriptions into structured skill matrices and application strategies.',
       keywords: ['nexus talent', 'ai recruitment', 'react', 'typescript', 'node.js', 'portfolio'],
@@ -208,13 +208,13 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     titleI18nKey: 'echologcasestudy:meta.title',
     descI18nKey: 'echologcasestudy:meta.title',
     es: {
-      title: 'EchoLog | SaaS de Feedback Multi-tenant | Ezequiel Fernández',
+      title: 'EchoLog | Ezequiel Fernández, Full Stack Developer',
       description:
         'SaaS multi-tenant de feedback para productos construido con React 19, Node.js, Express, PostgreSQL. Boards, votos, comentarios y workspaces.',
       keywords: ['echolog', 'saas', 'feedback', 'react', 'node.js', 'postgresql', 'multi-tenant'],
     },
     en: {
-      title: 'EchoLog | Multi-tenant Feedback SaaS | Ezequiel Fernández',
+      title: 'EchoLog | Ezequiel Fernández, Full Stack Developer',
       description:
         'Multi-tenant customer feedback SaaS built with React 19, Node.js, Express, PostgreSQL. Boards, voting, comments, and workspaces.',
       keywords: ['echolog', 'saas', 'feedback', 'react', 'node.js', 'postgresql', 'multi-tenant'],
@@ -229,13 +229,13 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     titleI18nKey: 'privacy:meta.title',
     descI18nKey: 'privacy:meta.description',
     es: {
-      title: 'Política de Privacidad | Ezequiel Fernández',
+      title: 'Política de Privacidad | Ezequiel Fernández, Full Stack Developer',
       description:
         'Política de privacidad del portfolio de Ezequiel Fernández. Información sobre recolección de datos, cookies y derechos del usuario.',
       keywords: ['política de privacidad', 'protección de datos', 'cookies', 'portfolio'],
     },
     en: {
-      title: 'Privacy Policy | Ezequiel Fernández',
+      title: 'Privacy Policy | Ezequiel Fernández, Full Stack Developer',
       description:
         'Privacy policy for Ezequiel Fernández\'s portfolio website. Information about data collection, cookies, and user rights.',
       keywords: ['privacy policy', 'data protection', 'cookies', 'portfolio'],
@@ -291,13 +291,13 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     titleI18nKey: 'geoseoopencodecasestudy:meta.title',
     descI18nKey: 'geoseoopencodecasestudy:meta.title',
     es: {
-      title: 'Geo-SEO OpenCode | Skill SEO para Buscadores con IA | Ezequiel Fernández',
+      title: 'geo-seo-opencode | Ezequiel Fernández, Full Stack Developer',
       description:
         'Skill de GEO-SEO para OpenCode/Claude que optimiza sitios web para buscadores impulsados por IA. Node.js, Commander, análisis automatizado.',
       keywords: ['geo-seo', 'opencode', 'seo ia', 'claude', 'node.js', 'skill'],
     },
     en: {
-      title: 'Geo-SEO OpenCode | AI SEO Skill | Ezequiel Fernández',
+      title: 'geo-seo-opencode | Ezequiel Fernández, Full Stack Developer',
       description:
         'GEO-SEO skill for OpenCode/Claude that optimizes websites for AI-powered search engines. Node.js, Commander, automated analysis.',
       keywords: ['geo-seo', 'opencode', 'ai seo', 'claude', 'node.js', 'skill'],
