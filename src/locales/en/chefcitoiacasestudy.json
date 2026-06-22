@@ -1,9 +1,9 @@
 ﻿{
   "meta": {
-    "title": "IA Recipe Generator"
+    "title": "ChefcitoIA | Ezequiel Fernández, Full Stack Developer"
   },
   "header": {
-    "title": "IA Recipe Generator",
+    "title": "ChefcitoIA | Ezequiel Fernández, Full Stack Developer",
     "short": "AI-powered recipe generator: enter ingredients and preferences to receive typed recipes with macros, times and difficulty.",
     "repoAria": "IA Recipe Generator repository",
     "demoAria": "IA Recipe Generator demo",

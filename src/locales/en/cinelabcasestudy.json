@@ -1,9 +1,9 @@
 ﻿{
   "meta": {
-    "title": "{{name}}"
+    "title": "CineLab | Ezequiel Fernández, Full Stack Developer"
   },
   "header": {
-    "title": "{{name}}",
+    "title": "CineLab | Ezequiel Fernández, Full Stack Developer",
     "short": "Movie Search App - search, filters, persistent favorites and dynamic recommendations (TMDB).",
     "repoAria": "Repository {{name}}",
     "demoAria": "Demo {{name}}",

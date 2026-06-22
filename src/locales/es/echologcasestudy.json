@@ -1,9 +1,9 @@
 ﻿{
   "meta": {
-    "title": "EchoLog"
+    "title": "EchoLog | Ezequiel Fernández, Full Stack Developer"
   },
   "header": {
-    "title": "EchoLog",
+    "title": "EchoLog | Ezequiel Fernández, Full Stack Developer",
     "short": "SaaS multi-tenant de feedback para productos - boards, votos, comentarios, gestión de workspaces. Full-stack TypeScript con React 19, Node.js, Express, PostgreSQL.",
     "repoAria": "Repositorio EchoLog",
     "demoAria": "Demo EchoLog",

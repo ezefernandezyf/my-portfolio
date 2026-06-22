@@ -1,9 +1,9 @@
 {
   "meta": {
-    "title": "Movie Management Dashboard"
+    "title": "Movie Management Dashboard | Ezequiel Fernández, Full Stack Developer"
   },
   "header": {
-    "title": "Movie Management Dashboard",
+    "title": "Movie Management Dashboard | Ezequiel Fernández, Full Stack Developer",
     "short": "Dashboard SPA para gestión de catálogo de películas. CRUD seguro, autenticación vía Supabase, uso avanzado de React Query, formularios robustos y tests automatizados.",
     "repoAria": "Repositorio Movie Dashboard",
     "demoAria": "Demo Movie Dashboard",
