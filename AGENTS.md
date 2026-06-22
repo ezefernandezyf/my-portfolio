@@ -156,3 +156,15 @@ Segunda tanda:
 - [ ] Unificar escala de H2
 - [ ] Scroll progress en case studies
 - [ ] Foto de perfil más arriba en AboutPage
+
+### Fase 12 — SEO/GEO Fino + Certificación 🔲 (futura branch)
+> Arrancar después de mergear Fase 11. GEO score actual: 58/100. Objetivo: ~65-70/100.
+
+- [ ] **Títulos descriptivos** — "Inicio" → "Ezequiel Fernández — Full Stack Developer", cada página con title único y descriptivo
+- [ ] **Meta descriptions con keywords reales** — descripciones que incluyan términos de búsqueda relevantes
+- [ ] **Expandir contenido** — /projects y /contact a 200+ palabras c/u para SEO on-page
+- [ ] **BreadcrumbList schema** — structured data de navegación para cada ruta
+- [ ] **Alt text en imágenes del prerender** — `scripts/prerender.mjs` debe inyectar alt relevante en `<img>` tags
+- [ ] **Certificación AI Skills Fest 2026 (Microsoft)** — agregar a sección Educación en AboutPage con badge de Credly
+- [ ] **GEO audit final** — correr auditoría completa post-cambios, medir score final
+
