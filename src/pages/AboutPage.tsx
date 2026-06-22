@@ -22,6 +22,7 @@ import { about } from '../data/about';
 import { GithubIcon, LinkedInIcon } from '../components';
 import { MetaTags } from '../shared/seo';
 import { useTranslation } from 'react-i18next';
+import { useLocalizedPath } from '../hooks/useLocalizedPath';
 
 const stackCards = [
   {
@@ -90,8 +91,10 @@ function useSectionFadeIn() {
 }
 
 export const AboutPage = (): React.JSX.Element => {
-  const { t } = useTranslation('aboutpage');
-  const { name, role, github, linkedIn, cv } = about;
+  const { t, i18n } = useTranslation('aboutpage');
+  const localize = useLocalizedPath();
+  const { name, role, github, linkedIn } = about;
+  const cv = i18n.language?.startsWith('en') ? '/Ezequiel_Fernandez_CV_EN.pdf' : '/Ezequiel_Fernandez_CV.pdf';
 
   const translatedSkills = t('abilities.items', { returnObjects: true }) as unknown;
   const skillItems = Array.isArray(translatedSkills) && translatedSkills.length > 0
@@ -137,14 +140,14 @@ export const AboutPage = (): React.JSX.Element => {
 
                 <div className="mt-10 flex flex-wrap gap-4">
                   <Link
-                    to="/projects"
+                    to={localize('/projects')}
                     className="inline-flex items-center justify-center gap-2 bg-accent px-6 py-3 text-sm font-medium text-bg-primary transition-colors hover:bg-accent-hover focus-ring"
                   >
                     {t('hero.viewProjects')}
                     <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
                   </Link>
                   <Link
-                    to="/contact"
+                    to={localize('/contact')}
                     className="inline-flex items-center justify-center border border-border px-6 py-3 text-sm font-medium text-text-primary transition-colors hover:border-border-hover focus-ring"
                   >
                     {t('hero.contact')}
