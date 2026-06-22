@@ -158,7 +158,7 @@ Segunda tanda:
 - [x] Legibilidad: text-muted y labels con contraste WCAG AA en ambos modos
 
 ### Fase 12 — SEO/GEO Fino + Certificación + Routing ✅ (en `feat/fase12-seo-geo-polish`)
-> SDD completo. 4 PRs. GEO score pendiente de auditoría final.
+> SDD completo. 4 PRs. GEO score final: 65/100 (ver `GEO-AUDIT-REPORT.md`).
 
 - [x] **Títulos descriptivos** — cada página con title único, keywords, descriptions en `route-meta.ts`
 - [x] **Meta descriptions con keywords reales** — descripciones SEO para las 12 rutas
@@ -170,13 +170,16 @@ Segunda tanda:
 - [x] **CV dinámico según idioma** — ES/EN PDF según `i18n.language`
 - [x] **Fix routing** — URLs mantienen `/en/` al navegar en inglés, hook `useLocalizedPath`
 - [x] **Education status** — activo (en curso) vs completado con chip-completed
-- [ ] **GEO audit final** — correr auditoría completa post-cambios, medir score final
+- [x] **GEO audit final** — 65/100 (desde 54/100 en Fase 10, +11 puntos)
 
-### Fase 13 — Pulido Final 🔲 (futura branch)
-> Mejoras pendientes detectadas en verificación.
+### Fase 13 — Pulido Final ✅ (en `feat/fase13-polish`)
+> SDD completo. 16 tareas, 1 PR. GEO 54 → 65.
 
-- [ ] **Expandir word count** — párrafos de /projects y /contact están 20-40% debajo de 200 palabras
-- [ ] **Agregar 3er párrafo en ContactPage** — spec pide 3-4, hay 2
-- [ ] **Fix prerender about descKey** — el prerender emite title como description para /about
-- [ ] **GEO audit final** — si no se corrió en Fase 12
+- [x] **Expandir word count** — párrafos expandidos y luego recortados a 86-114 palabras (scaneable)
+- [x] **Agregar 3er párrafo en ContactPage** — proceso y valores (testing, code review, CI/CD)
+- [x] **Fix prerender about descKey** — `meta.title` → `meta.description` para /about
+- [x] **Sitemap automático** — `scripts/generate-sitemap.mjs` desde `route-meta.ts` (24 URLs)
+- [x] **Actualizar llms.txt** — geo-seo-opencode, AI Skills Fest, full route table
+- [x] **GEO audit final** — 65/100, ver `GEO-AUDIT-REPORT.md` para quick wins y 30-day plan
+- [x] **Remover startup claim** — mención falsa de startups eliminada de contact.json (ES/EN)
 
