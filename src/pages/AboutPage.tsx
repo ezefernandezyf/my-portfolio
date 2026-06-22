@@ -268,7 +268,7 @@ export const AboutPage = (): React.JSX.Element => {
                 </h2>
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
                   {educationCards.map((item, index) => {
-                    const isActive = index < 2;
+                    const isActive = index < 3;
                     const title = t(`education.${index}.title`);
                     const period = t(item.periodKey);
 
@@ -293,8 +293,20 @@ export const AboutPage = (): React.JSX.Element => {
                             ? 'Formación integral en desarrollo de software, arquitectura de sistemas y metodologías de trabajo para construir productos consistentes.'
                             : index === 1
                               ? 'Certificación enfocada en seguridad, control de acceso y prácticas de hardening aplicadas a productos web modernos.'
-                              : 'Formación intensiva en modelos generativos, flujo de entrega y criterios para llevar experimentos de IA a producción.'}
+                              : index === 2
+                                ? 'Formación intensiva en modelos generativos, flujo de entrega y criterios para llevar experimentos de IA a producción.'
+                                : 'Participación en el evento global de Microsoft sobre IA generativa, agentes y Copilot. Badge verificado en Credly.'}
                         </p>
+                        {index === 3 && (
+                          <a
+                            href="https://www.credly.com/badges/31b0f4c1-3076-4ef0-aca1-d3ada920f6ec"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-accent hover:text-accent-hover focus-ring"
+                          >
+                            {t('education.3.credlyBadge', { defaultValue: 'Ver badge en Credly' })}
+                          </a>
+                        )}
                       </article>
                     );
                   })}
