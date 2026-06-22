@@ -3,7 +3,7 @@ export interface Project {
   nameKey: string;
   shortKey: string;
   repo: string;
-  demo: string;
+  demo?: string;
   images: string[];
   tech: string[];
   year: number;
