@@ -142,20 +142,20 @@ Stats en hero de homepage, link "Ver todos los proyectos" en Recent Work, redes 
 - [x] Migración npm → pnpm 11, CI Node 22
 - [x] Redirect raíz `/` → `/home` (fix post-audit)
 
-### Fase 11 — Diseño: Personalidad Visual 🔲 (en `feat/design-audit-improvements`)
+### Fase 11 — Diseño: Personalidad Visual ✅ (en `feat/design-audit-improvements`)
 > Auditoría de diseño completada (score: 72/100). Mejoras priorizadas según portfolio-personality skill.
 
 Prioridad (top 3):
-- [ ] **Stagger animation en grilla de proyectos** — cards aparecen secuencialmente al scrollear (50ms delay)
-- [ ] **Skip-to-content link** — primer elemento focusable, requerido WCAG 2.2 AA
-- [ ] **Dark/light mood diferenciado** — light mode con personalidad propia, no solo colores invertidos
+- [x] **Stagger animation en grilla de proyectos** — cards aparecen secuencialmente al scrollear (50ms delay)
+- [x] **Skip-to-content link** — primer elemento focusable, requerido WCAG 2.2 AA
+- [x] **Dark/light mood diferenciado** — light mode con personalidad propia, no solo colores invertidos
 
 Segunda tanda:
-- [ ] Layout asimétrico: alternar secciones centradas con alineadas a izquierda
-- [ ] Hover morphing mejorado en cards (shadow + translateY)
-- [ ] Unificar escala de H2
-- [ ] Scroll progress en case studies
-- [ ] Foto de perfil más arriba en AboutPage
+- [x] Hover morphing mejorado en cards (shadow + translateY) — removido asimétrico por preferencia
+- [x] Unificar escala de H2
+- [x] Scroll progress en case studies
+- [x] Foto de perfil más arriba en AboutPage (ya estaba ok)
+- [x] Legibilidad: text-muted y labels con contraste WCAG AA en ambos modos
 
 ### Fase 12 — SEO/GEO Fino + Certificación 🔲 (futura branch)
 > Arrancar después de mergear Fase 11. GEO score actual: 58/100. Objetivo: ~65-70/100.
