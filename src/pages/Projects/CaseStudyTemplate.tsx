@@ -12,6 +12,7 @@ import {
 
 import { ProjectCarousel } from '../../shared/ui/project-carousel';
 import { MetaTags } from '../../shared/seo';
+import { ScrollProgress } from '../../components/ScrollProgress/ScrollProgress';
 
 type StackSection = {
   title: string;
@@ -153,11 +154,13 @@ export const CaseStudyTemplate = ({
     <>
       <MetaTags title={title} description={description} pathname={pathname} type="article" />
 
+      <ScrollProgress />
+
       <main className="pb-0 pt-24">
         <section className="animate-fade-in-up max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-24">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
-              <p className="animate-fade-in-up font-body mb-4 text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-border" style={{ animationDelay: '0.08s' }}>
+              <p className="animate-fade-in-up font-body mb-4 text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted" style={{ animationDelay: '0.08s' }}>
                 Case Study
               </p>
               <h1 className="animate-fade-in-up font-display text-[3rem] font-bold leading-tight tracking-[-0.02em] text-text-primary sm:text-[3.5rem]" style={{ animationDelay: '0.16s' }}>
@@ -204,14 +207,14 @@ export const CaseStudyTemplate = ({
               style={{ animationDelay: '0.16s' }}
             >
               <div>
-                <span className="mb-1 block font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-border">
+                <span className="mb-1 block font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted">
                   {yearLabel}
                 </span>
                 <span className="block font-body text-sm font-medium text-text-primary">{year ?? '-'}</span>
               </div>
               {featured && featuredLabel ? (
                 <div>
-                  <span className="mb-1 block font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-border">
+                  <span className="mb-1 block font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted">
                     Featured
                   </span>
                   <span className="inline-flex items-center rounded-full border border-border/20 px-4 py-2 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-primary">
@@ -220,7 +223,7 @@ export const CaseStudyTemplate = ({
                 </div>
               ) : null}
               <div>
-                <span className="mb-1 block font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-border">
+                <span className="mb-1 block font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted">
                   {stackHeading}
                 </span>
                 <div className="flex flex-wrap gap-2">

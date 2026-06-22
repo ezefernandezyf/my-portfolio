@@ -44,7 +44,7 @@ export const PrivacyPage = (): React.JSX.Element => {
         <div className="site-container space-y-24">
           <section className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end" style={fadeInUp()}>
             <div className="lg:col-span-8">
-              <p className="mb-4 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-border" style={fadeInUp(0.08)}>
+              <p className="mb-4 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted" style={fadeInUp(0.08)}>
                 Privacy & Trust
               </p>
               <h1 className="font-display text-[2.75rem] font-medium leading-tight tracking-[-0.03em] text-text-primary sm:text-[3.25rem]" style={fadeInUp(0.16)}>
@@ -57,7 +57,7 @@ export const PrivacyPage = (): React.JSX.Element => {
 
             <aside className="lg:col-span-4 lg:border-l lg:border-border/20 lg:pl-12" style={fadeInUp(0.32)}>
               <div className="rounded-lg border border-border/20 bg-surface p-6">
-                <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-border">
+                <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted">
                   {t('lastUpdated', { date: lastUpdated })}
                 </p>
                 <p className="mt-4 text-sm leading-relaxed text-text-secondary">

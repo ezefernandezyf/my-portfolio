@@ -134,8 +134,49 @@ Identidad actualizada a Full Stack Developer (home, about, meta tags, footer). E
 ### Fase 9 — Design Polish ✅
 Stats en hero de homepage, link "Ver todos los proyectos" en Recent Work, redes sociales en footer, ajustes visuales.
 
-### Fase 10 — GEO & SEO Enhancements 🔲 (en `feat/geo-seo-enhancements`)
-> SDD completo. GEO score actual: 20/100 (Critical). Target: 60+/100.
-- [ ] **Slice A — Prerender + Infra**: static prerender de todas las rutas, Vercel security/cache headers, sitemap mejorado
-- [ ] **Slice B — AI Visibility**: schema JSON-LD, meta tags únicos por ruta en HTML, llms.txt, adaptar MetaTags
-- [ ] **Slice C — Content & Polish**: expansión de contenido a 2,000+ palabras, AGENTS.md rewrite, auditoría de diseño
+### Fase 10 — GEO & SEO Enhancements ✅
+> SDD completo. GEO score: 20/100 → 54/100 (+34 puntos).
+- [x] **Slice A — Prerender + Infra**: static prerender 22 páginas, Vercel security/cache headers, hreflang
+- [x] **Slice B — AI Visibility**: schema JSON-LD @graph, meta tags únicos por ruta, llms.txt, sitemap 22 URLs, MetaTags adapt
+- [x] **Slice C — Content & Polish**: fix CSS tokens huérfanos, AGENTS.md rewrite, favicons regenerados
+- [x] Migración npm → pnpm 11, CI Node 22
+- [x] Redirect raíz `/` → `/home` (fix post-audit)
+
+### Fase 11 — Diseño: Personalidad Visual ✅ (en `feat/design-audit-improvements`)
+> Auditoría de diseño completada (score: 72/100). Mejoras priorizadas según portfolio-personality skill.
+
+Prioridad (top 3):
+- [x] **Stagger animation en grilla de proyectos** — cards aparecen secuencialmente al scrollear (50ms delay)
+- [x] **Skip-to-content link** — primer elemento focusable, requerido WCAG 2.2 AA
+- [x] **Dark/light mood diferenciado** — light mode con personalidad propia, no solo colores invertidos
+
+Segunda tanda:
+- [x] Hover morphing mejorado en cards (shadow + translateY) — removido asimétrico por preferencia
+- [x] Unificar escala de H2
+- [x] Scroll progress en case studies
+- [x] Foto de perfil más arriba en AboutPage (ya estaba ok)
+- [x] Legibilidad: text-muted y labels con contraste WCAG AA en ambos modos
+
+### Fase 12 — SEO/GEO Fino + Certificación + Routing ✅ (en `feat/fase12-seo-geo-polish`)
+> SDD completo. 4 PRs. GEO score pendiente de auditoría final.
+
+- [x] **Títulos descriptivos** — cada página con title único, keywords, descriptions en `route-meta.ts`
+- [x] **Meta descriptions con keywords reales** — descripciones SEO para las 12 rutas
+- [x] **Expandir contenido** — secciones nuevas en /projects y /contact (200+ palabras)
+- [x] **BreadcrumbList schema** — structured data de navegación en JSON-LD @graph
+- [x] **Alt text en imágenes del prerender** — JSDOM post-render injection en `scripts/prerender.mjs`
+- [x] **Certificación AI Skills Fest 2026 (Microsoft)** — 4ª card en Educación con badge Credly
+- [x] **geo-seo-opencode case study** — proyecto en posición 3, CLI toolkit open source, sin demo
+- [x] **CV dinámico según idioma** — ES/EN PDF según `i18n.language`
+- [x] **Fix routing** — URLs mantienen `/en/` al navegar en inglés, hook `useLocalizedPath`
+- [x] **Education status** — activo (en curso) vs completado con chip-completed
+- [ ] **GEO audit final** — correr auditoría completa post-cambios, medir score final
+
+### Fase 13 — Pulido Final 🔲 (futura branch)
+> Mejoras pendientes detectadas en verificación.
+
+- [ ] **Expandir word count** — párrafos de /projects y /contact están 20-40% debajo de 200 palabras
+- [ ] **Agregar 3er párrafo en ContactPage** — spec pide 3-4, hay 2
+- [ ] **Fix prerender about descKey** — el prerender emite title como description para /about
+- [ ] **GEO audit final** — si no se corrió en Fase 12
+

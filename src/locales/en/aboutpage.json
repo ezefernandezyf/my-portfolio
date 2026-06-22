@@ -1,6 +1,7 @@
 ﻿{
   "meta": {
-    "title": "About me"
+    "title": "About Me , Full Stack Developer",
+    "description": "Learn about Ezequiel Fernández, a Full Stack Developer with experience in React, TypeScript, Node.js, and clean architecture. Portfolio, projects, and professional experience."
   },
   "hero": {
     "photoAlt": "Photo of {{name}}",
@@ -70,6 +71,12 @@
       "title": "AI Development: From 0 to Production - BIG school",
       "period": "2026 - completed",
       "periodLabel": "2026 - completed",
+      "bullets": []
+    },
+    "3": {
+      "title": "AI Skills Fest 2026 , Microsoft",
+      "period": "2026",
+      "periodLabel": "2026",
       "bullets": []
     }
   },

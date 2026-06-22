@@ -126,6 +126,14 @@ export const about: AboutData = {
       whatILearnedKey: 'projects.chefcitoia.whatILearned',
       tech: ['React', 'TypeScript', 'Zod', 'Vite', 'Tailwind'],
     },
+    {
+      id: 'geo-seo-opencode',
+      nameKey: 'geo-seo-opencode.name',
+      shortKey: 'geo-seo-opencode.short',
+      repo: 'https://github.com/ezefernandezyf/geo-seo-opencode',
+      whatILearnedKey: 'projects.geo-seo-opencode.whatILearned',
+      tech: ['Bash', 'Python', 'Shell Scripting', 'Cross-Platform', 'MIT License'],
+    },
   ],
 
   education: [
@@ -142,6 +150,11 @@ export const about: AboutData = {
     {
       titleKey: 'aboutpage.education.2.title',
       periodKey: 'education.2.period',
+      bulletsKeys: [],
+    },
+    {
+      titleKey: 'aboutpage.education.3.title',
+      periodKey: 'education.3.period',
       bulletsKeys: [],
     },
   ],

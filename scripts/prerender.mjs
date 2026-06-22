@@ -39,6 +39,7 @@ const ROUTES = [
   { path: 'projects/chefcitoia',       ns: 'chefcitoiacasestudy',       titleKey: 'meta.title', descKey: 'meta.title', schemaType: 'WebPage', priority: 0.7, changefreq: 'monthly', ogImage: '/og-image.png' },
   { path: 'projects/nexus-talent',     ns: 'nexustalentcasestudy',      titleKey: 'meta.title', descKey: 'meta.title', schemaType: 'WebPage', priority: 0.7, changefreq: 'monthly', ogImage: '/og-image.png' },
   { path: 'projects/echolog',          ns: 'echologcasestudy',          titleKey: 'meta.title', descKey: 'meta.title', schemaType: 'WebPage', priority: 0.7, changefreq: 'monthly', ogImage: '/og-image.png' },
+  { path: 'projects/geo-seo-opencode', ns: 'geoseoopencodecasestudy',   titleKey: 'meta.title', descKey: 'meta.title', schemaType: 'WebPage', priority: 0.7, changefreq: 'monthly', ogImage: '/og-image.png' },
   { path: 'privacy',         ns: 'privacy',         titleKey: 'meta.title',                   descKey: 'meta.description',                schemaType: 'WebPage',        priority: 0.3, changefreq: 'yearly',  ogImage: '/og-image.png' },
   { path: 'contact',         ns: 'contact',         titleKey: 'meta.contact.title',           descKey: 'meta.contact.description',        schemaType: 'ContactPage',    priority: 0.6, changefreq: 'monthly', ogImage: '/og-image.png' },
   { path: 'not-found',       ns: 'notfoundpage',    titleKey: 'meta.title',                   descKey: 'meta.description',                schemaType: 'WebPage',        priority: 0.1, changefreq: 'yearly',  ogImage: '/og-image.png' },
@@ -123,7 +124,7 @@ function buildJsonLdScript(lang, route) {
       jobTitle: 'Full Stack Developer',
       sameAs: [
         'https://github.com/ezefernandezyf',
-        'https://linkedin.com/in/ezequiel-fernandez-y-f/',
+        'https://www.linkedin.com/in/ezequiel-fernandez-59a21a387/',
       ],
     },
     {
@@ -144,6 +145,7 @@ function buildJsonLdScript(lang, route) {
       about: { '@id': `${SITE_URL}/#person` },
       inLanguage: lang,
     },
+    buildPrerenderBreadcrumbList(lang, route),
   ];
   const json = JSON.stringify(
     { '@context': 'https://schema.org', '@graph': graph },
@@ -151,6 +153,60 @@ function buildJsonLdScript(lang, route) {
     2,
   );
   return `<script type="application/ld+json">\n${json}\n</script>`;
+}
+
+function buildPrerenderBreadcrumbList(lang, route) {
+  const segments = route.path.split('/').filter(Boolean);
+  const prefix = lang === 'en' ? '/en' : '';
+  const homeName = lang === 'en' ? 'Home' : 'Inicio';
+  const siteUrl = SITE_URL;
+
+  const itemListElement = [];
+
+  if (route.path === 'home') {
+    itemListElement.push({
+      '@type': 'ListItem',
+      position: 1,
+      name: homeName,
+      item: `${siteUrl}${prefix}/home`,
+    });
+  } else {
+    itemListElement.push({
+      '@type': 'ListItem',
+      position: 1,
+      name: homeName,
+      item: `${siteUrl}${prefix}/home`,
+    });
+
+    let accumulatedPath = '';
+    let position = 1;
+
+    for (let i = 0; i < segments.length; i++) {
+      accumulatedPath = accumulatedPath ? `${accumulatedPath}/${segments[i]}` : segments[i];
+      position++;
+
+      let name;
+      if (i === segments.length - 1) {
+        name = metaTitle(lang, route);
+      } else {
+        const parentRoute = ROUTES.find(r => r.path === accumulatedPath);
+        name = parentRoute ? metaTitle(lang, parentRoute) : segments[i];
+      }
+
+      itemListElement.push({
+        '@type': 'ListItem',
+        position,
+        name,
+        item: `${siteUrl}${prefix}/${accumulatedPath}`,
+      });
+    }
+  }
+
+  return {
+    '@type': 'BreadcrumbList',
+    '@id': `${SITE_URL}/#breadcrumb`,
+    itemListElement,
+  };
 }
 
 /* ── Page content builders (createElement, no TSX) ──────────── */
@@ -189,9 +245,17 @@ function buildPageContent(lang, route) {
   if (ns === 'projects') {
     const title = getVal(content, 'meta.title') || 'Projects';
     const subtitle = getVal(content, 'header.subtitle') || '';
+    const contentHeading = getVal(content, 'contentSection.heading') || '';
+    const contentPara1 = getVal(content, 'contentSection.paragraph1') || '';
+    const contentPara2 = getVal(content, 'contentSection.paragraph2') || '';
+    const contentPara3 = getVal(content, 'contentSection.paragraph3') || '';
     return createElement('div', { className: 'prerendered-page' },
       createElement('h1', null, title),
       subtitle ? createElement('p', null, subtitle) : null,
+      contentHeading ? createElement('h2', null, contentHeading) : null,
+      contentPara1 ? createElement('p', null, contentPara1) : null,
+      contentPara2 ? createElement('p', null, contentPara2) : null,
+      contentPara3 ? createElement('p', null, contentPara3) : null,
     );
   }
 
@@ -210,10 +274,16 @@ function buildPageContent(lang, route) {
     const title = getVal(content, 'meta.contact.title') || 'Contact';
     const desc = getVal(content, 'hero.description') || '';
     const label = getVal(content, 'hero.label') || '';
+    const contentHeading = getVal(content, 'contentSection.heading') || '';
+    const contentPara1 = getVal(content, 'contentSection.paragraph1') || '';
+    const contentPara2 = getVal(content, 'contentSection.paragraph2') || '';
     return createElement('div', { className: 'prerendered-page' },
       createElement('h1', null, title),
       label ? createElement('p', { className: 'hero-label' }, label) : null,
       desc ? createElement('p', null, desc) : null,
+      contentHeading ? createElement('h2', null, contentHeading) : null,
+      contentPara1 ? createElement('p', null, contentPara1) : null,
+      contentPara2 ? createElement('p', null, contentPara2) : null,
     );
   }
 
@@ -402,6 +472,30 @@ function injectIntoHtml(templateHtml, renderedContent, lang, route) {
   // Inject JSON-LD structured data (Task B4)
   const jsonLdScript = buildJsonLdScript(lang, route);
   document.head.insertAdjacentHTML('beforeend', `\n    ${jsonLdScript}\n    `);
+
+  // Alt text injection — scan <img> tags missing alt, inject descriptive text
+  const images = dom.window.document.querySelectorAll('img:not([alt]), img[alt=""]');
+  for (const img of images) {
+    const src = img.getAttribute('src') || '';
+    // Try to derive contextual alt from route meta + image context
+    const routeName = metaTitle(lang, route);
+    const filename = src.split('/').pop()?.split('.')[0] || '';
+    if (filename) {
+      const readableName = filename.replace(/[-_]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      // Check if this looks like a project screenshot (inside a case study page)
+      if (route.path.startsWith('projects/') && route.path !== 'projects') {
+        img.setAttribute('alt', `${routeName} — ${readableName}`);
+      } else if (route.path === 'about' || route.path === 'home') {
+        // Hero/figure images get descriptive alt
+        img.setAttribute('alt', readableName);
+      } else {
+        // Generic fallback
+        img.setAttribute('alt', readableName);
+      }
+    } else {
+      img.setAttribute('alt', '');
+    }
+  }
 
   // Add hreflang alternate links (Task A5)
   const hreflangHtml = buildHreflangLinks(route);

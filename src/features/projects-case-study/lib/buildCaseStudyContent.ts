@@ -98,6 +98,23 @@ const stackByProject: Record<string, StackItem[]> = {
       items: ['Vitest', 'React Testing Library', 'Vercel'],
     },
   ],
+  'geo-seo-opencode': [
+    {
+      titleKey: 'stack.sections.tools',
+      defaultTitle: 'Herramientas / Tools',
+      items: ['Bash', 'Python', 'Shell Scripting'],
+    },
+    {
+      titleKey: 'stack.sections.languages',
+      defaultTitle: 'Lenguajes / Languages',
+      items: ['Bash', 'Python'],
+    },
+    {
+      titleKey: 'stack.sections.platforms',
+      defaultTitle: 'Plataformas / Platforms',
+      items: ['Cross-Platform', 'MIT License'],
+    },
+  ],
 };
 
 function toStringArray(value: unknown): string[] {
