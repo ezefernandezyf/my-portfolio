@@ -26,14 +26,14 @@ Chain strategy: feature-branch-chain
 - [x] 1.6 Add `contentSection.*` keys (heading, paragraph1-2) to `contact.json` ES/EN
 - [x] 1.7 Add `education.3.*` for AI Skills Fest to `aboutpage.json` ES/EN
 
-## Phase 2 — New Project & Certification
+## Phase 2 — New Project & Certification ✅ (PR #2)
 
-- [ ] 2.1 Make `demo` optional in `src/entities/project/model/types.ts`
-- [ ] 2.2 Add geo-seo-opencode entry (no demo, terminal shots, Node.js/Commander) to `projects.ts`
-- [ ] 2.3 Add 4th education (AI Skills Fest 2026, Microsoft, Credly) to `src/data/about.ts`
-- [ ] 2.4 Create `geoseoopencodecasestudy.json` ES/EN (all required keys)
-- [ ] 2.5 Register namespace in `namespaces.ts` + add stack to `buildCaseStudyContent.ts`
-- [ ] 2.6 Register namespace in `src/i18n.ts` + add route to `AppRoutes.tsx`
+- [x] 2.1 Make `demo` optional in `src/entities/project/model/types.ts`
+- [x] 2.2 Add geo-seo-opencode entry (no demo, terminal shots, Bash/Python/Shell) to `projects.ts`
+- [x] 2.3 Add 4th education (AI Skills Fest 2026, Microsoft, Credly) to `src/data/about.ts`
+- [x] 2.4 Create `geoseoopencodecasestudy.json` ES/EN (all required keys)
+- [x] 2.5 Register namespace in `namespaces.ts` + add stack to `buildCaseStudyContent.ts`
+- [x] 2.6 Register namespace in `src/i18n.ts` (auto via caseStudyNamespaces) + add route to `AppRoutes.tsx`
 
 ## Phase 3 — Routing & CV
 
