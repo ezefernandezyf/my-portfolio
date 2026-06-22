@@ -1,14 +1,15 @@
-﻿{
+{
   "meta": {
     "contact": {
-      "title": "Contacto | Ezequiel Fernández, Full Stack Developer",
+      "title": "Contacto",
       "description": "Formulario de contacto para oportunidades de equipo, colaboraciones técnicas o propuestas de trabajo."
     }
   },
   "contentSection": {
     "heading": "Cómo colaboro",
-    "paragraph1": "Mi proceso de integración empieza con una conversación técnica para entender la arquitectura, el stack y los objetivos del equipo. Me adapto rápido a codebases existentes, convenciones de código y flujos de trabajo establecidos. Valoro la comunicación clara, el feedback constructivo y la mejora continua tanto del producto como del proceso de desarrollo.",
-    "paragraph2": "Me desenvuelvo mejor en entornos que priorizan la calidad del software, las pruebas automatizadas y las decisiones técnicas fundamentadas. Mi experiencia abarca aplicaciones full-stack con React y Node.js, herramientas CLI, automatización de procesos y sistemas con bases de datos relacionales. Si tu equipo trabaja con TypeScript, integración continua y arquitectura limpia, puedo aportar desde el primer sprint."
+    "paragraph1": "Mi proceso de integración empieza con una conversación técnica para entender la arquitectura, el stack y los objetivos del equipo. Me adapto rápido a codebases existentes, convenciones de código y flujos de trabajo establecidos. Valoro la comunicación clara, el feedback constructivo y la mejora continua del producto y del proceso. En mis primeras semanas me enfoco en entender el dominio del negocio y las decisiones arquitectónicas existentes. Contribuyo con código limpio y mejoras incrementales desde adentro, sin imponer mi forma de trabajar. Mi objetivo es ser productivo desde el día uno generando el menor ruido posible.",
+    "paragraph2": "Me desenvuelvo mejor en entornos que priorizan la calidad del software, las pruebas automatizadas y las decisiones técnicas fundamentadas. Mi experiencia abarca aplicaciones full-stack con React y Node.js, herramientas CLI, automatización de procesos y sistemas con bases de datos relacionales. Si tu equipo trabaja con TypeScript, integración continua y arquitectura limpia, puedo aportar desde el primer sprint. Mi enfoque es escribir código que otro desarrollador pueda entender sin explicación, documentar las decisiones importantes y dejar cada módulo en mejor estado del que lo encontré. No necesito supervisión constante y tomo ownership de lo que construyo, pero también sé pedir ayuda cuando la complejidad del dominio lo requiere.",
+    "paragraph3": "La disciplina de testing es parte central de mi forma de trabajar. Escribo tests primero cuando resuelvo bugs y tests después para comportamientos nuevos, asegurándome de probar la funcionalidad desde la perspectiva del usuario. En code review me enfoco en claridad, cobertura de casos borde y consistencia arquitectónica, dando feedback accionable y recibiendo críticas con apertura. Diseño pipelines de CI/CD que corren linter, type-checking y tests en paralelo, con deploys automatizados que incluyen validación y health checks. La comunicación la abordo con transparencia: actualizaciones diarias, discusiones técnicas documentadas en PRs y decisiones arquitectónicas registradas."
   },
   "hero": {
     "label": "Disponible para sumarme a un equipo",
@@ -16,7 +17,7 @@
     "titleLine1": "Construyamos",
     "titleLine2": "algo",
     "titleAccent": "preciso.",
-      "description": "Busco integrarme a un equipo donde pueda traducir requisitos complejos en interfaces claras, accesibles y de alto rendimiento. Escribime si querés conversar sobre un rol o una oportunidad concreta.",
+    "description": "Busco integrarme a un equipo donde pueda traducir requisitos complejos en interfaces claras, accesibles y de alto rendimiento. Mi perfil combina fortaleza técnica en TypeScript, React y Node.js con una comunicación clara y orientación al producto. Escribime si querés conversar sobre un rol, una colaboración técnica o una oportunidad concreta.",
     "emailLabel": "Email",
     "locationLabel": "Ubicación",
     "locationValue": "Global / Remote (GMT-3)",

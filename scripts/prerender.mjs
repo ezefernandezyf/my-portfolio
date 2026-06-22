@@ -32,7 +32,7 @@ const SITE_URL = 'https://ezefernandez.com';
 const LANGUAGES = ['es', 'en'];
 const ROUTES = [
   { path: 'home',            ns: 'home',            titleKey: 'meta.title',                   descKey: 'meta.description',                schemaType: 'WebPage',        priority: 1.0, changefreq: 'daily',   ogImage: '/og-image.png' },
-  { path: 'about',           ns: 'aboutpage',       titleKey: 'meta.title',                   descKey: 'meta.title',                      schemaType: 'AboutPage',      priority: 0.8, changefreq: 'monthly', ogImage: '/og-image.png' },
+  { path: 'about',           ns: 'aboutpage',       titleKey: 'meta.title',                   descKey: 'meta.description',                schemaType: 'AboutPage',      priority: 0.8, changefreq: 'monthly', ogImage: '/og-image.png' },
   { path: 'projects',        ns: 'projects',        titleKey: 'meta.title',                   descKey: 'meta.description',                schemaType: 'CollectionPage', priority: 0.9, changefreq: 'weekly',  ogImage: '/og-image.png' },
   { path: 'projects/cinelab',           ns: 'cinelabcasestudy',          titleKey: 'meta.title', descKey: 'meta.title', schemaType: 'WebPage', priority: 0.7, changefreq: 'monthly', ogImage: '/og-image.png', i18nInterpolation: { name: 'CineLab' } },
   { path: 'projects/movie-dashboard',  ns: 'moviedashboardcasestudy',   titleKey: 'meta.title', descKey: 'meta.title', schemaType: 'WebPage', priority: 0.7, changefreq: 'monthly', ogImage: '/og-image.png' },
@@ -277,6 +277,7 @@ function buildPageContent(lang, route) {
     const contentHeading = getVal(content, 'contentSection.heading') || '';
     const contentPara1 = getVal(content, 'contentSection.paragraph1') || '';
     const contentPara2 = getVal(content, 'contentSection.paragraph2') || '';
+    const contentPara3 = getVal(content, 'contentSection.paragraph3') || '';
     return createElement('div', { className: 'prerendered-page' },
       createElement('h1', null, title),
       label ? createElement('p', { className: 'hero-label' }, label) : null,
@@ -284,6 +285,7 @@ function buildPageContent(lang, route) {
       contentHeading ? createElement('h2', null, contentHeading) : null,
       contentPara1 ? createElement('p', null, contentPara1) : null,
       contentPara2 ? createElement('p', null, contentPara2) : null,
+      contentPara3 ? createElement('p', null, contentPara3) : null,
     );
   }
 

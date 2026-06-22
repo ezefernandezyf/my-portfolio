@@ -1,14 +1,15 @@
-﻿{
+{
   "meta": {
     "contact": {
-      "title": "Contact | Ezequiel Fernández, Full Stack Developer",
+      "title": "Contact",
       "description": "Contact form for team opportunities, technical collaborations or work proposals."
     }
   },
   "contentSection": {
     "heading": "How I Collaborate",
-    "paragraph1": "My integration process starts with a technical conversation to understand the architecture, stack, and team goals. I adapt quickly to existing codebases, coding conventions, and established workflows. I value clear communication, constructive feedback, and continuous improvement of both the product and the development process.",
-    "paragraph2": "I thrive in environments that prioritize software quality, automated testing, and well-reasoned technical decisions. My experience covers full-stack applications with React and Node.js, CLI tools, process automation, and relational database systems. If your team works with TypeScript, continuous integration, and clean architecture, I can contribute from the first sprint."
+    "paragraph1": "My integration process starts with a technical conversation to understand the architecture, stack, and team goals. I adapt quickly to existing codebases, coding conventions, and established workflows. I value clear communication, constructive feedback, and continuous improvement of both the product and the development process. In my first weeks I focus on understanding the business domain and the architectural decisions already in place. I contribute clean code and incremental improvements from within, without imposing my way of working. My goal is to be productive from day one with minimal friction.",
+    "paragraph2": "I thrive in environments that prioritize software quality, automated testing, and well-reasoned technical decisions. My experience covers full-stack applications with React and Node.js, CLI tools, process automation, and relational database systems. If your team works with TypeScript, continuous integration, and clean architecture, I can contribute from the first sprint. My approach is to write code that another developer can understand without explanation, document important decisions, and leave each module in better shape than I found it. I do not need constant supervision and take ownership of what I build, but I also know when to ask for help when domain complexity demands it.",
+    "paragraph3": "Testing discipline is central to how I work. I write tests first when fixing bugs and tests after for new behaviors, ensuring functionality is tested from the user's perspective. In code review I focus on clarity, edge case coverage, and architectural consistency, providing actionable feedback and receiving critique with openness. I design CI/CD pipelines that run linter, type-checking, and tests in parallel, with automated deployments that include validation and health checks. I handle communication with transparency: daily updates, technical discussions documented in PRs, and architectural decisions recorded for traceability."
   },
   "hero": {
     "label": "Open to joining a team",
@@ -16,7 +17,7 @@
     "titleLine1": "Let's build",
     "titleLine2": "something",
     "titleAccent": "precise.",
-      "description": "I'm looking to join a team where I can translate complex requirements into clean, accessible, high-performance interfaces. Reach out if you want to discuss a role or a concrete opportunity.",
+    "description": "I'm looking to join a team where I can translate complex requirements into clean, accessible, high-performance interfaces. My profile combines strong TypeScript, React, and Node.js engineering skills with clear communication and product-oriented thinking. Reach out if you want to discuss a role, a technical collaboration, or a concrete opportunity.",
     "emailLabel": "Email",
     "locationLabel": "Location",
     "locationValue": "Global / Remote (GMT-3)",
