@@ -174,7 +174,7 @@ Segunda tanda:
 
 ### Fase 13 — Pulido Final 🔲 (absorbida en Fase 14)
 
-### Fase 14 — Auditoría 360° & Fixes 🚧 (en `feat/fase14-audit-fixes`)
+### Fase 14 — Auditoría 360° & Fixes ✅ (mergeada a `develop`)
 > Auditoría completa con impeccable + design-taste-frontend + redesign-existing-projects. Score combinado: **77/100** (Visual: 77, Contenido: 75, Técnico: 80). PRODUCT.md + DESIGN.md creados.
 
 #### Fase 14a — 🔴 Críticos: i18n + Schema + Infra
