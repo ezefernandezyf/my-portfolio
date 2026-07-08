@@ -5,21 +5,21 @@ Chained PRs recommended: Yes
 Chain strategy: stacked-to-develop
 400-line budget risk: Medium
 
-| Field | Value |
-|-------|-------|
+| Field                   | Value                                       |
+| ----------------------- | ------------------------------------------- |
 | Estimated changed lines | ~225 (A) + ~375 (B) + ~160 (C) = ~760 total |
-| 400-line budget risk | Medium |
-| Chained PRs recommended | Yes |
-| Delivery strategy | stacked-to-develop |
-| Chain strategy | stacked-to-develop |
+| 400-line budget risk    | Medium                                      |
+| Chained PRs recommended | Yes                                         |
+| Delivery strategy       | stacked-to-develop                          |
+| Chain strategy          | stacked-to-develop                          |
 
 ### Suggested Work Units
 
-| Unit | Goal | Likely PR | Base | Notes |
-|------|------|-----------|------|-------|
-| 1 | Prerender + infra | PR A → develop | develop | vite plugin, prerender.mjs, vercel.json, AppRoutes EN routes |
-| 2 | AI visibility data | PR B → develop | develop | route-meta, schema, llms.txt, sitemap, MetaTags adapt |
-| 3 | Design token fixes | PR C → develop | develop | PrivacyPage + CaseStudyTemplate CSS mapping |
+| Unit | Goal               | Likely PR      | Base    | Notes                                                        |
+| ---- | ------------------ | -------------- | ------- | ------------------------------------------------------------ |
+| 1    | Prerender + infra  | PR A → develop | develop | vite plugin, prerender.mjs, vercel.json, AppRoutes EN routes |
+| 2    | AI visibility data | PR B → develop | develop | route-meta, schema, llms.txt, sitemap, MetaTags adapt        |
+| 3    | Design token fixes | PR C → develop | develop | PrivacyPage + CaseStudyTemplate CSS mapping                  |
 
 ## Slice A — Prerender + Infrastructure
 

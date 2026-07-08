@@ -2,14 +2,14 @@
 
 ## Review Workload Forecast
 
-| Field | Value |
-|-------|-------|
-| Estimated changed lines | ~330-370 |
-| 400-line budget risk | Low |
-| Chained PRs recommended | No |
-| Suggested split | Single PR (6 slices, content + tooling, no behavioral changes) |
-| Delivery strategy | ask-always |
-| Chain strategy | single-pr (applied) |
+| Field                   | Value                                                          |
+| ----------------------- | -------------------------------------------------------------- |
+| Estimated changed lines | ~330-370                                                       |
+| 400-line budget risk    | Low                                                            |
+| Chained PRs recommended | No                                                             |
+| Suggested split         | Single PR (6 slices, content + tooling, no behavioral changes) |
+| Delivery strategy       | ask-always                                                     |
+| Chain strategy          | single-pr (applied)                                            |
 
 Decision needed before apply: No
 Chained PRs recommended: No
@@ -18,14 +18,14 @@ Chain strategy: pending
 
 ### Suggested Work Units
 
-| Unit | Goal | Notes |
-|------|------|-------|
-| 1 | Expand i18n content (7 paragraphs + 2 short texts, ES+EN) | Locale JSONs only |
-| 2 | Add contact paragraph3 rendering | ContactPage.tsx + prerender.mjs |
-| 3 | Fix prerender about descKey bug | 1-line fix in prerender.mjs |
-| 4 | Auto-generate sitemap script + regenerate sitemap.xml | New script + regenerated file |
-| 5 | Update llms.txt | Add missing content |
-| 6 | Verify + lint + test + build | No GEO audit — paused |
+| Unit | Goal                                                      | Notes                           |
+| ---- | --------------------------------------------------------- | ------------------------------- |
+| 1    | Expand i18n content (7 paragraphs + 2 short texts, ES+EN) | Locale JSONs only               |
+| 2    | Add contact paragraph3 rendering                          | ContactPage.tsx + prerender.mjs |
+| 3    | Fix prerender about descKey bug                           | 1-line fix in prerender.mjs     |
+| 4    | Auto-generate sitemap script + regenerate sitemap.xml     | New script + regenerated file   |
+| 5    | Update llms.txt                                           | Add missing content             |
+| 6    | Verify + lint + test + build                              | No GEO audit — paused           |
 
 ## Phase 1: Content Expansion (Locale JSONs)
 

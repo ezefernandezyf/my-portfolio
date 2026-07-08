@@ -9,12 +9,12 @@ Chain strategy: feature-branch-chain
 
 ### Work Units
 
-| Unit | Est. | PR | Base |
-|------|------|----|------|
-| SEO Meta + i18n | ~230 | PR 1 | tracker |
-| Projects + cert | ~275 | PR 2 | PR 1 |
-| Routing + CV | ~155 | PR 3 | PR 2 |
-| Prerender + Schema | ~205 | PR 4 | PR 3 |
+| Unit               | Est. | PR   | Base    |
+| ------------------ | ---- | ---- | ------- |
+| SEO Meta + i18n    | ~230 | PR 1 | tracker |
+| Projects + cert    | ~275 | PR 2 | PR 1    |
+| Routing + CV       | ~155 | PR 3 | PR 2    |
+| Prerender + Schema | ~205 | PR 4 | PR 3    |
 
 ## Phase 1 — SEO Meta & i18n Content ✅ (PR #1)
 

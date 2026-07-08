@@ -1,7 +1,5 @@
 {
-  "redirects": [
-    { "source": "/", "destination": "/home", "permanent": true }
-  ],
+  "redirects": [{ "source": "/", "destination": "/home", "permanent": true }],
   "rewrites": [
     { "source": "/en/:path*", "destination": "/en/:path*/index.html" },
     { "source": "/((?!en/).*)", "destination": "/$1/index.html" }
@@ -9,9 +7,7 @@
   "headers": [
     {
       "source": "/assets/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     },
     {
       "source": "/(.*)",
@@ -19,7 +15,10 @@
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "X-Frame-Options", "value": "DENY" },
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://api.emailjs.com; img-src 'self' data: https:; frame-src 'none'; base-uri 'self'; form-action 'self'" }
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://api.emailjs.com; img-src 'self' data: https:; frame-src 'none'; base-uri 'self'; form-action 'self'"
+        }
       ]
     }
   ]

@@ -35,6 +35,7 @@ export const projects = [
       '/projects/nexustalent/shot2.webp',
       '/projects/nexustalent/shot3.webp',
       '/projects/nexustalent/shot4.webp',
+      '/projects/nexustalent/shot5.webp',
     ],
     tech: ['React 19', 'TypeScript', 'Tailwind 4', 'Supabase', 'Zod'],
     year: 2026,
@@ -62,10 +63,11 @@ export const projects = [
     repo: 'https://github.com/ezefernandezyf/movie-management-dashboard',
     demo: 'https://moviesdashboard.vercel.app/',
     images: [
-      '/projects/moviedash-1.jpg',
-      '/projects/moviedash-2.jpg',
-      '/projects/moviedash-3.jpg',
-      '/projects/moviedash-4.jpg',
+      '/projects/moviedash-1.webp',
+      '/projects/moviedash-2.webp',
+      '/projects/moviedash-3.webp',
+      '/projects/moviedash-4.webp',
+      // TODO: convert .jpg source files to .webp if webp versions don't exist yet
     ],
     tech: [
       'React',

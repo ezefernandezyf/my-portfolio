@@ -7,13 +7,13 @@
 
 ### Requirement: Content paragraphs reach 180-200 words
 
-| Deliverable | Files | Target |
-|-------------|-------|--------|
-| Projects paragraphs | `projects.json` contentSection.p1-3 (ES+EN) | 180-200w each |
-| Projects subtitle | `projects.json` header.subtitle (ES+EN) | 20-40w |
-| Contact paragraphs | `contact.json` contentSection.p1-2 (ES+EN) | 180-200w each |
-| Contact hero desc | `contact.json` hero.description (ES+EN) | 20-40w |
-| Contact paragraph 3 | `contact.json` contentSection.p3 (ES+EN) | 180-200w, process & values |
+| Deliverable         | Files                                       | Target                     |
+| ------------------- | ------------------------------------------- | -------------------------- |
+| Projects paragraphs | `projects.json` contentSection.p1-3 (ES+EN) | 180-200w each              |
+| Projects subtitle   | `projects.json` header.subtitle (ES+EN)     | 20-40w                     |
+| Contact paragraphs  | `contact.json` contentSection.p1-2 (ES+EN)  | 180-200w each              |
+| Contact hero desc   | `contact.json` hero.description (ES+EN)     | 20-40w                     |
+| Contact paragraph 3 | `contact.json` contentSection.p3 (ES+EN)    | 180-200w, process & values |
 
 Contact paragraph 3 MUST cover: testing discipline, code review practices, CI/CD approach, and team communication.
 

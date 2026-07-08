@@ -242,11 +242,23 @@
       }
     ],
     "breakpoints": [
-      { "name": "sm", "value": "640px", "purpose": "Mobile landscape. ThemeToggle/LanguageSwitcher visible." },
-      { "name": "md", "value": "768px", "purpose": "Tablet. Desktop nav visible, grid switches to 2-column." },
+      {
+        "name": "sm",
+        "value": "640px",
+        "purpose": "Mobile landscape. ThemeToggle/LanguageSwitcher visible."
+      },
+      {
+        "name": "md",
+        "value": "768px",
+        "purpose": "Tablet. Desktop nav visible, grid switches to 2-column."
+      },
       { "name": "lg", "value": "1024px", "purpose": "Desktop. Container padding expands to 3rem." },
       { "name": "xl", "value": "1280px", "purpose": "Wide desktop. Site max-width (1280px)." },
-      { "name": "2xl", "value": "1536px", "purpose": "Ultra-wide. Content remains centered at max-width." }
+      {
+        "name": "2xl",
+        "value": "1536px",
+        "purpose": "Ultra-wide. Content remains centered at max-width."
+      }
     ]
   },
   "components": [

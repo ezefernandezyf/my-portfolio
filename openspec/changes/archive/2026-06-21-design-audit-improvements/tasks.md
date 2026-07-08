@@ -2,14 +2,14 @@
 
 ## Review Workload Forecast
 
-| Field | Value |
-|-------|-------|
-| Estimated changed lines | ~350-380 |
-| 400-line budget risk | Medium |
-| Chained PRs recommended | No |
-| Suggested split | Single PR |
-| Delivery strategy | ask-on-risk |
-| Chain strategy | pending |
+| Field                   | Value       |
+| ----------------------- | ----------- |
+| Estimated changed lines | ~350-380    |
+| 400-line budget risk    | Medium      |
+| Chained PRs recommended | No          |
+| Suggested split         | Single PR   |
+| Delivery strategy       | ask-on-risk |
+| Chain strategy          | pending     |
 
 Decision needed before apply: No
 Chained PRs recommended: No
@@ -18,10 +18,10 @@ Chain strategy: pending
 
 ### Suggested Work Units
 
-| Unit | Goal | Likely PR | Notes |
-|------|------|-----------|-------|
-| 1 | Foundation + SkipLink + ScrollProgress | PR 1 | CSS tokens, i18n, WCAG, progress bar |
-| 2 | Visual polish + Stagger | PR 2 | Hover, H2, asymmetric, stagger, photo |
+| Unit | Goal                                   | Likely PR | Notes                                 |
+| ---- | -------------------------------------- | --------- | ------------------------------------- |
+| 1    | Foundation + SkipLink + ScrollProgress | PR 1      | CSS tokens, i18n, WCAG, progress bar  |
+| 2    | Visual polish + Stagger                | PR 2      | Hover, H2, asymmetric, stagger, photo |
 
 ## Phase 1: Foundation
 

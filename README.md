@@ -20,7 +20,7 @@ Proyecto construido con Vite + React. Incluye páginas principales (Home, About,
 - i18next (localización)
 - Vitest + React Testing Library
 - Prettier, ESLint
-- Deploy: Vercel 
+- Deploy: Vercel
 
 ## Estructura relevante
 

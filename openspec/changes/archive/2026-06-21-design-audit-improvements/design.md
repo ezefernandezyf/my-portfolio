@@ -49,19 +49,19 @@ Stagger flow:
 
 ## File Changes
 
-| File | Action | Description |
-|------|--------|-------------|
-| `src/index.css` | Modify | Add light mood tokens in `:root:not(.dark)`, `--text-h2` in `@theme`, `.section-left` utility |
-| `src/components/SkipLink/SkipLink.tsx` | Create | `<a href="#main-content">` with `.sr-only` + `:focus-visible`, i18n via `common` ns |
-| `src/components/ScrollProgress/ScrollProgress.tsx` | Create | Fixed accent bar, rAF loop, `prefers-reduced-motion` guard |
-| `src/components/layouts/MainLayout.tsx` | Modify | Add `id="main-content" tabIndex={-1}` to `<main>`, render `<SkipLink />` as first child |
-| `src/pages/HomePage.tsx` | Modify | IntersectionObserver stagger on featured grid, `.section-left` on hero section |
-| `src/pages/AboutPage.tsx` | Modify | Swap photo above h1 (mobile-first column order), `.section-left` on sections |
-| `src/pages/Projects/CaseStudyTemplate.tsx` | Modify | Render `<ScrollProgress />` after `<main>`, replace H2 sizes with `--text-h2` |
-| `src/features/projects/list/page/ProjectsListPage.tsx` | Modify | IntersectionObserver stagger on card grid |
-| `src/components/ProjectCard/ProjectCard.tsx` | Modify | Enhance hover: `-translate-y-1.5` + `shadow-[0_18px_40px_rgba(2,6,23,0.18)]` |
-| `src/locales/en/common.json` | Modify | Add `"skipToContent": "Skip to content"` |
-| `src/locales/es/common.json` | Modify | Add `"skipToContent": "Saltar al contenido principal"` |
+| File                                                   | Action | Description                                                                                   |
+| ------------------------------------------------------ | ------ | --------------------------------------------------------------------------------------------- |
+| `src/index.css`                                        | Modify | Add light mood tokens in `:root:not(.dark)`, `--text-h2` in `@theme`, `.section-left` utility |
+| `src/components/SkipLink/SkipLink.tsx`                 | Create | `<a href="#main-content">` with `.sr-only` + `:focus-visible`, i18n via `common` ns           |
+| `src/components/ScrollProgress/ScrollProgress.tsx`     | Create | Fixed accent bar, rAF loop, `prefers-reduced-motion` guard                                    |
+| `src/components/layouts/MainLayout.tsx`                | Modify | Add `id="main-content" tabIndex={-1}` to `<main>`, render `<SkipLink />` as first child       |
+| `src/pages/HomePage.tsx`                               | Modify | IntersectionObserver stagger on featured grid, `.section-left` on hero section                |
+| `src/pages/AboutPage.tsx`                              | Modify | Swap photo above h1 (mobile-first column order), `.section-left` on sections                  |
+| `src/pages/Projects/CaseStudyTemplate.tsx`             | Modify | Render `<ScrollProgress />` after `<main>`, replace H2 sizes with `--text-h2`                 |
+| `src/features/projects/list/page/ProjectsListPage.tsx` | Modify | IntersectionObserver stagger on card grid                                                     |
+| `src/components/ProjectCard/ProjectCard.tsx`           | Modify | Enhance hover: `-translate-y-1.5` + `shadow-[0_18px_40px_rgba(2,6,23,0.18)]`                  |
+| `src/locales/en/common.json`                           | Modify | Add `"skipToContent": "Skip to content"`                                                      |
+| `src/locales/es/common.json`                           | Modify | Add `"skipToContent": "Saltar al contenido principal"`                                        |
 
 ## Interfaces / Contracts
 
@@ -76,11 +76,13 @@ Stagger flow:
 ## Key CSS Changes
 
 **Light mood tokens** (additive in `:root:not(.dark)`):
+
 ```
 --color-bg-primary: #faf7f0     (was #f8fafc)
 --color-surface: #f5f0e8        (was #ffffff)
 --color-accent: #d97706         (unchanged from current light)
 ```
+
 Shadow opacity reduced ~40% in light mode via overrides on `.section-shell`, `.card-minimal`, `.card-base`.
 
 **New token**: `--text-h2: 1.75rem` in `@theme`. Applied via `font-size: var(--text-h2)` on all H2 elements.
@@ -89,14 +91,14 @@ Shadow opacity reduced ~40% in light mode via overrides on `.section-shell`, `.c
 
 ## Testing Strategy
 
-| Layer | What to Test | Approach |
-|-------|-------------|----------|
-| Unit | ScrollProgress percentage calculation | jsdom mock scrollHeight/scrollTop |
-| Unit | SkipLink i18n text by language | RTL render with i18next provider |
-| Integration | SkipLink Tab → Enter focus flow | RTL + userEvent.tab() |
-| Integration | Stagger cards receive staggered delays | RTL + IntersectionObserver mock |
-| Visual | Light/dark token contrast | Manual audit with WCAG contrast checker |
-| Visual | Hover morph on ProjectCard | Dev server review |
+| Layer       | What to Test                           | Approach                                |
+| ----------- | -------------------------------------- | --------------------------------------- |
+| Unit        | ScrollProgress percentage calculation  | jsdom mock scrollHeight/scrollTop       |
+| Unit        | SkipLink i18n text by language         | RTL render with i18next provider        |
+| Integration | SkipLink Tab → Enter focus flow        | RTL + userEvent.tab()                   |
+| Integration | Stagger cards receive staggered delays | RTL + IntersectionObserver mock         |
+| Visual      | Light/dark token contrast              | Manual audit with WCAG contrast checker |
+| Visual      | Hover morph on ProjectCard             | Dev server review                       |
 
 ## Migration / Rollout
 

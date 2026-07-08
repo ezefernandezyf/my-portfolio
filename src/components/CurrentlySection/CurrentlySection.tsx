@@ -1,10 +1,5 @@
 import { useTranslation } from 'react-i18next';
 
-// TODO: Replace CSS stagger with framer-motion motion.ul/motion.li when installed (Batch 4).
-// Usage: <motion.ul variants={staggerContainer} initial="hidden" animate="visible">
-//          {items.map((item, i) => <motion.li key={i} variants={staggerItem}>...</motion.li>)}
-//        </motion.ul>
-
 export interface CurrentlyItem {
   emoji: string;
   label: string;

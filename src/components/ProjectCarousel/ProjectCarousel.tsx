@@ -84,6 +84,8 @@ export const ProjectCarousel = ({
                   src={src}
                   alt={`${alt} ${i + 1}`}
                   loading="lazy"
+                  width="1600"
+                  height="900"
                   className="block w-full h-full object-cover"
                 />
               </div>

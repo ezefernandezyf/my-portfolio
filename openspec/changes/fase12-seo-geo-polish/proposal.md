@@ -7,6 +7,7 @@ Boost GEO score 58→65-70/100: refine meta tags with keywords, expand on-page c
 ## Scope
 
 ### In Scope
+
 - Per-route descriptive titles & meta descriptions with keywords
 - Expanded /projects & /contact content (200+ words, new i18n keys)
 - BreadcrumbList schema in prerender & schema.ts
@@ -18,16 +19,19 @@ Boost GEO score 58→65-70/100: refine meta tags with keywords, expand on-page c
 - Final GEO audit (target 65-70/100)
 
 ### Out of Scope
+
 - New pages/routes, SSR, design overhauls, tech stack additions
 
 ## Capabilities
 
 ### New
+
 - `seo-meta`: per-route titles + descriptions with search keywords
 - `seo-structured-data`: BreadcrumbList schema injection
 - `seo-content`: expanded /projects and /contact descriptive sections
 
 ### Modified
+
 - `prerender`: alt text in prerendered `<img>` tags
 - `about-data`: 4th education card (certification), CV path per locale
 - `projects`: geo-seo-opencode entry (no demo) + case study
@@ -46,26 +50,26 @@ Boost GEO score 58→65-70/100: refine meta tags with keywords, expand on-page c
 
 ## Affected Areas
 
-| Area | Impact |
-|------|--------|
-| `src/data/route-meta.ts` | Modified |
-| `src/data/schema.ts` | Modified |
-| `scripts/prerender.mjs` | Modified |
-| `src/locales/*/` | Modified |
-| `src/data/about.ts` | Modified |
-| `src/data/projects.ts` | Modified |
-| `src/features/projects-case-study/` | New |
-| `src/pages/AboutPage.tsx` | Modified |
-| `src/pages/HomePage.tsx` | Modified |
+| Area                                | Impact   |
+| ----------------------------------- | -------- |
+| `src/data/route-meta.ts`            | Modified |
+| `src/data/schema.ts`                | Modified |
+| `scripts/prerender.mjs`             | Modified |
+| `src/locales/*/`                    | Modified |
+| `src/data/about.ts`                 | Modified |
+| `src/data/projects.ts`              | Modified |
+| `src/features/projects-case-study/` | New      |
+| `src/pages/AboutPage.tsx`           | Modified |
+| `src/pages/HomePage.tsx`            | Modified |
 | `src/components/layouts/Header.tsx` | Modified |
 
 ## Risks
 
-| Risk | Likelihood | Mitigation |
-|------|------------|------------|
-| Prerender breaks | Low | Test with `pnpm run build` |
-| Routing fix causes 404s | Med | Manual nav test both locales |
-| Breadcrumb schema invalid | Low | Google Rich Results Test |
+| Risk                      | Likelihood | Mitigation                   |
+| ------------------------- | ---------- | ---------------------------- |
+| Prerender breaks          | Low        | Test with `pnpm run build`   |
+| Routing fix causes 404s   | Med        | Manual nav test both locales |
+| Breadcrumb schema invalid | Low        | Google Rich Results Test     |
 
 ## Rollback Plan
 

@@ -1,11 +1,13 @@
 # Proposal: Fase 14a — Críticos
 
 ## Intent
+
 Fix 5 production-breaking bugs from the 360° audit: invisible LanguageSwitcher, invalid JSON-LD schema, 6 case studies with no meta descriptions, English strings in Spanish locales, and double `<main>` nesting that violates HTML semantics.
 
 ## Scope
 
 ### In Scope
+
 - Replace LanguageSwitcher CSS classes with project design tokens (`bg-surface-elevated`, `text-text-primary`, `font-body`)
 - Fix `schema.ts:58-59` to use resolved SEO strings (`route[lang].title`) instead of i18n keys
 - Add `meta.description` to 12 locale files (ES/EN × 6 case studies) + fix `descI18nKey` in `route-meta.ts`
@@ -13,6 +15,7 @@ Fix 5 production-breaking bugs from the 360° audit: invisible LanguageSwitcher,
 - Change `<main role="main">` to `<div>` in `HomePage`, `AboutPage`, `ContactPage`, `PrivacyPage`, `CaseStudyTemplate`
 
 ### Out of Scope
+
 - Fase 14b (a11y, UX writing, i18n labels in non-case-study pages)
 - Fase 14c (visual consistency: button heights, heading scales, gradients)
 - Fase 14d (technical polish: webp conversion, env cleanup, sitemap automation)
@@ -21,10 +24,12 @@ Fix 5 production-breaking bugs from the 360° audit: invisible LanguageSwitcher,
 ## Capabilities
 
 ### Modified Capabilities
+
 - `seo-structured-data`: schema.ts must output resolved strings from `route[lang]`, not i18n keys
 - `seo-meta`: case study `descI18nKey` must reference `meta.description`, not `meta.title`
 
 ### New Capabilities
+
 None — all changes fix broken implementations of existing capabilities.
 
 ## Approach
@@ -49,27 +54,29 @@ None — all changes fix broken implementations of existing capabilities.
 
 ## Affected Areas
 
-| Area | Impact | Files |
-|------|--------|-------|
-| LanguageSwitcher | Modified | `src/components/LanguageSwitcher/LanguageSwitcher.tsx` |
-| Schema builder | Modified | `src/data/schema.ts` |
-| Route meta | Modified | `src/data/route-meta.ts` |
-| Spanish locales | Modified | 6 files in `src/locales/es/` |
-| English locales | Modified | 6 files in `src/locales/en/` |
-| Page shells | Modified | `HomePage.tsx`, `AboutPage.tsx`, `ContactPage.tsx`, `PrivacyPage.tsx`, `CaseStudyTemplate.tsx` |
+| Area             | Impact   | Files                                                                                          |
+| ---------------- | -------- | ---------------------------------------------------------------------------------------------- |
+| LanguageSwitcher | Modified | `src/components/LanguageSwitcher/LanguageSwitcher.tsx`                                         |
+| Schema builder   | Modified | `src/data/schema.ts`                                                                           |
+| Route meta       | Modified | `src/data/route-meta.ts`                                                                       |
+| Spanish locales  | Modified | 6 files in `src/locales/es/`                                                                   |
+| English locales  | Modified | 6 files in `src/locales/en/`                                                                   |
+| Page shells      | Modified | `HomePage.tsx`, `AboutPage.tsx`, `ContactPage.tsx`, `PrivacyPage.tsx`, `CaseStudyTemplate.tsx` |
 
 ## Risks
 
-| Risk | Likelihood | Mitigation |
-|------|------------|------------|
-| Prerender script duplicates schema bug | Low | `prerender.mjs` mirrors schema logic; check after fixing |
-| i18next key mismatch after adding `meta.description` | Low | Run `tsc --noEmit` + `pnpm dev` to verify resolution |
-| Light mode contrast regressions in LanguageSwitcher | Low | Verify `text-text-muted` contrast in both themes |
+| Risk                                                 | Likelihood | Mitigation                                               |
+| ---------------------------------------------------- | ---------- | -------------------------------------------------------- |
+| Prerender script duplicates schema bug               | Low        | `prerender.mjs` mirrors schema logic; check after fixing |
+| i18next key mismatch after adding `meta.description` | Low        | Run `tsc --noEmit` + `pnpm dev` to verify resolution     |
+| Light mode contrast regressions in LanguageSwitcher  | Low        | Verify `text-text-muted` contrast in both themes         |
 
 ## Rollback Plan
+
 All changes are string/reference substitutions. Revert the commit. No data migrations, no API changes.
 
 ## Success Criteria
+
 - [ ] LanguageSwitcher renders visible in both ES/EN and light/dark modes
 - [ ] JSON-LD @graph contains resolved title/description strings, not i18n keys
 - [ ] All 6 case studies have `<meta name="description">` in HTML

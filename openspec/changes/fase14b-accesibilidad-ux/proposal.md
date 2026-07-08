@@ -7,6 +7,7 @@ Fix 9 accessibility and i18n issues from the 360° audit. All mechanical — CSS
 ## Scope
 
 ### In Scope
+
 1. `text-wrap: balance` on h1–h3 (DESIGN.md §3)
 2. Light mode `text-muted` contrast: `#78716c` → `#6b5e58` (WCAG AA ≥4.5:1)
 3. Return focus to hamburger on mobile drawer close
@@ -18,38 +19,40 @@ Fix 9 accessibility and i18n issues from the 360° audit. All mechanical — CSS
 9. Empty state message on project search with no results
 
 ### Out of Scope
+
 Fase 14a fixes (PR #33), Fase 14c/d/e fixes
 
 ## Capabilities
 
 ### Modified Capabilities
+
 - `accessibility`: focus return, contrast, heading balance, empty states
 - `i18n`: tooltips, aria-labels, hardcoded strings, education descriptions across 6+ namespaces
 - `theme`: CSS variable fix
 
 ## Approach
 
-| Fix | Type | Lines |
-|-----|------|-------|
-| 1 | CSS rule | 3 |
-| 2 | Token value | 1 |
-| 3 | Ref + .focus() | 10 |
-| 4 | i18n × 3 comps | 40 + 24 |
-| 5 | i18n × 3 comps | 11 + 42 |
-| 6 | i18n extraction | 8 + 8 |
-| 7 | i18n conditional | 5 |
-| 8 | CSS var name | 2 |
-| 9 | Conditional render | 10 + 4 |
+| Fix | Type               | Lines   |
+| --- | ------------------ | ------- |
+| 1   | CSS rule           | 3       |
+| 2   | Token value        | 1       |
+| 3   | Ref + .focus()     | 10      |
+| 4   | i18n × 3 comps     | 40 + 24 |
+| 5   | i18n × 3 comps     | 11 + 42 |
+| 6   | i18n extraction    | 8 + 8   |
+| 7   | i18n conditional   | 5       |
+| 8   | CSS var name       | 2       |
+| 9   | Conditional render | 10 + 4  |
 
 **~168 lines total. Under 400-line budget.**
 
 ## Risks
 
-| Risk | Likelihood | Mitigation |
-|------|------------|------------|
-| Case study i18n updates touch 12 locale files | Medium | Batch pattern, verify with `pnpm run dev` |
-| Contrast change shifts visual balance | Low | Same hue, 1 step darker toward DESIGN.md "Soft Graphite" |
-| Focus return fails on rapid toggle | Low | Optional chaining `ref.current?.focus()` |
+| Risk                                          | Likelihood | Mitigation                                               |
+| --------------------------------------------- | ---------- | -------------------------------------------------------- |
+| Case study i18n updates touch 12 locale files | Medium     | Batch pattern, verify with `pnpm run dev`                |
+| Contrast change shifts visual balance         | Low        | Same hue, 1 step darker toward DESIGN.md "Soft Graphite" |
+| Focus return fails on rapid toggle            | Low        | Optional chaining `ref.current?.focus()`                 |
 
 ## Rollback Plan
 
