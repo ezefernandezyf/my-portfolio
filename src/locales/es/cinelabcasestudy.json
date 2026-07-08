@@ -1,6 +1,7 @@
 ﻿{
   "meta": {
-    "title": "{{name}}"
+    "title": "{{name}}",
+    "description": "Caso de estudio de CineLab: aplicación de búsqueda de películas con React, TypeScript y TMDB API. Arquitectura, stack tecnológico y rendimiento del proyecto."
   },
   "header": {
     "title": "{{name}}",
@@ -102,10 +103,10 @@
     "heading": "Profundización técnica"
   },
   "carousel": {
-    "alt": "{{name}} preview"
+    "alt": "Vista previa de {{name}}"
   },
   "labels": {
     "year": "Año:",
-    "featured": "Featured"
+    "featured": "Destacado"
   }
 }

@@ -109,7 +109,7 @@ export const AboutPage = (): React.JSX.Element => {
   return (
     <>
       <MetaTags title={t('meta.title')} description={t('summary')} pathname="/about" type="website" />
-      <main role="main" className="pb-24 pt-24 bg-bg-primary">
+      <div className="pb-24 pt-24 bg-bg-primary">
         <div className="site-container space-y-32">
           <div ref={heroRef} className={heroVisible ? 'animate-fade-in-up' : 'opacity-0'}>
             <section className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-start">
@@ -319,7 +319,7 @@ export const AboutPage = (): React.JSX.Element => {
             </section>
           </div>
         </div>
-      </main>
+      </div>
     </>
   );
 };

@@ -1,6 +1,7 @@
 {
   "meta": {
-    "title": "geo-seo-opencode , Open Source GEO Toolkit for opencode"
+    "title": "geo-seo-opencode , Open Source GEO Toolkit for opencode",
+    "description": "Case study of Geo-SEO OpenCode: open-source adaptation of geo-seo-claude for opencode. 16 GEO analysis skills, composite scoring, and automated reporting."
   },
   "header": {
     "title": "geo-seo-opencode",

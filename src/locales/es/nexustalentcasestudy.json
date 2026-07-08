@@ -1,6 +1,7 @@
 {
   "meta": {
-    "title": "Nexus Talent"
+    "title": "Nexus Talent",
+    "description": "Caso de estudio de Nexus Talent: plataforma de reclutamiento asistida por IA con análisis de job descriptions, validación Zod y Feature-Sliced Design."
   },
   "header": {
     "title": "Nexus Talent",
@@ -85,7 +86,7 @@
     ]
   },
   "deepDive": {
-    "heading": "Technical Deep Dive"
+    "heading": "Profundización técnica"
   },
   "carousel": {
     "alt": "Vista previa de Nexus Talent"

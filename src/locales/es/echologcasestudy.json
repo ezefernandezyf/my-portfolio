@@ -1,6 +1,7 @@
 ﻿{
   "meta": {
-    "title": "EchoLog"
+    "title": "EchoLog",
+    "description": "Caso de estudio de EchoLog: SaaS multi-tenant de feedback para productos con React 19, Node.js, Express, PostgreSQL. Arquitectura, aislamiento multi-tenant y testing."
   },
   "header": {
     "title": "EchoLog",
@@ -95,7 +96,7 @@
     ]
   },
   "deepDive": {
-    "heading": "Technical Deep Dive"
+    "heading": "Profundización técnica"
   },
   "carousel": {
     "alt": "Vista previa de EchoLog"

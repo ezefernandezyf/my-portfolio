@@ -1,6 +1,7 @@
 ﻿{
   "meta": {
-    "title": "EchoLog"
+    "title": "EchoLog",
+    "description": "Case study of EchoLog: a multi-tenant customer feedback SaaS built with React 19, Node.js, Express, PostgreSQL. Architecture, multi-tenant isolation, and testing."
   },
   "header": {
     "title": "EchoLog",
