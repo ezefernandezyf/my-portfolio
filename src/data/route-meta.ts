@@ -64,13 +64,27 @@ export const ROUTE_META: Record<string, RouteMeta> = {
       title: 'Ezequiel Fernández | Full Stack Developer | Portfolio Personal',
       description:
         'Desarrollador Full Stack especializado en React, Node.js, TypeScript y PostgreSQL. Conocé mi portfolio, proyectos y case studies.',
-      keywords: ['desarrollador full stack', 'react', 'node.js', 'typescript', 'portfolio', 'desarrollo web'],
+      keywords: [
+        'desarrollador full stack',
+        'react',
+        'node.js',
+        'typescript',
+        'portfolio',
+        'desarrollo web',
+      ],
     },
     en: {
       title: 'Ezequiel Fernández | Full Stack Developer | Personal Portfolio',
       description:
         'Full Stack Developer specializing in React, Node.js, TypeScript and PostgreSQL. Explore my portfolio, projects, and case studies.',
-      keywords: ['full stack developer', 'react', 'node.js', 'typescript', 'portfolio', 'web development'],
+      keywords: [
+        'full stack developer',
+        'react',
+        'node.js',
+        'typescript',
+        'portfolio',
+        'web development',
+      ],
     },
     ogImage: '/og-image.png',
     schemaType: 'WebPage',
@@ -85,7 +99,14 @@ export const ROUTE_META: Record<string, RouteMeta> = {
       title: 'Sobre mí | Ezequiel Fernández, Full Stack Developer',
       description:
         'Conocé a Ezequiel Fernández, Desarrollador Full Stack con experiencia en React, TypeScript, Node.js y arquitectura limpia. Portfolio, proyectos y experiencia profesional.',
-      keywords: ['sobre mí', 'desarrollador full stack', 'react', 'typescript', 'experiencia', 'cv'],
+      keywords: [
+        'sobre mí',
+        'desarrollador full stack',
+        'react',
+        'typescript',
+        'experiencia',
+        'cv',
+      ],
     },
     en: {
       title: 'About Me | Ezequiel Fernández, Full Stack Developer',
@@ -106,13 +127,29 @@ export const ROUTE_META: Record<string, RouteMeta> = {
       title: 'Proyectos | React, Node.js, TypeScript | Ezequiel Fernández',
       description:
         'Explorá mi portfolio de proyectos construidos con React, Node.js, TypeScript y PostgreSQL. Desde SaaS multi-tenant hasta herramientas con IA y dashboards.',
-      keywords: ['proyectos', 'react', 'node.js', 'typescript', 'portfolio', 'open source', 'desarrollo web'],
+      keywords: [
+        'proyectos',
+        'react',
+        'node.js',
+        'typescript',
+        'portfolio',
+        'open source',
+        'desarrollo web',
+      ],
     },
     en: {
       title: 'Projects | Ezequiel Fernández | Full Stack Developer',
       description:
         'Explore my portfolio of projects built with React, Node.js, TypeScript, and PostgreSQL. From multi-tenant SaaS platforms to AI tools and dashboards.',
-      keywords: ['projects', 'react', 'node.js', 'typescript', 'portfolio', 'open source', 'web development'],
+      keywords: [
+        'projects',
+        'react',
+        'node.js',
+        'typescript',
+        'portfolio',
+        'open source',
+        'web development',
+      ],
     },
     ogImage: '/og-image.png',
     schemaType: 'CollectionPage',
@@ -237,7 +274,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     en: {
       title: 'Privacy Policy | Ezequiel Fernández',
       description:
-        'Privacy policy for Ezequiel Fernández\'s portfolio website. Information about data collection, cookies, and user rights.',
+        "Privacy policy for Ezequiel Fernández's portfolio website. Information about data collection, cookies, and user rights.",
       keywords: ['privacy policy', 'data protection', 'cookies', 'portfolio'],
     },
     ogImage: '/og-image.png',
@@ -253,7 +290,13 @@ export const ROUTE_META: Record<string, RouteMeta> = {
       title: 'Contacto | Ezequiel Fernández, Full Stack Developer',
       description:
         'Contactá a Ezequiel Fernández para oportunidades de equipo, colaboraciones técnicas o proyectos freelance. Respuesta en 24 horas.',
-      keywords: ['contacto', 'desarrollador full stack', 'contratación', 'freelance', 'colaboración'],
+      keywords: [
+        'contacto',
+        'desarrollador full stack',
+        'contratación',
+        'freelance',
+        'colaboración',
+      ],
     },
     en: {
       title: 'Contact | Ezequiel Fernández, Full Stack Developer',
@@ -277,7 +320,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     },
     en: {
       title: 'Page Not Found | Ezequiel Fernández',
-      description: 'The page you\'re looking for doesn\'t exist. Return to the homepage.',
+      description: "The page you're looking for doesn't exist. Return to the homepage.",
       keywords: ['404', 'not found', 'page not found'],
     },
     ogImage: '/og-image.png',

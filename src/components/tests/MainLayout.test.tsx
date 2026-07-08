@@ -23,7 +23,9 @@ describe('MainLayout', () => {
     expect(screen.getByText('Layout outlet content')).toBeInTheDocument();
     expect(screen.getByRole('banner')).toBeInTheDocument();
     expect(screen.getByRole('contentinfo')).toBeInTheDocument();
-    expect(screen.getByText('Layout outlet content').parentElement?.previousElementSibling).not.toBeNull();
+    expect(
+      screen.getByText('Layout outlet content').parentElement?.previousElementSibling,
+    ).not.toBeNull();
   });
 
   it('sube al inicio cuando cambia la ruta', () => {
@@ -36,12 +38,12 @@ describe('MainLayout', () => {
             <Route element={<MainLayout />}>
               <Route
                 path="home"
-                element={(
+                element={
                   <div>
                     <Link to="/about">Go to about</Link>
                     <div>Home route</div>
                   </div>
-                )}
+                }
               />
               <Route path="about" element={<div>About route</div>} />
             </Route>

@@ -9,10 +9,7 @@ export const Footer = (): React.JSX.Element => {
   const localize = useLocalizedPath();
 
   return (
-    <footer
-      role="contentinfo"
-      className="w-full border-t border-border bg-surface py-12"
-    >
+    <footer role="contentinfo" className="w-full border-t border-border bg-surface py-12">
       <div className="site-container flex flex-col items-center justify-between gap-8 md:flex-row">
         <div className="flex flex-col items-center gap-2 md:items-start">
           <p className="text-[11px] uppercase tracking-widest text-text-muted">

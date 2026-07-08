@@ -35,12 +35,10 @@ export const CurrentlySection = ({ items }: CurrentlySectionProps): React.JSX.El
 
       <ul className="flex flex-col gap-4">
         {items.map((item, index) => (
-          <li
-            key={item.label}
-            className="flex items-center gap-3"
-            style={staggerStyle(index)}
-          >
-            <span className="text-lg" aria-hidden="true">{item.emoji}</span>
+          <li key={item.label} className="flex items-center gap-3" style={staggerStyle(index)}>
+            <span className="text-lg" aria-hidden="true">
+              {item.emoji}
+            </span>
 
             {item.url ? (
               <a
@@ -52,9 +50,7 @@ export const CurrentlySection = ({ items }: CurrentlySectionProps): React.JSX.El
                 {item.label}
               </a>
             ) : (
-              <span className="font-mono text-sm text-text-secondary">
-                {item.label}
-              </span>
+              <span className="font-mono text-sm text-text-secondary">{item.label}</span>
             )}
           </li>
         ))}

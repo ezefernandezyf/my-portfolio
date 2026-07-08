@@ -48,4 +48,3 @@ export const LanguageSwitcher = (): React.JSX.Element => {
     </div>
   );
 };
-

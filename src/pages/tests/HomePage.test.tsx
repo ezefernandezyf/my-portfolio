@@ -22,9 +22,7 @@ describe('HomePage', () => {
 
     expect(screen.getByRole('heading', { name: /ezequiel\s*fernández/i })).toBeInTheDocument();
 
-    expect(
-      screen.getByRole('link', { name: /acerca de mí|about/i }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /acerca de mí|about/i })).toBeInTheDocument();
     const projectLinks = screen.getAllByRole('link', { name: /proyectos|projects/i });
     expect(projectLinks.length).toBeGreaterThanOrEqual(1);
     expect(projectLinks[0]).toBeInTheDocument();
@@ -37,26 +35,30 @@ describe('HomePage', () => {
     expect(screen.getAllByText(/react/i).length).toBeGreaterThanOrEqual(1);
     expect(screen.getAllByText(/typescript/i).length).toBeGreaterThanOrEqual(1);
 
-    expect(screen.getByRole('heading', { name: /recent work|trabajos recientes/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: /recent work|trabajos recientes/i }),
+    ).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /EchoLog/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /Nexus Talent/i })).toBeInTheDocument();
 
-      const repoLinks = screen.getAllByRole('link', { name: /ver repo|view repo/i });
-      expect(repoLinks).toHaveLength(2);
+    const repoLinks = screen.getAllByRole('link', { name: /ver repo|view repo/i });
+    expect(repoLinks).toHaveLength(2);
     expect(repoLinks[0]).toHaveAttribute('href', 'https://github.com/ezefernandezyf/echolog');
     expect(repoLinks[1]).toHaveAttribute('href', 'https://github.com/ezefernandezyf/nexus-talent');
 
-      const demoLinks = screen.getAllByRole('link', { name: /ver demo|view demo/i });
-      expect(demoLinks).toHaveLength(2);
+    const demoLinks = screen.getAllByRole('link', { name: /ver demo|view demo/i });
+    expect(demoLinks).toHaveLength(2);
     expect(demoLinks[0]).toHaveAttribute('href', 'https://echolog-web.vercel.app');
     expect(demoLinks[1]).toHaveAttribute('href', 'https://nexustalent.vercel.app');
 
-      const caseStudyLinks = screen.getAllByRole('link', { name: /ver case study|view case study/i });
-      expect(caseStudyLinks).toHaveLength(2);
+    const caseStudyLinks = screen.getAllByRole('link', { name: /ver case study|view case study/i });
+    expect(caseStudyLinks).toHaveLength(2);
     expect(caseStudyLinks[0]).toHaveAttribute('href', '/projects/echolog');
     expect(caseStudyLinks[1]).toHaveAttribute('href', '/projects/nexus-talent');
 
-    expect(screen.getByRole('heading', { name: /interested in my profile|te interesa mi perfil/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: /interested in my profile|te interesa mi perfil/i }),
+    ).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /contactar|contact/i })).toBeInTheDocument();
   });
 
@@ -82,7 +84,9 @@ describe('HomePage', () => {
   it('activa animaciones cuando el IntersectionObserver detecta interseccion', () => {
     const observerCallbacks: Array<(entries: IntersectionObserverEntry[]) => void> = [];
 
-    window.IntersectionObserver = vi.fn(function (callback: (entries: IntersectionObserverEntry[]) => void) {
+    window.IntersectionObserver = vi.fn(function (
+      callback: (entries: IntersectionObserverEntry[]) => void,
+    ) {
       observerCallbacks.push(callback);
       return {
         observe: vi.fn(),

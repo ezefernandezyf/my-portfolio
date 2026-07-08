@@ -42,27 +42,40 @@ export const PrivacyPage = (): React.JSX.Element => {
 
       <div className="pb-24 pt-24">
         <div className="site-container space-y-24">
-          <section className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end" style={fadeInUp()}>
+          <section
+            className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end"
+            style={fadeInUp()}
+          >
             <div className="lg:col-span-8">
-              <p className="mb-4 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted" style={fadeInUp(0.08)}>
+              <p
+                className="mb-4 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted"
+                style={fadeInUp(0.08)}
+              >
                 {t('eyebrow')}
               </p>
-              <h1 className="font-display text-[2.75rem] font-medium leading-tight tracking-[-0.03em] text-text-primary sm:text-[3.25rem]" style={fadeInUp(0.16)}>
+              <h1
+                className="font-display text-[2.75rem] font-medium leading-tight tracking-[-0.03em] text-text-primary sm:text-[3.25rem]"
+                style={fadeInUp(0.16)}
+              >
                 {t('title')}
               </h1>
-              <p className="mt-6 max-w-[60ch] text-[1.125rem] leading-relaxed text-text-secondary" style={fadeInUp(0.24)}>
+              <p
+                className="mt-6 max-w-[60ch] text-[1.125rem] leading-relaxed text-text-secondary"
+                style={fadeInUp(0.24)}
+              >
                 {t('intro')}
               </p>
             </div>
 
-            <aside className="lg:col-span-4 lg:border-l lg:border-border/20 lg:pl-12" style={fadeInUp(0.32)}>
+            <aside
+              className="lg:col-span-4 lg:border-l lg:border-border/20 lg:pl-12"
+              style={fadeInUp(0.32)}
+            >
               <div className="rounded-lg border border-border/20 bg-surface p-6">
                 <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted">
                   {t('lastUpdated', { date: lastUpdated })}
                 </p>
-                <p className="mt-4 text-sm leading-relaxed text-text-secondary">
-                  {t('note')}
-                </p>
+                <p className="mt-4 text-sm leading-relaxed text-text-secondary">{t('note')}</p>
                 <Link
                   to="/contact"
                   className="mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.05em] text-accent underline-offset-4 hover:underline"
@@ -74,7 +87,7 @@ export const PrivacyPage = (): React.JSX.Element => {
             </aside>
           </section>
 
-          <section className="grid grid-cols-1 gap-6 lg:grid-cols-2" style={fadeInUp(0.40)}>
+          <section className="grid grid-cols-1 gap-6 lg:grid-cols-2" style={fadeInUp(0.4)}>
             {privacySections.map((section) => {
               const Icon = section.icon;
               const heading = t(`sections.${section.key}.heading`);
@@ -92,7 +105,11 @@ export const PrivacyPage = (): React.JSX.Element => {
                   {section.key === 'contact' ? (
                     <p className="max-w-[60ch] text-[0.875rem] leading-relaxed text-text-secondary">
                       {paragraph}{' '}
-                      <a className="font-semibold text-text-primary underline-offset-4 hover:underline" href={`mailto:${t('contact.email')}`} aria-label={t('contact.email')}>
+                      <a
+                        className="font-semibold text-text-primary underline-offset-4 hover:underline"
+                        href={`mailto:${t('contact.email')}`}
+                        aria-label={t('contact.email')}
+                      >
                         {t('contact.email')}
                       </a>
                       .
@@ -106,7 +123,6 @@ export const PrivacyPage = (): React.JSX.Element => {
               );
             })}
           </section>
-
         </div>
       </div>
     </>

@@ -103,7 +103,11 @@ function buildBreadcrumbList(route: RouteMeta, lang: string): JsonLdNode {
         // Intermediate segment | look up parent route in ROUTE_META
         const parentKey = accumulatedPath.slice(1);
         const parentMeta = ROUTE_META[parentKey];
-        name = parentMeta ? (lang === 'en' ? parentMeta.en.title : parentMeta.es.title) : segments[i];
+        name = parentMeta
+          ? lang === 'en'
+            ? parentMeta.en.title
+            : parentMeta.es.title
+          : segments[i];
       }
 
       itemListElement.push({
@@ -131,7 +135,12 @@ function buildBreadcrumbList(route: RouteMeta, lang: string): JsonLdNode {
  * @returns Complete `<script>` tag with formatted JSON
  */
 export function buildJsonLdGraph(route: RouteMeta, lang: string): string {
-  const graph = [buildPerson(), buildWebSite(), buildWebPage(route, lang), buildBreadcrumbList(route, lang)];
+  const graph = [
+    buildPerson(),
+    buildWebSite(),
+    buildWebPage(route, lang),
+    buildBreadcrumbList(route, lang),
+  ];
   const json = JSON.stringify(
     {
       '@context': 'https://schema.org',

@@ -37,11 +37,11 @@
       "short": "SaaS multi-tenant de feedback para productos - boards, votos, comentarios, gestión de workspaces. Full-stack TypeScript con React 19, Node.js, Express, PostgreSQL.",
       "whatILearned": "Screaming architecture en el backend, autenticación JWT cross-origin, aislamiento multi-tenant con claves compuestas, cumplimiento WCAG 2.1 AA. (Detalles en el case study)"
     },
-      "movie-dashboard": {
-        "name": "Movie Management Dashboard",
-        "short": "SPA dashboard para gestionar catálogo de películas. CRUD, autenticación con Supabase, React Query (cache, fetching), formularios y tests. Construida con React, TypeScript y Vite; foco en seguridad, UX y arquitectura modular.",
-        "whatILearned": "Configuración de RLS en Supabase, manejo de cache con react-query y estrategias de testing para apps CRUD con estado. (Detalles en el case study)"
-      },
+    "movie-dashboard": {
+      "name": "Movie Management Dashboard",
+      "short": "SPA dashboard para gestionar catálogo de películas. CRUD, autenticación con Supabase, React Query (cache, fetching), formularios y tests. Construida con React, TypeScript y Vite; foco en seguridad, UX y arquitectura modular.",
+      "whatILearned": "Configuración de RLS en Supabase, manejo de cache con react-query y estrategias de testing para apps CRUD con estado. (Detalles en el case study)"
+    },
     "cinelab": {
       "name": "CineLab",
       "short": "Movie Search App - búsqueda, filtros, favoritos persistentes y recomendaciones dinámicas (TMDB). Construida con React, TypeScript y Vite; foco en rendimiento y UX.",

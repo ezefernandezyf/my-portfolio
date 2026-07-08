@@ -63,7 +63,7 @@ export const ProjectCard = ({
         {year ? <span className="font-mono text-[10px] text-text-muted">{year}</span> : null}
       </div>
 
-      <div className="mt-8 min-h-32 md:min-h-36">
+      <div className="mt-8">
         <h3 className="mb-3 font-display text-3xl leading-tight tracking-[-0.02em] text-text-primary">
           {projectName}
         </h3>
@@ -72,7 +72,7 @@ export const ProjectCard = ({
         </p>
       </div>
 
-      <div className="mt-8 aspect-video overflow-hidden bg-surface-elevated">
+      <div className="mt-auto aspect-video overflow-hidden bg-surface-elevated">
         {imgSrc ? (
           <img
             src={imgSrc}

@@ -9,12 +9,23 @@ import { CurrentlySection, type CurrentlyItem } from '../components/CurrentlySec
 import { useLocalizedPath } from '../hooks/useLocalizedPath';
 
 const featuredProjects = projectRepository.getProjects().slice(0, 2);
-const technicalStack = ['React 19', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma', 'Tailwind CSS 4', 'Vite'];
+const technicalStack = [
+  'React 19',
+  'TypeScript',
+  'Node.js',
+  'Express',
+  'PostgreSQL',
+  'Prisma',
+  'Tailwind CSS 4',
+  'Vite',
+];
 
 export const HomePage = (): React.JSX.Element => {
   const { t, i18n } = useTranslation(['home', 'projects']);
   const localize = useLocalizedPath();
-  const cvPath = i18n.language?.startsWith('en') ? '/Ezequiel_Fernandez_CV_EN.pdf' : '/Ezequiel_Fernandez_CV.pdf';
+  const cvPath = i18n.language?.startsWith('en')
+    ? '/Ezequiel_Fernandez_CV_EN.pdf'
+    : '/Ezequiel_Fernandez_CV.pdf';
   const projects = projectRepository.getProjects();
   const currentlyItems = t('currently.list', { returnObjects: true }) as CurrentlyItem[];
 
@@ -25,8 +36,9 @@ export const HomePage = (): React.JSX.Element => {
     }
     return false;
   });
-  const [isTouchDevice] = useState(() =>
-    typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0),
+  const [isTouchDevice] = useState(
+    () =>
+      typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0),
   );
   const [isPointerInHero, setIsPointerInHero] = useState(false);
 
@@ -127,7 +139,7 @@ export const HomePage = (): React.JSX.Element => {
             <div
               className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-500"
               style={{
-                background: `radial-gradient(circle at ${mousePos.x}px ${mousePos.y}px, rgba(245, 158, 11, 0.12), transparent 300px)`,
+                background: `radial-gradient(circle at ${mousePos.x}px ${mousePos.y}px, color-mix(in srgb, var(--color-accent) 12%, transparent), transparent 300px)`,
                 opacity: isPointerInHero ? 1 : 0,
               }}
               aria-hidden="true"
@@ -174,7 +186,10 @@ export const HomePage = (): React.JSX.Element => {
                   target="_blank"
                 >
                   {t('hero.cta.downloadCV', { ns: 'home' })}
-                  <ArrowTopRightOnSquareIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
+                  <ArrowTopRightOnSquareIcon
+                    className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+                    aria-hidden
+                  />
                 </a>
               </div>
             </div>
@@ -186,10 +201,7 @@ export const HomePage = (): React.JSX.Element => {
 
               <div className="flex flex-wrap gap-3">
                 {technicalStack.map((stackItem) => (
-                  <span
-                    key={stackItem}
-                    className="chip-outline chip"
-                  >
+                  <span key={stackItem} className="chip-outline chip">
                     {stackItem}
                   </span>
                 ))}

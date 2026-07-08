@@ -28,7 +28,15 @@ const stackCards = [
   {
     key: 'frontend',
     icon: CodeBracketIcon,
-    items: ['React 19', 'TypeScript', 'JavaScript (ES6+)', 'Vite', 'TanStack Query', 'React Router', 'HTML5'],
+    items: [
+      'React 19',
+      'TypeScript',
+      'JavaScript (ES6+)',
+      'Vite',
+      'TanStack Query',
+      'React Router',
+      'HTML5',
+    ],
   },
   {
     key: 'styles',
@@ -43,7 +51,16 @@ const stackCards = [
   {
     key: 'testing',
     icon: BeakerIcon,
-    items: ['Vitest', 'React Testing Library', 'Playwright', 'React Hook Form', 'Zod', 'Zustand', 'ESLint', 'Prettier'],
+    items: [
+      'Vitest',
+      'React Testing Library',
+      'Playwright',
+      'React Hook Form',
+      'Zod',
+      'Zustand',
+      'ESLint',
+      'Prettier',
+    ],
   },
 ] as const;
 
@@ -94,12 +111,15 @@ export const AboutPage = (): React.JSX.Element => {
   const { t, i18n } = useTranslation('aboutpage');
   const localize = useLocalizedPath();
   const { name, role, github, linkedIn } = about;
-  const cv = i18n.language?.startsWith('en') ? '/Ezequiel_Fernandez_CV_EN.pdf' : '/Ezequiel_Fernandez_CV.pdf';
+  const cv = i18n.language?.startsWith('en')
+    ? '/Ezequiel_Fernandez_CV_EN.pdf'
+    : '/Ezequiel_Fernandez_CV.pdf';
 
   const translatedSkills = t('abilities.items', { returnObjects: true }) as unknown;
-  const skillItems = Array.isArray(translatedSkills) && translatedSkills.length > 0
-    ? (translatedSkills as string[])
-    : about.abilities.flatMap((group) => group.items);
+  const skillItems =
+    Array.isArray(translatedSkills) && translatedSkills.length > 0
+      ? (translatedSkills as string[])
+      : about.abilities.flatMap((group) => group.items);
 
   const [heroRef, heroVisible] = useSectionFadeIn();
   const [stackRef, stackVisible] = useSectionFadeIn();
@@ -108,7 +128,12 @@ export const AboutPage = (): React.JSX.Element => {
 
   return (
     <>
-      <MetaTags title={t('meta.title')} description={t('summary')} pathname="/about" type="website" />
+      <MetaTags
+        title={t('meta.title')}
+        description={t('summary')}
+        pathname="/about"
+        type="website"
+      />
       <div className="pb-24 pt-24 bg-bg-primary">
         <div className="site-container space-y-32">
           <div ref={heroRef} className={heroVisible ? 'animate-fade-in-up' : 'opacity-0'}>
@@ -130,7 +155,7 @@ export const AboutPage = (): React.JSX.Element => {
               </div>
 
               <div className="lg:col-span-8">
-                <h1 className="text-[2.75rem] font-medium leading-tight tracking-[-0.03em] text-text-primary sm:text-[3.25rem] font-display">
+                <h1 className="font-display text-[1.75rem] font-bold tracking-[-0.02em] text-text-primary md:text-[2.25rem]">
                   {t('h1')}
                 </h1>
 
@@ -141,14 +166,14 @@ export const AboutPage = (): React.JSX.Element => {
                 <div className="mt-10 flex flex-wrap gap-4">
                   <Link
                     to={localize('/projects')}
-                    className="inline-flex items-center justify-center gap-2 bg-accent px-6 py-3 text-sm font-medium text-bg-primary transition-colors hover:bg-accent-hover focus-ring"
+                    className="inline-flex h-14 items-center justify-center gap-2 bg-accent px-8 text-sm font-medium text-bg-primary transition-colors hover:bg-accent-hover focus-ring"
                   >
                     {t('hero.viewProjects')}
                     <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
                   </Link>
                   <Link
                     to={localize('/contact')}
-                    className="inline-flex items-center justify-center border border-border px-6 py-3 text-sm font-medium text-text-primary transition-colors hover:border-border-hover focus-ring"
+                    className="inline-flex h-14 items-center justify-center border border-border px-8 text-sm font-medium text-text-primary transition-colors hover:border-border-hover focus-ring"
                   >
                     {t('hero.contact')}
                   </Link>
@@ -187,9 +212,7 @@ export const AboutPage = (): React.JSX.Element => {
                   </a>
                 </div>
 
-                <div className="mt-4 text-sm text-text-muted font-body">
-                  {t('availability')}
-                </div>
+                <div className="mt-4 text-sm text-text-muted font-body">{t('availability')}</div>
               </div>
             </section>
           </div>
@@ -218,10 +241,7 @@ export const AboutPage = (): React.JSX.Element => {
                         </h3>
                         <div className="flex flex-wrap gap-2">
                           {card.items.map((item) => (
-                            <span
-                              key={item}
-                              className="chip chip-outline"
-                            >
+                            <span key={item} className="chip chip-outline">
                               {item}
                             </span>
                           ))}
@@ -234,7 +254,10 @@ export const AboutPage = (): React.JSX.Element => {
             </section>
           </div>
 
-          <div ref={softSkillsRef} className={softSkillsVisible ? 'animate-fade-in-up' : 'opacity-0'}>
+          <div
+            ref={softSkillsRef}
+            className={softSkillsVisible ? 'animate-fade-in-up' : 'opacity-0'}
+          >
             <section className="border-t border-border bg-surface py-24 px-8 md:px-16 w-full">
               <div className="max-w-7xl mx-auto flex flex-col gap-12">
                 <h2 className="flex items-center gap-3 text-[1.75rem] font-medium tracking-[-0.01em] text-text-primary font-display">
@@ -247,10 +270,7 @@ export const AboutPage = (): React.JSX.Element => {
                       const Icon = skillIconMap[item] ?? SparklesIcon;
 
                       return (
-                        <span
-                          key={item}
-                          className="chip chip-outline"
-                        >
+                        <span key={item} className="chip chip-outline">
                           <Icon className="h-4 w-4 text-accent" aria-hidden="true" />
                           <span>{item}</span>
                         </span>
@@ -291,7 +311,9 @@ export const AboutPage = (): React.JSX.Element => {
                             className={`h-3 w-3 rounded-full border-2 ${status === 'active' ? 'border-accent bg-accent' : 'border-accent/40 bg-bg-primary'}`}
                           />
                         </div>
-                        <h3 className="mb-2 text-[1.125rem] font-medium text-text-primary font-display">{title}</h3>
+                        <h3 className="mb-2 text-[1.125rem] font-medium text-text-primary font-display">
+                          {title}
+                        </h3>
                         <p className="mt-auto text-[0.875rem] text-text-secondary font-body">
                           {t(`education.${index}.description`)}
                         </p>

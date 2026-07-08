@@ -43,9 +43,7 @@ describe('MetaTags', () => {
       'meta[property="og:image"]',
     ) as HTMLMetaElement | null;
     expect(ogImage).not.toBeNull();
-    expect(ogImage!.getAttribute('content')).toMatch(
-      /^https?:\/\/ezefernandez\.com\/custom\.png$/,
-    );
+    expect(ogImage!.getAttribute('content')).toMatch(/^https?:\/\/ezefernandez\.com\/custom\.png$/);
 
     unmount();
     expect(document.title).toBe(prevTitle);
@@ -94,9 +92,7 @@ describe('MetaTags', () => {
   });
 
   it('usa el fallback absoluto cuando pathname e image no se pueden resolver como URL válidas', () => {
-    const { unmount } = render(
-      <MetaTags pathname="[broken-path]" image="[broken-image]" />,
-    );
+    const { unmount } = render(<MetaTags pathname="[broken-path]" image="[broken-image]" />);
 
     const canonical = document.head.querySelector(
       'link[rel="canonical"]',

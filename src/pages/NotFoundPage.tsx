@@ -50,7 +50,11 @@ export const NotFoundPage = (): React.JSX.Element => {
               {t('buttons.back')}
             </Link>
 
-            <Link to="/contact" className="btn-minimal btn-ghost" aria-label={t('buttons.contactAria')}>
+            <Link
+              to="/contact"
+              className="btn-minimal btn-ghost"
+              aria-label={t('buttons.contactAria')}
+            >
               {t('buttons.contact')}
             </Link>
           </div>

@@ -107,7 +107,12 @@ function getFromNamespace(namespace: string, realKey: string): JsonValue | undef
 
 function resolveTranslation(
   rawKey: string,
-  opts?: { ns?: string | string[]; returnObjects?: boolean; defaultValue?: unknown; [k: string]: unknown },
+  opts?: {
+    ns?: string | string[];
+    returnObjects?: boolean;
+    defaultValue?: unknown;
+    [k: string]: unknown;
+  },
   defaultNs = 'common',
 ): unknown {
   const normalized = normalizeNsKey(rawKey);
@@ -183,7 +188,12 @@ vi.mock('react-i18next', () => {
     return {
       t: (
         key: string,
-        opts?: { ns?: string | string[]; returnObjects?: boolean; defaultValue?: unknown; [k: string]: unknown },
+        opts?: {
+          ns?: string | string[];
+          returnObjects?: boolean;
+          defaultValue?: unknown;
+          [k: string]: unknown;
+        },
       ) => resolveTranslation(key, opts, defaultNs),
       i18n: {
         language: currentLang,

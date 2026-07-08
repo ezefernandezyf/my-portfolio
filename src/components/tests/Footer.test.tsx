@@ -12,6 +12,9 @@ describe('Footer minimal', () => {
 
     expect(screen.getByText(/© \d{4} Ezequiel Fernández/i)).toBeInTheDocument();
 
-    expect(screen.getByRole('link', { name: /política de privacidad/i })).toHaveAttribute('href', '/privacy');
+    expect(screen.getByRole('link', { name: /política de privacidad/i })).toHaveAttribute(
+      'href',
+      '/privacy',
+    );
   });
 });

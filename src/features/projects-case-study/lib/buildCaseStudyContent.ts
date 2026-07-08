@@ -34,14 +34,38 @@ type StackItem = {
 
 const stackByProject: Record<string, StackItem[]> = {
   echolog: [
-    { titleKey: 'stack.sections.frontend', defaultTitle: 'Frontend', items: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS 4', 'React Router 7'] },
-    { titleKey: 'stack.sections.backend', defaultTitle: 'Backend & API', items: ['Node.js', 'Express 5', 'REST API', 'JWT (httpOnly cookies)'] },
-    { titleKey: 'stack.sections.state', defaultTitle: 'State & Validation', items: ['React Query', 'Zustand', 'Zod', 'React Hook Form'] },
-    { titleKey: 'stack.sections.data', defaultTitle: 'Database & ORM', items: ['PostgreSQL', 'Prisma ORM', 'Composite keys', 'SQLite (dev)'] },
-    { titleKey: 'stack.sections.testing', defaultTitle: 'Testing & Infra', items: ['Vitest', 'Testing Library', 'Playwright', 'Supertest', 'GitHub Actions CI'] },
+    {
+      titleKey: 'stack.sections.frontend',
+      defaultTitle: 'Frontend',
+      items: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS 4', 'React Router 7'],
+    },
+    {
+      titleKey: 'stack.sections.backend',
+      defaultTitle: 'Backend & API',
+      items: ['Node.js', 'Express 5', 'REST API', 'JWT (httpOnly cookies)'],
+    },
+    {
+      titleKey: 'stack.sections.state',
+      defaultTitle: 'State & Validation',
+      items: ['React Query', 'Zustand', 'Zod', 'React Hook Form'],
+    },
+    {
+      titleKey: 'stack.sections.data',
+      defaultTitle: 'Database & ORM',
+      items: ['PostgreSQL', 'Prisma ORM', 'Composite keys', 'SQLite (dev)'],
+    },
+    {
+      titleKey: 'stack.sections.testing',
+      defaultTitle: 'Testing & Infra',
+      items: ['Vitest', 'Testing Library', 'Playwright', 'Supertest', 'GitHub Actions CI'],
+    },
   ],
   'movie-dashboard': [
-    { titleKey: 'stack.sections.frontend', defaultTitle: 'Frontend', items: ['React', 'TypeScript', 'Vite'] },
+    {
+      titleKey: 'stack.sections.frontend',
+      defaultTitle: 'Frontend',
+      items: ['React', 'TypeScript', 'Vite'],
+    },
     { titleKey: 'stack.sections.styles', defaultTitle: 'Styles', items: ['Tailwind CSS'] },
     { titleKey: 'stack.sections.data', defaultTitle: 'Data', items: ['Supabase', 'React Query'] },
     { titleKey: 'stack.sections.forms', defaultTitle: 'Forms', items: ['react-hook-form', 'Zod'] },
@@ -53,7 +77,11 @@ const stackByProject: Record<string, StackItem[]> = {
     { titleKey: 'stack.sections.vcs', defaultTitle: 'Version control', items: ['Git', 'GitHub'] },
   ],
   cinelab: [
-    { titleKey: 'stack.sections.frontend', defaultTitle: 'Frontend', items: ['React', 'TypeScript', 'Vite'] },
+    {
+      titleKey: 'stack.sections.frontend',
+      defaultTitle: 'Frontend',
+      items: ['React', 'TypeScript', 'Vite'],
+    },
     { titleKey: 'stack.sections.styles', defaultTitle: 'Styles', items: ['Tailwind CSS'] },
     { titleKey: 'stack.sections.data', defaultTitle: 'Data & APIs', items: ['TMDB API', 'Axios'] },
     {
@@ -69,7 +97,11 @@ const stackByProject: Record<string, StackItem[]> = {
     { titleKey: 'stack.sections.vcs', defaultTitle: 'Version control', items: ['Git', 'GitHub'] },
   ],
   chefcitoia: [
-    { titleKey: 'stack.sections.frontend', defaultTitle: 'Frontend', items: ['React 19', 'TypeScript', 'Vite 5'] },
+    {
+      titleKey: 'stack.sections.frontend',
+      defaultTitle: 'Frontend',
+      items: ['React 19', 'TypeScript', 'Vite 5'],
+    },
     { titleKey: 'stack.sections.styles', defaultTitle: 'Styles', items: ['Tailwind CSS 4'] },
     {
       titleKey: 'stack.sections.data',
@@ -77,7 +109,11 @@ const stackByProject: Record<string, StackItem[]> = {
       items: ['Fetch + AbortController', '/api/recipe-generator/*', 'recipeMapper'],
     },
     { titleKey: 'stack.sections.forms', defaultTitle: 'Forms', items: ['Zod', 'react-hook-form'] },
-    { titleKey: 'stack.sections.testing', defaultTitle: 'Testing', items: ['Vitest', 'Testing Library'] },
+    {
+      titleKey: 'stack.sections.testing',
+      defaultTitle: 'Testing',
+      items: ['Vitest', 'Testing Library'],
+    },
     { titleKey: 'stack.sections.vcs', defaultTitle: 'Version control', items: ['Git', 'GitHub'] },
   ],
   'nexus-talent': [
@@ -86,7 +122,11 @@ const stackByProject: Record<string, StackItem[]> = {
       defaultTitle: 'Frontend',
       items: ['React 19', 'TypeScript', 'Tailwind CSS 4', 'Framer Motion'],
     },
-    { titleKey: 'stack.sections.state', defaultTitle: 'State & Validation', items: ['TanStack Query', 'Zod', 'Context API'] },
+    {
+      titleKey: 'stack.sections.state',
+      defaultTitle: 'State & Validation',
+      items: ['TanStack Query', 'Zod', 'Context API'],
+    },
     {
       titleKey: 'stack.sections.backend',
       defaultTitle: 'Backend & Auth',
@@ -125,7 +165,10 @@ function toText(value: unknown): string {
   return typeof value === 'string' ? value : '';
 }
 
-export function buildCaseStudyContent(projectId: string, t: TranslationFunction): CaseStudyContent | null {
+export function buildCaseStudyContent(
+  projectId: string,
+  t: TranslationFunction,
+): CaseStudyContent | null {
   const stackItems = stackByProject[projectId];
   if (!stackItems) {
     return null;

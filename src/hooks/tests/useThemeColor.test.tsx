@@ -16,14 +16,17 @@ afterEach(() => {
 describe('useThemeColor', () => {
   it('usa el valor CSS cuando existe', async () => {
     vi.spyOn(window, 'getComputedStyle').mockReturnValue({
-      getPropertyValue: (property: string) => (property === '--color-bg-primary' ? '  #123456  ' : ''),
+      getPropertyValue: (property: string) =>
+        property === '--color-bg-primary' ? '  #123456  ' : '',
     } as unknown as CSSStyleDeclaration);
 
     render(<Probe theme="light" />);
 
     await waitFor(() => {
       expect(
-        document.head.querySelector('meta[name="theme-color"][data-theme-meta="true"]')?.getAttribute('content'),
+        document.head
+          .querySelector('meta[name="theme-color"][data-theme-meta="true"]')
+          ?.getAttribute('content'),
       ).toBe('#123456');
     });
   });
@@ -37,7 +40,9 @@ describe('useThemeColor', () => {
 
     await waitFor(() => {
       expect(
-        document.head.querySelector('meta[name="theme-color"][data-theme-meta="true"]')?.getAttribute('content'),
+        document.head
+          .querySelector('meta[name="theme-color"][data-theme-meta="true"]')
+          ?.getAttribute('content'),
       ).toBe('#0a0a0f');
     });
   });

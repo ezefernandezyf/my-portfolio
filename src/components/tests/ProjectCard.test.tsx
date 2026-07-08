@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { ProjectCard } from '../ProjectCard/ProjectCard';
 
-
 it('ProjectCard muestra título, enlaces y botón demo con icono', () => {
   render(
     <MemoryRouter>

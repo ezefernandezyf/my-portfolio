@@ -38,7 +38,7 @@ function renderWithRouter() {
   return render(
     <MemoryRouter initialEntries={['/about']}>
       <LanguageSwitcher />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
 }
 

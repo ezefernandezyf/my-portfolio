@@ -1,110 +1,110 @@
 ---
-name: "Ezequiel Fernández — Portfolio"
-description: "Full Stack Developer portfolio with dark-first amber-accented design system"
+name: 'Ezequiel Fernández — Portfolio'
+description: 'Full Stack Developer portfolio with dark-first amber-accented design system'
 colors:
-  near-black-void: "#0a0a0f"
-  deep-slate: "#14141a"
-  shadow-blue: "#1a1a24"
-  white-stone: "#fafafa"
-  warm-silver: "#a1a1aa"
-  faded-pewter: "#9ca3af"
-  monitor-amber: "#f59e0b"
-  ember: "#d97706"
-  subtle-line: "#27272a"
-  active-line: "#3f3f46"
-  warm-parchment: "#faf7f0"
-  rough-linen: "#f5f0e8"
-  washed-stone: "#efe8da"
-  iron-ink: "#1c1917"
-  soft-graphite: "#57534e"
-  faded-clay: "#78716c"
-  burnished-amber: "#b45309"
-  deep-amber: "#92400e"
-  subtle-ochre: "#e7e2d8"
-  active-ochre: "#d6cfc2"
+  near-black-void: '#0a0a0f'
+  deep-slate: '#14141a'
+  shadow-blue: '#1a1a24'
+  white-stone: '#fafafa'
+  warm-silver: '#a1a1aa'
+  faded-pewter: '#9ca3af'
+  monitor-amber: '#f59e0b'
+  ember: '#d97706'
+  subtle-line: '#27272a'
+  active-line: '#3f3f46'
+  warm-parchment: '#faf7f0'
+  rough-linen: '#f5f0e8'
+  washed-stone: '#efe8da'
+  iron-ink: '#1c1917'
+  soft-graphite: '#57534e'
+  faded-clay: '#78716c'
+  burnished-amber: '#b45309'
+  deep-amber: '#92400e'
+  subtle-ochre: '#e7e2d8'
+  active-ochre: '#d6cfc2'
 typography:
   display:
-    fontFamily: "Instrument Serif, Georgia, serif"
-    fontSize: "clamp(2.25rem, 6vw, 4.5rem)"
+    fontFamily: 'Instrument Serif, Georgia, serif'
+    fontSize: 'clamp(2.25rem, 6vw, 4.5rem)'
     fontWeight: 700
     lineHeight: 0.9
-    letterSpacing: "-0.03em"
+    letterSpacing: '-0.03em'
   headline:
-    fontFamily: "Instrument Serif, Georgia, serif"
-    fontSize: "clamp(1.75rem, 4vw, 2.25rem)"
+    fontFamily: 'Instrument Serif, Georgia, serif'
+    fontSize: 'clamp(1.75rem, 4vw, 2.25rem)'
     fontWeight: 700
     lineHeight: 1.1
-    letterSpacing: "-0.02em"
+    letterSpacing: '-0.02em'
   body:
-    fontFamily: "Work Sans, system-ui, sans-serif"
-    fontSize: "1rem"
+    fontFamily: 'Work Sans, system-ui, sans-serif'
+    fontSize: '1rem'
     fontWeight: 400
     lineHeight: 1.7
   label:
-    fontFamily: "Work Sans, system-ui, sans-serif"
-    fontSize: "0.625rem"
+    fontFamily: 'Work Sans, system-ui, sans-serif'
+    fontSize: '0.625rem'
     fontWeight: 700
-    letterSpacing: "0.18em"
+    letterSpacing: '0.18em'
   mono:
-    fontFamily: "JetBrains Mono, monospace"
-    fontSize: "0.875rem"
+    fontFamily: 'JetBrains Mono, monospace'
+    fontSize: '0.875rem'
     fontWeight: 400
     lineHeight: 1.5
 rounded:
-  sm: "6px"
-  md: "8px"
-  lg: "12px"
-  xl: "24px"
-  pill: "9999px"
+  sm: '6px'
+  md: '8px'
+  lg: '12px'
+  xl: '24px'
+  pill: '9999px'
 spacing:
-  xs: "4px"
-  sm: "8px"
-  md: "16px"
-  lg: "24px"
-  xl: "32px"
-  xxl: "48px"
-  section: "96px"
-  gutter: "32px"
-  gutter-sm: "16px"
+  xs: '4px'
+  sm: '8px'
+  md: '16px'
+  lg: '24px'
+  xl: '32px'
+  xxl: '48px'
+  section: '96px'
+  gutter: '32px'
+  gutter-sm: '16px'
 components:
   button-primary:
-    backgroundColor: "{colors.monitor-amber}"
-    textColor: "{colors.near-black-void}"
-    rounded: "{rounded.md}"
-    padding: "16px 32px"
-    height: "56px"
+    backgroundColor: '{colors.monitor-amber}'
+    textColor: '{colors.near-black-void}'
+    rounded: '{rounded.md}'
+    padding: '16px 32px'
+    height: '56px'
   button-primary-hover:
-    backgroundColor: "{colors.ember}"
+    backgroundColor: '{colors.ember}'
   button-outline:
-    textColor: "{colors.white-stone}"
-    rounded: "{rounded.md}"
-    padding: "16px 32px"
-    height: "56px"
+    textColor: '{colors.white-stone}'
+    rounded: '{rounded.md}'
+    padding: '16px 32px'
+    height: '56px'
   button-ghost:
-    textColor: "{colors.monitor-amber}"
-    padding: "8px 16px"
-    height: "56px"
+    textColor: '{colors.monitor-amber}'
+    padding: '8px 16px'
+    height: '56px'
   btn-minimal:
-    rounded: "{rounded.lg}"
-    padding: "12px 24px"
+    rounded: '{rounded.lg}'
+    padding: '12px 24px'
   card-base:
-    backgroundColor: "{colors.deep-slate}"
-    rounded: "{rounded.md}"
-    padding: "16px"
+    backgroundColor: '{colors.deep-slate}'
+    rounded: '{rounded.md}'
+    padding: '16px'
   card-minimal:
-    rounded: "{rounded.lg}"
-    padding: "16px"
+    rounded: '{rounded.lg}'
+    padding: '16px'
   card-elevated:
-    backgroundColor: "{colors.deep-slate}"
-    rounded: "{rounded.lg}"
-    padding: "32px"
+    backgroundColor: '{colors.deep-slate}'
+    rounded: '{rounded.lg}'
+    padding: '32px'
   input:
-    backgroundColor: "{colors.shadow-blue}"
-    rounded: "{rounded.sm}"
-    padding: "12px 16px"
+    backgroundColor: '{colors.shadow-blue}'
+    rounded: '{rounded.sm}'
+    padding: '12px 16px'
   chip:
-    rounded: "{rounded.pill}"
-    padding: "2px 10px"
+    rounded: '{rounded.pill}'
+    padding: '2px 10px'
   nav-link:
     typography: label
 ---
@@ -141,6 +141,7 @@ All tokens use OKLCH internally for consistent lightness and chroma across modes
 ### Neutral
 
 - **Near-Black Void** (dark bg: `#0a0a0f`) — primary background. A near-black with a trace of cool blue. In light mode, **Warm Parchment** (`#faf7f0`) — a warm off-white with a touch of ochre warmth, never cream or beige.
+  > **Parchment rationale (2026 audit).** Kept because it forms half of the dual-mode identity (not inverted dark mode). Paired with burnished amber (`#b45309`), it carries the same personality as dark mode — warm, intentional, grounded. Off-white alternatives risk feeling sterile; chromatic shift risks feeling derivative.
 - **Deep Slate / Rough Linen** (`#14141a` / `#f5f0e8`) — surface layer. Cards, panels, section backgrounds. One step up from the void/parchment.
 - **Shadow Blue / Washed Stone** (`#1a1a24` / `#efe8da`) — elevated surfaces. Input backgrounds, hovered drawer items, image placeholders. Slightly cooler in dark mode (blue undertone), slightly more ochre-warm in light.
 - **White Stone / Iron Ink** (`#fafafa` / `#1c1917`) — primary text. Maximum contrast in both modes.
@@ -178,11 +179,12 @@ All tokens use OKLCH internally for consistent lightness and chroma across modes
 
 The system refuses persistent shadows. Surfaces at rest are purely tonal — depth is created by background color stacking, not by shadows. Shadows only appear as a response to user interaction: hover, focus, active. This keeps the interface calm and readable while providing clear, physical feedback when the user engages.
 
-This is not flat design. It is *responsive* elevation: the room is quiet until you touch something, and then it tells you exactly what you touched.
+This is not flat design. It is _responsive_ elevation: the room is quiet until you touch something, and then it tells you exactly what you touched.
 
 ### Tonal Stack
 
 Depth is created by moving up the surface hierarchy:
+
 - **Level 0** — Near-Black Void / Warm Parchment (primary background)
 - **Level 1** — Deep Slate / Rough Linen (cards, panels, sections)
 - **Level 2** — Shadow Blue / Washed Stone (inputs, elevated states, mobile drawer)
@@ -240,6 +242,7 @@ Icon-only button. 40px square, pill radius, no background. Default icon color: W
 ### Language Switcher
 
 Pill-shaped cluster (9999px radius), 1px Subtle Line border, Deep Slate background. Contains two buttons (ES / EN):
+
 - **Active:** Shadow Blue (`#1a1a24`) background, White Stone text, subtle drop shadow. The active pill is physically separated by the container's inset padding.
 - **Inactive:** Transparent background, semi-transparent White Stone text at 50% opacity. On hover: full opacity White Stone.
 - **Typography:** 10px, bold (700), uppercase, 0.1em tracking.

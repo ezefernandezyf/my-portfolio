@@ -170,7 +170,9 @@ export const ContactPage = (): React.JSX.Element => {
                       <p className="text-[11px] uppercase tracking-widest text-text-muted font-body">
                         {t('hero.locationLabel')}
                       </p>
-                      <p className="text-base font-medium text-text-primary font-body">{t('hero.locationValue')}</p>
+                      <p className="text-base font-medium text-text-primary font-body">
+                        {t('hero.locationValue')}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -277,7 +279,7 @@ export const ContactPage = (): React.JSX.Element => {
                     <div className="pt-4">
                       <button
                         type="submit"
-                        className="group flex min-h-[44px] w-full items-center justify-center gap-2 bg-accent px-10 py-3 text-sm font-bold tracking-tight text-bg-primary transition-colors hover:bg-accent-hover focus-ring md:w-auto"
+                        className="group flex h-14 w-full items-center justify-center gap-2 bg-accent px-10 text-sm font-bold tracking-tight text-bg-primary transition-colors hover:bg-accent-hover focus-ring md:w-auto"
                         disabled={isSubmitting || status === 'sending'}
                         aria-busy={isSubmitting || status === 'sending'}
                       >

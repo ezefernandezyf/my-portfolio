@@ -89,7 +89,9 @@ describe('ContactPage', () => {
       screen.getByRole('heading', { name: /quiero sumarme a un equipo y construir algo preciso/i }),
     ).toBeInTheDocument();
     expect(screen.getByText(/busco integrarme a un equipo/i)).toBeInTheDocument();
-    expect(screen.getByText(/available for work|disponible para sumarme a un equipo/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/available for work|disponible para sumarme a un equipo/i),
+    ).toBeInTheDocument();
     expect(screen.getByText(new RegExp(about.email, 'i'))).toBeInTheDocument();
     expect(screen.getByText(/global \/ remote \(gmt-3\)/i)).toBeInTheDocument();
     expect(screen.getByText(/respuesta en 24 h|24h response time/i)).toBeInTheDocument();

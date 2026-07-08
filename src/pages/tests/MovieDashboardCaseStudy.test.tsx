@@ -11,7 +11,9 @@ describe('MovieDashboardCaseStudy', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole('heading', { name: /movie management dashboard/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: /movie management dashboard/i }),
+    ).toBeInTheDocument();
     expect(
       screen.getByRole('link', {
         name: /repository movie management dashboard/i,

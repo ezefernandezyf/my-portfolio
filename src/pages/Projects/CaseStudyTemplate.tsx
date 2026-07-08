@@ -73,7 +73,8 @@ const deepDiveIcons = {
   improvements: SparklesIcon,
 } as const;
 
-const deepDiveHeadingClass = 'font-display text-[1.75rem] font-medium tracking-[-0.01em] text-text-primary';
+const deepDiveHeadingClass =
+  'font-display text-[1.75rem] font-medium tracking-[-0.01em] text-text-primary';
 const cardClass =
   'bg-surface p-8 rounded-sm border border-border/20 hover:bg-surface-elevated hover:border-border transition-all duration-200 group';
 
@@ -82,7 +83,8 @@ function normalizeItems(items: string[] | string): string[] {
 }
 
 function renderSection(section: CaseStudySection, large = false) {
-  const contentClass = large || ('span' in section && section.span === 'wide') ? 'lg:col-span-2' : '';
+  const contentClass =
+    large || ('span' in section && section.span === 'wide') ? 'lg:col-span-2' : '';
 
   if (section.kind === 'code') {
     return (
@@ -90,7 +92,9 @@ function renderSection(section: CaseStudySection, large = false) {
         <div className="mb-6 h-12 w-12 rounded-sm bg-surface flex items-center justify-center text-accent">
           <CodeBracketIcon className="h-6 w-6" aria-hidden="true" />
         </div>
-        <h3 className="mb-3 font-display text-[1.125rem] font-medium text-text-primary">{section.heading}</h3>
+        <h3 className="mb-3 font-display text-[1.125rem] font-medium text-text-primary">
+          {section.heading}
+        </h3>
         <pre className="overflow-auto max-w-full text-[11px] sm:text-xs bg-surface p-3 rounded whitespace-pre-wrap wrap-break-word">
           {section.code}
         </pre>
@@ -109,7 +113,9 @@ function renderSection(section: CaseStudySection, large = false) {
           return <Icon className="h-6 w-6" aria-hidden="true" />;
         })()}
       </div>
-      <h3 className="mb-3 font-display text-[1.125rem] font-medium text-text-primary">{section.heading}</h3>
+      <h3 className="mb-3 font-display text-[1.125rem] font-medium text-text-primary">
+        {section.heading}
+      </h3>
       <ul className="space-y-4">
         {normalizeItems(section.items).map((item) => (
           <li key={item} className="flex items-start">
@@ -160,26 +166,38 @@ export const CaseStudyTemplate = ({
 
       <ScrollProgress />
 
-      <div className="pb-0 pt-24">
+      <div className="pb-24 pt-24">
         <section className="animate-fade-in-up max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-24">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
-              <p className="animate-fade-in-up font-body mb-4 text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted" style={{ animationDelay: '0.08s' }}>
+              <p
+                className="animate-fade-in-up font-body mb-4 text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted"
+                style={{ animationDelay: '0.08s' }}
+              >
                 {caseStudyTag}
               </p>
-              <h1 className="animate-fade-in-up font-display text-[3rem] font-bold leading-tight tracking-[-0.02em] text-text-primary sm:text-[3.5rem]" style={{ animationDelay: '0.16s' }}>
+              <h1
+                className="animate-fade-in-up font-display text-[1.75rem] font-bold tracking-[-0.02em] text-text-primary md:text-[2.25rem]"
+                style={{ animationDelay: '0.16s' }}
+              >
                 {title}
               </h1>
-              <p className="animate-fade-in-up font-body mt-6 max-w-[60ch] text-[1.125rem] leading-relaxed text-text-secondary" style={{ animationDelay: '0.24s' }}>
+              <p
+                className="animate-fade-in-up font-body mt-6 max-w-[60ch] text-[1.125rem] leading-relaxed text-text-secondary"
+                style={{ animationDelay: '0.24s' }}
+              >
                 {description}
               </p>
-              <div className="animate-fade-in-up mt-10 flex flex-wrap gap-4" style={{ animationDelay: '0.32s' }}>
+              <div
+                className="animate-fade-in-up mt-10 flex flex-wrap gap-4"
+                style={{ animationDelay: '0.32s' }}
+              >
                 {demo ? (
                   <a
                     href={demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center rounded-sm bg-accent px-6 py-3 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-bg-primary transition-colors hover:bg-accent-hover"
+                    className="inline-flex h-14 items-center justify-center rounded-sm bg-accent px-6 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-bg-primary transition-colors hover:bg-accent-hover"
                     aria-label={demoLabel}
                   >
                     {demoLabel}
@@ -190,7 +208,7 @@ export const CaseStudyTemplate = ({
                     href={repo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center rounded-sm border border-border/20 px-6 py-3 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-primary transition-colors hover:bg-surface-elevated"
+                    className="inline-flex h-14 items-center justify-center rounded-sm border border-border/20 px-6 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-primary transition-colors hover:bg-surface-elevated"
                     aria-label={repoLabel}
                   >
                     {repoLabel}
@@ -214,7 +232,9 @@ export const CaseStudyTemplate = ({
                 <span className="mb-1 block font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted">
                   {yearLabel}
                 </span>
-                <span className="block font-body text-sm font-medium text-text-primary">{year ?? '-'}</span>
+                <span className="block font-body text-sm font-medium text-text-primary">
+                  {year ?? '-'}
+                </span>
               </div>
               {featured && featuredLabel ? (
                 <div>
@@ -231,21 +251,27 @@ export const CaseStudyTemplate = ({
                   {stackHeading}
                 </span>
                 <div className="flex flex-wrap gap-2">
-                  {stackSections.flatMap((section) => section.items).slice(0, 6).map((item) => (
-                    <span
-                      key={item}
-                      className="border border-border/20 px-4 py-2 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-secondary"
-                    >
-                      {item}
-                    </span>
-                  ))}
+                  {stackSections
+                    .flatMap((section) => section.items)
+                    .slice(0, 6)
+                    .map((item) => (
+                      <span
+                        key={item}
+                        className="border border-border/20 px-4 py-2 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-secondary"
+                      >
+                        {item}
+                      </span>
+                    ))}
                 </div>
               </div>
             </aside>
           </div>
         </section>
 
-        <section className="animate-fade-in-up max-w-6xl mx-auto mb-28 px-6 lg:px-12" style={{ animationDelay: '0.24s' }}>
+        <section
+          className="animate-fade-in-up max-w-6xl mx-auto mb-28 px-6 lg:px-12"
+          style={{ animationDelay: '0.24s' }}
+        >
           <div className="relative w-full overflow-hidden rounded-lg border border-border/20 bg-surface shadow-[0_16px_32px_-16px_rgba(27,27,27,0.04)]">
             {images.length > 0 ? (
               <ProjectCarousel images={images} alt={carouselAlt} interval={5000} />
@@ -257,12 +283,21 @@ export const CaseStudyTemplate = ({
           </div>
         </section>
 
-        <section className="animate-fade-in-up bg-surface py-32" style={{ animationDelay: '0.32s' }}>
+        <section
+          className="animate-fade-in-up bg-surface py-32"
+          style={{ animationDelay: '0.32s' }}
+        >
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 gap-20 lg:grid-cols-2">
               <div>
-                <h2 className="animate-fade-in-up font-display mb-6 flex items-center text-[1.75rem] font-medium tracking-[-0.01em] text-text-primary" style={{ animationDelay: '0.08s' }}>
-                  <ExclamationTriangleIcon className="mr-3 h-6 w-6 text-accent" aria-hidden="true" />
+                <h2
+                  className="animate-fade-in-up font-display mb-6 flex items-center text-[1.75rem] font-medium tracking-[-0.01em] text-text-primary"
+                  style={{ animationDelay: '0.08s' }}
+                >
+                  <ExclamationTriangleIcon
+                    className="mr-3 h-6 w-6 text-accent"
+                    aria-hidden="true"
+                  />
                   {problemHeading}
                 </h2>
                 <p className="font-body max-w-[60ch] text-[0.875rem] leading-relaxed text-text-secondary">
@@ -278,7 +313,10 @@ export const CaseStudyTemplate = ({
                 <ul className="space-y-4">
                   {normalizeItems(solutionItems).map((item) => (
                     <li key={item} className="flex items-start">
-                      <CheckIcon className="mr-3 mt-0.5 h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
+                      <CheckIcon
+                        className="mr-3 mt-0.5 h-5 w-5 shrink-0 text-accent"
+                        aria-hidden="true"
+                      />
                       <span className="font-body text-[0.875rem] text-text-secondary">{item}</span>
                     </li>
                   ))}
@@ -288,25 +326,33 @@ export const CaseStudyTemplate = ({
           </div>
         </section>
 
-        <section className="animate-fade-in-up max-w-7xl mx-auto px-6 lg:px-12 py-32" style={{ animationDelay: '0.40s' }}>
+        <section
+          className="animate-fade-in-up max-w-7xl mx-auto px-6 lg:px-12 py-32"
+          style={{ animationDelay: '0.40s' }}
+        >
           <h2 className={`${deepDiveHeadingClass} mb-12`}>{deepDiveHeading}</h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {deepDiveSections.map((section) => renderSection(section))}
           </div>
         </section>
 
-        <section className="animate-fade-in-up border-y border-border/20 bg-surface py-24" style={{ animationDelay: '0.48s' }}>
+        <section
+          className="animate-fade-in-up border-y border-border/20 bg-surface py-24"
+          style={{ animationDelay: '0.48s' }}
+        >
           <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
             <h2 className={`${deepDiveHeadingClass} mb-10`}>{stackHeading}</h2>
             <div className="flex flex-wrap justify-center gap-3">
-              {stackSections.flatMap((section) => section.items).map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-border/20 px-4 py-2 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-primary transition-colors hover:bg-surface-elevated"
-                >
-                  {item}
-                </span>
-              ))}
+              {stackSections
+                .flatMap((section) => section.items)
+                .map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-border/20 px-4 py-2 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-primary transition-colors hover:bg-surface-elevated"
+                  >
+                    {item}
+                  </span>
+                ))}
             </div>
           </div>
         </section>

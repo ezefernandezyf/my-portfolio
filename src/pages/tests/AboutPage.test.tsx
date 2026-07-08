@@ -16,7 +16,10 @@ describe('AboutPage', () => {
     expect(screen.getByText(new RegExp(about.name, 'i'))).toBeInTheDocument();
     expect(screen.getByRole('img', { name: /foto de/i })).toBeInTheDocument();
 
-    expect(screen.getByRole('link', { name: /ver proyectos/i })).toHaveAttribute('href', '/projects');
+    expect(screen.getByRole('link', { name: /ver proyectos/i })).toHaveAttribute(
+      'href',
+      '/projects',
+    );
     expect(screen.getByRole('link', { name: /contactar/i })).toHaveAttribute('href', '/contact');
     expect(screen.getByRole('link', { name: /descargar cv/i })).toHaveAttribute('href', about.cv);
 
@@ -38,14 +41,24 @@ describe('AboutPage', () => {
     const softSkillsHeading = screen.getByRole('heading', { name: /habilidades blandas/i });
     const softSkillsSection = softSkillsHeading.closest('section');
     expect(softSkillsSection).toBeTruthy();
-    expect(within(softSkillsSection as HTMLElement).getByText(/comunicación clara|clear communication/i)).toBeInTheDocument();
-    expect(within(softSkillsSection as HTMLElement).getByText(/trabajo en equipo|teamwork/i)).toBeInTheDocument();
+    expect(
+      within(softSkillsSection as HTMLElement).getByText(/comunicación clara|clear communication/i),
+    ).toBeInTheDocument();
+    expect(
+      within(softSkillsSection as HTMLElement).getByText(/trabajo en equipo|teamwork/i),
+    ).toBeInTheDocument();
 
     const educationHeading = screen.getByRole('heading', { name: /educación/i });
     const educationSection = educationHeading.closest('section');
     expect(educationSection).toBeTruthy();
-    expect(within(educationSection as HTMLElement).getByText(/analista en sistemas/i)).toBeInTheDocument();
-    expect(within(educationSection as HTMLElement).getByText(/ciberseguridad/i)).toBeInTheDocument();
-    expect(within(educationSection as HTMLElement).getByText(/desarrollo con ia/i)).toBeInTheDocument();
+    expect(
+      within(educationSection as HTMLElement).getByText(/analista en sistemas/i),
+    ).toBeInTheDocument();
+    expect(
+      within(educationSection as HTMLElement).getByText(/ciberseguridad/i),
+    ).toBeInTheDocument();
+    expect(
+      within(educationSection as HTMLElement).getByText(/desarrollo con ia/i),
+    ).toBeInTheDocument();
   });
 });

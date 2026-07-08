@@ -9,7 +9,10 @@ type ProjectCaseStudyPageProps = {
   namespace: string;
 };
 
-export const ProjectCaseStudyPage = ({ projectId, namespace }: ProjectCaseStudyPageProps): React.JSX.Element => {
+export const ProjectCaseStudyPage = ({
+  projectId,
+  namespace,
+}: ProjectCaseStudyPageProps): React.JSX.Element => {
   const { t } = useTranslation(namespace);
   const { t: tProjects } = useTranslation('projects');
   const project = projectRepository.getProjectById(projectId);

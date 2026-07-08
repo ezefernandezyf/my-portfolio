@@ -14,7 +14,9 @@ import { useLocalizedPath } from '../../hooks/useLocalizedPath';
 export const Header = (): React.JSX.Element => {
   const { t, i18n } = useTranslation('header');
   const localize = useLocalizedPath();
-  const cvPath = i18n.language?.startsWith('en') ? '/Ezequiel_Fernandez_CV_EN.pdf' : '/Ezequiel_Fernandez_CV.pdf';
+  const cvPath = i18n.language?.startsWith('en')
+    ? '/Ezequiel_Fernandez_CV_EN.pdf'
+    : '/Ezequiel_Fernandez_CV.pdf';
   const [open, setOpen] = useState(false);
   const drawerRef = useRef<HTMLDivElement | null>(null);
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -50,98 +52,102 @@ export const Header = (): React.JSX.Element => {
     <header className="fixed top-0 z-50 w-full">
       <div className="bg-bg-primary/80 backdrop-blur-md">
         <nav className="site-container flex h-16 w-full items-center justify-between gap-8">
-        <div className="flex items-center gap-8">
-          <Link
-            to={localize('/')}
-            className="text-xl font-bold text-accent font-mono focus-ring"
-            aria-label={t('logo.ariaHome')}
-          >
-            [EZ]
-          </Link>
+          <div className="flex items-center gap-8">
+            <Link
+              to={localize('/')}
+              className="text-xl font-bold text-accent font-mono focus-ring"
+              aria-label={t('logo.ariaHome')}
+            >
+              [EZ]
+            </Link>
 
-          <div className="hidden items-center gap-6 md:flex">
-            <NavLink
-              to={localize('/projects')}
-              className={({ isActive }) =>
-                `relative text-sm font-medium uppercase tracking-wider font-body text-text-secondary transition-colors duration-200 focus-ring
+            <div className="hidden items-center gap-6 md:flex">
+              <NavLink
+                to={localize('/projects')}
+                className={({ isActive }) =>
+                  `relative text-sm font-medium uppercase tracking-wider font-body text-text-secondary transition-colors duration-200 focus-ring
                 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-200
                 hover:text-accent hover:after:w-full
                 ${isActive ? 'text-accent after:w-full' : ''}`
-              }
-            >
-              {t('nav.projects')}
-            </NavLink>
-            <NavLink
-              to={localize('/about')}
-              className={({ isActive }) =>
-                `relative text-sm font-medium uppercase tracking-wider font-body text-text-secondary transition-colors duration-200 focus-ring
+                }
+              >
+                {t('nav.projects')}
+              </NavLink>
+              <NavLink
+                to={localize('/about')}
+                className={({ isActive }) =>
+                  `relative text-sm font-medium uppercase tracking-wider font-body text-text-secondary transition-colors duration-200 focus-ring
                 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-200
                 hover:text-accent hover:after:w-full
                 ${isActive ? 'text-accent after:w-full' : ''}`
-              }
-            >
-              {t('nav.about')}
-            </NavLink>
-            <NavLink
-              to={localize('/contact')}
-              className={({ isActive }) =>
-                `relative text-sm font-medium uppercase tracking-wider font-body text-text-secondary transition-colors duration-200 focus-ring
+                }
+              >
+                {t('nav.about')}
+              </NavLink>
+              <NavLink
+                to={localize('/contact')}
+                className={({ isActive }) =>
+                  `relative text-sm font-medium uppercase tracking-wider font-body text-text-secondary transition-colors duration-200 focus-ring
                 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-200
                 hover:text-accent hover:after:w-full
                 ${isActive ? 'text-accent after:w-full' : ''}`
-              }
-            >
-              {t('nav.contact')}
-            </NavLink>
-          </div>
-        </div>
-
-        <div className="flex items-center gap-2">
-          {/* Grouped controls: ThemeToggle + LanguageSwitcher */}
-          <div className="control-cluster hidden sm:inline-flex">
-            <ThemeToggle />
-            <LanguageSwitcher />
-          </div>
-          <div className="hidden items-center gap-2 sm:flex">
-            <a
-              href="https://github.com/ezefernandezyf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center text-text-secondary transition-colors hover:text-accent focus-ring"
-              title={t('social.githubAria')}
-              aria-label={t('social.githubAria')}
-            >
-              <GithubIcon className="h-5 w-5" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/ezequiel-fernandez-59a21a387/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center text-text-secondary transition-colors hover:text-accent focus-ring"
-              title={t('social.linkedInAria')}
-              aria-label={t('social.linkedInAria')}
-            >
-              <LinkedInIcon className="h-5 w-5" />
-            </a>
+                }
+              >
+                {t('nav.contact')}
+              </NavLink>
+            </div>
           </div>
 
-          <div className="sm:hidden">
-            <ThemeToggle />
-          </div>
+          <div className="flex items-center gap-2">
+            {/* Grouped controls: ThemeToggle + LanguageSwitcher */}
+            <div className="control-cluster hidden sm:inline-flex">
+              <ThemeToggle />
+              <LanguageSwitcher />
+            </div>
+            <div className="hidden items-center gap-2 sm:flex">
+              <a
+                href="https://github.com/ezefernandezyf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-10 w-10 items-center justify-center text-text-secondary transition-colors hover:text-accent focus-ring"
+                title={t('social.githubAria')}
+                aria-label={t('social.githubAria')}
+              >
+                <GithubIcon className="h-5 w-5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/ezequiel-fernandez-59a21a387/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-10 w-10 items-center justify-center text-text-secondary transition-colors hover:text-accent focus-ring"
+                title={t('social.linkedInAria')}
+                aria-label={t('social.linkedInAria')}
+              >
+                <LinkedInIcon className="h-5 w-5" />
+              </a>
+            </div>
 
-          <button
-            type="button"
-            ref={menuButtonRef}
-            onClick={toggle}
-            aria-label={open ? t('mobile.closeMenu') : t('mobile.openMenu')}
-            aria-expanded={open}
-            aria-controls="mobile-drawer"
-            className="inline-flex h-10 w-10 items-center justify-center text-text-secondary transition-colors hover:text-accent focus-ring md:hidden"
-          >
-            {open ? <XMarkIcon className="h-6 w-6" aria-hidden /> : <Bars3Icon className="h-6 w-6" aria-hidden />}
-          </button>
-        </div>
-      </nav>
+            <div className="sm:hidden">
+              <ThemeToggle />
+            </div>
+
+            <button
+              type="button"
+              ref={menuButtonRef}
+              onClick={toggle}
+              aria-label={open ? t('mobile.closeMenu') : t('mobile.openMenu')}
+              aria-expanded={open}
+              aria-controls="mobile-drawer"
+              className="inline-flex h-10 w-10 items-center justify-center text-text-secondary transition-colors hover:text-accent focus-ring md:hidden"
+            >
+              {open ? (
+                <XMarkIcon className="h-6 w-6" aria-hidden />
+              ) : (
+                <Bars3Icon className="h-6 w-6" aria-hidden />
+              )}
+            </button>
+          </div>
+        </nav>
       </div>
 
       {/* Mobile Drawer */}
@@ -166,8 +172,12 @@ export const Header = (): React.JSX.Element => {
                 EZ
               </div>
               <div>
-                <h2 className="text-sm font-semibold tracking-tight text-text-primary font-body">{t('logo.name')}</h2>
-                <p className="text-[11px] uppercase tracking-[0.18em] text-text-muted font-label">{t('logo.role')}</p>
+                <h2 className="text-sm font-semibold tracking-tight text-text-primary font-body">
+                  {t('logo.name')}
+                </h2>
+                <p className="text-[11px] uppercase tracking-[0.18em] text-text-muted font-label">
+                  {t('logo.role')}
+                </p>
               </div>
             </Link>
 

@@ -14,7 +14,9 @@ describe('AppRoutes case-study migration', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole('heading', { name: /movie management dashboard/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: /movie management dashboard/i }),
+    ).toBeInTheDocument();
   });
 
   it('renders cinelab through the migrated feature route', () => {

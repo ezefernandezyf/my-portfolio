@@ -52,7 +52,15 @@ export const about: AboutData = {
   categories: [
     {
       titleKey: 'aboutpage.categories.frontend',
-      items: ['React', 'TypeScript', 'JavaScript', 'Vite', 'TanStack Query', 'React Router', 'HTML'],
+      items: [
+        'React',
+        'TypeScript',
+        'JavaScript',
+        'Vite',
+        'TanStack Query',
+        'React Router',
+        'HTML',
+      ],
     },
     {
       titleKey: 'aboutpage.categories.styles',
@@ -86,7 +94,7 @@ export const about: AboutData = {
       ],
     },
   ],
-  
+
   abilitiesKey: 'abilities.items',
 
   projects: [
@@ -97,7 +105,16 @@ export const about: AboutData = {
       repo: 'https://github.com/ezefernandezyf/echolog',
       demo: 'https://echolog-web.vercel.app',
       whatILearnedKey: 'projects.echolog.whatILearned',
-      tech: ['React 19', 'TypeScript', 'Node.js', 'Express', 'Prisma', 'PostgreSQL', 'Tailwind 4', 'Zod'],
+      tech: [
+        'React 19',
+        'TypeScript',
+        'Node.js',
+        'Express',
+        'Prisma',
+        'PostgreSQL',
+        'Tailwind 4',
+        'Zod',
+      ],
     },
     {
       id: 'movie-dashboard',

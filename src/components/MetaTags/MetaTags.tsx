@@ -95,13 +95,14 @@ export const MetaTags = ({
   const { i18n } = useTranslation();
 
   useEffect(() => {
-    const DEFAULT_DESC =
-      i18n.language?.startsWith('en')
-        ? 'Full Stack Developer specialized in React, TypeScript, and Node.js. I build modern, optimized, and accessible web applications.'
-        : 'Full Stack Developer especializado en React, TypeScript y Node.js. Construyo aplicaciones web modernas, optimizadas y accesibles.';
+    const DEFAULT_DESC = i18n.language?.startsWith('en')
+      ? 'Full Stack Developer specialized in React, TypeScript, and Node.js. I build modern, optimized, and accessible web applications.'
+      : 'Full Stack Developer especializado en React, TypeScript y Node.js. Construyo aplicaciones web modernas, optimizadas y accesibles.';
     const prevTitle = document.title;
     const finalTitle = title
-      ? (title.includes(DEFAULT_TITLE) ? title : `${title} | ${DEFAULT_TITLE}`)
+      ? title.includes(DEFAULT_TITLE)
+        ? title
+        : `${title} | ${DEFAULT_TITLE}`
       : DEFAULT_TITLE;
     document.title = finalTitle;
 
