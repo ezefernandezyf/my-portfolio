@@ -1,9 +1,10 @@
 ﻿{
   "meta": {
-    "title": "ChefcitoIA | Ezequiel Fernández, Full Stack Developer"
+    "title": "IA Recipe Generator",
+    "description": "Caso de estudio de ChefcitoIA: generador de recetas con IA construido con React 19 y Zod. Arquitectura, orquestación de modelos generativos y validación tipada."
   },
   "header": {
-    "title": "ChefcitoIA | Ezequiel Fernández, Full Stack Developer",
+    "title": "IA Recipe Generator",
     "short": "Generador de recetas basado en IA: ingresa ingredientes y preferencias y recibe recetas tipadas con macros, tiempos y dificultad.",
     "repoAria": "Repositorio IA Recipe Generator",
     "demoAria": "Demo IA Recipe Generator",
@@ -101,7 +102,7 @@
     ]
   },
   "carousel": {
-    "alt": "IA Recipe Generator preview"
+    "alt": "Vista previa de IA Recipe Generator"
   },
   "labels": {
     "year": "Año:",
@@ -111,5 +112,5 @@
     "heading": "Profundización técnica"
   },
   "notFound": "Proyecto no encontrado",
-  "noPreview": "Sin preview disponible"
+  "noPreview": "Sin vista previa"
 }

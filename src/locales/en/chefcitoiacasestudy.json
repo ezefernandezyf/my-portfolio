@@ -1,9 +1,10 @@
 ﻿{
   "meta": {
-    "title": "ChefcitoIA | Ezequiel Fernández, Full Stack Developer"
+    "title": "IA Recipe Generator",
+    "description": "Case study of ChefcitoIA: an AI-powered recipe generator built with React 19 and Zod. Architecture, generative model orchestration, and typed validation."
   },
   "header": {
-    "title": "ChefcitoIA | Ezequiel Fernández, Full Stack Developer",
+    "title": "IA Recipe Generator",
     "short": "AI-powered recipe generator: enter ingredients and preferences to receive typed recipes with macros, times and difficulty.",
     "repoAria": "IA Recipe Generator repository",
     "demoAria": "IA Recipe Generator demo",

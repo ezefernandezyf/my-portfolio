@@ -1,9 +1,10 @@
 ﻿{
   "meta": {
-    "title": "EchoLog | Ezequiel Fernández, Full Stack Developer"
+    "title": "EchoLog",
+    "description": "Caso de estudio de EchoLog: SaaS multi-tenant de feedback para productos con React 19, Node.js, Express, PostgreSQL. Arquitectura, aislamiento multi-tenant y testing."
   },
   "header": {
-    "title": "EchoLog | Ezequiel Fernández, Full Stack Developer",
+    "title": "EchoLog",
     "short": "SaaS multi-tenant de feedback para productos - boards, votos, comentarios, gestión de workspaces. Full-stack TypeScript con React 19, Node.js, Express, PostgreSQL.",
     "repoAria": "Repositorio EchoLog",
     "demoAria": "Demo EchoLog",
@@ -95,7 +96,7 @@
     ]
   },
   "deepDive": {
-    "heading": "Technical Deep Dive"
+    "heading": "Profundización técnica"
   },
   "carousel": {
     "alt": "Vista previa de EchoLog"

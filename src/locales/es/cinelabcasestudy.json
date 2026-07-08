@@ -1,9 +1,10 @@
 ﻿{
   "meta": {
-    "title": "CineLab | Ezequiel Fernández, Full Stack Developer"
+    "title": "{{name}}",
+    "description": "Caso de estudio de CineLab: aplicación de búsqueda de películas con React, TypeScript y TMDB API. Arquitectura, stack tecnológico y rendimiento del proyecto."
   },
   "header": {
-    "title": "CineLab | Ezequiel Fernández, Full Stack Developer",
+    "title": "{{name}}",
     "short": "Movie Search App - búsqueda, filtros, favoritos persistentes y recomendaciones dinámicas (TMDB).",
     "repoAria": "Repositorio {{name}}",
     "demoAria": "Demo {{name}}",
@@ -102,10 +103,10 @@
     "heading": "Profundización técnica"
   },
   "carousel": {
-    "alt": "{{name}} preview"
+    "alt": "Vista previa de {{name}}"
   },
   "labels": {
     "year": "Año:",
-    "featured": "Featured"
+    "featured": "Destacado"
   }
 }

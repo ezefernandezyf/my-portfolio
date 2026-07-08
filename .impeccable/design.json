@@ -1,0 +1,387 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-07T12:00:00.000Z",
+  "title": "Design System: Ezequiel Fernández — Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "monitor-amber": {
+        "role": "primary",
+        "displayName": "Monitor Amber",
+        "canonical": "oklch(0.702 0.158 74)",
+        "tonalRamp": [
+          "oklch(0.15 0.04 74)",
+          "oklch(0.28 0.10 74)",
+          "oklch(0.40 0.14 74)",
+          "oklch(0.52 0.16 74)",
+          "oklch(0.62 0.16 74)",
+          "oklch(0.72 0.15 74)",
+          "oklch(0.84 0.10 74)",
+          "oklch(0.95 0.04 74)"
+        ]
+      },
+      "ember": {
+        "role": "primary",
+        "displayName": "Ember",
+        "canonical": "oklch(0.609 0.156 64)",
+        "tonalRamp": [
+          "oklch(0.12 0.04 64)",
+          "oklch(0.22 0.10 64)",
+          "oklch(0.34 0.14 64)",
+          "oklch(0.45 0.16 64)",
+          "oklch(0.54 0.16 64)",
+          "oklch(0.62 0.15 64)",
+          "oklch(0.76 0.10 64)",
+          "oklch(0.92 0.04 64)"
+        ]
+      },
+      "burnished-amber": {
+        "role": "primary",
+        "displayName": "Burnished Amber",
+        "canonical": "oklch(0.539 0.156 54)",
+        "tonalRamp": [
+          "oklch(0.10 0.04 54)",
+          "oklch(0.20 0.10 54)",
+          "oklch(0.30 0.14 54)",
+          "oklch(0.40 0.16 54)",
+          "oklch(0.48 0.16 54)",
+          "oklch(0.55 0.15 54)",
+          "oklch(0.72 0.10 54)",
+          "oklch(0.90 0.04 54)"
+        ]
+      },
+      "near-black-void": {
+        "role": "neutral",
+        "displayName": "Near-Black Void",
+        "canonical": "oklch(0.047 0.008 286)",
+        "tonalRamp": [
+          "oklch(0.02 0.01 286)",
+          "oklch(0.05 0.01 286)",
+          "oklch(0.10 0.01 286)",
+          "oklch(0.18 0.01 286)",
+          "oklch(0.30 0.008 286)",
+          "oklch(0.45 0.006 286)",
+          "oklch(0.65 0.004 286)",
+          "oklch(0.90 0.002 286)"
+        ]
+      },
+      "deep-slate": {
+        "role": "neutral",
+        "displayName": "Deep Slate",
+        "canonical": "oklch(0.086 0.009 286)",
+        "tonalRamp": [
+          "oklch(0.03 0.01 286)",
+          "oklch(0.08 0.01 286)",
+          "oklch(0.15 0.01 286)",
+          "oklch(0.22 0.009 286)",
+          "oklch(0.34 0.008 286)",
+          "oklch(0.48 0.006 286)",
+          "oklch(0.66 0.004 286)",
+          "oklch(0.90 0.002 286)"
+        ]
+      },
+      "shadow-blue": {
+        "role": "neutral",
+        "displayName": "Shadow Blue",
+        "canonical": "oklch(0.109 0.012 286)",
+        "tonalRamp": [
+          "oklch(0.04 0.012 286)",
+          "oklch(0.10 0.012 286)",
+          "oklch(0.18 0.012 286)",
+          "oklch(0.26 0.010 286)",
+          "oklch(0.38 0.008 286)",
+          "oklch(0.52 0.006 286)",
+          "oklch(0.68 0.004 286)",
+          "oklch(0.91 0.002 286)"
+        ]
+      },
+      "white-stone": {
+        "role": "neutral",
+        "displayName": "White Stone",
+        "canonical": "oklch(0.98 0 0)",
+        "tonalRamp": [
+          "oklch(0.30 0 0)",
+          "oklch(0.42 0 0)",
+          "oklch(0.54 0 0)",
+          "oklch(0.66 0 0)",
+          "oklch(0.76 0 0)",
+          "oklch(0.86 0 0)",
+          "oklch(0.94 0 0)",
+          "oklch(0.98 0 0)"
+        ]
+      },
+      "warm-parchment": {
+        "role": "neutral",
+        "displayName": "Warm Parchment",
+        "canonical": "oklch(0.967 0.008 86)",
+        "tonalRamp": [
+          "oklch(0.30 0.008 86)",
+          "oklch(0.42 0.008 86)",
+          "oklch(0.54 0.008 86)",
+          "oklch(0.66 0.008 86)",
+          "oklch(0.77 0.008 86)",
+          "oklch(0.86 0.008 86)",
+          "oklch(0.93 0.008 86)",
+          "oklch(0.97 0.008 86)"
+        ]
+      },
+      "iron-ink": {
+        "role": "neutral",
+        "displayName": "Iron Ink",
+        "canonical": "oklch(0.105 0.005 50)",
+        "tonalRamp": [
+          "oklch(0.02 0.005 50)",
+          "oklch(0.05 0.005 50)",
+          "oklch(0.10 0.005 50)",
+          "oklch(0.18 0.005 50)",
+          "oklch(0.30 0.004 50)",
+          "oklch(0.45 0.003 50)",
+          "oklch(0.65 0.002 50)",
+          "oklch(0.88 0.001 50)"
+        ]
+      },
+      "subtle-line": {
+        "role": "neutral",
+        "displayName": "Subtle Line",
+        "canonical": "oklch(0.164 0.009 286)",
+        "tonalRamp": [
+          "oklch(0.04 0.01 286)",
+          "oklch(0.10 0.01 286)",
+          "oklch(0.16 0.01 286)",
+          "oklch(0.25 0.01 286)",
+          "oklch(0.38 0.008 286)",
+          "oklch(0.55 0.006 286)",
+          "oklch(0.72 0.004 286)",
+          "oklch(0.92 0.002 286)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero names and major headings only. Never used in body copy."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles (H2). Unified scale across all pages."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text, descriptions, project summaries. Always in Warm Silver / Soft Graphite, never White Stone."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Eyebrow text, button labels, nav items, form labels. Always uppercase with wide tracking."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Code snippets, years, data values."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card-base-rest",
+        "value": "0 6px 18px rgba(2, 6, 23, 0.07)",
+        "purpose": "Default card shadow. Subtle, nearly invisible. Light mode: 0.04 opacity."
+      },
+      {
+        "name": "card-base-hover",
+        "value": "0 18px 40px rgba(2, 6, 23, 0.12)",
+        "purpose": "Card hover shadow. Lifts the card 6px and deepens shadow. Light mode: 0.10 opacity."
+      },
+      {
+        "name": "card-minimal",
+        "value": "0 10px 24px rgba(15, 23, 42, 0.08)",
+        "purpose": "Light ambient shadow for minimal containers (control cluster, card-minimal). Light mode: 0.04."
+      },
+      {
+        "name": "section-shell",
+        "value": "0 24px 72px rgba(2, 6, 23, 0.08)",
+        "purpose": "Broad, soft shadow for large section wrappers. Light mode: 0.04."
+      },
+      {
+        "name": "mobile-drawer",
+        "value": "0 24px 80px rgba(0, 0, 0, 0.22)",
+        "purpose": "Deep focused shadow for the mobile navigation overlay. Highest shadow value."
+      },
+      {
+        "name": "project-card-hover",
+        "value": "0 18px 40px rgba(2, 6, 23, 0.18)",
+        "purpose": "Hover shadow for elevated project cards. More pronounced than card-base."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "purpose": "Default easing for state transitions (hover, focus)."
+      },
+      {
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Easing for animated elements like the mobile drawer and carousel track."
+      },
+      {
+        "name": "duration-fast",
+        "value": "150ms",
+        "purpose": "Hover transitions, focus-ring changes, chip interactions."
+      },
+      {
+        "name": "duration-medium",
+        "value": "250ms",
+        "purpose": "Theme toggle, border color transitions, card transformations."
+      },
+      {
+        "name": "duration-slow",
+        "value": "500ms",
+        "purpose": "Entrance animations (fade-in-up), carousel slide transitions."
+      },
+      {
+        "name": "fade-in-up",
+        "value": "opacity 0.5s ease-out, transform 0.5s ease-out",
+        "purpose": "Standard entrance animation: element fades in while moving up 16px."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px", "purpose": "Mobile landscape. ThemeToggle/LanguageSwitcher visible." },
+      { "name": "md", "value": "768px", "purpose": "Tablet. Desktop nav visible, grid switches to 2-column." },
+      { "name": "lg", "value": "1024px", "purpose": "Desktop. Container padding expands to 3rem." },
+      { "name": "xl", "value": "1280px", "purpose": "Wide desktop. Site max-width (1280px)." },
+      { "name": "2xl", "value": "1536px", "purpose": "Ultra-wide. Content remains centered at max-width." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Solid amber CTA button. Used for primary actions: view projects, contact, submit. High contrast amber fill on near-black background.",
+      "html": "<button class=\"ds-btn-primary\">VER PROYECTOS</button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;height:3.5rem;padding:0 2rem;background:#f59e0b;color:#0a0a0f;font-family:'Work Sans',system-ui,sans-serif;font-size:0.875rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border:none;border-radius:0.5rem;cursor:pointer;transition:background .15s,transform .15s}.ds-btn-primary:hover{background:#d97706}.ds-btn-primary:active{transform:scale(0.95)}.ds-btn-primary:focus-visible{outline:2px solid #f59e0b;outline-offset:2px}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary outline button with transparent fill and subtle border. For secondary CTAs on the homepage and section transitions.",
+      "html": "<button class=\"ds-btn-outline\">SOBRE MÍ</button>",
+      "css": ".ds-btn-outline{display:inline-flex;align-items:center;justify-content:center;height:3.5rem;padding:0 2rem;background:transparent;color:#fafafa;font-family:'Work Sans',system-ui,sans-serif;font-size:0.875rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border:1px solid #27272a;border-radius:0.5rem;cursor:pointer;transition:border-color .15s}.ds-btn-outline:hover{border-color:#3f3f46}.ds-btn-outline:focus-visible{outline:2px solid #f59e0b;outline-offset:2px}"
+    },
+    {
+      "name": "Ghost Link Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Minimal text-only button with amber accent. Used for download CV and other tertiary actions. No border or background — relies entirely on typography and color.",
+      "html": "<button class=\"ds-btn-ghost\">DESCARGAR CV<svg class=\"ds-icon-right\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" width=\"16\" height=\"16\"><path d=\"M7 17L17 7M7 7h10v10\"/></svg></button>",
+      "css": ".ds-btn-ghost{display:inline-flex;align-items:center;gap:0.5rem;height:3.5rem;padding:0 1rem;background:transparent;color:#f59e0b;font-family:'Work Sans',system-ui,sans-serif;font-size:0.875rem;font-weight:700;letter-spacing:0.02em;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;transition:color .15s}.ds-btn-ghost:hover{text-decoration:underline;text-underline-offset:8px}.ds-btn-ghost:focus-visible{outline:2px solid #f59e0b;outline-offset:2px}.ds-icon-right{transition:transform .15s}.ds-btn-ghost:hover .ds-icon-right{transform:translateX(2px)}"
+    },
+    {
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Text input with elevated dark background and amber focus ring. Used in the contact form for name, email, and subject fields. Label sits above the field.",
+      "html": "<div class=\"ds-field\"><label class=\"ds-label\" for=\"input-demo\">NOMBRE</label><input id=\"input-demo\" class=\"ds-input\" type=\"text\" placeholder=\"Tu nombre\"></div>",
+      "css": ".ds-field{display:flex;flex-direction:column;gap:0.5rem}.ds-label{display:block;font-family:'Work Sans',system-ui,sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#a1a1aa}.ds-input{min-height:2.75rem;width:100%;border-radius:0.375rem;border:1px solid #27272a;background:#1a1a24;padding:0.75rem 1rem;color:#fafafa;font-family:'Work Sans',system-ui,sans-serif;font-size:1rem;line-height:1.5;box-sizing:border-box;transition:border-color .15s,box-shadow .15s}.ds-input::placeholder{color:#9ca3af;opacity:1}.ds-input:focus{border-color:#f59e0b;outline:none;box-shadow:0 0 0 1px #f59e0b}.ds-input:focus-visible{outline:2px solid #f59e0b;outline-offset:2px}"
+    },
+    {
+      "name": "Textarea",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Multi-line textarea matching input styling. Used for the message field in the contact form. Vertical resize only, same focus treatment as inputs.",
+      "html": "<div class=\"ds-field\"><label class=\"ds-label\" for=\"msg-demo\">MENSAJE</label><textarea id=\"msg-demo\" class=\"ds-textarea\" placeholder=\"Escribí tu mensaje...\" rows=\"4\"></textarea></div>",
+      "css": ".ds-textarea{width:100%;min-height:7.5rem;resize:vertical;border-radius:0.375rem;border:1px solid #27272a;background:#1a1a24;padding:0.75rem 1rem;color:#fafafa;font-family:'Work Sans',system-ui,sans-serif;font-size:1rem;line-height:1.6;box-sizing:border-box;transition:border-color .15s,box-shadow .15s}.ds-textarea::placeholder{color:#9ca3af;opacity:1}.ds-textarea:focus{border-color:#f59e0b;outline:none;box-shadow:0 0 0 1px #f59e0b}.ds-textarea:focus-visible{outline:2px solid #f59e0b;outline-offset:2px}"
+    },
+    {
+      "name": "Navigation Link (Desktop)",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Desktop navigation link with animated underline on hover. Uppercase, tight tracking, warm silver default shifting to amber on interaction.",
+      "html": "<nav style=\"display:flex;gap:1.5rem\"><a class=\"ds-nav-link ds-nav-active\" href=\"#\">PROYECTOS</a><a class=\"ds-nav-link\" href=\"#\">SOBRE MÍ</a><a class=\"ds-nav-link\" href=\"#\">CONTACTO</a></nav>",
+      "css": ".ds-nav-link{position:relative;font-family:'Work Sans',system-ui,sans-serif;font-size:0.875rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#a1a1aa;text-decoration:none;padding:0.25rem 0;transition:color .2s;cursor:pointer}.ds-nav-link::after{content:'';position:absolute;bottom:-0.25rem;left:0;height:2px;width:0;background:#f59e0b;transition:width .2s}.ds-nav-link:hover{color:#f59e0b}.ds-nav-link:hover::after{width:100%}.ds-nav-link.ds-nav-active{color:#f59e0b}.ds-nav-link.ds-nav-active::after{width:100%}.ds-nav-link:focus-visible{outline:2px solid #f59e0b;outline-offset:2px}"
+    },
+    {
+      "name": "Chip / Tag (Outline)",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Small pill-shaped tag for technology labels. Transparent background with border. Used in project cards to display tech stack tags.",
+      "html": "<div style=\"display:flex;gap:0.5rem;flex-wrap:wrap\"><span class=\"ds-chip\">React 19</span><span class=\"ds-chip\">TypeScript</span><span class=\"ds-chip ds-chip-primary\">Node.js</span></div>",
+      "css": ".ds-chip{display:inline-flex;align-items:center;gap:0.5rem;padding:0.125rem 0.625rem;border-radius:9999px;border:1px solid #27272a;background:transparent;color:#fafafa;font-family:'Work Sans',system-ui,sans-serif;font-size:0.625rem;font-weight:700;letter-spacing:0.02em;text-transform:uppercase;line-height:1.4}.ds-chip-primary{background:color-mix(in srgb,#f59e0b 20%,#0a0a0f 80%);border-color:color-mix(in srgb,#f59e0b 55%,#27272a 45%);color:#f59e0b}"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "card-elevated",
+      "description": "Elevated project card with amber-tinted hover border and lift effect. Used in the project directory and homepage featured section. 32px padding with header, body, and footer zones.",
+      "html": "<article class=\"ds-card-project\"><div class=\"ds-card-header\"><div style=\"display:flex;gap:0.5rem;flex-wrap:wrap\"><span class=\"ds-chip\">React</span><span class=\"ds-chip\">Node.js</span></div><span class=\"ds-card-year\">2025</span></div><h3 class=\"ds-card-title\">EchoLog</h3><p class=\"ds-card-desc\">Real-time collaborative logging platform for dev teams.</p><div class=\"ds-card-footer\"><a class=\"ds-card-link\" href=\"#\">VER CASE STUDY<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" width=\"16\" height=\"16\"><path d=\"M7 17L17 7M7 7h10v10\"/></svg></a></div></article>",
+      "css": ".ds-card-project{display:flex;flex-direction:column;height:100%;border:1px solid #27272a;background:#14141a;padding:2rem;transition:transform .3s,box-shadow .3s,border-color .3s}.ds-card-project:hover{transform:translateY(-6px);border-color:color-mix(in srgb,#f59e0b 50%,transparent);box-shadow:0 18px 40px rgba(2,6,23,0.18)}.ds-card-header{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}.ds-card-year{font-family:'JetBrains Mono',monospace;font-size:0.625rem;color:#9ca3af;white-space:nowrap}.ds-card-title{font-family:'Instrument Serif',Georgia,serif;font-size:1.875rem;font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:#fafafa;margin:2rem 0 0.75rem}.ds-card-desc{font-family:'Work Sans',system-ui,sans-serif;font-size:1rem;line-height:1.7;color:#a1a1aa;max-width:60ch}.ds-card-footer{margin-top:2rem;border-top:1px solid color-mix(in srgb,#27272a 10%,transparent);padding-top:1.5rem}.ds-card-link{display:inline-flex;align-items:center;gap:0.5rem;font-family:'Work Sans',system-ui,sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#f59e0b;text-decoration:none;transition:color .15s}.ds-card-link:hover{color:#d97706}.ds-card-link svg{transition:transform .15s}.ds-card-link:hover svg{transform:translateX(2px)}"
+    },
+    {
+      "name": "Carousel Control",
+      "kind": "custom",
+      "refersTo": "custom",
+      "description": "Circular control button for the project image carousel. Blends amber on hover. Chevron icon inlined. Used in case study pages.",
+      "html": "<div style=\"position:relative;width:100%;max-width:480px;aspect-ratio:16/9;background:#1a1a24;display:flex;align-items:center;justify-content:center\"><button class=\"ds-carousel-ctrl\" aria-label=\"Anterior\" style=\"position:absolute;left:0.5rem\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" width=\"20\" height=\"20\"><path d=\"M15 18l-6-6 6-6\"/></svg></button><span style=\"color:#9ca3af;font-size:0.875rem;font-family:'Work Sans',sans-serif\">1 / 3</span><button class=\"ds-carousel-ctrl\" aria-label=\"Siguiente\" style=\"position:absolute;right:0.5rem\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" width=\"20\" height=\"20\"><path d=\"M9 18l6-6-6-6\"/></svg></button></div>",
+      "css": ".ds-carousel-ctrl{display:inline-flex;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;border-radius:9999px;border:1px solid #27272a;background:color-mix(in srgb,#14141a 96%,transparent);color:#fafafa;cursor:pointer;transition:background .15s,border-color .15s,transform .15s;top:50%;transform:translateY(-50%)}.ds-carousel-ctrl:hover{background:color-mix(in srgb,#14141a 78%,#f59e0b 22%);border-color:color-mix(in srgb,#27272a 65%,#f59e0b 35%)}.ds-carousel-ctrl:focus-visible{outline:2px solid #f59e0b;outline-offset:2px}"
+    },
+    {
+      "name": "Language Switcher",
+      "kind": "custom",
+      "refersTo": "custom",
+      "description": "Pill-shaped bilingual toggle for ES/EN. Active state uses elevated background with subtle shadow. Inactive state is transparent with semi-transparent text.",
+      "html": "<div class=\"ds-lang-switcher\" role=\"group\" aria-label=\"Language switcher\"><button class=\"ds-lang-btn ds-lang-active\" aria-pressed=\"true\">ES</button><button class=\"ds-lang-btn\" aria-pressed=\"false\">EN</button></div>",
+      "css": ".ds-lang-switcher{display:inline-flex;align-items:center;border-radius:9999px;padding:0.25rem;background:#14141a;border:1px solid #27272a}.ds-lang-btn{border:none;border-radius:9999px;padding:0.25rem 0.75rem;font-family:'Work Sans',system-ui,sans-serif;font-size:0.625rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;background:transparent;color:color-mix(in srgb,#fafafa 50%,transparent);transition:background .15s,color .15s,box-shadow .15s}.ds-lang-btn:hover{color:#fafafa}.ds-lang-btn.ds-lang-active{background:#1a1a24;color:#fafafa;box-shadow:0 1px 3px rgba(0,0,0,0.3)}.ds-lang-btn:focus-visible{outline:2px solid #f59e0b;outline-offset:2px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Architect's Studio",
+    "overview": "This portfolio is a room with controlled lighting, noble materials, and precise blueprints. Every surface is deliberate — nothing is here because a template put it here. The studio is dark by default: deep near-black walls that push content forward, with amber as the only source of warmth, like monitor light reflecting off a desk at dusk. The designer works in this room, and the room itself proves the work.\n\nThe system practices what it preaches. A Full Stack Developer portfolio cannot look like it was generated — the portfolio IS the proof of craft. Every component, transition, and layout choice must feel intentional, not inherited. Dark-first is not a fashion statement here; it is the atmosphere of the room. Light mode is given equal care, with warm parchment tones and a burnished amber that preserves the same hierarchy and personality in daylight.",
+    "keyCharacteristics": [
+      "Dark-first, dual-mode. Near-black void background is the default. Light mode switches to warm parchment with its own amber accent, not inverted colors.",
+      "Single accent restraint. Amber (OKLCH ~0.70 0.158 74) is the only chromatic color. It occupies ≤10% of any given screen. Its rarity is the point.",
+      "Responsive elevation. Surfaces are flat at rest. Shadows appear only on hover or interaction — quiet in repose, responsive to touch.",
+      "Editorial typography contrast. Serif display (Instrument Serif) for hierarchy and personality; sans body (Work Sans) for readability. The pairing is the primary aesthetic move.",
+      "Micro-interactions with purpose. Motion communicates state change and hierarchy. It never decorates."
+    ],
+    "rules": [
+      {
+        "name": "The Monitor Glow Rule",
+        "body": "Amber occupies ≤10% of any given screen. It is the flash of a monitor in a dark room, not a floodlight. The accent is always the smallest area, always the highest contrast.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Amber Rule",
+        "body": "Dark mode amber and light mode amber are NOT the same color. Dark mode wants a bright, warm amber (#f59e0b) against near-black. Light mode wants a deeper, more saturated amber (#b45309) against warm parchment. If you swap them, one mode will look washed out or harsh.",
+        "section": "colors"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "No surface has a shadow at rest unless it is structurally necessary (section-shell, mobile drawer). Hover shadows must feel like a physical response, not a design tick.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Anti-Generic Rule",
+        "body": "If someone could look at this interface and say 'AI made that' without doubt, it has failed. No purple/blue gradients, no glassmorphism, no template cards, no numbered section markers as scaffolding.",
+        "section": "overview"
+      }
+    ],
+    "dos": [
+      "Do use Monitor Amber as the single accent across all interactive states — buttons, links, focus rings, active indicators. If a second color appears, it must be an error state (red) or a neutral.",
+      "Do keep body text in Warm Silver / Soft Graphite, never White Stone / Iron Ink. Reserve maximum contrast for headings.",
+      "Do animate with purpose: state transitions (150ms fast), entrance reveals (500ms fade-in-up with stagger), theme toggles (250ms). Each animation must have a prefers-reduced-motion: reduce fallback.",
+      "Do use the tonal layering system for depth before adding shadows. Surfaces stack: Void → Slate → Shadow Blue. Shadows are the last resort, not the first.",
+      "Do keep chips and labels tight — 10px uppercase bold with tight tracking. These are the 'instrument panel' of the interface: small, dense, informative.",
+      "Do cap display text at 6rem (~96px) max. Larger than that is shouting, not designing.",
+      "Do use text-wrap: balance on all h1–h3 headings for even line lengths, and text-wrap: pretty on body text to reduce orphans."
+    ],
+    "donts": [
+      "Don't use purple gradients, neon accents, blue links, or glassmorphism. These are AI-generic developer portfolio tells that the system explicitly rejects.",
+      "Don't do scroll-hijacking, excessive animations, or agency-style overdesign. The studio is calm — motion communicates, it doesn't perform.",
+      "Don't use numbered section markers (01 / 02 / 03) as default scaffolding above every section. Numbers earn their place only when the content IS a sequence.",
+      "Don't use the tiny uppercase tracked eyebrow above every section heading as a default. One deliberate kicker is voice; an eyebrow on every section is AI grammar.",
+      "Don't use side-stripe borders (border-left or border-right greater than 1px as a colored accent on cards or callouts). Use full borders, background tints, or nothing.",
+      "Don't use gradient text. Emphasis is achieved through weight, size, and color, not decorative gradients.",
+      "Don't use cards when a simpler layout would do. Cards are the most overused pattern in developer portfolios. Nested cards are always wrong.",
+      "Don't swap dark-mode amber (#f59e0b) into light mode or light-mode amber (#b45309) into dark mode. Each mode has its own amber.",
+      "Don't forget light mode. It is not dark mode inverted — it has its own amber, its own neutrals, its own shadow opacities."
+    ]
+  }
+}

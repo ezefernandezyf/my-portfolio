@@ -158,7 +158,7 @@ Segunda tanda:
 - [x] Legibilidad: text-muted y labels con contraste WCAG AA en ambos modos
 
 ### Fase 12 — SEO/GEO Fino + Certificación + Routing ✅ (en `feat/fase12-seo-geo-polish`)
-> SDD completo. 4 PRs. GEO score final: 65/100 (ver `GEO-AUDIT-REPORT.md`).
+> SDD completo. 4 PRs. GEO score pendiente de auditoría final.
 
 - [x] **Títulos descriptivos** — cada página con title único, keywords, descriptions en `route-meta.ts`
 - [x] **Meta descriptions con keywords reales** — descripciones SEO para las 12 rutas
@@ -170,16 +170,57 @@ Segunda tanda:
 - [x] **CV dinámico según idioma** — ES/EN PDF según `i18n.language`
 - [x] **Fix routing** — URLs mantienen `/en/` al navegar en inglés, hook `useLocalizedPath`
 - [x] **Education status** — activo (en curso) vs completado con chip-completed
-- [x] **GEO audit final** — 65/100 (desde 54/100 en Fase 10, +11 puntos)
+- [ ] **GEO audit final** — correr auditoría completa post-cambios, medir score final
 
-### Fase 13 — Pulido Final ✅ (en `feat/fase13-polish`)
-> SDD completo. 16 tareas, 1 PR. GEO 54 → 65.
+### Fase 13 — Pulido Final 🔲 (absorbida en Fase 14)
 
-- [x] **Expandir word count** — párrafos expandidos y luego recortados a 86-114 palabras (scaneable)
-- [x] **Agregar 3er párrafo en ContactPage** — proceso y valores (testing, code review, CI/CD)
-- [x] **Fix prerender about descKey** — `meta.title` → `meta.description` para /about
-- [x] **Sitemap automático** — `scripts/generate-sitemap.mjs` desde `route-meta.ts` (24 URLs)
-- [x] **Actualizar llms.txt** — geo-seo-opencode, AI Skills Fest, full route table
-- [x] **GEO audit final** — 65/100, ver `GEO-AUDIT-REPORT.md` para quick wins y 30-day plan
-- [x] **Remover startup claim** — mención falsa de startups eliminada de contact.json (ES/EN)
+### Fase 14 — Auditoría 360° & Fixes ✅ (mergeada a `develop`)
+> Auditoría completa con impeccable + design-taste-frontend + redesign-existing-projects. Score combinado: **77/100** (Visual: 77, Contenido: 75, Técnico: 80). PRODUCT.md + DESIGN.md creados.
+
+#### Fase 14a — 🔴 Críticos: i18n + Schema + Infra
+- [ ] **Fix LanguageSwitcher** — clases CSS inexistentes (`bg-surface-container-high`, `font-space-grotesk`, `text-text/50`). El componente está invisible. Reemplazar con tokens del proyecto (`bg-surface-elevated`, `font-body`, `text-text-muted`). Eliminar doble pill (container propio + `control-cluster` padre).
+- [ ] **Fix schema JSON-LD** — `schema.ts:58-59` inyecta keys de i18next (`"home:meta.title"`) como texto en vez del valor resuelto. Usar `route[lang].title` / `route[lang].description`.
+- [ ] **Agregar `meta.description` a 6 case studies** — `descI18nKey` en `route-meta.ts` apunta a `meta.title`. Crear key `meta.description` en cada namespace: `cinelabcasestudy`, `moviedashboardcasestudy`, `chefcitoiacasestudy`, `nexustalentcasestudy`, `echologcasestudy`, `geoseoopencodecasestudy`.
+- [ ] **Traducir strings en inglés en locales español** — `labels.featured: "Featured"` → `"Destacado"`, `deepDive.heading: "Technical Deep Dive"` → `"Profundización técnica"`, `carousel.alt` en inglés, `noPreview: "Sin preview disponible"` → `"Sin vista previa"`. Archivos: `cinelabcasestudy`, `moviedashboardcasestudy`, `echologcasestudy`, `nexustalentcasestudy`, `chefcitoiacasestudy`.
+- [ ] **Fix doble `<main>` anidado** — `HomePage.tsx`, `ContactPage.tsx`, `AboutPage.tsx` definen `<main role="main">` dentro del `<main id="main-content">` de `MainLayout`. Cambiar a `<div>` o `<section>`.
+
+#### Fase 14b — 🟡 Accesibilidad & UX Writing
+- [ ] **Agregar `text-wrap: balance` a h1-h3** — requerido por DESIGN.md, no implementado en ningún heading.
+- [ ] **Fix contraste `text-muted` en light mode** — `#78716c` sobre `#faf7f0` = ~4.1:1 (no alcanza 4.5:1 WCAG AA para body text). Subir a `#6b5e58` o similar.
+- [ ] **Devolver foco al botón hamburguesa al cerrar drawer** — guardar ref al trigger y llamar `.focus()` en `close()`.
+- [ ] **i18n en tooltips y aria-labels** — `ThemeToggle` (`"Tema: dark. Click para cambiar a light"`), `LanguageSwitcher` (`"Cambiar a español"`), `ProjectCarousel` (`"Imagen X de Y"`) — todo hardcodeado en español.
+- [ ] **i18n en labels hardcodeados** — `CaseStudyTemplate`: `"Case Study"`, `"Featured"`, `"The Engineering Stack"`. `PrivacyPage`: `"Privacy & Trust"`. `ProjectsListPage`: `"projects"`, `"visible"`.
+- [ ] **Externalizar descripciones de educación a i18n** — `AboutPage.tsx:296-303` tiene 4 párrafos hardcodeados en español.
+- [ ] **Fix `DEFAULT_DESC` monolingüe** — `MetaTags.tsx:15` fallback solo en español. Hacerlo consciente del idioma.
+- [ ] **Fix `useThemeColor`** — lee `--color-bg` que no existe. Debe leer `--color-bg-primary`.
+- [ ] **Empty state en búsqueda de proyectos** — cuando el filtro no devuelve resultados, mostrar mensaje en vez de grilla vacía.
+
+#### Fase 14c — 🟡 Consistencia Visual
+- [ ] **Unificar altura de botones primarios** — HomePage usa `h-14` (56px, correcto según DESIGN.md). AboutPage y ContactPage usan `px-6 py-3` (~42-46px). Unificar en 56px.
+- [ ] **Unificar escalas de headings** — HomePage `text-8xl`, AboutPage `text-[2.75rem]`, CaseStudy `text-[3rem]`. Usar tokens consistentes.
+- [ ] **Fix gradiente radial hardcodeado** — `HomePage.tsx:129` usa `rgba(245,158,11,0.12)` (ámbar dark mode). En light mode debería usar `var(--color-accent)`. Mismo problema en `ProjectsListPage.tsx:75`.
+- [ ] **Fix alineación de ProjectCard** — `min-h-32 md:min-h-36` no alinea contenido verticalmente entre cards del grid. Usar `flex flex-col` con imagen en `mt-auto`.
+- [ ] **Agregar espaciado final en CaseStudyTemplate** — `pb-0` deja el footer pegado al último section.
+- [ ] **Evaluar light mode parchment** — `#faf7f0` cae en la banda "warm cream AI default". Si bien está justificado en DESIGN.md, considerar alternativas (off-white con chroma hacia el ámbar, o true neutral).
+- [ ] **Fix `eslint-plugin-prettier` no integrado** — la dependencia existe pero no se usa en `eslint.config.js`. Integrar o remover.
+
+#### Fase 14d — 🔵 Pulido Técnico
+- [ ] **Fix `.env.example`** — referencia variables de Formspree (`VITE_CONTACT_FORM_ENDPOINT`) que ya no se usan. Actualizar a variables de EmailJS.
+- [ ] **Migrar jpgs a webp** — Movie Dashboard, ChefcitoIA, CineLab usan `.jpg`. Convertir a `.webp`.
+- [ ] **Agregar `width`/`height` explícitos en imágenes del carousel** — para prevenir CLS.
+- [ ] **Fix `check` script** — usa `npm run` en vez de `pnpm run`.
+- [ ] **Auto-generar sitemap en build** — `sitemap.xml` tiene fechas estáticas. Ejecutar `generate-sitemap.mjs` como pre-build hook.
+- [ ] **Deduplicar route-meta ↔ prerender** — `prerender.mjs` duplica manualmente las definiciones de ruta. Importar de `route-meta.ts` como hace `generate-sitemap.mjs`.
+- [ ] **Fix `eslint-plugin-prettier` y `@vitest/coverage-v8`** — dependencias no usadas. Remover o integrar.
+- [ ] **Limpiar TODO de `CurrentlySection`** — si no se va a migrar a framer-motion, remover el comentario.
+
+#### Fase 14e — ⚪ Opcionales / Bajo Impacto
+- [ ] **ScrollProgress con `useRef` en vez de `useState`** — evita re-renders en cada frame.
+- [ ] **Mouse-follow gradient con `useMotionValue`** — actualmente usa `useState` + `onPointerMove`, causando re-renders.
+- [ ] **Pausar carousel autoplay en tab inactiva** — usar `document.hidden`.
+- [ ] **Alt text más descriptivo en imágenes del carousel** — `"Vista previa de EchoLog"` → describir contenido real.
+- [ ] **Meta descriptions de NotFound más largas** — ES: 90 chars, EN: ~100 chars. Mínimo recomendado 120.
+- [ ] **Agregar `fetchpriority="high"` en LCP candidates** — foto de perfil en AboutPage, hero images.
+- [ ] **Agregar `object-src 'none'` explícito en CSP**.
+- [ ] **Agregar `pnpm audit` en CI**.
 

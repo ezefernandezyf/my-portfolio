@@ -117,7 +117,7 @@ export const ContactPage = (): React.JSX.Element => {
         pathname="/contact"
         type="article"
       />
-      <main role="main" className="pb-24 pt-24 bg-bg-primary">
+      <div className="pb-24 pt-24 bg-bg-primary">
         <div className="site-container">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-24">
             <section className="lg:col-span-5 flex flex-col justify-between">
@@ -332,7 +332,7 @@ export const ContactPage = (): React.JSX.Element => {
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </>
   );
 };

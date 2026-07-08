@@ -1,9 +1,10 @@
 {
   "meta": {
-    "title": "Movie Management Dashboard | Ezequiel Fernández, Full Stack Developer"
+    "title": "Movie Management Dashboard",
+    "description": "Case study of Movie Management Dashboard: a SPA with CRUD, Supabase auth, React Query, and Zod validation. Modular architecture, tech decisions, and testing."
   },
   "header": {
-    "title": "Movie Management Dashboard | Ezequiel Fernández, Full Stack Developer",
+    "title": "Movie Management Dashboard",
     "short": "SPA dashboard for managing movie catalog. Secure CRUD, Supabase authentication, advanced React Query usage, robust forms and automated tests.",
     "repoAria": "Repository Movie Dashboard",
     "demoAria": "Demo Movie Dashboard",

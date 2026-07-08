@@ -1,6 +1,7 @@
 {
   "meta": {
-    "title": "geo-seo-opencode | Ezequiel Fernández, Full Stack Developer"
+    "title": "geo-seo-opencode , Toolkit GEO Open Source para opencode",
+    "description": "Caso de estudio de Geo-SEO OpenCode: adaptación open source de geo-seo-claude para opencode. 16 skills de análisis GEO, scoring compuesto y reportes automatizados."
   },
   "header": {
     "title": "geo-seo-opencode",
@@ -53,7 +54,7 @@
   "accessibility": {
     "heading": "Accesibilidad",
     "list": [
-      "CLI tool, no hay interfaz visual, toda la interacción es por terminal.",
+      "CLI tool , no hay interfaz visual, toda la interacción es por terminal.",
       "Colores en output respetan terminales con y sin color soporte (--no-color flag).",
       "Mensajes de error claros con sugerencias de acción."
     ]
@@ -85,7 +86,7 @@
     ]
   },
   "deepDive": {
-    "heading": "Deep Dive Técnico"
+    "heading": "Profundización técnica"
   },
   "carousel": {
     "alt": "Capturas de geo-seo-opencode"
@@ -95,5 +96,5 @@
     "featured": "Open Source"
   },
   "notFound": "Proyecto no encontrado",
-  "noPreview": "CLI Toolkit, Sin demo web"
+  "noPreview": "CLI Toolkit, sin demo web"
 }

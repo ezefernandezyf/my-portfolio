@@ -1,9 +1,10 @@
 {
   "meta": {
-    "title": "Nexus Talent | Ezequiel Fernández, Full Stack Developer"
+    "title": "Nexus Talent",
+    "description": "Case study of Nexus Talent: an AI-assisted recruitment platform with job description analysis, Zod validation, and Feature-Sliced Design architecture."
   },
   "header": {
-    "title": "Nexus Talent | Ezequiel Fernández, Full Stack Developer",
+    "title": "Nexus Talent",
     "short": "AI-assisted recruitment platform that turns raw job descriptions into structured skill matrices and technical application strategies.",
     "repoAria": "Repository Nexus Talent",
     "demoAria": "Demo Nexus Talent",
