@@ -41,3 +41,7 @@ jobs:
 
       - name: Test with coverage
         run: pnpm run test:coverage
+
+      - name: Audit dependencies
+        run: pnpm audit
+        continue-on-error: true

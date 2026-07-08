@@ -146,6 +146,7 @@ export const AboutPage = (): React.JSX.Element => {
                     className="block w-full rounded-lg border border-border object-cover"
                     width={640}
                     height={800}
+                    fetchPriority="high"
                   />
                   <div className="mt-4 flex items-center justify-between text-xs uppercase tracking-[0.18em] text-text-muted font-body">
                     <span>{role}</span>

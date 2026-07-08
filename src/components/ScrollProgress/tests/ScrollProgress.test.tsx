@@ -32,20 +32,29 @@ describe('ScrollProgress', () => {
   });
 
   it('shows ~50% width at mid-scroll', () => {
+    vi.useFakeTimers();
     Object.defineProperty(window, 'scrollY', { value: 500, writable: true });
     render(<ScrollProgress />);
+
+    // Trigger the rAF callback that sets barRef.current.style.width
+    vi.advanceTimersByTime(17);
 
     const bar = screen.getByRole('progressbar');
     // 500 / (2000 - 1000) = 50%
     expect(bar.style.width).toBe('50%');
+    vi.useRealTimers();
   });
 
   it('shows 100% width at page bottom', () => {
+    vi.useFakeTimers();
     Object.defineProperty(window, 'scrollY', { value: 1000, writable: true });
     render(<ScrollProgress />);
 
+    vi.advanceTimersByTime(17);
+
     const bar = screen.getByRole('progressbar');
     expect(bar.style.width).toBe('100%');
+    vi.useRealTimers();
   });
 
   it('applies reduced-motion: no transition when prefers-reduced-motion', () => {

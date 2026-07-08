@@ -57,6 +57,14 @@ export const ProjectCarousel = ({
     return () => el.removeEventListener('keydown', onKey);
   }, [next, prev]);
 
+  useEffect(() => {
+    const handleVisibility = () => {
+      setPaused(document.hidden);
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+    return () => document.removeEventListener('visibilitychange', handleVisibility);
+  }, []);
+
   return (
     <div
       ref={containerRef}

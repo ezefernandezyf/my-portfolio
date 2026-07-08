@@ -9,8 +9,10 @@ function calcScrollPercentage(): number {
 }
 
 export const ScrollProgress = (): React.JSX.Element => {
-  const [width, setWidth] = useState(calcScrollPercentage);
+  const barRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
+  const lastAriaUpdate = useRef(0);
+  const [ariaValueNow, setAriaValueNow] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(() => {
     if (typeof window !== 'undefined') {
       return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -28,7 +30,16 @@ export const ScrollProgress = (): React.JSX.Element => {
 
   useEffect(() => {
     const updateProgress = () => {
-      setWidth(calcScrollPercentage());
+      const pct = calcScrollPercentage();
+      if (barRef.current) {
+        barRef.current.style.width = `${pct}%`;
+      }
+      // Debounce ARIA updates to ~200ms — no need for 60fps here
+      const now = Date.now();
+      if (now - lastAriaUpdate.current >= 200) {
+        setAriaValueNow(Math.round(pct));
+        lastAriaUpdate.current = now;
+      }
       rafRef.current = requestAnimationFrame(updateProgress);
     };
 
@@ -43,9 +54,10 @@ export const ScrollProgress = (): React.JSX.Element => {
 
   return (
     <div
+      ref={barRef}
       role="progressbar"
       aria-label="Reading progress"
-      aria-valuenow={Math.round(width)}
+      aria-valuenow={ariaValueNow}
       aria-valuemin={0}
       aria-valuemax={100}
       style={{
@@ -53,7 +65,7 @@ export const ScrollProgress = (): React.JSX.Element => {
         top: 0,
         left: 0,
         height: '4px',
-        width: `${width}%`,
+        width: '0%',
         background: 'var(--color-accent)',
         zIndex: 60,
         transition: reducedMotion ? 'none' : 'width 100ms linear',

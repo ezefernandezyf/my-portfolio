@@ -29,7 +29,7 @@ export const HomePage = (): React.JSX.Element => {
   const projects = projectRepository.getProjects();
   const currentlyItems = t('currently.list', { returnObjects: true }) as CurrentlyItem[];
 
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const glowRef = useRef<HTMLDivElement>(null);
   const [reducedMotion, setReducedMotion] = useState(() => {
     if (typeof window !== 'undefined') {
       return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -51,7 +51,9 @@ export const HomePage = (): React.JSX.Element => {
 
   const handlePointerMove = (e: React.PointerEvent<HTMLElement>) => {
     if (isTouchDevice || reducedMotion) return;
-    setMousePos({ x: e.clientX, y: e.clientY });
+    if (glowRef.current) {
+      glowRef.current.style.background = `radial-gradient(circle at ${e.clientX}px ${e.clientY}px, color-mix(in srgb, var(--color-accent) 12%, transparent), transparent 300px)`;
+    }
   };
 
   const handlePointerEnter = () => {
@@ -137,9 +139,9 @@ export const HomePage = (): React.JSX.Element => {
         >
           {!isTouchDevice && !reducedMotion && (
             <div
+              ref={glowRef}
               className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-500"
               style={{
-                background: `radial-gradient(circle at ${mousePos.x}px ${mousePos.y}px, color-mix(in srgb, var(--color-accent) 12%, transparent), transparent 300px)`,
                 opacity: isPointerInHero ? 1 : 0,
               }}
               aria-hidden="true"
