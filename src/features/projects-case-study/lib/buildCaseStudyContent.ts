@@ -84,18 +84,22 @@ const stackByProject: Record<string, StackItem[]> = {
     {
       titleKey: 'stack.sections.frontend',
       defaultTitle: 'Frontend',
-      items: ['React 19', 'TypeScript', 'Tailwind CSS 4', 'Framer Motion'],
+      items: ['React 19', 'TypeScript', 'Vite 6', 'Tailwind CSS 4', 'Framer Motion', 'React Router 6'],
     },
-    { titleKey: 'stack.sections.state', defaultTitle: 'State & Validation', items: ['TanStack Query', 'Zod', 'Context API'] },
+    {
+      titleKey: 'stack.sections.state',
+      defaultTitle: 'State & Validation',
+      items: ['TanStack Query', 'Zustand', 'React Hook Form', 'Zod (shared contracts)'],
+    },
     {
       titleKey: 'stack.sections.backend',
       defaultTitle: 'Backend & Auth',
-      items: ['Supabase Auth', 'Supabase Postgres'],
+      items: ['Node.js', 'Express 5', 'Prisma', 'PostgreSQL', 'JWT httpOnly', 'Groq AI'],
     },
     {
       titleKey: 'stack.sections.testing',
       defaultTitle: 'Testing & Infra',
-      items: ['Vitest', 'React Testing Library', 'Vercel'],
+      items: ['Vitest', 'Testing Library', 'GitHub Actions', 'pnpm monorepo', 'Vercel', 'Render'],
     },
   ],
   'geo-seo-opencode': [

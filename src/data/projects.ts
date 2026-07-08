@@ -27,7 +27,7 @@ export const projects = [
       '/projects/nexustalent/shot3.webp',
       '/projects/nexustalent/shot4.webp',
     ],
-    tech: ['React 19', 'TypeScript', 'Tailwind 4', 'Supabase', 'Zod'],
+    tech: ['React 19', 'TypeScript', 'Tailwind 4', 'Framer Motion', 'TanStack Query', 'Zustand', 'Zod', 'Express', 'Prisma', 'PostgreSQL', 'Groq AI', 'JWT'],
     year: 2026,
     featured: true,
   },

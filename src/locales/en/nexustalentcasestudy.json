@@ -1,13 +1,13 @@
 {
   "meta": {
     "title": "Nexus Talent",
-    "description": "Case study of Nexus Talent: an AI-assisted recruitment platform with job description analysis, Zod validation, and Feature-Sliced Design architecture."
+    "description": "Case study of Nexus Talent: AI-driven job description analysis with prompt engineering, pnpm monorepo, Zod shared contracts, Screaming Architecture and JWT httpOnly auth."
   },
   "header": {
     "title": "Nexus Talent",
-    "short": "AI-assisted recruitment platform that turns raw job descriptions into structured skill matrices and technical application strategies.",
-    "repoAria": "Repository Nexus Talent",
-    "demoAria": "Demo Nexus Talent",
+    "short": "SaaS platform for job application analysis: structured AI with Groq (Llama 3.3 70B), 200-line prompt engineering, pnpm monorepo with 4 packages, and Screaming Architecture.",
+    "repoAria": "Nexus Talent Repository",
+    "demoAria": "Nexus Talent Demo",
     "backToProjects": "← Back to Projects"
   },
   "stack": {
@@ -21,68 +21,75 @@
   },
   "summary": {
     "heading": "Summary",
-    "text": "Nexus Talent is an AI-assisted recruiting platform that converts raw job descriptions into structured skill matrices and technical application strategies. The focus was on typed validation, modularity, secure authentication and an opinionated feature architecture."
+    "text": "Nexus Talent is a SaaS platform for intelligent job application analysis. Users paste a job description, the backend sends it to Groq (Llama 3.3 70B) with a ~200-line engineered system prompt, and the response is validated with Zod before hitting the UI. The output: a weighted skill matrix, ATS keywords, gap analysis, outreach messages, and actionable tips. All built on a pnpm monorepo with 4 packages (web, server, shared, e2e), shared Zod schemas between frontend and backend, 341 frontend tests, 45 backend tests, JWT in httpOnly cookies (XSS-immune), and an 18-component design system with Framer Motion."
   },
   "problem": {
     "heading": "The problem",
-    "text": "Developers often apply to roles using generic profiles that do not reflect the technical requirements of the vacancy. The goal was to extract those requirements reliably, turn them into actionable guidance and keep the entire flow safe in a typed frontend environment."
+    "text": "Developers spend hours manually dissecting each job description — figuring out which skills to highlight, which ATS keywords to include, and how to tailor their profile for every vacancy. The result is generic applications that neither pass automated filters nor stand out to recruiters."
   },
   "solution": {
     "heading": "The Solution",
     "list": [
-      "Built a decoupled LLM client to extract and normalize technical requirements from free-text job descriptions.",
-      "Wrapped all user input and AI output in strict Zod validation to prevent malformed responses from reaching the UI.",
-      "Implemented authentication with Supabase using email and OAuth providers for GitHub, Google and LinkedIn.",
-      "Organized the application with Feature-Sliced Design to isolate business logic from presentation concerns."
+      "Server-side AI pipeline with Groq (Llama 3.3 70B) and 200-line prompt engineering that extracts skills, ATS keywords, and gaps in structured JSON.",
+      "Zod validation at both the LLM input and output boundaries ensures the UI receives typed, predictable data — no hallucinated or malformed responses.",
+      "JWT authentication in httpOnly cookies (XSS-immune), bcrypt hashing, and a complete login, registration, and Google OAuth flow.",
+      "Screaming Architecture across a 4-package monorepo (web, server, shared, e2e) with shared Zod schemas that keep frontend and backend types in sync by design.",
+      "Editorial design system with 18 component families, Framer Motion spring physics, dark mode, and WCAG AA contrast."
     ]
   },
   "architecture": {
     "heading": "Architecture & decisions",
-    "text": "The project follows Feature-Sliced Design as a Screaming Architecture approach, keeping Analysis, Auth and Settings in dedicated feature areas. The flow is intentionally unidirectional and typed end to end, while the process itself was guided by Spec-Driven Development so structural decisions were documented before implementation.",
+    "text": "Nexus Talent follows Screaming Architecture on a pnpm monorepo with 4 packages. Features (analysis, auth, history, landing, settings) are isolated domains with their own hooks, components, schemas, tests, and API layer. The shared package contains the Zod schemas that are the single source of truth for both frontend and backend — if a schema changes, TypeScript breaks on both sides. Desync is impossible by design.",
     "list": [
-      "Feature-Sliced Design keeps domain boundaries explicit and easy to evolve.",
-      "The data path stays unidirectional: input, Zod validation, AI request, AI response, mapper, validation and render.",
-      "Spec-Driven Development was used to document structural decisions before implementation.",
-      "UI components remain separated from business logic and service orchestration."
+      "Every feature is self-contained: its own hooks, components, schemas, and API layer. No generic utils/helpers folders.",
+      "Zod schemas in the shared package are the single source of truth. Frontend and backend share the exact same types.",
+      "JWT in httpOnly cookies — the frontend never sees the token. XSS-immune by design.",
+      "The Groq API key is never exposed to the client. The frontend sends only the JD; the backend constructs the prompt, calls Groq, validates with Zod, and returns clean data.",
+      "Spec-Driven Development: every change went through 6 planning phases (explore → propose → spec → design → tasks → apply → verify), catching ~15 edge cases before writing code."
     ]
   },
   "implementation": {
     "heading": "Featured implementation",
-    "hookTitle": "AI request pipeline with runtime validation",
+    "hookTitle": "AI pipeline with runtime validation",
     "hookCode": "export async function analyzeJobDescription(input: string) {\n  const parsedInput = jobDescriptionSchema.parse({ input });\n\n  const aiResponse = await llmClient.generate(parsedInput);\n  const normalizedResponse = skillMatrixSchema.safeParse(aiResponse);\n\n  if (!normalizedResponse.success) {\n    return { status: 'error', message: 'Invalid AI response' };\n  }\n\n  return {\n    status: 'success',\n    data: mapSkillMatrix(normalizedResponse.data),\n  };\n}",
-    "hookDescription": "The AI flow is protected by runtime validation at the input and output boundaries. That keeps hallucinated or incomplete model responses out of the UI and turns failures into manageable application states."
+    "hookDescription": "The AI flow is guarded by Zod validation at both input and output boundaries. Input passes through jobDescriptionSchema before reaching the LLM, and the response is validated with skillMatrixSchema.safeParse(). If the AI hallucinates or returns malformed JSON, the error is captured as a manageable application state instead of crashing the UI."
   },
   "accessibility": {
     "heading": "Accessibility",
-    "lead": "The interface was designed to remain usable in keyboard-only flows and to preserve clear semantic states across loading, success and error screens.",
+    "lead": "The entire design system respects prefers-reduced-motion on every Framer Motion animated component. WCAG AA contrast is maintained in both light and dark modes.",
     "list": [
-      "Keyboard navigation is preserved across the main analysis flow and action buttons.",
-      "Color and elevation choices follow the design system without relying on low-contrast borders.",
-      "Async states are exposed with semantic loading, success and error feedback.",
-      "The layout keeps focus order predictable during multi-step analysis interactions."
+      "useReducedMotion on every animated component to respect system preferences.",
+      "WCAG AA contrast verified across the warm off-white + espresso + terracotta palette in both modes.",
+      "Keyboard navigation preserved across the analysis flow, forms, and modals.",
+      "Async states with semantic loading, success, and error feedback through the toast system.",
+      "Predictable focus order during multi-step interactions (analysis, outreach editing)."
     ]
   },
   "performance": {
     "heading": "Performance & results",
     "list": [
-      "Server state is minimized with TanStack Query and local state is kept deliberately small.",
-      "Framer Motion animations mount only when the relevant UI becomes visible.",
-      "Vercel SPA rewrites were configured to avoid callback routing issues and reduce friction in OAuth flows."
+      "Main bundle reduced from 596 kB to 414 kB (-30%) with lazy loading and chunk splitting.",
+      "CSS bundle at 79 kB (23 kB gzip).",
+      "framer-motion and phosphor-icons in separate chunks for on-demand loading.",
+      "1-year cache headers for static assets. font-display: swap on all typefaces.",
+      "SVG favicon at ~1 kB replacing a 668 kB icon."
     ]
   },
   "challenges": {
     "heading": "Challenges & learnings",
     "list": [
-      "Stabilizing OAuth callbacks in a Vercel-hosted SPA without route errors.",
-      "Keeping AI output predictable enough to trust inside a typed frontend.",
-      "Balancing technical depth with a clear user-facing experience for job analysis."
+      "Prompt engineering required to get Llama 3.3 70B to return consistent JSON with 6 nested sections. 200 lines of iterated instructions to achieve stable output.",
+      "Tailwind v4 with custom @theme: text-white breaks if you don't declare --color-white, @utility can't nest inside @layer. Breaking changes discovered at runtime.",
+      "Green tests don't mean production-ready: CSS layers, React portals + event bubbling, mocks vs real API — 4 bugs passed tests but failed in production.",
+      "The Tailwind plugin in Vitest caused 91s of collect time in CI for 86 test files. Removing it cut the time to ~2s."
     ]
   },
   "improvements": {
     "heading": "What could be improved",
     "list": [
-      "Add personalized CV generation from the extracted skill matrix.",
-      "Introduce server-side pagination for the analysis history with Supabase cursors."
+      "Add personalized CV generation from the extracted skill matrix, with multiple templates.",
+      "Benchmark system: compare a JD analysis against the user's profile and suggest courses or projects to close gaps.",
+      "Implement web scraping to automatically fetch the JD from a vacancy URL."
     ]
   },
   "deepDive": {
