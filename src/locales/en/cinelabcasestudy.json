@@ -1,6 +1,7 @@
 ﻿{
   "meta": {
-    "title": "{{name}}"
+    "title": "{{name}}",
+    "description": "Case study of CineLab: a movie search application built with React, TypeScript, and the TMDB API. Architecture, tech stack, and project performance."
   },
   "header": {
     "title": "{{name}}",

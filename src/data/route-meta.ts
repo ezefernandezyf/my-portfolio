@@ -122,7 +122,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
   'projects/cinelab': {
     pathname: '/projects/cinelab',
     titleI18nKey: 'cinelabcasestudy:meta.title',
-    descI18nKey: 'cinelabcasestudy:meta.title',
+    descI18nKey: 'cinelabcasestudy:meta.description',
     es: {
       title: 'CineLab | Movie Search App | Ezequiel Fernández',
       description:
@@ -143,7 +143,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
   'projects/movie-dashboard': {
     pathname: '/projects/movie-dashboard',
     titleI18nKey: 'moviedashboardcasestudy:meta.title',
-    descI18nKey: 'moviedashboardcasestudy:meta.title',
+    descI18nKey: 'moviedashboardcasestudy:meta.description',
     es: {
       title: 'Movie Management Dashboard | Ezequiel Fernández',
       description:
@@ -164,7 +164,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
   'projects/chefcitoia': {
     pathname: '/projects/chefcitoia',
     titleI18nKey: 'chefcitoiacasestudy:meta.title',
-    descI18nKey: 'chefcitoiacasestudy:meta.title',
+    descI18nKey: 'chefcitoiacasestudy:meta.description',
     es: {
       title: 'ChefcitoIA | Generador de Recetas con IA | Ezequiel Fernández',
       description:
@@ -185,7 +185,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
   'projects/nexus-talent': {
     pathname: '/projects/nexus-talent',
     titleI18nKey: 'nexustalentcasestudy:meta.title',
-    descI18nKey: 'nexustalentcasestudy:meta.title',
+    descI18nKey: 'nexustalentcasestudy:meta.description',
     es: {
       title: 'Nexus Talent | Plataforma de Reclutamiento con IA | Ezequiel Fernández',
       description:
@@ -206,7 +206,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
   'projects/echolog': {
     pathname: '/projects/echolog',
     titleI18nKey: 'echologcasestudy:meta.title',
-    descI18nKey: 'echologcasestudy:meta.title',
+    descI18nKey: 'echologcasestudy:meta.description',
     es: {
       title: 'EchoLog | SaaS de Feedback Multi-tenant | Ezequiel Fernández',
       description:
@@ -289,7 +289,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
   'projects/geo-seo-opencode': {
     pathname: '/projects/geo-seo-opencode',
     titleI18nKey: 'geoseoopencodecasestudy:meta.title',
-    descI18nKey: 'geoseoopencodecasestudy:meta.title',
+    descI18nKey: 'geoseoopencodecasestudy:meta.description',
     es: {
       title: 'Geo-SEO OpenCode | Skill SEO para Buscadores con IA | Ezequiel Fernández',
       description:

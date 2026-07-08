@@ -1,6 +1,7 @@
 {
   "meta": {
-    "title": "Nexus Talent"
+    "title": "Nexus Talent",
+    "description": "Case study of Nexus Talent: an AI-assisted recruitment platform with job description analysis, Zod validation, and Feature-Sliced Design architecture."
   },
   "header": {
     "title": "Nexus Talent",

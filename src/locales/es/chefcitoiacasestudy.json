@@ -1,6 +1,7 @@
 ﻿{
   "meta": {
-    "title": "IA Recipe Generator"
+    "title": "IA Recipe Generator",
+    "description": "Caso de estudio de ChefcitoIA: generador de recetas con IA construido con React 19 y Zod. Arquitectura, orquestación de modelos generativos y validación tipada."
   },
   "header": {
     "title": "IA Recipe Generator",
@@ -101,7 +102,7 @@
     ]
   },
   "carousel": {
-    "alt": "IA Recipe Generator preview"
+    "alt": "Vista previa de IA Recipe Generator"
   },
   "labels": {
     "year": "Año:",
@@ -111,5 +112,5 @@
     "heading": "Profundización técnica"
   },
   "notFound": "Proyecto no encontrado",
-  "noPreview": "Sin preview disponible"
+  "noPreview": "Sin vista previa"
 }

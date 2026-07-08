@@ -1,6 +1,7 @@
 {
   "meta": {
-    "title": "Movie Management Dashboard"
+    "title": "Movie Management Dashboard",
+    "description": "Caso de estudio de Movie Management Dashboard: SPA con CRUD, autenticación Supabase, React Query y Zod. Arquitectura modular, decisiones técnicas y tests."
   },
   "header": {
     "title": "Movie Management Dashboard",
@@ -105,12 +106,12 @@
     "heading": "Profundización técnica"
   },
   "carousel": {
-    "alt": "Movie Management Dashboard preview"
+    "alt": "Vista previa de Movie Management Dashboard"
   },
   "labels": {
     "year": "Año:",
-    "featured": "Featured"
+    "featured": "Destacado"
   },
   "notFound": "Proyecto no encontrado",
-  "noPreview": "Sin preview disponible"
+  "noPreview": "Sin vista previa"
 }

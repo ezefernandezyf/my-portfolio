@@ -40,7 +40,7 @@ export const PrivacyPage = (): React.JSX.Element => {
         type="article"
       />
 
-      <main role="main" className="pb-24 pt-24">
+      <div className="pb-24 pt-24">
         <div className="site-container space-y-24">
           <section className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end" style={fadeInUp()}>
             <div className="lg:col-span-8">
@@ -108,7 +108,7 @@ export const PrivacyPage = (): React.JSX.Element => {
           </section>
 
         </div>
-      </main>
+      </div>
     </>
   );
 };

@@ -156,7 +156,7 @@ export const CaseStudyTemplate = ({
 
       <ScrollProgress />
 
-      <main className="pb-0 pt-24">
+      <div className="pb-0 pt-24">
         <section className="animate-fade-in-up max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-24">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
@@ -328,7 +328,7 @@ export const CaseStudyTemplate = ({
             </div>
           </section>
         ) : null}
-      </main>
+      </div>
     </>
   );
 };

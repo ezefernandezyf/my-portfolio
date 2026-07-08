@@ -116,7 +116,7 @@ export const HomePage = (): React.JSX.Element => {
         image="/og-image.png"
       />
 
-      <main role="main">
+      <div>
         <section
           className="relative min-h-[calc(100svh-4rem)] bg-bg-primary pb-12 pt-32"
           onPointerMove={handlePointerMove}
@@ -264,7 +264,7 @@ export const HomePage = (): React.JSX.Element => {
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </>
   );
 };

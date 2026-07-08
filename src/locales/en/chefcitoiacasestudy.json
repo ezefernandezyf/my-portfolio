@@ -1,6 +1,7 @@
 ﻿{
   "meta": {
-    "title": "IA Recipe Generator"
+    "title": "IA Recipe Generator",
+    "description": "Case study of ChefcitoIA: an AI-powered recipe generator built with React 19 and Zod. Architecture, generative model orchestration, and typed validation."
   },
   "header": {
     "title": "IA Recipe Generator",
