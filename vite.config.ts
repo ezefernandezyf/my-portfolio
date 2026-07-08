@@ -13,7 +13,7 @@ function prerenderPlugin() {
     name: 'prerender',
     closeBundle: () => {
       const script = resolve(__dirname, 'scripts/prerender.mjs');
-      execSync(`node "${script}"`, { stdio: 'inherit' });
+      execSync(`node --experimental-strip-types "${script}"`, { stdio: 'inherit' });
     },
   };
 }

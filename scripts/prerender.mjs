@@ -26,24 +26,27 @@ const DIST = path.resolve(__dirname, '..', 'dist');
 const SRC = path.resolve(__dirname, '..');
 const SITE_URL = 'https://ezefernandez.com';
 
-/* ── Routes ──────────────────────────────────────────────────── */
-/* NOTE: Keep in sync with src/data/route-meta.ts (canonical source) */
+/* ── Routes (auto-derived from route-meta.ts — single source of truth) ── */
+
+import { ROUTE_META } from '../src/data/route-meta.ts';
 
 const LANGUAGES = ['es', 'en'];
-const ROUTES = [
-  { path: 'home',            ns: 'home',            titleKey: 'meta.title',                   descKey: 'meta.description',                schemaType: 'WebPage',        priority: 1.0, changefreq: 'daily',   ogImage: '/og-image.png' },
-  { path: 'about',           ns: 'aboutpage',       titleKey: 'meta.title',                   descKey: 'meta.description',                schemaType: 'AboutPage',      priority: 0.8, changefreq: 'monthly', ogImage: '/og-image.png' },
-  { path: 'projects',        ns: 'projects',        titleKey: 'meta.title',                   descKey: 'meta.description',                schemaType: 'CollectionPage', priority: 0.9, changefreq: 'weekly',  ogImage: '/og-image.png' },
-  { path: 'projects/cinelab',           ns: 'cinelabcasestudy',          titleKey: 'meta.title', descKey: 'meta.title', schemaType: 'WebPage', priority: 0.7, changefreq: 'monthly', ogImage: '/og-image.png', i18nInterpolation: { name: 'CineLab' } },
-  { path: 'projects/movie-dashboard',  ns: 'moviedashboardcasestudy',   titleKey: 'meta.title', descKey: 'meta.title', schemaType: 'WebPage', priority: 0.7, changefreq: 'monthly', ogImage: '/og-image.png' },
-  { path: 'projects/chefcitoia',       ns: 'chefcitoiacasestudy',       titleKey: 'meta.title', descKey: 'meta.title', schemaType: 'WebPage', priority: 0.7, changefreq: 'monthly', ogImage: '/og-image.png' },
-  { path: 'projects/nexus-talent',     ns: 'nexustalentcasestudy',      titleKey: 'meta.title', descKey: 'meta.title', schemaType: 'WebPage', priority: 0.7, changefreq: 'monthly', ogImage: '/og-image.png' },
-  { path: 'projects/echolog',          ns: 'echologcasestudy',          titleKey: 'meta.title', descKey: 'meta.title', schemaType: 'WebPage', priority: 0.7, changefreq: 'monthly', ogImage: '/og-image.png' },
-  { path: 'projects/geo-seo-opencode', ns: 'geoseoopencodecasestudy',   titleKey: 'meta.title', descKey: 'meta.title', schemaType: 'WebPage', priority: 0.7, changefreq: 'monthly', ogImage: '/og-image.png' },
-  { path: 'privacy',         ns: 'privacy',         titleKey: 'meta.title',                   descKey: 'meta.description',                schemaType: 'WebPage',        priority: 0.3, changefreq: 'yearly',  ogImage: '/og-image.png' },
-  { path: 'contact',         ns: 'contact',         titleKey: 'meta.contact.title',           descKey: 'meta.contact.description',        schemaType: 'ContactPage',    priority: 0.6, changefreq: 'monthly', ogImage: '/og-image.png' },
-  { path: 'not-found',       ns: 'notfoundpage',    titleKey: 'meta.title',                   descKey: 'meta.description',                schemaType: 'WebPage',        priority: 0.1, changefreq: 'yearly',  ogImage: '/og-image.png' },
-];
+
+const CINELAB_INTERPOLATION = { name: 'CineLab' };
+
+function buildRoutes() {
+  return Object.entries(ROUTE_META).map(([key, route]) => {
+    const path = route.pathname.replace(/^\//, '');
+    const ns = route.titleI18nKey.split(':')[0];
+    const titleKey = route.titleI18nKey.substring(route.titleI18nKey.indexOf(':') + 1);
+    const descKey = route.descI18nKey.substring(route.descI18nKey.indexOf(':') + 1);
+    const i18nInterpolation = key === 'projects/cinelab' ? CINELAB_INTERPOLATION : undefined;
+
+    return { path, ns, titleKey, descKey, schemaType: route.schemaType, ogImage: '/og-image.png', i18nInterpolation };
+  });
+}
+
+const ROUTES = buildRoutes();
 
 /* ── I18N resources ──────────────────────────────────────────── */
 
