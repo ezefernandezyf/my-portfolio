@@ -1,18 +1,22 @@
 import { SunIcon, MoonIcon } from '@heroicons/react/24/solid';
+import { useTranslation } from 'react-i18next';
 import { useThemeContext } from '../../context/ThemeContext';
 
 export const ThemeToggle = (): React.JSX.Element => {
   const { theme, resolvedTheme, toggle } = useThemeContext();
+  const { t } = useTranslation('common');
+
+  const target = resolvedTheme === 'dark' ? t('theme.light') : t('theme.dark');
 
   const title =
     theme === 'system'
-      ? `Tema: system (${resolvedTheme}). Click para cambiar a ${resolvedTheme === 'dark' ? 'light' : 'dark'}`
-      : `Tema: ${theme}. Click para cambiar a ${theme === 'dark' ? 'light' : 'dark'}`;
+      ? t('theme.toggleTitleSystem', { resolved: resolvedTheme, target })
+      : t('theme.toggleTitle', { theme, target });
 
   return (
     <button
       onClick={toggle}
-      aria-label="Alternar tema"
+      aria-label={t('theme.toggleAria', { current: resolvedTheme })}
       title={title}
       className="inline-flex h-10 w-10 items-center justify-center text-text-secondary transition-colors hover:text-accent focus-ring"
       type="button"

@@ -26,6 +26,14 @@
     "paragraph2": "Mi stack técnico es pragmático, no hype-driven. Elijo TypeScript por su seguridad de tipos, React para interfaces declarativas, Node.js con Express para APIs REST y PostgreSQL como base de datos relacional. En el frontend trabajo con React 19 y Tailwind CSS 4, priorizando accesibilidad WCAG 2.2 AA. Del lado del servidor construyo APIs con Express y Prisma ORM, aplicando validación con Zod y patrones de repositorio. Cada decisión de stack pasa por tres filtros: resuelve el problema real, agrega valor al equipo y mantiene la complejidad controlada.",
     "paragraph3": "Cada proyecto pasa por investigación, diseño de arquitectura, implementación con tests y deploy automatizado. Priorizo el código legible sobre la optimización prematura. La integración continua con GitHub Actions asegura que cada PR pase linter, type checking y la suite de tests antes del merge. Escribo tests unitarios con Vitest y React Testing Library, y tests de integración para endpoints de API. Cuando surge un bug, primero escribo un test que lo reproduzca y después lo corrijo. Esta disciplina me permite refactorizar con confianza y entregar software que funciona, incluso bajo presión de fechas."
   },
+  "counters": {
+    "projects": "proyectos",
+    "visible": "visibles"
+  },
+  "emptyState": {
+    "noResults": "No se encontraron proyectos",
+    "noResultsHint": "Intentá con otros términos de búsqueda o seleccioná otra tecnología."
+  },
   "notFound": "Proyecto no encontrado",
   "echolog": {
     "name": "EchoLog",

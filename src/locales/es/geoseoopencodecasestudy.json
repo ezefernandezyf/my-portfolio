@@ -93,7 +93,9 @@
   },
   "labels": {
     "year": "Año",
-    "featured": "Open Source"
+    "featured": "Open Source",
+    "caseStudyTag": "Caso de estudio",
+    "featuredHeading": "Destacado"
   },
   "notFound": "Proyecto no encontrado",
   "noPreview": "CLI Toolkit, sin demo web"

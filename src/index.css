@@ -72,7 +72,7 @@
   --color-surface-elevated: #efe8da;
   --color-text-primary: #1c1917;
   --color-text-secondary: #57534e;
-  --color-text-muted: #78716c;
+  --color-text-muted: #6b5e58;
   --color-accent: #b45309;
   --color-accent-hover: #92400e;
   --color-border: #e7e2d8;
@@ -134,6 +134,10 @@ h4,
 h5,
 h6 {
   font-family: var(--font-display);
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
 }
 
 p,

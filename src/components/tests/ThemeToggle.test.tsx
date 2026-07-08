@@ -23,7 +23,7 @@ describe('ThemeToggle', () => {
       </ThemeContext.Provider>,
     );
 
-    const button = screen.getByRole('button', { name: /alternar tema/i });
+    const button = screen.getByRole('button', { name: /cambiar tema/i });
     expect(button).toHaveAttribute('type', 'button');
     expect(button).toHaveAttribute('title');
     expect(button.getAttribute('title')?.toLowerCase()).toContain('tema: light');
@@ -47,7 +47,7 @@ describe('ThemeToggle', () => {
       </ThemeContext.Provider>,
     );
 
-    const button = screen.getByRole('button', { name: /alternar tema/i });
+    const button = screen.getByRole('button', { name: /cambiar tema/i });
     expect(button.getAttribute('title')?.toLowerCase()).toContain('tema: dark');
 
     await userEvent.click(button);
@@ -77,7 +77,7 @@ describe('ThemeToggle', () => {
       </ThemeContext.Provider>,
     );
 
-    const button = screen.getByRole('button', { name: /alternar tema/i });
+    const button = screen.getByRole('button', { name: /cambiar tema/i });
     const svgBefore = button.querySelector('svg')?.outerHTML ?? '';
 
     rerender(
@@ -105,7 +105,7 @@ describe('ThemeToggle', () => {
       </ThemeContext.Provider>,
     );
 
-    const button = screen.getByRole('button', { name: /alternar tema/i });
+    const button = screen.getByRole('button', { name: /cambiar tema/i });
     expect(button.getAttribute('title')?.toLowerCase()).toContain('tema: system');
     expect(button.getAttribute('title')?.toLowerCase()).toContain('dark');
   });

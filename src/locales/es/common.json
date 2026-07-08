@@ -12,8 +12,24 @@
   "errors": {
     "generic": "Ocurrió un error. Intentá de nuevo."
   },
+  "meta": {
+    "defaultDescription": "Full Stack Developer especializado en React, TypeScript y Node.js. Construyo aplicaciones web modernas, optimizadas y accesibles."
+  },
   "skipToContent": "Saltar al contenido principal",
   "scrollProgress": {
     "ariaLabel": "Progreso de lectura"
+  },
+  "theme": {
+    "toggleAria": "Cambiar tema (actual: {{current}})",
+    "toggleTitle": "Tema: {{theme}}. Click para cambiar a {{target}}",
+    "toggleTitleSystem": "Tema: system ({{resolved}}). Click para cambiar a {{target}}",
+    "dark": "oscuro",
+    "light": "claro"
+  },
+  "carousel": {
+    "slideInfo": "Imagen {{current}} de {{total}}",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "goToSlide": "Ir a imagen {{slide}}"
   }
 }

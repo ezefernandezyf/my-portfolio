@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 
 type Props = {
@@ -16,6 +17,7 @@ export const ProjectCarousel = ({
   className = '',
   alt = 'Preview',
 }: Props): React.JSX.Element => {
+  const { t } = useTranslation('common');
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const timerRef = useRef<number | null>(null);
@@ -91,12 +93,12 @@ export const ProjectCarousel = ({
       </div>
 
       <div className="sr-only" aria-live="polite">
-        Imagen {index + 1} de {images.length}
+        {t('carousel.slideInfo', { current: index + 1, total: images.length })}
       </div>
 
       <button
         onClick={prev}
-        aria-label="Anterior"
+        aria-label={t('carousel.previous')}
         className="carousel-control absolute left-2 top-1/2 -translate-y-1/2"
       >
         <ChevronLeftIcon className="w-5 h-5" aria-hidden />
@@ -104,7 +106,7 @@ export const ProjectCarousel = ({
 
       <button
         onClick={next}
-        aria-label="Siguiente"
+        aria-label={t('carousel.next')}
         className="carousel-control absolute right-2 top-1/2 -translate-y-1/2"
       >
         <ChevronRightIcon className="w-5 h-5" aria-hidden />
@@ -115,7 +117,7 @@ export const ProjectCarousel = ({
           <button
             key={i}
             onClick={() => setIndex(i)}
-            aria-label={`Ir a imagen ${i + 1}`}
+            aria-label={t('carousel.goToSlide', { slide: i + 1 })}
             className={`carousel-dot ${i === index ? 'is-active' : ''}`}
           />
         ))}

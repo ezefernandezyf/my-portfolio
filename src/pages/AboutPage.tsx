@@ -293,13 +293,7 @@ export const AboutPage = (): React.JSX.Element => {
                         </div>
                         <h3 className="mb-2 text-[1.125rem] font-medium text-text-primary font-display">{title}</h3>
                         <p className="mt-auto text-[0.875rem] text-text-secondary font-body">
-                          {index === 0
-                            ? 'Formación integral en desarrollo de software, arquitectura de sistemas y metodologías de trabajo para construir productos consistentes.'
-                            : index === 1
-                              ? 'Certificación enfocada en seguridad, control de acceso y prácticas de hardening aplicadas a productos web modernos.'
-                              : index === 2
-                                ? 'Formación intensiva en modelos generativos, flujo de entrega y criterios para llevar experimentos de IA a producción.'
-                                : 'Participación en el evento global de Microsoft sobre IA generativa, agentes y Copilot. Badge verificado en Credly.'}
+                          {t(`education.${index}.description`)}
                         </p>
                         {index === 3 && (
                           <a

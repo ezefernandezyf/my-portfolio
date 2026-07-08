@@ -4,6 +4,7 @@
     "description": "Privacy policy for Ezequiel Fernández's portfolio. Info on collected data, use and rights."
   },
   "title": "Privacy Policy",
+  "eyebrow": "Privacy & Trust",
   "intro": "Your privacy matters. This page explains what data I collect and how I use it.",
   "lastUpdated": "Last updated: {{date}}",
   "sections": {

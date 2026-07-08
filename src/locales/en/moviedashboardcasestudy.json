@@ -110,7 +110,9 @@
   },
   "labels": {
     "year": "Year:",
-    "featured": "Featured"
+    "featured": "Featured",
+    "caseStudyTag": "Case Study",
+    "featuredHeading": "Featured"
   },
   "notFound": "Project not found",
   "noPreview": "No preview"

@@ -45,7 +45,7 @@ export const PrivacyPage = (): React.JSX.Element => {
           <section className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end" style={fadeInUp()}>
             <div className="lg:col-span-8">
               <p className="mb-4 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted" style={fadeInUp(0.08)}>
-                Privacy & Trust
+                {t('eyebrow')}
               </p>
               <h1 className="font-display text-[2.75rem] font-medium leading-tight tracking-[-0.03em] text-text-primary sm:text-[3.25rem]" style={fadeInUp(0.16)}>
                 {t('title')}

@@ -119,8 +119,8 @@ export const ProjectsListPage = (): React.JSX.Element => {
 
       <section className="mx-auto w-full max-w-7xl px-6 pt-12 pb-10 lg:px-10 lg:pt-16 lg:pb-12" style={fadeInUp(0.24)}>
         <div className="mb-6 flex items-center justify-between gap-4 text-xs font-semibold uppercase tracking-[0.24em] text-text-secondary">
-          <span>{filteredProjects.length} projects</span>
-          <span>{visibleItems.length} visible</span>
+          <span>{filteredProjects.length} {t('counters.projects')}</span>
+          <span>{visibleItems.length} {t('counters.visible')}</span>
         </div>
 
         <div ref={gridRef} className="grid gap-6 lg:grid-cols-2 lg:gap-6">
@@ -143,6 +143,13 @@ export const ProjectsListPage = (): React.JSX.Element => {
             </div>
           ))}
         </div>
+
+        {filteredProjects.length === 0 && (
+          <div className="py-16 text-center">
+            <p className="text-lg font-medium text-text-secondary">{t('emptyState.noResults')}</p>
+            <p className="mt-2 text-sm text-text-muted">{t('emptyState.noResultsHint')}</p>
+          </div>
+        )}
 
         {canLoadMore ? (
           <div className="mt-10 flex justify-center">

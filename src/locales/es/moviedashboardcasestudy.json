@@ -110,7 +110,9 @@
   },
   "labels": {
     "year": "Año:",
-    "featured": "Destacado"
+    "featured": "Destacado",
+    "caseStudyTag": "Caso de estudio",
+    "featuredHeading": "Destacado"
   },
   "notFound": "Proyecto no encontrado",
   "noPreview": "Sin vista previa"

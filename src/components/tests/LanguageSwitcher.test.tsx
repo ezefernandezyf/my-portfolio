@@ -10,11 +10,16 @@ let changeLanguageBehavior = () =>
   });
 
 vi.mock('react-i18next', () => {
+  const headerKeys: Record<string, string> = {
+    'language.switchToEs': 'Cambiar a español',
+    'language.switchToEn': 'Switch to English',
+    'language.label': 'Language switcher',
+  };
   return {
     useTranslation: () => {
       const [lng, setLng] = useState('es');
       return {
-        t: (k: string) => k,
+        t: (k: string) => headerKeys[k] ?? k,
         i18n: {
           language: lng,
           changeLanguage: (newLng: string) =>

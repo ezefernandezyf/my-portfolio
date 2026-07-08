@@ -17,8 +17,12 @@ export const Header = (): React.JSX.Element => {
   const cvPath = i18n.language?.startsWith('en') ? '/Ezequiel_Fernandez_CV_EN.pdf' : '/Ezequiel_Fernandez_CV.pdf';
   const [open, setOpen] = useState(false);
   const drawerRef = useRef<HTMLDivElement | null>(null);
+  const menuButtonRef = useRef<HTMLButtonElement | null>(null);
 
-  const close = () => setOpen(false);
+  const close = () => {
+    setOpen(false);
+    setTimeout(() => menuButtonRef.current?.focus(), 100);
+  };
   const toggle = () => setOpen((current) => !current);
 
   useEffect(() => {
@@ -127,6 +131,7 @@ export const Header = (): React.JSX.Element => {
 
           <button
             type="button"
+            ref={menuButtonRef}
             onClick={toggle}
             aria-label={open ? t('mobile.closeMenu') : t('mobile.openMenu')}
             aria-expanded={open}

@@ -19,6 +19,11 @@
     "linkedIn": "LinkedIn",
     "downloadCv": "Descargar CV"
   },
+  "language": {
+    "switchToEs": "Cambiar a español",
+    "switchToEn": "Cambiar a inglés",
+    "label": "Selector de idioma"
+  },
   "mobile": {
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",

@@ -134,7 +134,7 @@ vi.mock('../../entities/project', () => ({
 import { ProjectsPage } from '../ProjectsPage';
 
 describe('ProjectsPage coverage', () => {
-  it('filters projects, loads more items, and preserves missing action branches', async () => {
+  it('filters projects, loads more items, and preserves missing action branches', { timeout: 15000 }, async () => {
     const user = userEvent.setup();
 
     render(

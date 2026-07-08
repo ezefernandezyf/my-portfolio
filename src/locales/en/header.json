@@ -19,6 +19,11 @@
     "linkedIn": "LinkedIn",
     "downloadCv": "Download CV"
   },
+  "language": {
+    "switchToEs": "Switch to Spanish",
+    "switchToEn": "Switch to English",
+    "label": "Language switcher"
+  },
   "mobile": {
     "openMenu": "Open menu",
     "closeMenu": "Close menu",

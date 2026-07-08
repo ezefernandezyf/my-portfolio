@@ -13,7 +13,7 @@ describe('PrivacyPage', () => {
 
     expect(screen.getByRole('heading', { level: 1, name: /privacy policy|pol[ií]tica de privacidad/i })).toBeInTheDocument();
     expect(screen.getAllByRole('heading', { level: 2 }).length).toBeGreaterThanOrEqual(6);
-    expect(screen.getByText(/privacy & trust|privacy/i)).toBeInTheDocument();
+    expect(screen.getByText(/privacy & trust|privacy|privacidad y confianza/i)).toBeInTheDocument();
 
     const mailtoLink = screen
       .getAllByRole('link')

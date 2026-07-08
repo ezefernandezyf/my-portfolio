@@ -59,24 +59,28 @@
       "title": "Analyst in Systems - Da Vinci | First Multimedia Art School",
       "period": "2025 - present",
       "periodLabel": "2025 - present",
+      "description": "Comprehensive training in software development, systems architecture, and work methodologies to build consistent products.",
       "bullets": []
     },
     "1": {
       "title": "Professional Certificate in Cybersecurity - IBM SkillsBuild",
       "period": "2026 - present",
       "periodLabel": "2026 - present",
+      "description": "Certification focused on security, access control and hardening practices applied to modern web products.",
       "bullets": []
     },
     "2": {
       "title": "AI Development: From 0 to Production - BIG school",
       "period": "2026 - completed",
       "periodLabel": "2026 - completed",
+      "description": "Intensive training in generative models, delivery pipelines and criteria for bringing AI experiments to production.",
       "bullets": []
     },
     "3": {
       "title": "AI Skills Fest 2026 , Microsoft",
       "period": "2026",
       "periodLabel": "2026",
+      "description": "Participation in Microsoft's global event on generative AI, agents and Copilot. Badge verified on Credly.",
       "bullets": []
     }
   },

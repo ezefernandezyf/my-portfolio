@@ -27,7 +27,7 @@ describe('ChefcitoIACaseStudy', () => {
     const withinAside = within(aside);
 
     expect(withinAside.getByText(/2026/)).toBeInTheDocument();
-    expect(withinAside.getByText(/featured/i)).toBeInTheDocument();
+    expect(withinAside.getAllByText(/featured|destacado/i).length).toBeGreaterThanOrEqual(1);
     expect(withinAside.getByText(/stack & tecnologías/i)).toBeInTheDocument();
 
     expect(

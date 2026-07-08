@@ -26,6 +26,14 @@
     "paragraph2": "My tech stack is pragmatic, not hype-driven. I choose TypeScript for type safety, React for declarative interfaces, Node.js with Express for REST APIs, and PostgreSQL as my relational database. On the frontend I work with React 19 and Tailwind CSS 4, prioritizing WCAG 2.2 AA accessibility. On the server side I build APIs with Express and Prisma ORM, applying Zod validation and repository patterns. Every stack decision passes three filters: it solves the real problem, it adds value to the team, and it keeps complexity manageable.",
     "paragraph3": "Every project goes through research, architecture design, implementation with tests, and automated deployment. I prioritize readable code over premature optimization. Continuous integration with GitHub Actions ensures every PR passes linting, type checking, and the full test suite before merge. I write unit tests with Vitest and React Testing Library, and integration tests for API endpoints. When a bug surfaces, I write a test that reproduces it first, then fix it. This discipline lets me refactor with confidence and ship software that works, even under deadline pressure."
   },
+  "counters": {
+    "projects": "projects",
+    "visible": "visible"
+  },
+  "emptyState": {
+    "noResults": "No projects found",
+    "noResultsHint": "Try different search terms or select another technology."
+  },
   "notFound": "Project not found",
   "echolog": {
     "name": "EchoLog",

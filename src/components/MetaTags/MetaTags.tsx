@@ -1,4 +1,5 @@
 ﻿import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   title?: string;
@@ -11,8 +12,6 @@ type Props = {
 
 const SITE_URL = (import.meta.env.VITE_SITE_URL as string) ?? 'http://ezefernandez.com';
 const DEFAULT_TITLE = 'Ezequiel Fernández - Full Stack Developer';
-const DEFAULT_DESC =
-  'Full Stack Developer especializado en React, TypeScript y Node.js. Construyo aplicaciones web modernas, optimizadas y accesibles.';
 const DEFAULT_IMAGE = '/og-image.png';
 
 function toAbsolute(path?: string) {
@@ -93,7 +92,13 @@ export const MetaTags = ({
   type = 'website',
   noIndex = false,
 }: Props): React.JSX.Element | null => {
+  const { i18n } = useTranslation();
+
   useEffect(() => {
+    const DEFAULT_DESC =
+      i18n.language?.startsWith('en')
+        ? 'Full Stack Developer specialized in React, TypeScript, and Node.js. I build modern, optimized, and accessible web applications.'
+        : 'Full Stack Developer especializado en React, TypeScript y Node.js. Construyo aplicaciones web modernas, optimizadas y accesibles.';
     const prevTitle = document.title;
     const finalTitle = title
       ? (title.includes(DEFAULT_TITLE) ? title : `${title} | ${DEFAULT_TITLE}`)
@@ -153,7 +158,7 @@ export const MetaTags = ({
         }
       });
     };
-  }, [title, description, pathname, image, type, noIndex]);
+  }, [title, description, pathname, image, type, noIndex, i18n.language]);
 
   return null;
 };

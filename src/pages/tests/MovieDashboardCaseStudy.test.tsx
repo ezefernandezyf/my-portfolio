@@ -27,7 +27,7 @@ describe('MovieDashboardCaseStudy', () => {
     const withinAside = within(aside);
 
     expect(withinAside.getByText(/2026/)).toBeInTheDocument();
-    expect(withinAside.getAllByText(/featured/i)).not.toHaveLength(0);
+    expect(withinAside.getAllByText(/featured|destacado/i)).not.toHaveLength(0);
     expect(withinAside.getByText(/stack\s*&\s*(tecnolog[ií]as|technologies)/i)).toBeInTheDocument();
 
     expect(
