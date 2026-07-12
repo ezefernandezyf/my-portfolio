@@ -27,6 +27,10 @@
     "paragraph3": "Cada proyecto pasa por investigación, diseño de arquitectura, implementación con tests y deploy automatizado. Priorizo el código legible sobre la optimización prematura. La integración continua con GitHub Actions asegura que cada PR pase linter, type checking y la suite de tests antes del merge. Escribo tests unitarios con Vitest y React Testing Library, y tests de integración para endpoints de API. Cuando surge un bug, primero escribo un test que lo reproduzca y después lo corrijo. Esta disciplina me permite refactorizar con confianza y entregar software que funciona, incluso bajo presión de fechas."
   },
   "notFound": "Proyecto no encontrado",
+  "context-bridge": {
+    "name": "Context Bridge",
+    "short": "Asistente Slack con búsqueda multi-fuente y síntesis por IA. Arquitectura MCP con JSON-RPC 2.0, 4 fuentes en paralelo con degradación elegante."
+  },
   "echolog": {
     "name": "EchoLog",
     "short": "SaaS multi-tenant de feedback para productos - boards, votos, comentarios, gestión de workspaces. Full-stack TypeScript con React 19, Node.js, Express, PostgreSQL."

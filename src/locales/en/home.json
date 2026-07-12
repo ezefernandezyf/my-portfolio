@@ -24,7 +24,8 @@
     "title": "What I'm working on now",
     "list": [
       { "emoji": "🚀", "label": "Nexus Talent v1.1", "url": "https://github.com/ezefernandezyf/nexus-talent" },
-      { "emoji": "🌐", "label": "Recently deployed EchoLog v1.1", "url": "https://github.com/ezefernandezyf/echolog" }
+      { "emoji": "🌐", "label": "Recently deployed EchoLog v1.1", "url": "https://github.com/ezefernandezyf/echolog" },
+      { "emoji": "🤖", "label": "Context Bridge — MCP Slack agent", "url": "https://github.com/ezefernandezyf/dev-search-agent" }
     ]
   }
 }

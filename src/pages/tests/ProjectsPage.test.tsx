@@ -15,9 +15,9 @@ describe('ProjectsPage', () => {
     expect(screen.getByRole('textbox', { name: /search projects|buscar proyectos/i })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /filters|filtros/i })).toBeInTheDocument();
 
-    expect(screen.getAllByRole('heading', { level: 3 })).toHaveLength(6);
-    expect(screen.getAllByRole('link', { name: /view repo|ver repo/i })).toHaveLength(6);
+    expect(screen.getAllByRole('heading', { level: 3 })).toHaveLength(7);
+    expect(screen.getAllByRole('link', { name: /view repo|ver repo/i })).toHaveLength(7);
     expect(screen.getAllByRole('link', { name: /view demo|ver demo/i })).toHaveLength(5);
-    expect(screen.getAllByRole('link', { name: /view case study|ver case study/i })).toHaveLength(6);
+    expect(screen.getAllByRole('link', { name: /view case study|ver case study/i })).toHaveLength(7);
   });
 });

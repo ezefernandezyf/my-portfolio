@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { projectRepository } from '../../../../entities/project';
 import { ProjectCard } from '../../../../shared/ui/project-card';
 
-const INITIAL_VISIBLE_PROJECTS = 6;
+const INITIAL_VISIBLE_PROJECTS = 7;
 const LOAD_MORE_STEP = 3;
 
 const normalize = (value: string): string => value.toLowerCase().trim();
