@@ -38,6 +38,9 @@ export const projects = [
     repo: 'https://github.com/ezefernandezyf/dev-search-agent',
     images: [
       '/projects/context-bridge/shot1.webp',
+      '/projects/context-bridge/shot2.webp',
+      '/projects/context-bridge/shot3.webp',
+      '/projects/context-bridge/shot4.webp',
     ],
     tech: ['TypeScript', 'Express', 'Zod', 'Groq AI', 'Slack API', 'Node.js', 'Vitest', 'pnpm'],
     year: 2026,

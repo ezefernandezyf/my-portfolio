@@ -1,0 +1,99 @@
+{
+  "meta": {
+    "title": "Context Bridge",
+    "description": "Case study of Context Bridge: a Slack bot with multi-source search and AI-powered response synthesis. MCP Server Pattern with JSON-RPC 2.0, 4 parallel sources with individual timeouts, graceful degradation."
+  },
+  "header": {
+    "title": "Context Bridge",
+    "short": "Slack bot with multi-source search and AI-powered response synthesis. MCP architecture with JSON-RPC 2.0, 4 parallel sources with individual timeouts, graceful degradation.",
+    "repoAria": "Repository Context Bridge",
+    "demoAria": "",
+    "backToProjects": "← Back to Projects"
+  },
+  "stack": {
+    "heading": "Stack & Technologies",
+    "sections": {
+      "protocol": "Protocol & Architecture",
+      "sources": "Data Sources",
+      "ai": "AI & Validation",
+      "infra": "Infrastructure & Testing"
+    }
+  },
+  "summary": {
+    "heading": "Summary",
+    "text": "Context Bridge is a Slack bot that answers developer questions by searching 4 sources in parallel — Stack Overflow, npm, GitHub Issues, and Slack history — and synthesizing results with Groq (Llama 3.1 8B) using a 200-line system prompt with explicit prohibitions against generic responses."
+  },
+  "problem": {
+    "heading": "The problem",
+    "text": "Developers spend too much time context-switching between Stack Overflow, npm, GitHub, and Slack to find technical answers. Each source requires its own search, and stitching information from multiple sources is a manual process that fragments attention. There was no way to ask from Slack and get a synthesized answer from all sources at once."
+  },
+  "solution": {
+    "heading": "The solution",
+    "list": [
+      "A Slack bot that queries 4 sources in parallel using Promise.allSettled with a 2.5s timeout per source. If Stack Overflow fails, npm and GitHub keep working independently.",
+      "MCP Server Pattern architecture with JSON-RPC 2.0: 3 MCP tools (Stack Exchange, npm, GitHub) plus direct Slack RTS integration. HTTP over WebSocket for simplicity — stateless and sufficient for ~3s total latency.",
+      "Synthesis with Groq (Llama 3.1 8B) using JSON mode and a 200-line system prompt with explicit prohibitions against filler responses. Zod validates the structured output.",
+      "Graceful degradation: if Groq fails, raw results are returned with \"View source\" buttons per result. The user always gets a response, never a 500 error.",
+      "Slack Socket Mode with no public URL or ngrok required — ideal for hackathons. Automatic reconnection with exponential backoff."
+    ]
+  },
+  "architecture": {
+    "heading": "Technical deep dive",
+    "text": "Three key technical decisions define Context Bridge's architecture: the MCP pattern, the resilience model, and the anti-slop prompt engineering.",
+    "list": [
+      "MCP pattern with JSON-RPC 2.0: three independent tools (search-docs, get-npm-package, get-github-issue) communicate over HTTP JSON-RPC. HTTP was chosen over WebSocket because it is stateless and simpler to implement — sufficient for ~3s total latency.",
+      "Resilience with Promise.allSettled + AbortController: each source has an individual 2.5s timeout. If Stack Overflow is slow, it does not block npm or GitHub. Sources are completely independent — one failure does not affect the others.",
+      "Anti-slop prompt engineering: a 200-line system prompt with explicit prohibitions ('never say \"it depends\"', 'no filler phrases', 'if you don't know, say so'). JSON mode forces structure and Zod validates the model output conforms to the expected schema."
+    ]
+  },
+  "implementation": {
+    "heading": "Featured implementation",
+    "hookTitle": "Parallel search orchestrator",
+    "hookCode": "",
+    "hookDescription": "The orchestrator fires 4 promises in parallel with Promise.allSettled. Each source has its own adapter with a 2.5s AbortController timeout. If Groq responds in time, results are synthesized with citations to the original sources. If not, raw results are returned grouped by source with actionable Slack buttons."
+  },
+  "accessibility": {
+    "heading": "Accessibility",
+    "list": [
+      "Slack bot: all interaction is through slash commands and channel messages.",
+      "Results rendered in Slack Block Kit format with actionable buttons and hierarchical structure.",
+      "Slack handles contrast and keyboard focus natively. The bot does not introduce additional barriers."
+    ]
+  },
+  "performance": {
+    "heading": "Performance",
+    "list": [
+      "4 parallel sources with individual 2.5s timeout — maximum guaranteed latency of ~3s even if all sources fail.",
+      "Results truncated to 2000 characters per source before sending to Groq to stay within the 8K token context window.",
+      "Slack history query cache with 5-minute TTL to avoid repetitive RTS API range scans."
+    ]
+  },
+  "challenges": {
+    "heading": "Challenges resolved",
+    "list": [
+      "Per-source timeout: the Stack Exchange API can take up to 10s on complex queries. Implemented AbortController with 2.5s per source plus a 5s global timeout as circuit breaker.",
+      "Shared tokens between services: the shared/ package defines Zod contracts used by both mcp-server and slack-app. Keeping them in sync without circular dependencies in the monorepo required separating types from runtime.",
+      "Slack Socket Mode locally: the RTS API requires a persistent WebSocket. Implemented automatic reconnection with exponential backoff (1s, 2s, 4s, 8s, max 30s) and reset on successful reconnect."
+    ]
+  },
+  "improvements": {
+    "heading": "What could be improved",
+    "list": [
+      "Add more sources: official documentation (MDN, Python docs) or a generic adapter for any REST API.",
+      "Feedback loop with thumbs up/down to dynamically adjust the prompt based on which responses are useful.",
+      "Support for Slack threads to maintain conversation context across chained responses."
+    ]
+  },
+  "deepDive": {
+    "heading": "Technical Deep Dive"
+  },
+  "carousel": {
+    "alt": "Context Bridge preview"
+  },
+  "labels": {
+    "year": "Year:",
+    "featured": "Featured"
+  },
+  "notFound": "Project not found",
+  "noPreview": "No preview available"
+}

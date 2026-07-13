@@ -8,6 +8,8 @@ import enChefcitoIA from '../../../locales/en/chefcitoiacasestudy.json';
 import esChefcitoIA from '../../../locales/es/chefcitoiacasestudy.json';
 import enNexusTalent from '../../../locales/en/nexustalentcasestudy.json';
 import esNexusTalent from '../../../locales/es/nexustalentcasestudy.json';
+import enContextBridge from '../../../locales/en/contextbridgecasestudy.json';
+import esContextBridge from '../../../locales/es/contextbridgecasestudy.json';
 
 type JsonNode = string | number | boolean | null | JsonNode[] | { [k: string]: JsonNode };
 
@@ -32,6 +34,7 @@ describe('Case study i18n parity', () => {
     { name: 'moviedashboardcasestudy', en: enMovieDashboard, es: esMovieDashboard },
     { name: 'chefcitoiacasestudy', en: enChefcitoIA, es: esChefcitoIA },
     { name: 'nexustalentcasestudy', en: enNexusTalent, es: esNexusTalent },
+    { name: 'contextbridgecasestudy', en: enContextBridge, es: esContextBridge },
   ];
 
   it.each(namespaces)('$name has matching key structures in en and es', ({ en, es }) => {

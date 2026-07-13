@@ -307,6 +307,27 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     priority: 0.7,
     changefreq: 'monthly',
   },
+  'projects/context-bridge': {
+    pathname: '/projects/context-bridge',
+    titleI18nKey: 'contextbridgecasestudy:meta.title',
+    descI18nKey: 'contextbridgecasestudy:meta.description',
+    es: {
+      title: 'Context Bridge | Slack Bot con Búsqueda Multi-Fuente | Ezequiel Fernández',
+      description:
+        'Slack bot con búsqueda multi-fuente y síntesis por IA. MCP Server Pattern con JSON-RPC 2.0, 4 fuentes en paralelo con timeout individual, degradación elegante y validación Zod.',
+      keywords: ['context bridge', 'slack bot', 'mcp', 'ia', 'typescript', 'groq', 'hackathon'],
+    },
+    en: {
+      title: 'Context Bridge | Multi-Source Search Slack Bot | Ezequiel Fernández',
+      description:
+        'Slack bot with multi-source search and AI-powered response synthesis. MCP Server Pattern with JSON-RPC 2.0, 4 parallel sources with individual timeouts, graceful degradation, and Zod validation.',
+      keywords: ['context bridge', 'slack bot', 'mcp', 'ai', 'typescript', 'groq', 'hackathon'],
+    },
+    ogImage: '/og-image.png',
+    schemaType: 'WebPage',
+    priority: 0.7,
+    changefreq: 'monthly',
+  },
 };
 
 /** Ordered route keys matching the prerender loop order */
@@ -320,6 +341,7 @@ export const ROUTE_KEYS: string[] = [
   'projects/nexus-talent',
   'projects/echolog',
   'projects/geo-seo-opencode',
+  'projects/context-bridge',
   'privacy',
   'contact',
   'not-found',
