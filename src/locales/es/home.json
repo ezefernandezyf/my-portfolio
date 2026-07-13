@@ -1,6 +1,6 @@
-﻿{
+{
   "meta": {
-    "title": "Ezequiel Fernández | Full Stack Developer | Portfolio Personal",
+    "title": "Portfolio Personal , Full Stack Developer",
     "description": "Portfolio de Ezequiel Fernández - Full Stack Developer. Creando aplicaciones web completas con React, Node.js, TypeScript y PostgreSQL."
   },
   "hero": {
@@ -23,8 +23,16 @@
   "currently": {
     "title": "En qué estoy trabajando ahora",
     "list": [
-      { "emoji": "🚀", "label": "Nexus Talent v1.1", "url": "https://github.com/ezefernandezyf/nexus-talent" },
-      { "emoji": "🌐", "label": "Recientemente desplegado EchoLog v1.1", "url": "https://github.com/ezefernandezyf/echolog" }
+      {
+        "emoji": "🚀",
+        "label": "Nexus Talent v1.1",
+        "url": "https://github.com/ezefernandezyf/nexus-talent"
+      },
+      {
+        "emoji": "🌐",
+        "label": "Recientemente desplegado EchoLog v1.1",
+        "url": "https://github.com/ezefernandezyf/echolog"
+      }
     ]
   }
 }

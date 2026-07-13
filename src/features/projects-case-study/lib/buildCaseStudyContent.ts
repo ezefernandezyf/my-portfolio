@@ -119,6 +119,28 @@ const stackByProject: Record<string, StackItem[]> = {
       items: ['Cross-Platform', 'MIT License'],
     },
   ],
+  'context-bridge': [
+    {
+      titleKey: 'stack.sections.protocol',
+      defaultTitle: 'Protocol & Architecture',
+      items: ['MCP Server Pattern', 'JSON-RPC 2.0', 'Express', 'Slack Bolt (Socket Mode)', 'Screaming Architecture'],
+    },
+    {
+      titleKey: 'stack.sections.sources',
+      defaultTitle: 'Data Sources',
+      items: ['Stack Exchange API (MCP)', 'npm registry (MCP)', 'GitHub API (MCP)', 'Slack RTS (direct)'],
+    },
+    {
+      titleKey: 'stack.sections.ai',
+      defaultTitle: 'AI & Validation',
+      items: ['Groq API (Llama 3.1 8B)', 'Anti-slop prompt engineering', 'Zod output validation', 'JSON mode'],
+    },
+    {
+      titleKey: 'stack.sections.infra',
+      defaultTitle: 'Infrastructure & Testing',
+      items: ['pnpm workspaces (3 packages)', 'TypeScript', 'Vitest', 'supertest', '92 assertions (10 files)'],
+    },
+  ],
 };
 
 function toStringArray(value: unknown): string[] {

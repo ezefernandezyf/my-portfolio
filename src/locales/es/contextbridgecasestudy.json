@@ -1,0 +1,99 @@
+{
+  "meta": {
+    "title": "Context Bridge",
+    "description": "Caso de estudio de Context Bridge: Slack bot con búsqueda multi-fuente y síntesis por IA. MCP Server Pattern con JSON-RPC 2.0, 4 fuentes en paralelo con timeout individual, degradación elegante."
+  },
+  "header": {
+    "title": "Context Bridge",
+    "short": "Slack bot con búsqueda multi-fuente y síntesis por IA. Arquitectura MCP con JSON-RPC 2.0, 4 fuentes en paralelo con timeout individual, degradación elegante.",
+    "repoAria": "Repositorio Context Bridge",
+    "demoAria": "",
+    "backToProjects": "← Volver a Proyectos"
+  },
+  "stack": {
+    "heading": "Stack & Tecnologías",
+    "sections": {
+      "protocol": "Protocolo & Arquitectura",
+      "sources": "Fuentes de datos",
+      "ai": "IA & Validación",
+      "infra": "Infraestructura & Testing"
+    }
+  },
+  "summary": {
+    "heading": "Resumen",
+    "text": "Context Bridge es un bot de Slack que responde preguntas de desarrolladores buscando en 4 fuentes en paralelo : Stack Overflow, npm, GitHub Issues y el historial de Slack : y sintetizando los resultados con Groq (Llama 3.1 8B) mediante un system prompt de 200 líneas con prohibiciones explícitas contra respuestas genéricas."
+  },
+  "problem": {
+    "heading": "El problema",
+    "text": "Los desarrolladores pasan demasiado tiempo cambiando de contexto entre Stack Overflow, npm, GitHub y Slack para encontrar respuestas técnicas. Cada fuente requiere su propia búsqueda y unir la información de múltiples fuentes es un proceso manual que fragmenta la atención. No existía una forma de preguntar desde Slack y obtener una respuesta sintetizada de todas las fuentes a la vez."
+  },
+  "solution": {
+    "heading": "La solución",
+    "list": [
+      "Un bot de Slack que consulta 4 fuentes en paralelo mediante Promise.allSettled con timeout de 2.5s por fuente. Si Stack Overflow falla, npm y GitHub siguen funcionando.",
+      "Arquitectura MCP Server Pattern con JSON-RPC 2.0: 3 herramientas MCP (Stack Exchange, npm, GitHub) más integración directa con Slack RTS. HTTP en vez de WebSocket por simplicidad.",
+      "Síntesis con Groq (Llama 3.1 8B) usando JSON mode y un system prompt de 200 líneas con prohibiciones explícitas contra respuestas genéricas. Zod valida la salida estructurada.",
+      "Degradación elegante: si Groq falla, se devuelven resultados crudos con botones \"Ver fuente\" por cada resultado. El usuario siempre recibe una respuesta, nunca un error 500.",
+      "Socket Mode de Slack sin URL pública ni ngrok : ideal para hackathons. Reconexión automática con exponential backoff."
+    ]
+  },
+  "architecture": {
+    "heading": "Profundización técnica",
+    "text": "Tres decisiones técnicas clave definen la arquitectura de Context Bridge: el patrón MCP, el modelo de resiliencia, y la ingeniería de prompts anti-slop.",
+    "list": [
+      "Patrón MCP con JSON-RPC 2.0: tres herramientas independientes (search-docs, get-npm-package, get-github-issue) se comunican vía HTTP JSON-RPC. Se eligió HTTP sobre WebSocket porque es stateless y más simple de implementar : suficiente para una latencia total de ~3s.",
+      "Resiliencia con Promise.allSettled + AbortController: cada fuente tiene un timeout individual de 2.5s. Si Stack Overflow tarda más, no bloquea a npm ni a GitHub. Las fuentes son completamente independientes : una caída no afecta a las demás.",
+      "Anti-slop prompt engineering: un system prompt de 200 líneas con prohibiciones explícitas ('nunca digas \"depende del contexto\"', 'no uses frases de relleno', 'si no sabes, decilo'). JSON mode fuerza estructura y Zod valida que el modelo no se desvíe del esquema esperado."
+    ]
+  },
+  "implementation": {
+    "heading": "Implementación destacada",
+    "hookTitle": "Orquestador de búsqueda paralela",
+    "hookCode": "",
+    "hookDescription": "El orchestrator lanza 4 promesas en paralelo con Promise.allSettled. Cada fuente tiene su propio adaptador con AbortController de 2.5s. Si Groq responde dentro del tiempo límite, los resultados se sintetizan con citas a las fuentes originales. Si no, se devuelven los resultados crudos agrupados por fuente con botones accionables en Slack."
+  },
+  "accessibility": {
+    "heading": "Accesibilidad",
+    "list": [
+      "Bot de Slack: toda la interacción es mediante comandos slash y mensajes en el canal.",
+      "Resultados en formato Slack Block Kit con botones accionables y estructura jerárquica.",
+      "Slack maneja el contraste y el foco de teclado nativamente. El bot no introduce barreras adicionales."
+    ]
+  },
+  "performance": {
+    "heading": "Performance",
+    "list": [
+      "4 fuentes en paralelo con timeout individual de 2.5s : latencia máxima garantizada de ~3s incluso si todas las fuentes fallan.",
+      "Truncamiento de resultados a 2000 caracteres por fuente antes de enviar a Groq para no exceder el contexto de 8K tokens.",
+      "Cache de consultas a Slack history con TTL de 5 minutos para evitar rangos repetitivos en la RTS API."
+    ]
+  },
+  "challenges": {
+    "heading": "Desafíos resueltos",
+    "list": [
+      "Timeout por fuente: Stack Exchange API puede tardar hasta 10s en consultas complejas. Se implementó AbortController con 2.5s por fuente más un timeout global de 5s como cortafuego.",
+      "Tokens compartidos entre servicios: el paquete shared/ define contratos Zod que usan tanto mcp-server como slack-app. Mantenerlos sincronizados sin dependencias circulares en el monorepo requirió separar tipos de runtime.",
+      "Slack Socket Mode en local: la RTS API requiere un WebSocket persistente. Se implementó reconexión automática con exponential backoff (1s, 2s, 4s, 8s, max 30s) y reset al reconectar exitosamente."
+    ]
+  },
+  "improvements": {
+    "heading": "Qué se podría mejorar",
+    "list": [
+      "Agregar más fuentes: documentación oficial (MDN, Python docs) o un adaptador genérico para cualquier API REST.",
+      "Feedback loop con thumbs up/down para ajustar el prompt dinámicamente según qué respuestas son útiles.",
+      "Soporte para hilos de Slack para mantener contexto de conversación a través de respuestas encadenadas."
+    ]
+  },
+  "deepDive": {
+    "heading": "Profundización técnica"
+  },
+  "carousel": {
+    "alt": "Vista previa de Context Bridge"
+  },
+  "labels": {
+    "year": "Año:",
+    "featured": "Destacado"
+  },
+  "notFound": "Proyecto no encontrado",
+  "noPreview": "Sin vista previa"
+}

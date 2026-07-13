@@ -313,7 +313,7 @@ export const ContactPage = (): React.JSX.Element => {
           </div>
         </div>
 
-        {/* Expanded content section for SEO — crawler-accessible process description */}
+        {/* Expanded content section for SEO  -  crawler-accessible process description */}
         <section className="bg-surface py-24 mt-16">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
             <div className="mx-auto max-w-3xl space-y-6">

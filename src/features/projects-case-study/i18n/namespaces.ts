@@ -10,6 +10,8 @@ import enEchoLog from '../../../locales/en/echologcasestudy.json';
 import esEchoLog from '../../../locales/es/echologcasestudy.json';
 import enGeoseoOpencode from '../../../locales/en/geoseoopencodecasestudy.json';
 import esGeoseoOpencode from '../../../locales/es/geoseoopencodecasestudy.json';
+import enContextBridge from '../../../locales/en/contextbridgecasestudy.json';
+import esContextBridge from '../../../locales/es/contextbridgecasestudy.json';
 
 export const caseStudyResources = {
   en: {
@@ -19,6 +21,7 @@ export const caseStudyResources = {
     nexustalentcasestudy: enNexusTalent,
     echologcasestudy: enEchoLog,
     geoseoopencodecasestudy: enGeoseoOpencode,
+    contextbridgecasestudy: enContextBridge,
   },
   es: {
     cinelabcasestudy: esCineLab,
@@ -27,6 +30,7 @@ export const caseStudyResources = {
     nexustalentcasestudy: esNexusTalent,
     echologcasestudy: esEchoLog,
     geoseoopencodecasestudy: esGeoseoOpencode,
+    contextbridgecasestudy: esContextBridge,
   },
 } as const;
 
@@ -37,4 +41,5 @@ export const caseStudyNamespaces = [
   'nexustalentcasestudy',
   'echologcasestudy',
   'geoseoopencodecasestudy',
+  'contextbridgecasestudy',
 ] as const;

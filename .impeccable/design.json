@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "generatedAt": "2026-07-07T12:00:00.000Z",
-  "title": "Design System: Ezequiel Fernández — Portfolio",
+  "title": "Design System: Ezequiel Fernández : Portfolio",
   "extensions": {
     "colorMeta": {
       "monitor-amber": {
@@ -270,7 +270,7 @@
       "name": "Ghost Link Button",
       "kind": "button",
       "refersTo": "button-ghost",
-      "description": "Minimal text-only button with amber accent. Used for download CV and other tertiary actions. No border or background — relies entirely on typography and color.",
+      "description": "Minimal text-only button with amber accent. Used for download CV and other tertiary actions. No border or background : relies entirely on typography and color.",
       "html": "<button class=\"ds-btn-ghost\">DESCARGAR CV<svg class=\"ds-icon-right\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" width=\"16\" height=\"16\"><path d=\"M7 17L17 7M7 7h10v10\"/></svg></button>",
       "css": ".ds-btn-ghost{display:inline-flex;align-items:center;gap:0.5rem;height:3.5rem;padding:0 1rem;background:transparent;color:#f59e0b;font-family:'Work Sans',system-ui,sans-serif;font-size:0.875rem;font-weight:700;letter-spacing:0.02em;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;transition:color .15s}.ds-btn-ghost:hover{text-decoration:underline;text-underline-offset:8px}.ds-btn-ghost:focus-visible{outline:2px solid #f59e0b;outline-offset:2px}.ds-icon-right{transition:transform .15s}.ds-btn-ghost:hover .ds-icon-right{transform:translateX(2px)}"
     },
@@ -333,11 +333,11 @@
   ],
   "narrative": {
     "northStar": "The Architect's Studio",
-    "overview": "This portfolio is a room with controlled lighting, noble materials, and precise blueprints. Every surface is deliberate — nothing is here because a template put it here. The studio is dark by default: deep near-black walls that push content forward, with amber as the only source of warmth, like monitor light reflecting off a desk at dusk. The designer works in this room, and the room itself proves the work.\n\nThe system practices what it preaches. A Full Stack Developer portfolio cannot look like it was generated — the portfolio IS the proof of craft. Every component, transition, and layout choice must feel intentional, not inherited. Dark-first is not a fashion statement here; it is the atmosphere of the room. Light mode is given equal care, with warm parchment tones and a burnished amber that preserves the same hierarchy and personality in daylight.",
+    "overview": "This portfolio is a room with controlled lighting, noble materials, and precise blueprints. Every surface is deliberate : nothing is here because a template put it here. The studio is dark by default: deep near-black walls that push content forward, with amber as the only source of warmth, like monitor light reflecting off a desk at dusk. The designer works in this room, and the room itself proves the work.\n\nThe system practices what it preaches. A Full Stack Developer portfolio cannot look like it was generated : the portfolio IS the proof of craft. Every component, transition, and layout choice must feel intentional, not inherited. Dark-first is not a fashion statement here; it is the atmosphere of the room. Light mode is given equal care, with warm parchment tones and a burnished amber that preserves the same hierarchy and personality in daylight.",
     "keyCharacteristics": [
       "Dark-first, dual-mode. Near-black void background is the default. Light mode switches to warm parchment with its own amber accent, not inverted colors.",
       "Single accent restraint. Amber (OKLCH ~0.70 0.158 74) is the only chromatic color. It occupies ≤10% of any given screen. Its rarity is the point.",
-      "Responsive elevation. Surfaces are flat at rest. Shadows appear only on hover or interaction — quiet in repose, responsive to touch.",
+      "Responsive elevation. Surfaces are flat at rest. Shadows appear only on hover or interaction : quiet in repose, responsive to touch.",
       "Editorial typography contrast. Serif display (Instrument Serif) for hierarchy and personality; sans body (Work Sans) for readability. The pairing is the primary aesthetic move.",
       "Micro-interactions with purpose. Motion communicates state change and hierarchy. It never decorates."
     ],
@@ -364,24 +364,24 @@
       }
     ],
     "dos": [
-      "Do use Monitor Amber as the single accent across all interactive states — buttons, links, focus rings, active indicators. If a second color appears, it must be an error state (red) or a neutral.",
+      "Do use Monitor Amber as the single accent across all interactive states : buttons, links, focus rings, active indicators. If a second color appears, it must be an error state (red) or a neutral.",
       "Do keep body text in Warm Silver / Soft Graphite, never White Stone / Iron Ink. Reserve maximum contrast for headings.",
       "Do animate with purpose: state transitions (150ms fast), entrance reveals (500ms fade-in-up with stagger), theme toggles (250ms). Each animation must have a prefers-reduced-motion: reduce fallback.",
       "Do use the tonal layering system for depth before adding shadows. Surfaces stack: Void → Slate → Shadow Blue. Shadows are the last resort, not the first.",
-      "Do keep chips and labels tight — 10px uppercase bold with tight tracking. These are the 'instrument panel' of the interface: small, dense, informative.",
+      "Do keep chips and labels tight : 10px uppercase bold with tight tracking. These are the 'instrument panel' of the interface: small, dense, informative.",
       "Do cap display text at 6rem (~96px) max. Larger than that is shouting, not designing.",
       "Do use text-wrap: balance on all h1–h3 headings for even line lengths, and text-wrap: pretty on body text to reduce orphans."
     ],
     "donts": [
       "Don't use purple gradients, neon accents, blue links, or glassmorphism. These are AI-generic developer portfolio tells that the system explicitly rejects.",
-      "Don't do scroll-hijacking, excessive animations, or agency-style overdesign. The studio is calm — motion communicates, it doesn't perform.",
+      "Don't do scroll-hijacking, excessive animations, or agency-style overdesign. The studio is calm : motion communicates, it doesn't perform.",
       "Don't use numbered section markers (01 / 02 / 03) as default scaffolding above every section. Numbers earn their place only when the content IS a sequence.",
       "Don't use the tiny uppercase tracked eyebrow above every section heading as a default. One deliberate kicker is voice; an eyebrow on every section is AI grammar.",
       "Don't use side-stripe borders (border-left or border-right greater than 1px as a colored accent on cards or callouts). Use full borders, background tints, or nothing.",
       "Don't use gradient text. Emphasis is achieved through weight, size, and color, not decorative gradients.",
       "Don't use cards when a simpler layout would do. Cards are the most overused pattern in developer portfolios. Nested cards are always wrong.",
       "Don't swap dark-mode amber (#f59e0b) into light mode or light-mode amber (#b45309) into dark mode. Each mode has its own amber.",
-      "Don't forget light mode. It is not dark mode inverted — it has its own amber, its own neutrals, its own shadow opacities."
+      "Don't forget light mode. It is not dark mode inverted : it has its own amber, its own neutrals, its own shadow opacities."
     ]
   }
 }
