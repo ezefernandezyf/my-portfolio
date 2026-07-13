@@ -32,6 +32,21 @@ export const projects = [
     featured: true,
   },
   {
+    id: 'context-bridge',
+    nameKey: 'context-bridge.name',
+    shortKey: 'context-bridge.short',
+    repo: 'https://github.com/ezefernandezyf/dev-search-agent',
+    images: [
+      '/projects/context-bridge/shot1.webp',
+      '/projects/context-bridge/shot2.webp',
+      '/projects/context-bridge/shot3.webp',
+      '/projects/context-bridge/shot4.webp',
+    ],
+    tech: ['TypeScript', 'Express', 'Zod', 'Groq AI', 'Slack API', 'Node.js', 'Vitest', 'pnpm'],
+    year: 2026,
+    featured: true,
+  },
+  {
     id: 'geo-seo-opencode',
     nameKey: 'geo-seo-opencode.name',
     shortKey: 'geo-seo-opencode.short',

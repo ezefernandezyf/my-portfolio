@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { projectRepository } from '../../../../entities/project';
 import { ProjectCard } from '../../../../shared/ui/project-card';
 
-const INITIAL_VISIBLE_PROJECTS = 6;
+const INITIAL_VISIBLE_PROJECTS = 7;
 const LOAD_MORE_STEP = 3;
 
 const normalize = (value: string): string => value.toLowerCase().trim();
@@ -157,7 +157,7 @@ export const ProjectsListPage = (): React.JSX.Element => {
         ) : null}
       </section>
 
-      {/* Expanded content section for SEO — crawler-accessible, above 200 words */}
+      {/* Expanded content section for SEO  -  crawler-accessible, above 200 words */}
       <section className="bg-surface py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <div className="mx-auto max-w-3xl space-y-6">
