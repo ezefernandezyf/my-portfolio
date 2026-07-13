@@ -39,11 +39,11 @@
   },
   "architecture": {
     "heading": "Arquitectura & decisiones",
-    "text": "Nexus Talent sigue Screaming Architecture sobre un monorepo pnpm con 4 paquetes. Las features (analysis, auth, history, landing, settings) son dominios aislados con sus propios hooks, componentes, schemas, tests y API layer. El paquete shared contiene los schemas Zod que son la única fuente de verdad para frontend y backend — si cambia un schema, TypeScript rompe en ambos lados. Es imposible desincronizar.",
+    "text": "Nexus Talent sigue Screaming Architecture sobre un monorepo pnpm con 4 paquetes. Las features (analysis, auth, history, landing, settings) son dominios aislados con sus propios hooks, componentes, schemas, tests y API layer. El paquete shared contiene los schemas Zod que son la única fuente de verdad para frontend y backend : si cambia un schema, TypeScript rompe en ambos lados. Es imposible desincronizar.",
     "list": [
       "Cada feature es autónoma: tiene sus propios hooks, componentes, schemas y API layer. No hay utils/helpers genéricos.",
       "Los schemas Zod en el paquete shared son la única fuente de verdad. Frontend y backend comparten los mismos tipos.",
-      "JWT en cookies httpOnly — el frontend nunca ve el token. Inmune a XSS por diseño.",
+      "JWT en cookies httpOnly : el frontend nunca ve el token. Inmune a XSS por diseño.",
       "La API key de Groq nunca se expone al cliente. El frontend envía solo la JD; el backend arma el prompt, llama a Groq, valida con Zod y devuelve datos limpios.",
       "Spec-Driven Development: cada cambio pasó por 6 fases de planificación (explore → propose → spec → design → tasks → apply → verify), atrapando ~15 edge cases antes de escribir código."
     ]
@@ -80,7 +80,7 @@
     "list": [
       "El prompt engineering requerido para que Llama 3.3 70B devuelva JSON consistente con 6 secciones anidadas. 200 líneas de instrucciones iteradas hasta lograr output estable.",
       "Tailwind v4 con @theme custom: text-white no funciona si no declarás --color-white, las @utility no se pueden anidar en @layer. Cada breaking change se descubre en runtime.",
-      "Tests verdes ≠ funciona en producción: CSS layers, React portals + event bubbling, mocks vs API real — 4 bugs pasaron tests pero fallaron en prod.",
+      "Tests verdes ≠ funciona en producción: CSS layers, React portals + event bubbling, mocks vs API real : 4 bugs pasaron tests pero fallaron en prod.",
       "El plugin de Tailwind en Vitest causaba 91s de collect en CI para 86 archivos de test. Removerlo redujo el tiempo a ~2s."
     ]
   },

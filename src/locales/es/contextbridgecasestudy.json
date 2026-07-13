@@ -21,7 +21,7 @@
   },
   "summary": {
     "heading": "Resumen",
-    "text": "Context Bridge es un bot de Slack que responde preguntas de desarrolladores buscando en 4 fuentes en paralelo — Stack Overflow, npm, GitHub Issues y el historial de Slack — y sintetizando los resultados con Groq (Llama 3.1 8B) mediante un system prompt de 200 líneas con prohibiciones explícitas contra respuestas genéricas."
+    "text": "Context Bridge es un bot de Slack que responde preguntas de desarrolladores buscando en 4 fuentes en paralelo : Stack Overflow, npm, GitHub Issues y el historial de Slack : y sintetizando los resultados con Groq (Llama 3.1 8B) mediante un system prompt de 200 líneas con prohibiciones explícitas contra respuestas genéricas."
   },
   "problem": {
     "heading": "El problema",
@@ -34,15 +34,15 @@
       "Arquitectura MCP Server Pattern con JSON-RPC 2.0: 3 herramientas MCP (Stack Exchange, npm, GitHub) más integración directa con Slack RTS. HTTP en vez de WebSocket por simplicidad.",
       "Síntesis con Groq (Llama 3.1 8B) usando JSON mode y un system prompt de 200 líneas con prohibiciones explícitas contra respuestas genéricas. Zod valida la salida estructurada.",
       "Degradación elegante: si Groq falla, se devuelven resultados crudos con botones \"Ver fuente\" por cada resultado. El usuario siempre recibe una respuesta, nunca un error 500.",
-      "Socket Mode de Slack sin URL pública ni ngrok — ideal para hackathons. Reconexión automática con exponential backoff."
+      "Socket Mode de Slack sin URL pública ni ngrok : ideal para hackathons. Reconexión automática con exponential backoff."
     ]
   },
   "architecture": {
     "heading": "Profundización técnica",
     "text": "Tres decisiones técnicas clave definen la arquitectura de Context Bridge: el patrón MCP, el modelo de resiliencia, y la ingeniería de prompts anti-slop.",
     "list": [
-      "Patrón MCP con JSON-RPC 2.0: tres herramientas independientes (search-docs, get-npm-package, get-github-issue) se comunican vía HTTP JSON-RPC. Se eligió HTTP sobre WebSocket porque es stateless y más simple de implementar — suficiente para una latencia total de ~3s.",
-      "Resiliencia con Promise.allSettled + AbortController: cada fuente tiene un timeout individual de 2.5s. Si Stack Overflow tarda más, no bloquea a npm ni a GitHub. Las fuentes son completamente independientes — una caída no afecta a las demás.",
+      "Patrón MCP con JSON-RPC 2.0: tres herramientas independientes (search-docs, get-npm-package, get-github-issue) se comunican vía HTTP JSON-RPC. Se eligió HTTP sobre WebSocket porque es stateless y más simple de implementar : suficiente para una latencia total de ~3s.",
+      "Resiliencia con Promise.allSettled + AbortController: cada fuente tiene un timeout individual de 2.5s. Si Stack Overflow tarda más, no bloquea a npm ni a GitHub. Las fuentes son completamente independientes : una caída no afecta a las demás.",
       "Anti-slop prompt engineering: un system prompt de 200 líneas con prohibiciones explícitas ('nunca digas \"depende del contexto\"', 'no uses frases de relleno', 'si no sabes, decilo'). JSON mode fuerza estructura y Zod valida que el modelo no se desvíe del esquema esperado."
     ]
   },
@@ -63,7 +63,7 @@
   "performance": {
     "heading": "Performance",
     "list": [
-      "4 fuentes en paralelo con timeout individual de 2.5s — latencia máxima garantizada de ~3s incluso si todas las fuentes fallan.",
+      "4 fuentes en paralelo con timeout individual de 2.5s : latencia máxima garantizada de ~3s incluso si todas las fuentes fallan.",
       "Truncamiento de resultados a 2000 caracteres por fuente antes de enviar a Groq para no exceder el contexto de 8K tokens.",
       "Cache de consultas a Slack history con TTL de 5 minutos para evitar rangos repetitivos en la RTS API."
     ]

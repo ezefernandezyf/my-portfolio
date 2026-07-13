@@ -25,13 +25,13 @@
   },
   "problem": {
     "heading": "The problem",
-    "text": "Developers spend hours manually dissecting each job description — figuring out which skills to highlight, which ATS keywords to include, and how to tailor their profile for every vacancy. The result is generic applications that neither pass automated filters nor stand out to recruiters."
+    "text": "Developers spend hours manually dissecting each job description : figuring out which skills to highlight, which ATS keywords to include, and how to tailor their profile for every vacancy. The result is generic applications that neither pass automated filters nor stand out to recruiters."
   },
   "solution": {
     "heading": "The Solution",
     "list": [
       "Server-side AI pipeline with Groq (Llama 3.3 70B) and 200-line prompt engineering that extracts skills, ATS keywords, and gaps in structured JSON.",
-      "Zod validation at both the LLM input and output boundaries ensures the UI receives typed, predictable data — no hallucinated or malformed responses.",
+      "Zod validation at both the LLM input and output boundaries ensures the UI receives typed, predictable data : no hallucinated or malformed responses.",
       "JWT authentication in httpOnly cookies (XSS-immune), bcrypt hashing, and a complete login, registration, and Google OAuth flow.",
       "Screaming Architecture across a 4-package monorepo (web, server, shared, e2e) with shared Zod schemas that keep frontend and backend types in sync by design.",
       "Editorial design system with 18 component families, Framer Motion spring physics, dark mode, and WCAG AA contrast."
@@ -39,11 +39,11 @@
   },
   "architecture": {
     "heading": "Architecture & decisions",
-    "text": "Nexus Talent follows Screaming Architecture on a pnpm monorepo with 4 packages. Features (analysis, auth, history, landing, settings) are isolated domains with their own hooks, components, schemas, tests, and API layer. The shared package contains the Zod schemas that are the single source of truth for both frontend and backend — if a schema changes, TypeScript breaks on both sides. Desync is impossible by design.",
+    "text": "Nexus Talent follows Screaming Architecture on a pnpm monorepo with 4 packages. Features (analysis, auth, history, landing, settings) are isolated domains with their own hooks, components, schemas, tests, and API layer. The shared package contains the Zod schemas that are the single source of truth for both frontend and backend : if a schema changes, TypeScript breaks on both sides. Desync is impossible by design.",
     "list": [
       "Every feature is self-contained: its own hooks, components, schemas, and API layer. No generic utils/helpers folders.",
       "Zod schemas in the shared package are the single source of truth. Frontend and backend share the exact same types.",
-      "JWT in httpOnly cookies — the frontend never sees the token. XSS-immune by design.",
+      "JWT in httpOnly cookies : the frontend never sees the token. XSS-immune by design.",
       "The Groq API key is never exposed to the client. The frontend sends only the JD; the backend constructs the prompt, calls Groq, validates with Zod, and returns clean data.",
       "Spec-Driven Development: every change went through 6 planning phases (explore → propose → spec → design → tasks → apply → verify), catching ~15 edge cases before writing code."
     ]
@@ -80,7 +80,7 @@
     "list": [
       "Prompt engineering required to get Llama 3.3 70B to return consistent JSON with 6 nested sections. 200 lines of iterated instructions to achieve stable output.",
       "Tailwind v4 with custom @theme: text-white breaks if you don't declare --color-white, @utility can't nest inside @layer. Breaking changes discovered at runtime.",
-      "Green tests don't mean production-ready: CSS layers, React portals + event bubbling, mocks vs real API — 4 bugs passed tests but failed in production.",
+      "Green tests don't mean production-ready: CSS layers, React portals + event bubbling, mocks vs real API : 4 bugs passed tests but failed in production.",
       "The Tailwind plugin in Vitest caused 91s of collect time in CI for 86 test files. Removing it cut the time to ~2s."
     ]
   },

@@ -25,7 +25,7 @@ function toAbsolute(path?: string) {
 }
 
 /**
- * Skip elements that were prerendered — they already have the correct values
+ * Skip elements that were prerendered  -  they already have the correct values
  * and should not be duplicated or overwritten by client-side hydration.
  * `document.title` is still updated via SPA navigation (handled in the effect).
  */
@@ -41,7 +41,7 @@ function setOrCreateMeta(
   const selector = `meta[${attrName}="${attrValue}"]`;
   const existing = document.head.querySelector(selector) as HTMLMetaElement | null;
 
-  // If prerendered, preserve original — don't override
+  // If prerendered, preserve original  -  don't override
   if (isPrerendered(existing)) {
     return null;
   }

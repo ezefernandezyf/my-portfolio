@@ -21,7 +21,7 @@
   },
   "summary": {
     "heading": "Summary",
-    "text": "Context Bridge is a Slack bot that answers developer questions by searching 4 sources in parallel — Stack Overflow, npm, GitHub Issues, and Slack history — and synthesizing results with Groq (Llama 3.1 8B) using a 200-line system prompt with explicit prohibitions against generic responses."
+    "text": "Context Bridge is a Slack bot that answers developer questions by searching 4 sources in parallel : Stack Overflow, npm, GitHub Issues, and Slack history : and synthesizing results with Groq (Llama 3.1 8B) using a 200-line system prompt with explicit prohibitions against generic responses."
   },
   "problem": {
     "heading": "The problem",
@@ -31,18 +31,18 @@
     "heading": "The solution",
     "list": [
       "A Slack bot that queries 4 sources in parallel using Promise.allSettled with a 2.5s timeout per source. If Stack Overflow fails, npm and GitHub keep working independently.",
-      "MCP Server Pattern architecture with JSON-RPC 2.0: 3 MCP tools (Stack Exchange, npm, GitHub) plus direct Slack RTS integration. HTTP over WebSocket for simplicity — stateless and sufficient for ~3s total latency.",
+      "MCP Server Pattern architecture with JSON-RPC 2.0: 3 MCP tools (Stack Exchange, npm, GitHub) plus direct Slack RTS integration. HTTP over WebSocket for simplicity : stateless and sufficient for ~3s total latency.",
       "Synthesis with Groq (Llama 3.1 8B) using JSON mode and a 200-line system prompt with explicit prohibitions against filler responses. Zod validates the structured output.",
       "Graceful degradation: if Groq fails, raw results are returned with \"View source\" buttons per result. The user always gets a response, never a 500 error.",
-      "Slack Socket Mode with no public URL or ngrok required — ideal for hackathons. Automatic reconnection with exponential backoff."
+      "Slack Socket Mode with no public URL or ngrok required : ideal for hackathons. Automatic reconnection with exponential backoff."
     ]
   },
   "architecture": {
     "heading": "Technical deep dive",
     "text": "Three key technical decisions define Context Bridge's architecture: the MCP pattern, the resilience model, and the anti-slop prompt engineering.",
     "list": [
-      "MCP pattern with JSON-RPC 2.0: three independent tools (search-docs, get-npm-package, get-github-issue) communicate over HTTP JSON-RPC. HTTP was chosen over WebSocket because it is stateless and simpler to implement — sufficient for ~3s total latency.",
-      "Resilience with Promise.allSettled + AbortController: each source has an individual 2.5s timeout. If Stack Overflow is slow, it does not block npm or GitHub. Sources are completely independent — one failure does not affect the others.",
+      "MCP pattern with JSON-RPC 2.0: three independent tools (search-docs, get-npm-package, get-github-issue) communicate over HTTP JSON-RPC. HTTP was chosen over WebSocket because it is stateless and simpler to implement : sufficient for ~3s total latency.",
+      "Resilience with Promise.allSettled + AbortController: each source has an individual 2.5s timeout. If Stack Overflow is slow, it does not block npm or GitHub. Sources are completely independent : one failure does not affect the others.",
       "Anti-slop prompt engineering: a 200-line system prompt with explicit prohibitions ('never say \"it depends\"', 'no filler phrases', 'if you don't know, say so'). JSON mode forces structure and Zod validates the model output conforms to the expected schema."
     ]
   },
@@ -63,7 +63,7 @@
   "performance": {
     "heading": "Performance",
     "list": [
-      "4 parallel sources with individual 2.5s timeout — maximum guaranteed latency of ~3s even if all sources fail.",
+      "4 parallel sources with individual 2.5s timeout : maximum guaranteed latency of ~3s even if all sources fail.",
       "Results truncated to 2000 characters per source before sending to Groq to stay within the 8K token context window.",
       "Slack history query cache with 5-minute TTL to avoid repetitive RTS API range scans."
     ]
