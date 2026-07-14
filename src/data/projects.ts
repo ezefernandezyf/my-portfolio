@@ -11,7 +11,7 @@ export const projects = [
       '/projects/echolog/echolog-3.webp',
       '/projects/echolog/echolog-4.webp',
     ],
-    tech: ['React 19', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma', 'Tailwind 4', 'Zod'],
+    tech: ['React 19', 'TypeScript', 'Express', 'Prisma', 'PostgreSQL', 'Supabase', 'Tailwind 4', 'Zod', 'React Query', 'Zustand', 'React Hook Form', 'Phosphor Icons'],
     year: 2026,
     featured: true,
   },

@@ -1,11 +1,11 @@
 ﻿{
   "meta": {
     "title": "EchoLog",
-    "description": "Case study of EchoLog: a multi-tenant customer feedback SaaS built with React 19, Node.js, Express, PostgreSQL. Architecture, multi-tenant isolation, and testing."
+    "description": "Case study of EchoLog: a multi-tenant customer feedback SaaS built with React 19, Express 5, Prisma, PostgreSQL (Supabase). Screaming architecture, 606 tests, 45 PRs over 3 months."
   },
   "header": {
     "title": "EchoLog",
-    "short": "Multi-tenant customer feedback SaaS - boards, upvoting, comments, workspace management. Full-stack TypeScript with React 19, Node.js, Express, PostgreSQL.",
+    "short": "Multi-tenant customer feedback SaaS - boards, upvoting, comments, workspaces, board approval, email invitations. Full-stack TypeScript with React 19, Express 5, Prisma, PostgreSQL (Supabase). ~20,000 lines, pnpm monorepo.",
     "repoAria": "Repository EchoLog",
     "demoAria": "Demo EchoLog",
     "backToProjects": "← Back to Projects"
@@ -26,34 +26,36 @@
   },
   "problem": {
     "heading": "The problem",
-    "text": "Product teams need a centralized place to gather user feedback, prioritize features based on community votes, and communicate status updates - without building it from scratch or paying for expensive tools like Canny. Most alternatives are either overpriced, locked into proprietary ecosystems, or lack essential features like role-based access and multi-workspace isolation."
+    "text": "Product teams need a centralized place to gather user feedback, prioritize features based on community votes, and communicate status updates - without building it from scratch or paying for expensive tools like Canny. Most alternatives are either overpriced, locked into proprietary ecosystems, or lack role-based access and multi-workspace isolation."
   },
   "solution": {
-    "heading": "The Solution",
+    "heading": "The solution",
     "list": [
-      "Built a full-stack monorepo with pnpm workspaces: React 19 frontend, Express API backend, and shared Zod contracts for end-to-end type safety.",
-      "Architected the backend with screaming architecture - business domains (auth, boards, posts, votes, comments, workspaces, invitations, notifications) as top-level folders.",
-      "Implemented JWT authentication in httpOnly cookies with cross-origin support for Vercel + Render deployment, including mobile auth fix via API proxy.",
-      "Designed multi-tenant isolation using composite unique keys (`@@unique([workspaceId, slug])`) and role-based access (OWNER, ADMIN, MEMBER, VIEWER) with membership middleware on every endpoint.",
-      "Delivered comprehensive testing: 75+ tests across Vitest (unit + integration), React Testing Library (component), and Playwright (E2E), plus GitHub Actions CI."
+      "pnpm monorepo with 4 packages (server, web, shared, e2e) and shared Zod contracts as single source of truth: 34 schemas typing both frontend and backend simultaneously via z.infer<>.",
+      "Screaming architecture across 10 business domains: auth, posts, votes, comments, boards, workspaces, notifications, email, infra. Each domain exposes router, controller, service, and Prisma queries.",
+      "Manual JWT (crypto.createHmac + base64url, ~50 lines) stored in httpOnly cookies with sameSite=none. No jsonwebtoken: zero dependencies with recurring CVEs, zero prototype pollution attacks.",
+      "Multi-tenant isolation via composite Prisma keys (@@unique([workspaceId, slug])) instead of global slugs. Membership middleware closure resolves workspace from params, body, or query at any route depth.",
+      "~606 tests across Vitest (unit), React Testing Library (components), and Supertest (integration). CI with GitHub Actions and real PostgreSQL in a service container. No database mocking.",
+      "45 PRs merged over 3 months with stacked feature branches ≤200 lines each. Per-endpoint rate limiting with granular configuration. 12+ documented bugs post-release."
     ]
   },
   "architecture": {
     "heading": "Architecture & decisions",
-    "text": "EchoLog follows screaming architecture on the backend - each business domain is a top-level folder that 'screams' its purpose without revealing the framework. The frontend uses feature-based organization with React Query for server state and Zustand for UI state. Shared Zod contracts ensure type safety across the stack.",
+    "text": "EchoLog follows screaming architecture on the backend - each business domain is a top-level folder that 'screams' its purpose without revealing the framework. Key decisions with explicit tradeoffs:",
     "list": [
-      "Screaming architecture: server/src/auth/, boards/, comments/, posts/, votes/, workspaces/, invitations/, notifications/ - each with controller, service, and router layers.",
-      "Shared Zod contracts in `shared/contracts/` serve as single source of truth for frontend forms AND backend validation - derived DTO types via z.infer.",
-      "Multi-tenant isolation via composite Prisma keys: `@@unique([workspaceId, slug])` ensures slugs are unique per workspace, not globally.",
-      "JWT stored in httpOnly cookies with sameSite=none for cross-origin production (Vercel → Render) - no localStorage, XSS-resistant.",
-      "Feature branch workflow with conventional commits, atomic commits, and PRs - every change documented via Spec-Driven Development."
+      "JWT without jsonwebtoken: crypto.createHmac('sha256', secret) + base64url encoding (~50 lines). HS256 is sufficient for a single auth server. Avoiding jsonwebtoken eliminates its recurring CVEs and 70kB footprint. If we scale to multiple auth servers, we'd migrate to RS256 with a dedicated library.",
+      "Zod as single source of truth: 34 shared schemas between frontend and backend via shared/. DTO types derived with z.infer<>. Zero desync between layers. Tradeoff: Zod 3 has fewer plugins than Joi.",
+      "Membership middleware factory: closure that captures allowed roles and resolves workspace from any URL depth (postId → boardId → workspaceId). Protected routes declared with requireWorkspaceMember(['ADMIN', 'OWNER']). One liner.",
+      "Composite Prisma keys: @@unique([workspaceId, slug]) isolates namespaces per tenant without separate PostgreSQL schemas. Every query includes workspaceId scoping. Zero cross-tenant leakage.",
+      "Stacked feature branches: 5 chained PRs instead of one 1000+ line PR. Each diff ≤ 200 lines. Reviews take minutes, not hours. Conflicts surface early. Post-release merge confirmed this strategy saves days of debugging.",
+      "Strategic rate limiting: per-endpoint limits (auth 20/15min, votes 30/1min, invitations 20/15min, public 30/1min). Configured in the domain router, not globally. Disabled in tests (NODE_ENV=test)."
     ]
   },
   "implementation": {
     "heading": "Featured implementation",
     "hookTitle": "Multi-tenant membership middleware",
     "hookCode": "export function requireWorkspaceMember(role?: WorkspaceRole) {\n  return async (req: AuthRequest, res: Response, next: NextFunction) => {\n    const workspaceId = extractWorkspaceId(req);\n    const membership = await prisma.workspaceMember.findUnique({\n      where: { userId_workspaceId: { userId: req.userId!, workspaceId } },\n    });\n    if (!membership) {\n      return res.status(403).json({ error: 'Not a member of this workspace' });\n    }\n    if (role && membership.role !== role && membership.role !== 'OWNER') {\n      return res.status(403).json({ error: 'Insufficient permissions' });\n    }\n    req.membership = membership;\n    next();\n  };\n}",
-    "hookDescription": "A reusable Express middleware that extracts the workspace ID from route params, body, or query, looks up the user's workspace membership in a single Prisma query, and optionally enforces a minimum role. This middleware protects every workspace-scoped endpoint in the application - boards, posts, votes, comments, invitations, and settings - ensuring consistent authorization across the entire backend."
+    "hookDescription": "Express middleware that extracts workspace ID from params, body, or query, looks up the user's membership in a single Prisma query, and optionally enforces a minimum role. Protects every workspace-scoped endpoint: boards, posts, votes, comments, invitations, and settings. Consistent authorization across the entire backend with one function."
   },
   "accessibility": {
     "heading": "Accessibility",
@@ -68,31 +70,32 @@
     ]
   },
   "performance": {
-    "heading": "Performance & results",
+    "heading": "Metrics & results",
     "list": [
-      "List virtualization with @tanstack/react-virtual gated on mobile OR >20 items - large boards scroll at 60fps even with hundreds of posts.",
-      "React Query optimistic updates on votes - instant UI feedback with automatic rollback on 409 conflicts.",
-      "Debounced search (300ms) prevents excessive API calls during fast typing.",
-      "Cursor-based pagination with 'Load more' pattern instead of offset/limit - consistent performance as the dataset grows.",
-      "Conditional rendering patterns: skeletons during loading, empty states with CTAs, and error boundaries with retry."
+      "~20,000 lines of code, 216 files, ~60 React components, 48 API endpoints, 11 Prisma models, 34 Zod schemas.",
+      "~606 tests (64 files), ~90 commits, 45 PRs merged over 3 months of development, 18 SDD phases completed.",
+      "React Query optimistic updates on votes: instantaneous UI feedback with automatic rollback on 409 conflicts.",
+      "List virtualization with @tanstack/react-virtual gated on mobile OR >20 items: large boards scroll at 60fps even with hundreds of posts.",
+      "Debounced search (300ms) prevents excessive API calls during fast typing. Cursor-based pagination with 'Load more' pattern.",
+      "Granular per-endpoint rate limiting. OKLCH design tokens via PostCSS on the frontend. Cache headers on API responses."
     ]
   },
   "challenges": {
-    "heading": "Challenges & learnings",
+    "heading": "Real bugs & debugging",
     "list": [
-      "Cross-origin authentication on mobile: Vercel (frontend) and Render (backend) are different origins. httpOnly cookies with sameSite=none fixed desktop but iOS Safari blocks third-party cookies. Solved with a Vite/Vercel API proxy rewrite.",
-      "Multi-tenant isolation without leaks: every Prisma query had to include workspaceId scoping. The membership middleware became the single source of truth for authorization, catching several potential data leaks during development.",
-      "Keeping Zod contracts truly shared between frontend and backend required careful dependency management in the monorepo - shared/ cannot import server or web code.",
-      "Testing real PostgreSQL in CI: switched from SQLite to a PostgreSQL service container in GitHub Actions for production parity, catching several SQL-dialect-specific bugs."
+      "CI failures from 3 root causes: Prisma connection pool not disconnecting between suites, rate limiter state leaking across tests, and PgBouncer prepared statement errors. Each required a different fix strategy.",
+      "Notification bell dropdown rendering outside viewport on mobile: bottom-full on a sticky header positions the dropdown below the viewport. Fix: switch to top-full when the header is sticky.",
+      "Silent 404: resendVerification service existed but the route and controller were never wired. The frontend called an endpoint that returned an unhelpful 404. Missing wire-up in the auth router.",
+      "Post-release merge conflict: a complex merge dropped files that existed on both branches. CI didn't catch the loss because existing tests didn't cover those files. Lesson: tests must run on merge results, not just individual branches."
     ]
   },
   "improvements": {
     "heading": "What could be improved",
     "list": [
-      "Add real-time updates via WebSockets (Socket.IO or Server-Sent Events) for live vote counts and notifications.",
-      "Implement email service (Resend) for invitation emails, password reset, and notification digests.",
-      "Add public workspace discovery feed with popularity ranking and 'Continue without account' option.",
-      "Production hardening: rate limiting, structured logging (pino), and expanded test coverage for edge cases."
+      "WebSockets (Socket.IO or SSE) for real-time vote count and notification updates without polling.",
+      "Public workspace discovery feed with popularity ranking and a read-only lobby with no sign-up required.",
+      "Cursor-based pagination for notifications: currently loads all notifications on dropdown open. With 50+ notifications, rendering degrades.",
+      "Expand E2E coverage with Playwright: critical flows for multi-tenant auth, board approval, and invitations are the priority candidates."
     ]
   },
   "deepDive": {
