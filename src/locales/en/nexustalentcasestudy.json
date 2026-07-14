@@ -1,11 +1,11 @@
 {
   "meta": {
     "title": "Nexus Talent",
-    "description": "Case study of Nexus Talent: AI-driven job description analysis with prompt engineering, pnpm monorepo, Zod shared contracts, Screaming Architecture and JWT httpOnly auth."
+    "description": "Case study of Nexus Talent: AI-driven job analysis and CV generation with Groq, pnpm monorepo, custom JWT (no jsonwebtoken), Screaming Architecture on Express 5, and 470+ tests."
   },
   "header": {
     "title": "Nexus Talent",
-    "short": "SaaS platform for job application analysis: structured AI with Groq (Llama 3.3 70B), 200-line prompt engineering, pnpm monorepo with 4 packages, and Screaming Architecture.",
+    "short": "SaaS platform for AI-powered job application analysis and CV generation: Groq (Llama 3.3 70B), structured prompt engineering, CV generation with @react-pdf/renderer, pnpm monorepo with 4 packages, zero-dependency custom JWT and Screaming Architecture on Express 5.",
     "repoAria": "Nexus Talent Repository",
     "demoAria": "Nexus Talent Demo",
     "backToProjects": "← Back to Projects"
@@ -21,38 +21,39 @@
   },
   "summary": {
     "heading": "Summary",
-    "text": "Nexus Talent is a SaaS platform for intelligent job application analysis. Users paste a job description, the backend sends it to Groq (Llama 3.3 70B) with a ~200-line engineered system prompt, and the response is validated with Zod before hitting the UI. The output: a weighted skill matrix, ATS keywords, gap analysis, outreach messages, and actionable tips. All built on a pnpm monorepo with 4 packages (web, server, shared, e2e), shared Zod schemas between frontend and backend, 341 frontend tests, 45 backend tests, JWT in httpOnly cookies (XSS-immune), and an 18-component design system with Framer Motion."
+    "text": "Nexus Talent is a SaaS platform for intelligent job application analysis with AI-powered CV generation. Users paste a job description, the backend sends it to Groq (Llama 3.3 70B) with a ~50-line engineered system prompt, and the response is validated with Zod before hitting the UI. The output: a weighted skill matrix, ATS keywords, gap analysis, and personalized outreach. The CV Generator module lets users build resumes with drag-and-drop section ordering (@dnd-kit), tone selection, editorial typography preview, and export to .md/.html/.pdf via @react-pdf/renderer. All built on a pnpm monorepo with 4 packages (web, server, shared, e2e), shared Zod schemas, custom JWT with node:crypto (no jsonwebtoken), 8 security layers, and 470+ tests."
   },
   "problem": {
     "heading": "The problem",
-    "text": "Developers spend hours manually dissecting each job description : figuring out which skills to highlight, which ATS keywords to include, and how to tailor their profile for every vacancy. The result is generic applications that neither pass automated filters nor stand out to recruiters."
+    "text": "Developers spend hours manually dissecting each job description: figuring out which skills to highlight, which ATS keywords to include, and how to tailor their profile for every vacancy. The result is generic applications that neither pass automated filters nor stand out to recruiters. On top of that, creating a tailored CV for each application requires designing layouts, organizing sections, and adjusting tone manually."
   },
   "solution": {
     "heading": "The Solution",
     "list": [
-      "Server-side AI pipeline with Groq (Llama 3.3 70B) and 200-line prompt engineering that extracts skills, ATS keywords, and gaps in structured JSON.",
-      "Zod validation at both the LLM input and output boundaries ensures the UI receives typed, predictable data : no hallucinated or malformed responses.",
-      "JWT authentication in httpOnly cookies (XSS-immune), bcrypt hashing, and a complete login, registration, and Google OAuth flow.",
-      "Screaming Architecture across a 4-package monorepo (web, server, shared, e2e) with shared Zod schemas that keep frontend and backend types in sync by design.",
-      "Editorial design system with 18 component families, Framer Motion spring physics, dark mode, and WCAG AA contrast."
+      "Server-side AI pipeline with Groq (Llama 3.3 70B) and ~50-line prompt engineering that extracts skills, ATS keywords, and gaps in structured JSON with 5 sections.",
+      "Zod validation at both the LLM input and output boundaries ensures the UI receives typed, predictable data: no hallucinated or malformed responses.",
+      "Custom JWT with node:crypto (createHmac + timingSafeEqual, no jsonwebtoken). Google OAuth with native fetch() (no googleapis). 8 security layers including service-level ownership, per-tier rate limiting, and Helmet CSP.",
+      "CV Generator: WorkExperience + Education models with CRUD, Groq-based generation with 30s timeout, drag-and-drop section ordering (@dnd-kit), tone selector, editorial typography preview, and export to .md/.html/.pdf via @react-pdf/renderer. 212 tests for this module alone.",
+      "Screaming Architecture on Express 5 across a 4-package monorepo (web, server, shared, e2e). Zod in shared/ as the single source of truth between frontend and backend."
     ]
   },
   "architecture": {
     "heading": "Architecture & decisions",
-    "text": "Nexus Talent follows Screaming Architecture on a pnpm monorepo with 4 packages. Features (analysis, auth, history, landing, settings) are isolated domains with their own hooks, components, schemas, tests, and API layer. The shared package contains the Zod schemas that are the single source of truth for both frontend and backend : if a schema changes, TypeScript breaks on both sides. Desync is impossible by design.",
+    "text": "Nexus Talent follows Screaming Architecture on a pnpm monorepo with 4 packages. Features (analysis, auth, cv, history, profile, settings) are isolated domains with their own router, controller, service, and tests. The shared package contains the Zod schemas that are the single source of truth for both frontend and backend: if a schema changes, TypeScript breaks on both sides. 8 security layers: httpOnly cookie, Zod validation, requireAuth middleware, service-level ownership (findFirst with userId), per-tier rate limiting (60/30/10 per minute), Helmet CSP, Groq API key server-only, and generic 502 for Groq errors to prevent info leaks.",
     "list": [
-      "Every feature is self-contained: its own hooks, components, schemas, and API layer. No generic utils/helpers folders.",
-      "Zod schemas in the shared package are the single source of truth. Frontend and backend share the exact same types.",
-      "JWT in httpOnly cookies : the frontend never sees the token. XSS-immune by design.",
-      "The Groq API key is never exposed to the client. The frontend sends only the JD; the backend constructs the prompt, calls Groq, validates with Zod, and returns clean data.",
-      "Spec-Driven Development: every change went through 6 planning phases (explore → propose → spec → design → tasks → apply → verify), catching ~15 edge cases before writing code."
+      "Every feature is self-contained: router, controller, service, and tests. No generic controllers/ or services/ folders.",
+      "Zod in shared/ as the single source of truth. Server validates requests with parse(), frontend infers types with z.infer<>. Schema changes break TypeScript on both sides.",
+      "Custom JWT with zero dependencies: sign() and verify() with createHmac('sha256') + timingSafeEqual from node:crypto. Google OAuth with native fetch() (~100 lines, no googleapis). 0 external auth dependencies.",
+      "The Groq API key is never exposed to the client. The frontend sends only the JD; the backend constructs the prompt, calls Groq with AbortController (90s timeout), validates with Zod, and returns clean data.",
+      "Service-level ownership: every service method checks findFirst({ where: { id, userId } }) before modifying. Ownership is enforced per operation, not just at the middleware level.",
+      "502 Bad Gateway for Groq errors: semantically distinct from 500 (server error). The upstream failed, not our code."
     ]
   },
   "implementation": {
     "heading": "Featured implementation",
-    "hookTitle": "AI pipeline with runtime validation",
+    "hookTitle": "AI pipeline with runtime validation at both boundaries",
     "hookCode": "export async function analyzeJobDescription(input: string) {\n  const parsedInput = jobDescriptionSchema.parse({ input });\n\n  const aiResponse = await llmClient.generate(parsedInput);\n  const normalizedResponse = skillMatrixSchema.safeParse(aiResponse);\n\n  if (!normalizedResponse.success) {\n    return { status: 'error', message: 'Invalid AI response' };\n  }\n\n  return {\n    status: 'success',\n    data: mapSkillMatrix(normalizedResponse.data),\n  };\n}",
-    "hookDescription": "The AI flow is guarded by Zod validation at both input and output boundaries. Input passes through jobDescriptionSchema before reaching the LLM, and the response is validated with skillMatrixSchema.safeParse(). If the AI hallucinates or returns malformed JSON, the error is captured as a manageable application state instead of crashing the UI."
+    "hookDescription": "The AI flow is guarded by Zod validation at both input and output boundaries. Input passes through jobDescriptionSchema before reaching the LLM, and the response is validated with skillMatrixSchema.safeParse(). If the AI hallucinates or returns malformed JSON, the error is captured as a manageable application state instead of crashing the UI. The same pattern powers the CV Generator with a 30s AbortController timeout."
   },
   "accessibility": {
     "heading": "Accessibility",
@@ -62,34 +63,34 @@
       "WCAG AA contrast verified across the warm off-white + espresso + terracotta palette in both modes.",
       "Keyboard navigation preserved across the analysis flow, forms, and modals.",
       "Async states with semantic loading, success, and error feedback through the toast system.",
-      "Predictable focus order during multi-step interactions (analysis, outreach editing)."
+      "Predictable focus order during multi-step interactions (analysis, CV editing, outreach)."
     ]
   },
   "performance": {
     "heading": "Performance & results",
     "list": [
-      "Main bundle reduced from 596 kB to 414 kB (-30%) with lazy loading and chunk splitting.",
-      "CSS bundle at 79 kB (23 kB gzip).",
-      "framer-motion and phosphor-icons in separate chunks for on-demand loading.",
-      "1-year cache headers for static assets. font-display: swap on all typefaces.",
-      "SVG favicon at ~1 kB replacing a 668 kB icon."
+      "~22,000 lines of frontend code, ~2,450 LOC server. 272 commits over ~3 months of development.",
+      "121 test files with ~470+ total tests (123 server, ~336 web, 12 E2E with Playwright).",
+      "Bundle at ~1.1MB with code splitting by feature. v8 coverage at 90% threshold for analysis features.",
+      "6 Prisma models, 26 API endpoints, 21 Zod schemas, 18 inferred types.",
+      "CI on GitHub Actions with 2 parallel jobs: web (~2 min), server (~45 s). Vitest with forbidOnly in CI."
     ]
   },
   "challenges": {
     "heading": "Challenges & learnings",
     "list": [
-      "Prompt engineering required to get Llama 3.3 70B to return consistent JSON with 6 nested sections. 200 lines of iterated instructions to achieve stable output.",
-      "Tailwind v4 with custom @theme: text-white breaks if you don't declare --color-white, @utility can't nest inside @layer. Breaking changes discovered at runtime.",
-      "Green tests don't mean production-ready: CSS layers, React portals + event bubbling, mocks vs real API : 4 bugs passed tests but failed in production.",
-      "The Tailwind plugin in Vitest caused 91s of collect time in CI for 86 test files. Removing it cut the time to ~2s."
+      "Express 5 changed req.params.id to string | string[] instead of string. The non-null assertion (!) only removes undefined, not string[]. Fix: req.params.id as string.",
+      "Early form auto-validation: a useEffect with shouldValidate: true triggered Zod on an empty form, showing 'String must contain at least 1 character(s)'. 'String' is an implementation leak. Fix: shouldValidate: false + custom error messages.",
+      "fetchGroq() duplicated in analysis.service.ts and cv.service.ts. Conscious decision to not touch analysis.service.ts in the CV PR. Documented technical debt, pending refactor to infra/groq.ts.",
+      "Vitest without forbidOnly in CI: test.only passed silently. Added forbidOnly: !!process.env.CI in both server and web configs."
     ]
   },
   "improvements": {
     "heading": "What could be improved",
     "list": [
-      "Add personalized CV generation from the extracted skill matrix, with multiple templates.",
+      "Refactor duplicated fetchGroq() into a shared infra/groq.ts module.",
       "Benchmark system: compare a JD analysis against the user's profile and suggest courses or projects to close gaps.",
-      "Implement web scraping to automatically fetch the JD from a vacancy URL."
+      "Automatic refresh tokens for Google OAuth (currently the token expires in 1 hour)."
     ]
   },
   "deepDive": {
