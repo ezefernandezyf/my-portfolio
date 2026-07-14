@@ -1,11 +1,11 @@
 ﻿{
   "meta": {
     "title": "EchoLog",
-    "description": "Caso de estudio de EchoLog: SaaS multi-tenant de feedback para productos con React 19, Node.js, Express, PostgreSQL. Arquitectura, aislamiento multi-tenant y testing."
+    "description": "Caso de estudio de EchoLog: SaaS multi-tenant de feedback para productos con React 19, Express 5, Prisma, PostgreSQL (Supabase). Screaming architecture, 606 tests, 45 PRs en 3 meses."
   },
   "header": {
     "title": "EchoLog",
-    "short": "SaaS multi-tenant de feedback para productos - boards, votos, comentarios, gestión de workspaces. Full-stack TypeScript con React 19, Node.js, Express, PostgreSQL.",
+    "short": "SaaS multi-tenant de feedback para productos - boards, votos, comentarios, workspaces, aprobación de boards, invitaciones por email. Full-stack TypeScript con React 19, Express 5, Prisma, PostgreSQL (Supabase). ~20,000 líneas, monorepo pnpm.",
     "repoAria": "Repositorio EchoLog",
     "demoAria": "Demo EchoLog",
     "backToProjects": "← Volver a Proyectos"
@@ -26,73 +26,76 @@
   },
   "problem": {
     "heading": "El problema",
-    "text": "Los equipos de producto necesitan un lugar centralizado para recolectar feedback de usuarios, priorizar funcionalidades basadas en votos de la comunidad y comunicar actualizaciones de estado - sin construirlo desde cero ni pagar por herramientas costosas como Canny. La mayoría de las alternativas son sobrepreciadas, están atadas a ecosistemas propietarios, o carecen de funcionalidades esenciales como acceso basado en roles y aislamiento multi-workspace."
+    "text": "Los equipos de producto necesitan un lugar centralizado para recolectar feedback de usuarios, priorizar funcionalidades basadas en votos de la comunidad y comunicar actualizaciones de estado - sin construirlo desde cero ni pagar por herramientas costosas como Canny. La mayoría de las alternativas son sobrepreciadas, están atadas a ecosistemas propietarios, o carecen de acceso basado en roles y aislamiento multi-workspace."
   },
   "solution": {
     "heading": "La solución",
     "list": [
-      "Se construyó un monorepo full-stack con pnpm workspaces: frontend React 19, API Express, y contratos Zod compartidos para type safety de punta a punta.",
-      "Se arquitecturó el backend con screaming architecture - dominios de negocio (auth, boards, posts, votes, comments, workspaces, invitations, notifications) como carpetas de primer nivel.",
-      "Se implementó autenticación JWT en cookies httpOnly con soporte cross-origin para deploy Vercel + Render, incluyendo fix de auth móvil mediante proxy API.",
-      "Se diseñó aislamiento multi-tenant usando claves compuestas únicas (`@@unique([workspaceId, slug])`) y acceso basado en roles (OWNER, ADMIN, MEMBER, VIEWER) con middleware de membresía en cada endpoint.",
-      "Se entregó testing comprehensivo: 75+ tests entre Vitest (unit + integración), React Testing Library (componentes), y Playwright (E2E), más CI con GitHub Actions."
+      "Monorepo pnpm con 4 paquetes (server, web, shared, e2e) y contratos Zod compartidos como única fuente de verdad: 34 schemas que tipan frontend y backend simultáneamente via z.infer<>.",
+      "Screaming architecture en el backend con 10 dominios de negocio: auth, posts, votes, comments, boards, workspaces, notifications, email, infra. Cada dominio expone router, controller, service y consultas Prisma.",
+      "JWT manual (crypto.createHmac + base64url, ~50 líneas) en cookies httpOnly con sameSite=none. Sin jsonwebtoken: 0 dependencias con CVEs recurrentes, 0 ataques de prototype pollution.",
+      "Aislamiento multi-tenant con claves compuestas de Prisma (@@unique([workspaceId, slug])) en vez de slugs globales. Middleware de membresía por closure que resuelve el workspace desde params, body o query en cualquier nivel de ruta.",
+      "~606 tests entre Vitest (unit), React Testing Library (componentes) y Supertest (integración). CI con GitHub Actions y PostgreSQL real en service container. Ningún mock de base de datos.",
+      "45 PRs mergeados en 3 meses con feature branches encadenadas de ≤200 líneas. Rate limiting por endpoint con configuración granular. 12+ bugs documentados post-release."
     ]
   },
   "architecture": {
     "heading": "Arquitectura & decisiones",
-    "text": "EchoLog sigue screaming architecture en el backend - cada dominio de negocio es una carpeta de primer nivel que 'grita' su propósito sin revelar el framework. El frontend usa organización por features con React Query para estado del servidor y Zustand para estado de UI. Los contratos Zod compartidos aseguran type safety en todo el stack.",
+    "text": "EchoLog sigue screaming architecture en el backend - cada dominio de negocio es una carpeta de primer nivel que 'grita' su propósito sin revelar el framework. Decisiones clave con tradeoffs explícitos:",
     "list": [
-      "Screaming architecture: server/src/auth/, boards/, comments/, posts/, votes/, workspaces/, invitations/, notifications/ - cada uno con capas de controller, service y router.",
-      "Contratos Zod compartidos en `shared/contracts/` como única fuente de verdad para formularios frontend Y validación backend - tipos DTO derivados via z.infer.",
-      "Aislamiento multi-tenant mediante claves compuestas de Prisma: `@@unique([workspaceId, slug])` asegura slugs únicos por workspace, no globalmente.",
-      "JWT almacenado en cookies httpOnly con sameSite=none para producción cross-origin (Vercel → Render) - sin localStorage, resistente a XSS.",
-      "Flujo de trabajo con feature branches, conventional commits, commits atómicos y PRs - cada cambio documentado via Spec-Driven Development."
+      "JWT sin jsonwebtoken: crypto.createHmac('sha256', secret) + encoding base64url (~50 líneas). HS256 es suficiente para un solo auth server. Evitamos jsonwebtoken por sus CVEs recurrentes y 70kB de peso. Si escaláramos a múltiples servidores de auth, migraríamos a RS256 con una lib dedicada.",
+      "Zod como fuente única de verdad: 34 schemas compartidos entre frontend y backend desde shared/. Los tipos DTO se derivan con z.infer<>. Zero desincronización entre capas. Tradeoff: Zod 3 tiene menos plugins que Joi.",
+      "Middleware factory de membresía: closure que captura los roles permitidos y resuelve el workspace desde cualquier nivel de URL (postId → boardId → workspaceId). Cada ruta protegida se declara con requireWorkspaceMember(['ADMIN', 'OWNER']). Una línea.",
+      "Claves compuestas de Prisma: @@unique([workspaceId, slug]) aísla namespaces por tenant sin schemas separados de PostgreSQL. Todas las consultas incluyen scoping a workspaceId. Sin filtraciones entre tenants.",
+      "Feature branch chain: 5 PRs encadenados en vez de uno de 1000+ líneas. Cada diff ≤ 200 líneas. Las revisiones duran minutos, no horas. Los conflictos se detectan temprano. El merge post-release confirmó que esta estrategia salva días de debugging.",
+      "Rate limiting estratégico: límites por endpoint (auth 20/15min, votos 30/1min, invitaciones 20/15min, público 30/1min). Configuración en el router del dominio, no global. Deshabilitado en tests (NODE_ENV=test)."
     ]
   },
   "implementation": {
     "heading": "Implementación destacada",
     "hookTitle": "Middleware de membresía multi-tenant",
     "hookCode": "export function requireWorkspaceMember(role?: WorkspaceRole) {\n  return async (req: AuthRequest, res: Response, next: NextFunction) => {\n    const workspaceId = extractWorkspaceId(req);\n    const membership = await prisma.workspaceMember.findUnique({\n      where: { userId_workspaceId: { userId: req.userId!, workspaceId } },\n    });\n    if (!membership) {\n      return res.status(403).json({ error: 'No eres miembro de este workspace' });\n    }\n    if (role && membership.role !== role && membership.role !== 'OWNER') {\n      return res.status(403).json({ error: 'Permisos insuficientes' });\n    }\n    req.membership = membership;\n    next();\n  };\n}",
-    "hookDescription": "Un middleware Express reutilizable que extrae el ID del workspace de params, body o query, busca la membresía del usuario en una sola consulta Prisma, y opcionalmente exige un rol mínimo. Este middleware protege cada endpoint scoped a workspace en la aplicación - boards, posts, votes, comments, invitations, y settings - asegurando autorización consistente en todo el backend."
+    "hookDescription": "Middleware Express que extrae el workspace ID de params, body o query, busca la membresía del usuario en una consulta Prisma, y opcionalmente exige un rol mínimo. Protege cada endpoint scoped a workspace: boards, posts, votes, comments, invitations y settings. Autorización consistente en todo el backend con una sola función."
   },
   "accessibility": {
     "heading": "Accesibilidad",
     "lead": "EchoLog fue auditado sistemáticamente (P0→P3) para cumplimiento WCAG 2.1 AA en todas las interfaces.",
     "list": [
       "Skip link, landmarks semánticos y jerarquía de encabezados correcta en toda la aplicación.",
-      "Errores de formulario anunciados via regiones aria-live, labels con htmlFor, y aria-describedby para texto de ayuda.",
-      "Navegación por teclado preservada en todos los componentes interactivos: boards, posts, votes, comments, y modales.",
+      "Errores de formulario anunciados via regiones aria-live, labels con htmlFor y aria-describedby para texto de ayuda.",
+      "Navegación por teclado preservada en todos los componentes interactivos: boards, posts, votes, comments y modales.",
       "Títulos de página dinámicos actualizados al cambiar de ruta para contexto de lectores de pantalla.",
-      "Manejo de foco en diálogos (trap + restore), sidebar móvil (auto-focus + Escape), y elementos interactivos.",
-      "prefers-reduced-motion respetado - todas las animaciones CSS respetan la configuración del sistema."
+      "Manejo de foco en diálogos (trap + restore), sidebar móvil (auto-focus + Escape) y elementos interactivos.",
+      "prefers-reduced-motion respetado: todas las animaciones CSS respetan la configuración del sistema."
     ]
   },
   "performance": {
-    "heading": "Performance & resultados",
+    "heading": "Métricas & resultados",
     "list": [
-      "Virtualización de listas con @tanstack/react-virtual activada en móvil O >20 items - boards grandes scrolleando a 60fps incluso con cientos de posts.",
-      "Actualizaciones optimistas con React Query en votos - feedback instantáneo con rollback automático en conflictos 409.",
-      "Búsqueda con debounce (300ms) evita llamadas API excesivas durante escritura rápida.",
-      "Paginación basada en cursores con patrón 'Cargar más' en lugar de offset/limit - rendimiento consistente a medida que crece el dataset.",
-      "Patrones de renderizado condicional: skeletons durante carga, estados vacíos con CTAs, y error boundaries con reintento."
+      "~20,000 líneas de código, 216 archivos, ~60 componentes React, 48 endpoints API, 11 modelos Prisma, 34 schemas Zod.",
+      "~606 tests (64 archivos), ~90 commits, 45 PRs mergeados en 3 meses de desarrollo, 18 fases SDD completadas.",
+      "Votos con actualizaciones optimistas via React Query: feedback instantáneo con rollback automático en conflictos 409.",
+      "Virtualización de listas con @tanstack/react-virtual activada en móvil O >20 items: boards grandes scrolleando a 60fps.",
+      "Búsqueda con debounce de 300ms evita llamadas API excesivas durante escritura rápida. Paginación por cursores con 'Cargar más'.",
+      "Rate limiting granular por endpoint. PostCSS con tokens OKLCH en el frontend. Cache headers en respuestas de API."
     ]
   },
   "challenges": {
-    "heading": "Desafíos & aprendizajes",
+    "heading": "Bugs reales & debugging",
     "list": [
-      "Autenticación cross-origin en móvil: Vercel (frontend) y Render (backend) son orígenes distintos. Cookies httpOnly con sameSite=none funcionaron en desktop pero iOS Safari bloquea cookies de terceros. Solucionado con un rewrite proxy en Vite/Vercel.",
-      "Aislamiento multi-tenant sin filtraciones: cada consulta Prisma debía incluir scope de workspaceId. El middleware de membresía se convirtió en la fuente única de verdad para autorización, detectando varias filtraciones potenciales durante el desarrollo.",
-      "Mantener contratos Zod verdaderamente compartidos entre frontend y backend requirió manejo cuidadoso de dependencias en el monorepo - shared/ no puede importar código de server o web.",
-      "Testing con PostgreSQL real en CI: se migró de SQLite a un service container de PostgreSQL en GitHub Actions para paridad con producción, detectando varios bugs específicos de dialecto SQL."
+      "CI fallando por 3 root causes distintas: Prisma connection pool sin desconectar entre suites, estado del rate limiter filtrándose entre tests, y errores de prepared statements de PgBouncer. Cada una requirió una estrategia de fix diferente.",
+      "Notificación de invitación (campana) renderizando fuera del viewport en mobile: bottom-full en un header sticky posiciona el dropdown debajo del viewport. Fix: cambiar a top-full cuando el header es sticky.",
+      "Servicio resendVerification implementado pero sin ruta ni controller: el service existía, el frontend llamaba a un endpoint que devolvía 404 silencioso. Faltó wirearlo en el router de auth.",
+      "Merge conflict post-release: un merge complejo perdió archivos que existían en ambas ramas. El CI no detectó la pérdida porque los tests existentes no cubrían esos archivos. Lección: los tests deben correr sobre el resultado del merge, no solo en cada rama."
     ]
   },
   "improvements": {
     "heading": "Qué se podría mejorar",
     "list": [
-      "Agregar actualizaciones en tiempo real via WebSockets (Socket.IO o SSE) para votos y notificaciones en vivo.",
-      "Implementar servicio de email (Resend) para emails de invitación, recuperación de contraseña y resúmenes de notificaciones.",
-      "Agregar feed de workspaces públicos con ranking de popularidad y opción 'Continuar sin cuenta'.",
-      "Hardening de producción: rate limiting, logging estructurado (pino), y expansión de cobertura de tests para casos borde."
+      "WebSockets (Socket.IO o SSE) para actualizaciones en tiempo real en conteo de votos y notificaciones sin polling.",
+      "Feed de workspaces públicos con ranking de popularidad y página de lobby con acceso de solo lectura sin cuenta.",
+      "Paginación con cursores en notificaciones: actualmente se cargan todas al abrir el dropdown. Con +50 notificaciones el render se degrada.",
+      "Expandir cobertura E2E con Playwright: los flujos críticos de auth multi-tenant, aprobación de boards e invitaciones son los candidatos prioritarios."
     ]
   },
   "deepDive": {

@@ -34,11 +34,10 @@ type StackItem = {
 
 const stackByProject: Record<string, StackItem[]> = {
   echolog: [
-    { titleKey: 'stack.sections.frontend', defaultTitle: 'Frontend', items: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS 4', 'React Router 7'] },
-    { titleKey: 'stack.sections.backend', defaultTitle: 'Backend & API', items: ['Node.js', 'Express 5', 'REST API', 'JWT (httpOnly cookies)'] },
-    { titleKey: 'stack.sections.state', defaultTitle: 'State & Validation', items: ['React Query', 'Zustand', 'Zod', 'React Hook Form'] },
-    { titleKey: 'stack.sections.data', defaultTitle: 'Database & ORM', items: ['PostgreSQL', 'Prisma ORM', 'Composite keys', 'SQLite (dev)'] },
-    { titleKey: 'stack.sections.testing', defaultTitle: 'Testing & Infra', items: ['Vitest', 'Testing Library', 'Playwright', 'Supertest', 'GitHub Actions CI'] },
+    { titleKey: 'stack.sections.frontend', defaultTitle: 'Frontend', items: ['React 19', 'TypeScript', 'Tailwind CSS 4', 'React Query', 'Zustand', 'React Hook Form', 'Phosphor Icons'] },
+    { titleKey: 'stack.sections.state', defaultTitle: 'State & Validation', items: ['Zod (shared schemas)', 'React Query', 'Zustand'] },
+    { titleKey: 'stack.sections.backend', defaultTitle: 'Backend & Auth', items: ['Express 5', 'Prisma', 'PostgreSQL (Supabase)', 'JWT httpOnly', 'bcryptjs'] },
+    { titleKey: 'stack.sections.testing', defaultTitle: 'Testing & Infra', items: ['Vitest', 'React Testing Library', 'pnpm monorepo', 'GitHub Actions', 'Render', 'Vercel'] },
   ],
   'movie-dashboard': [
     { titleKey: 'stack.sections.frontend', defaultTitle: 'Frontend', items: ['React', 'TypeScript', 'Vite'] },
