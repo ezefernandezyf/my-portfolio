@@ -6,7 +6,7 @@
   "hero": {
     "label": "Desarrollador Full Stack",
     "name": "Ezequiel Fernández",
-    "summary": "Full Stack Developer especializado en arquitecturas accesibles, APIs REST e interfaces de alto rendimiento.",
+    "summary": "Full Stack Developer. Construyo productos digitales completos, desde la base de datos hasta la interfaz.",
     "cta": {
       "about": "Acerca de mí",
       "projects": "Proyectos",
@@ -18,7 +18,7 @@
   "recentWorkCounter": "Proyectos seleccionados",
   "viewAllProjects": "Ver todos los proyectos",
   "contactTitle": "¿Te interesa mi perfil?",
-  "contactText": "Estoy abierto a nuevos proyectos y colaboraciones en ingeniería de software y desarrollo frontend.",
+  "contactText": "Estoy abierto a nuevos proyectos y oportunidades laborales.",
   "contactCta": "Contactar",
   "currently": {
     "title": "En qué estoy trabajando ahora",
