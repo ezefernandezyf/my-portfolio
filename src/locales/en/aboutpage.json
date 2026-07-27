@@ -12,7 +12,7 @@
     "contact": "Contact"
   },
   "h1": "About me",
-  "summary": "I'm 22, based in Argentina, and I build digital products that scale. I work with TypeScript, React, Node.js, Express and PostgreSQL, the full stack.\n\nMy approach combines clean architecture, testing and user experience. I value readable code, solid practices and a product mindset.\n\nI'm currently exploring distributed systems, AI Agents, and backend patterns. I also build open source tools for the developer community.",
+  "summary": "I'm 22, based in Argentina, and I build digital products that scale. I work with TypeScript, React, Node.js, Express and PostgreSQL, the full stack.\n\nMy approach combines clean architecture, testing and user experience. I value readable code, solid practices and a product mindset.",
   "sections": {
     "stack": "Technical Stack",
     "softSkills": "Soft Skills",

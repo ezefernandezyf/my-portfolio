@@ -12,7 +12,7 @@
     "contact": "Contactar"
   },
   "h1": "Acerca de mí",
-  "summary": "Tengo 22 años, soy de Argentina y construyo productos digitales que escalan. Trabajo con TypeScript, React, Node.js, Express y PostgreSQL, el stack completo.\n\nMi enfoque combina arquitectura limpia, testing y experiencia de usuario. Valoro el código legible, las buenas prácticas y la mentalidad de producto.\n\nActualmente exploro sistemas distribuidos, AI Agents y patrones de backend. También desarrollo herramientas open source para la comunidad.",
+  "summary": "Tengo 22 años, soy de Argentina y construyo productos digitales que escalan. Trabajo con TypeScript, React, Node.js, Express y PostgreSQL, el stack completo.\n\nMi enfoque combina arquitectura limpia, testing y experiencia de usuario. Valoro el código legible, las buenas prácticas y la mentalidad de producto.",
   "sections": {
     "stack": "Stack Tecnológico",
     "softSkills": "Habilidades Blandas",
