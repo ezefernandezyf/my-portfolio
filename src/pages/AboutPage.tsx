@@ -298,29 +298,29 @@ export const AboutPage = (): React.JSX.Element => {
                             : index === 1
                               ? 'Certificación enfocada en seguridad, control de acceso y prácticas de hardening aplicadas a productos web modernos.'
                               : index === 2
-                                ? 'Formación intensiva en modelos generativos, flujo de entrega y criterios para llevar experimentos de IA a producción.'
+                                ? 'Certificación de dominio del inglés nivel C2 (Proficient) según el Marco Común Europeo, evaluado por EF SET.'
                                 : index === 3
-                                  ? 'Participación en el evento global de Microsoft sobre IA generativa, agentes y Copilot. Badge verificado en Credly.'
-                                  : 'Certificación de dominio del inglés nivel C2 (Proficient) según el Marco Común Europeo, evaluado por EF SET.'}
+                                  ? 'Formación intensiva en modelos generativos, flujo de entrega y criterios para llevar experimentos de IA a producción.'
+                                  : 'Participación en el evento global de Microsoft sobre IA generativa, agentes y Copilot. Badge verificado en Credly.'}
                         </p>
-                        {index === 3 && (
+                        {index === 4 && (
                           <a
                             href="https://www.credly.com/badges/e3409ca3-b1e2-4ffd-9862-e6c5883a8723"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="mt-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-accent hover:text-accent-hover focus-ring"
                           >
-                            {t('education.3.credlyBadge', { defaultValue: 'Ver badge en Credly' })}
+                            {t('education.4.credlyBadge', { defaultValue: 'Ver badge en Credly' })}
                           </a>
                         )}
-                        {index === 4 && (
+                        {index === 2 && (
                           <a
                             href="https://cert.efset.org/es/8Ng7nC"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="mt-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-accent hover:text-accent-hover focus-ring"
                           >
-                            {t('education.4.efsetBadge', { defaultValue: 'Ver certificado EF SET' })}
+                            {t('education.2.efsetBadge', { defaultValue: 'Ver certificado EF SET' })}
                           </a>
                         )}
                       </article>

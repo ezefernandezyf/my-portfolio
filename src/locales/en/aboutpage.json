@@ -1,6 +1,6 @@
 ﻿{
   "meta": {
-    "title": "About Me | Ezequiel Fernández, Full Stack Developer",
+    "title": "About Me , Full Stack Developer",
     "description": "Learn about Ezequiel Fernández, a Full Stack Developer with experience in React, TypeScript, Node.js, and clean architecture. Portfolio, projects, and professional experience."
   },
   "hero": {
@@ -56,7 +56,7 @@
   "education": {
     "title": "Education",
     "0": {
-      "title": "Analyst in Systems - Da Vinci | First Multimedia Art School",
+      "title": "Systems Analyst - Da Vinci | First School of Multimedia Arts",
       "period": "2025 - present",
       "periodLabel": "2025 - present",
       "bullets": []
@@ -68,24 +68,24 @@
       "bullets": []
     },
     "2": {
-      "title": "AI Development: From 0 to Production - BIG school",
-      "period": "2026 - completed",
-      "periodLabel": "2026 - completed",
-      "bullets": []
-    },
-    "3": {
-      "title": "AI Skills Fest 2026, Microsoft",
-      "period": "2026",
-      "periodLabel": "2026",
-      "bullets": [],
-      "credlyBadge": "View badge on Credly"
-    },
-    "4": {
       "title": "EF SET English Certificate C2 Proficient",
       "period": "2026",
       "periodLabel": "2026",
       "bullets": [],
       "efsetBadge": "View EF SET certificate"
+    },
+    "3": {
+      "title": "AI Development: From 0 to Production - BIG school",
+      "period": "2026 - completed",
+      "periodLabel": "2026 - completed",
+      "bullets": []
+    },
+    "4": {
+      "title": "AI Skills Fest 2026 , Microsoft",
+      "period": "2026",
+      "periodLabel": "2026",
+      "bullets": [],
+      "credlyBadge": "View badge on Credly"
     }
   },
   "categories": {
