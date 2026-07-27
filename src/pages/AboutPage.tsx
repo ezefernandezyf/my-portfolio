@@ -299,16 +299,28 @@ export const AboutPage = (): React.JSX.Element => {
                               ? 'Certificación enfocada en seguridad, control de acceso y prácticas de hardening aplicadas a productos web modernos.'
                               : index === 2
                                 ? 'Formación intensiva en modelos generativos, flujo de entrega y criterios para llevar experimentos de IA a producción.'
-                                : 'Participación en el evento global de Microsoft sobre IA generativa, agentes y Copilot. Badge verificado en Credly.'}
+                                : index === 3
+                                  ? 'Participación en el evento global de Microsoft sobre IA generativa, agentes y Copilot. Badge verificado en Credly.'
+                                  : 'Certificación de dominio del inglés nivel C2 (Proficient) según el Marco Común Europeo, evaluado por EF SET.'}
                         </p>
                         {index === 3 && (
                           <a
-                            href="https://www.credly.com/badges/31b0f4c1-3076-4ef0-aca1-d3ada920f6ec"
+                            href="https://www.credly.com/badges/e3409ca3-b1e2-4ffd-9862-e6c5883a8723"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="mt-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-accent hover:text-accent-hover focus-ring"
                           >
                             {t('education.3.credlyBadge', { defaultValue: 'Ver badge en Credly' })}
+                          </a>
+                        )}
+                        {index === 4 && (
+                          <a
+                            href="https://cert.efset.org/es/8Ng7nC"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-accent hover:text-accent-hover focus-ring"
+                          >
+                            {t('education.4.efsetBadge', { defaultValue: 'Ver certificado EF SET' })}
                           </a>
                         )}
                       </article>

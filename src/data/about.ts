@@ -157,6 +157,11 @@ export const about: AboutData = {
       periodKey: 'education.3.period',
       bulletsKeys: [],
     },
+    {
+      titleKey: 'aboutpage.education.4.title',
+      periodKey: 'education.4.period',
+      bulletsKeys: [],
+    },
   ],
 
   availabilityKey: 'aboutpage.availability',
