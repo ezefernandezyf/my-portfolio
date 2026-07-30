@@ -140,6 +140,48 @@ const stackByProject: Record<string, StackItem[]> = {
       items: ['pnpm workspaces (3 packages)', 'TypeScript', 'Vitest', 'supertest', '92 assertions (10 files)'],
     },
   ],
+  'egg-demo': [
+    {
+      titleKey: 'stack.sections.frontend',
+      defaultTitle: 'Frontend',
+      items: ['React 19', 'TypeScript 5 (strict)', 'Vite', 'Tailwind CSS 4', 'React Router 7'],
+    },
+    {
+      titleKey: 'stack.sections.state',
+      defaultTitle: 'State & Validation',
+      items: ['TanStack Query', 'Zustand', 'Zod 4', 'React Hook Form'],
+    },
+    {
+      titleKey: 'stack.sections.visualization',
+      defaultTitle: 'Visualization',
+      items: ['Recharts (radar chart)', 'jsPDF (PDF)'],
+    },
+    {
+      titleKey: 'stack.sections.backend',
+      defaultTitle: 'Backend & API',
+      items: ['Express 5', 'Node.js', 'TypeScript strict'],
+    },
+    {
+      titleKey: 'stack.sections.database',
+      defaultTitle: 'Database',
+      items: ['PostgreSQL (Supabase)', 'Prisma ORM'],
+    },
+    {
+      titleKey: 'stack.sections.ai',
+      defaultTitle: 'AI',
+      items: ['Groq API (llama-3.1-8b-instant)'],
+    },
+    {
+      titleKey: 'stack.sections.testing',
+      defaultTitle: 'Testing',
+      items: ['Vitest'],
+    },
+    {
+      titleKey: 'stack.sections.infra',
+      defaultTitle: 'Infrastructure',
+      items: ['pnpm monorepo', 'Vercel (frontend)', 'Render (backend)', 'Supabase (DB)'],
+    },
+  ],
 };
 
 function toStringArray(value: unknown): string[] {

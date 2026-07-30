@@ -328,6 +328,27 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     priority: 0.7,
     changefreq: 'monthly',
   },
+  'projects/egg-demo': {
+    pathname: '/projects/egg-demo',
+    titleI18nKey: 'eggdemocasestudy:meta.title',
+    descI18nKey: 'eggdemocasestudy:meta.description',
+    es: {
+      title: 'Egg AI Readiness Diagnostic | MVP React + Express | Ezequiel Fernández',
+      description:
+        'MVP funcional de diagnóstico de madurez en IA creado como herramienta de outreach para Egg.live. Quiz interactivo, scoring automatizado con 40+ tests, recomendaciones con Groq AI, radar chart, PDF exportable y captura de leads. Stack: React 19, Express 5, Prisma, PostgreSQL, TypeScript strict.',
+      keywords: ['diagnóstico madurez IA', 'Egg.live', 'React 19', 'Express 5', 'Prisma', 'Groq AI', 'TypeScript strict', 'outreach técnico'],
+    },
+    en: {
+      title: 'Egg AI Readiness Diagnostic | Full-stack React + Express MVP',
+      description:
+        'Functional AI Readiness Diagnostic MVP built as an outreach tool for Egg.live. Interactive quiz, automated scoring with 40+ tests, Groq AI recommendations, radar chart, exportable PDF and lead capture. Stack: React 19, Express 5, Prisma, PostgreSQL, strict TypeScript.',
+      keywords: ['AI readiness diagnostic', 'Egg.live edtech', 'React 19', 'Express 5', 'Prisma ORM', 'Groq AI', 'strict TypeScript', 'technical outreach'],
+    },
+    ogImage: '/og-image.png',
+    schemaType: 'WebPage',
+    priority: 0.7,
+    changefreq: 'monthly',
+  },
 };
 
 /** Ordered route keys matching the prerender loop order */
@@ -342,6 +363,7 @@ export const ROUTE_KEYS: string[] = [
   'projects/echolog',
   'projects/geo-seo-opencode',
   'projects/context-bridge',
+  'projects/egg-demo',
   'privacy',
   'contact',
   'not-found',

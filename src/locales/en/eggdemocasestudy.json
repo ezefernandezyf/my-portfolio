@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "title": "Egg AI Readiness Diagnostic",
+    "description": "Egg AI Readiness Diagnostic case study: AI Readiness Diagnostic MVP for Egg.live. Interactive quiz, automated scoring, 40+ tests, Groq AI recommendations, radar chart and exportable PDF."
+  },
+  "header": {
+    "title": "Egg AI Readiness Diagnostic",
+    "short": "AI Readiness Diagnostic MVP for Egg.live. Interactive 5-dimension quiz, automated scoring, Groq AI recommendations and exportable PDF report.",
+    "repoAria": "Egg AI Readiness Diagnostic Repository",
+    "demoAria": "Egg AI Readiness Diagnostic Demo",
+    "backToProjects": "← Back to Projects"
+  },
+  "stack": {
+    "heading": "Stack & Technologies",
+    "sections": {
+      "frontend": "Frontend",
+      "state": "State & Validation",
+      "visualization": "Visualization",
+      "backend": "Backend & API",
+      "database": "Database",
+      "ai": "AI",
+      "testing": "Testing",
+      "infra": "Infrastructure"
+    }
+  },
+  "summary": {
+    "heading": "Summary",
+    "text": "Egg AI Readiness Diagnostic is an MVP AI maturity diagnostic tool that Egg.live uses as an outreach instrument. An interactive 5-dimension quiz assesses an organization's level, generates automated scores, produces personalized recommendations via Groq AI, and enables PDF report export."
+  },
+  "problem": {
+    "heading": "The problem",
+    "text": "Egg.live is an Argentine EdTech transforming talent for the AI era, but lacked an interactive tool for leads and users to self-assess their AI maturity level. Without an initial diagnostic, potential students couldn't visualize their skill gap or receive personalized recommendations. This limited lead conversion and the platform's immediate value proposition."
+  },
+  "solution": {
+    "heading": "The solution",
+    "list": [
+      "Quiz wizard across 5 dimensions (Data, AI, Strategy, People, Processes) × 3 questions each = 15 questions with Likert 1-5 scale. State managed with Zustand for step persistence without server dependency.",
+      "Pure scoring system with 38 unit tests that normalizes responses to 0-100 per dimension and calculates a global score. Zero external dependencies: deterministic functions, testable by design.",
+      "Groq API integration (llama-3.1-8b-instant) for personalized natural language recommendations. 12s timeout with 1 retry + fallback to predefined recommendations on API failure — the user never sees an error.",
+      "Full dashboard with radar chart (Recharts), dimension bars and recommendations. Three views: overview (all dimensions), per-dimension detail and actionable recommendations.",
+      "PDF generation with jsPDF including scores, radar chart and recommendations. Downloadable without server dependency — all client-side.",
+      "Lead capture with Zod 4 validation (shared front/back), international country code selector, and PostgreSQL persistence via Prisma.",
+      "LinkedIn share button with predefined text so users can showcase their results."
+    ]
+  },
+  "architecture": {
+    "heading": "Architecture & decisions",
+    "list": [
+      "pnpm monorepo with shared contracts: shared/ contains Zod schemas as the single source of truth. The server validates input against these schemas, the frontend infers types. A schema change propagates to both sides without manual sync.",
+      "Zero-dependency scoring: the scoring module is a set of pure functions with 38 tests. No network calls, no DB dependency, no API calls. Testable and reason-able in isolation. If Groq fails, scoring still works.",
+      "Graceful degradation for Groq: 12s timeout + 1 retry. If the API doesn't respond, predefined recommendations based on scores are used. The user never sees an infinite spinner or 500 error. The UI has loading, success and error states for every step.",
+      "Client-side PDF: PDF generation happens entirely in the browser with jsPDF. No '/pdf' endpoint on the server. This eliminates network latency and reduces server load. PDF content is rendered with absolute coordinates (canvas-like).",
+      "No auth by design: the MVP has no login. Each diagnostic creates an anonymous lead, and results are accessed by URL ID. This simplifies onboarding: the user arrives, answers, gets results. If Egg wanted to integrate it, auth could be added later."
+    ]
+  },
+  "implementation": {
+    "heading": "Featured implementation",
+    "hookTitle": "Pure scoring system with 38 tests",
+    "hookCode": "export function calculateDimensionScore(responses: number[]): number {\n  if (responses.length === 0) return 0;\n  const sum = responses.reduce((a, b) => a + b, 0);\n  const max = responses.length * 5;\n  return Math.round((sum / max) * 100);\n}\n\nexport function calculateGlobalScore(dimensions: DimensionScore[]): number {\n  if (dimensions.length === 0) return 0;\n  const sum = dimensions.reduce((acc, d) => acc + d.score, 0);\n  return Math.round(sum / dimensions.length);\n}\n\nexport function getMaturityLevel(score: number): MaturityLevel {\n  if (score >= 80) return 'advanced';\n  if (score >= 60) return 'intermediate';\n  if (score >= 40) return 'emerging';\n  return 'initial';\n}",
+    "hookDescription": "The product's core is deterministic functions with no side effects or external dependencies. Each function takes data, returns a result. No network calls, no DB reads, no global config. This enabled 38 tests validating every score combination, maturity level, and edge case (empty array, extreme values, partial responses). If the test passes, scoring works."
+  },
+  "accessibility": {
+    "heading": "Accessibility",
+    "list": [
+      "Forms with explicitly associated labels via htmlFor/id, not placeholder-as-label.",
+      "Inline error messages below each invalid field, with role='alert' for screen readers.",
+      "Loading states (skeleton/spinner) with descriptive aria-label.",
+      "Keyboard navigation for Likert pills (1-5) with visible focus.",
+      "prefers-reduced-motion respected in animations: transitions disabled when the preference is active."
+    ]
+  },
+  "performance": {
+    "heading": "Metrics & results",
+    "list": [
+      "40 automated tests (14 server + 26 web) validating scoring, schema validation, and UI logic.",
+      "5 dimensions × 3 questions = 15 evaluated questions on Likert 1-5 scale.",
+      "3 AI response modes: success (Groq), fallback (predefined recommendations), visible error.",
+      "Complete project in ~2 weeks: full SDD cycle (propose, spec, design, tasks, apply, verify, archive)."
+    ]
+  },
+  "challenges": {
+    "heading": "Real bugs & debugging",
+    "list": [
+      "Render cold start on demo: The free Render backend spins down without activity. When Nacho (Egg's CEO) tried the demo, the first request took ~40s. Fix: added /health endpoint and configured UptimeRobot to keep the server warm. Lesson: for client demos, always pre-warm or use a zero-downtime plan.",
+      "500 error on POST /api/diagnostic/submit: The leads table didn't have the correct migration applied in production. The Prisma schema was updated but the migration wasn't run on Supabase. Fix: recreated the table with DROP + CREATE in Supabase SQL editor. Lesson: always verify migrations are applied in production after schema changes.",
+      "FTS5 query crash with special characters: users searching phrases like 'fix auth bug' crashed FTS5 because it treated tokens as operators. Fix: wrap each term in quotes before passing to MATCH.",
+      "Button overlap in asymmetric grid: On the dashboard, action buttons overlapped at intermediate viewports (~900px). Fix: switched from fixed CSS grid to flex-wrap with gap and min-width, removing the rigid layout."
+    ]
+  },
+  "improvements": {
+    "heading": "What could be improved",
+    "list": [
+      "User authentication: add login so leads can return to view their results and track progress over time (recurring diagnostic).",
+      "Deeper dimensions: expand from 3 questions per dimension to 5-7 for better statistical accuracy. Requires validation with an HR/learning professional.",
+      "Benchmarking: compare user results against the average of other diagnostics (anonymized) to provide relative context ('you're in the 70th percentile').",
+      "Full i18n: the UI is in Spanish, but Groq-generated content depends on the prompt. Add English prompts and a language selector."
+    ]
+  },
+  "deepDive": {
+    "heading": "Technical Deep Dive"
+  },
+  "carousel": {
+    "alt": "Egg AI Readiness Diagnostic preview"
+  },
+  "labels": {
+    "year": "Year:",
+    "featured": "Featured"
+  },
+  "notFound": "Project not found",
+  "noPreview": "No preview available"
+}
