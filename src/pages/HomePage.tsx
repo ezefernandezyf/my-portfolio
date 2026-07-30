@@ -136,9 +136,6 @@ export const HomePage = (): React.JSX.Element => {
 
           <div className="site-container relative z-10 flex min-h-[calc(100svh-4rem)] flex-col justify-center">
             <div className="max-w-[65ch]">
-              <p className="animate-fade-in-up mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-accent font-body">
-                {t('hero.label', { ns: 'home' })}
-              </p>
 
               <h1 className="animate-fade-in-up [animation-delay:75ms] text-6xl font-bold leading-[0.9] tracking-tighter text-text-primary md:text-8xl font-display">
                 <span className="block">{t('hero.name', { ns: 'home' }).split(' ')[0]}</span>

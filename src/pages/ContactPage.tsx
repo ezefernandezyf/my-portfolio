@@ -122,12 +122,6 @@ export const ContactPage = (): React.JSX.Element => {
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-24">
             <section className="lg:col-span-5 flex flex-col justify-between">
               <div className="space-y-8">
-                <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1">
-                  <span className="h-2 w-2 rounded-full bg-accent" aria-hidden="true" />
-                  <span className="text-[10px] font-semibold uppercase tracking-widest text-text-secondary font-body">
-                    {t('hero.label')}
-                  </span>
-                </div>
 
                 <h1
                   className="text-5xl font-bold leading-none tracking-tighter text-text-primary md:text-7xl font-display"
