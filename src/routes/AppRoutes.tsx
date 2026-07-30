@@ -25,6 +25,7 @@ export const AppRoutes = (): React.JSX.Element => {
         <Route path="/projects/echolog" element={<ProjectCaseStudyPage projectId="echolog" namespace="echologcasestudy" />} />
         <Route path="/projects/geo-seo-opencode" element={<ProjectCaseStudyPage projectId="geo-seo-opencode" namespace="geoseoopencodecasestudy" />} />
         <Route path="/projects/context-bridge" element={<ProjectCaseStudyPage projectId="context-bridge" namespace="contextbridgecasestudy" />} />
+        <Route path="/projects/egg-demo" element={<ProjectCaseStudyPage projectId="egg-demo" namespace="eggdemocasestudy" />} />
         <Route path="privacy" element={<PrivacyPage />} />
         <Route path="contact" element={<ContactPage />} />
         <Route path="not-found" element={<NotFoundPage />} />
@@ -44,6 +45,7 @@ export const AppRoutes = (): React.JSX.Element => {
         <Route path="/en/projects/echolog" element={<ProjectCaseStudyPage projectId="echolog" namespace="echologcasestudy" />} />
         <Route path="/en/projects/geo-seo-opencode" element={<ProjectCaseStudyPage projectId="geo-seo-opencode" namespace="geoseoopencodecasestudy" />} />
         <Route path="/en/projects/context-bridge" element={<ProjectCaseStudyPage projectId="context-bridge" namespace="contextbridgecasestudy" />} />
+        <Route path="/en/projects/egg-demo" element={<ProjectCaseStudyPage projectId="egg-demo" namespace="eggdemocasestudy" />} />
         <Route path="privacy" element={<PrivacyPage />} />
         <Route path="contact" element={<ContactPage />} />
         <Route path="not-found" element={<NotFoundPage />} />

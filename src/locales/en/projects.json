@@ -54,5 +54,9 @@
   "geo-seo-opencode": {
     "name": "geo-seo-opencode",
     "short": "Open-source GEO toolkit for opencode, 16 analysis skills for ChatGPT, Claude, Perplexity and Gemini. Cross-platform, one-command installer."
+  },
+  "egg-demo": {
+    "name": "Egg AI Readiness Diagnostic",
+    "short": "AI Readiness Diagnostic MVP for Egg.live. Interactive 5-dimension quiz, automated scoring, Groq AI recommendations and exportable PDF report."
   }
 }

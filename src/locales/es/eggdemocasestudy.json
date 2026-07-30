@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "title": "Egg AI Readiness Diagnostic",
+    "description": "Caso de estudio de Egg AI Readiness Diagnostic: MVP de diagnóstico de madurez en IA para Egg.live. Quiz interactivo, scoring automatizado, 40+ tests, recomendaciones con Groq AI, radar chart y PDF exportable."
+  },
+  "header": {
+    "title": "Egg AI Readiness Diagnostic",
+    "short": "MVP de diagnóstico de madurez en IA para Egg.live. Quiz interactivo de 5 dimensiones, scoring automatizado, recomendaciones con Groq AI y reporte exportable.",
+    "repoAria": "Repositorio Egg AI Readiness Diagnostic",
+    "demoAria": "Demo Egg AI Readiness Diagnostic",
+    "backToProjects": "← Volver a Proyectos"
+  },
+  "stack": {
+    "heading": "Stack & Tecnologías",
+    "sections": {
+      "frontend": "Frontend",
+      "state": "Estado & Validación",
+      "visualization": "Visualización",
+      "backend": "Backend & API",
+      "database": "Base de Datos",
+      "ai": "IA",
+      "testing": "Testing",
+      "infra": "Infra"
+    }
+  },
+  "summary": {
+    "heading": "Resumen",
+    "text": "Egg AI Readiness Diagnostic es un MVP de diagnóstico de madurez en inteligencia artificial que Egg.live utiliza como herramienta de outreach. Un quiz interactivo de 5 dimensiones evalúa el nivel de una organización, genera scores automatizados, produce recomendaciones personalizadas vía Groq AI y permite exportar un reporte PDF."
+  },
+  "problem": {
+    "heading": "El problema",
+    "text": "Egg.live es una EdTech argentina que transforma talento a la era IA, pero no tenía una herramienta interactiva para que leads y usuarios autoevaluaran su nivel de madurez en inteligencia artificial. Sin un diagnóstico inicial, los potenciales estudiantes no podían visualizar su brecha de habilidades ni recibir recomendaciones personalizadas. Esto limitaba la conversión de leads y la propuesta de valor inmediata de la plataforma."
+  },
+  "solution": {
+    "heading": "La solución",
+    "list": [
+      "Quiz wizard en 5 dimensiones (Datos, IA, Estrategia, Personas, Procesos) × 3 preguntas cada una = 15 preguntas con escala Likert 1-5. Estado manejado con Zustand para persistencia entre pasos sin afectar el servidor.",
+      "Sistema de scoring puro con 38 tests unitarios que normaliza respuestas a 0-100 por dimensión y calcula un score global. Sin dependencias externas: funciones determinísticas, filete de testing.",
+      "Integración con Groq API (llama-3.1-8b-instant) para recomendaciones personalizadas en lenguaje natural. Timeout de 12s con 1 reintento + fallback a recomendaciones predefinidas si la API falla — el usuario nunca ve un error.",
+      "Dashboard completo con radar chart (Recharts), barras por dimensión y recomendaciones. Tres vistas: general (todas las dimensiones), detalle por dimensión y recomendaciones accionables.",
+      "Generación de PDF con jsPDF que incluye scores, radar chart y recomendaciones. Descargable sin depender del servidor — todo desde el cliente.",
+      "Lead capture con validación Zod 4 (compartida front/back), selector de código de país internacional, y persistencia en PostgreSQL via Prisma.",
+      "Botón de compartir en LinkedIn con texto predefinido para que los usuarios puedan mostrar sus resultados."
+    ]
+  },
+  "architecture": {
+    "heading": "Arquitectura & decisiones",
+    "list": [
+      "Monorepo pnpm con contratos compartidos: shared/ contiene schemas Zod que son la fuente única de verdad. El servidor valida input contra estos schemas, el frontend infiere tipos. Un cambio en el schema se refleja en ambos lados sin sync manual.",
+      "Scoring sin dependencias externas: el módulo de scoring es un paquete de funciones puras con 38 tests. No toca red, no depende de la DB, no llama APIs. Se puede testear y razonar de forma aislada. Si Groq falla, el scoring sigue funcionando.",
+      "Degradación elegante en Groq: timeout de 12s + 1 retry. Si la API no responde, se usan recomendaciones predefinidas basadas en los scores. El usuario nunca ve un spinner infinito ni un error 500. La UI tiene estado de carga, éxito y error para cada paso.",
+      "PDF client-side: la generación del PDF ocurre completamente en el navegador con jsPDF. No hay un endpoint '/pdf' en el servidor. Esto elimina latencia de red y reduce la carga del servidor. El contenido del PDF se renderiza con coordenadas absolutas (canvas-like).",
+      "Sin autenticación deliberada: el MVP no tiene login. Cada diagnóstico crea un lead anónimo, y el resultado se accede por ID en la URL. Simplifica el onboarding: el usuario llega, responde, obtiene resultados. Si Egg quisiera integrarlo, la autenticación se agrega después."
+    ]
+  },
+  "implementation": {
+    "heading": "Implementación destacada",
+    "hookTitle": "Sistema de scoring puro con 38 tests",
+    "hookCode": "export function calculateDimensionScore(responses: number[]): number {\n  if (responses.length === 0) return 0;\n  const sum = responses.reduce((a, b) => a + b, 0);\n  const max = responses.length * 5;\n  return Math.round((sum / max) * 100);\n}\n\nexport function calculateGlobalScore(dimensions: DimensionScore[]): number {\n  if (dimensions.length === 0) return 0;\n  const sum = dimensions.reduce((acc, d) => acc + d.score, 0);\n  return Math.round(sum / dimensions.length);\n}\n\nexport function getMaturityLevel(score: number): MaturityLevel {\n  if (score >= 80) return 'advanced';\n  if (score >= 60) return 'intermediate';\n  if (score >= 40) return 'emerging';\n  return 'initial';\n}",
+    "hookDescription": "El corazón del producto son funciones determinísticas sin efectos secundarios ni dependencias externas. Cada función recibe datos, devuelve un resultado. No tocan red, no leen la DB, no dependen de configuración global. Esto permitió escribir 38 tests que validan cada combinación de scores, niveles de madurez y casos borde (array vacío, valores extremos, respuestas parciales). Si el test pasa, el scoring funciona."
+  },
+  "accessibility": {
+    "heading": "Accesibilidad",
+    "list": [
+      "Formularios con labels asociados explícitamente via htmlFor/id, no placeholders como label.",
+      "Mensajes de error inline debajo de cada campo inválido, con role='alert' para lectores de pantalla.",
+      "Estados de carga (skeleton/spinner) con aria-label descriptivo.",
+      "Navegación por teclado en los pills de Likert (1-5) con focus visible.",
+      "prefers-reduced-motion respetado en animaciones: transiciones desactivadas cuando la preferencia está activa."
+    ]
+  },
+  "performance": {
+    "heading": "Métricas & resultados",
+    "list": [
+      "40 tests automatizados (14 server + 26 web) validando scoring, validación de schemas y lógica de UI.",
+      "5 dimensiones × 3 preguntas = 15 preguntas evaluadas en escala Likert 1-5.",
+      "3 modos de respuesta de IA: éxito (Groq), fallback (recomendaciones predefinidas), error visible.",
+      "Proyecto completo en ~2 semanas: ciclo SDD completo (propose, spec, design, tasks, apply, verify, archive)."
+    ]
+  },
+  "challenges": {
+    "heading": "Bugs reales & debugging",
+    "list": [
+      "Cold start de Render en demo: El backend gratis de Render se duerme sin actividad. Cuando Nacho (CEO de Egg) probó el demo, la primera request tardó ~40s. Solución: agregar endpoint /health y configurar UptimeRobot para mantener el servidor activo. Lección: en demos para clientes, siempre precalentar o usar un plan con cero downtime.",
+      "Error 500 en POST /api/diagnostic/submit: La tabla de leads no tenía la migración correcta aplicada en producción. El schema de Prisma se había actualizado pero la migración no se corrió en Supabase. Solución: recreate la tabla con DROP + CREATE manual en Supabase SQL editor. Lección: siempre verificar que migrations estén aplicadas en producción después de un cambio de schema.",
+      "FTS5 query crash con caracteres especiales: usuarios buscando frases como 'fix auth bug' causaban crash en FTS5 porque trataba tokens como operadores. Solución: wrappear cada término en quotes antes de pasarlo a MATCH.",
+      "Overlap visual de botones en grid asimétrico: En el dashboard, los botones de acción se superponían en viewports intermedios (~900px). Solución: cambiar de grid CSS fijo a flex-wrap con gap y min-width, eliminando el layout rígido."
+    ]
+  },
+  "improvements": {
+    "heading": "Qué se podría mejorar",
+    "list": [
+      "Autenticación de usuarios: agregar login para que los leads puedan volver a ver sus resultados y trackear progreso en el tiempo (diagnóstico recurrente).",
+      "Más profundidad en dimensiones: de 3 preguntas por dimensión a 5-7 para mayor precisión estadística. Requiere validar con un profesional de HR/learning.",
+      "Benchmarking: comparar resultados del usuario contra el promedio de otros diagnósticos (anónimos) para dar contexto relativo ('estás en el percentil 70').",
+      "i18n completo: la UI está en español, pero el contenido generado por Groq depende del prompt. Agregar prompts en inglés y selector de idioma."
+    ]
+  },
+  "deepDive": {
+    "heading": "Profundización técnica"
+  },
+  "carousel": {
+    "alt": "Vista previa de Egg AI Readiness Diagnostic"
+  },
+  "labels": {
+    "year": "Año:",
+    "featured": "Destacado"
+  },
+  "notFound": "Proyecto no encontrado",
+  "noPreview": "Sin vista previa"
+}
