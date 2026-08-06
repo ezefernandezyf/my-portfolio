@@ -1,8 +1,4 @@
 ﻿{
-  "meta": {
-    "title": "Ezequiel Fernández | Full Stack Developer | Personal Portfolio",
-    "description": "Portfolio of Ezequiel Fernández - Full Stack Developer. Building complete web applications with React, Node.js, TypeScript and PostgreSQL."
-  },
   "hero": {
     "label": "Full Stack Developer",
     "name": "Ezequiel Fernández",

@@ -1,8 +1,4 @@
 {
-  "meta": {
-    "title": "Context Bridge",
-    "description": "Caso de estudio de Context Bridge: Slack bot con búsqueda multi-fuente y síntesis por IA. MCP Server Pattern con JSON-RPC 2.0, 4 fuentes en paralelo con timeout individual, degradación elegante."
-  },
   "header": {
     "title": "Context Bridge",
     "short": "Slack bot con búsqueda multi-fuente y síntesis por IA. Arquitectura MCP con JSON-RPC 2.0, 4 fuentes en paralelo con timeout individual, degradación elegante.",

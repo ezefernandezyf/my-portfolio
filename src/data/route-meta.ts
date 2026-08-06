@@ -339,7 +339,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
       keywords: ['diagnóstico madurez IA', 'Egg.live', 'React 19', 'Express 5', 'Prisma', 'Groq AI', 'TypeScript strict', 'outreach técnico'],
     },
     en: {
-      title: 'Egg AI Readiness Diagnostic | Full-stack React + Express MVP',
+      title: 'Egg AI Readiness Diagnostic | Full-stack React + Express MVP | Ezequiel Fernández',
       description:
         'Functional AI Readiness Diagnostic MVP built as an outreach tool for Egg.live. Interactive quiz, automated scoring with 40+ tests, Groq AI recommendations, radar chart, exportable PDF and lead capture. Stack: React 19, Express 5, Prisma, PostgreSQL, strict TypeScript.',
       keywords: ['AI readiness diagnostic', 'Egg.live edtech', 'React 19', 'Express 5', 'Prisma ORM', 'Groq AI', 'strict TypeScript', 'technical outreach'],
