@@ -19,6 +19,7 @@ import {
 } from '@heroicons/react/24/outline';
 
 import { about } from '../data/about';
+import { ROUTE_META } from '../data/route-meta';
 import { GithubIcon, LinkedInIcon } from '../components';
 import { MetaTags } from '../shared/seo';
 import { useTranslation } from 'react-i18next';
@@ -93,6 +94,7 @@ function useSectionFadeIn() {
 export const AboutPage = (): React.JSX.Element => {
   const { t, i18n } = useTranslation('aboutpage');
   const localize = useLocalizedPath();
+  const lang = i18n.language?.startsWith('en') ? 'en' : 'es';
   const { name, role, github, linkedIn } = about;
   const cv = i18n.language?.startsWith('en') ? '/Ezequiel_Fernandez_CV_EN.pdf' : '/Ezequiel_Fernandez_CV.pdf';
 
@@ -108,7 +110,12 @@ export const AboutPage = (): React.JSX.Element => {
 
   return (
     <>
-      <MetaTags title={t('meta.title')} description={t('summary')} pathname="/about" type="website" />
+      <MetaTags
+        title={ROUTE_META.about[lang].title}
+        description={ROUTE_META.about[lang].description}
+        pathname="/about"
+        type="website"
+      />
       <div className="pb-24 pt-24 bg-bg-primary">
         <div className="site-container space-y-32">
           <div ref={heroRef} className={heroVisible ? 'animate-fade-in-up' : 'opacity-0'}>

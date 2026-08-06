@@ -1,8 +1,4 @@
 ﻿{
-  "meta": {
-    "title": "Proyectos",
-    "description": "Colección de proyectos públicos enfocada en arquitectura escalable, front-ends performantes y ejecución técnica rigurosa."
-  },
   "header": {
     "title": "Proyectos",
     "subtitle": "Una selección de proyectos de ingeniería que abarcan desde SaaS multi-tenant y plataformas con inteligencia artificial hasta dashboards y herramientas CLI open source. Cada uno refleja mi enfoque en arquitectura limpia, testing automatizado y TypeScript estricto. Explorá el código, revisá los case studies o filtrá por tecnología."

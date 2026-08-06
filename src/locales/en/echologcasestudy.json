@@ -1,8 +1,4 @@
 ﻿{
-  "meta": {
-    "title": "EchoLog",
-    "description": "Case study of EchoLog: a multi-tenant customer feedback SaaS built with React 19, Express 5, Prisma, PostgreSQL (Supabase). Screaming architecture, 606 tests, 45 PRs over 3 months."
-  },
   "header": {
     "title": "EchoLog",
     "short": "Multi-tenant customer feedback SaaS - boards, upvoting, comments, workspaces, board approval, email invitations. Full-stack TypeScript with React 19, Express 5, Prisma, PostgreSQL (Supabase). ~20,000 lines, pnpm monorepo.",

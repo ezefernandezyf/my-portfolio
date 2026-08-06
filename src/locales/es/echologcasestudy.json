@@ -1,8 +1,4 @@
 ﻿{
-  "meta": {
-    "title": "EchoLog",
-    "description": "Caso de estudio de EchoLog: SaaS multi-tenant de feedback para productos con React 19, Express 5, Prisma, PostgreSQL (Supabase). Screaming architecture, 606 tests, 45 PRs en 3 meses."
-  },
   "header": {
     "title": "EchoLog",
     "short": "SaaS multi-tenant de feedback para productos - boards, votos, comentarios, workspaces, aprobación de boards, invitaciones por email. Full-stack TypeScript con React 19, Express 5, Prisma, PostgreSQL (Supabase). ~20,000 líneas, monorepo pnpm.",

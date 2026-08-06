@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { projectRepository } from '../../../../entities/project';
 import { ProjectCard } from '../../../../shared/ui/project-card';
+import { MetaTags } from '../../../../shared/seo';
+import { ROUTE_META } from '../../../../data/route-meta';
 
 const INITIAL_VISIBLE_PROJECTS = 8;
 const LOAD_MORE_STEP = 3;
@@ -14,7 +16,8 @@ const fadeInUp = (delay = 0): React.CSSProperties => ({
 });
 
 export const ProjectsListPage = (): React.JSX.Element => {
-  const { t } = useTranslation('projects');
+  const { t, i18n } = useTranslation('projects');
+  const lang = i18n.language?.startsWith('en') ? 'en' : 'es';
   const [query, setQuery] = useState('');
   const [visibleProjects, setVisibleProjects] = useState(INITIAL_VISIBLE_PROJECTS);
   const projects = projectRepository.getProjects();
@@ -71,16 +74,22 @@ export const ProjectsListPage = (): React.JSX.Element => {
   };
 
   return (
-    <main className="bg-bg-primary">
+    <>
+      <MetaTags
+        title={ROUTE_META.projects[lang].title}
+        description={ROUTE_META.projects[lang].description}
+        pathname="/projects"
+      />
+      <main className="bg-bg-primary">
       <section className="border-b border-border/70 bg-[radial-gradient(circle_at_top,rgba(245,158,11,0.12),transparent_42%),linear-gradient(180deg,rgba(2,6,23,0.03),transparent_28%)]" style={fadeInUp()}>
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-7 px-6 py-24 lg:px-10 lg:py-10 lg:pt-50">
           <div className="max-w-3xl space-y-5">
             <div className="space-y-4">
               <h1 className="font-display text-[3.5rem] leading-none tracking-[-0.02em] text-text-primary" style={fadeInUp(0.08)}>
-                {t('meta.title')}
+                {t('header.title')}
               </h1>
               <p className="max-w-[60ch] text-[1.125rem] leading-relaxed text-text-secondary" style={fadeInUp(0.16)}>
-                {t('meta.description')}
+                {t('header.subtitle')}
               </p>
             </div>
           </div>
@@ -177,5 +186,6 @@ export const ProjectsListPage = (): React.JSX.Element => {
         </div>
       </section>
     </main>
+    </>
   );
 };

@@ -1,8 +1,4 @@
 {
-  "meta": {
-    "title": "Projects",
-    "description": "Collection of public projects focused on scalable architecture, performant front-ends, and rigorous technical execution."
-  },
   "header": {
     "title": "Projects",
     "subtitle": "A selection of engineering projects spanning multi-tenant SaaS platforms, AI-powered tools, interactive dashboards, and open-source CLI toolkits. Each one reflects my commitment to clean architecture, automated testing, and strict TypeScript. Browse the code, read the case studies, or filter by technology."

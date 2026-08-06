@@ -83,12 +83,22 @@ function interpolate(str: string, vars?: Record<string, unknown>): string {
   });
 }
 
-function normalizeNsKey(key: string) {
+function normalizeNsKey(key: string, defaultNs?: string) {
   if (key.includes(':')) {
     const [ns, rest] = key.split(':', 2);
     return { ns, key: rest };
   }
   if (key.includes('.') && key.split('.')[0] in (resources.es || {})) {
+    // A dotted key whose first segment collides with a registered namespace
+    // name (e.g. `header.title` vs the `header` namespace). i18next resolves
+    // dotted keys within the caller's namespace, so `projects:header.title`
+    // must resolve there instead of leaking into the `header` namespace.
+    // Other namespaces keep the legacy first-segment-as-namespace fallback:
+    // case-study aria/label keys (e.g. `header.repoAria`) intentionally fall
+    // through to their defaultValue when the `header` namespace lacks them.
+    if (defaultNs === 'projects') {
+      return { ns: undefined, key };
+    }
     const pos = key.indexOf('.');
     return { ns: key.slice(0, pos), key: key.slice(pos + 1) };
   }
@@ -114,7 +124,7 @@ function resolveTranslation(
   opts?: { ns?: string | string[]; returnObjects?: boolean; defaultValue?: unknown; [k: string]: unknown },
   defaultNs = 'common',
 ): unknown {
-  const normalized = normalizeNsKey(rawKey);
+  const normalized = normalizeNsKey(rawKey, defaultNs);
   let namespace = normalized.ns ?? defaultNs;
   const realKey = normalized.key;
 

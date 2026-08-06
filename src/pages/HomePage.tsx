@@ -3,6 +3,7 @@ import { ArrowTopRightOnSquareIcon, CommandLineIcon } from '@heroicons/react/24/
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { projectRepository } from '../entities/project';
+import { ROUTE_META } from '../data/route-meta';
 import { MetaTags } from '../shared/seo';
 import { ProjectCard } from '../shared/ui/project-card';
 import { CurrentlySection, type CurrentlyItem } from '../components/CurrentlySection';
@@ -14,6 +15,7 @@ const technicalStack = ['React 19', 'TypeScript', 'Node.js', 'Express', 'Postgre
 export const HomePage = (): React.JSX.Element => {
   const { t, i18n } = useTranslation(['home', 'projects']);
   const localize = useLocalizedPath();
+  const lang = i18n.language?.startsWith('en') ? 'en' : 'es';
   const cvPath = i18n.language?.startsWith('en') ? '/Ezequiel_Fernandez_CV_EN.pdf' : '/Ezequiel_Fernandez_CV.pdf';
   const projects = projectRepository.getProjects();
   const currentlyItems = t('currently.list', { returnObjects: true }) as CurrentlyItem[];
@@ -110,8 +112,8 @@ export const HomePage = (): React.JSX.Element => {
   return (
     <>
       <MetaTags
-        title={t('meta.title', { ns: 'home' })}
-        description={t('meta.description', { ns: 'home' })}
+        title={ROUTE_META.home[lang].title}
+        description={ROUTE_META.home[lang].description}
         pathname="/"
         image="/og-image.png"
       />

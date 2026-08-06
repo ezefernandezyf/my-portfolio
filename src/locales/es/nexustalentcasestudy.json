@@ -1,8 +1,4 @@
 {
-  "meta": {
-    "title": "Nexus Talent",
-    "description": "Caso de estudio de Nexus Talent: análisis de postulaciones con IA, generación de CV con Groq, monorepo pnpm, JWT custom (sin jsonwebtoken), Screaming Architecture en Express 5 y >470 tests."
-  },
   "header": {
     "title": "Nexus Talent",
     "short": "Plataforma SaaS de análisis de postulaciones y generación de CV con IA: Groq (Llama 3.3 70B), prompt engineering estructurado, generación de CV con @react-pdf/renderer, monorepo pnpm con 4 paquetes, JWT custom sin dependencias y Screaming Architecture en Express 5.",

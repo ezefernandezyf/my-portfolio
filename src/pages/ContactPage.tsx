@@ -11,6 +11,7 @@ import {
 import emailjs from '@emailjs/browser';
 import { MetaTags } from '../shared/seo';
 import { about } from '../data/about';
+import { ROUTE_META } from '../data/route-meta';
 import { useTranslation } from 'react-i18next';
 
 function useSectionFadeIn() {
@@ -37,7 +38,8 @@ function useSectionFadeIn() {
 }
 
 export const ContactPage = (): React.JSX.Element => {
-  const { t } = useTranslation('contact');
+  const { t, i18n } = useTranslation('contact');
+  const lang = i18n.language?.startsWith('en') ? 'en' : 'es';
 
   const contactSchema = z.object({
     name: z.string().min(2, t('form.name.validation_min')),
@@ -112,8 +114,8 @@ export const ContactPage = (): React.JSX.Element => {
   return (
     <>
       <MetaTags
-        title={t('meta.contact.title')}
-        description={t('meta.contact.description')}
+        title={ROUTE_META.contact[lang].title}
+        description={ROUTE_META.contact[lang].description}
         pathname="/contact"
         type="article"
       />

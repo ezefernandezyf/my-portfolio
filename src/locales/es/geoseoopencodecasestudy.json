@@ -1,8 +1,4 @@
 {
-  "meta": {
-    "title": "geo-seo-opencode , Toolkit GEO Open Source para opencode",
-    "description": "Caso de estudio de Geo-SEO OpenCode: adaptación open source de geo-seo-claude para opencode. 16 skills de análisis GEO, scoring compuesto y reportes automatizados."
-  },
   "header": {
     "title": "geo-seo-opencode",
     "short": "Adaptación open source de geo-seo-claude (8.3k ⭐) para opencode. 16 skills de análisis GEO, scripts Python, instalador cross-platform. Optimización para ChatGPT, Claude, Perplexity y Gemini.",

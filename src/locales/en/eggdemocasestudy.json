@@ -1,8 +1,4 @@
 {
-  "meta": {
-    "title": "Egg AI Readiness Diagnostic",
-    "description": "Egg AI Readiness Diagnostic case study: AI Readiness Diagnostic MVP for Egg.live. Interactive quiz, automated scoring, 40+ tests, Groq AI recommendations, radar chart and exportable PDF."
-  },
   "header": {
     "title": "Egg AI Readiness Diagnostic",
     "short": "AI Readiness Diagnostic MVP for Egg.live. Interactive 5-dimension quiz, automated scoring, Groq AI recommendations and exportable PDF report.",

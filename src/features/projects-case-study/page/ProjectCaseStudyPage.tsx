@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { projectRepository } from '../../../entities/project';
+import { ROUTE_META } from '../../../data/route-meta';
 import { CaseStudyTemplate } from '../../../pages/Projects/CaseStudyTemplate';
 import { buildCaseStudyContent } from '../lib/buildCaseStudyContent';
 
@@ -10,8 +11,9 @@ type ProjectCaseStudyPageProps = {
 };
 
 export const ProjectCaseStudyPage = ({ projectId, namespace }: ProjectCaseStudyPageProps): React.JSX.Element => {
-  const { t } = useTranslation(namespace);
+  const { t, i18n } = useTranslation(namespace);
   const { t: tProjects } = useTranslation('projects');
+  const lang = i18n.language?.startsWith('en') ? 'en' : 'es';
   const project = projectRepository.getProjectById(projectId);
 
   if (!project) {
@@ -34,11 +36,14 @@ export const ProjectCaseStudyPage = ({ projectId, namespace }: ProjectCaseStudyP
 
   const projectName = tProjects(project.nameKey);
   const projectShort = tProjects(project.shortKey);
+  const routeMeta = ROUTE_META[`projects/${projectId}`]?.[lang];
 
   return (
     <CaseStudyTemplate
       title={projectName}
       description={projectShort}
+      metaTitle={routeMeta?.title}
+      metaDescription={routeMeta?.description}
       pathname={`/projects/${project.id}`}
       repo={project.repo}
       demo={project.demo}

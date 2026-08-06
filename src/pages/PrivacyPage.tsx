@@ -11,6 +11,7 @@ import {
 import { useTranslation } from 'react-i18next';
 
 import { MetaTags } from '../shared/seo';
+import { ROUTE_META } from '../data/route-meta';
 
 const fadeInUp = (delay = 0): React.CSSProperties => ({
   animation: `fade-in-up 0.5s ease-out ${delay}s forwards`,
@@ -27,15 +28,16 @@ const privacySections = [
 ] as const;
 
 export const PrivacyPage = (): React.JSX.Element => {
-  const { t } = useTranslation('privacy');
+  const { t, i18n } = useTranslation('privacy');
+  const lang = i18n.language?.startsWith('en') ? 'en' : 'es';
 
   const lastUpdated = new Date().toLocaleDateString();
 
   return (
     <>
       <MetaTags
-        title={t('meta.title')}
-        description={t('meta.description')}
+        title={ROUTE_META.privacy[lang].title}
+        description={ROUTE_META.privacy[lang].description}
         pathname="/privacy"
         type="article"
       />
