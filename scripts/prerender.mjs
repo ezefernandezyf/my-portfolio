@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Prerender script — generates 22 static HTML files (11 routes × 2 locales).
+ * Prerender script — generates 28 static HTML files (14 routes × 2 locales).
  * Runs after `vite build` via the closeBundle plugin.
  *
  * Produces dist/{esPage}.html / dist/en/{enPage}.html with full text content
@@ -34,15 +34,24 @@ const LANGUAGES = ['es', 'en'];
 
 const CINELAB_INTERPOLATION = { name: 'CineLab' };
 
+/**
+ * Build the route table consumed by prerender.
+ *
+ * SEO metadata (title/description/OG/JSON-LD) now comes exclusively from the
+ * canonical `route-meta.ts` `LocaleSEO` objects via the `es`/`en` fields —
+ * never from i18n locale JSON resolution.
+ *
+ * `ns` and `i18nInterpolation` are retained because `buildPageContent` still
+ * needs them to extract VISIBLE body content (headings, paragraphs) from the
+ * locale JSON namespaces; they no longer feed SEO meta.
+ */
 function buildRoutes() {
   return Object.entries(ROUTE_META).map(([key, route]) => {
     const path = route.pathname.replace(/^\//, '');
     const ns = route.titleI18nKey.split(':')[0];
-    const titleKey = route.titleI18nKey.substring(route.titleI18nKey.indexOf(':') + 1);
-    const descKey = route.descI18nKey.substring(route.descI18nKey.indexOf(':') + 1);
     const i18nInterpolation = key === 'projects/cinelab' ? CINELAB_INTERPOLATION : undefined;
 
-    return { path, ns, titleKey, descKey, schemaType: route.schemaType, ogImage: '/og-image.png', i18nInterpolation };
+    return { path, ns, schemaType: route.schemaType, ogImage: '/og-image.png', es: route.es, en: route.en, i18nInterpolation };
   });
 }
 
@@ -89,16 +98,12 @@ function tr(lang, ns, key, interpolation = {}) {
 
 /* ── Helpers ────────────────────────────────────────────────── */
 
-function resolveI18n(lang, route, key, interpolation = {}) {
-  return tr(lang, route.ns, key, interpolation) || '';
-}
-
 function metaTitle(lang, route) {
-  return resolveI18n(lang, route, route.titleKey, route.i18nInterpolation) || route.path;
+  return (lang === 'en' ? route.en.title : route.es.title) || route.path;
 }
 
 function metaDesc(lang, route) {
-  return resolveI18n(lang, route, route.descKey, route.i18nInterpolation) || '';
+  return (lang === 'en' ? route.en.description : route.es.description) || '';
 }
 
 function ogImageUrl(route) {
@@ -246,7 +251,7 @@ function buildPageContent(lang, route) {
   }
 
   if (ns === 'projects') {
-    const title = getVal(content, 'meta.title') || 'Projects';
+    const title = getVal(content, 'header.title') || 'Projects';
     const subtitle = getVal(content, 'header.subtitle') || '';
     const contentHeading = getVal(content, 'contentSection.heading') || '';
     const contentPara1 = getVal(content, 'contentSection.paragraph1') || '';
@@ -535,7 +540,7 @@ function writePage(lang, route, html) {
 /* ── Main ───────────────────────────────────────────────────── */
 
 async function prerender() {
-  console.log('\n━━━ Prerender: generating 22 static pages ━━━\n');
+  console.log('\n━━━ Prerender: generating 28 static pages ━━━\n');
 
   // Read the template (Vite-built SPA entry)
   const templatePath = path.join(DIST, 'index.html');
