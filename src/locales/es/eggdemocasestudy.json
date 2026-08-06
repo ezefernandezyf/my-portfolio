@@ -1,8 +1,4 @@
 {
-  "meta": {
-    "title": "Egg AI Readiness Diagnostic",
-    "description": "Caso de estudio de Egg AI Readiness Diagnostic: MVP de diagnóstico de madurez en IA para Egg.live. Quiz interactivo, scoring automatizado, 40+ tests, recomendaciones con Groq AI, radar chart y PDF exportable."
-  },
   "header": {
     "title": "Egg AI Readiness Diagnostic",
     "short": "MVP de diagnóstico de madurez en IA para Egg.live. Quiz interactivo de 5 dimensiones, scoring automatizado, recomendaciones con Groq AI y reporte exportable.",

@@ -1,8 +1,4 @@
 ﻿{
-  "meta": {
-    "title": "IA Recipe Generator",
-    "description": "Caso de estudio de ChefcitoIA: generador de recetas con IA construido con React 19 y Zod. Arquitectura, orquestación de modelos generativos y validación tipada."
-  },
   "header": {
     "title": "IA Recipe Generator",
     "short": "Generador de recetas basado en IA: ingresa ingredientes y preferencias y recibe recetas tipadas con macros, tiempos y dificultad.",
