@@ -40,6 +40,10 @@ type CaseStudySection = ListSection | CodeSection;
 type CaseStudyTemplateProps = {
   title: string;
   description: string;
+  /** SEO title from ROUTE_META (canonical source) — falls back to `title` when absent */
+  metaTitle?: string;
+  /** SEO description from ROUTE_META (canonical source) — falls back to `description` when absent */
+  metaDescription?: string;
   pathname: string;
   repo?: string;
   demo?: string;
@@ -125,6 +129,8 @@ function renderSection(section: CaseStudySection, large = false) {
 export const CaseStudyTemplate = ({
   title,
   description,
+  metaTitle,
+  metaDescription,
   pathname,
   repo,
   demo,
@@ -152,7 +158,12 @@ export const CaseStudyTemplate = ({
 
   return (
     <>
-      <MetaTags title={title} description={description} pathname={pathname} type="article" />
+      <MetaTags
+        title={metaTitle ?? title}
+        description={metaDescription ?? description}
+        pathname={pathname}
+        type="article"
+      />
 
       <ScrollProgress />
 

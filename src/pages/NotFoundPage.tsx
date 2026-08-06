@@ -1,16 +1,18 @@
 import { Link } from 'react-router-dom';
 import { MetaTags } from '../shared/seo';
+import { ROUTE_META } from '../data/route-meta';
 import { useTranslation } from 'react-i18next';
 
 export const NotFoundPage = (): React.JSX.Element => {
   const currentYear = new Date().getFullYear();
-  const { t } = useTranslation('notfoundpage');
+  const { t, i18n } = useTranslation('notfoundpage');
+  const lang = i18n.language?.startsWith('en') ? 'en' : 'es';
 
   return (
     <>
       <MetaTags
-        title={t('meta.title')}
-        description={t('meta.description')}
+        title={ROUTE_META['not-found'][lang].title}
+        description={ROUTE_META['not-found'][lang].description}
         noIndex={true}
         pathname="/404"
         type="website"
