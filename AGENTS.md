@@ -28,7 +28,7 @@
   - `src/routes/` — AppRouter (BrowserRouter) + AppRoutes
   - `src/shared/` — seo (MetaTags), ui (ProjectCard, ProjectCarousel)
 - **Sin backend** — portfolio 100% estático, sin API ni base de datos
-- **Sin SSR** actualmente — el HTML servido es `<div id="root"></div>` (en proceso de arreglar con `geo-seo-enhancements`)
+- **Sin SSR** — SEO resuelto con prerender estático parcial (22 páginas, `scripts/prerender.mjs`). Pendiente Fase 15: prerender completo del DOM (grids, skills, stats, decisiones) + links internos en HTML
 
 ## Conventions
 - Conventional Commits: `feat(scope):`, `fix(scope):`, `chore:`, `docs:`, `test(scope):` — **título en inglés, descripción en español**
@@ -88,8 +88,13 @@ pnpm run check            # lint + build + test:coverage (todo junto)
 - `src/hooks/useTheme.ts` — hook para consumir ThemeContext
 - `src/features/projects-case-study/` — feature de case studies (template dinámico, i18n por proyecto)
 - `src/shared/seo/MetaTags.tsx` — versión compartida del componente MetaTags
-- `public/robots.txt` — abierto a todos los crawlers
-- `public/sitemap.xml` — 4 URLs principales
+- `scripts/prerender.mjs` — prerender estático 22 páginas + JSDOM post-render (incompleto: solo secciones estáticas, cero links internos)
+- `src/data/schema.ts` — generación JSON-LD @graph (Person, WebSite, WebPage, BreadcrumbList) — en sync manual con `prerender.mjs`
+- `src/shared/seo/route-meta.ts` — meta/title/description/keywords por ruta (fuente de verdad para sitemap y schema)
+- `public/robots.txt` — abierto a todos los crawlers (sin reglas AI específicas)
+- `public/sitemap.xml` — 22 URLs ES/EN con hreflang (lastmod estático — pendiente auto-gen)
+- `public/llms.txt` — asset GEO principal, completo y bien estructurado
+- `GEO-AUDIT-REPORT.md` — auditoría GEO 2026-08: score 52.4/100 + plan de 30 días
 - `.atl/skill-registry.md` — registro de skills del proyecto
 - `skills/` — skills locales (react-19, tailwind-4, typescript, zod-4, portfolio-personality)
 
@@ -170,7 +175,7 @@ Segunda tanda:
 - [x] **CV dinámico según idioma** — ES/EN PDF según `i18n.language`
 - [x] **Fix routing** — URLs mantienen `/en/` al navegar en inglés, hook `useLocalizedPath`
 - [x] **Education status** — activo (en curso) vs completado con chip-completed
-- [ ] **GEO audit final** — correr auditoría completa post-cambios, medir score final
+- [x] **GEO audit final** — auditoría 2026-08 con skill geo-audit: score **52.4/100** (Poor). Ver Fase 15
 
 ### Fase 13 — Pulido Final 🔲 (absorbida en Fase 14)
 
@@ -179,7 +184,7 @@ Segunda tanda:
 
 #### Fase 14a — 🔴 Críticos: i18n + Schema + Infra
 - [ ] **Fix LanguageSwitcher** — clases CSS inexistentes (`bg-surface-container-high`, `font-space-grotesk`, `text-text/50`). El componente está invisible. Reemplazar con tokens del proyecto (`bg-surface-elevated`, `font-body`, `text-text-muted`). Eliminar doble pill (container propio + `control-cluster` padre).
-- [ ] **Fix schema JSON-LD** — `schema.ts:58-59` inyecta keys de i18next (`"home:meta.title"`) como texto en vez del valor resuelto. Usar `route[lang].title` / `route[lang].description`.
+- [x] **Fix schema JSON-LD** — `schema.ts:58-59` inyecta keys de i18next (`"home:meta.title"`) como texto en vez del valor resuelto. Usar `route[lang].title` / `route[lang].description`. **Verificado FIXED en auditoría 2026-08** (HTML servido muestra valores resueltos).
 - [ ] **Agregar `meta.description` a 6 case studies** — `descI18nKey` en `route-meta.ts` apunta a `meta.title`. Crear key `meta.description` en cada namespace: `cinelabcasestudy`, `moviedashboardcasestudy`, `chefcitoiacasestudy`, `nexustalentcasestudy`, `echologcasestudy`, `geoseoopencodecasestudy`.
 - [ ] **Traducir strings en inglés en locales español** — `labels.featured: "Featured"` → `"Destacado"`, `deepDive.heading: "Technical Deep Dive"` → `"Profundización técnica"`, `carousel.alt` en inglés, `noPreview: "Sin preview disponible"` → `"Sin vista previa"`. Archivos: `cinelabcasestudy`, `moviedashboardcasestudy`, `echologcasestudy`, `nexustalentcasestudy`, `chefcitoiacasestudy`.
 - [ ] **Fix doble `<main>` anidado** — `HomePage.tsx`, `ContactPage.tsx`, `AboutPage.tsx` definen `<main role="main">` dentro del `<main id="main-content">` de `MainLayout`. Cambiar a `<div>` o `<section>`.
@@ -223,4 +228,30 @@ Segunda tanda:
 - [ ] **Agregar `fetchpriority="high"` en LCP candidates** — foto de perfil en AboutPage, hero images.
 - [ ] **Agregar `object-src 'none'` explícito en CSP**.
 - [ ] **Agregar `pnpm audit` en CI**.
+
+### Fase 15 — GEO Recovery 2026 🔲 (arranca con SDD)
+> Auditoría GEO 2026-08 (skill geo-audit, 5 subagentes): score **52.4/100** (Poor). Technical 94/100 pero contenido prerenderizado incompleto + brand authority 19/100. Historial: Fase 10 = 54/100 → objetivo Fase 12 = 65-70 → hoy 52.4. Reporte completo: `GEO-AUDIT-REPORT.md`. Objetivo: **70+/100**.
+
+#### 🔴 Críticos — prerender + títulos (lever #1)
+- [ ] **Fix títulos `" , "` en locales** — `home.json`, `aboutpage.json`, case studies emiten `"Portfolio Personal , Full Stack Developer"` (coma y espacio invertidos). Alinear con `route-meta.ts`. OJO: producción ES ya sirve el título defectuoso; EN sirve el bueno y **el próximo deploy lo degrada** (regresión latente). Causa raíz: duplicación de fuentes de verdad — definir una canónica (route-meta) para schema + prerender + sitemap + SPA.
+- [ ] **Prerender completo del DOM** — `scripts/prerender.mjs` debe renderizar grids de proyectos, skills, stats, carousel y decisiones de case studies (hoy solo secciones estáticas; crawlers sin JS ven ~25-50 palabras por página).
+- [ ] **Links internos en HTML prerenderizado** — inyectar nav + footer (hoy 0 `<a>` en HTML servido; crawlers no navegan el sitio desde el contenido).
+- [ ] **Stats al body** — tabla HTML de resultados por case study (EchoLog: 606 tests / 45 PRs / ~20k líneas — hoy solo en meta description).
+- [ ] **Reconciliar URL de Credly** — `llms.txt` (6f6e4c5f...) vs `AboutPage.tsx:308` (e3409ca3...) divergen; una está rota.
+
+#### 🟡 Schema & Structured Data
+- [ ] **Case studies → `TechArticle`** (headline, datePublished, dateModified, author, speakable); geo-seo-opencode → `SoftwareApplication` (applicationCategory, operatingSystem, featureList)
+- [ ] **`Person` completo** — image, description, knowsAbout, alumniOf, hasCredential (Credly), contactPoint, 3+ sameAs
+- [ ] **Breadcrumb `@id` page-scoped** (`/about#breadcrumb`) + `dateModified` en WebPage + `mainEntity`/`hasPart` en CollectionPage + emitir `keywords` (hoy dato muerto)
+
+#### 🟡 Contenido & i18n
+- [ ] **Strings hardcodeadas sin i18n** — `CaseStudyTemplate` ("Case Study", "Featured", "The Engineering Stack"), `PrivacyPage` ("Privacy & Trust"); educación de `AboutPage` hardcodeada en español visible en `/en/about`
+- [ ] **Deepen case studies delgados** — CineLab, MovieDashboard, ChefcitoIA al nivel EchoLog (counts de tests/PRs, tradeoffs explícitos, evidencia)
+- [ ] **About narrativa** — bio > 300 palabras con timeline, outcomes y rol por proyecto (hoy ~50 palabras prerenderizadas)
+
+#### 🔵 Off-site + Infra
+- [ ] **Wikidata item** — "Ezequiel Fernández (software developer)" para desambiguar del futbolista; presencia off-site (Show HN, dev.to, StackOverflow answer, estrellas GitHub)
+- [ ] **404 handling** — NotFoundPage responde 200 e indexable (falta noindex); rutas desconocidas dan 404 genérico de Vercel sin branding
+- [ ] **IndexNow + Bing Webmaster Tools** — key en `/.well-known/indexnow-key.txt` + ping en build
+- [ ] **webp (11 JPGs) + cadena www a 301 único + security headers en redirects**
 
