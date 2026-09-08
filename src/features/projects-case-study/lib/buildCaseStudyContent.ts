@@ -140,6 +140,13 @@ const stackByProject: Record<string, StackItem[]> = {
       items: ['pnpm workspaces (3 packages)', 'TypeScript', 'Vitest', 'supertest', '92 assertions (10 files)'],
     },
   ],
+  'geo-saas': [
+    { titleKey: 'stack.sections.frontend', defaultTitle: 'Frontend', items: ['Next.js 15 (App Router, RSC + Server Actions)', 'React 19', 'TypeScript strict', 'Tailwind CSS 4', 'lucide-react'] },
+    { titleKey: 'stack.sections.backend', defaultTitle: 'Backend & Data', items: ['Prisma 7 (@prisma/adapter-pg)', 'PostgreSQL (Supabase)', 'cheerio (HTML parsing)', 'Node.js 20+'] },
+    { titleKey: 'stack.sections.auth', defaultTitle: 'Auth & Validation', items: ['NextAuth.js v5 (Auth.js, GitHub OAuth)', 'Zod 4 (shared contracts)'] },
+    { titleKey: 'stack.sections.testing', defaultTitle: 'Testing & Quality', items: ['Vitest 4', 'React Testing Library + jest-dom', 'Playwright + @axe-core/playwright', 'Husky + lint-staged'] },
+    { titleKey: 'stack.sections.infra', defaultTitle: 'Infra & Observability', items: ['Vercel (Turbopack)', 'GitHub Actions (CI)', 'Sentry (@sentry/nextjs, DSN-guarded)'] },
+  ],
   'egg-demo': [
     {
       titleKey: 'stack.sections.frontend',
