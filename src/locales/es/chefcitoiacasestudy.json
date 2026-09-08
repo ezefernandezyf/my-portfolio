@@ -1,4 +1,8 @@
-﻿{
+{
+  "meta": {
+    "title": "ChefcitoIA | Ezequiel Fernández, Full Stack Developer",
+    "description": "Generador de recetas con IA construido con React y TypeScript. Convertí ingredientes en ideas de comidas con validación Zod."
+  },
   "header": {
     "title": "IA Recipe Generator",
     "short": "Generador de recetas basado en IA: ingresa ingredientes y preferencias y recibe recetas tipadas con macros, tiempos y dificultad.",

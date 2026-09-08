@@ -23,6 +23,10 @@
     "paragraph3": "Every project goes through research, architecture design, implementation with tests, and automated deployment. I prioritize readable code over premature optimization. Continuous integration with GitHub Actions ensures every PR passes linting, type checking, and the full test suite before merge. I write unit tests with Vitest and React Testing Library, and integration tests for API endpoints. When a bug surfaces, I write a test that reproduces it first, then fix it. This discipline lets me refactor with confidence and ship software that works, even under deadline pressure."
   },
   "notFound": "Project not found",
+  "geo-saas": {
+    "name": "Relevy",
+    "short": "GEO & SEO auditing for AI search: drop in a URL and get a 0-100 GEO Score with a full citability, E-E-A-T, schema, platform and brand report."
+  },
   "context-bridge": {
     "name": "Context Bridge",
     "short": "Slack assistant with multi-source search and AI-powered synthesis. MCP architecture with JSON-RPC 2.0, 4 parallel sources with graceful degradation."

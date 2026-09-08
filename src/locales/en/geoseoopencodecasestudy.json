@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "geo-seo-opencode | Ezequiel Fernández, Full Stack Developer",
+    "description": "GEO-SEO skill for OpenCode/Claude that optimizes websites for AI-powered search engines. Node.js, Commander, automated analysis."
+  },
   "header": {
     "title": "geo-seo-opencode",
     "short": "Open-source adaptation of geo-seo-claude (8.3k ⭐) for opencode. 16 GEO analysis skills, Python scripts, cross-platform installer. Optimization for ChatGPT, Claude, Perplexity and Gemini.",

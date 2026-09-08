@@ -1,4 +1,8 @@
-﻿{
+{
+  "meta": {
+    "title": "EchoLog | Ezequiel Fernández, Full Stack Developer",
+    "description": "Multi-tenant customer feedback SaaS built with React 19, Node.js, Express, PostgreSQL. Boards, voting, comments, and workspaces."
+  },
   "header": {
     "title": "EchoLog",
     "short": "Multi-tenant customer feedback SaaS - boards, upvoting, comments, workspaces, board approval, email invitations. Full-stack TypeScript with React 19, Express 5, Prisma, PostgreSQL (Supabase). ~20,000 lines, pnpm monorepo.",

@@ -38,23 +38,23 @@ describe('HomePage', () => {
     expect(screen.getAllByText(/typescript/i).length).toBeGreaterThanOrEqual(1);
 
     expect(screen.getByRole('heading', { name: /recent work|trabajos recientes/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Relevy/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /EchoLog/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: /Nexus Talent/i })).toBeInTheDocument();
 
       const repoLinks = screen.getAllByRole('link', { name: /ver repo|view repo/i });
       expect(repoLinks).toHaveLength(2);
-    expect(repoLinks[0]).toHaveAttribute('href', 'https://github.com/ezefernandezyf/echolog');
-    expect(repoLinks[1]).toHaveAttribute('href', 'https://github.com/ezefernandezyf/nexus-talent');
+    expect(repoLinks[0]).toHaveAttribute('href', 'https://github.com/ezefernandezyf/relevy');
+    expect(repoLinks[1]).toHaveAttribute('href', 'https://github.com/ezefernandezyf/echolog');
 
       const demoLinks = screen.getAllByRole('link', { name: /ver demo|view demo/i });
       expect(demoLinks).toHaveLength(2);
-    expect(demoLinks[0]).toHaveAttribute('href', 'https://echolog-web.vercel.app');
-    expect(demoLinks[1]).toHaveAttribute('href', 'https://nexustalent.vercel.app');
+    expect(demoLinks[0]).toHaveAttribute('href', 'https://relevy.app');
+    expect(demoLinks[1]).toHaveAttribute('href', 'https://echolog-web.vercel.app');
 
       const caseStudyLinks = screen.getAllByRole('link', { name: /ver case study|view case study/i });
       expect(caseStudyLinks).toHaveLength(2);
-    expect(caseStudyLinks[0]).toHaveAttribute('href', '/projects/echolog');
-    expect(caseStudyLinks[1]).toHaveAttribute('href', '/projects/nexus-talent');
+    expect(caseStudyLinks[0]).toHaveAttribute('href', '/projects/geo-saas');
+    expect(caseStudyLinks[1]).toHaveAttribute('href', '/projects/echolog');
 
     expect(screen.getByRole('heading', { name: /interested in my profile|te interesa mi perfil/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /contactar|contact/i })).toBeInTheDocument();

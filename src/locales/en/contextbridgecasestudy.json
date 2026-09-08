@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "Context Bridge | Multi-Source Search Slack Bot | Ezequiel Fernández",
+    "description": "Slack bot with multi-source search and AI-powered response synthesis. MCP Server Pattern with JSON-RPC 2.0, 4 parallel sources with individual timeouts, graceful degradation, and Zod validation."
+  },
   "header": {
     "title": "Context Bridge",
     "short": "Slack bot with multi-source search and AI-powered response synthesis. MCP architecture with JSON-RPC 2.0, 4 parallel sources with individual timeouts, graceful degradation.",
