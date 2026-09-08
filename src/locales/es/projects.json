@@ -1,7 +1,7 @@
-﻿{
+{
   "header": {
     "title": "Proyectos",
-    "subtitle": "Una selección de proyectos de ingeniería que abarcan desde SaaS multi-tenant y plataformas con inteligencia artificial hasta dashboards y herramientas CLI open source. Cada uno refleja mi enfoque en arquitectura limpia, testing automatizado y TypeScript estricto. Explorá el código, revisá los case studies o filtrá por tecnología."
+    "subtitle": "Una selección de proyectos de ingeniería que abarcan desde SaaS multi-tenant y plataformas con inteligencia artificial hasta dashboards y herramientas CLI open source. Cada uno refleja mi enfoque en arquitectura limpia, testing automatizado y TypeScript estricto. Explora el código, revisa los case studies o filtra por tecnología."
   },
   "search": {
     "placeholder": "Buscar proyectos por nombre, stack o objetivo...",
