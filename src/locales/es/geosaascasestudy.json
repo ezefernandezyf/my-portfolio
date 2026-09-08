@@ -1,0 +1,105 @@
+{
+  "header": {
+    "title": "Relevy",
+    "short": "Auditoría GEO y SEO para buscadores con IA: ingresa una URL y obtén un GEO Score 0-100 con reporte de citabilidad, E-E-A-T, schema, plataforma y marca.",
+    "repoAria": "Repositorio de Relevy",
+    "demoAria": "Demo de Relevy",
+    "backToProjects": "← Volver a Proyectos"
+  },
+  "stack": {
+    "heading": "Stack & Tecnologías",
+    "sections": {
+      "frontend": "Frontend",
+      "backend": "Backend & Data",
+      "auth": "Auth & Validation",
+      "testing": "Testing & Quality",
+      "infra": "Infra & Observability"
+    }
+  },
+  "summary": {
+    "heading": "Resumen",
+    "text": "Relevy es un micro-SaaS que automatiza la auditoría GEO (Generative Engine Optimization): analiza una URL en vivo y devuelve un GEO Score de 0 a 100 con reporte completo de visibilidad en ChatGPT, Claude, Perplexity, Gemini, Google AI Overviews y Bing Copilot. El stack es una app Next.js 15 única con dominios de negocio aislados, PostgreSQL con Prisma 7 y un plan Free de 10 auditorías cada 30 días."
+  },
+  "problem": {
+    "heading": "El problema",
+    "text": "Las marcas no saben cómo las citan los motores de búsqueda con IA: ChatGPT, Claude, Perplexity o Google AI Overviews pueden ignorarlas o citar a la competencia sin que nadie lo detecte. Las herramientas SEO clásicas miden rankings y backlinks, no responden a la pregunta nueva: ¿soy una fuente citable para una IA? Antes de Relevy no existía un producto simple que combinara las seis dimensiones que determinan esa visibilidad — citabilidad del contenido, E-E-A-T, acceso de crawlers de IA, schema estructurado, readiness por plataforma y autoridad de marca — en un score accionable de 0 a 100. El desafío técnico real era construir motores de análisis deterministas sobre HTML arbitrario y ajeno, con fetching seguro (anti-SSRF) y rúbricas de scoring que no puntuaran todo en cero."
+  },
+  "solution": {
+    "heading": "La solución",
+    "list": [
+      "GEO Score compuesto de 6 dimensiones ponderadas (v3.1.0: citabilidad 24 %, E-E-A-T 23 %, técnico 15 %, plataforma 14 %, schema 12 %, brand authority 12 %), calculado por una función pura en `src/scoring/calculator.ts` con bandas de severidad de fuente única.",
+      "Motor de citabilidad que detecta bloques de contenido, frases normativas, auto-contención y uniqueness; con soporte i18n EN+ES del sprint 21 (patrones léxicos bilingües en `src/citability/constants.ts`) que levantó el landing de ~50 a 74.",
+      "Crawler access map sobre robots.txt, meta robots y headers HTTP (cheerio + fetch propio), y un fetch layer con guarda SSRF real: resolución DNS y clasificación de rangos IPv4/IPv6 privados y reservados en `src/lib/fetch/ssrf.ts`.",
+      "E-E-A-T sobre experiencia, experticia, autoridad y confiabilidad; schema engine que detecta, valida y puntúa JSON-LD/Schema.org; platform readiness por motor (SSR, OpenGraph, headers, llms.txt) con view-models por plataforma.",
+      "Auditoría en vivo server-side bajo Suspense con skeleton instantáneo (el primer paint no espera el resultado, ~2.8 s para example.com), persistencia en PostgreSQL con Prisma, historial en dashboard, share links con token único y auditoría multi-página (hasta 5 URLs).",
+      "Rate limiting 5 req/60 s con store DB-backed compartido entre instancias serverless (tabla `RateLimitEntry`), auth GitHub con NextAuth v5 y plan Free de 10 auditorías / 30 días sin sistema de pagos."
+    ]
+  },
+  "architecture": {
+    "heading": "Arquitectura & decisiones",
+    "list": [
+      "Screaming Architecture: cada dominio de negocio es una carpeta top-level (`src/crawlers`, `src/citability`, `src/schema`, `src/eeat`, `src/platform`, `src/brand`, `src/scoring`, `src/report`) y `app/` es solo routing con Server Components que importan desde los dominios. La lógica de negocio no vive en el router.",
+      "Scoring como función pura, determinista y sin I/O, con pesos versionados en semver (`scoringModelVersion` v2.0.0 → v3.1.0) y rebalanceo automático de pesos cuando un engine falla: el score nunca es NaN y un engine caído no distorsiona el compuesto. Eso permitió calibrar contra un corpus real sin reescribir la UI.",
+      "Zod 4 como single source of truth: contracts compartidos server/client en `src/lib/contracts/` (validación de entrada de URL, tipado del `AuditResult`). Server valida, el cliente infiere tipos — sin duplicación de esquemas entre capas.",
+      "Prisma 7 con driver adapters: el cliente runtime usa `@prisma/adapter-pg` (la URL de conexión vive en código), y la CLI usa `prisma.config.ts`. Separar runtime y CLI evitó el problema clásico de Prisma en serverless con poolers de sesión.",
+      "Decisiones de producto reversibles y documentadas: se construyó Stripe + plan PRO (sprints 4-5) y se removió antes del launch (sprint 10, migración `remove_billing_free_mode`) por decisión de producto — single Free plan 10/30d. También se evaluó y removió el PDF export (sprint 18) tras medir el costo real de Puppeteer en serverless. Cada sprint es un change SDD versionado en `openspec/` con proposal/spec/design/tasks/verify.",
+      "Desarrollo con SDD (Spec-Driven Development) + TDD estricto: cada cambio arranca con specs de capacidad (delta specs), y la calibración del motor se apoya en evidencia real (14 URLs del corpus) en lugar de opiniones. El verify de cada sprint corre la suite completa y typecheck como gate (nunca `build` tras cambios)."
+    ]
+  },
+  "implementation": {
+    "heading": "Implementación destacada",
+    "hookTitle": "GEO Score determinista: composición, exclusión y rebalanceo de pesos",
+    "hookCode": "  const dimensions: Record<DimensionKey, number | null> = {\n    citability: engineScores.citability ?? null,\n    eeat: engineScores.eeat ?? null,\n    technical,\n    schema: engineScores.schema ?? null,\n    platform: rawPlatform,\n    brand_authority: engineScores.brand_authority ?? null,\n  };\n\n  const available = DIMENSIONS.filter(\n    (key) => dimensions[key] !== null && dimensions[key] !== undefined,\n  );\n\n  // RGS-10: no engine produced a score → valid result, never NaN.\n  if (available.length === 0) {\n    return {\n      geoScore: 0,\n      severityBand: severityForScore(0),\n      scoringModelVersion: weights.version,\n      weights,\n      dimensions,\n      notes: [...notes, \"No engine scores available; composite defaults to 0\"],\n    };\n  }\n\n  // RGS-9: re-balance weights among the available dimensions. The weights map\n  // is Partial (design D5) so historical configs without brand_authority fall\n  // back to 0 weight - the brand dimension stays out of the composite.\n  const availableWeight = available.reduce(\n    (sum, key) => sum + (weights.weights[key] ?? 0),\n    0,\n  );\n  const weighted = available.reduce(\n    (sum, key) =>\n      sum + (dimensions[key] as number) * (weights.weights[key] ?? 0),\n    0,\n  );\n  const composite = weighted / availableWeight;",
+    "hookDescription": "Este es el corazón del producto: una función pura sin efectos ni I/O que combina los puntajes de los seis engines en el GEO Score final. Lo interesante es el manejo de fallos parciales: si un engine no pudo correr (timeout, HTTP 403, sitio sin contenido extraíble), se excluye de la sumatoria y los pesos se renorman entre las dimensiones disponibles, así un engine caído no castiga ni infla el resultado. El compuesto nunca es NaN, cada exclusión queda registrada en `notes` (superficie para el reporte), y la versión de pesos viaja en el resultado (`scoringModelVersion`) — lo que hizo posible recalibrar de v2.0.0 a v3.1.0 contra 14 URLs reales y comparar scores históricos sin ambigüedad. La dimensión `technical` se compone como `crawler × 0.6 + platform × 0.4` cuando no hay score standalone (RGS-2). Es determinista por diseño y está cubierta por tests unitarios que fijan los umbrales de banda y los casos de exclusión."
+  },
+  "accessibility": {
+    "heading": "Accesibilidad",
+    "list": [
+      "Contraste WCAG 2.2 AA verificado con `@axe-core/playwright` sobre un browser real (jsdom no computa contraste): escaneos sobre landing, pricing y report con reglas `color-contrast`, `aria-progressbar-name` y `label-content-name-mismatch`, sin violaciones.",
+      "Correcciones de contraste documentadas con ratios antes/después: el emerald de marca `#10b981` sobre blanco daba 2.42:1 (FAIL) y se reemplazó por `#047857` (5.24:1); igual con amber y red de los badges de severidad. Cero excepciones aceptadas sin registrar.",
+      "Drawer mobile con botón `aria-expanded` / `aria-controls`, links de navegación con `aria-current`, y cierre del panel al navegar; accesible por teclado (el bug SSR que lo rompía se explica en la sección Bugs).",
+      "Barras de score con `role=\"progressbar\"`, `aria-valuenow`/`aria-valuemin`/`aria-valuemax` y nombre accesible descriptivo (`aria-progressbar-name`); el nombre accesible del brand link replica el texto visible exacto para no romper `label-content-name-mismatch`.",
+      "UI copy centralizada y consistente en español neutro (sin voseo) y formularios con labels asociadas (el E2E interactúa con `getByLabel(\"URL del sitio\")`), más un E2E de contraste que asevera los security headers."
+    ]
+  },
+  "performance": {
+    "heading": "Métricas & resultados",
+    "list": [
+      "1119 tests pasando / 0 fallando / 4 skipped en el último verify (sprint 21, `pnpm test`); ~122 archivos de test; 305 `describe` y ~1083 casos `it` en el árbol actual.",
+      "CI con 4 jobs paralelos (lint, typecheck, test, E2E Playwright) sobre Node 24 + pnpm 11; E2E de auditoría free contra URL pública estable con asserts tolerantes; las suites con secrets se auto-saltan sin env (convención skip-if-no-env).",
+      "Calibración del motor con evidencia real: promedio 33.8 → 35.6 sobre 12 URLs tras v2.0.0; corpus final de 14 URLs con moz 57 / relevy 55 / promedio 42.4; el landing real de relevy.app puntúa 71 (evidencia re-pinned en el ScoreHero, sprint 21).",
+      "Auditoría en vivo ~2.8 s (example.com) con primer paint inmediato gracias al skeleton bajo Suspense; evidencia histórica Lighthouse (sprint 8): landing Performance 99 / Accessibility 100 / Best Practices 100 / SEO 100; pricing Performance 100; report Performance 99.",
+      "Cobertura de código: [NO DISPONIBLE] — Vitest tiene `@vitest/coverage-v8` instalado pero la cobertura no corre en los verify ni está fijada como gate; no hay número oficial."
+    ]
+  },
+  "challenges": {
+    "heading": "Bugs reales & debugging",
+    "list": [
+      "HTTP 500 en TODAS las páginas tras agregar el drawer mobile (HYD-1, hotfix #80). Síntoma: la shell completa crasheaba porque el Navbar vive en el layout global. Causa raíz: `createPortal(document.body, …)` se ejecutaba durante el SSR — el portal no puede montarse en el server. Solución: montar el portal solo después del mount del cliente (`useEffect` como gate de hidratación); el toggle sigue visible en SSR. Enseñanza: cualquier API client-only dentro de un Server Component del layout global es un riesgo de runtime en toda la app.",
+      "Saga del PDF export en producción (PDF-4, PDF-9, HYD-2, VMA-1 → removido en sprint 18). Síntoma: PDFs en blanco o \"Requesting main frame too early!\" en Vercel. Causas: `puppeteer-core` 25.8 esperaba Chrome 152 pero el pack `@sparticuz/chromium-min@149` trae Chromium 149 (mismatch de protocolo CDP); y el timing de frames (había que commitear el frame inicial antes de `setContent`). Solución parcial: alinear `puppeteer`/`puppeteer-core` a 25.1.0 y corregir el orden de frames. Decisión final de producto: remover la feature (sprint 18) — el costo operativo de Puppeteer en serverless superaba el valor para el plan Free. Enseñanza: medir el costo de infraestructura de una feature antes de enamorarse de ella.",
+      "El motor puntuaba mal el mundo real: sitios legítimos quedaban en 0-48 porque las rúbricas eran binarias (todo-o-nada) y el schema casi nunca existía (11/12 URLs ≤ 10, 10/12 en 0). Síntoma: el score no discriminaba y castigaba a cualquier sitio sin JSON-LD. Causa: pesos y rúbricas diseñados \"en el vacío\", sin corpus. Solución: calibración con evidencia — crédito parcial por niveles en citabilidad/E-E-A-T/schema y rebalanceo de pesos a 28/24/20/14/14 (v2.0.0), luego bandas realistas 80/65/50/30 (v3.1.0). Documentado con tabla antes/después en `docs/calibration-diagnosis.md`.",
+      "El landing en español puntuaba ~50 sin razón de contenido (sprint 21). Síntoma: el propio sitio de Relevy, con contenido ES de calidad, no superaba 49.9. Causa raíz: el scorer de citabilidad solo reconocía patrones léxicos en inglés (answer blocks, cópulas, uniqueness), así que el contenido ES quedaba \"sin bloques citables\". Solución: extender `src/citability/constants.ts` con patrones bilingües EN+ES (definiciones \"es un/una\", cópulas, pronombres y conjunciones de lead, frases de uniqueness) exigiendo 0 cambios en `scorer.ts` (verificado por diff). Resultado: fixture ES 38.7 → 46.7 (+8.0 de lift) y score real 50 → 74."
+    ]
+  },
+  "improvements": {
+    "heading": "Qué se podría mejorar",
+    "list": [
+      "Fijar cobertura de código como gate: `@vitest/coverage-v8` está instalado pero la cobertura no corre en los verify — un umbral (ej. 80 % en los dominios core) evitaría regresiones silenciosas en engines.",
+      "Ampliar E2E con sesión real: hoy las rutas que exigen auth/plan (dashboard, multi-page PRO) se saltan en CI por falta de credenciales; faltan flujos de share links y límites de plan con sesión de test (mocks de GitHub OAuth o cookie de sesión).",
+      "Re-medir performance con tooling vivo: Lighthouse se removió (sprint 20) porque quedó roto al sacar puppeteer; el report en vivo depende de la URL auditada (una URL lenta corre el LCP al tiempo del audit). Conviene Core Web Vitals reales + límite de tiempo/cola para audits pesados.",
+      "i18n de toda la app, no solo del engine: la copy de UI está centralizada pero solo en español neutro y sin framework de i18n; los headings del landing en inglés conviven con cuerpos ES. Un i18n real (ES/EN) abriría el producto a más mercado y dejaría la detección de idioma del audit consistente con la UI."
+    ]
+  },
+  "deepDive": {
+    "heading": "Profundización técnica"
+  },
+  "carousel": {
+    "alt": "Vista previa de Relevy"
+  },
+  "labels": {
+    "year": "Año:",
+    "featured": "Destacado"
+  },
+  "notFound": "Proyecto no encontrado",
+  "noPreview": "Sin vista previa"
+}
