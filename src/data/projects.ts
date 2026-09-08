@@ -1,5 +1,21 @@
 export const projects = [
   {
+    id: 'geo-saas',
+    nameKey: 'geo-saas.name',
+    shortKey: 'geo-saas.short',
+    repo: 'https://github.com/ezefernandezyf/relevy',
+    demo: 'https://relevy.app',
+    images: [
+      '/projects/geo-saas/geo-saas-1.webp',
+      '/projects/geo-saas/geo-saas-2.webp',
+      '/projects/geo-saas/geo-saas-3.webp',
+      '/projects/geo-saas/geo-saas-4.webp',
+    ],
+    tech: ['Next.js 15', 'React 19', 'TypeScript 5', 'Tailwind CSS 4', 'Prisma 7', 'PostgreSQL (Supabase)', 'NextAuth.js v5', 'Zod 4', 'Vitest 4', 'React Testing Library', 'Playwright', 'Sentry', 'cheerio', 'lucide-react', 'Vercel', 'GitHub Actions'],
+    year: 2026,
+    featured: true,
+  },
+  {
     id: 'echolog',
     nameKey: 'echolog.name',
     shortKey: 'echolog.short',
