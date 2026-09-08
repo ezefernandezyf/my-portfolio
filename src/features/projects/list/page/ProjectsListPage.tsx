@@ -5,7 +5,7 @@ import { ProjectCard } from '../../../../shared/ui/project-card';
 import { MetaTags } from '../../../../shared/seo';
 import { ROUTE_META } from '../../../../data/route-meta';
 
-const INITIAL_VISIBLE_PROJECTS = 8;
+const INITIAL_VISIBLE_PROJECTS = 9;
 const LOAD_MORE_STEP = 3;
 
 const normalize = (value: string): string => value.toLowerCase().trim();

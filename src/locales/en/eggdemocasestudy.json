@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "Egg AI Readiness Diagnostic | Full-stack React + Express MVP | Ezequiel Fernández",
+    "description": "Functional AI Readiness Diagnostic MVP built as an outreach tool for Egg.live. Interactive quiz, automated scoring with 40+ tests, Groq AI recommendations, radar chart, exportable PDF and lead capture. Stack: React 19, Express 5, Prisma, PostgreSQL, strict TypeScript."
+  },
   "header": {
     "title": "Egg AI Readiness Diagnostic",
     "short": "AI Readiness Diagnostic MVP for Egg.live. Interactive 5-dimension quiz, automated scoring, Groq AI recommendations and exportable PDF report.",

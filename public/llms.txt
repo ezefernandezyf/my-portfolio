@@ -22,6 +22,7 @@ Full Stack Developer specializing in accessible architecture, REST APIs, and hig
 
 ## Projects
 
+- [Relevy](https://github.com/ezefernandezyf/relevy) — GEO/SEO auditing micro-SaaS: crawls a URL live and returns a 0-100 GEO Score with a full AI-visibility report across ChatGPT, Claude, Perplexity, Gemini, Google AI Overviews and Bing Copilot.
 - [EchoLog](https://github.com/ezefernandezyf/echolog) — Multi-tenant customer feedback SaaS. Boards, voting, comments, workspace management. Full-stack TypeScript with React 19, Node.js, Express, PostgreSQL.
 - [Nexus Talent](https://github.com/ezefernandezyf/nexus-talent) — AI-assisted recruitment platform that transforms raw job descriptions into structured skill matrices and technical application strategies.
 - [geo-seo-opencode](https://github.com/ezefernandezyf/geo-seo-opencode) — Open-source GEO toolkit for opencode. 16 analysis skills for ChatGPT, Claude, Perplexity, and Gemini. Cross-platform, one-command installer. CLI toolkit for AI search optimization.
@@ -51,6 +52,8 @@ Full Stack Developer specializing in accessible architecture, REST APIs, and hig
 | `/en/projects/echolog` | EchoLog case study | EN |
 | `/projects/geo-seo-opencode` | geo-seo-opencode case study | ES |
 | `/en/projects/geo-seo-opencode` | geo-seo-opencode case study | EN |
+| `/projects/geo-saas` | Relevy case study | ES |
+| `/en/projects/geo-saas` | Relevy case study | EN |
 | `/contact` | Contact form | ES |
 | `/en/contact` | Contact form | EN |
 | `/privacy` | Privacy policy | ES |

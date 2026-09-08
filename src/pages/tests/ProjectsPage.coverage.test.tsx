@@ -143,7 +143,7 @@ describe('ProjectsPage coverage', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getAllByRole('heading', { level: 3 })).toHaveLength(8);
+    expect(screen.getAllByRole('heading', { level: 3 })).toHaveLength(9);
     expect(screen.getByRole('button', { name: /load more|cargar más/i })).toBeInTheDocument();
     expect(screen.getByText(/proyecto no encontrado|no preview/i)).toBeInTheDocument();
 
@@ -164,7 +164,7 @@ describe('ProjectsPage coverage', () => {
     await user.clear(input);
     await user.type(input, 'project');
 
-    expect(screen.getAllByRole('heading', { level: 3 })).toHaveLength(8);
+    expect(screen.getAllByRole('heading', { level: 3 })).toHaveLength(9);
 
     await user.click(screen.getByRole('button', { name: /load more|cargar más/i }));
     expect(screen.getAllByRole('heading', { level: 3 })).toHaveLength(11);

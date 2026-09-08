@@ -349,6 +349,25 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     priority: 0.7,
     changefreq: 'monthly',
   },
+  'projects/geo-saas': {
+    pathname: '/projects/geo-saas',
+    titleI18nKey: 'geosaascasestudy:meta.title',
+    descI18nKey: 'geosaascasestudy:meta.description',
+    es: {
+      title: 'Relevy | Ezequiel Fernández, Full Stack Developer',
+      description: 'Case study de Relevy: un SaaS de auditoría GEO y SEO con Next.js, TypeScript y Prisma que mide tu visibilidad en buscadores con IA.',
+      keywords: ['auditoría GEO', 'SEO para IA', 'visibilidad en buscadores con IA', 'Next.js case study', 'TypeScript', 'Prisma', 'micro-SaaS', 'full stack developer'],
+    },
+    en: {
+      title: 'Relevy | Ezequiel Fernández, Full Stack Developer',
+      description: 'Relevy case study: a GEO & SEO auditing SaaS built with Next.js, TypeScript and Prisma that measures AI search visibility across ChatGPT, Claude, Perplexity and Gemini.',
+      keywords: ['GEO audit', 'AI search visibility', 'generative engine optimization', 'Next.js case study', 'TypeScript', 'Prisma', 'SaaS', 'full stack portfolio'],
+    },
+    ogImage: '/og-image.png',
+    schemaType: 'WebPage',
+    priority: 0.7,
+    changefreq: 'monthly',
+  },
 };
 
 /** Ordered route keys matching the prerender loop order */
@@ -364,6 +383,7 @@ export const ROUTE_KEYS: string[] = [
   'projects/geo-seo-opencode',
   'projects/context-bridge',
   'projects/egg-demo',
+  'projects/geo-saas',
   'privacy',
   'contact',
   'not-found',
