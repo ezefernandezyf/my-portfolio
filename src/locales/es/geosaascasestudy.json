@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "Relevy | Ezequiel Fernández, Full Stack Developer",
+    "description": "Case study de Relevy: un SaaS de auditoría GEO y SEO con Next.js, TypeScript y Prisma que mide tu visibilidad en buscadores con IA."
+  },
   "header": {
     "title": "Relevy",
     "short": "Auditoría GEO y SEO para buscadores con IA: ingresa una URL y obtén un GEO Score 0-100 con reporte de citabilidad, E-E-A-T, schema, plataforma y marca.",

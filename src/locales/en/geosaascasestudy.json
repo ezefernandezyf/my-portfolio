@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "Relevy | Ezequiel Fernández, Full Stack Developer",
+    "description": "Relevy case study: a GEO & SEO auditing SaaS built with Next.js, TypeScript and Prisma that measures AI search visibility across ChatGPT, Claude, Perplexity and Gemini."
+  },
   "header": {
     "title": "Relevy",
     "short": "GEO & SEO auditing for AI search: drop in a URL and get a 0-100 GEO Score with a full citability, E-E-A-T, schema, platform and brand report.",

@@ -1,4 +1,8 @@
-﻿{
+{
+  "meta": {
+    "title": "CineLab | Ezequiel Fernández, Full Stack Developer",
+    "description": "Movie Search App construida con React, TypeScript y la API de TMDB. Búsqueda, filtros, favoritos persistentes y recomendaciones dinámicas."
+  },
   "header": {
     "title": "{{name}}",
     "short": "Movie Search App - búsqueda, filtros, favoritos persistentes y recomendaciones dinámicas (TMDB).",

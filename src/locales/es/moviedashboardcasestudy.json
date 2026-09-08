@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "Movie Management Dashboard | Ezequiel Fernández, Full Stack Developer",
+    "description": "Dashboard SPA para gestión de catálogo de películas con CRUD, autenticación Supabase, React Query y arquitectura modular."
+  },
   "header": {
     "title": "Movie Management Dashboard",
     "short": "Dashboard SPA para gestión de catálogo de películas. CRUD seguro, autenticación vía Supabase, uso avanzado de React Query, formularios robustos y tests automatizados.",

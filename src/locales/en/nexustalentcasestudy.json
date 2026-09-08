@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "Nexus Talent | Ezequiel Fernández, Full Stack Developer",
+    "description": "AI-assisted recruitment platform that transforms job descriptions into structured skill matrices and application strategies."
+  },
   "header": {
     "title": "Nexus Talent",
     "short": "SaaS platform for AI-powered job application analysis and CV generation: Groq (Llama 3.3 70B), structured prompt engineering, CV generation with @react-pdf/renderer, pnpm monorepo with 4 packages, zero-dependency custom JWT and Screaming Architecture on Express 5.",
