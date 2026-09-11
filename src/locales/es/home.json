@@ -17,17 +17,16 @@
   "contactText": "Estoy abierto a nuevos proyectos y oportunidades laborales.",
   "contactCta": "Contactar",
   "currently": {
-    "title": "En qué estoy trabajando ahora",
+    "title": "Lo último que hice",
     "list": [
       {
         "emoji": "🚀",
-        "label": "Nexus Talent v1.1",
-        "url": "https://github.com/ezefernandezyf/nexus-talent"
+        "label": "Recientemente desplegado Relevy",
+        "url": "https://github.com/ezefernandezyf/relevy"
       },
       {
-        "emoji": "🌐",
-        "label": "Recientemente desplegado EchoLog v1.1",
-        "url": "https://github.com/ezefernandezyf/echolog"
+        "emoji": "📚",
+        "label": "Estudiando Analista en Sistemas en Da Vinci"
       }
     ]
   }
