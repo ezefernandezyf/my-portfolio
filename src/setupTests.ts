@@ -32,7 +32,7 @@ import enContextBridge from './locales/en/contextbridgecasestudy.json';
 import esPrivacy from './locales/es/privacy.json';
 import enPrivacy from './locales/en/privacy.json';
 
-type JsonValue = string | number | boolean | JsonObject | JsonArray | null;
+type JsonValue = string | number | boolean | JsonObject | JsonArray | null | undefined;
 interface JsonObject {
   [key: string]: JsonValue;
 }
