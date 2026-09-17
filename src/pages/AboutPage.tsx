@@ -303,7 +303,7 @@ export const AboutPage = (): React.JSX.Element => {
                           {index === 0
                             ? 'Formación integral en desarrollo de software, arquitectura de sistemas y metodologías de trabajo para construir productos consistentes.'
                             : index === 1
-                              ? 'Certificación enfocada en seguridad, control de acceso y prácticas de hardening aplicadas a productos web modernos.'
+                              ? 'Formación en análisis de datos con Python: limpieza, visualización y extracción de insights para la toma de decisiones. Programa Talento Tech del Gobierno de la Ciudad de Buenos Aires.'
                               : index === 2
                                 ? 'Certificación de dominio del inglés nivel C2 (Proficient) según el Marco Común Europeo, evaluado por EF SET.'
                                 : index === 3
