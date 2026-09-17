@@ -45,7 +45,7 @@ describe('AboutPage', () => {
     const educationSection = educationHeading.closest('section');
     expect(educationSection).toBeTruthy();
     expect(within(educationSection as HTMLElement).getByText(/analista en sistemas/i)).toBeInTheDocument();
-    expect(within(educationSection as HTMLElement).getByText(/ciberseguridad/i)).toBeInTheDocument();
+    expect(within(educationSection as HTMLElement).getByText(/data analytics/i)).toBeInTheDocument();
     expect(within(educationSection as HTMLElement).getByText(/desarrollo con ia/i)).toBeInTheDocument();
   });
 });
