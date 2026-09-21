@@ -9,6 +9,7 @@ import {
   BoltIcon,
   ChartBarIcon,
   ChatBubbleLeftRightIcon,
+  CloudIcon,
   CodeBracketIcon,
   PuzzlePieceIcon,
   SparklesIcon,
@@ -45,6 +46,11 @@ const stackCards = [
     key: 'testing',
     icon: BeakerIcon,
     items: ['Vitest', 'React Testing Library', 'Playwright', 'React Hook Form', 'Zod', 'Zustand', 'ESLint', 'Prettier'],
+  },
+  {
+    key: 'cloud',
+    icon: CloudIcon,
+    items: ['AWS', 'EC2', 'S3', 'Lambda', 'DynamoDB', 'RDS', 'CloudFront', 'API Gateway'],
   },
 ] as const;
 
