@@ -308,7 +308,9 @@ export const AboutPage = (): React.JSX.Element => {
                                 ? 'Certificación de dominio del inglés nivel C2 (Proficient) según el Marco Común Europeo, evaluado por EF SET.'
                                 : index === 3
                                   ? 'Formación intensiva en modelos generativos, flujo de entrega y criterios para llevar experimentos de IA a producción.'
-                                  : 'Participación en el evento global de Microsoft sobre IA generativa, agentes y Copilot. Badge verificado en Credly.'}
+                                  : index === 4
+                                    ? 'Participación en el evento global de Microsoft sobre IA generativa, agentes y Copilot. Badge verificado en Credly.'
+                                    : 'Fundamentos de infraestructura cloud con AWS: EC2, S3, Lambda, DynamoDB, RDS, CloudFront y API Gateway, con foco en serverless y operación.'}
                         </p>
                         {index === 4 && (
                           <a

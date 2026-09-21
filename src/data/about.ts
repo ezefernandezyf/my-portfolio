@@ -67,6 +67,10 @@ export const about: AboutData = {
       items: ['Axios', 'Zod', 'TMDB API'],
     },
     {
+      titleKey: 'aboutpage.categories.cloud',
+      items: ['AWS', 'EC2', 'S3', 'Lambda', 'DynamoDB', 'RDS', 'CloudFront', 'API Gateway'],
+    },
+    {
       titleKey: 'aboutpage.categories.tools',
       items: ['Git', 'GitHub', 'Bun', 'NPM', 'Prettier', 'ESLint', 'React Hook Form'],
     },
@@ -160,6 +164,11 @@ export const about: AboutData = {
     {
       titleKey: 'aboutpage.education.4.title',
       periodKey: 'education.4.period',
+      bulletsKeys: [],
+    },
+    {
+      titleKey: 'aboutpage.education.5.title',
+      periodKey: 'education.5.period',
       bulletsKeys: [],
     },
   ],
