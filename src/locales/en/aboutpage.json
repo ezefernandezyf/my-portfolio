@@ -18,7 +18,8 @@
     "frontend": "Frontend",
     "styles": "Styles & UI",
     "testing": "Testing & Tools",
-    "backend": "Backend & Database"
+    "backend": "Backend & Database",
+    "cloud": "Cloud"
   },
   "projects": {
     "title": "Featured projects",
