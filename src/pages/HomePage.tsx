@@ -10,7 +10,7 @@ import { CurrentlySection, type CurrentlyItem } from '../components/CurrentlySec
 import { useLocalizedPath } from '../hooks/useLocalizedPath';
 
 const featuredProjects = projectRepository.getProjects().slice(0, 2);
-const technicalStack = ['React 19', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma', 'Tailwind CSS 4', 'Vite'];
+const technicalStack = ['React 19', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma', 'Tailwind CSS 4', 'Vite', 'AWS'];
 
 export const HomePage = (): React.JSX.Element => {
   const { t, i18n } = useTranslation(['home', 'projects']);

@@ -76,19 +76,26 @@
       "periodLabel": "2026 - completed",
       "bullets": []
     },
-    "4": {
+"4": {
       "title": "AI Skills Fest 2026 , Microsoft",
       "period": "2026",
       "periodLabel": "2026",
       "bullets": [],
       "credlyBadge": "View badge on Credly"
+    },
+    "5": {
+      "title": "AWS Fundamentals: Cloud, Serverless and Operations - Commit Academy",
+      "period": "2026 - completed",
+      "periodLabel": "2026 - completed",
+      "bullets": []
     }
   },
-  "categories": {
+"categories": {
     "frontend": "Frontend",
-    "styles": "Styling",
+    "styles": "Styles",
     "testing": "Testing",
     "apis": "APIs",
+    "cloud": "Cloud",
     "tools": "Tools"
   },
   "abilities": {
