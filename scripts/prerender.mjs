@@ -29,6 +29,7 @@ const SITE_URL = 'https://ezefernandez.com';
 /* ── Routes (auto-derived from route-meta.ts — single source of truth) ── */
 
 import { ROUTE_META } from '../src/data/route-meta.ts';
+import { openSourceContributions } from '../src/data/openSource.ts';
 
 const LANGUAGES = ['es', 'en'];
 
@@ -318,6 +319,46 @@ function buildPageContent(lang, route) {
       createElement('h1', null, title),
       intro ? createElement('p', null, intro) : null,
       ...sectionEls,
+    );
+  }
+
+  if (ns === 'opensource') {
+    const eyebrow = getVal(content, 'eyebrow') || '';
+    const title = getVal(content, 'title') || 'Open Source';
+    const intro = getVal(content, 'intro') || '';
+    const dateLocale = lang === 'en' ? 'en-US' : 'es-AR';
+    const formatNumber = (value) => new Intl.NumberFormat(dateLocale).format(value);
+    const formatDate = (isoDate) =>
+      new Intl.DateTimeFormat(dateLocale, { year: 'numeric', month: 'long', day: 'numeric' }).format(
+        new Date(`${isoDate}T00:00:00`),
+      );
+
+    const contributionEls = openSourceContributions.map((contribution) => {
+      const prefix = `contributions.${contribution.keyPrefix}`;
+      const number = String(contribution.pullRequestNumber);
+      return createElement('article', { key: contribution.id },
+        createElement('h2', null, contribution.repository),
+        createElement('p', null, tr(lang, ns, 'labels.pullRequest', { number })),
+        createElement('p', null, tr(lang, ns, 'labels.mergedAt', { date: formatDate(contribution.mergedAt) })),
+        createElement('p', null, tr(lang, ns, 'labels.stars', { total: formatNumber(contribution.stars) })),
+        createElement('h3', null, tr(lang, ns, 'labels.problem')),
+        createElement('p', null, getVal(content, `${prefix}.problem`)),
+        createElement('h3', null, tr(lang, ns, 'labels.change')),
+        createElement('p', null, getVal(content, `${prefix}.change`)),
+        createElement('h3', null, tr(lang, ns, 'labels.review')),
+        createElement('p', null, getVal(content, `${prefix}.review`)),
+        createElement('a', { href: contribution.pullRequestUrl, rel: 'noopener noreferrer' },
+          tr(lang, ns, 'labels.viewOnGithub', { number })),
+      );
+    });
+
+    return createElement('div', { className: 'prerendered-page' },
+      eyebrow ? createElement('p', { className: 'hero-label' }, eyebrow) : null,
+      createElement('h1', null, title),
+      intro ? createElement('p', null, intro) : null,
+      ...contributionEls,
+      createElement('h2', null, tr(lang, ns, 'verification.heading')),
+      createElement('p', null, getVal(content, 'verification.paragraph')),
     );
   }
 
