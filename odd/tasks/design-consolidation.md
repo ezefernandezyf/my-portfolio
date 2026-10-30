@@ -24,14 +24,14 @@ design decision, not a cleanup, so it is left open.
 
 ## Tasks
 
-- [ ] T1 Rewrite the open source intro and the home hero bio (ES + EN).
-- [ ] T2 Add the Open Source CTA to the home hero.
-- [ ] T3 Replace every em dash with real punctuation (locales, TSX, CSS, llms.txt, docs).
-- [ ] T4 Unify the type scale: one display class for page h1, one headline class for h2.
-- [ ] T5 Unify the radius scale and delete the dead CSS utilities.
-- [ ] T6 Collapse the repeated animation ladder.
-- [ ] T7 Move the stack chips out of the hero into their own section.
-- [ ] T8 Verify: lint, tests, coverage, prerender, production deploy.
+- [x] T1 Rewrite the open source intro and the home hero bio (ES + EN).
+- [x] T2 Add the Open Source CTA to the home hero.
+- [x] T3 Replace every em dash with real punctuation (locales, TSX, CSS, llms.txt, docs).
+- [x] T4 Unify the type scale: one display class for page h1, one headline class for h2.
+- [x] T5 Unify the radius scale and delete the dead CSS utilities.
+- [x] T6 Collapse the repeated animation ladder.
+- [x] T7 Move the stack chips out of the hero into their own section.
+- [x] T8 Verify: lint, tests, coverage, prerender, production deploy.
 
 ## Constraints taken from DESIGN.md
 
@@ -40,3 +40,21 @@ design decision, not a cleanup, so it is left open.
 - Radii: buttons 8px, minimal cards 12px, elevated (ProjectCard) 12px. No pill buttons.
 - `text-wrap: balance` on h1–h3, `text-wrap: pretty` on body paragraphs.
 - One deliberate kicker is voice; an eyebrow on every section is AI grammar.
+
+## Evidence
+
+- Commits: `63196fe` (CTA + two rewrites), `2e0be2a` (em dash sweep), `e74e908` (type
+  and radius scale), `8867a79` (motion collapse), `0bdc8af` (hero diet).
+- `pnpm run lint` clean, `pnpm exec vitest run` 32 files / 145 tests.
+- `pnpm run test:coverage`: lines 92.85 %, functions 85.23 %, branches 72.72 %.
+- `scripts/prerender.mjs`: 32 pages, 0 failed.
+- Em dash count across `src`, `public`, `odd`, `docs`: 0.
+
+## Decisions
+
+- Display headings keep `font-medium`. The family ships a single weight, so switching to
+  700 would only make the synthetic bold heavier. Reported, not changed.
+- The icons in About section headings were removed: three identical `flex items-center
+  gap-3` + icon headings read as a stamped template. The icons remain in the cards where
+  they carry meaning.
+- Scroll-reveal on the home page stays; it reveals sections, not individual list items.
