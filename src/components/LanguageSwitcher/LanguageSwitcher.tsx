@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 export const LanguageSwitcher = (): React.JSX.Element => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation('common');
   const navigate = useNavigate();
   const location = useLocation();
   const current = i18n.language?.startsWith('en') ? 'en' : 'es';
@@ -25,12 +25,12 @@ export const LanguageSwitcher = (): React.JSX.Element => {
   };
 
   return (
-    <div className="control-cluster font-body" role="group" aria-label="Language switcher">
+    <div className="control-cluster font-body" role="group" aria-label={t('languageSwitcher.group')}>
       <button
         type="button"
         onClick={() => changeTo('es')}
         aria-pressed={current === 'es'}
-        aria-label="Cambiar a español"
+        aria-label={t('languageSwitcher.toSpanish')}
         className={`rounded-full px-2 py-1 text-xs font-body font-semibold uppercase tracking-wider transition-colors duration-200 focus-ring ${current === 'es' ? 'bg-surface-elevated text-text-primary shadow-sm' : 'text-text-muted hover:text-text-primary'}`}
       >
         ES
@@ -40,7 +40,7 @@ export const LanguageSwitcher = (): React.JSX.Element => {
         type="button"
         onClick={() => changeTo('en')}
         aria-pressed={current === 'en'}
-        aria-label="Switch to English"
+        aria-label={t('languageSwitcher.toEnglish')}
         className={`rounded-full px-2 py-1 text-xs font-body font-semibold uppercase tracking-wider transition-colors duration-200 focus-ring ${current === 'en' ? 'bg-surface-elevated text-text-primary shadow-sm' : 'text-text-muted hover:text-text-primary'}`}
       >
         EN

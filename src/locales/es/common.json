@@ -15,5 +15,34 @@
   "skipToContent": "Saltar al contenido principal",
   "scrollProgress": {
     "ariaLabel": "Progreso de lectura"
+  },
+  "caseStudy": {
+    "eyebrow": "Caso de estudio",
+    "featured": "Destacado",
+    "engineeringStack": "Stack de ingeniería"
+  },
+  "carousel": {
+    "imageCounter": "Imagen {{index}} de {{total}}",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "goToImage": "Ir a imagen {{index}}",
+    "defaultAlt": "Vista previa"
+  },
+  "themeToggle": {
+    "aria": "Alternar tema",
+    "title": "Tema: {{current}}. Click para cambiar a {{next}}",
+    "themes": {
+      "dark": "oscuro",
+      "light": "claro",
+      "system": "sistema"
+    }
+  },
+  "languageSwitcher": {
+    "group": "Selector de idioma",
+    "toSpanish": "Cambiar a español",
+    "toEnglish": "Cambiar a inglés"
+  },
+  "readingProgress": {
+    "aria": "Progreso de lectura"
   }
 }

@@ -51,8 +51,8 @@ describe('LanguageSwitcher (UI)', () => {
     renderWithRouter();
     const user = userEvent.setup();
 
-    const esBtn = screen.getByRole('button', { name: /cambiar a español/i });
-    const enBtn = screen.getByRole('button', { name: /switch to english/i });
+    const esBtn = screen.getByRole('button', { name: /languageSwitcher\.toSpanish/i });
+    const enBtn = screen.getByRole('button', { name: /languageSwitcher\.toEnglish/i });
 
     expect(esBtn).toHaveAttribute('aria-pressed', 'true');
     expect(enBtn).toHaveAttribute('aria-pressed', 'false');
@@ -70,7 +70,7 @@ describe('LanguageSwitcher (UI)', () => {
     renderWithRouter();
     const user = userEvent.setup();
 
-    const esBtn = screen.getByRole('button', { name: /cambiar a español/i });
+    const esBtn = screen.getByRole('button', { name: /languageSwitcher\.toSpanish/i });
     await user.click(esBtn); // already ES
 
     await waitFor(() => {
@@ -86,7 +86,7 @@ describe('LanguageSwitcher (UI)', () => {
     renderWithRouter();
     const user = userEvent.setup();
 
-    const enBtn = screen.getByRole('button', { name: /switch to english/i });
+    const enBtn = screen.getByRole('button', { name: /languageSwitcher\.toEnglish/i });
     await user.click(enBtn);
 
     await waitFor(() => {

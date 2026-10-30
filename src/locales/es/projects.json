@@ -11,6 +11,9 @@
     "loadMore": "Cargar más",
     "filters": "Filtros"
   },
+  "counts": {
+    "showing": "Mostrando {{visible}} de {{total}} proyectos"
+  },
   "links": {
     "repo": "Ver repo",
     "demo": "Ver demo",

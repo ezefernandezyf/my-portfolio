@@ -128,8 +128,7 @@ export const ProjectsListPage = (): React.JSX.Element => {
 
       <section className="mx-auto w-full max-w-7xl px-6 pt-12 pb-10 lg:px-10 lg:pt-16 lg:pb-12" style={fadeInUp(0.24)}>
         <div className="mb-6 flex items-center justify-between gap-4 text-xs font-semibold uppercase tracking-[0.24em] text-text-secondary">
-          <span>{filteredProjects.length} projects</span>
-          <span>{visibleItems.length} visible</span>
+          <span>{t('counts.showing', { visible: visibleItems.length, total: filteredProjects.length })}</span>
         </div>
 
         <div ref={gridRef} className="grid gap-6 lg:grid-cols-2 lg:gap-6">

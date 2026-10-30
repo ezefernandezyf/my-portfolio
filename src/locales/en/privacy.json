@@ -1,7 +1,9 @@
 {
+  "eyebrow": "Privacy and trust",
   "title": "Privacy Policy",
   "intro": "Your privacy matters. This page explains what data I collect and how I use it.",
   "lastUpdated": "Last updated: {{date}}",
+  "lastUpdatedDate": "October 30, 2026",
   "sections": {
     "data": {
       "heading": "Data collected",

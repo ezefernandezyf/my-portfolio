@@ -29,6 +29,6 @@ describe('Stagger integration', () => {
     );
 
     // The projects count is rendered as plain text in the page
-    expect(screen.getByText(/projects/i)).toBeInTheDocument();
+    expect(screen.getByText(/mostrando \d+ de \d+ proyectos/i)).toBeInTheDocument();
   });
 });

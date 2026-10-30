@@ -56,39 +56,45 @@
       "title": "Analista en Sistemas - Da Vinci | Primera Escuela de Arte Multimedial",
       "period": "2025 - presente",
       "periodLabel": "2025 - presente",
-      "bullets": []
+      "bullets": [],
+      "description": "Formación integral en desarrollo de software, arquitectura de sistemas y metodologías de trabajo para construir productos consistentes."
     },
     "1": {
       "title": "Data Analytics con Python - Talento Tech (GCBA)",
       "period": "2026 - presente",
       "periodLabel": "2026 - presente",
-      "bullets": []
+      "bullets": [],
+      "description": "Formación en análisis de datos con Python: limpieza, visualización y extracción de insights para la toma de decisiones. Programa Talento Tech del Gobierno de la Ciudad de Buenos Aires."
     },
     "2": {
       "title": "EF SET English Certificate C2 Proficient",
       "period": "2026",
       "periodLabel": "2026",
       "bullets": [],
+      "description": "Certificación de dominio del inglés nivel C2 (Proficient) según el Marco Común Europeo, evaluado por EF SET.",
       "efsetBadge": "Ver certificado EF SET"
     },
     "3": {
       "title": "Desarrollo con IA: de 0 a Producción - BIG school",
       "period": "2026 - finalizado",
       "periodLabel": "2026 - finalizado",
-      "bullets": []
+      "bullets": [],
+      "description": "Formación intensiva en modelos generativos, flujo de entrega y criterios para llevar experimentos de IA a producción."
     },
 "4": {
       "title": "AI Skills Fest 2026 , Microsoft",
       "period": "2026",
       "periodLabel": "2026",
       "bullets": [],
+      "description": "Participación en el evento global de Microsoft sobre IA generativa, agentes y Copilot. Badge verificado en Credly.",
       "credlyBadge": "Ver badge en Credly"
     },
     "5": {
       "title": "Fundamentos de AWS: Cloud, Serverless y Operación - Commit Academy",
       "period": "2026 - finalizado",
       "periodLabel": "2026 - finalizado",
-      "bullets": []
+      "bullets": [],
+      "description": "Fundamentos de infraestructura cloud con AWS: EC2, S3, Lambda, DynamoDB, RDS, CloudFront y API Gateway, con foco en serverless y operación."
     }
   },
   "categories": {

@@ -1,4 +1,5 @@
 ﻿import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
   CheckIcon,
   CodeBracketIcon,
@@ -153,6 +154,7 @@ export const CaseStudyTemplate = ({
   deepDiveHeading,
   sections,
 }: CaseStudyTemplateProps): React.JSX.Element => {
+  const { t } = useTranslation('common');
   const deepDiveSections = sections.filter((section) => section.kind !== 'code');
   const codeSection = sections.find((section): section is CodeSection => section.kind === 'code');
 
@@ -172,7 +174,7 @@ export const CaseStudyTemplate = ({
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
               <p className="animate-fade-in-up font-body mb-4 text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted" style={{ animationDelay: '0.08s' }}>
-                Case Study
+                {t('caseStudy.eyebrow', { ns: 'common' })}
               </p>
               <h1 className="animate-fade-in-up font-display text-[3rem] font-bold leading-tight tracking-[-0.02em] text-text-primary sm:text-[3.5rem]" style={{ animationDelay: '0.16s' }}>
                 {title}
@@ -226,7 +228,7 @@ export const CaseStudyTemplate = ({
               {featured && featuredLabel ? (
                 <div>
                   <span className="mb-1 block font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted">
-                    Featured
+                    {t('caseStudy.featured', { ns: 'common' })}
                   </span>
                   <span className="inline-flex items-center rounded-full border border-border/20 px-4 py-2 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-primary">
                     {featuredLabel}
@@ -304,7 +306,7 @@ export const CaseStudyTemplate = ({
 
         <section className="animate-fade-in-up border-y border-border/20 bg-surface py-24" style={{ animationDelay: '0.48s' }}>
           <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
-            <h2 className={`${deepDiveHeadingClass} mb-10`}>The Engineering Stack</h2>
+            <h2 className={`${deepDiveHeadingClass} mb-10`}>{t('caseStudy.engineeringStack', { ns: 'common' })}</h2>
             <div className="flex flex-wrap justify-center gap-3">
               {stackSections.flatMap((section) => section.items).map((item) => (
                 <span
