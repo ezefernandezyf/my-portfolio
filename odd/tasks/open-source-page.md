@@ -26,13 +26,29 @@ self-declared projects. Prerendered, indexed, linked from the header.
 ## Tasks
 
 - [x] T1 `chore: refresh the skill registry` — commit `98c8f41` on
-      `chore/skill-registry-refresh`. `.gitignore` hunk (`.atl/`) reverted because those
-      files stay tracked.
-- [ ] T2 Typed contributions data + ES/EN locale namespace.
-- [ ] T3 The page, the route in both locale groups, and the route-meta entry.
-- [ ] T4 Prerender branch, sitemap regeneration, route-meta snapshot.
-- [ ] T5 Header nav entry (desktop + drawer) and `llms.txt` mention.
-- [ ] T6 Docs: the CV deployment follows in a separate `docs` branch once the PDFs arrive.
+      `chore/skill-registry-refresh` (amended to `c394b9e` to add `.codegraph/` to
+      `.gitignore`). The `.atl/` ignore hunk stays reverted because those files remain
+      tracked.
+- [x] T2 Typed contributions data + ES/EN locale namespace — commit `004a4bc`.
+- [x] T3 The page, the route in both locale groups, and the route-meta entry — commit
+      `cd85ff4`. Nav moved to `lg:` so five uppercase items do not crowd at 768px.
+- [x] T4 Prerender branch, sitemap regeneration, route-meta snapshot — commit `a5e7c57`.
+- [x] T5 `llms.txt` mention — commit `11b53f1`.
+- [ ] T6 CV PDFs (`docs` branch) and deployment, blocked on the two new PDFs.
+
+## Evidence
+
+- `pnpm run lint` — clean (`--max-warnings=0`).
+- `pnpm exec vitest run` — 32 files, 145 tests, all passing.
+- `pnpm run test:coverage` — lines 92.65%, functions 85.58%, branches 73.10%,
+  statements 90.45%; thresholds are 80/80/70/80.
+- Prerender run against the existing `dist/`: 32 pages, 0 failed. `dist/open-source/index.html`
+  serves 558 words and 3 external GitHub links; `/en/open-source` serves 541 words and 3 links.
+  JSON-LD emits `CollectionPage` + two `BreadcrumbList` items. Canonical is correct.
+- `public/sitemap.xml` — 30 URLs, both locales with hreflang plus `x-default`.
+- Build was not run locally by project convention; CI runs `pnpm run build` and therefore
+  the prerender branch. A local `node --experimental-strip-types scripts/prerender.mjs`
+  already exercised it successfully.
 
 ## Technical notes
 
