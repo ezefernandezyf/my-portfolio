@@ -20,7 +20,6 @@ export const NotFoundPage = (): React.JSX.Element => {
       <section
         aria-labelledby="notfound-title"
         className="site-container py-16 flex flex-col items-center text-center"
-        role="main"
       >
         <div className="max-w-xl">
           <div className="mx-auto mb-6 flex h-32 w-32 items-center justify-center rounded-full bg-surface">

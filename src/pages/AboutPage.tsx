@@ -306,17 +306,7 @@ export const AboutPage = (): React.JSX.Element => {
                         </div>
                         <h3 className="mb-2 text-[1.125rem] font-medium text-text-primary font-display">{title}</h3>
                         <p className="mt-auto text-[0.875rem] text-text-secondary font-body">
-                          {index === 0
-                            ? 'Formación integral en desarrollo de software, arquitectura de sistemas y metodologías de trabajo para construir productos consistentes.'
-                            : index === 1
-                              ? 'Formación en análisis de datos con Python: limpieza, visualización y extracción de insights para la toma de decisiones. Programa Talento Tech del Gobierno de la Ciudad de Buenos Aires.'
-                              : index === 2
-                                ? 'Certificación de dominio del inglés nivel C2 (Proficient) según el Marco Común Europeo, evaluado por EF SET.'
-                                : index === 3
-                                  ? 'Formación intensiva en modelos generativos, flujo de entrega y criterios para llevar experimentos de IA a producción.'
-                                  : index === 4
-                                    ? 'Participación en el evento global de Microsoft sobre IA generativa, agentes y Copilot. Badge verificado en Credly.'
-                                    : 'Fundamentos de infraestructura cloud con AWS: EC2, S3, Lambda, DynamoDB, RDS, CloudFront y API Gateway, con foco en serverless y operación.'}
+                          {t(`education.${index}.description`)}
                         </p>
                         {index === 4 && (
                           <a

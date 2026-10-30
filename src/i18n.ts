@@ -31,6 +31,9 @@ import { caseStudyNamespaces, caseStudyResources } from './features/projects-cas
 import enPrivacy from './locales/en/privacy.json';
 import esPrivacy from './locales/es/privacy.json';
 
+import enOpenSource from './locales/en/opensource.json';
+import esOpenSource from './locales/es/opensource.json';
+
 const resources = {
   en: {
     common: enCommon,
@@ -42,6 +45,7 @@ const resources = {
     header: enHeader,
     footer: enFooter,
     privacy: enPrivacy,
+    opensource: enOpenSource,
     ...caseStudyResources.en,
   },
   es: {
@@ -54,6 +58,7 @@ const resources = {
     header: esHeader,
     footer: esFooter,
     privacy: esPrivacy,
+    opensource: esOpenSource,
     ...caseStudyResources.es,
   },
 };
@@ -74,6 +79,7 @@ i18n
       'header',
       'footer',
       'privacy',
+      'opensource',
       ...caseStudyNamespaces,
     ],
     defaultNS: 'common',

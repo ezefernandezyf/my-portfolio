@@ -2,30 +2,28 @@
   "hero": {
     "label": "Desarrollador Full Stack",
     "name": "Ezequiel Fernández",
-    "summary": "Full Stack Developer. Construyo productos digitales completos, desde la base de datos hasta la interfaz.",
+    "summary": "Construyo SaaS multi-tenant de punta a punta: React 19 en el cliente, Node.js y PostgreSQL del otro lado, Vitest en el medio. El más grande es Relevy: 46.000 líneas y 1119 tests.",
     "cta": {
       "about": "Acerca de mí",
       "projects": "Proyectos",
       "downloadCV": "Descargar CV"
     }
   },
-  "stackHeading": "Ecosistema técnico",
+  "stackHeading": "Con qué trabajo",
   "recentWorkHeading": "Trabajos recientes",
   "recentWorkCounter": "Proyectos seleccionados",
   "viewAllProjects": "Ver todos los proyectos",
   "contactTitle": "¿Te interesa mi perfil?",
-  "contactText": "Estoy abierto a nuevos proyectos y oportunidades laborales.",
+  "contactText": "Busco sumarme a un equipo full-time. Respondo en 24 h y mando el CV en el idioma que necesites.",
   "contactCta": "Contactar",
   "currently": {
     "title": "Lo último que hice",
     "list": [
       {
-        "emoji": "🚀",
         "label": "Recientemente desplegado Relevy",
         "url": "https://github.com/ezefernandezyf/relevy"
       },
       {
-        "emoji": "📚",
         "label": "Estudiando Analista en Sistemas en Da Vinci"
       }
     ]

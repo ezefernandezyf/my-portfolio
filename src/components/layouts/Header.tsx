@@ -6,6 +6,7 @@ import {
   HomeIcon,
   FolderIcon,
   EnvelopeIcon,
+  CodeBracketIcon,
 } from '@heroicons/react/24/outline';
 import { GithubIcon, LinkedInIcon, LanguageSwitcher, ThemeToggle } from '..';
 import { useTranslation } from 'react-i18next';
@@ -55,7 +56,7 @@ export const Header = (): React.JSX.Element => {
             [EZ]
           </Link>
 
-          <div className="hidden items-center gap-6 md:flex">
+          <div className="hidden items-center gap-6 lg:flex">
             <NavLink
               to={localize('/projects')}
               className={({ isActive }) =>
@@ -66,6 +67,17 @@ export const Header = (): React.JSX.Element => {
               }
             >
               {t('nav.projects')}
+            </NavLink>
+            <NavLink
+              to={localize('/open-source')}
+              className={({ isActive }) =>
+                `relative text-sm font-medium uppercase tracking-wider font-body text-text-secondary transition-colors duration-200 focus-ring
+                after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-200
+                hover:text-accent hover:after:w-full
+                ${isActive ? 'text-accent after:w-full' : ''}`
+              }
+            >
+              {t('nav.openSource')}
             </NavLink>
             <NavLink
               to={localize('/about')}
@@ -131,7 +143,7 @@ export const Header = (): React.JSX.Element => {
             aria-label={open ? t('mobile.closeMenu') : t('mobile.openMenu')}
             aria-expanded={open}
             aria-controls="mobile-drawer"
-            className="inline-flex h-10 w-10 items-center justify-center text-text-secondary transition-colors hover:text-accent focus-ring md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center text-text-secondary transition-colors hover:text-accent focus-ring lg:hidden"
           >
             {open ? <XMarkIcon className="h-6 w-6" aria-hidden /> : <Bars3Icon className="h-6 w-6" aria-hidden />}
           </button>
@@ -186,6 +198,17 @@ export const Header = (): React.JSX.Element => {
             >
               <FolderIcon className="h-5 w-5 text-text-muted" aria-hidden />
               <span>{t('mobile.projects')}</span>
+            </NavLink>
+
+            <NavLink
+              to={localize('/open-source')}
+              onClick={closeDrawer}
+              className={({ isActive }) =>
+                `flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-base font-semibold transition-colors hover:border-border-hover hover:bg-surface-elevated/80 ${isActive ? 'border-border bg-surface-elevated text-accent' : 'text-text-secondary'}`
+              }
+            >
+              <CodeBracketIcon className="h-5 w-5 text-text-muted" aria-hidden />
+              <span>{t('mobile.openSource')}</span>
             </NavLink>
 
             <NavLink

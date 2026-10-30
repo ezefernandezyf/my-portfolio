@@ -127,6 +127,37 @@ exports[`ROUTE_META integrity (canonical SEO source) > snapshot captures ROUTE_M
     "schemaType": "WebPage",
     "titleI18nKey": "notfoundpage:meta.title",
   },
+  "open-source": {
+    "changefreq": "monthly",
+    "descI18nKey": "opensource:meta.description",
+    "en": {
+      "description": "Three merged pull requests in open source repositories: two fixes in vitest and one in @fastify/cookie. Every PR is public and verifiable on GitHub.",
+      "keywords": [
+        "open source contributions",
+        "merged pull requests",
+        "vitest",
+        "fastify",
+        "full stack developer",
+      ],
+      "title": "Ezequiel Fernández | Open Source Contributions | Full Stack Developer",
+    },
+    "es": {
+      "description": "Tres pull requests mergeados en repositorios open source: dos fixes en vitest y uno en @fastify/cookie. Cada PR es público y se puede verificar en GitHub.",
+      "keywords": [
+        "contribuciones open source",
+        "pull requests mergeados",
+        "vitest",
+        "fastify",
+        "desarrollador full stack",
+      ],
+      "title": "Ezequiel Fernández | Contribuciones Open Source | Full Stack Developer",
+    },
+    "ogImage": "/og-image.png",
+    "pathname": "/open-source",
+    "priority": 0.7,
+    "schemaType": "CollectionPage",
+    "titleI18nKey": "opensource:meta.title",
+  },
   "privacy": {
     "changefreq": "yearly",
     "descI18nKey": "privacy:meta.description",

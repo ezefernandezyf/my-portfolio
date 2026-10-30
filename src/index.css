@@ -136,6 +136,12 @@ h6 {
   font-family: var(--font-display);
 }
 
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
 p,
 li,
 span,
@@ -469,6 +475,14 @@ textarea:focus-visible,
 .lead {
   font-size: 1.05rem;
   color: var(--color-text-muted);
+}
+
+.grid-glow {
+  background-image: radial-gradient(
+    circle at top,
+    color-mix(in srgb, var(--color-accent) 12%, transparent),
+    transparent 42%
+  );
 }
 
 .card-base {

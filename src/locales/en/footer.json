@@ -1,5 +1,7 @@
 {
   "copy": "© {{year}} Ezequiel Fernández. All rights reserved.",
+  "openSource": "Open Source",
+  "openSourceAria": "View open source contributions",
   "privacy": "Privacy",
   "privacyAria": "View privacy policy",
   "githubAria": "Open GitHub profile",

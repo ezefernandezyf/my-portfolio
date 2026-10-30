@@ -11,6 +11,10 @@
     "loadMore": "Load more",
     "filters": "Filters"
   },
+  "counts": {
+    "showing": "Showing {{visible}} of {{total}} projects"
+  },
+  "noResults": "No project matches “{{query}}”. Clear the search or try another technology.",
   "links": {
     "repo": "View repo",
     "demo": "View demo",
@@ -18,9 +22,9 @@
   },
   "contentSection": {
     "heading": "How I Work",
-    "paragraph1": "Every project I build starts with a simple premise: understand the problem before writing a single line of code. I work with feature-based architecture and DDD-lite principles so the business domain is reflected in the project structure. I invest time upfront in research, mapping user flows, identifying domain entities, and defining bounded contexts before opening the editor. This dramatically reduces long-term technical debt and ensures every implementation decision answers a real business requirement. The result is a codebase where directory names reflect product capabilities rather than technical layers.",
-    "paragraph2": "My tech stack is pragmatic, not hype-driven. I choose TypeScript for type safety, React for declarative interfaces, Node.js with Express for REST APIs, and PostgreSQL as my relational database. On the frontend I work with React 19 and Tailwind CSS 4, prioritizing WCAG 2.2 AA accessibility. On the server side I build APIs with Express and Prisma ORM, applying Zod validation and repository patterns. Every stack decision passes three filters: it solves the real problem, it adds value to the team, and it keeps complexity manageable.",
-    "paragraph3": "Every project goes through research, architecture design, implementation with tests, and automated deployment. I prioritize readable code over premature optimization. Continuous integration with GitHub Actions ensures every PR passes linting, type checking, and the full test suite before merge. I write unit tests with Vitest and React Testing Library, and integration tests for API endpoints. When a bug surfaces, I write a test that reproduces it first, then fix it. This discipline lets me refactor with confidence and ship software that works, even under deadline pressure."
+    "paragraph1": "Every project starts with mapping the domain before opening the editor: user flows, entities and bounded contexts. On EchoLog that ended in 10 top-level domains —auth, posts, votes, workspaces— where every folder says what the product does, not which framework it uses. When a post-release merge lost files that existed on both branches, the fix was not more process: it was making CI run the tests against the merge result.",
+    "paragraph2": "I pick the stack by the problem, not by this week's post. TypeScript because shared/ and server/ share Zod schemas and the build breaks when the contract changes; PostgreSQL because composite keys solve multi-tenant isolation without separate schemas; Vitest because 1119 tests run in four CI jobs. If a library does not pass that, it does not ship.",
+    "paragraph3": "Every PR passes lint, typecheck and the suite before merge. When a bug shows up, I write the test that reproduces it first: on the vitest cache fix the RED showed that exactly vmThreads and vmForks failed, not every file as the report claimed. That forced me to move the check to the start of the traversal instead of patching the mkdirSync."
   },
   "notFound": "Project not found",
   "geo-saas": {

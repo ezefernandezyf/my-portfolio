@@ -224,6 +224,39 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     priority: 0.7,
     changefreq: 'monthly',
   },
+  'open-source': {
+    pathname: '/open-source',
+    titleI18nKey: 'opensource:meta.title',
+    descI18nKey: 'opensource:meta.description',
+    es: {
+      title: 'Ezequiel Fernández | Contribuciones Open Source | Full Stack Developer',
+      description:
+        'Tres pull requests mergeados en repositorios open source: dos fixes en vitest y uno en @fastify/cookie. Cada PR es público y se puede verificar en GitHub.',
+      keywords: [
+        'contribuciones open source',
+        'pull requests mergeados',
+        'vitest',
+        'fastify',
+        'desarrollador full stack',
+      ],
+    },
+    en: {
+      title: 'Ezequiel Fernández | Open Source Contributions | Full Stack Developer',
+      description:
+        'Three merged pull requests in open source repositories: two fixes in vitest and one in @fastify/cookie. Every PR is public and verifiable on GitHub.',
+      keywords: [
+        'open source contributions',
+        'merged pull requests',
+        'vitest',
+        'fastify',
+        'full stack developer',
+      ],
+    },
+    ogImage: '/og-image.png',
+    schemaType: 'CollectionPage',
+    priority: 0.7,
+    changefreq: 'monthly',
+  },
   privacy: {
     pathname: '/privacy',
     titleI18nKey: 'privacy:meta.title',
@@ -384,6 +417,7 @@ export const ROUTE_KEYS: string[] = [
   'projects/context-bridge',
   'projects/egg-demo',
   'projects/geo-saas',
+  'open-source',
   'privacy',
   'contact',
   'not-found',

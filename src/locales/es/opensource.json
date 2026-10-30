@@ -1,0 +1,49 @@
+{
+  "meta": {
+    "title": "Ezequiel Fernández | Contribuciones Open Source | Full Stack Developer",
+    "description": "Tres pull requests mergeados en repositorios open source: dos fixes en vitest y uno en @fastify/cookie. Cada PR es público y se puede verificar en GitHub."
+  },
+  "eyebrow": "Open Source",
+  "title": "Contribuciones open source",
+  "intro": "Tres pull requests mergeados en proyectos que no son míos. No soy maintainer ni colaborador habitual: soy contribuidor. Lo que hace valiosa esta página no es el volumen, es que cada arreglo lo aprobó alguien que no me conoce.",
+  "labels": {
+    "mergedAt": "Mergeado el {{date}}",
+    "stars": "{{total}} estrellas",
+    "pullRequest": "PR #{{number}}",
+    "diff": "{{diff}} líneas",
+    "releasedIn": "Publicado en {{version}}",
+    "approvals": "{{total}} aprobaciones de maintainers",
+    "reviewCycle": "Ciclo de review completo",
+    "viewOnGithub": "Ver el PR #{{number}} en GitHub",
+    "problem": "El problema",
+    "change": "El arreglo",
+    "review": "Verificación y review"
+  },
+  "stats": {
+    "merged": "PRs mergeados",
+    "repositories": "repositorios",
+    "releases": "release publicada"
+  },
+  "contributions": {
+    "vitestVmDeps": {
+      "problem": "Los pools de vm corrían el optimizador de dependencias de Vite sobre todo el index.html. Si una dependencia descubierta así no se podía empaquetar, la corrida moría con exit 1 con todos los tests pasando. Es el peor tipo de falla: no dice que un test está mal, dice que el proceso se cayó.",
+      "change": "El handler configEnvironment hacía un return temprano para el environment de vm antes de aplicar resolveOptimizerConfig, así que ese environment conservaba el default de browser de Vite. Rastreé hasta el commit que introdujo el problema y el fix se mergeó. El maintainer agregó nits de redacción y aclaró el fixture antes de aprobarlo.",
+      "review": "RED → GREEN: sin el fix fallan exactamente vmThreads y vmForks; con el fix pasan los cuatro pools."
+    },
+    "fastifyCookieEncode": {
+      "problem": "reply.setCookie() aceptaba la opción encode y la ignoraba: no la reenviaba al serializer de cookie@2, así que no había forma de customizar cómo se codifica el valor. Falla silenciosa: la opción entra, no hace nada.",
+      "change": "Separé encode del resto de los atributos y lo pasé como opciones de stringifySetCookie. Se mergeó con dos aprobaciones de maintainers y salió publicado en @fastify/cookie 11.1.5, minutos después del merge.",
+      "review": "Había un PR anterior con el mismo objetivo. En vez de cerrar el mío, expliqué en qué se distinguía; los maintainers mergearon los dos y el código que sobrevive es el mío. El PR tardó 32,6 días en mergearse."
+    },
+    "vitestCacheUnwritable": {
+      "problem": "Desde 5.0.4 el cache de módulos en disco está prendido por defecto. Si su directorio no se podía crear —filesystem de solo lectura, o un proyecto que pertenece a otro usuario— el mkdirSync tiraba una excepción y el módulo que se estaba transformando fallaba con un error que no tenía nada que ver con el test.",
+      "change": "Medí que el fallo golpeaba al primer módulo de cada config, no a todos los archivos como decía el reporte. En vez de propagar el error, el cache degrada: reporta el directorio inutilizable una vez y devuelve el mismo valor nulo que ya significaba «este módulo no se cachea».",
+      "review": "El maintainer pidió cambios: quería desactivar la feature entera para no calcular hashes al vicio. Mi primera versión atrapaba el error donde vivía el mkdir, o sea tarde. Moví el chequeo al principio del recorrido: no lee, no hashea, no escribe. El diseño final es más chico que el mío y mejor."
+    }
+  },
+  "verification": {
+    "heading": "Por qué esto se puede verificar",
+    "paragraph": "Cada tarjeta linkea el pull request público en GitHub: ahí se ve el diff, quién lo aprobó, quién lo mergeó y qué se discutió en la review. No listo PRs abiertos ni rechazados, porque un PR abierto es una intención y todavía puede cerrarse sin mergear.",
+    "profileCta": "Ver mi perfil de GitHub"
+  }
+}

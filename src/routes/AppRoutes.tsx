@@ -8,10 +8,11 @@ const ProjectsPage = lazy(() => import('../pages/ProjectsPage').then(m => ({ def
 const ContactPage = lazy(() => import('../pages/ContactPage').then(m => ({ default: m.ContactPage })));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
 const PrivacyPage = lazy(() => import('../pages/PrivacyPage').then(m => ({ default: m.PrivacyPage })));
+const OpenSourcePage = lazy(() => import('../pages/OpenSourcePage').then(m => ({ default: m.OpenSourcePage })));
 
 export const AppRoutes = (): React.JSX.Element => {
   return (
-    <Suspense fallback={<div className="flex min-h-screen items-center justify-center"><div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" /></div>}>
+    <Suspense fallback={<div className="flex min-h-screen items-center justify-center"><div className="h-8 w-8 animate-spin rounded-full border-2 border-accent border-t-transparent" /></div>}>
       <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Navigate to="home" replace />} />
@@ -28,6 +29,7 @@ export const AppRoutes = (): React.JSX.Element => {
         <Route path="/projects/egg-demo" element={<ProjectCaseStudyPage projectId="egg-demo" namespace="eggdemocasestudy" />} />
         <Route path="/projects/geo-saas" element={<ProjectCaseStudyPage projectId="geo-saas" namespace="geosaascasestudy" />} />
         <Route path="privacy" element={<PrivacyPage />} />
+        <Route path="open-source" element={<OpenSourcePage />} />
         <Route path="contact" element={<ContactPage />} />
         <Route path="not-found" element={<NotFoundPage />} />
         <Route path="*" element={<Navigate to="/not-found" replace />} />
@@ -49,6 +51,7 @@ export const AppRoutes = (): React.JSX.Element => {
         <Route path="/en/projects/egg-demo" element={<ProjectCaseStudyPage projectId="egg-demo" namespace="eggdemocasestudy" />} />
         <Route path="/en/projects/geo-saas" element={<ProjectCaseStudyPage projectId="geo-saas" namespace="geosaascasestudy" />} />
         <Route path="privacy" element={<PrivacyPage />} />
+        <Route path="open-source" element={<OpenSourcePage />} />
         <Route path="contact" element={<ContactPage />} />
         <Route path="not-found" element={<NotFoundPage />} />
         <Route path="*" element={<Navigate to="/en/not-found" replace />} />

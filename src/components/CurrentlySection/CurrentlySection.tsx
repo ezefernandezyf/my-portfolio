@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next';
 //        </motion.ul>
 
 export interface CurrentlyItem {
-  emoji: string;
   label: string;
   url?: string;
 }
@@ -40,7 +39,7 @@ export const CurrentlySection = ({ items }: CurrentlySectionProps): React.JSX.El
             className="flex items-center gap-3"
             style={staggerStyle(index)}
           >
-            <span className="text-lg" aria-hidden="true">{item.emoji}</span>
+            <span className="h-px w-4 shrink-0 bg-accent" aria-hidden="true" />
 
             {item.url ? (
               <a

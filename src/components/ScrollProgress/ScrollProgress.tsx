@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function calcScrollPercentage(): number {
   if (typeof window === 'undefined') return 0;
@@ -9,6 +10,7 @@ function calcScrollPercentage(): number {
 }
 
 export const ScrollProgress = (): React.JSX.Element => {
+  const { t } = useTranslation('common');
   const [width, setWidth] = useState(calcScrollPercentage);
   const rafRef = useRef<number | null>(null);
   const [reducedMotion, setReducedMotion] = useState(() => {
@@ -44,7 +46,7 @@ export const ScrollProgress = (): React.JSX.Element => {
   return (
     <div
       role="progressbar"
-      aria-label="Reading progress"
+      aria-label={t('readingProgress.aria')}
       aria-valuenow={Math.round(width)}
       aria-valuemin={0}
       aria-valuemax={100}

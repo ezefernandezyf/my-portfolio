@@ -4,7 +4,7 @@
 
 ## About
 
-Full Stack Developer specializing in accessible architecture, REST APIs, and high-performance interfaces. Main stack: React 19, TypeScript 5.9, Node.js, Express, PostgreSQL, Prisma.
+Full Stack Developer. Builds multi-tenant SaaS on React 19 + TypeScript + Node.js + PostgreSQL, tested with Vitest in CI, and writes the trade-offs down. Three bug fixes merged in vitest and @fastify/cookie.
 
 ## Skills
 
@@ -15,6 +15,14 @@ Full Stack Developer specializing in accessible architecture, REST APIs, and hig
 - **Architecture**: Clean Architecture, Screaming Architecture, DDD-lite, Feature Slices, Repository Pattern
 - **Tools**: Git, ESLint 9 (flat config), Prettier, pnpm 11, Commander (CLI)
 - **GEO/SEO**: Generative Engine Optimization, AI crawler configuration, schema.org JSON-LD, llms.txt, sitemap automation
+
+## Open Source contributions
+
+Merged pull requests in repositories maintained by other people. Every link is public and verifiable.
+
+- [vitest-dev/vitest#11360](https://github.com/vitest-dev/vitest/pull/11360) — merged 2026-09-29. Fixed the vm pools running Vite's dependency optimizer over `index.html`, which aborted the run with exit 1 while every test passed. Traced to the commit that introduced it.
+- [fastify/fastify-cookie#377](https://github.com/fastify/fastify-cookie/pull/377) — merged 2026-10-27, shipped in `@fastify/cookie` 11.1.5. `reply.setCookie()` accepted an `encode` option and silently ignored it; the fix forwards it to the cookie serializer. Two maintainer approvals.
+- [vitest-dev/vitest#11781](https://github.com/vitest-dev/vitest/pull/11781) — merged 2026-10-30. Fixed the on-disk module cache aborting the run when its directory could not be created. The maintainer requested changes; the final design moves the check ahead of hashing.
 
 ## Certifications
 
@@ -58,6 +66,8 @@ Full Stack Developer specializing in accessible architecture, REST APIs, and hig
 | `/en/contact` | Contact form | EN |
 | `/privacy` | Privacy policy | ES |
 | `/en/privacy` | Privacy policy | EN |
+| `/open-source` | Open source contributions | ES |
+| `/en/open-source` | Open source contributions | EN |
 | `/not-found` | 404 page | ES |
 | `/en/not-found` | 404 page | EN |
 

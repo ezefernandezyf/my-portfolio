@@ -28,14 +28,15 @@ export default function useThemeColor(theme: Theme) {
     let color = '';
     try {
       const doc = document.documentElement;
-      const css = getComputedStyle(doc).getPropertyValue('--color-bg');
+      const css = getComputedStyle(doc).getPropertyValue('--color-bg-primary');
       if (css) color = css.trim();
     } catch {
       // ignore and fallback
     }
 
     if (!color) {
-      color = theme === 'dark' ? '#0b1220' : '#ffffff';
+      // Last resort: the palette values, never an off-system colour.
+      color = theme === 'dark' ? '#0a0a0f' : '#faf7f0';
     }
 
     setThemeColorMeta(color);
