@@ -11,7 +11,7 @@ const PrivacyPage = lazy(() => import('../pages/PrivacyPage').then(m => ({ defau
 
 export const AppRoutes = (): React.JSX.Element => {
   return (
-    <Suspense fallback={<div className="flex min-h-screen items-center justify-center"><div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" /></div>}>
+    <Suspense fallback={<div className="flex min-h-screen items-center justify-center"><div className="h-8 w-8 animate-spin rounded-full border-2 border-accent border-t-transparent" /></div>}>
       <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Navigate to="home" replace />} />

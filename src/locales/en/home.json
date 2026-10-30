@@ -19,8 +19,8 @@
   "currently": {
     "title": "Latest work",
     "list": [
-      { "emoji": "🚀", "label": "Recently deployed Relevy", "url": "https://github.com/ezefernandezyf/relevy" },
-      { "emoji": "📚", "label": "Studying Systems Analyst at Da Vinci" }
+      { "label": "Recently deployed Relevy", "url": "https://github.com/ezefernandezyf/relevy" },
+      { "label": "Studying Systems Analyst at Da Vinci" }
     ]
   }
 }

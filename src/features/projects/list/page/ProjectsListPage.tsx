@@ -80,8 +80,8 @@ export const ProjectsListPage = (): React.JSX.Element => {
         description={ROUTE_META.projects[lang].description}
         pathname="/projects"
       />
-      <main className="bg-bg-primary">
-      <section className="border-b border-border/70 bg-[radial-gradient(circle_at_top,rgba(245,158,11,0.12),transparent_42%),linear-gradient(180deg,rgba(2,6,23,0.03),transparent_28%)]" style={fadeInUp()}>
+      <div className="bg-bg-primary">
+      <section className="grid-glow border-b border-border/70" style={fadeInUp()}>
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-7 px-6 py-24 lg:px-10 lg:py-10 lg:pt-50">
           <div className="max-w-3xl space-y-5">
             <div className="space-y-4">
@@ -94,7 +94,7 @@ export const ProjectsListPage = (): React.JSX.Element => {
             </div>
           </div>
 
-          <div className="grid gap-4 rounded-4xl border border-border bg-bg-primary/90 p-4 shadow-[0_18px_50px_rgba(15,23,42,0.08)] backdrop-blur md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:p-4">
+          <div className="grid gap-4 rounded-4xl border border-border bg-bg-primary p-4 shadow-[0_18px_50px_rgba(15,23,42,0.08)] md:grid-cols-[minmax(0,1fr)] md:items-center md:p-4">
             <label className="flex items-center gap-3 rounded-4xl border border-border bg-surface/60 px-4 py-3 text-text-secondary transition-colors focus-within:border-accent/40 focus-within:bg-bg-primary">
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="h-5 w-5 shrink-0 stroke-current" strokeWidth="1.8">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-4.35-4.35" />
@@ -108,20 +108,6 @@ export const ProjectsListPage = (): React.JSX.Element => {
                 onChange={(event) => setQuery(event.target.value)}
               />
             </label>
-
-            <button
-              type="button"
-              aria-label={t('button.filters')}
-              className="inline-flex items-center justify-center gap-2 rounded-[1.4rem] border border-border bg-surface/70 px-5 py-3 text-sm font-semibold text-text-primary transition-colors hover:border-accent/30 hover:bg-accent/5 md:min-w-36"
-            >
-              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="h-4 w-4 stroke-current" strokeWidth="1.8">
-                <rect x="3.5" y="3.5" width="6.5" height="6.5" rx="1.4" />
-                <rect x="14" y="3.5" width="6.5" height="6.5" rx="1.4" />
-                <rect x="3.5" y="14" width="6.5" height="6.5" rx="1.4" />
-                <rect x="14" y="14" width="6.5" height="6.5" rx="1.4" />
-              </svg>
-              {t('button.filters')}
-            </button>
           </div>
         </div>
       </section>
@@ -131,6 +117,11 @@ export const ProjectsListPage = (): React.JSX.Element => {
           <span>{t('counts.showing', { visible: visibleItems.length, total: filteredProjects.length })}</span>
         </div>
 
+        {filteredProjects.length === 0 ? (
+          <p className="rounded-lg border border-border/20 bg-surface p-8 text-[0.9375rem] leading-relaxed text-text-secondary">
+            {t('noResults', { query })}
+          </p>
+        ) : (
         <div ref={gridRef} className="grid gap-6 lg:grid-cols-2 lg:gap-6">
           {visibleItems.map((project, index) => (
             <div
@@ -151,6 +142,7 @@ export const ProjectsListPage = (): React.JSX.Element => {
             </div>
           ))}
         </div>
+        )}
 
         {canLoadMore ? (
           <div className="mt-10 flex justify-center">
@@ -184,7 +176,7 @@ export const ProjectsListPage = (): React.JSX.Element => {
           </div>
         </div>
       </section>
-    </main>
+    </div>
     </>
   );
 };

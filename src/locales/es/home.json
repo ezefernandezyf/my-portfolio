@@ -20,12 +20,10 @@
     "title": "Lo último que hice",
     "list": [
       {
-        "emoji": "🚀",
         "label": "Recientemente desplegado Relevy",
         "url": "https://github.com/ezefernandezyf/relevy"
       },
       {
-        "emoji": "📚",
         "label": "Estudiando Analista en Sistemas en Da Vinci"
       }
     ]

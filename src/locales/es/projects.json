@@ -14,6 +14,7 @@
   "counts": {
     "showing": "Mostrando {{visible}} de {{total}} proyectos"
   },
+  "noResults": "Ningún proyecto coincide con «{{query}}». Borrá la búsqueda o probá con otra tecnología.",
   "links": {
     "repo": "Ver repo",
     "demo": "Ver demo",
