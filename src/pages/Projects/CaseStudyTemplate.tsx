@@ -41,9 +41,9 @@ type CaseStudySection = ListSection | CodeSection;
 type CaseStudyTemplateProps = {
   title: string;
   description: string;
-  /** SEO title from ROUTE_META (canonical source) — falls back to `title` when absent */
+  /** SEO title from ROUTE_META (canonical source), falls back to `title` when absent */
   metaTitle?: string;
-  /** SEO description from ROUTE_META (canonical source) — falls back to `description` when absent */
+  /** SEO description from ROUTE_META (canonical source), falls back to `description` when absent */
   metaDescription?: string;
   pathname: string;
   repo?: string;
@@ -76,9 +76,9 @@ const deepDiveIcons = {
   improvements: SparklesIcon,
 } as const;
 
-const deepDiveHeadingClass = 'font-display text-[1.75rem] font-medium tracking-[-0.01em] text-text-primary';
+const deepDiveHeadingClass = 'type-headline text-text-primary';
 const cardClass =
-  'bg-surface p-8 rounded-sm border border-border/20 hover:bg-surface-elevated hover:border-border transition-all duration-200 group';
+  'bg-surface p-8 rounded-lg border border-border/20 hover:bg-surface-elevated hover:border-border transition-all duration-200 group';
 
 function normalizeItems(items: string[] | string): string[] {
   return Array.isArray(items) ? items : [items];
@@ -90,7 +90,7 @@ function renderSection(section: CaseStudySection, large = false) {
   if (section.kind === 'code') {
     return (
       <article key={section.heading} className={`${cardClass} ${contentClass}`}>
-        <div className="mb-6 h-12 w-12 rounded-sm bg-surface flex items-center justify-center text-accent">
+        <div className="mb-6 h-12 w-12 rounded-md bg-surface flex items-center justify-center text-accent">
           <CodeBracketIcon className="h-6 w-6" aria-hidden="true" />
         </div>
         <h3 className="mb-3 font-display text-[1.125rem] font-medium text-text-primary">{section.heading}</h3>
@@ -106,7 +106,7 @@ function renderSection(section: CaseStudySection, large = false) {
 
   return (
     <article key={section.heading} className={`${cardClass} ${contentClass}`}>
-      <div className="mb-6 h-12 w-12 rounded-sm bg-surface flex items-center justify-center text-accent">
+      <div className="mb-6 h-12 w-12 rounded-md bg-surface flex items-center justify-center text-accent">
         {(() => {
           const Icon = deepDiveIcons[section.icon];
           return <Icon className="h-6 w-6" aria-hidden="true" />;
@@ -173,22 +173,22 @@ export const CaseStudyTemplate = ({
         <section className="animate-fade-in-up max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-24">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
-              <p className="animate-fade-in-up font-body mb-4 text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted" style={{ animationDelay: '0.08s' }}>
+              <p className="animate-fade-in-up font-body mb-4 text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted">
                 {t('caseStudy.eyebrow', { ns: 'common' })}
               </p>
-              <h1 className="animate-fade-in-up font-display text-[3rem] font-bold leading-tight tracking-[-0.02em] text-text-primary sm:text-[3.5rem]" style={{ animationDelay: '0.16s' }}>
+              <h1 className="animate-fade-in-up type-display text-text-primary">
                 {title}
               </h1>
-              <p className="animate-fade-in-up font-body mt-6 max-w-[60ch] text-[1.125rem] leading-relaxed text-text-secondary" style={{ animationDelay: '0.24s' }}>
+              <p className="animate-fade-in-up font-body mt-6 max-w-[60ch] text-[1.125rem] leading-relaxed text-text-secondary">
                 {description}
               </p>
-              <div className="animate-fade-in-up mt-10 flex flex-wrap gap-4" style={{ animationDelay: '0.32s' }}>
+              <div className="animate-fade-in-up mt-10 flex flex-wrap gap-4">
                 {demo ? (
                   <a
                     href={demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center rounded-sm bg-accent px-6 py-3 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-bg-primary transition-colors hover:bg-accent-hover"
+                    className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-bg-primary transition-colors hover:bg-accent-hover"
                     aria-label={demoLabel}
                   >
                     {demoLabel}
@@ -199,7 +199,7 @@ export const CaseStudyTemplate = ({
                     href={repo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center rounded-sm border border-border/20 px-6 py-3 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-primary transition-colors hover:bg-surface-elevated"
+                    className="inline-flex items-center justify-center rounded-md border border-border/20 px-6 py-3 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-primary transition-colors hover:bg-surface-elevated"
                     aria-label={repoLabel}
                   >
                     {repoLabel}
@@ -217,7 +217,7 @@ export const CaseStudyTemplate = ({
             <aside
               className="animate-fade-in-up flex flex-col gap-6 lg:col-span-4 lg:border-l lg:border-border/20 lg:pl-12"
               data-testid="stack-aside"
-              style={{ animationDelay: '0.16s' }}
+             
             >
               <div>
                 <span className="mb-1 block font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted">
@@ -254,7 +254,7 @@ export const CaseStudyTemplate = ({
           </div>
         </section>
 
-        <section className="animate-fade-in-up max-w-6xl mx-auto mb-28 px-6 lg:px-12" style={{ animationDelay: '0.24s' }}>
+        <section className="animate-fade-in-up max-w-6xl mx-auto mb-28 px-6 lg:px-12">
           <div className="relative w-full overflow-hidden rounded-lg border border-border/20 bg-surface shadow-[0_16px_32px_-16px_rgba(27,27,27,0.04)]">
             {images.length > 0 ? (
               <ProjectCarousel images={images} alt={carouselAlt} interval={5000} />
@@ -266,11 +266,11 @@ export const CaseStudyTemplate = ({
           </div>
         </section>
 
-        <section className="animate-fade-in-up bg-surface py-32" style={{ animationDelay: '0.32s' }}>
+        <section className="animate-fade-in-up bg-surface py-32">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 gap-20 lg:grid-cols-2">
               <div>
-                <h2 className="animate-fade-in-up font-display mb-6 flex items-center text-[1.75rem] font-medium tracking-[-0.01em] text-text-primary" style={{ animationDelay: '0.08s' }}>
+                <h2 className="animate-fade-in-up type-headline mb-6 text-text-primary">
                   <ExclamationTriangleIcon className="mr-3 h-6 w-6 text-accent" aria-hidden="true" />
                   {problemHeading}
                 </h2>
@@ -280,7 +280,7 @@ export const CaseStudyTemplate = ({
               </div>
 
               <div>
-                <h2 className="font-display mb-6 flex items-center text-[1.75rem] font-medium tracking-[-0.01em] text-text-primary">
+                <h2 className="type-headline mb-6 text-text-primary">
                   <SparklesIcon className="mr-3 h-6 w-6 text-accent" aria-hidden="true" />
                   {solutionHeading}
                 </h2>
@@ -297,14 +297,14 @@ export const CaseStudyTemplate = ({
           </div>
         </section>
 
-        <section className="animate-fade-in-up max-w-7xl mx-auto px-6 lg:px-12 py-32" style={{ animationDelay: '0.40s' }}>
+        <section className="animate-fade-in-up max-w-7xl mx-auto px-6 lg:px-12 py-32">
           <h2 className={`${deepDiveHeadingClass} mb-12`}>{deepDiveHeading}</h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {deepDiveSections.map((section) => renderSection(section))}
           </div>
         </section>
 
-        <section className="animate-fade-in-up border-y border-border/20 bg-surface py-24" style={{ animationDelay: '0.48s' }}>
+        <section className="animate-fade-in-up border-y border-border/20 bg-surface py-24">
           <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
             <h2 className={`${deepDiveHeadingClass} mb-10`}>{t('caseStudy.engineeringStack', { ns: 'common' })}</h2>
             <div className="flex flex-wrap justify-center gap-3">
@@ -322,13 +322,13 @@ export const CaseStudyTemplate = ({
 
         {codeSection ? (
           <section className="max-w-3xl mx-auto px-6 lg:px-12 py-32 text-center">
-            <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-sm bg-surface text-accent/20">
+            <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-md bg-surface text-accent/20">
               <CodeBracketIcon className="h-8 w-8" aria-hidden="true" />
             </div>
             <blockquote className="mb-8 font-display text-[1.75rem] font-medium leading-tight tracking-[-0.01em] text-text-primary">
               {codeSection.heading}
             </blockquote>
-            <div className="rounded-sm border border-border/20 bg-surface p-8 text-left">
+            <div className="rounded-md border border-border/20 bg-surface p-8 text-left">
               <h3 className="mb-3 font-display text-[1.125rem] font-medium text-text-primary">
                 {codeSection.title}
               </h3>

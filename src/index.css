@@ -65,7 +65,7 @@
   --text-h2: 1.75rem;
 }
 
-/* Light mode override (dark-first — dark is default in @theme) */
+/* Light mode override (dark-first: dark is default in @theme) */
 :root:not(.dark) {
   --color-bg-primary: #faf7f0;
   --color-surface: #f5f0e8;
@@ -79,20 +79,15 @@
   --color-border-hover: #d6cfc2;
 }
 
-/* Softer shadows in light mode — reduced opacity ~40% */
-:root:not(.dark) .section-shell {
-  box-shadow: 0 24px 72px rgba(15, 23, 42, 0.04);
-}
-
 :root:not(.dark) .card-minimal {
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
 }
 
-:root:not(.dark) .card-base {
-  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04);
+:root:not(.dark) .card-elevated {
+  box-shadow: 0 6px 18px rgba(120, 90, 40, 0.08);
 }
-:root:not(.dark) .card-base:hover {
-  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.10);
+:root:not(.dark) .card-elevated:hover {
+  box-shadow: 0 18px 40px rgba(120, 90, 40, 0.14);
 }
 
 @media (min-width: 1024px) {
@@ -142,6 +137,28 @@ h3 {
   text-wrap: balance;
 }
 
+p {
+  text-wrap: pretty;
+}
+
+/* Type scale, from DESIGN.md. One display size for page titles and one headline
+   size for section titles, so no page invents its own scale. */
+.type-display {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 6vw, 4.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.type-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
 p,
 li,
 span,
@@ -173,13 +190,6 @@ label {
   position: relative;
   display: grid;
   gap: var(--spacing-8);
-}
-
-.section-shell {
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--color-surface) 92%, transparent);
-  box-shadow: 0 24px 72px rgba(15, 23, 42, 0.08);
 }
 
 .grid-clean {
@@ -415,20 +425,6 @@ label {
   color: var(--color-text-primary);
 }
 
-.input-minimal {
-  border-radius: 0;
-  border: 1px solid var(--color-border);
-  background-color: var(--color-surface);
-  color: var(--color-text-primary);
-}
-.input-minimal::placeholder {
-  color: var(--color-text-muted);
-}
-.input-minimal:focus {
-  border-color: color-mix(in srgb, var(--color-accent) 60%, var(--color-border) 40%);
-  outline: 3px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
-  outline-offset: 1px;
-}
 
 img {
   max-width: 100%;
@@ -485,25 +481,17 @@ textarea:focus-visible,
   );
 }
 
-.card-base {
+.card-elevated {
   background: var(--color-surface);
-  border-radius: var(--radius-md);
-  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.08);
-  padding: 1rem;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.07);
   transition:
     box-shadow var(--transition-medium),
     transform var(--transition-medium);
 }
-.card-base:hover {
+.card-elevated:hover {
   transform: translateY(-6px);
   box-shadow: 0 18px 40px rgba(2, 6, 23, 0.18);
-}
-
-.panel {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: 1rem;
 }
 
 #mobile-drawer.mobile-drawer-solid {
@@ -559,7 +547,7 @@ textarea:focus-visible,
   }
 }
 
-/* SkipLink — hidden until focused */
+/* SkipLink: hidden until focused */
 .skip-link {
   transition: transform 150ms ease-in-out;
 }

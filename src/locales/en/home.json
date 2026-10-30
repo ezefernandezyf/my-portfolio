@@ -2,11 +2,12 @@
   "hero": {
     "label": "Full Stack Developer",
     "name": "Ezequiel Fernández",
-    "summary": "I build multi-tenant SaaS end to end: React 19 on the client, Node.js and PostgreSQL on the other side, Vitest in between. The biggest one is Relevy: 46,000 lines and 1119 tests.",
+    "summary": "Full stack developer. I build and maintain complete web products with React 19, Node.js and PostgreSQL; the biggest is Relevy, at 46,000 lines and 1119 tests. Three of my bug fixes are also merged into vitest and @fastify/cookie.",
     "cta": {
       "about": "About me",
       "projects": "Projects",
-      "downloadCV": "Download CV"
+      "downloadCV": "Download CV",
+      "openSource": "Open Source"
     }
   },
   "stackHeading": "What I work with",

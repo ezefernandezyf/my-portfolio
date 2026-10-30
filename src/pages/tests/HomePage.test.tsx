@@ -33,6 +33,8 @@ describe('HomePage', () => {
     expect(cvLinks.length).toBeGreaterThanOrEqual(1);
     expect(cvLinks[0]).toHaveAttribute('href', '/Ezequiel_Fernandez_CV.pdf');
 
+    expect(screen.getByRole('link', { name: /open source/i })).toHaveAttribute('href', '/open-source');
+
     expect(screen.getByText(/what i work with|con qué trabajo/i)).toBeInTheDocument();
     expect(screen.getAllByText(/react/i).length).toBeGreaterThanOrEqual(1);
     expect(screen.getAllByText(/typescript/i).length).toBeGreaterThanOrEqual(1);

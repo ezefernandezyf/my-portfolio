@@ -120,7 +120,7 @@ export const HomePage = (): React.JSX.Element => {
 
       <div>
         <section
-          className="relative min-h-[calc(100svh-4rem)] bg-bg-primary pb-12 pt-32"
+          className="relative min-h-[calc(100svh-4rem)] bg-bg-primary pb-12 pt-24"
           onPointerMove={handlePointerMove}
           onPointerEnter={handlePointerEnter}
           onPointerLeave={handlePointerLeave}
@@ -139,19 +139,19 @@ export const HomePage = (): React.JSX.Element => {
           <div className="site-container relative z-10 flex min-h-[calc(100svh-4rem)] flex-col justify-center">
             <div className="max-w-[65ch]">
 
-              <h1 className="animate-fade-in-up [animation-delay:75ms] text-6xl font-bold leading-[0.9] tracking-tighter text-text-primary md:text-8xl font-display">
+              <h1 className="animate-fade-in-up text-6xl font-bold leading-[0.9] tracking-tighter text-text-primary md:text-8xl font-display">
                 <span className="block">{t('hero.name', { ns: 'home' }).split(' ')[0]}</span>
                 <span>{t('hero.name', { ns: 'home' }).split(' ').slice(1).join(' ')}</span>
               </h1>
 
-              <h2 className="animate-fade-in-up [animation-delay:150ms] mt-8 max-w-3xl text-xl font-medium leading-relaxed text-text-secondary md:text-2xl font-body">
+              <h2 className="animate-fade-in-up mt-8 max-w-3xl text-xl font-medium leading-relaxed text-text-secondary md:text-2xl font-body">
                 {t('hero.summary', { ns: 'home' })}
               </h2>
 
-              <div className="animate-fade-in-up [animation-delay:300ms] mt-12 flex flex-wrap items-center gap-6">
+              <div className="animate-fade-in-up mt-12 flex flex-wrap items-center gap-6">
                 <Link
                   aria-label={t('hero.cta.projects', { ns: 'home' })}
-                  className="inline-flex h-14 items-center justify-center bg-accent px-8 text-sm font-bold uppercase tracking-widest text-bg-primary transition-all hover:bg-accent-hover focus-ring active:scale-95"
+                  className="inline-flex h-14 items-center justify-center rounded-md bg-accent px-8 text-sm font-bold uppercase tracking-widest text-bg-primary transition-all hover:bg-accent-hover focus-ring active:scale-95"
                   to={localize('/projects')}
                 >
                   {t('hero.cta.projects', { ns: 'home' })}
@@ -159,10 +159,18 @@ export const HomePage = (): React.JSX.Element => {
 
                 <Link
                   aria-label={t('hero.cta.about', { ns: 'home' })}
-                  className="inline-flex h-14 items-center justify-center border border-border px-8 text-sm font-bold uppercase tracking-widest text-text-primary transition-all hover:border-border-hover focus-ring active:scale-95"
+                  className="inline-flex h-14 items-center justify-center rounded-md border border-border px-8 text-sm font-bold uppercase tracking-widest text-text-primary transition-all hover:border-border-hover focus-ring active:scale-95"
                   to={localize('/about')}
                 >
                   {t('hero.cta.about', { ns: 'home' })}
+                </Link>
+
+                <Link
+                  aria-label={t('hero.cta.openSource', { ns: 'home' })}
+                  className="inline-flex h-14 items-center justify-center rounded-md border border-accent/60 px-8 text-sm font-bold uppercase tracking-widest text-accent transition-all hover:border-accent hover:bg-accent/10 focus-ring active:scale-95"
+                  to={localize('/open-source')}
+                >
+                  {t('hero.cta.openSource', { ns: 'home' })}
                 </Link>
 
                 <a
@@ -177,22 +185,21 @@ export const HomePage = (): React.JSX.Element => {
                 </a>
               </div>
             </div>
+          </div>
+        </section>
 
-            <div className="animate-fade-in-up [animation-delay:450ms] mt-24">
-              <p className="mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-text-muted font-body">
-                {t('stackHeading', { ns: 'home' })}
-              </p>
+        <section className="site-container pb-16 pt-4">
+          <div className="animate-fade-in-up">
+            <p className="mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-text-muted font-body">
+              {t('stackHeading', { ns: 'home' })}
+            </p>
 
-              <div className="flex flex-wrap gap-3">
-                {technicalStack.map((stackItem) => (
-                  <span
-                    key={stackItem}
-                    className="chip-outline chip"
-                  >
-                    {stackItem}
-                  </span>
-                ))}
-              </div>
+            <div className="flex flex-wrap gap-3">
+              {technicalStack.map((stackItem) => (
+                <span key={stackItem} className="chip-outline chip">
+                  {stackItem}
+                </span>
+              ))}
             </div>
           </div>
         </section>
@@ -205,18 +212,17 @@ export const HomePage = (): React.JSX.Element => {
           <div ref={projectsRef} className={projectsVisible ? 'animate-fade-in-up' : 'opacity-0'}>
             <div className="site-container">
               <div className="mb-16 flex items-end justify-between border-b border-border pb-8">
-                <h2 className="text-[1.75rem] font-bold tracking-tight text-text-primary md:text-[2.25rem] font-display">
+                <h2 className="type-headline text-text-primary">
                   {t('recentWorkHeading', { ns: 'home' })}
                 </h2>
                 <p className="text-sm font-medium text-text-muted">02 / {projectCountLabel}</p>
               </div>
 
               <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-                {featuredProjects.map((project, index) => (
+                {featuredProjects.map((project) => (
                   <div
                     key={project.id}
                     className={projectsVisible ? 'animate-fade-in-up' : 'opacity-0'}
-                    style={reducedMotion ? undefined : { animationDelay: `${50 + index * 50}ms` }}
                   >
                     <ProjectCard
                       id={project.id}
@@ -247,14 +253,14 @@ export const HomePage = (): React.JSX.Element => {
           <div ref={contactRef} className={contactVisible ? 'animate-fade-in-up' : 'opacity-0'}>
             <div className="mx-auto max-w-2xl">
               <CommandLineIcon className="mx-auto mb-8 h-12 w-12 text-accent" aria-hidden />
-              <h2 className="mb-6 text-[1.75rem] font-bold tracking-tight text-text-primary md:text-[2.25rem] font-display">
+              <h2 className="type-headline mb-6 text-text-primary">
                 {t('contactTitle', { ns: 'home' })}
               </h2>
               <p className="mb-12 text-xl font-medium text-text-secondary font-body">
                 {t('contactText', { ns: 'home' })}
               </p>
               <Link
-                className="inline-flex h-16 items-center gap-4 bg-accent px-12 text-sm font-bold uppercase tracking-[0.2em] text-bg-primary transition-transform active:scale-95 focus-ring"
+                className="inline-flex h-16 items-center gap-4 rounded-md bg-accent px-12 text-sm font-bold uppercase tracking-[0.2em] text-bg-primary transition-transform active:scale-95 focus-ring"
                 to={localize('/contact')}
               >
                 {t('contactCta', { ns: 'home' })}

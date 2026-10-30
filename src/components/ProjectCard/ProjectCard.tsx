@@ -43,7 +43,7 @@ export const ProjectCard = ({
   const imgSrc = image ?? images[0];
 
   return (
-    <article className="group card-base flex h-full flex-col border border-border bg-surface p-8 transition-colors duration-300 hover:border-accent/50">
+    <article className="group card-elevated flex h-full flex-col border border-border bg-surface p-8 transition-colors duration-300 hover:border-accent/50">
       <div className="flex items-start justify-between gap-4">
         <div className="flex flex-wrap gap-2">
           {visibleTech.map((tName) => (
