@@ -579,7 +579,7 @@ function writePage(lang, route, html) {
 /* ── Main ───────────────────────────────────────────────────── */
 
 async function prerender() {
-  console.log('\n━━━ Prerender: generating 28 static pages ━━━\n');
+  console.log(`\n━━━ Prerender: generating ${ROUTES.length * LANGUAGES.length} static pages ━━━\n`);
 
   // Read the template (Vite-built SPA entry)
   const templatePath = path.join(DIST, 'index.html');
