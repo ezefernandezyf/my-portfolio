@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
 /**
- * Prerender script — generates 28 static HTML files (14 routes × 2 locales).
+ * Prerender script: generates 32 static HTML files (16 routes × 2 locales).
  * Runs after `vite build` via the closeBundle plugin.
  *
  * Produces dist/{esPage}.html / dist/en/{enPage}.html with full text content
  * for crawlers, plus hreflang alternate links, title, meta description.
  *
- * Zero new dependencies — uses jsdom (already present), react-dom/server,
+ * Zero new dependencies: uses jsdom (already present), react-dom/server,
  * and reads i18n JSON files directly.
  */
 
@@ -26,7 +26,7 @@ const DIST = path.resolve(__dirname, '..', 'dist');
 const SRC = path.resolve(__dirname, '..');
 const SITE_URL = 'https://ezefernandez.com';
 
-/* ── Routes (auto-derived from route-meta.ts — single source of truth) ── */
+/* ── Routes (auto-derived from route-meta.ts, single source of truth) ── */
 
 import { ROUTE_META } from '../src/data/route-meta.ts';
 import { openSourceContributions } from '../src/data/openSource.ts';
@@ -39,7 +39,7 @@ const CINELAB_INTERPOLATION = { name: 'CineLab' };
  * Build the route table consumed by prerender.
  *
  * SEO metadata (title/description/OG/JSON-LD) now comes exclusively from the
- * canonical `route-meta.ts` `LocaleSEO` objects via the `es`/`en` fields —
+ * canonical `route-meta.ts` `LocaleSEO` objects via the `es`/`en` fields,
  * never from i18n locale JSON resolution.
  *
  * `ns` and `i18nInterpolation` are retained because `buildPageContent` still
@@ -119,7 +119,7 @@ function pageUrl(lang, route) {
 /* ── JSON-LD Schema builder (mirrors src/data/schema.ts) ─── */
 
 const SITE_AUTHOR = 'Ezequiel Fernández';
-const SITE_DESC = 'Full Stack Developer — portfolio, projects, and case studies';
+const SITE_DESC = 'Full Stack Developer | portfolio, projects, and case studies';
 
 function buildJsonLdScript(lang, route) {
   const prefix = lang === 'en' ? '/en' : '';
@@ -140,7 +140,7 @@ function buildJsonLdScript(lang, route) {
       '@type': 'WebSite',
       '@id': `${SITE_URL}/#website`,
       url: SITE_URL,
-      name: `${SITE_AUTHOR} — ${SITE_DESC}`,
+      name: `${SITE_AUTHOR} | ${SITE_DESC}`,
       description: SITE_DESC,
       publisher: { '@id': `${SITE_URL}/#person` },
     },
@@ -524,7 +524,7 @@ function injectIntoHtml(templateHtml, renderedContent, lang, route) {
   const jsonLdScript = buildJsonLdScript(lang, route);
   document.head.insertAdjacentHTML('beforeend', `\n    ${jsonLdScript}\n    `);
 
-  // Alt text injection — scan <img> tags missing alt, inject descriptive text
+  // Alt text injection: scan <img> tags missing alt, inject descriptive text
   const images = dom.window.document.querySelectorAll('img:not([alt]), img[alt=""]');
   for (const img of images) {
     const src = img.getAttribute('src') || '';
@@ -535,7 +535,7 @@ function injectIntoHtml(templateHtml, renderedContent, lang, route) {
       const readableName = filename.replace(/[-_]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
       // Check if this looks like a project screenshot (inside a case study page)
       if (route.path.startsWith('projects/') && route.path !== 'projects') {
-        img.setAttribute('alt', `${routeName} — ${readableName}`);
+        img.setAttribute('alt', `${routeName}: ${readableName}`);
       } else if (route.path === 'about' || route.path === 'home') {
         // Hero/figure images get descriptive alt
         img.setAttribute('alt', readableName);
@@ -614,7 +614,7 @@ async function prerender() {
         const outFile = writePage(lang, route, finalHtml);
         const size = fs.statSync(outFile).size;
 
-        // 4. Quick sanity check — ensure HTML has text content, not just empty div
+        // 4. Quick sanity check: ensure HTML has text content, not just empty div
         const contentCheck = finalHtml.includes('class="prerendered-page"') || finalHtml.includes('>Ezequiel');
         if (!contentCheck) {
           console.log(`⚠  written (${size}B, no expected content markers)`);
