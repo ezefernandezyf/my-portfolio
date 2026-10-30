@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Sitemap generator — reads route-meta.ts ROUTE_KEYS, generates public/sitemap.xml.
+ * Sitemap generator: reads route-meta.ts ROUTE_KEYS, generates public/sitemap.xml.
  *
  * Produces 22 <url> entries (11 indexable routes x 2 locales) with hreflang
  * alternates, lastmod, changefreq, priority.
