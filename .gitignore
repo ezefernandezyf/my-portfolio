@@ -25,3 +25,6 @@ dist-ssr
 *.sw?
 
 coverage
+
+# Local CodeGraph index
+.codegraph/
