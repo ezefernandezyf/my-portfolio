@@ -85,7 +85,7 @@ export const ProjectsListPage = (): React.JSX.Element => {
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-7 px-6 py-24 lg:px-10 lg:py-10 lg:pt-50">
           <div className="max-w-3xl space-y-5">
             <div className="space-y-4">
-              <h1 className="font-display text-[3.5rem] leading-none tracking-[-0.02em] text-text-primary" style={fadeInUp(0.08)}>
+              <h1 className="type-display text-text-primary" style={fadeInUp(0.08)}>
                 {t('header.title')}
               </h1>
               <p className="max-w-[60ch] text-[1.125rem] leading-relaxed text-text-secondary" style={fadeInUp(0.16)}>
@@ -94,8 +94,8 @@ export const ProjectsListPage = (): React.JSX.Element => {
             </div>
           </div>
 
-          <div className="grid gap-4 rounded-4xl border border-border bg-bg-primary p-4 shadow-[0_18px_50px_rgba(15,23,42,0.08)] md:grid-cols-[minmax(0,1fr)] md:items-center md:p-4">
-            <label className="flex items-center gap-3 rounded-4xl border border-border bg-surface/60 px-4 py-3 text-text-secondary transition-colors focus-within:border-accent/40 focus-within:bg-bg-primary">
+          <div className="grid gap-4 rounded-lg border border-border bg-bg-primary p-4 shadow-[0_18px_50px_rgba(15,23,42,0.08)] md:grid-cols-[minmax(0,1fr)] md:items-center md:p-4">
+            <label className="flex items-center gap-3 rounded-md border border-border bg-surface/60 px-4 py-3 text-text-secondary transition-colors focus-within:border-accent/40 focus-within:bg-bg-primary">
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="h-5 w-5 shrink-0 stroke-current" strokeWidth="1.8">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-4.35-4.35" />
                 <circle cx="11" cy="11" r="6.5" />
@@ -149,7 +149,7 @@ export const ProjectsListPage = (): React.JSX.Element => {
             <button
               type="button"
               onClick={handleLoadMore}
-              className="inline-flex items-center rounded-full border border-border bg-bg-primary px-6 py-3 text-sm font-semibold text-text-primary transition-colors hover:border-accent/30 hover:bg-accent/5"
+              className="inline-flex items-center rounded-md border border-border bg-bg-primary px-6 py-3 text-sm font-semibold text-text-primary transition-colors hover:border-accent/30 hover:bg-accent/5"
             >
               {t('button.loadMore')}
             </button>
@@ -161,7 +161,7 @@ export const ProjectsListPage = (): React.JSX.Element => {
       <section className="bg-surface py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <div className="mx-auto max-w-3xl space-y-6">
-            <h2 className="text-2xl font-bold tracking-tight text-text-primary font-display">
+            <h2 className="type-headline text-text-primary">
               {t('contentSection.heading')}
             </h2>
             <p className="text-base leading-relaxed text-text-secondary font-body">

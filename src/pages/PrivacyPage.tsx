@@ -49,7 +49,7 @@ export const PrivacyPage = (): React.JSX.Element => {
               <p className="mb-4 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted" style={fadeInUp(0.08)}>
                 {t('eyebrow')}
               </p>
-              <h1 className="font-display text-[2.75rem] font-medium leading-tight tracking-[-0.03em] text-text-primary sm:text-[3.25rem]" style={fadeInUp(0.16)}>
+              <h1 className="type-display text-text-primary" style={fadeInUp(0.16)}>
                 {t('title')}
               </h1>
               <p className="mt-6 max-w-[60ch] text-[1.125rem] leading-relaxed text-text-secondary" style={fadeInUp(0.24)}>

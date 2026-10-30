@@ -79,7 +79,7 @@ export const OpenSourcePage = (): React.JSX.Element => {
               </p>
               <h1
                 id="open-source-heading"
-                className="font-display text-[2.75rem] font-medium leading-tight tracking-[-0.03em] text-text-primary sm:text-[3.25rem]"
+                className="type-display text-text-primary"
               >
                 {t('title')}
               </h1>
@@ -200,7 +200,7 @@ export const OpenSourcePage = (): React.JSX.Element => {
             <div className="lg:col-span-8">
               <h2
                 id="open-source-verification-heading"
-                className="font-display text-[1.75rem] font-medium tracking-[-0.01em] text-text-primary"
+                className="type-headline text-text-primary"
               >
                 {t('verification.heading')}
               </h2>
