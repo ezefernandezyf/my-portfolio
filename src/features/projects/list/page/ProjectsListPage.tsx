@@ -10,11 +10,6 @@ const LOAD_MORE_STEP = 3;
 
 const normalize = (value: string): string => value.toLowerCase().trim();
 
-const fadeInUp = (delay = 0): React.CSSProperties => ({
-  animation: `fade-in-up 0.5s ease-out ${delay}s forwards`,
-  opacity: 0,
-});
-
 export const ProjectsListPage = (): React.JSX.Element => {
   const { t, i18n } = useTranslation('projects');
   const lang = i18n.language?.startsWith('en') ? 'en' : 'es';
@@ -24,12 +19,6 @@ export const ProjectsListPage = (): React.JSX.Element => {
 
   const gridRef = useRef<HTMLDivElement>(null);
   const [gridVisible, setGridVisible] = useState(false);
-  const [reducedMotion] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    }
-    return false;
-  });
 
   useEffect(() => {
     const el = gridRef.current;
@@ -81,14 +70,14 @@ export const ProjectsListPage = (): React.JSX.Element => {
         pathname="/projects"
       />
       <div className="bg-bg-primary">
-      <section className="grid-glow border-b border-border/70" style={fadeInUp()}>
+      <section className="grid-glow border-b border-border/70">
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-7 px-6 py-24 lg:px-10 lg:py-10 lg:pt-50">
           <div className="max-w-3xl space-y-5">
             <div className="space-y-4">
-              <h1 className="type-display text-text-primary" style={fadeInUp(0.08)}>
+              <h1 className="type-display text-text-primary">
                 {t('header.title')}
               </h1>
-              <p className="max-w-[60ch] text-[1.125rem] leading-relaxed text-text-secondary" style={fadeInUp(0.16)}>
+              <p className="max-w-[60ch] text-[1.125rem] leading-relaxed text-text-secondary">
                 {t('header.subtitle')}
               </p>
             </div>
@@ -112,7 +101,7 @@ export const ProjectsListPage = (): React.JSX.Element => {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-7xl px-6 pt-12 pb-10 lg:px-10 lg:pt-16 lg:pb-12" style={fadeInUp(0.24)}>
+      <section className="mx-auto w-full max-w-7xl px-6 pt-12 pb-10 lg:px-10 lg:pt-16 lg:pb-12">
         <div className="mb-6 flex items-center justify-between gap-4 text-xs font-semibold uppercase tracking-[0.24em] text-text-secondary">
           <span>{t('counts.showing', { visible: visibleItems.length, total: filteredProjects.length })}</span>
         </div>
@@ -123,11 +112,10 @@ export const ProjectsListPage = (): React.JSX.Element => {
           </p>
         ) : (
         <div ref={gridRef} className="grid gap-6 lg:grid-cols-2 lg:gap-6">
-          {visibleItems.map((project, index) => (
+          {visibleItems.map((project) => (
             <div
               key={project.id}
               className={gridVisible ? 'animate-fade-in-up' : 'opacity-0'}
-              style={reducedMotion ? undefined : { animationDelay: `${index * 50}ms` }}
             >
               <ProjectCard
                 id={project.id}

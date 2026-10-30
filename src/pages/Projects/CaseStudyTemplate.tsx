@@ -173,16 +173,16 @@ export const CaseStudyTemplate = ({
         <section className="animate-fade-in-up max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-24">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
-              <p className="animate-fade-in-up font-body mb-4 text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted" style={{ animationDelay: '0.08s' }}>
+              <p className="animate-fade-in-up font-body mb-4 text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted">
                 {t('caseStudy.eyebrow', { ns: 'common' })}
               </p>
-              <h1 className="animate-fade-in-up type-display text-text-primary" style={{ animationDelay: '0.16s' }}>
+              <h1 className="animate-fade-in-up type-display text-text-primary">
                 {title}
               </h1>
-              <p className="animate-fade-in-up font-body mt-6 max-w-[60ch] text-[1.125rem] leading-relaxed text-text-secondary" style={{ animationDelay: '0.24s' }}>
+              <p className="animate-fade-in-up font-body mt-6 max-w-[60ch] text-[1.125rem] leading-relaxed text-text-secondary">
                 {description}
               </p>
-              <div className="animate-fade-in-up mt-10 flex flex-wrap gap-4" style={{ animationDelay: '0.32s' }}>
+              <div className="animate-fade-in-up mt-10 flex flex-wrap gap-4">
                 {demo ? (
                   <a
                     href={demo}
@@ -217,7 +217,7 @@ export const CaseStudyTemplate = ({
             <aside
               className="animate-fade-in-up flex flex-col gap-6 lg:col-span-4 lg:border-l lg:border-border/20 lg:pl-12"
               data-testid="stack-aside"
-              style={{ animationDelay: '0.16s' }}
+             
             >
               <div>
                 <span className="mb-1 block font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted">
@@ -254,7 +254,7 @@ export const CaseStudyTemplate = ({
           </div>
         </section>
 
-        <section className="animate-fade-in-up max-w-6xl mx-auto mb-28 px-6 lg:px-12" style={{ animationDelay: '0.24s' }}>
+        <section className="animate-fade-in-up max-w-6xl mx-auto mb-28 px-6 lg:px-12">
           <div className="relative w-full overflow-hidden rounded-lg border border-border/20 bg-surface shadow-[0_16px_32px_-16px_rgba(27,27,27,0.04)]">
             {images.length > 0 ? (
               <ProjectCarousel images={images} alt={carouselAlt} interval={5000} />
@@ -266,11 +266,11 @@ export const CaseStudyTemplate = ({
           </div>
         </section>
 
-        <section className="animate-fade-in-up bg-surface py-32" style={{ animationDelay: '0.32s' }}>
+        <section className="animate-fade-in-up bg-surface py-32">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 gap-20 lg:grid-cols-2">
               <div>
-                <h2 className="animate-fade-in-up type-headline mb-6 text-text-primary" style={{ animationDelay: '0.08s' }}>
+                <h2 className="animate-fade-in-up type-headline mb-6 text-text-primary">
                   <ExclamationTriangleIcon className="mr-3 h-6 w-6 text-accent" aria-hidden="true" />
                   {problemHeading}
                 </h2>
@@ -297,14 +297,14 @@ export const CaseStudyTemplate = ({
           </div>
         </section>
 
-        <section className="animate-fade-in-up max-w-7xl mx-auto px-6 lg:px-12 py-32" style={{ animationDelay: '0.40s' }}>
+        <section className="animate-fade-in-up max-w-7xl mx-auto px-6 lg:px-12 py-32">
           <h2 className={`${deepDiveHeadingClass} mb-12`}>{deepDiveHeading}</h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {deepDiveSections.map((section) => renderSection(section))}
           </div>
         </section>
 
-        <section className="animate-fade-in-up border-y border-border/20 bg-surface py-24" style={{ animationDelay: '0.48s' }}>
+        <section className="animate-fade-in-up border-y border-border/20 bg-surface py-24">
           <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
             <h2 className={`${deepDiveHeadingClass} mb-10`}>{t('caseStudy.engineeringStack', { ns: 'common' })}</h2>
             <div className="flex flex-wrap justify-center gap-3">

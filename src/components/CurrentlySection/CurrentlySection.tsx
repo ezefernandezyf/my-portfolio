@@ -14,11 +14,6 @@ export interface CurrentlySectionProps {
   items: CurrentlyItem[];
 }
 
-const staggerStyle = (index: number): React.CSSProperties => ({
-  animation: `fade-in-up 0.5s ease-out ${index * 0.12}s forwards`,
-  opacity: 0,
-});
-
 export const CurrentlySection = ({ items }: CurrentlySectionProps): React.JSX.Element | null => {
   const { t } = useTranslation('home');
 
@@ -33,11 +28,10 @@ export const CurrentlySection = ({ items }: CurrentlySectionProps): React.JSX.El
       </h2>
 
       <ul className="flex flex-col gap-4">
-        {items.map((item, index) => (
+        {items.map((item) => (
           <li
             key={item.label}
-            className="flex items-center gap-3"
-            style={staggerStyle(index)}
+            className="flex items-center gap-3"
           >
             <span className="h-px w-4 shrink-0 bg-accent" aria-hidden="true" />
 

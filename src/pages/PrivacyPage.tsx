@@ -13,11 +13,6 @@ import { useTranslation } from 'react-i18next';
 import { MetaTags } from '../shared/seo';
 import { ROUTE_META } from '../data/route-meta';
 
-const fadeInUp = (delay = 0): React.CSSProperties => ({
-  animation: `fade-in-up 0.5s ease-out ${delay}s forwards`,
-  opacity: 0,
-});
-
 const privacySections = [
   { key: 'data', icon: KeyIcon },
   { key: 'use', icon: UserGroupIcon },
@@ -44,20 +39,20 @@ export const PrivacyPage = (): React.JSX.Element => {
 
       <div className="pb-24 pt-24">
         <div className="site-container space-y-24">
-          <section className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end" style={fadeInUp()}>
+          <section className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
-              <p className="mb-4 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted" style={fadeInUp(0.08)}>
+              <p className="mb-4 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted">
                 {t('eyebrow')}
               </p>
-              <h1 className="type-display text-text-primary" style={fadeInUp(0.16)}>
+              <h1 className="type-display text-text-primary">
                 {t('title')}
               </h1>
-              <p className="mt-6 max-w-[60ch] text-[1.125rem] leading-relaxed text-text-secondary" style={fadeInUp(0.24)}>
+              <p className="mt-6 max-w-[60ch] text-[1.125rem] leading-relaxed text-text-secondary">
                 {t('intro')}
               </p>
             </div>
 
-            <aside className="lg:col-span-4 lg:border-l lg:border-border/20 lg:pl-12" style={fadeInUp(0.32)}>
+            <aside className="lg:col-span-4 lg:border-l lg:border-border/20 lg:pl-12">
               <div className="rounded-lg border border-border/20 bg-surface p-6">
                 <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted">
                   {t('lastUpdated', { date: lastUpdated })}
@@ -76,7 +71,7 @@ export const PrivacyPage = (): React.JSX.Element => {
             </aside>
           </section>
 
-          <section className="grid grid-cols-1 gap-6 lg:grid-cols-2" style={fadeInUp(0.40)}>
+          <section className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             {privacySections.map((section) => {
               const Icon = section.icon;
               const heading = t(`sections.${section.key}.heading`);

@@ -139,16 +139,16 @@ export const HomePage = (): React.JSX.Element => {
           <div className="site-container relative z-10 flex min-h-[calc(100svh-4rem)] flex-col justify-center">
             <div className="max-w-[65ch]">
 
-              <h1 className="animate-fade-in-up [animation-delay:75ms] text-6xl font-bold leading-[0.9] tracking-tighter text-text-primary md:text-8xl font-display">
+              <h1 className="animate-fade-in-up text-6xl font-bold leading-[0.9] tracking-tighter text-text-primary md:text-8xl font-display">
                 <span className="block">{t('hero.name', { ns: 'home' }).split(' ')[0]}</span>
                 <span>{t('hero.name', { ns: 'home' }).split(' ').slice(1).join(' ')}</span>
               </h1>
 
-              <h2 className="animate-fade-in-up [animation-delay:150ms] mt-8 max-w-3xl text-xl font-medium leading-relaxed text-text-secondary md:text-2xl font-body">
+              <h2 className="animate-fade-in-up mt-8 max-w-3xl text-xl font-medium leading-relaxed text-text-secondary md:text-2xl font-body">
                 {t('hero.summary', { ns: 'home' })}
               </h2>
 
-              <div className="animate-fade-in-up [animation-delay:300ms] mt-12 flex flex-wrap items-center gap-6">
+              <div className="animate-fade-in-up mt-12 flex flex-wrap items-center gap-6">
                 <Link
                   aria-label={t('hero.cta.projects', { ns: 'home' })}
                   className="inline-flex h-14 items-center justify-center rounded-md bg-accent px-8 text-sm font-bold uppercase tracking-widest text-bg-primary transition-all hover:bg-accent-hover focus-ring active:scale-95"
@@ -186,7 +186,7 @@ export const HomePage = (): React.JSX.Element => {
               </div>
             </div>
 
-            <div className="animate-fade-in-up [animation-delay:450ms] mt-24">
+            <div className="animate-fade-in-up mt-24">
               <p className="mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-text-muted font-body">
                 {t('stackHeading', { ns: 'home' })}
               </p>
@@ -220,11 +220,10 @@ export const HomePage = (): React.JSX.Element => {
               </div>
 
               <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-                {featuredProjects.map((project, index) => (
+                {featuredProjects.map((project) => (
                   <div
                     key={project.id}
                     className={projectsVisible ? 'animate-fade-in-up' : 'opacity-0'}
-                    style={reducedMotion ? undefined : { animationDelay: `${50 + index * 50}ms` }}
                   >
                     <ProjectCard
                       id={project.id}
