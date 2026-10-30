@@ -22,7 +22,7 @@
   },
   "contentSection": {
     "heading": "How I Work",
-    "paragraph1": "Every project starts with mapping the domain before opening the editor: user flows, entities and bounded contexts. On EchoLog that ended in 10 top-level domains —auth, posts, votes, workspaces— where every folder says what the product does, not which framework it uses. When a post-release merge lost files that existed on both branches, the fix was not more process: it was making CI run the tests against the merge result.",
+    "paragraph1": "Every project starts with mapping the domain before opening the editor: user flows, entities and bounded contexts. On EchoLog that ended in 10 top-level domains (auth, posts, votes, workspaces) where every folder says what the product does, not which framework it uses. When a post-release merge lost files that existed on both branches, the fix was not more process: it was making CI run the tests against the merge result.",
     "paragraph2": "I pick the stack by the problem, not by this week's post. TypeScript because shared/ and server/ share Zod schemas and the build breaks when the contract changes; PostgreSQL because composite keys solve multi-tenant isolation without separate schemas; Vitest because 1119 tests run in four CI jobs. If a library does not pass that, it does not ship.",
     "paragraph3": "Every PR passes lint, typecheck and the suite before merge. When a bug shows up, I write the test that reproduces it first: on the vitest cache fix the RED showed that exactly vmThreads and vmForks failed, not every file as the report claimed. That forced me to move the check to the start of the traversal instead of patching the mkdirSync."
   },

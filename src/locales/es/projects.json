@@ -22,7 +22,7 @@
   },
   "contentSection": {
     "heading": "Cómo trabajo",
-    "paragraph1": "Cada proyecto arranca mapeando el dominio antes de abrir el editor: flujos del usuario, entidades y bounded contexts. En EchoLog eso terminó en 10 dominios de primer nivel —auth, posts, votes, workspaces— donde cada carpeta dice qué hace el producto, no qué framework usa. Cuando un merge post-release perdió archivos que existían en las dos ramas, el fix no fue más proceso: fue hacer que el CI corriera los tests sobre el resultado del merge.",
+    "paragraph1": "Cada proyecto arranca mapeando el dominio antes de abrir el editor: flujos del usuario, entidades y bounded contexts. En EchoLog eso terminó en 10 dominios de primer nivel (auth, posts, votes, workspaces) donde cada carpeta dice qué hace el producto, no qué framework usa. Cuando un merge post-release perdió archivos que existían en las dos ramas, el fix no fue más proceso: fue hacer que el CI corriera los tests sobre el resultado del merge.",
     "paragraph2": "El stack lo elijo por el problema, no por el post de la semana. TypeScript porque shared/ y server/ comparten los schemas de Zod y el build rompe cuando cambia el contrato; PostgreSQL porque las claves compuestas resuelven el aislamiento multi-tenant sin esquemas separados; Vitest porque 1119 tests se corren en cuatro jobs de CI. Si una librería no pasa eso, no entra.",
     "paragraph3": "Cada PR pasa linter, typecheck y la suite antes del merge. Cuando aparece un bug, primero escribo el test que lo reproduce: en el fix del cache de vitest el RED mostró que fallaban exactamente vmThreads y vmForks, no todos los archivos como decía el reporte. Eso me obligó a mover el chequeo al principio del recorrido en vez de parchear el mkdirSync."
   },

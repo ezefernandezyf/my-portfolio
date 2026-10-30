@@ -23,7 +23,7 @@
   },
   "summary": {
     "heading": "Summary",
-    "text": "CineLab searches TMDB and keeps favourites with no backend. The problem was never search: overlapping requests clobbered each other and favourites vanished between sessions. I fixed it with cancellable fetching —one AbortController per request— and a context plus reducer synced to localStorage through isolated helpers."
+    "text": "CineLab searches TMDB and keeps favourites with no backend. The problem was never search: overlapping requests clobbered each other and favourites vanished between sessions. I fixed it with cancellable fetching (one AbortController per request) and a context plus reducer synced to localStorage through isolated helpers."
   },
   "problem": {
     "heading": "The problem",

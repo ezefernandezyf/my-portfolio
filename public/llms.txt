@@ -20,23 +20,23 @@ Full Stack Developer. Builds multi-tenant SaaS on React 19 + TypeScript + Node.j
 
 Merged pull requests in repositories maintained by other people. Every link is public and verifiable.
 
-- [vitest-dev/vitest#11360](https://github.com/vitest-dev/vitest/pull/11360) — merged 2026-09-29. Fixed the vm pools running Vite's dependency optimizer over `index.html`, which aborted the run with exit 1 while every test passed. Traced to the commit that introduced it.
-- [fastify/fastify-cookie#377](https://github.com/fastify/fastify-cookie/pull/377) — merged 2026-10-27, shipped in `@fastify/cookie` 11.1.5. `reply.setCookie()` accepted an `encode` option and silently ignored it; the fix forwards it to the cookie serializer. Two maintainer approvals.
-- [vitest-dev/vitest#11781](https://github.com/vitest-dev/vitest/pull/11781) — merged 2026-10-30. Fixed the on-disk module cache aborting the run when its directory could not be created. The maintainer requested changes; the final design moves the check ahead of hashing.
+- [vitest-dev/vitest#11360](https://github.com/vitest-dev/vitest/pull/11360): merged 2026-09-29. Fixed the vm pools running Vite's dependency optimizer over `index.html`, which aborted the run with exit 1 while every test passed. Traced to the commit that introduced it.
+- [fastify/fastify-cookie#377](https://github.com/fastify/fastify-cookie/pull/377): merged 2026-10-27, shipped in `@fastify/cookie` 11.1.5. `reply.setCookie()` accepted an `encode` option and silently ignored it; the fix forwards it to the cookie serializer. Two maintainer approvals.
+- [vitest-dev/vitest#11781](https://github.com/vitest-dev/vitest/pull/11781): merged 2026-10-30. Fixed the on-disk module cache aborting the run when its directory could not be created. The maintainer requested changes; the final design moves the check ahead of hashing.
 
 ## Certifications
 
-- **AI Skills Fest 2026** (Microsoft) — AI-powered development with GitHub Copilot, advanced prompt engineering, and AI-first workflows. [Credly badge](https://www.credly.com/badges/6f6e4c5f-1d80-4a63-8f1b-3a4a7c6b9e2d)
+- **AI Skills Fest 2026** (Microsoft): AI-powered development with GitHub Copilot, advanced prompt engineering, and AI-first workflows. [Credly badge](https://www.credly.com/badges/6f6e4c5f-1d80-4a63-8f1b-3a4a7c6b9e2d)
 
 ## Projects
 
-- [Relevy](https://github.com/ezefernandezyf/relevy) — GEO/SEO auditing micro-SaaS: crawls a URL live and returns a 0-100 GEO Score with a full AI-visibility report across ChatGPT, Claude, Perplexity, Gemini, Google AI Overviews and Bing Copilot.
-- [EchoLog](https://github.com/ezefernandezyf/echolog) — Multi-tenant customer feedback SaaS. Boards, voting, comments, workspace management. Full-stack TypeScript with React 19, Node.js, Express, PostgreSQL.
-- [Nexus Talent](https://github.com/ezefernandezyf/nexus-talent) — AI-assisted recruitment platform that transforms raw job descriptions into structured skill matrices and technical application strategies.
-- [geo-seo-opencode](https://github.com/ezefernandezyf/geo-seo-opencode) — Open-source GEO toolkit for opencode. 16 analysis skills for ChatGPT, Claude, Perplexity, and Gemini. Cross-platform, one-command installer. CLI toolkit for AI search optimization.
-- [Movie Management Dashboard](https://github.com/ezefernandezyf/movie-dashboard) — SPA dashboard for movie catalog management. CRUD, Supabase authentication, React Query, modular architecture.
-- [CineLab](https://github.com/ezefernandezyf/cinelab) — Movie Search App with TMDB API. Search, filters, persistent favorites, dynamic recommendations.
-- [ChefcitoIA](https://github.com/ezefernandezyf/ia-recipe-generator) — AI recipe generator. Integration with AI APIs, error handling with AbortController, Zod validation.
+- [Relevy](https://github.com/ezefernandezyf/relevy): GEO/SEO auditing micro-SaaS: crawls a URL live and returns a 0-100 GEO Score with a full AI-visibility report across ChatGPT, Claude, Perplexity, Gemini, Google AI Overviews and Bing Copilot.
+- [EchoLog](https://github.com/ezefernandezyf/echolog): Multi-tenant customer feedback SaaS. Boards, voting, comments, workspace management. Full-stack TypeScript with React 19, Node.js, Express, PostgreSQL.
+- [Nexus Talent](https://github.com/ezefernandezyf/nexus-talent): AI-assisted recruitment platform that transforms raw job descriptions into structured skill matrices and technical application strategies.
+- [geo-seo-opencode](https://github.com/ezefernandezyf/geo-seo-opencode): Open-source GEO toolkit for opencode. 16 analysis skills for ChatGPT, Claude, Perplexity, and Gemini. Cross-platform, one-command installer. CLI toolkit for AI search optimization.
+- [Movie Management Dashboard](https://github.com/ezefernandezyf/movie-dashboard): SPA dashboard for movie catalog management. CRUD, Supabase authentication, React Query, modular architecture.
+- [CineLab](https://github.com/ezefernandezyf/cinelab): Movie Search App with TMDB API. Search, filters, persistent favorites, dynamic recommendations.
+- [ChefcitoIA](https://github.com/ezefernandezyf/ia-recipe-generator): AI recipe generator. Integration with AI APIs, error handling with AbortController, Zod validation.
 
 ## Site Structure
 

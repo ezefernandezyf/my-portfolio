@@ -41,9 +41,9 @@ type CaseStudySection = ListSection | CodeSection;
 type CaseStudyTemplateProps = {
   title: string;
   description: string;
-  /** SEO title from ROUTE_META (canonical source) — falls back to `title` when absent */
+  /** SEO title from ROUTE_META (canonical source), falls back to `title` when absent */
   metaTitle?: string;
-  /** SEO description from ROUTE_META (canonical source) — falls back to `description` when absent */
+  /** SEO description from ROUTE_META (canonical source), falls back to `description` when absent */
   metaDescription?: string;
   pathname: string;
   repo?: string;

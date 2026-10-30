@@ -36,9 +36,9 @@
     "list": [
       "Quiz wizard across 5 dimensions (Data, AI, Strategy, People, Processes) × 3 questions each = 15 questions with Likert 1-5 scale. State managed with Zustand for step persistence without server dependency.",
       "Pure scoring system with 38 unit tests that normalizes responses to 0-100 per dimension and calculates a global score. Zero external dependencies: deterministic functions, testable by design.",
-      "Groq API integration (llama-3.1-8b-instant) for personalized natural language recommendations. 12s timeout with 1 retry + fallback to predefined recommendations on API failure — the user never sees an error.",
+      "Groq API integration (llama-3.1-8b-instant) for personalized natural language recommendations. 12s timeout with 1 retry + fallback to predefined recommendations on API failure, the user never sees an error.",
       "Full dashboard with radar chart (Recharts), dimension bars and recommendations. Three views: overview (all dimensions), per-dimension detail and actionable recommendations.",
-      "PDF generation with jsPDF including scores, radar chart and recommendations. Downloadable without server dependency — all client-side.",
+      "PDF generation with jsPDF including scores, radar chart and recommendations. Downloadable without server dependency: all client-side.",
       "Lead capture with Zod 4 validation (shared front/back), international country code selector, and PostgreSQL persistence via Prisma.",
       "LinkedIn share button with predefined text so users can showcase their results."
     ]

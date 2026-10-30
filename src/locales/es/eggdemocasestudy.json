@@ -36,9 +36,9 @@
     "list": [
       "Quiz wizard en 5 dimensiones (Datos, IA, Estrategia, Personas, Procesos) × 3 preguntas cada una = 15 preguntas con escala Likert 1-5. Estado manejado con Zustand para persistencia entre pasos sin afectar el servidor.",
       "Sistema de scoring puro con 38 tests unitarios que normaliza respuestas a 0-100 por dimensión y calcula un score global. Sin dependencias externas: funciones determinísticas, filete de testing.",
-      "Integración con Groq API (llama-3.1-8b-instant) para recomendaciones personalizadas en lenguaje natural. Timeout de 12s con 1 reintento + fallback a recomendaciones predefinidas si la API falla — el usuario nunca ve un error.",
+      "Integración con Groq API (llama-3.1-8b-instant) para recomendaciones personalizadas en lenguaje natural. Timeout de 12s con 1 reintento + fallback a recomendaciones predefinidas si la API falla, el usuario nunca ve un error.",
       "Dashboard completo con radar chart (Recharts), barras por dimensión y recomendaciones. Tres vistas: general (todas las dimensiones), detalle por dimensión y recomendaciones accionables.",
-      "Generación de PDF con jsPDF que incluye scores, radar chart y recomendaciones. Descargable sin depender del servidor — todo desde el cliente.",
+      "Generación de PDF con jsPDF que incluye scores, radar chart y recomendaciones. Descargable sin depender del servidor: todo desde el cliente.",
       "Lead capture con validación Zod 4 (compartida front/back), selector de código de país internacional, y persistencia en PostgreSQL via Prisma.",
       "Botón de compartir en LinkedIn con texto predefinido para que los usuarios puedan mostrar sus resultados."
     ]

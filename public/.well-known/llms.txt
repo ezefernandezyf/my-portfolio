@@ -1,4 +1,4 @@
-# Ezequiel Fernández — Full Stack Developer
+# Ezequiel Fernández | Full Stack Developer
 
 > Portfolio personal y profesional. Sitio estático, sin backend.
 
@@ -17,11 +17,11 @@ Full Stack Developer especializado en arquitecturas accesibles, APIs REST e inte
 
 ## Projects
 
-- [EchoLog](https://github.com/ezefernandezyf/echolog) — SaaS multi-tenant de feedback para productos. Boards, votos, comentarios, gestión de workspaces. Full-stack TypeScript.
-- [Nexus Talent](https://github.com/ezefernandezyf/nexus-talent) — Plataforma de reclutamiento con autenticación, matching de candidatos y dashboard de métricas.
-- [Movie Management Dashboard](https://github.com/ezefernandezyf/movie-dashboard) — Aplicación de búsqueda de películas con filtros, favoritos y recomendaciones.
-- [CinemaLab](https://github.com/ezefernandezyf/cinelab) — Catálogo cinematográfico con TMDB, autenticación y dashboard admin.
-- [ChefcitoIA](https://github.com/ezefernandezyf/ia-recipe-generator) — Generador de recetas con IA. Integración con API de IA, manejo de errores con AbortController.
+- [EchoLog](https://github.com/ezefernandezyf/echolog): SaaS multi-tenant de feedback para productos. Boards, votos, comentarios, gestión de workspaces. Full-stack TypeScript.
+- [Nexus Talent](https://github.com/ezefernandezyf/nexus-talent): Plataforma de reclutamiento con autenticación, matching de candidatos y dashboard de métricas.
+- [Movie Management Dashboard](https://github.com/ezefernandezyf/movie-dashboard): Aplicación de búsqueda de películas con filtros, favoritos y recomendaciones.
+- [CinemaLab](https://github.com/ezefernandezyf/cinelab): Catálogo cinematográfico con TMDB, autenticación y dashboard admin.
+- [ChefcitoIA](https://github.com/ezefernandezyf/ia-recipe-generator): Generador de recetas con IA. Integración con API de IA, manejo de errores con AbortController.
 
 ## Site Structure
 

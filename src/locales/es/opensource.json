@@ -36,7 +36,7 @@
       "review": "Había un PR anterior con el mismo objetivo. En vez de cerrar el mío, expliqué en qué se distinguía; los maintainers mergearon los dos y el código que sobrevive es el mío. El PR tardó 32,6 días en mergearse."
     },
     "vitestCacheUnwritable": {
-      "problem": "Desde 5.0.4 el cache de módulos en disco está prendido por defecto. Si su directorio no se podía crear —filesystem de solo lectura, o un proyecto que pertenece a otro usuario— el mkdirSync tiraba una excepción y el módulo que se estaba transformando fallaba con un error que no tenía nada que ver con el test.",
+      "problem": "Desde 5.0.4 el cache de módulos en disco está prendido por defecto. Si su directorio no se podía crear (filesystem de solo lectura, o un proyecto que pertenece a otro usuario), el mkdirSync tiraba una excepción y el módulo que se estaba transformando fallaba con un error que no tenía nada que ver con el test.",
       "change": "Medí que el fallo golpeaba al primer módulo de cada config, no a todos los archivos como decía el reporte. En vez de propagar el error, el cache degrada: reporta el directorio inutilizable una vez y devuelve el mismo valor nulo que ya significaba «este módulo no se cachea».",
       "review": "El maintainer pidió cambios: quería desactivar la feature entera para no calcular hashes al vicio. Mi primera versión atrapaba el error donde vivía el mkdir, o sea tarde. Moví el chequeo al principio del recorrido: no lee, no hashea, no escribe. El diseño final es más chico que el mío y mejor."
     }

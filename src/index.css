@@ -65,7 +65,7 @@
   --text-h2: 1.75rem;
 }
 
-/* Light mode override (dark-first — dark is default in @theme) */
+/* Light mode override (dark-first: dark is default in @theme) */
 :root:not(.dark) {
   --color-bg-primary: #faf7f0;
   --color-surface: #f5f0e8;
@@ -79,7 +79,7 @@
   --color-border-hover: #d6cfc2;
 }
 
-/* Softer shadows in light mode — reduced opacity ~40% */
+/* Softer shadows in light mode, reduced opacity ~40% */
 :root:not(.dark) .section-shell {
   box-shadow: 0 24px 72px rgba(15, 23, 42, 0.04);
 }
@@ -559,7 +559,7 @@ textarea:focus-visible,
   }
 }
 
-/* SkipLink — hidden until focused */
+/* SkipLink: hidden until focused */
 .skip-link {
   transition: transform 150ms ease-in-out;
 }
