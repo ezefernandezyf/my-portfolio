@@ -323,7 +323,6 @@ function buildPageContent(lang, route) {
   }
 
   if (ns === 'opensource') {
-    const eyebrow = getVal(content, 'eyebrow') || '';
     const title = getVal(content, 'title') || 'Open Source';
     const intro = getVal(content, 'intro') || '';
     const dateLocale = lang === 'en' ? 'en-US' : 'es-AR';
@@ -353,7 +352,6 @@ function buildPageContent(lang, route) {
     });
 
     return createElement('div', { className: 'prerendered-page' },
-      eyebrow ? createElement('p', { className: 'hero-label' }, eyebrow) : null,
       createElement('h1', null, title),
       intro ? createElement('p', null, intro) : null,
       ...contributionEls,

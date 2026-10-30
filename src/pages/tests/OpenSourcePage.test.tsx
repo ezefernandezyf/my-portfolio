@@ -74,11 +74,20 @@ describe('OpenSourcePage', () => {
     expect(screen.getAllByText('Ciclo de review completo')).toHaveLength(reviewCycleCount);
   });
 
-  it('states the contributor framing instead of claiming maintainer status', () => {
+  it('frames the work as one-off contributions reviewed upstream', () => {
     renderPage();
 
-    expect(screen.getByText(/soy contribuidor/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/un bug por pr, revisado por quien mantiene ese código/i),
+    ).toBeInTheDocument();
     expect(screen.queryByText(/mantenedor/i)).not.toBeInTheDocument();
+  });
+
+  it('starts the hero with the heading, with no eyebrow above it', () => {
+    renderPage();
+
+    expect(screen.queryByText(/^open source$/i)).not.toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Contribuciones open source');
   });
 
   it('renders every article with its three evidence blocks', () => {
