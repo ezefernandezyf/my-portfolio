@@ -8,6 +8,7 @@
   "nav": {
     "about": "About me",
     "projects": "Projects",
+    "openSource": "Open Source",
     "contact": "Contact",
     "aria": "Main"
   },
@@ -26,6 +27,7 @@
     "backToHome": "Go to home",
     "about": "About me",
     "projects": "Projects",
+    "openSource": "Open Source",
     "contact": "Contact"
   }
 }

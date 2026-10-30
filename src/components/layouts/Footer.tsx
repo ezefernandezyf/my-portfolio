@@ -42,6 +42,13 @@ export const Footer = (): React.JSX.Element => {
             <span className="hidden sm:inline">LinkedIn</span>
           </a>
           <Link
+            to={localize('/open-source')}
+            className="text-[11px] uppercase tracking-widest text-text-muted opacity-80 underline transition-all hover:opacity-100 hover:text-accent"
+            aria-label={t('openSourceAria')}
+          >
+            {t('openSource')}
+          </Link>
+          <Link
             to={localize('/privacy')}
             className="text-[11px] uppercase tracking-widest text-text-muted opacity-80 underline transition-all hover:opacity-100 hover:text-accent"
             aria-label={t('privacyAria')}
