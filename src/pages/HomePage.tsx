@@ -120,7 +120,7 @@ export const HomePage = (): React.JSX.Element => {
 
       <div>
         <section
-          className="relative min-h-[calc(100svh-4rem)] bg-bg-primary pb-12 pt-32"
+          className="relative min-h-[calc(100svh-4rem)] bg-bg-primary pb-12 pt-24"
           onPointerMove={handlePointerMove}
           onPointerEnter={handlePointerEnter}
           onPointerLeave={handlePointerLeave}
@@ -185,22 +185,21 @@ export const HomePage = (): React.JSX.Element => {
                 </a>
               </div>
             </div>
+          </div>
+        </section>
 
-            <div className="animate-fade-in-up mt-24">
-              <p className="mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-text-muted font-body">
-                {t('stackHeading', { ns: 'home' })}
-              </p>
+        <section className="site-container pb-16 pt-4">
+          <div className="animate-fade-in-up">
+            <p className="mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-text-muted font-body">
+              {t('stackHeading', { ns: 'home' })}
+            </p>
 
-              <div className="flex flex-wrap gap-3">
-                {technicalStack.map((stackItem) => (
-                  <span
-                    key={stackItem}
-                    className="chip-outline chip"
-                  >
-                    {stackItem}
-                  </span>
-                ))}
-              </div>
+            <div className="flex flex-wrap gap-3">
+              {technicalStack.map((stackItem) => (
+                <span key={stackItem} className="chip-outline chip">
+                  {stackItem}
+                </span>
+              ))}
             </div>
           </div>
         </section>
