@@ -16,6 +16,14 @@ Full Stack Developer specializing in accessible architecture, REST APIs, and hig
 - **Tools**: Git, ESLint 9 (flat config), Prettier, pnpm 11, Commander (CLI)
 - **GEO/SEO**: Generative Engine Optimization, AI crawler configuration, schema.org JSON-LD, llms.txt, sitemap automation
 
+## Open Source contributions
+
+Merged pull requests in repositories maintained by other people. Every link is public and verifiable.
+
+- [vitest-dev/vitest#11360](https://github.com/vitest-dev/vitest/pull/11360) — merged 2026-09-29. Fixed the vm pools running Vite's dependency optimizer over `index.html`, which aborted the run with exit 1 while every test passed. Traced to the commit that introduced it.
+- [fastify/fastify-cookie#377](https://github.com/fastify/fastify-cookie/pull/377) — merged 2026-10-27, shipped in `@fastify/cookie` 11.1.5. `reply.setCookie()` accepted an `encode` option and silently ignored it; the fix forwards it to the cookie serializer. Two maintainer approvals.
+- [vitest-dev/vitest#11781](https://github.com/vitest-dev/vitest/pull/11781) — merged 2026-10-30. Fixed the on-disk module cache aborting the run when its directory could not be created. The maintainer requested changes; the final design moves the check ahead of hashing.
+
 ## Certifications
 
 - **AI Skills Fest 2026** (Microsoft) — AI-powered development with GitHub Copilot, advanced prompt engineering, and AI-first workflows. [Credly badge](https://www.credly.com/badges/6f6e4c5f-1d80-4a63-8f1b-3a4a7c6b9e2d)
@@ -58,6 +66,8 @@ Full Stack Developer specializing in accessible architecture, REST APIs, and hig
 | `/en/contact` | Contact form | EN |
 | `/privacy` | Privacy policy | ES |
 | `/en/privacy` | Privacy policy | EN |
+| `/open-source` | Open source contributions | ES |
+| `/en/open-source` | Open source contributions | EN |
 | `/not-found` | 404 page | ES |
 | `/en/not-found` | 404 page | EN |
 

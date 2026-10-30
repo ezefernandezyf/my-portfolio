@@ -1,0 +1,49 @@
+{
+  "meta": {
+    "title": "Ezequiel Fernández | Open Source Contributions | Full Stack Developer",
+    "description": "Three merged pull requests in open source repositories: two fixes in vitest and one in @fastify/cookie. Every PR is public and verifiable on GitHub."
+  },
+  "eyebrow": "Open Source",
+  "title": "Open source contributions",
+  "intro": "Three pull requests merged into projects that are not mine. I am not a maintainer and not a regular contributor: I am a contributor. What makes this page worth reading is not the volume, it is that someone who does not know me approved every fix.",
+  "labels": {
+    "mergedAt": "Merged on {{date}}",
+    "stars": "{{total}} stars",
+    "pullRequest": "PR #{{number}}",
+    "diff": "{{diff}} lines",
+    "releasedIn": "Released in {{version}}",
+    "approvals": "{{total}} maintainer approvals",
+    "reviewCycle": "Full review cycle",
+    "viewOnGithub": "View PR #{{number}} on GitHub",
+    "problem": "The problem",
+    "change": "The fix",
+    "review": "Verification and review"
+  },
+  "stats": {
+    "merged": "merged PRs",
+    "repositories": "repositories",
+    "releases": "shipped release"
+  },
+  "contributions": {
+    "vitestVmDeps": {
+      "problem": "The vm pools ran Vite's dependency optimizer over the whole index.html. If a dependency discovered that way could not be bundled, the run died with exit 1 while every test passed. That is the worst kind of failure: it does not say a test is wrong, it says the process crashed.",
+      "change": "The configEnvironment handler returned early for the vm environment before applying resolveOptimizerConfig, so that environment kept Vite's browser default. I traced it back to the commit that introduced it and the fix was merged. The maintainer added wording nits and clarified the fixture before approving.",
+      "review": "RED → GREEN: without the fix exactly vmThreads and vmForks fail; with the fix all four pools pass."
+    },
+    "fastifyCookieEncode": {
+      "problem": "reply.setCookie() accepted an encode option and ignored it: it never forwarded it to the cookie@2 serializer, so there was no way to customise how the value is encoded. A silent failure: the option goes in, nothing happens.",
+      "change": "I separated encode from the rest of the attributes and passed it as stringifySetCookie options. It was merged with two maintainer approvals and shipped in @fastify/cookie 11.1.5, minutes after the merge.",
+      "review": "An earlier PR had the same goal. Instead of closing mine, I explained how it differed; the maintainers merged both and the code that survived is mine. The PR took 32.6 days to land."
+    },
+    "vitestCacheUnwritable": {
+      "problem": "Since 5.0.4 the on-disk module cache is enabled by default. If its directory could not be created —a read-only filesystem, or a project owned by another user— the mkdirSync threw, and the module being transformed failed with an error that had nothing to do with the test.",
+      "change": "I measured that the failure hit the first module of each config, not every file as the report claimed. Instead of propagating the error, the cache degrades: it reports the directory as unusable once and returns the same null value that already meant \"this module is not cached\".",
+      "review": "The maintainer requested changes: he wanted the whole feature disabled so no hashes were computed for nothing. My first version caught the error where the mkdir lived, which is too late. I moved the check to the start of the traversal: it does not read, does not hash, does not write. The final design is smaller than mine and better."
+    }
+  },
+  "verification": {
+    "heading": "Why you can verify this",
+    "paragraph": "Every card links the public pull request on GitHub: the diff, who approved it, who merged it, and what was discussed in review are all there. I do not list open or rejected PRs, because an open PR is an intention and can still close without being merged.",
+    "profileCta": "View my GitHub profile"
+  }
+}
