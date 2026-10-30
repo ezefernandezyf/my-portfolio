@@ -26,7 +26,7 @@ describe('ThemeToggle', () => {
     const button = screen.getByRole('button', { name: /alternar tema/i });
     expect(button).toHaveAttribute('type', 'button');
     expect(button).toHaveAttribute('title');
-    expect(button.getAttribute('title')?.toLowerCase()).toContain('tema: light');
+    expect(button.getAttribute('title')?.toLowerCase()).toContain('tema: claro');
 
     await userEvent.click(button);
     expect(toggleMock).toHaveBeenCalledTimes(1);
@@ -48,7 +48,7 @@ describe('ThemeToggle', () => {
     );
 
     const button = screen.getByRole('button', { name: /alternar tema/i });
-    expect(button.getAttribute('title')?.toLowerCase()).toContain('tema: dark');
+    expect(button.getAttribute('title')?.toLowerCase()).toContain('tema: oscuro');
 
     await userEvent.click(button);
     expect(toggleMock).toHaveBeenCalledTimes(1);
@@ -106,7 +106,7 @@ describe('ThemeToggle', () => {
     );
 
     const button = screen.getByRole('button', { name: /alternar tema/i });
-    expect(button.getAttribute('title')?.toLowerCase()).toContain('tema: system');
-    expect(button.getAttribute('title')?.toLowerCase()).toContain('dark');
+    expect(button.getAttribute('title')?.toLowerCase()).toContain('tema: sistema');
+    expect(button.getAttribute('title')?.toLowerCase()).toContain('claro');
   });
 });

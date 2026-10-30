@@ -23,11 +23,11 @@
   },
   "summary": {
     "heading": "Summary",
-    "text": "CineLab is an app designed for movie lovers. It allows searching movies, accessing details (ratings, synopsis), getting recommendations and managing favorites persistently. The project was a technical and creative challenge, focused on performance, accessibility and user experience."
+    "text": "CineLab searches TMDB and keeps favourites with no backend. The problem was never search: overlapping requests clobbered each other and favourites vanished between sessions. I fixed it with cancellable fetching —one AbortController per request— and a context plus reducer synced to localStorage through isolated helpers."
   },
   "problem": {
     "heading": "The problem",
-    "text": "Many movie search apps have slow interfaces or lack persistence for favorites. The goal was to build a fast, accessible SPA with robust state handling, focused on frontend architecture best practices."
+    "text": "Both failures reproduced the same way: typing fast left the previous query's results on screen, and reloading wiped the favourites. With no backend the browser was the only source of truth, so state had to survive a refresh and could not depend on whichever response arrived last."
   },
   "solution": {
     "heading": "The Solution",

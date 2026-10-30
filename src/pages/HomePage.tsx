@@ -129,7 +129,7 @@ export const HomePage = (): React.JSX.Element => {
             <div
               className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-500"
               style={{
-                background: `radial-gradient(circle at ${mousePos.x}px ${mousePos.y}px, rgba(245, 158, 11, 0.12), transparent 300px)`,
+                background: `radial-gradient(circle at ${mousePos.x}px ${mousePos.y}px, color-mix(in srgb, var(--color-accent) 12%, transparent), transparent 300px)`,
                 opacity: isPointerInHero ? 1 : 0,
               }}
               aria-hidden="true"

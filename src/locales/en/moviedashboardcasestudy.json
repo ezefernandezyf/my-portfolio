@@ -32,10 +32,10 @@
   "solution": {
     "heading": "The Solution",
     "list": [
-      "Replaced blocking CRUD flows with async updates backed by React Query.",
-      "Used Supabase RLS to keep edit/delete permissions scoped to the author.",
-      "Normalized forms and validation with react-hook-form + Zod.",
-      "Added resilient error handling and tests around the CRUD lifecycle."
+      "I replaced the blocking CRUD flows with React Query mutations and optimistic updates, so the list responds before the server comes back.",
+      "Authorization lives in Supabase RLS: only the author can edit or delete a record, and the rule sits in the database, not in the component.",
+      "Forms run on react-hook-form and Zod, so a validation error shows up before the request goes out.",
+      "Trade-off: with RLS the client cannot show permissions without querying the row, so the UI pays an extra fetch per item."
     ]
   },
   "techTools": {

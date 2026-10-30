@@ -38,8 +38,8 @@ describe('AboutPage', () => {
     const softSkillsHeading = screen.getByRole('heading', { name: /habilidades blandas/i });
     const softSkillsSection = softSkillsHeading.closest('section');
     expect(softSkillsSection).toBeTruthy();
-    expect(within(softSkillsSection as HTMLElement).getByText(/comunicación clara|clear communication/i)).toBeInTheDocument();
-    expect(within(softSkillsSection as HTMLElement).getByText(/trabajo en equipo|teamwork/i)).toBeInTheDocument();
+    expect(within(softSkillsSection as HTMLElement).getByText(/specs antes del código|specs before code/i)).toBeInTheDocument();
+    expect(within(softSkillsSection as HTMLElement).getByText(/review de maintainers externos|reviews from upstream maintainers/i)).toBeInTheDocument();
 
     const educationHeading = screen.getByRole('heading', { name: /educación/i });
     const educationSection = educationHeading.closest('section');

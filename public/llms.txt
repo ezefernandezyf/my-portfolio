@@ -4,7 +4,7 @@
 
 ## About
 
-Full Stack Developer specializing in accessible architecture, REST APIs, and high-performance interfaces. Main stack: React 19, TypeScript 5.9, Node.js, Express, PostgreSQL, Prisma.
+Full Stack Developer. Builds multi-tenant SaaS on React 19 + TypeScript + Node.js + PostgreSQL, tested with Vitest in CI, and writes the trade-offs down. Three bug fixes merged in vitest and @fastify/cookie.
 
 ## Skills
 

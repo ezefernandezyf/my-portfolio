@@ -1,7 +1,9 @@
 {
+  "eyebrow": "Privacidad y confianza",
   "title": "Política de privacidad",
-  "intro": "Tu privacidad es importante. Esta página explica qué datos recopilo y cómo los uso.",
+  "intro": "Esta página dice qué datos salen del sitio: el formulario de contacto (nombre, email, asunto y mensaje) y nada más. Sin analytics, sin cookies de terceros, sin píxeles de seguimiento.",
   "lastUpdated": "Última actualización: {{date}}",
+  "lastUpdatedDate": "30 de octubre de 2026",
   "sections": {
     "data": {
       "heading": "Datos que se recopilan",
@@ -13,7 +15,7 @@
     },
     "cookies": {
       "heading": "Cookies y seguimiento",
-      "paragraph": "Esta web usa cookies mínimas para analítica y preferencias de tema/idioma. No almaceno datos personales en cookies. Podés desactivar cookies desde tu navegador."
+      "paragraph": "El sitio guarda dos cosas en tu navegador: el tema y el idioma. No hay analytics ni cookies de terceros. Podés borrarlas desde el navegador y el sitio sigue funcionando."
     },
     "external": {
       "heading": "Enlaces a servicios externos",
@@ -31,7 +33,7 @@
   "contact": {
     "email": "ezefernandezyf@gmail.com"
   },
-  "note": "También puedes usar el formulario de contacto",
+  "note": "También podés usar el formulario de contacto.",
   "links": {
     "contact": "Ir a contacto"
   }

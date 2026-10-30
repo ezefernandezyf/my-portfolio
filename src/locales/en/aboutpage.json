@@ -8,7 +8,7 @@
     "contact": "Contact"
   },
   "h1": "About me",
-  "summary": "I'm 22, based in Argentina, and I build digital products that scale. I work with TypeScript, React, Node.js, Express and PostgreSQL, the full stack.\n\nMy approach combines clean architecture, testing and user experience. I value readable code, solid practices and a product mindset.",
+  "summary": "I'm 22, from Argentina, and I write TypeScript end to end: React 19 on the client, Node.js and PostgreSQL on the other side.\n\nThis past year was mostly multi-tenant SaaS: isolation by workspaceId with composite keys, a hand-rolled JWT, and 1119 tests running in CI on Relevy. I study Systems Analysis at Da Vinci and I work from specs before writing code. Three of my bug fixes are merged in vitest and @fastify/cookie.",
   "sections": {
     "stack": "Technical Stack",
     "softSkills": "Soft Skills",
@@ -56,39 +56,45 @@
       "title": "Systems Analyst - Da Vinci | First School of Multimedia Arts",
       "period": "2025 - present",
       "periodLabel": "2025 - present",
-      "bullets": []
+      "bullets": [],
+      "description": "Full-time program in software development, systems architecture and delivery methodologies for building consistent products."
     },
     "1": {
       "title": "Data Analytics with Python - Talento Tech (Buenos Aires City Government)",
       "period": "2026 - present",
       "periodLabel": "2026 - present",
-      "bullets": []
+      "bullets": [],
+      "description": "Data analysis with Python: cleaning, visualization and insight extraction for decision-making. Talento Tech program from the Buenos Aires City Government."
     },
     "2": {
       "title": "EF SET English Certificate C2 Proficient",
       "period": "2026",
       "periodLabel": "2026",
       "bullets": [],
+      "description": "C2 (Proficient) English certification under the Common European Framework, assessed by EF SET.",
       "efsetBadge": "View EF SET certificate"
     },
     "3": {
       "title": "AI Development: From 0 to Production - BIG school",
       "period": "2026 - completed",
       "periodLabel": "2026 - completed",
-      "bullets": []
+      "bullets": [],
+      "description": "Intensive training in generative models, delivery workflow and the criteria for taking AI experiments to production."
     },
 "4": {
       "title": "AI Skills Fest 2026 , Microsoft",
       "period": "2026",
       "periodLabel": "2026",
       "bullets": [],
+      "description": "Microsoft's global event on generative AI, agents and Copilot. Verified badge on Credly.",
       "credlyBadge": "View badge on Credly"
     },
     "5": {
       "title": "AWS Fundamentals: Cloud, Serverless and Operations - Commit Academy",
       "period": "2026 - completed",
       "periodLabel": "2026 - completed",
-      "bullets": []
+      "bullets": [],
+      "description": "Cloud infrastructure fundamentals on AWS: EC2, S3, Lambda, DynamoDB, RDS, CloudFront and API Gateway, with a focus on serverless and operations."
     }
   },
 "categories": {
@@ -102,14 +108,14 @@
   "abilities": {
     "title": "Professional skills",
     "items": [
-      "Clear communication",
-      "Problem solving",
-      "Analytical thinking",
-      "Modular architecture",
-      "Teamwork",
+      "Specs before code",
+      "PRs at 200 lines or less",
+      "Tests that reproduce the bug first",
+      "Documented debt, not hidden debt",
+      "Multi-tenant isolation in Postgres",
       "Scrum / Kanban",
-      "Continuous learning",
-      "Autonomy"
+      "Reviews from upstream maintainers",
+      "C2 English for team work"
     ]
   },
   "availability": "Availability: immediate, flexible schedule.",

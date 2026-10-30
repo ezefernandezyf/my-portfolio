@@ -18,9 +18,9 @@ export const ProjectCaseStudyPage = ({ projectId, namespace }: ProjectCaseStudyP
 
   if (!project) {
     return (
-      <main className="site-container py-12">
+      <section className="site-container py-12">
         <p>{t('notFound', { defaultValue: 'Project not found' })}</p>
-      </main>
+      </section>
     );
   }
 
@@ -28,9 +28,9 @@ export const ProjectCaseStudyPage = ({ projectId, namespace }: ProjectCaseStudyP
 
   if (!content) {
     return (
-      <main className="site-container py-12">
+      <section className="site-container py-12">
         <p>{t('notFound', { defaultValue: 'Project not found' })}</p>
-      </main>
+      </section>
     );
   }
 

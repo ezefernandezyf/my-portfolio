@@ -8,7 +8,7 @@
     "contact": "Contactar"
   },
   "h1": "Acerca de mí",
-  "summary": "Tengo 22 años, soy de Argentina y construyo productos digitales que escalan. Trabajo con TypeScript, React, Node.js, Express y PostgreSQL, el stack completo.\n\nMi enfoque combina arquitectura limpia, testing y experiencia de usuario. Valoro el código legible, las buenas prácticas y la mentalidad de producto.",
+  "summary": "Tengo 22 años, soy de Argentina y escribo TypeScript de punta a punta: React 19 en el cliente, Node.js y PostgreSQL del otro lado.\n\nEste último año hice sobre todo SaaS multi-tenant: aislamiento por workspaceId con claves compuestas, JWT propio y 1119 tests corriendo en CI en Relevy. Estudio Analista de Sistemas en Da Vinci y trabajo con specs antes de escribir código. Tres bugs míos están mergeados en vitest y en @fastify/cookie.",
   "sections": {
     "stack": "Stack Tecnológico",
     "softSkills": "Habilidades Blandas",
@@ -56,39 +56,45 @@
       "title": "Analista en Sistemas - Da Vinci | Primera Escuela de Arte Multimedial",
       "period": "2025 - presente",
       "periodLabel": "2025 - presente",
-      "bullets": []
+      "bullets": [],
+      "description": "Formación integral en desarrollo de software, arquitectura de sistemas y metodologías de trabajo para construir productos consistentes."
     },
     "1": {
       "title": "Data Analytics con Python - Talento Tech (GCBA)",
       "period": "2026 - presente",
       "periodLabel": "2026 - presente",
-      "bullets": []
+      "bullets": [],
+      "description": "Formación en análisis de datos con Python: limpieza, visualización y extracción de insights para la toma de decisiones. Programa Talento Tech del Gobierno de la Ciudad de Buenos Aires."
     },
     "2": {
       "title": "EF SET English Certificate C2 Proficient",
       "period": "2026",
       "periodLabel": "2026",
       "bullets": [],
+      "description": "Certificación de dominio del inglés nivel C2 (Proficient) según el Marco Común Europeo, evaluado por EF SET.",
       "efsetBadge": "Ver certificado EF SET"
     },
     "3": {
       "title": "Desarrollo con IA: de 0 a Producción - BIG school",
       "period": "2026 - finalizado",
       "periodLabel": "2026 - finalizado",
-      "bullets": []
+      "bullets": [],
+      "description": "Formación intensiva en modelos generativos, flujo de entrega y criterios para llevar experimentos de IA a producción."
     },
 "4": {
       "title": "AI Skills Fest 2026 , Microsoft",
       "period": "2026",
       "periodLabel": "2026",
       "bullets": [],
+      "description": "Participación en el evento global de Microsoft sobre IA generativa, agentes y Copilot. Badge verificado en Credly.",
       "credlyBadge": "Ver badge en Credly"
     },
     "5": {
       "title": "Fundamentos de AWS: Cloud, Serverless y Operación - Commit Academy",
       "period": "2026 - finalizado",
       "periodLabel": "2026 - finalizado",
-      "bullets": []
+      "bullets": [],
+      "description": "Fundamentos de infraestructura cloud con AWS: EC2, S3, Lambda, DynamoDB, RDS, CloudFront y API Gateway, con foco en serverless y operación."
     }
   },
   "categories": {
@@ -102,14 +108,14 @@
   "abilities": {
     "title": "Habilidades profesionales",
     "items": [
-      "Comunicación clara",
-      "Resolución de problemas",
-      "Pensamiento analítico",
-      "Arquitectura modular",
-      "Trabajo en equipo",
+      "Specs antes del código",
+      "PRs de 200 líneas o menos",
+      "Tests que reproducen el bug primero",
+      "Deuda documentada, no escondida",
+      "Aislamiento multi-tenant en Postgres",
       "Scrum / Kanban",
-      "Aprendizaje continuo",
-      "Autonomía"
+      "Review de maintainers externos",
+      "Inglés C2 para trabajar en equipo"
     ]
   },
   "availability": "Disponibilidad: inmediata, horario flexible.",
