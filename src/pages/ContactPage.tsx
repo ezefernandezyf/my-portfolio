@@ -126,7 +126,7 @@ export const ContactPage = (): React.JSX.Element => {
               <div className="space-y-8">
 
                 <h1
-                  className="text-5xl font-bold leading-none tracking-tighter text-text-primary md:text-7xl font-display"
+                  className="type-display text-text-primary"
                   aria-label={t('hero.titleAccessible')}
                 >
                   <span className="block">{t('hero.titleLine1')}</span>
@@ -313,7 +313,7 @@ export const ContactPage = (): React.JSX.Element => {
         <section className="bg-surface py-24 mt-16">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
             <div className="mx-auto max-w-3xl space-y-6">
-              <h2 className="text-2xl font-bold tracking-tight text-text-primary font-display">
+              <h2 className="type-headline text-text-primary">
                 {t('contentSection.heading')}
               </h2>
               <p className="text-base leading-relaxed text-text-secondary font-body">

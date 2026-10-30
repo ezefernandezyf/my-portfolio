@@ -35,7 +35,7 @@
       "Every generation request carries its own AbortController: ask for another recipe and the previous one is cancelled, so it cannot overwrite the new result.",
       "Model responses go through a recipe mapper before touching the UI, so a missing field cannot break the render.",
       "The form validates with Zod and react-hook-form; a model error renders as an error, not as an empty recipe.",
-      "Tests cover all three request states —pending, error and success— plus form validation."
+      "Tests cover all three request states (pending, error and success) plus form validation."
     ]
   },
   "techTools": {

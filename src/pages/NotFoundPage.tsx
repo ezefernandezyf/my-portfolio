@@ -40,7 +40,7 @@ export const NotFoundPage = (): React.JSX.Element => {
             </svg>
           </div>
 
-          <h1 id="notfound-title" className="text-3xl font-bold mb-3 text-text-primary">
+          <h1 id="notfound-title" className="type-display mb-3 text-text-primary">
             {t('h1')}
           </h1>
 

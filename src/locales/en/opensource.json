@@ -5,7 +5,7 @@
   },
   "eyebrow": "Open Source",
   "title": "Open source contributions",
-  "intro": "Three pull requests merged into projects that are not mine. I am not a maintainer and not a regular contributor: I am a contributor. What makes this page worth reading is not the volume, it is that someone who does not know me approved every fix.",
+  "intro": "Three pull requests merged into projects I do not own. I am not a maintainer and not a regular contributor: I am a contributor. Each entry below has the problem, the fix and the review, with a link to the public PR if you want to read the diff.",
   "labels": {
     "mergedAt": "Merged on {{date}}",
     "stars": "{{total}} stars",
@@ -36,7 +36,7 @@
       "review": "An earlier PR had the same goal. Instead of closing mine, I explained how it differed; the maintainers merged both and the code that survived is mine. The PR took 32.6 days to land."
     },
     "vitestCacheUnwritable": {
-      "problem": "Since 5.0.4 the on-disk module cache is enabled by default. If its directory could not be created —a read-only filesystem, or a project owned by another user— the mkdirSync threw, and the module being transformed failed with an error that had nothing to do with the test.",
+      "problem": "Since 5.0.4 the on-disk module cache is enabled by default. If its directory could not be created (a read-only filesystem, or a project owned by another user), the mkdirSync threw, and the module being transformed failed with an error that had nothing to do with the test.",
       "change": "I measured that the failure hit the first module of each config, not every file as the report claimed. Instead of propagating the error, the cache degrades: it reports the directory as unusable once and returns the same null value that already meant \"this module is not cached\".",
       "review": "The maintainer requested changes: he wanted the whole feature disabled so no hashes were computed for nothing. My first version caught the error where the mkdir lived, which is too late. I moved the check to the start of the traversal: it does not read, does not hash, does not write. The final design is smaller than mine and better."
     }

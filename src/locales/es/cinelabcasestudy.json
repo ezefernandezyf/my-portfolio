@@ -23,7 +23,7 @@
   },
   "summary": {
     "heading": "Resumen",
-    "text": "CineLab busca en TMDB y guarda favoritos sin backend. El problema no era la búsqueda: era que dos requests superpuestos pisaban resultados y que los favoritos se perdían entre sesiones. Lo resolví con fetching cancelable —un AbortController por request— y contexto con reducer sincronizado con localStorage en helpers aislados."
+    "text": "CineLab busca en TMDB y guarda favoritos sin backend. El problema no era la búsqueda: era que dos requests superpuestos pisaban resultados y que los favoritos se perdían entre sesiones. Lo resolví con fetching cancelable (un AbortController por request) y contexto con reducer sincronizado con localStorage en helpers aislados."
   },
   "problem": {
     "heading": "El problema",

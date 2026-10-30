@@ -35,7 +35,7 @@
       "Cada request de generación lleva su AbortController: si pedís otra receta, la anterior se cancela y no puede pisar el resultado nuevo.",
       "Las respuestas del modelo pasan por un recipe mapper antes de tocar la UI, así un campo faltante no rompe el render.",
       "El formulario valida con Zod y react-hook-form; el error del modelo se muestra como error, no como receta vacía.",
-      "Los tests cubren los tres estados del request —pendiente, error y éxito— más la validación del formulario."
+      "Los tests cubren los tres estados del request (pendiente, error y éxito) más la validación del formulario."
     ]
   },
   "techTools": {

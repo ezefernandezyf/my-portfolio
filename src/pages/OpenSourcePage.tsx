@@ -12,11 +12,6 @@ import { MetaTags } from '../shared/seo';
 
 const GITHUB_PROFILE_URL = 'https://github.com/ezefernandezyf';
 
-const fadeInUp = (delay = 0): React.CSSProperties => ({
-  animation: `fade-in-up 0.5s ease-out ${delay}s forwards`,
-  opacity: 0,
-});
-
 type ContributionBlockProps = {
   heading: string;
   body: string;
@@ -71,7 +66,7 @@ export const OpenSourcePage = (): React.JSX.Element => {
           <section
             aria-labelledby="open-source-heading"
             className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end"
-            style={fadeInUp()}
+           
           >
             <div className="lg:col-span-8">
               <p className="mb-4 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted">
@@ -79,7 +74,7 @@ export const OpenSourcePage = (): React.JSX.Element => {
               </p>
               <h1
                 id="open-source-heading"
-                className="font-display text-[2.75rem] font-medium leading-tight tracking-[-0.03em] text-text-primary sm:text-[3.25rem]"
+                className="type-display text-text-primary"
               >
                 {t('title')}
               </h1>
@@ -105,7 +100,7 @@ export const OpenSourcePage = (): React.JSX.Element => {
           </section>
 
           <section aria-label={t('title')} className="space-y-6">
-            {openSourceContributions.map((contribution, index) => {
+            {openSourceContributions.map((contribution) => {
               const keyPrefix = `contributions.${contribution.keyPrefix}`;
               const chips: string[] = [];
 
@@ -127,7 +122,7 @@ export const OpenSourcePage = (): React.JSX.Element => {
                 <article
                   key={contribution.id}
                   className="rounded-lg border border-border/20 bg-surface p-8 transition-colors duration-200 hover:bg-surface-elevated"
-                  style={fadeInUp(0.1 + index * 0.08)}
+                 
                 >
                   <header className="flex flex-wrap items-start justify-between gap-6 border-b border-border/20 pb-6">
                     <div>
@@ -195,12 +190,12 @@ export const OpenSourcePage = (): React.JSX.Element => {
           <section
             aria-labelledby="open-source-verification-heading"
             className="grid grid-cols-1 gap-8 border-t border-border/20 pt-12 lg:grid-cols-12"
-            style={fadeInUp(0.4)}
+           
           >
             <div className="lg:col-span-8">
               <h2
                 id="open-source-verification-heading"
-                className="font-display text-[1.75rem] font-medium tracking-[-0.01em] text-text-primary"
+                className="type-headline text-text-primary"
               >
                 {t('verification.heading')}
               </h2>
