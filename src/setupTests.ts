@@ -31,6 +31,8 @@ import esContextBridge from './locales/es/contextbridgecasestudy.json';
 import enContextBridge from './locales/en/contextbridgecasestudy.json';
 import esPrivacy from './locales/es/privacy.json';
 import enPrivacy from './locales/en/privacy.json';
+import esOpenSource from './locales/es/opensource.json';
+import enOpenSource from './locales/en/opensource.json';
 
 type JsonValue = string | number | boolean | JsonObject | JsonArray | null | undefined;
 interface JsonObject {
@@ -54,6 +56,7 @@ const resources: Record<'es' | 'en', Record<string, JsonObject>> = {
     nexustalentcasestudy: esNexusTalent,
     contextbridgecasestudy: esContextBridge,
     privacy: esPrivacy,
+    opensource: esOpenSource,
   },
   en: {
     common: enCommon,
@@ -70,6 +73,7 @@ const resources: Record<'es' | 'en', Record<string, JsonObject>> = {
     nexustalentcasestudy: enNexusTalent,
     contextbridgecasestudy: enContextBridge,
     privacy: enPrivacy,
+    opensource: enOpenSource,
   },
 };
 
