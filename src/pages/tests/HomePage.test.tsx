@@ -33,13 +33,13 @@ describe('HomePage', () => {
     expect(cvLinks.length).toBeGreaterThanOrEqual(1);
     expect(cvLinks[0]).toHaveAttribute('href', '/Ezequiel_Fernandez_CV.pdf');
 
-    expect(screen.getByText(/technical ecosystem|ecosistema técnico/i)).toBeInTheDocument();
+    expect(screen.getByText(/what i work with|con qué trabajo/i)).toBeInTheDocument();
     expect(screen.getAllByText(/react/i).length).toBeGreaterThanOrEqual(1);
     expect(screen.getAllByText(/typescript/i).length).toBeGreaterThanOrEqual(1);
 
     expect(screen.getByRole('heading', { name: /recent work|trabajos recientes/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: /Relevy/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: /EchoLog/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 3, name: /^Relevy$/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 3, name: /^EchoLog$/i })).toBeInTheDocument();
 
       const repoLinks = screen.getAllByRole('link', { name: /ver repo|view repo/i });
       expect(repoLinks).toHaveLength(2);

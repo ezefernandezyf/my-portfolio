@@ -32,10 +32,10 @@
   "solution": {
     "heading": "La solución",
     "list": [
-      "Se reemplazaron flujos CRUD bloqueantes por actualizaciones asíncronas apoyadas en React Query.",
-      "Se usó RLS de Supabase para limitar edición y borrado al autor del registro.",
-      "Se normalizaron formularios y validaciones con react-hook-form + Zod.",
-      "Se agregaron manejo de errores y tests robustos sobre el ciclo CRUD."
+      "Reemplacé los flujos CRUD bloqueantes por mutaciones de React Query con actualización optimista, así que la lista responde antes de que vuelva el servidor.",
+      "Puse la autorización en RLS de Supabase: solo el autor puede editar o borrar su registro, y la regla vive en la base, no en el componente.",
+      "Los formularios van con react-hook-form y Zod, así que el error de validación aparece antes del request.",
+      "Trade-off: con RLS el cliente no puede mostrar permisos sin consultar la fila, así que la UI paga un fetch extra por item."
     ]
   },
   "techTools": {

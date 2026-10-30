@@ -8,7 +8,7 @@
     "contact": "Contact"
   },
   "h1": "About me",
-  "summary": "I'm 22, based in Argentina, and I build digital products that scale. I work with TypeScript, React, Node.js, Express and PostgreSQL, the full stack.\n\nMy approach combines clean architecture, testing and user experience. I value readable code, solid practices and a product mindset.",
+  "summary": "I'm 22, from Argentina, and I write TypeScript end to end: React 19 on the client, Node.js and PostgreSQL on the other side.\n\nThis past year was mostly multi-tenant SaaS: isolation by workspaceId with composite keys, a hand-rolled JWT, and 1119 tests running in CI on Relevy. I study Systems Analysis at Da Vinci and I work from specs before writing code. Three of my bug fixes are merged in vitest and @fastify/cookie.",
   "sections": {
     "stack": "Technical Stack",
     "softSkills": "Soft Skills",
@@ -108,14 +108,14 @@
   "abilities": {
     "title": "Professional skills",
     "items": [
-      "Clear communication",
-      "Problem solving",
-      "Analytical thinking",
-      "Modular architecture",
-      "Teamwork",
+      "Specs before code",
+      "PRs at 200 lines or less",
+      "Tests that reproduce the bug first",
+      "Documented debt, not hidden debt",
+      "Multi-tenant isolation in Postgres",
       "Scrum / Kanban",
-      "Continuous learning",
-      "Autonomy"
+      "Reviews from upstream maintainers",
+      "C2 English for team work"
     ]
   },
   "availability": "Availability: immediate, flexible schedule.",

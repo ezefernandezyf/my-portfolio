@@ -1,7 +1,7 @@
 {
   "ok": "ok",
   "loading": "Cargando...",
-  "noPreview": "No preview",
+  "noPreview": "Sin vista previa",
   "buttons": {
     "loadMore": "Ver más",
     "back": "Volver"

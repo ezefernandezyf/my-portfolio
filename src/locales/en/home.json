@@ -2,19 +2,19 @@
   "hero": {
     "label": "Full Stack Developer",
     "name": "Ezequiel Fernández",
-    "summary": "Full Stack Developer. I build complete digital products, from the database to the interface.",
+    "summary": "I build multi-tenant SaaS end to end: React 19 on the client, Node.js and PostgreSQL on the other side, Vitest in between. The biggest one is Relevy: 46,000 lines and 1119 tests.",
     "cta": {
       "about": "About me",
       "projects": "Projects",
       "downloadCV": "Download CV"
     }
   },
-  "stackHeading": "Technical Ecosystem",
+  "stackHeading": "What I work with",
   "recentWorkHeading": "Recent Work",
   "recentWorkCounter": "Selected projects",
   "viewAllProjects": "View all projects",
   "contactTitle": "Interested in my profile?",
-  "contactText": "Open to new projects and professional opportunities.",
+  "contactText": "I'm looking for a full-time team. I answer within 24 hours and send my CV in the language you need.",
   "contactCta": "Contact",
   "currently": {
     "title": "Latest work",
