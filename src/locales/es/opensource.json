@@ -5,7 +5,7 @@
   },
   "eyebrow": "Open Source",
   "title": "Contribuciones open source",
-  "intro": "Tres pull requests mergeados en proyectos que no son míos. No soy maintainer ni colaborador habitual: soy contribuidor. Lo que hace valiosa esta página no es el volumen, es que cada arreglo lo aprobó alguien que no me conoce.",
+  "intro": "Tres pull requests mergeados en proyectos de terceros. No soy maintainer ni colaborador habitual: soy contribuidor. Acá están el problema, el arreglo y la review de cada uno, con el link al PR público por si querés leer el diff.",
   "labels": {
     "mergedAt": "Mergeado el {{date}}",
     "stars": "{{total}} estrellas",

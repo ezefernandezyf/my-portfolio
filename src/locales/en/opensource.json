@@ -5,7 +5,7 @@
   },
   "eyebrow": "Open Source",
   "title": "Open source contributions",
-  "intro": "Three pull requests merged into projects that are not mine. I am not a maintainer and not a regular contributor: I am a contributor. What makes this page worth reading is not the volume, it is that someone who does not know me approved every fix.",
+  "intro": "Three pull requests merged into projects I do not own. I am not a maintainer and not a regular contributor: I am a contributor. Each entry below has the problem, the fix and the review, with a link to the public PR if you want to read the diff.",
   "labels": {
     "mergedAt": "Merged on {{date}}",
     "stars": "{{total}} stars",

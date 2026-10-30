@@ -165,6 +165,14 @@ export const HomePage = (): React.JSX.Element => {
                   {t('hero.cta.about', { ns: 'home' })}
                 </Link>
 
+                <Link
+                  aria-label={t('hero.cta.openSource', { ns: 'home' })}
+                  className="inline-flex h-14 items-center justify-center border border-accent/60 px-8 text-sm font-bold uppercase tracking-widest text-accent transition-all hover:border-accent hover:bg-accent/10 focus-ring active:scale-95"
+                  to={localize('/open-source')}
+                >
+                  {t('hero.cta.openSource', { ns: 'home' })}
+                </Link>
+
                 <a
                   aria-label={t('hero.cta.downloadCV', { ns: 'home' })}
                   className="inline-flex h-14 items-center gap-2 px-4 text-sm font-bold uppercase tracking-tight text-accent hover:underline underline-offset-8 focus-ring"
