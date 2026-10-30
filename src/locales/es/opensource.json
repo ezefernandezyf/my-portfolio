@@ -3,9 +3,8 @@
     "title": "Ezequiel Fernández | Contribuciones Open Source | Full Stack Developer",
     "description": "Tres pull requests mergeados en repositorios open source: dos fixes en vitest y uno en @fastify/cookie. Cada PR es público y se puede verificar en GitHub."
   },
-  "eyebrow": "Open Source",
   "title": "Contribuciones open source",
-  "intro": "Tres pull requests mergeados en proyectos de terceros. No soy maintainer ni colaborador habitual: soy contribuidor. Acá están el problema, el arreglo y la review de cada uno, con el link al PR público por si querés leer el diff.",
+  "intro": "Tres pull requests mergeados en proyectos de terceros. Un bug por PR, revisado por quien mantiene ese código. Acá están el problema, el arreglo y la review de cada uno, con el link al público por si querés leer el diff.",
   "labels": {
     "mergedAt": "Mergeado el {{date}}",
     "stars": "{{total}} estrellas",
@@ -33,7 +32,7 @@
     "fastifyCookieEncode": {
       "problem": "reply.setCookie() aceptaba la opción encode y la ignoraba: no la reenviaba al serializer de cookie@2, así que no había forma de customizar cómo se codifica el valor. Falla silenciosa: la opción entra, no hace nada.",
       "change": "Separé encode del resto de los atributos y lo pasé como opciones de stringifySetCookie. Se mergeó con dos aprobaciones de maintainers y salió publicado en @fastify/cookie 11.1.5, minutos después del merge.",
-      "review": "Había un PR anterior con el mismo objetivo. En vez de cerrar el mío, expliqué en qué se distinguía; los maintainers mergearon los dos y el código que sobrevive es el mío. El PR tardó 32,6 días en mergearse."
+      "review": "Había un PR anterior con el mismo objetivo. En vez de cerrar el mío, expliqué en qué se distinguía; los maintainers mergearon los dos y el código que sobrevive es el mío."
     },
     "vitestCacheUnwritable": {
       "problem": "Desde 5.0.4 el cache de módulos en disco está prendido por defecto. Si su directorio no se podía crear (filesystem de solo lectura, o un proyecto que pertenece a otro usuario), el mkdirSync tiraba una excepción y el módulo que se estaba transformando fallaba con un error que no tenía nada que ver con el test.",
@@ -43,7 +42,7 @@
   },
   "verification": {
     "heading": "Por qué esto se puede verificar",
-    "paragraph": "Cada tarjeta linkea el pull request público en GitHub: ahí se ve el diff, quién lo aprobó, quién lo mergeó y qué se discutió en la review. No listo PRs abiertos ni rechazados, porque un PR abierto es una intención y todavía puede cerrarse sin mergear.",
+    "paragraph": "Cada tarjeta linkea el pull request público en GitHub. Ahí se ve el diff, quién lo aprobó, quién lo mergeó y qué se discutió en la review: no hace falta creerme, se puede leer.",
     "profileCta": "Ver mi perfil de GitHub"
   }
 }

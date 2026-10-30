@@ -66,12 +66,8 @@ export const OpenSourcePage = (): React.JSX.Element => {
           <section
             aria-labelledby="open-source-heading"
             className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end"
-           
           >
             <div className="lg:col-span-8">
-              <p className="mb-4 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-text-muted">
-                {t('eyebrow')}
-              </p>
               <h1
                 id="open-source-heading"
                 className="type-display text-text-primary"
