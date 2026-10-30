@@ -3,9 +3,8 @@
     "title": "Ezequiel Fernández | Open Source Contributions | Full Stack Developer",
     "description": "Three merged pull requests in open source repositories: two fixes in vitest and one in @fastify/cookie. Every PR is public and verifiable on GitHub."
   },
-  "eyebrow": "Open Source",
   "title": "Open source contributions",
-  "intro": "Three pull requests merged into projects I do not own. I am not a maintainer and not a regular contributor: I am a contributor. Each entry below has the problem, the fix and the review, with a link to the public PR if you want to read the diff.",
+  "intro": "Three pull requests merged into projects I do not own. One bug per PR, reviewed by the people who maintain that code. Each entry below has the problem, the fix and the review, with a link to the public PR if you want to read the diff.",
   "labels": {
     "mergedAt": "Merged on {{date}}",
     "stars": "{{total}} stars",
@@ -33,7 +32,7 @@
     "fastifyCookieEncode": {
       "problem": "reply.setCookie() accepted an encode option and ignored it: it never forwarded it to the cookie@2 serializer, so there was no way to customise how the value is encoded. A silent failure: the option goes in, nothing happens.",
       "change": "I separated encode from the rest of the attributes and passed it as stringifySetCookie options. It was merged with two maintainer approvals and shipped in @fastify/cookie 11.1.5, minutes after the merge.",
-      "review": "An earlier PR had the same goal. Instead of closing mine, I explained how it differed; the maintainers merged both and the code that survived is mine. The PR took 32.6 days to land."
+      "review": "An earlier PR had the same goal. Instead of closing mine, I explained how it differed; the maintainers merged both and the code that survived is mine."
     },
     "vitestCacheUnwritable": {
       "problem": "Since 5.0.4 the on-disk module cache is enabled by default. If its directory could not be created (a read-only filesystem, or a project owned by another user), the mkdirSync threw, and the module being transformed failed with an error that had nothing to do with the test.",
@@ -43,7 +42,7 @@
   },
   "verification": {
     "heading": "Why you can verify this",
-    "paragraph": "Every card links the public pull request on GitHub: the diff, who approved it, who merged it, and what was discussed in review are all there. I do not list open or rejected PRs, because an open PR is an intention and can still close without being merged.",
+    "paragraph": "Every card links the public pull request on GitHub. The diff, who approved it, who merged it and what was discussed in review are all there: you do not have to take my word for it.",
     "profileCta": "View my GitHub profile"
   }
 }
