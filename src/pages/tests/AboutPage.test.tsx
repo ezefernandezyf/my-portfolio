@@ -23,7 +23,7 @@ describe('AboutPage', () => {
     expect(screen.getByRole('link', { name: /github/i })).toHaveAttribute('href', about.github);
     expect(screen.getByRole('link', { name: /linkedin/i })).toHaveAttribute('href', about.linkedIn);
 
-    expect(screen.getByText(/disponibilidad: inmediata/i)).toBeInTheDocument();
+    expect(screen.getByText(/part-time en enta consulting/i)).toBeInTheDocument();
 
     const stackHeading = screen.getByRole('heading', { name: /stack tecnológico/i });
     const stackSection = stackHeading.closest('section');
