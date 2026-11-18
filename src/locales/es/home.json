@@ -18,11 +18,10 @@
   "contactText": "Busco sumarme a un equipo full-time. Respondo en 24 h y mando el CV en el idioma que necesites.",
   "contactCta": "Contactar",
   "currently": {
-    "title": "Lo último que hice",
+    "title": "Ahora",
     "list": [
       {
-        "label": "Recientemente desplegado Relevy",
-        "url": "https://github.com/ezefernandezyf/relevy"
+        "label": "Trabajo part-time como Desarrollador RPA Junior en Enta Consulting"
       },
       {
         "label": "Estudiando Analista en Sistemas en Da Vinci"

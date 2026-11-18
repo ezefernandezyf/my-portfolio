@@ -18,9 +18,9 @@
   "contactText": "I'm looking for a full-time team. I answer within 24 hours and send my CV in the language you need.",
   "contactCta": "Contact",
   "currently": {
-    "title": "Latest work",
+    "title": "Now",
     "list": [
-      { "label": "Recently deployed Relevy", "url": "https://github.com/ezefernandezyf/relevy" },
+      { "label": "Working part-time as a Junior RPA Developer at Enta Consulting" },
       { "label": "Studying Systems Analyst at Da Vinci" }
     ]
   }
